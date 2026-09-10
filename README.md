@@ -7,9 +7,12 @@ Every designation shown on the site is the **official nfl.com** value whenever
 nfl.com publishes one, and every row carries a link back to its source so a human
 can check it in one click.
 
-**Live site (GitHub Pages):** `https://buffedlizard55-lab.github.io/NFLInjuryReport/`
-Deployed by `.github/workflows/pages.yml`. Data refreshed every 10 minutes by
-`.github/workflows/collect.yml`.
+**Live site (GitHub Pages):** https://buffedlizard55-lab.github.io/NFLInjuryReport/
+
+Pages is configured as *legacy* → branch `main` → path `/`, so the site is the
+repository root (`index.html` + `assets/`) reading `data/latest/*.json`. There is
+no build step. Data is refreshed every 10 minutes by
+`.github/workflows/collect.yml`, which commits to the branch it runs on.
 
 ---
 
@@ -239,7 +242,7 @@ python3 -m collectors.pipeline collect       # fetch, reconcile, score, publish
 python3 -m collectors.pipeline collect --with-rotowire
 python3 -m collectors.pipeline bootstrap     # labelled sample data for UI preview
 python3 -m collectors.pipeline status
-python3 -m http.server 8000                  # preview at /docs/
+python3 -m http.server 8000                  # preview at http://localhost:8000/
 ```
 
 ---
@@ -259,7 +262,8 @@ collectors/
   scoring.py     claim building and resolution against the official report
   social.py      Bluesky / Mastodon / Google News / Reddit adapters + X links
   pipeline.py    CLI: collect | verify | bootstrap | status
-docs/            GitHub Pages site (plain HTML/CSS/JS, no build step)
+index.html       GitHub Pages site root (plain HTML/CSS/JS, no build step)
+assets/          app.css + app.js
 data/latest/     committed snapshot the site reads
 data/state/      accumulated roster + reporter registry
 data/archive/    per-run history, pruned after 14 days by CI
@@ -280,7 +284,7 @@ tests/           103 tests; fixtures reproduce shapes captured live
 | ESPN parser | `tests/test_espn.py` on verbatim live values | `Jeremiyah Love / ARI / QUESTIONABLE / ankle`, attribution `Dani Sureck` → `Cardinals' official site` |
 | End-to-end | `tests/test_pipeline.py` (network stubbed) | All 7 JSON files written; official beats ESPN; second run diffs and emits a `cleared` alert; single-source outage exits 0; total outage exits 2 |
 | Cross-source catch | Live run | `Byron Young` LAR (nfl.com) vs PHI (ESPN) flagged; independent table confirms LAR |
-| Site serving | `python3 -m http.server` + `curl` | `/docs/` 200, `app.js` 200, `app.css` 200, `data/latest/*.json` 200 |
+| Site serving | `python3 -m http.server` + `curl` | `/` 200, `assets/app.js` 200, `assets/app.css` 200, `data/latest/*.json` 200 |
 
 ---
 
