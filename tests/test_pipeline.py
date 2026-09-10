@@ -13,6 +13,7 @@ import tempfile
 import unittest
 from unittest import mock
 
+from collectors import directory as directory_mod
 from collectors import espn as espn_mod
 from collectors import nfl_com as nfl_mod
 from collectors import pipeline
@@ -41,6 +42,8 @@ class TestPipelineEndToEnd(unittest.TestCase):
     def _run(self, *, with_social=False):
         with mock.patch.object(nfl_mod, "collect", return_value=self.official), \
              mock.patch.object(espn_mod, "collect", return_value=self.espn), \
+             mock.patch.object(directory_mod, "build",
+                               return_value={"irregularities": []}), \
              mock.patch.object(pipeline, "verify", return_value={"sources": []}):
             args = argparse.Namespace(with_rotowire=False, no_social=not with_social)
             return pipeline.collect(args)
@@ -122,6 +125,8 @@ class TestPipelineEndToEnd(unittest.TestCase):
                                side_effect=FetchError("https://www.nfl.com/injuries/",
                                                       "HTTP 503 Service Unavailable", 503)), \
              mock.patch.object(espn_mod, "collect", return_value=self.espn), \
+             mock.patch.object(directory_mod, "build",
+                               return_value={"irregularities": []}), \
              mock.patch.object(pipeline, "verify", return_value={"sources": []}):
             args = argparse.Namespace(with_rotowire=False, no_social=True)
             code = pipeline.collect(args)
@@ -137,6 +142,8 @@ class TestPipelineEndToEnd(unittest.TestCase):
 
         with mock.patch.object(nfl_mod, "collect", side_effect=FetchError("u", "down")), \
              mock.patch.object(espn_mod, "collect", side_effect=FetchError("u", "down")), \
+             mock.patch.object(directory_mod, "build",
+                               return_value={"irregularities": []}), \
              mock.patch.object(pipeline, "verify", return_value={"sources": []}):
             args = argparse.Namespace(with_rotowire=False, no_social=True)
             self.assertEqual(pipeline.collect(args), 2)

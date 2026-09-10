@@ -23,6 +23,7 @@ import sys
 import time
 from typing import Any, Dict, List, Optional
 
+from . import directory as directory_mod
 from . import espn as espn_mod
 from . import nfl_com as nfl_mod
 from . import rotowire as rotowire_mod
@@ -138,6 +139,21 @@ VERIFY_TARGETS: List[Dict[str, str]] = [
     {"key": "rotowire_injury_report_PAYWALLED", "source": "rotowire",
      "url": "https://www.rotowire.com/football/injury-report.php",
      "note": "VERIFIED 2026-09-10: 'Est. Return' column renders 'Subscribers Only'."},
+    # Reporter-directory verification endpoints.
+    {"key": "nfl_team_directory_sample", "source": "nfl.com",
+     "url": directory_mod.NFL_TEAM_PAGE.format(slug="arizona-cardinals"),
+     "note": "Club-published social directory; parser extracts the official site + handles."},
+    {"key": "bsky_actor_search", "source": "bluesky",
+     "url": directory_mod.BSKY_SEARCH_ACTORS + "?q=Ian%20Rapoport&limit=3",
+     "note": "Keyless public AppView identity search used by the reporter directory. "
+             "(app.bsky.feed.searchActors was renamed to app.bsky.actor.searchActors.)"},
+    {"key": "bsky_verified_profile_rapsheet", "source": "bluesky",
+     "url": directory_mod.BSKY_GET_PROFILE + "?actor=rapsheet.bsky.social",
+     "note": "Baseline verified-insider profile: must show verification.verifiedStatus='valid'."},
+    {"key": "x_oembed_BLOCKED", "source": "x",
+     "url": directory_mod.X_OEMBED + "?url=https%3A%2F%2Fx.com%2FAdamSchefter",
+     "note": "VERIFIED HTTP 403 on 2026-09-10: no free keyless X identity check; X rows on "
+             "the directory are therefore one-click manual-review links, never 'verified'."},
 ]
 
 
@@ -238,6 +254,22 @@ def collect(args: argparse.Namespace) -> int:
     )
     tier_changes = apply_to_registry(registry, claims)
     report["irregularities"].extend(i.to_dict() for i in claim_flags)
+
+    # Verified-reporter / official-source directory (directory.html). Club
+    # pages and Bluesky profiles are verified live here; failures degrade to
+    # cached/manual-review rows and raise flags rather than killing collect.
+    try:
+        directory_payload = directory_mod.build(
+            offline=False,
+            claims_payload={"generated_at": now,
+                            "claims": [c.to_dict() for c in claims]},
+            latest_dir=LATEST_DIR, state_dir=STATE_DIR,
+        )
+        report["irregularities"].extend(directory_payload.get("irregularities", []))
+    except Exception as exc:  # noqa: BLE001 - directory must never kill a snapshot
+        sources["errors"].append(
+            {"source": "directory", "status": None,
+             "reason": f"{type(exc).__name__}: {exc}"})
 
     # Watch handles that keep proving accurate, so the feed tightens over time.
     for row in registry.to_dict()["reporters"]:

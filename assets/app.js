@@ -802,6 +802,7 @@
   function wire() {
     $$(".tab").forEach(function (t) {
       t.addEventListener("click", function () {
+        if (!t.dataset.tab) return; /* e.g. the directory.html link */
         state.tab = t.dataset.tab;
         $$(".tab").forEach(function (x) { x.classList.toggle("active", x === t); });
         $$(".panel").forEach(function (p) {

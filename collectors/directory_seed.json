@@ -1,0 +1,117 @@
+{
+  "_comment": "Seed list of NATIONAL NFL insiders for the reporter directory. This file is deliberately small and explicit so a reviewer can diff it and click every link. Nothing here is presented as machine-verified on its own: on each build (a) Bluesky handles are resolved against the keyless public AppView and only marked 'verified' when the returned profile carries a valid Bluesky verification AND matches the name; lookalikes carrying Bluesky's own 'impersonation'/'parody' labels are surfaced as warnings; (b) X has no free verification API (publish.twitter.com/oembed returned HTTP 403 on 2026-09-10), so X rows are always one-click manual-review links and are labelled as such until an oEmbed probe succeeds in CI; (c) names are cross-checked against reporters actually named in the live ESPN injury feed (observed_in_feed). Outlets below are recorded only where observed directly (ESPN attribution text or the account's own verified bio); otherwise role is left generic.",
+  "national": [
+    {
+      "name": "Adam Schefter",
+      "role": "Senior NFL Insider, ESPN",
+      "outlet_evidence": "Listed as 'ESPN' in live ESPN injury-feed attributions collected 2026-09-10 (data/latest/claims.json).",
+      "x_handle": "AdamSchefter",
+      "bsky_expected_handle": "",
+      "notes": "Bluesky search on 2026-09-10 returned only mirrors/bots; the lookalike adamschefter.bsky.social carries Bluesky's own 'impersonation' moderation label. No genuine Bluesky account is linked."
+    },
+    {
+      "name": "Ian Rapoport",
+      "role": "National NFL Insider, ESPN and NFL Network",
+      "outlet_evidence": "Bio on the Bluesky-verified profile: 'National Insider for ESPN and NFL Network and www.nfl.com' (probed 2026-09-10).",
+      "x_handle": "RapSheet",
+      "bsky_expected_handle": "rapsheet.bsky.social",
+      "notes": "Bluesky profile rapsheet.bsky.social carries a valid Bluesky-issued verification (verifiedStatus=valid, probed 2026-09-10)."
+    },
+    {
+      "name": "Tom Pelissero",
+      "role": "NFL national reporter",
+      "outlet_evidence": "Listed as 'NFL Network' in live ESPN injury-feed attributions; Bluesky bio reads 'The Ringer / Netflix Sports' (probed 2026-09-10).",
+      "x_handle": "TomPelissero",
+      "bsky_expected_handle": "tompelissero.bsky.social",
+      "notes": "Bluesky name match found but no platform verification badge; shown as a manual-review candidate, not verified."
+    },
+    {
+      "name": "Mike Garafolo",
+      "role": "NFL Network national reporter",
+      "outlet_evidence": "Listed as 'NFL Network' in live ESPN injury-feed attributions collected 2026-09-10.",
+      "x_handle": "MikeGarafolo",
+      "bsky_expected_handle": "",
+      "notes": "Bluesky search on 2026-09-10 returned only mirror bots (e.g. mikegarafolobot.mirrors.bot self-describes as a mirror)."
+    },
+    {
+      "name": "Jeremy Fowler",
+      "role": "ESPN senior national reporter",
+      "outlet_evidence": "Listed as 'ESPN.com' in live ESPN injury-feed attributions collected 2026-09-10.",
+      "x_handle": "JFowlerESPN",
+      "bsky_expected_handle": "",
+      "notes": "No name-matching Bluesky account found on 2026-09-10."
+    },
+    {
+      "name": "Dan Graziano",
+      "role": "ESPN national reporter",
+      "outlet_evidence": "Listed as 'ESPN.com' in live ESPN injury-feed attributions collected 2026-09-10.",
+      "x_handle": "DanGrazianoESPN",
+      "bsky_expected_handle": "",
+      "notes": "Bluesky dangraziano.bsky.social exists but its display name is only 'Dan' (no full-name match), so it is NOT auto-matched."
+    },
+    {
+      "name": "Dianna Russini",
+      "role": "NFL national reporter, The Athletic",
+      "outlet_evidence": "Outlet per her published X profile; not present in the 2026-09-10 ESPN attributions.",
+      "x_handle": "diannaESPN",
+      "bsky_expected_handle": "",
+      "notes": "No name-matching Bluesky account found on 2026-09-10."
+    },
+    {
+      "name": "Jordan Schultz",
+      "role": "FOX Sports NFL Insider",
+      "outlet_evidence": "Bio on schultzreport.bsky.social: 'FOX Sports NFL Insider' (probed 2026-09-10).",
+      "x_handle": "Schultz_Report",
+      "bsky_expected_handle": "schultzreport.bsky.social",
+      "notes": "Bluesky name match found but no platform verification badge; shown as a manual-review candidate, not verified."
+    },
+    {
+      "name": "Jay Glazer",
+      "role": "NFL insider, FOX Sports",
+      "outlet_evidence": "Bio on jglazer.bsky.social: 'NFL Insider for The NFL On FOX' (probed 2026-09-10).",
+      "x_handle": "JayGlazer",
+      "bsky_expected_handle": "jglazer.bsky.social",
+      "notes": "Bluesky display name 'Jay Glazer, NFL ON FOX' matches but carries no platform verification; manual-review candidate."
+    },
+    {
+      "name": "Jeff Darlington",
+      "role": "ESPN NFL reporter",
+      "outlet_evidence": "Outlet per his published X profile; not present in the 2026-09-10 ESPN attributions.",
+      "x_handle": "JeffDarlington",
+      "bsky_expected_handle": "",
+      "notes": "jeffdarlington.bsky.social exists but has an empty display name, so it is NOT auto-matched."
+    },
+    {
+      "name": "Peter Schrager",
+      "role": "NFL media (NFL Network / FOX)",
+      "outlet_evidence": "Role only; no automated source checked on 2026-09-10.",
+      "x_handle": "PSchrags",
+      "bsky_expected_handle": "",
+      "notes": "No name-matching Bluesky account found on 2026-09-10."
+    },
+    {
+      "name": "Mike Florio",
+      "role": "Founder, Pro Football Talk (NBC Sports)",
+      "outlet_evidence": "Role only; no automated source checked on 2026-09-10.",
+      "x_handle": "ProFootballTalk",
+      "bsky_expected_handle": "",
+      "notes": "The X handle is the ProFootballTalk account he posts from."
+    },
+    {
+      "name": "Josina Anderson",
+      "role": "NFL reporter/insider",
+      "outlet_evidence": "Role only; no automated source checked on 2026-09-10.",
+      "x_handle": "JosinaAnderson",
+      "bsky_expected_handle": "",
+      "notes": ""
+    },
+    {
+      "name": "Kimberley A. Martin",
+      "role": "ESPN NFL reporter",
+      "outlet_evidence": "Outlet per her published X profile; not present in the 2026-09-10 ESPN attributions.",
+      "x_handle": "kimberleyamartin",
+      "bsky_expected_handle": "",
+      "notes": ""
+    }
+  ]
+}

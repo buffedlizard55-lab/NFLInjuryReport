@@ -64,6 +64,7 @@ code{background:var(--bg-3); padding:1px 5px; border-radius:4px; font-size:.9em}
 }
 .tab:hover{color:var(--fg)}
 .tab.active{color:var(--fg); border-bottom-color:var(--accent); font-weight:600}
+.tab-link{text-decoration:none}
 .badge-count{
   background:var(--accent); color:#04121f; border-radius:999px; font-size:11px;
   padding:1px 7px; font-weight:700;
@@ -228,3 +229,74 @@ footer p{margin:4px 0}
   .tabs{top:52px}
   table.data th,table.data td{padding:8px 9px}
 }
+
+/* ============================================== reporter directory page */
+.dir-grid{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+}
+.dir-cards{display:flex; flex-direction:column; gap:12px}
+.dir-card{
+  background:var(--bg-2); border:1px solid var(--line); border-radius:var(--radius);
+  padding:12px 14px; box-shadow:var(--shadow);
+}
+.dir-card h3{margin:0; font-size:14.5px}
+.dc-head{display:flex; align-items:center; gap:9px; flex-wrap:wrap}
+.dc-role{margin:6px 0 0; font-size:13px; color:var(--fg)}
+.dc-feed{margin:6px 0 0; font-size:12.5px; color:var(--accent-2)}
+.dc-notes{margin:8px 0 0; font-size:12.5px}
+.dc-foot{margin:9px 0 0; font-size:11.5px}
+.dc-foot.warn-text{color:var(--doubt)}
+.small{font-size:11.5px}
+.dc-links{display:flex; gap:7px; flex-wrap:wrap; margin-top:9px}
+.dc-socials{display:flex; gap:7px; flex-wrap:wrap; margin-top:9px}
+.acc-line{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:8px; font-size:13px}
+.acc-note{font-size:12px}
+
+.league-strip{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); margin-bottom:16px}
+
+/* social / external mini-pills */
+.soc{
+  display:inline-flex; align-items:center; gap:5px;
+  border:1px solid var(--line); background:var(--bg-3); color:var(--fg);
+  border-radius:7px; padding:3px 9px; font-size:12px; font-weight:600; white-space:nowrap;
+}
+.soc:hover{border-color:var(--accent); text-decoration:none}
+.ghost-soc{background:transparent; font-weight:500; color:var(--muted)}
+.soc-x:hover{border-color:#000; }
+.soc-facebook{color:#1877f2}
+.soc-instagram{color:#e1306c}
+.soc-snapchat{color:var(--doubt)}
+.fraud-link{color:var(--out)}
+@media (prefers-color-scheme: light){
+  .soc-facebook{color:#1664c4}
+  .soc-instagram{color:#b8215a}
+}
+
+/* verification badges */
+.vbadge{
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:10.5px; font-weight:800; letter-spacing:.4px; text-transform:uppercase;
+  border:1px solid transparent; border-radius:999px; padding:2px 9px; white-space:nowrap;
+}
+.vbadge.verified{background:color-mix(in srgb,var(--act) 18%,transparent); color:var(--act); border-color:color-mix(in srgb,var(--act) 45%,transparent)}
+.vbadge.candidate,.vbadge.manual{background:color-mix(in srgb,var(--doubt) 18%,transparent); color:var(--doubt); border-color:color-mix(in srgb,var(--doubt) 45%,transparent)}
+.vbadge.absent,.vbadge.pending{background:var(--bg-3); color:var(--muted); border-color:var(--line)}
+.vbadge.fraud{background:color-mix(in srgb,var(--out) 18%,transparent); color:var(--out); border-color:color-mix(in srgb,var(--out) 45%,transparent)}
+@media (prefers-color-scheme: light){
+  .vbadge.candidate,.vbadge.manual{color:#8a5200}
+}
+
+/* beat writer blocks */
+.beat-body{display:flex; flex-direction:column; gap:10px; padding:11px 12px; background:var(--bg)}
+.static-chips .chip{cursor:default}
+.static-chips .chip.primary-team{background:var(--accent); border-color:var(--accent); color:#04121f; font-weight:700}
+
+/* fraud/method panels */
+.rejected-details{margin-top:4px; font-size:12px}
+.rejected-details summary{cursor:pointer; color:var(--muted)}
+.rejected-list{margin:7px 0 0; padding-left:18px; display:flex; flex-direction:column; gap:3px}
+.method-card{margin-bottom:12px}
+.method-h{margin:0 0 6px; font-size:14.5px}
+.legend-line{display:flex; gap:10px; align-items:center; margin-top:7px; font-size:13px}
+#methodBody .dir-card p{margin:0; font-size:13px}
