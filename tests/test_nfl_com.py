@@ -50,6 +50,12 @@ class TestOfficialReportParser(unittest.TestCase):
         self.assertEqual(rec.practice_status, "FULL")
         self.assertEqual(rec.game_status, "ACTIVE")
 
+    def test_designation_provenance_is_recorded(self):
+        # Ty Okada has a printed "Out" -> published. Christian Barmore has a blank
+        # Game Status and only a practice line -> our inference, tagged as such.
+        self.assertEqual(self.by_name["Ty Okada"].designation_source, "published")
+        self.assertEqual(self.by_name["Christian Barmore"].designation_source, "inferred")
+
     def test_player_deep_links_are_captured_for_manual_review(self):
         self.assertEqual(
             self.by_name["Ty Okada"].url,

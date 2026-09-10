@@ -11,8 +11,9 @@ def rec(**kw):
 
 
 class TestReconcile(unittest.TestCase):
-    def test_official_designation_beats_espn(self):
-        official = {"injuries": [rec(game_status="QUESTIONABLE", practice_status="LIMITED")]}
+    def test_published_official_designation_beats_espn_and_conflict_is_flagged(self):
+        official = {"injuries": [rec(game_status="QUESTIONABLE", practice_status="LIMITED",
+                                     designation_source="published")]}
         espn = {"injuries": [rec(source="espn", game_status="OUT",
                                  comment="Okada (hamstring) is out.",
                                  attribution="Brady Henderson",
@@ -20,11 +21,26 @@ class TestReconcile(unittest.TestCase):
         out = reconcile(official, espn, now="2026-09-10T22:00:00Z")
         p = out["players"][0]
         self.assertEqual(p["game_status"], "QUESTIONABLE")
+        self.assertEqual(p["designation_source"], "published")
         # ...but the ESPN detail and attribution are retained for review.
         self.assertEqual(p["attribution"], "Brady Henderson")
         self.assertIn("hamstring", p["comment"])
         self.assertIn("STATUS_CONFLICT", p["discrepancies"])
         self.assertIn("STATUS_CONFLICT", [i["code"] for i in out["irregularities"]])
+
+    def test_inferred_designation_does_not_raise_a_conflict(self):
+        # nfl.com printed a blank Game Status; ACTIVE is our inference from
+        # practice participation. ESPN's news-derived status must not be treated
+        # as contradicting it -- that produced 54 spurious flags on real data.
+        official = {"injuries": [rec(game_status="ACTIVE", practice_status="FULL",
+                                     designation_source="inferred")]}
+        espn = {"injuries": [rec(source="espn", game_status="QUESTIONABLE")]}
+        out = reconcile(official, espn, now="2026-09-10T22:00:00Z")
+        self.assertNotIn("STATUS_CONFLICT", [i["code"] for i in out["irregularities"]])
+        inferred = [i for i in out["irregularities"] if i["code"] == "INFERRED_VS_REPORTED"]
+        self.assertEqual(len(inferred), 1)
+        self.assertEqual(inferred[0]["severity"], "low")
+        self.assertEqual(out["players"][0]["designation_source"], "inferred")
 
     def test_missing_official_source_is_a_critical_flag(self):
         espn = {"injuries": [rec(source="espn", game_status="OUT")]}

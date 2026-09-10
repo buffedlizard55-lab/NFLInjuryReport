@@ -345,8 +345,13 @@ def x_author_search_url(handle: str) -> str:
 
 # ------------------------------------------------------------- orchestration --
 
+#: Each probe must hit the endpoint the adapter actually calls. Probing
+#: app.bsky.actor.getProfile returned HTTP 200 on 2026-09-10 while
+#: app.bsky.feed.searchPosts returned HTTP 403 from the same host, so a
+#: getProfile probe would have reported Bluesky as usable when search was not.
 PLATFORM_PROBES = {
-    "bluesky": ("https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=bsky.app", "bluesky"),
+    "bluesky": (
+        BSKY_SEARCH + "?q=nfl%20injury&limit=1&sort=latest", "bluesky"),
     "mastodon": (f"{MASTODON_DEFAULT_INSTANCE}/api/v1/instance", "mastodon"),
     "google-news": (f"{GOOGLE_NEWS_RSS}?q=nfl&hl=en-US&gl=US&ceid=US:en", "google-news"),
     "reddit": ("https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1", "reddit"),

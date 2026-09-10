@@ -162,6 +162,10 @@ class PlayerInjury:
     injury: str = ""
     game_status: str = "UNKNOWN"
     practice_status: str = "NONE"
+    #: "published" when the source actually printed a game designation,
+    #: "inferred" when we derived one (nfl.com leaves Game Status blank for a
+    #: player who practised without a designation). Never conflated downstream.
+    designation_source: str = ""
     est_return: str = ""
     comment: str = ""
     attribution: str = ""       # reporter/beat writer named in the comment
@@ -247,4 +251,13 @@ class Irregularity:
 
 
 OFFICIAL_NFL_INJURY_URL = "https://www.nfl.com/injuries/"
-OFFICIAL_NFL_POLICY_URL = "https://operations.nfl.com/gameday/injury-report/"
+#: The league's Personnel (Injury) Report Policy. NOTE: the previously cited
+#: /gameday/injury-report/ path returned HTTP 404 when probed on 2026-09-10, so it
+#: was replaced with the policy document itself. The policy is also what justifies
+#: rendering a blank Game Status as available: it instructs clubs that a player
+#: who is "not injured but has been rested in practice should not be listed on the
+#: Game Status Report with an injury status designation (Out, Doubtful, or
+#: Questionable)" while still appearing on the Practice Report.
+OFFICIAL_NFL_POLICY_URL = (
+    "https://operations.nfl.com/media/2683/2017-nfl-injury-report-policy.pdf"
+)

@@ -71,6 +71,8 @@ class CanonicalPlayer:
         self.position = ""
         self.injury = ""
         self.game_status = "UNKNOWN"
+        #: "published" | "inferred" | "" — see models.PlayerInjury
+        self.designation_source = ""
         self.practice_status = "NONE"
         self.est_return = ""
         self.comment = ""
@@ -89,7 +91,9 @@ class CanonicalPlayer:
         return {
             "key": self.key, "name": self.name, "team": self.team,
             "position": self.position, "injury": self.injury,
-            "game_status": self.game_status, "practice_status": self.practice_status,
+            "game_status": self.game_status,
+            "designation_source": self.designation_source,
+            "practice_status": self.practice_status,
             "est_return": self.est_return, "comment": self.comment,
             "attribution": self.attribution, "outlet": self.outlet,
             "observed_at": self.observed_at, "sources": self.sources,
@@ -138,6 +142,7 @@ def _merge_into(target: CanonicalPlayer, rec: PlayerInjury, *, authority: int) -
         ):
             target.game_status = rec.game_status
             target._auth_status = authority  # type: ignore[attr-defined]
+            target.designation_source = rec.designation_source
     if rec.practice_status and rec.practice_status != "NONE":
         if target.practice_status == "NONE" or authority < getattr(target, "_auth_practice", 99):
             target.practice_status = rec.practice_status
@@ -211,16 +216,21 @@ def reconcile(
 
     # ---- pass 2: cross-source disagreement --------------------------------
     per_source_status: Dict[str, Dict[str, str]] = {}
+    per_source_published: Dict[str, Dict[str, bool]] = {}
     per_source_team: Dict[str, Dict[str, List[str]]] = {}
     for source, payload in (("nfl.com", official), ("espn", espn), ("rotowire", rotowire)):
         if not payload:
             continue
         per_source_status[source] = {}
+        per_source_published[source] = {}
         per_source_team[source] = {}
         for rec in payload.get("injuries", []):
             if not rec.player_key:
                 continue
             per_source_status[source][rec.player_key] = rec.game_status
+            per_source_published[source][rec.player_key] = (
+                getattr(rec, "designation_source", "") == "published"
+            )
             per_source_team[source].setdefault(rec.player_key, [])
             if rec.team and rec.team not in per_source_team[source][rec.player_key]:
                 per_source_team[source][rec.player_key].append(rec.team)
@@ -266,9 +276,20 @@ def reconcile(
     # Same player, different designation between official and ESPN.
     off = per_source_status.get("nfl.com", {})
     esp = per_source_status.get("espn", {})
+    inferred_vs_reported = 0
     for pkey in sorted(set(off) & set(esp)):
         a, b = off[pkey], esp[pkey]
         if a in ("UNKNOWN", "") or b in ("UNKNOWN", ""):
+            continue
+        # Only a *published* official designation can genuinely contradict ESPN.
+        # nfl.com prints a blank Game Status for a player who practised without a
+        # designation; we render that as ACTIVE, but it is our inference, and
+        # ESPN's status field is news-derived rather than the filed designation.
+        # Comparing the two produced 54 spurious "conflicts" on the 2026-09-10
+        # run, so inferred rows are counted separately instead of flagged.
+        if not per_source_published.get("nfl.com", {}).get(pkey, False):
+            if a != b:
+                inferred_vs_reported += 1
             continue
         if a != b:
             cp = None
@@ -296,6 +317,29 @@ def reconcile(
             )
             if cp is not None:
                 cp.discrepancies.append("STATUS_CONFLICT")
+
+    if inferred_vs_reported:
+        irregularities.append(
+            Irregularity(
+                code="INFERRED_VS_REPORTED",
+                severity="low",
+                title=(
+                    f"{inferred_vs_reported} player(s) have no official designation but do "
+                    "have an ESPN status"
+                ),
+                detail=(
+                    "nfl.com printed a blank Game Status for these players (they practised "
+                    "without a designation), so this site renders them as ACTIVE and marks the "
+                    "designation as inferred. ESPN separately carries a news-derived status. "
+                    "This is a semantic difference between the two sources, NOT a data error, "
+                    "so it is reported once in aggregate rather than once per player."
+                ),
+                evidence=[
+                    {"label": "Official NFL injury report", "url": OFFICIAL_NFL_INJURY_URL},
+                    {"label": "NFL Injury Report Policy", "url": OFFICIAL_NFL_POLICY_URL},
+                ],
+            )
+        )
 
     # ---- pass 3: alerts vs previous snapshot ------------------------------
     alerts: List[Alert] = []

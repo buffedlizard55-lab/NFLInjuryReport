@@ -315,9 +315,13 @@ def _row_to_injury(
     game = norm_status(game_raw)
 
     # nfl.com leaves Game Status blank for players who practised without a
-    # designation. A practice participation with no designation means available.
+    # designation. A practice participation with no designation means available,
+    # but that is OUR inference, not a published designation, so it is tagged and
+    # never used as ground truth in a cross-source comparison.
+    designation_source = "published" if game_raw else ""
     if not game_raw and practice in ("FULL", "LIMITED"):
         game = "ACTIVE"
+        designation_source = "inferred"
 
     observed = fetched_at
     if date_hint and season:
@@ -332,6 +336,7 @@ def _row_to_injury(
         injury=cell("injury").text.strip(),
         game_status=game,
         practice_status=practice,
+        designation_source=designation_source,
         observed_at=observed,
         url=url or OFFICIAL_NFL_INJURY_URL,
         source_ids={"nfl_slug": m.group(1) if m else ""},

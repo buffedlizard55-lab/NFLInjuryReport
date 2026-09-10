@@ -343,6 +343,13 @@
 
     var tdS = el("td");
     tdS.appendChild(badge(p.game_status));
+    if (p.designation_source === "inferred") {
+      var inf = el("div", "attrib", "inferred*");
+      inf.title = "nfl.com printed no Game Status for this player; they practised " +
+                  "without a designation, so 'ACTIVE' is inferred from the practice " +
+                  "line rather than published by the league.";
+      tdS.appendChild(inf);
+    }
     tr.appendChild(tdS);
 
     var tdD = el("td");
@@ -418,7 +425,8 @@
       var r1 = el("div", "row1");
       r1.appendChild(el("span", "platform-tag", i.platform));
       r1.appendChild(el("span", "who", i.who));
-      if (i.badge) r1.appendChild(badge(i.badge));
+      if (i.badge && i.badge !== "UNKNOWN") r1.appendChild(badge(i.badge));
+      else if (i.src !== "official") r1.appendChild(el("span", "platform-tag", "mention"));
       if (i.live) r1.appendChild(el("span", "badge b-ACTIVE", "LIVE"));
       r1.appendChild(el("span", "when",
         (relative(i.ts) ? relative(i.ts) + " · " : "") + stamp(i.ts)));
