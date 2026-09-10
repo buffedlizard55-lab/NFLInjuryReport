@@ -165,10 +165,22 @@ def resolve_claims(
     canonical: Dict[str, Dict[str, Any]],
     *,
     now: Optional[float] = None,
+    ground_truth_ts: Optional[Dict[str, str]] = None,
 ) -> Tuple[List[Claim], List[Irregularity]]:
-    """Score claims against the canonical (official-first) report."""
+    """Score claims against the canonical (official-first) report.
+
+    `ground_truth_ts` maps "TEAM:player-key" to the run timestamp at which this
+    pipeline FIRST observed the designation it now holds. Lead time is measured
+    against that, because it is the only honest "the official record caught up at"
+    instant we have. The official row's own timestamp is NOT usable for this:
+    nfl.com publishes no per-row publication time, so those rows are stamped with
+    the game date at 00:00:00Z, and measuring against it produced a mean lead of
+    909 minutes and a maximum of 19 days on the 2026-09-10 live run. When no
+    first-seen record exists yet, lead time is left null rather than fabricated.
+    """
 
     now = now if now is not None else time.time()
+    ground_truth_ts = ground_truth_ts or {}
     irregularities: List[Irregularity] = []
     pending_cutoff = now - PENDING_WINDOW_HOURS * 3600
 
@@ -189,7 +201,9 @@ def resolve_claims(
             continue
 
         official_status = rec.get("game_status", "UNKNOWN")
-        official_ts = _parse_epoch(rec.get("observed_at", ""))
+        official_ts = _parse_epoch(
+            ground_truth_ts.get(f"{rec.get('team')}:{rec.get('key')}", "")
+        )
         claim_ts = _parse_epoch(claim.posted_at)
 
         if official_status in ("", "UNKNOWN"):
@@ -263,6 +277,17 @@ def summarise(claims: List[Claim]) -> Dict[str, Any]:
     median_lead = leads[len(leads) // 2] if leads else None
     resolved = by_res["CORRECT"] + by_res["WRONG"]
     return {
+        "by_platform": _by_platform(claims),
+        "caveats": [
+            "espn-attribution claims are NOT independent predictions. ESPN names the "
+            "beat writer inside the same update whose status is being checked, so their "
+            "accuracy measures whether the reporter's characterisation matched the filed "
+            "designation, not whether they beat anyone to it. Read social-platform rows "
+            "for prediction value.",
+            "Lead time is measured against the first pipeline run that observed the "
+            "designation, so it is null until at least two runs have accumulated history "
+            "for that player and status. It is never inferred from a source timestamp.",
+        ],
         "claims_total": total,
         "by_resolution": by_res,
         "resolved": resolved,
@@ -270,6 +295,24 @@ def summarise(claims: List[Claim]) -> Dict[str, Any]:
         "median_lead_minutes": median_lead,
         "first_report_credit": _first_report_credit(claims),
     }
+
+
+def _by_platform(claims: List[Claim]) -> Dict[str, Dict[str, Any]]:
+    """Per-platform breakdown, because the platforms are not comparable."""
+
+    out: Dict[str, Dict[str, Any]] = {}
+    for c in claims:
+        row = out.setdefault(c.platform, {"claims": 0, "correct": 0, "wrong": 0,
+                                          "unverifiable": 0, "pending": 0})
+        row["claims"] += 1
+        key = c.resolution.lower()
+        if key in row:
+            row[key] += 1
+    for row in out.values():
+        resolved = row["correct"] + row["wrong"]
+        row["resolved"] = resolved
+        row["accuracy"] = round(row["correct"] / resolved, 4) if resolved else None
+    return out
 
 
 def _first_report_credit(claims: List[Claim]) -> Dict[str, int]:

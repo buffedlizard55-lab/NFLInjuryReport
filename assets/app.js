@@ -520,16 +520,38 @@
       });
 
     var resolved = rows.reduce(function (n, r) { return n + (r.resolved || 0); }, 0);
-    $("#scorecardNotice").className = "notice" + (resolved ? "" : " warn");
-    $("#scorecardNotice").textContent = resolved
-      ? ""
-      : "No claims have resolved yet. Scores appear only after " +
+    var box = $("#scorecardNotice");
+    box.className = "notice" + (resolved ? "" : " warn");
+    box.innerHTML = "";
+    if (!resolved) {
+      box.appendChild(document.createTextNode(
+        "No claims have resolved yet. Scores appear only after " +
         (card.min_resolved_for_rate || 5) + " claims per reporter have been checked " +
         "against the official report, so an early lucky call cannot read as 100%. " +
-        "A historical backfill of past reporter posts is not possible from free sources " +
-        "(there is no keyless archive of past X/Bluesky/Reddit posts, and X has had no free " +
-        "read tier since February 2026), so this scorecard is forward-collected from the " +
-        "moment the collector is enabled.";
+        "A historical backfill of past reporter posts is not possible from free " +
+        "sources (there is no keyless archive of past X/Bluesky/Reddit posts, and X " +
+        "has had no free read tier since February 2026), so this scorecard is " +
+        "forward-collected from the moment the collector is enabled."));
+    }
+    // Always show the methodology caveats: they change how the numbers read.
+    (s.caveats || []).forEach(function (c) {
+      var p = document.createElement("p");
+      p.style.margin = resolved ? "6px 0 0" : "10px 0 0";
+      p.textContent = "⚠ " + c;
+      box.appendChild(p);
+    });
+    var bp = s.by_platform || {};
+    if (Object.keys(bp).length) {
+      var line = document.createElement("p");
+      line.style.margin = "8px 0 0";
+      line.textContent = "By platform: " + Object.keys(bp).map(function (k) {
+        var r = bp[k];
+        return k + " " + r.resolved + " resolved" +
+               (r.accuracy === null || r.accuracy === undefined
+                 ? "" : " (" + Math.round(r.accuracy * 100) + "%)");
+      }).join(" · ");
+      box.appendChild(line);
+    }
 
     if (!rows.length) {
       tb.appendChild(el("tr")).appendChild(el("td", "empty",

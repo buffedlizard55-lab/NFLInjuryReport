@@ -209,6 +209,11 @@ def collect(args: argparse.Namespace) -> int:
         if payload:
             index.add_many(payload.get("injuries", []))
 
+    # First-seen history: the run at which each (club, player, designation) was
+    # first observed. This is the only honest "the official record caught up at"
+    # instant available, and it is what reporter lead time is measured against.
+    first_seen = _read(os.path.join(STATE_DIR, "first_seen.json"), {})
+
     previous = _read(os.path.join(LATEST_DIR, "report.json"))
     report = reconcile(
         sources.get("official"), sources.get("espn"), sources.get("rotowire"),
@@ -219,7 +224,18 @@ def collect(args: argparse.Namespace) -> int:
                                                "platforms_probed": {}}
     claims = build_claims(social_payload, player_index=index, espn=sources.get("espn"))
     canonical = {f"{p['team']}:{p['key']}": p for p in report["players"]}
-    claims, claim_flags = resolve_claims(claims, canonical)
+    for p in report["players"]:
+        fk = f"{p['team']}:{p['key']}:{p['game_status']}"
+        first_seen.setdefault(fk, now)
+    ground_truth_ts = {
+        f"{p['team']}:{p['key']}": first_seen.get(
+            f"{p['team']}:{p['key']}:{p['game_status']}", ""
+        )
+        for p in report["players"]
+    }
+    claims, claim_flags = resolve_claims(
+        claims, canonical, ground_truth_ts=ground_truth_ts
+    )
     tier_changes = apply_to_registry(registry, claims)
     report["irregularities"].extend(i.to_dict() for i in claim_flags)
 
@@ -252,6 +268,7 @@ def collect(args: argparse.Namespace) -> int:
     _write(os.path.join(STATE_DIR, "players.json"), index.to_dict())
     _write(os.path.join(STATE_DIR, "reporters.json"), registry.to_dict())
     _write(os.path.join(STATE_DIR, "watched.json"), {"handles": watched})
+    _write(os.path.join(STATE_DIR, "first_seen.json"), first_seen)
 
     day = now[:10]
     _write(os.path.join(ARCHIVE_DIR, day, f"report-{now[11:16].replace(':', '')}.json"),
