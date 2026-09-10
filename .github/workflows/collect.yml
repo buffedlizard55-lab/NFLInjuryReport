@@ -12,8 +12,10 @@ name: Collect injury data
 on:
   schedule:
     - cron: "*/10 * * * *"
+  # Run once immediately after collector changes land, so a regression shows up
+  # on the next commit rather than waiting for the next cron tick.
   push:
-    branches: [main, "arena/01a08d57-nflinjuryreport"]
+    branches: [main]
     paths: ["collectors/**", "tests/**", ".github/workflows/collect.yml"]
   workflow_dispatch:
     inputs:
