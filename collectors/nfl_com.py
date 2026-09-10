@@ -1,8 +1,10 @@
 """Collector for the OFFICIAL NFL injury report at https://www.nfl.com/injuries/
 
 This is the authoritative source: the page is the league's own publication of the
-Game Status Reports that clubs file under the NFL Injury Report Policy
-(https://operations.nfl.com/gameday/injury-report/).
+Game Status Reports that clubs file under the league's Personnel (Injury) Report
+Policy. (The policy PDFs on operations.nfl.com are listed in
+models.NFL_POLICY_URL_CANDIDATES; both returned HTTP 404 to this project's
+fetcher on 2026-09-10, so they are probe-only and never cited as evidence.)
 
 Verified live on 2026-09-10 (HTTP 200). Page title observed:
 "Official Latest NFL Injury Report for Players - Week 1 of the 2026 Season | NFL.com".
@@ -442,8 +444,8 @@ def parse_injuries_html(html: str, *, fetched_at: Optional[str] = None) -> Dict[
                 ),
                 evidence=[
                     {"label": "Official NFL injury report", "url": OFFICIAL_NFL_INJURY_URL},
-                    {"label": "NFL Injury Report Policy",
-                     "url": "https://operations.nfl.com/gameday/injury-report/"},
+                    {"label": "NFL injury report archive",
+                     "url": "https://www.nfl.com/injuries/"},
                 ],
             )
         )

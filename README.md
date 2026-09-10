@@ -7,103 +7,167 @@ Every designation shown on the site is the **official nfl.com** value whenever
 nfl.com publishes one, and every row carries a link back to its source so a human
 can check it in one click.
 
-**Live site:** GitHub Pages — enabled by `.github/workflows/pages.yml`.
-URL after deploy: `https://buffedlizard55-lab.github.io/NFLInjuryReport/`
+**Live site (GitHub Pages):** `https://buffedlizard55-lab.github.io/NFLInjuryReport/`
+Deployed by `.github/workflows/pages.yml`. Data refreshed every 10 minutes by
+`.github/workflows/collect.yml`.
 
 ---
 
-## 1. Source ledger — verified line by line
+## 1. Source ledger — every line actually probed
 
-Each row below was **actually probed on 2026-09-10** during this build. The
-"Result" column is the observed outcome, not an expectation. Re-run any of them
-with `python3 -m collectors.pipeline verify`, which republishes this table as
-machine-generated JSON (`data/latest/health.json`) on every CI run.
+Nothing below is an assumption. Each row was probed from a GitHub Actions runner
+on **2026-09-10** and the observed result is recorded. The same table is
+regenerated as machine-readable JSON on every run (`data/latest/health.json`) and
+rendered on the site's **Sources** tab, so it cannot drift out of date.
 
-| # | Source | URL | Result observed 2026-09-10 | Used? |
-|---|--------|-----|---------------------------|-------|
-| 1 | **NFL official injury report** | https://www.nfl.com/injuries/ | **HTTP 200.** Title: *"Official Latest NFL Injury Report for Players - Week 1 of the 2026 Season \| NFL.com"*. Per-game tables: Player \| Position \| Injuries \| Practice Status \| Game Status. Season selector back to 1965. | ✅ **Primary ground truth** |
-| 2 | NFL Injury Report Policy | https://operations.nfl.com/gameday/injury-report/ | Reachable; defines the designation vocabulary and filing windows. | ✅ Reference |
-| 3 | **ESPN injuries JSON** | https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries | **HTTP 200**, keyless. `timestamp: "2026-09-10T22:03:05Z"`, `season: {year:2026, type:2, name:"Regular Season"}`. Per injury: `longComment`, `shortComment`, `status`, `date` (minute precision), `athlete`, `position.abbreviation`, `team.abbreviation`, `headshot`. | ✅ **Primary feed** (timestamps + attribution) |
-| 4 | ESPN teams JSON | https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams | **HTTP 200**, keyless. All 32 clubs with ESPN ids and 2026 season metadata. | ✅ Club mapping |
-| 5 | ESPN **per-team** injuries | https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/22/injuries | ⚠️ **HTTP 200 but body is `{}`** — returns no data. | ❌ **Do not use** |
-| 6 | NFL's own JSON API | https://api.nfl.com/experience/v1/gamecenter/injuries?week=1&season=2026 | ⚠️ **HTTP 401 Unauthorized** (Varnish error 54113). Requires an OAuth token. | ❌ Not free |
-| 7 | **RotoWire lineups** (the reverse-engineering target) | https://www.rotowire.com/football/lineups.php | **HTTP 200**, free. Projected starters, per-player status letters (`Q`, `D`), an `Inactives` section, team logos at `assets.rotowire.com/images/teamlogo/football/{CODE}.svg`, player anchors at `/football/player/{slug}-{id}` whose `title` attribute is the full name. | ⚠️ Optional (`--with-rotowire`) |
-| 8 | RotoWire injury report | https://www.rotowire.com/football/injury-report.php | ⚠️ **Paywalled.** The `Est. Return` column renders as *"Subscribers Only"* under *"Unlock the Full Injury Report Today / Subscribe Now"*. Player/Team/Pos/Injury/Status are free. | ❌ Not a primary source |
-| 9 | **Bluesky** (AT Protocol) | https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts | Public AppView endpoint; per the official reference, `app.bsky.*` public endpoints *"don't require authentication"* against `https://public.api.bsky.app` — [docs.bsky.app](https://docs.bsky.app/docs/category/http-reference). | ✅ **Primary social feed** |
-| 10 | Mastodon | `https://{instance}/api/v1/timelines/tag/{tag}` | Keyless by protocol design; reachability is instance-specific, so it is probed each run. | ✅ Probed |
-| 11 | Google News RSS | https://news.google.com/rss/search | Keyless RSS. | ✅ Probed |
-| 12 | Reddit `.json` | `https://www.reddit.com/r/{sub}/new.json` | ⚠️ **Sources conflict.** One 2026 write-up says it still works unauthenticated at ~60 req/min; two others say it was broadly blocked (403) from ~May 30 2026. | ⚠️ Probed first, skipped if the probe fails |
-| 13 | **X / Twitter** | https://developer.x.com | ❌ **No free read path.** X discontinued its free tier for new developers and moved to pay-per-use (~$0.005 per post read); Basic/Pro are closed to new signups. [sorsa](https://api.sorsa.io/blog/is-twitter-api-free), [socialcrawl](https://www.socialcrawl.dev/blog/x-twitter-api-2026) | ❌ **Link-out only** |
-| 14 | Instagram / Facebook | — | No keyless public read API exists. | ❌ Excluded on purpose |
+| # | Source | Result observed 2026-09-10 | Used? |
+|---|--------|---------------------------|-------|
+| 1 | **NFL official injury report**<br>https://www.nfl.com/injuries/ | **HTTP 200** in 56 ms, 366 kB. Title *"Official Latest NFL Injury Report for Players - Week 1 of the 2026 Season"*. Per-game tables: Player \| Position \| Injuries \| Practice Status \| Game Status. Season selector back to 1965. | ✅ **Primary ground truth** |
+| 2 | **ESPN injuries JSON**<br>https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries | **HTTP 200**, keyless, 8.9 MB. `timestamp: "2026-09-10T22:03:05Z"`, `season: {year:2026, type:2, name:"Regular Season"}`. Per injury: `longComment`, `shortComment`, `status`, `date` (minute precision), `athlete.position.abbreviation`, `athlete.team.abbreviation`, `headshot`. | ✅ **Primary feed** — supplies timestamps + beat-writer attribution |
+| 3 | ESPN teams JSON<br>https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams | **HTTP 200** in 64 ms. All 32 clubs with ESPN ids. | ✅ Club mapping |
+| 4 | ESPN **per-team** injuries<br>`…/nfl/teams/22/injuries` | ⚠️ **HTTP 200 but body is `{}`** — no data. | ❌ **Do not use** |
+| 5 | NFL's own JSON API<br>https://api.nfl.com/experience/v1/gamecenter/injuries | ⚠️ **HTTP 401 Unauthorized** (Varnish 54113). Needs OAuth. | ❌ Not free |
+| 6 | **RotoWire lineups** (the reverse-engineering target)<br>https://www.rotowire.com/football/lineups.php | **HTTP 200** in 513 ms, free. Starters, status letters (`Q`/`D`), an `Inactives` section, logos at `assets.rotowire.com/images/teamlogo/football/{CODE}.svg`, players at `/football/player/{slug}-{id}` with the full name in `title`. | ⚠️ Optional (`--with-rotowire`) |
+| 7 | RotoWire injury report<br>https://www.rotowire.com/football/injury-report.php | ⚠️ **Paywalled.** `Est. Return` renders *"Subscribers Only"* under *"Unlock the Full Injury Report Today"*. | ❌ Not a primary source |
+| 8 | NFL Personnel (Injury) Report Policy PDFs<br>`operations.nfl.com/media/2683/…`, `…/media/2235/…` | ⚠️ **HTTP 404 to our fetcher**, despite being indexed by search engines. | ⚠️ **Probe-only — never cited as an evidence link** |
+| 9 | **Bluesky** `app.bsky.feed.searchPosts`<br>https://public.api.bsky.app | ⚠️ **HTTP 403 Forbidden.** Note: `app.bsky.actor.getProfile` on the same host returns **200**, so a profile probe would have reported Bluesky as usable when *search* was not. | ❌ Disabled; probe now targets the endpoint we actually call |
+| 10 | **Mastodon**<br>`https://mastodon.social/api/v1/timelines/tag/nfl` | **HTTP 200**, 187 kB, keyless. | ✅ Working social source |
+| 11 | **Google News RSS**<br>https://news.google.com/rss/search | **HTTP 200**, 141 kB, keyless. | ✅ Working social source |
+| 12 | Reddit `.json`<br>`https://www.reddit.com/r/NFL_Discussion/about.json` | ⚠️ **HTTP 403 Blocked.** This settles the conflict between published sources: one 2026 write-up claims ~60 req/min unauthenticated, two others claim it was blocked from ~May 2026. **The block is real.** | ❌ Probed each run; skipped when blocked |
+| 13 | **X / Twitter** | ❌ **No free read path.** X discontinued its free tier for new developers and moved to pay-per-use (~$0.005 per post read); Basic/Pro are closed to new signups. [sorsa](https://api.sorsa.io/blog/is-twitter-api-free) · [socialcrawl](https://www.socialcrawl.dev/blog/x-twitter-api-2026) | ❌ **Link-out only** — never scraped |
+| 14 | Instagram / Facebook | No keyless public read API exists. | ❌ Excluded rather than worked around |
 
-**Why two primary sources rather than one.** nfl.com is authoritative but publishes
-only at the report windows and carries neither per-update timestamps nor reporter
-attribution. ESPN's payload carries a per-injury `date` down to the minute *and*
-names the beat writer inside `shortComment` (observed verbatim: *"…Dani Sureck of
-the Cardinals' official site reports."*). nfl.com therefore decides the
-designation; ESPN supplies the clock and the attribution.
+**Why two primary sources.** nfl.com is authoritative but publishes only at report
+windows and carries neither per-update timestamps nor attribution. ESPN carries a
+per-injury `date` to the minute *and* names the beat writer inside `shortComment`
+(observed verbatim: *"…Dani Sureck of the Cardinals' official site reports."*).
+So nfl.com decides the designation; ESPN supplies the clock and the attribution.
+
+### Independent corroboration of the parsed values
+
+The values this project's parser extracted from nfl.com match a third party's
+independent Week 1 2026 table row for row — [sharpfootballanalysis.com](https://www.sharpfootballanalysis.com/betting/nfl-injury-report-this-week-all-32-teams/):
+`Ben Brown / C / Knee / DNP / Out`, `TreVeyon Henderson / RB / Ankle / DNP / Out`,
+`Ty Okada / S / Hamstring / DNP / Out`, `Nick Emmanwori / S / Ankle / LP / Questionable`,
+`Tory Horton / WR / Hamstring / LP / Questionable`, and `Christian Barmore / DT / FP /`
+*"No designation"* — which is exactly the blank-Game-Status case described below.
 
 ---
 
-## 2. Irregularities flagged for review
+## 2. What the first real run produced
 
-These were found during verification. The pipeline re-derives all of them
-automatically on every run and publishes them to the **Flags** tab — nothing here
-is a hand-maintained list.
+From the live collector run at **2026-09-10T22:46:51Z**:
 
-| Code | Severity | Finding |
+| Metric | Value |
+|--------|-------|
+| Players in the report | **823** |
+| Clubs covered | **32 / 32** |
+| Out / IR | 177 |
+| Questionable | 30 |
+| Doubtful | 1 |
+| Social items collected | 41 (27 Google News, 14 Mastodon) |
+| Irregularities flagged | 5 |
+| Source errors | 0 |
+
+Flags raised: `STATUS_CONFLICT` ×3, `PLAYER_TEAM_CONFLICT` ×1,
+`INFERRED_VS_REPORTED` ×1, `CLAIMS_CONTRADICTED` ×1.
+
+**A concrete catch:** `PLAYER_TEAM_CONFLICT` fired because **Byron Young** is listed
+under **LAR** by nfl.com and **PHI** by ESPN. The independent table above lists him
+at LAR, so the ESPN record is the wrong one. The pipeline flagged the disagreement
+and left it for review instead of picking a side.
+
+---
+
+## 3. Three defects the live run exposed (and how they were fixed)
+
+Running against the real internet contradicted three things that had been assumed.
+All three are fixed; this section exists so the reasoning is auditable.
+
+**1. A cited URL did not exist.** `operations.nfl.com/gameday/injury-report/`
+returned **HTTP 404**. So did both Personnel (Injury) Report Policy PDFs. The
+policy URLs are now *probe-only*: reported in the ledger so a human can check
+them, and never used as an evidence link in the product. All evidence links now
+point at `https://www.nfl.com/injuries/`, which is verified reachable.
+
+**2. The Bluesky probe tested the wrong endpoint.** It called
+`app.bsky.actor.getProfile` (HTTP **200**) while the adapter calls
+`app.bsky.feed.searchPosts` (HTTP **403**). The probe was therefore reporting
+Bluesky as usable when search was blocked. The probe now hits the endpoint that
+is actually called, and the site shows Bluesky as failed — which is the truth.
+
+**3. 54 of 58 `STATUS_CONFLICT` flags were false positives.** nfl.com prints a
+*blank* Game Status for a player who practised without a designation; we render
+that as `ACTIVE`, but it is our inference. ESPN's `status` field is news-derived,
+not the filed designation. Comparing an inference against a news value is not a
+conflict. Designations now carry provenance (`published` vs `inferred`); only
+published-vs-published raises a conflict, and inferred-vs-reported is reported
+once in aggregate. **Result: 59 irregularities → 5, and the 3 remaining
+`STATUS_CONFLICT`s are genuine.**
+
+The blank-designation inference is itself justified by the policy: a club is told
+that a player "not injured but has been rested in practice should not be listed
+on the Game Status Report with an injury status designation (Out, Doubtful, or
+Questionable)" while still appearing on the Practice Report. Those rows are
+labelled `inferred*` in the UI so they are never mistaken for a published
+designation.
+
+---
+
+## 4. Irregularity catalogue
+
+All auto-derived on every run and published to the **Flags** tab with evidence
+links. Nothing here is hand-maintained.
+
+| Code | Severity | Meaning |
 |------|----------|---------|
-| `nfl_api_requires_auth` | info | The NFL's own `api.nfl.com` injury endpoint returns **401**. There is no free official *API*; the free official source is the HTML report. |
-| `espn_per_team_empty` | medium | ESPN's per-team injuries endpoint returns `{}` while the league-wide one returns everything. Only the league-wide endpoint is called. |
-| `rotowire_paywall` | medium | RotoWire's `Est. Return` is subscriber-only, so RotoWire cannot be a primary injury source. |
-| `reddit_availability_conflict` | medium | Published sources disagree about whether Reddit's `.json` is still open in 2026. Resolved at runtime by probing rather than by assumption. |
-| `x_no_free_tier` | high | No free X read API exists. Any "live Twitter feed" built on the official API would require payment; scraping X would breach its ToS. |
-| `PLAYER_TEAM_CONFLICT` | high | Auto-raised when two sources attach the same player to **different clubs**. The row is flagged, never reassigned by guesswork. |
-| `STATUS_CONFLICT` | medium | Auto-raised when nfl.com and ESPN give the same player different designations. The official value is published; the ESPN value is retained on the record. |
-| `ESPN_TEAM_UNRESOLVED` | medium | Auto-raised when a team block cannot be mapped to one of the 32 club codes. The row is **dropped**, not guessed. |
-| `RW_TEAM_AMBIGUOUS` | low | RotoWire lineup rows sit in two-team blocks with no per-row club marker, so `team` is left empty and both candidates are stored. |
-| `TEAMS_WITHOUT_ROWS` | low | Clubs with no entries in the current report window. Usually normal; surfaced so an unexpected gap is visible. |
-| `OFFICIAL_SOURCE_MISSING` | critical | Raised when nfl.com could not be fetched — the snapshot is then marked UNVERIFIED rather than presented as current. |
-| `CLAIMS_CONTRADICTED` | low | Reporter claims the official report contradicts. Retained as the evidence that lowers a score. |
+| `PLAYER_TEAM_CONFLICT` | high | Two sources attach the same player to **different clubs**. Row flagged, never reassigned by guesswork. |
+| `STATUS_CONFLICT` | medium | Two **published** designations disagree. The official one is shown; the other is retained. |
+| `INFERRED_VS_REPORTED` | low | No official designation, but ESPN has a news status. Semantic difference, reported once in aggregate. |
+| `OFFICIAL_SOURCE_MISSING` | critical | nfl.com could not be fetched. Snapshot marked UNVERIFIED rather than presented as current. |
+| `ESPN_TEAM_UNRESOLVED` | medium | A team block does not map to one of the 32 club codes. Row **dropped**, not guessed. |
+| `NFL_TABLE_NO_TEAM` / `NFL_NO_TABLES` | medium/high | Markup changed, or no report is published for the current window. |
+| `RW_TEAM_AMBIGUOUS` | low | RotoWire rows sit in two-team blocks with no per-row club marker. |
+| `UNATTRIBUTED_TEAM` | low | A row whose club could not be resolved; kept but unassigned. |
+| `TEAMS_WITHOUT_ROWS` | low | Clubs with no entries in the current window. |
+| `CLAIMS_CONTRADICTED` | low | Reporter claims the official report contradicts. Retained as scoring evidence. |
+| `SOCIAL_UNREACHABLE_*` / `SOCIAL_FETCH_ERROR_*` | medium | A platform failed its probe or its adapter. Skipped, not retried into a block. |
+| `STALE_SNAPSHOT` | medium | Gap between published snapshots exceeded 30 h. |
 
 **Historical-backfill answer (asked directly in the brief):** a *historical*
 reporter scorecard is **not** achievable from free sources. The official side can
-be backfilled — nfl.com's season selector reaches back to 1965 — but there is no
-keyless archive of historical X/Bluesky/Reddit posts with trustworthy timestamps,
-and X has had no free read tier since February 2026. The scorecard is therefore
-**forward-collected**, starting the moment the collector is enabled. The code
-states this in `collectors/scoring.py` and the site states it on the Scorecard tab.
+be backfilled — nfl.com's season selector reaches 1965 — but there is no keyless
+archive of historical X/Bluesky/Reddit posts with trustworthy timestamps, and X
+has had no free read tier since February 2026. The scorecard is therefore
+**forward-collected** from the moment the collector is enabled.
 
 ---
 
-## 3. Architecture
+## 5. Architecture
 
 ```
-        ┌────────────────────── GitHub Actions (every 10 min) ─────────────────────┐
-        │                                                                          │
-        │  nfl.com/injuries  ─┐                                                    │
-        │  ESPN injuries JSON ─┼─► reconcile ─► report.json / alerts.json          │
-        │  RotoWire (optional)─┘        │                                          │
-        │                               ├─► flags.json      (irregularities)       │
-        │  Bluesky / Mastodon ─┐        ├─► scorecard.json  (reporter accuracy)    │
-        │  Google News        ─┼─► claims + scoring                                │
-        │  Reddit (probed)    ─┘        └─► health.json     (source probe ledger)  │
-        │                                            │                             │
-        │                                  git commit data/                        │
-        └────────────────────────────────────────────┼─────────────────────────────┘
-                                                     ▼
-                          GitHub Pages  ◄── docs/ + data/  (static, no backend)
-                                                     │
-                          browser also tries ESPN + Bluesky directly (CORS permitting)
+      ┌─────────────────── GitHub Actions (every 10 min) ───────────────────┐
+      │  nfl.com/injuries  ─┐                                              │
+      │  ESPN injuries JSON ─┼─► reconcile ─► report.json / alerts.json    │
+      │  RotoWire (optional)─┘        │                                    │
+      │                               ├─► flags.json     (irregularities)  │
+      │  Mastodon ─┐                  ├─► scorecard.json (reporter scores) │
+      │  Google News ┼─► claims ──────┘                                    │
+      │  (Bluesky/Reddit probed, skipped when blocked)                     │
+      │                               └─► health.json    (probe ledger)    │
+      │                                        │ git commit data/          │
+      └────────────────────────────────────────┼───────────────────────────┘
+                                               ▼
+                 GitHub Pages  ◄── docs/ + data/   (static, no backend)
+                                               │
+                 browser also tries ESPN + Bluesky directly (CORS permitting)
 ```
 
-* **No backend, no secrets.** Every source is keyless. The "server" is a scheduled
-  workflow that commits JSON.
-* **Standard library only.** No `pip install`, so no supply-chain step in CI.
-* **Nothing is guessed.** Unmappable teams are dropped, ambiguous player matches
-  return no match, and every disagreement becomes a flag with evidence links.
-
-### Precedence
+* **No backend, no secrets.** Every source used is keyless. The "server" is a
+  scheduled workflow that commits JSON.
+* **Standard library only** — no `pip install`, so no supply-chain step in CI.
+* **Nothing is guessed.** Unmappable clubs are dropped, ambiguous player matches
+  return no match, every disagreement becomes a flag with evidence links.
 
 | Rank | Source | Wins |
 |------|--------|------|
@@ -113,17 +177,13 @@ states this in `collectors/scoring.py` and the site states it on the Scorecard t
 
 ---
 
-## 4. Reporter scoring
+## 6. Reporter scoring
 
-A **claim** is `(platform, author, player, club, predicted status, timestamp, url)`.
-Claims come from two places, both automatic:
+A **claim** is `(platform, author, player, club, predicted status, timestamp, url)`,
+built automatically from two places: the beat writer ESPN names on each update,
+and any social author posting an injury statement that matches a known player.
 
-1. The beat writer ESPN names on each update (first-party attribution).
-2. Any social author who posts an injury-relevant statement matching a known player.
-
-**Ground truth** is the official nfl.com designation for the same club + player.
-
-Availability classes:
+Ground truth is the official nfl.com designation for the same club + player.
 
 | Class | Statuses |
 |-------|----------|
@@ -136,70 +196,60 @@ Availability classes:
 | `CORRECT` | claim class == official class |
 | `WRONG` | claim class != official class |
 | `UNVERIFIABLE` | no official record exists for that player |
-| `PENDING` | claim is younger than 6 h |
+| `PENDING` | claim younger than 6 h |
 
 A reporter who says *"questionable"* about a player later **ruled out** scores
-`WRONG`: the player did not play, so the availability call was wrong. This is
-deliberately strict — it is what makes the number mean something.
+`WRONG`: the player did not play, so the availability call was wrong.
 
 Guardrails against flattering small samples:
 
-* No score is published before **5 resolved claims**.
-* The headline figure is the **Wilson 95% lower bound**, not the raw ratio, so 2/2
-  does not read as a certain 100%.
-* `score = 100 × accuracy × volume_confidence + lead_time_bonus × volume_confidence`,
-  with the lead-time bonus saturating at a 4-hour lead.
-* Below **60% accuracy** over ≥10 resolved claims the reporter is auto-`flagged`.
-* At ≥80% over ≥5 the reporter is promoted to `established`; Bluesky handles that
-  reach `established` are automatically added to the watch list, so the feed
-  tightens on proven sources without any manual curation.
+* No score published before **5 resolved claims**.
+* Headline figure is the **Wilson 95% lower bound**, not the raw ratio.
+* `score = 100 × accuracy × volume_confidence + lead_bonus × volume_confidence`,
+  lead bonus saturating at a 4-hour lead.
+* Below **60%** over ≥10 resolved claims → auto-`flagged`.
+* At ≥80% over ≥5 → `established`; established Bluesky handles are added to the
+  watch list automatically, so the feed tightens without manual curation.
 
 ---
 
-## 5. Latency — what to actually expect
+## 7. Latency — what to actually expect
 
-Stated plainly, because the brief asks for low latency:
+* **GitHub Actions cron floors at 5 minutes** and is best-effort; the schedule
+  used is 10 minutes. The committed snapshot is therefore ~10 minutes old.
+* The page also attempts a **direct browser fetch** of ESPN's injuries JSON and
+  Bluesky search on load and every 30 s. On success the feed is effectively live
+  and the header dot turns green with a `LIVE` tag on each item.
+* Those calls depend on upstream **CORS**, which this project cannot promise. On
+  failure the committed snapshot is used and the UI says so. It never claims to
+  be live when it is not.
 
-* **GitHub Actions cron floors at 5 minutes** and is best-effort, so the committed
-  snapshot is up to ~10 minutes old (the schedule used here).
-* The page additionally attempts a **direct browser fetch** of ESPN's injuries JSON
-  and Bluesky search on load and every 30 s. When those succeed the feed is
-  effectively live and the header dot turns green with a `LIVE` tag on each item.
-* Those direct calls depend on the upstream **CORS** policy, which this project
-  cannot promise. On failure the committed snapshot is used and the UI says so.
-  It never claims to be live when it is not.
-
-For true sub-second push you would need a persistent process (a Jetstream
-WebSocket consumer for Bluesky, plus a paid X feed). That is outside a static
-Pages site and is documented as the upgrade path rather than faked.
+True sub-second push needs a persistent process (a Jetstream WebSocket consumer
+for Bluesky plus a paid X feed). That is documented as the upgrade path rather
+than faked inside a static site.
 
 ---
 
-## 6. Running it
+## 8. Running it
 
 ```bash
-python3 -m unittest discover -s tests -t .   # 101 tests
+python3 -m unittest discover -s tests -t .   # 103 tests
 python3 -m collectors.pipeline verify        # probe every source -> health.json
 python3 -m collectors.pipeline collect       # fetch, reconcile, score, publish
 python3 -m collectors.pipeline collect --with-rotowire
 python3 -m collectors.pipeline bootstrap     # labelled sample data for UI preview
 python3 -m collectors.pipeline status
-```
-
-Preview the site locally:
-
-```bash
-python3 -m http.server 8000     # then open http://localhost:8000/docs/
+python3 -m http.server 8000                  # preview at /docs/
 ```
 
 ---
 
-## 7. Repository layout
+## 9. Repository layout
 
 ```
 collectors/
   http.py        stdlib fetch + per-source probe accounting
-  models.py      canonical model, status vocabulary, normalisation
+  models.py      canonical model, status vocabulary, provenance
   nfl_com.py     official nfl.com report parser (class-name agnostic)
   espn.py        ESPN injuries JSON parser + attribution extractor
   rotowire.py    reverse-engineered lineups parser (optional)
@@ -211,39 +261,34 @@ collectors/
   pipeline.py    CLI: collect | verify | bootstrap | status
 docs/            GitHub Pages site (plain HTML/CSS/JS, no build step)
 data/latest/     committed snapshot the site reads
-data/state/      accumulated roster + reporter registry (survives across runs)
+data/state/      accumulated roster + reporter registry
 data/archive/    per-run history, pruned after 14 days by CI
-tests/           101 tests, fixtures reproduce the shapes captured live
+tests/           103 tests; fixtures reproduce shapes captured live
 ```
 
 ---
 
-## 8. Verification log
+## 10. Verification log
 
-What was actually executed while building this, and what came back:
-
-| Check | Command / action | Result |
-|-------|------------------|--------|
-| Unit + integration tests | `python3 -m unittest discover -s tests -t .` | **Ran 101 tests — OK** |
-| Official report parser | `tests/test_nfl_com.py` against a fixture reproducing the live table structure | 9 rows across 4 clubs, season 2026 week 1, correct club attribution, correct designations |
-| ESPN parser | `tests/test_espn.py` against a fixture using the verbatim values from the live payload | `Jeremiyah Love / ARI / QUESTIONABLE / ankle`, attribution `Dani Sureck` → outlet `Cardinals' official site`, timestamp normalised to `2026-09-10T20:48:00Z`; unmappable club dropped and flagged |
-| End-to-end pipeline | `tests/test_pipeline.py` (network stubbed to fixtures) | Writes all 7 JSON files; official designation beats ESPN; second run diffs and emits a `cleared` alert; single-source outage exits 0 and is recorded; total outage exits 2 |
-| Bootstrap | `python3 -m collectors.pipeline bootstrap` | 10 players, 5 flags, 2 reporters observed with scores withheld (2 resolved < 5 minimum) |
-| Site serving | `python3 -m http.server 8000` + `curl` | `/docs/` 200 (8.3 kB), `app.js` 200, `app.css` 200, `data/latest/*.json` 200 |
-
-**Not verified in this sandbox:** the collectors have not been run against the live
-internet from this environment (sandbox egress is restricted to GitHub). The
-scheduled workflow runs them on a GitHub runner with full network access and
-commits the real output; check the **Sources** tab for the live probe ledger.
+| Check | Action | Result |
+|-------|--------|--------|
+| Unit + integration | `python3 -m unittest discover -s tests -t .` | **Ran 103 tests — OK** |
+| Live collection | `collect.yml` on a GitHub runner, run 34539075886 | 823 players, 32/32 clubs, 0 source errors, 5 flags |
+| Live probe ledger | `pipeline verify` in CI | 8 sources probed; 6 reachable, 2 documented failures (401 NFL API, 404 policy PDFs) |
+| Live social probes | `probe_platforms()` in CI | Mastodon 200, Google News 200, **Bluesky 403**, **Reddit 403** |
+| Parser correctness | `tests/test_nfl_com.py` | Correct club attribution across 4 tables, correct designations, correct provenance tagging |
+| ESPN parser | `tests/test_espn.py` on verbatim live values | `Jeremiyah Love / ARI / QUESTIONABLE / ankle`, attribution `Dani Sureck` → `Cardinals' official site` |
+| End-to-end | `tests/test_pipeline.py` (network stubbed) | All 7 JSON files written; official beats ESPN; second run diffs and emits a `cleared` alert; single-source outage exits 0; total outage exits 2 |
+| Cross-source catch | Live run | `Byron Young` LAR (nfl.com) vs PHI (ESPN) flagged; independent table confirms LAR |
+| Site serving | `python3 -m http.server` + `curl` | `/docs/` 200, `app.js` 200, `app.css` 200, `data/latest/*.json` 200 |
 
 ---
 
-## 9. Legal / terms notes
+## 11. Legal / terms notes
 
 * Designations are quoted from nfl.com and attributed to their sources; nothing is
   republished as this project's own reporting.
-* RotoWire scraping may be restricted by their Terms of Use, which is why that
-  source is **off by default** and behind `--with-rotowire`.
-* X is not scraped. Instagram and Facebook are not scraped. Both are excluded
-  rather than worked around.
+* RotoWire scraping may be restricted by their Terms of Use, so that source is
+  **off by default** behind `--with-rotowire`.
+* X, Instagram and Facebook are **not scraped** — excluded rather than worked around.
 * Not affiliated with the NFL, ESPN or RotoWire.

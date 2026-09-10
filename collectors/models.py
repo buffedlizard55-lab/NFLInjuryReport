@@ -15,8 +15,10 @@ from typing import Any, Dict, List, Optional
 
 # ---------------------------------------------------------------- statuses ---
 
-#: NFL official game-status vocabulary. See the NFL's injury report policy:
-#: https://operations.nfl.com/gameday/injury-report/
+#: NFL official game-status vocabulary, as published on the league's own report
+#: (https://www.nfl.com/injuries/). The Personnel (Injury) Report Policy that
+#: defines it is listed in NFL_POLICY_URL_CANDIDATES below -- those PDFs returned
+#: HTTP 404 to this project's fetcher, so they are probe-only.
 GAME_STATUSES = {
     "OUT",           # will not play
     "DOUBTFUL",      # unlikely to play
@@ -251,13 +253,23 @@ class Irregularity:
 
 
 OFFICIAL_NFL_INJURY_URL = "https://www.nfl.com/injuries/"
-#: The league's Personnel (Injury) Report Policy. NOTE: the previously cited
-#: /gameday/injury-report/ path returned HTTP 404 when probed on 2026-09-10, so it
-#: was replaced with the policy document itself. The policy is also what justifies
+#: Candidate URLs for the league's Personnel (Injury) Report Policy.
+#:
+#: HONEST STATUS: neither of these resolved for this project's fetcher. The path
+#: operations.nfl.com/gameday/injury-report/ returned HTTP 404 and
+#: operations.nfl.com/media/2683/2017-nfl-injury-report-policy.pdf returned HTTP
+#: 404 as well when probed from a GitHub Actions runner on 2026-09-10, even
+#: though search engines index the PDF. They are therefore PROBE-ONLY: they are
+#: reported in the source ledger so a human can check them, and they are NOT
+#: used as evidence links anywhere in the product.
+#:
+#: The policy still matters for correctness, because it is what justifies
 #: rendering a blank Game Status as available: it instructs clubs that a player
-#: who is "not injured but has been rested in practice should not be listed on the
-#: Game Status Report with an injury status designation (Out, Doubtful, or
+#: who is "not injured but has been rested in practice should not be listed on
+#: the Game Status Report with an injury status designation (Out, Doubtful, or
 #: Questionable)" while still appearing on the Practice Report.
-OFFICIAL_NFL_POLICY_URL = (
-    "https://operations.nfl.com/media/2683/2017-nfl-injury-report-policy.pdf"
-)
+NFL_POLICY_URL_CANDIDATES = [
+    "https://operations.nfl.com/media/2683/2017-nfl-injury-report-policy.pdf",
+    "https://operations.nfl.com/media/2235/06-07-16-2016-injury-report-policy.pdf",
+]
+

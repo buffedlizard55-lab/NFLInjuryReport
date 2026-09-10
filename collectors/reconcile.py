@@ -21,7 +21,6 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from .models import (
     OFFICIAL_NFL_INJURY_URL,
-    OFFICIAL_NFL_POLICY_URL,
     Alert,
     Irregularity,
     PlayerInjury,
@@ -336,7 +335,6 @@ def reconcile(
                 ),
                 evidence=[
                     {"label": "Official NFL injury report", "url": OFFICIAL_NFL_INJURY_URL},
-                    {"label": "NFL Injury Report Policy", "url": OFFICIAL_NFL_POLICY_URL},
                 ],
             )
         )
@@ -423,7 +421,6 @@ def reconcile(
                 ),
                 evidence=[
                     {"label": "Official NFL injury report", "url": OFFICIAL_NFL_INJURY_URL},
-                    {"label": "NFL Injury Report Policy", "url": OFFICIAL_NFL_POLICY_URL},
                 ],
             )
         )

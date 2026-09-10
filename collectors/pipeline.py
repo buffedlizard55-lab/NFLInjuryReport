@@ -29,7 +29,7 @@ from . import rotowire as rotowire_mod
 from . import social as social_mod
 from .http import FetchError, get_probe_log, reset_probe_log
 from .matching import PlayerIndex
-from .models import Irregularity
+from .models import NFL_POLICY_URL_CANDIDATES, Irregularity
 from .reconcile import reconcile
 from .reporters import ReporterRegistry
 from .scoring import apply_to_registry, build_claims, resolve_claims, summarise
@@ -114,9 +114,15 @@ VERIFY_TARGETS: List[Dict[str, str]] = [
     {"key": "nfl_official_report", "source": "nfl.com",
      "url": nfl_mod.OFFICIAL_NFL_INJURY_URL,
      "note": "OFFICIAL league Game Status Report. Primary ground truth."},
-    {"key": "nfl_injury_policy", "source": "nfl.com",
-     "url": "https://operations.nfl.com/gameday/injury-report/",
-     "note": "Official policy defining the report windows and designations."},
+    # Probe-only: indexed by search engines but returned HTTP 404 to our fetcher
+    # on 2026-09-10 from a GitHub Actions runner. Surfaced here so a human can
+    # confirm, and deliberately NOT used as an evidence link in the product.
+    *({"key": f"nfl_policy_candidate_{i + 1}_UNVERIFIED", "source": "nfl.com",
+       "url": u,
+       "note": "Personnel (Injury) Report Policy PDF. Returned 404 to this "
+               "fetcher on 2026-09-10 despite being indexed. Not used as an "
+               "evidence link until it resolves."}
+      for i, u in enumerate(NFL_POLICY_URL_CANDIDATES)),
     {"key": "espn_injuries", "source": "espn", "url": espn_mod.ENDPOINT,
      "note": "Free public JSON. Adds per-update timestamps + reporter attribution."},
     {"key": "espn_teams", "source": "espn", "url": espn_mod.TEAMS_ENDPOINT,
