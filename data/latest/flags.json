@@ -1,0 +1,110 @@
+{
+ "generated_at": "2026-09-10T22:51:26Z",
+ "irregularities": [
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Byron Young' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Byron Young' belongs to (LAR, PHI). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "nfl.com: LAR",
+     "url": "https://www.nfl.com/injuries/"
+    },
+    {
+     "label": "espn: PHI",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Alfred Collins",
+   "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/alfred-collins/"
+    },
+    {
+     "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Nick Emmanwori",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/nick-emmanwori/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Tory Horton",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/tory-horton/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "INFERRED_VS_REPORTED",
+   "severity": "low",
+   "title": "54 player(s) have no official designation but do have an ESPN status",
+   "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "16 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Dani Sureck said QUESTIONABLE for Jeremiyah Love (official: see link); Tori McElhaney said QUESTIONABLE for Zachariah Branch (official: see link); Will McFadden said QUESTIONABLE for Billy Bowman Jr. (official: see link); Marc Raimondi said OUT for Michael Penix Jr. (official: see link); Ryan Mink said QUESTIONABLE for Teddye Buchanan (official: see link)",
+   "evidence": [
+    {
+     "label": "Dani Sureck: Jeremiyah Love QUESTIONABLE",
+     "url": "https://www.nfl.com/players/jeremiyah-love/"
+    },
+    {
+     "label": "Tori McElhaney: Zachariah Branch QUESTIONABLE",
+     "url": "https://www.nfl.com/players/zachariah-branch/"
+    },
+    {
+     "label": "Will McFadden: Billy Bowman Jr. QUESTIONABLE",
+     "url": "https://www.nfl.com/players/billy-bowman-jr/"
+    },
+    {
+     "label": "Marc Raimondi: Michael Penix Jr. OUT",
+     "url": "https://www.nfl.com/players/michael-penix-jr/"
+    },
+    {
+     "label": "Ryan Mink: Teddye Buchanan QUESTIONABLE",
+     "url": "https://www.nfl.com/players/teddye-buchanan/"
+    }
+   ]
+  }
+ ],
+ "source_errors": []
+}

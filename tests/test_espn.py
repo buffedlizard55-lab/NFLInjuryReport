@@ -1,0 +1,116 @@
+import unittest
+
+from collectors.espn import (
+    _normalise_date,
+    extract_attribution,
+    extract_body_part,
+    parse_injuries,
+)
+
+from .helpers import fixture_json
+
+
+class TestAttributionExtraction(unittest.TestCase):
+    def test_of_reports_pattern_from_live_payload(self):
+        text = ("Love (ankle) is warming up ahead of Thursday's practice, "
+                "Dani Sureck of the Cardinals' official site reports.")
+        name, outlet, _ = extract_attribution(text)
+        self.assertEqual(name, "Dani Sureck")
+        self.assertEqual(outlet, "Cardinals' official site")
+
+    def test_espn_dot_com_outlet(self):
+        name, outlet, _ = extract_attribution(
+            "Okada (hamstring) has been ruled out for Thursday, "
+            "Brady Henderson of ESPN.com reports."
+        )
+        self.assertEqual(name, "Brady Henderson")
+        self.assertEqual(outlet, "ESPN.com")
+
+    def test_per_pattern(self):
+        name, _, _ = extract_attribution("Mahomes (toe) is limited, per Adam Schefter.")
+        self.assertEqual(name, "Adam Schefter")
+
+    def test_no_attribution_returns_empty_not_a_guess(self):
+        self.assertEqual(extract_attribution("Love (ankle) is warming up."), ("", "", ""))
+        self.assertEqual(extract_attribution(""), ("", "", ""))
+
+    def test_handle_capture(self):
+        _, _, handle = extract_attribution(
+            "Smith (knee) is out, John Smith of the Beat @johnsmithbeat reports."
+        )
+        self.assertEqual(handle, "johnsmithbeat")
+
+
+class TestBodyPart(unittest.TestCase):
+    def test_parenthetical_after_name(self):
+        self.assertEqual(extract_body_part("Love (ankle) is warming up"), "ankle")
+        self.assertEqual(extract_body_part("Okada (hamstring) has been ruled out"), "hamstring")
+
+    def test_no_parenthetical(self):
+        self.assertEqual(extract_body_part("He will not play."), "")
+
+
+class TestDateNormalisation(unittest.TestCase):
+    def test_espn_minute_precision_gets_seconds(self):
+        # Live payload used this exact format.
+        self.assertEqual(_normalise_date("2026-09-10T20:48Z"), "2026-09-10T20:48:00Z")
+
+    def test_already_complete_is_untouched(self):
+        self.assertEqual(_normalise_date("2026-09-10T22:03:05Z"), "2026-09-10T22:03:05Z")
+
+    def test_empty(self):
+        self.assertEqual(_normalise_date(""), "")
+
+
+class TestParseInjuries(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.result = parse_injuries(fixture_json("espn_injuries.json"),
+                                    fetched_at="2026-09-10T22:05:00Z")
+        cls.by_name = {i.player: i for i in cls.result["injuries"]}
+
+    def test_source_timestamp_and_season(self):
+        self.assertEqual(self.result["source_timestamp"], "2026-09-10T22:03:05Z")
+        self.assertEqual(self.result["season"], 2026)
+
+    def test_unmappable_club_is_skipped_and_flagged_not_guessed(self):
+        # "MYS"/"Mystery Squad" is not an NFL club code.
+        self.assertNotIn("No Body", self.by_name)
+        codes = [i.code for i in self.result["irregularities"]]
+        self.assertIn("ESPN_TEAM_UNRESOLVED", codes)
+
+    def test_valid_rows_parsed(self):
+        self.assertEqual(len(self.result["injuries"]), 2)
+        love = self.by_name["Jeremiyah Love"]
+        self.assertEqual(love.team, "ARI")
+        self.assertEqual(love.position, "RB")
+        self.assertEqual(love.game_status, "QUESTIONABLE")
+        self.assertEqual(love.injury, "ankle")
+        self.assertEqual(love.attribution, "Dani Sureck")
+        self.assertEqual(love.observed_at, "2026-09-10T20:48:00Z")
+
+    def test_espn_ids_and_player_link_captured(self):
+        love = self.by_name["Jeremiyah Love"]
+        self.assertEqual(love.source_ids["espn_athlete_id"], "4870808")
+        self.assertEqual(love.source_ids["espn_injury_id"], "636710")
+        self.assertEqual(love.url, "https://www.espn.com/nfl/player/_/id/4870808/jeremiyah-love")
+        self.assertIn("headshot", love.raw)
+
+    def test_out_status(self):
+        self.assertEqual(self.by_name["Ty Okada"].game_status, "OUT")
+        self.assertEqual(self.by_name["Ty Okada"].team, "SEA")
+
+
+class TestEmptyPayloadIsFlagged(unittest.TestCase):
+    def test_empty_object(self):
+        result = parse_injuries({})
+        self.assertEqual(result["injuries"], [])
+        self.assertIn("ESPN_EMPTY", [i.code for i in result["irregularities"]])
+
+    def test_non_object_payload(self):
+        result = parse_injuries([])
+        self.assertIn("ESPN_BAD_SHAPE", [i.code for i in result["irregularities"]])
+
+
+if __name__ == "__main__":
+    unittest.main()
