@@ -12,6 +12,9 @@ name: Collect injury data
 on:
   schedule:
     - cron: "*/10 * * * *"
+  push:
+    branches: [main, "arena/01a08d57-nflinjuryreport"]
+    paths: ["collectors/**", "tests/**", ".github/workflows/collect.yml"]
   workflow_dispatch:
     inputs:
       with_rotowire:
