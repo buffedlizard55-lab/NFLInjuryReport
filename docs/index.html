@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NFL Injury Report — live, source-verified</title>
+<meta name="description" content="Live NFL injury report for all 32 teams, built only from official and publicly verifiable sources, with a reporter accuracy scorecard." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🏈</text></svg>" />
+<link rel="stylesheet" href="assets/app.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">🏈</span>
+    <div>
+      <h1>NFL Injury Report</h1>
+      <p class="brand-sub">All 32 teams · official sources first · every row links to its source</p>
+    </div>
+  </div>
+  <div class="status-cluster">
+    <div class="status-pill" id="statusPill" title="Data freshness">
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText">loading…</span>
+    </div>
+    <button id="refreshBtn" class="btn ghost" type="button" title="Re-fetch now">↻ Refresh</button>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-tab="report" role="tab">Report</button>
+  <button class="tab" data-tab="live" role="tab">Live feed <span class="badge-count" id="liveCount"></span></button>
+  <button class="tab" data-tab="alerts" role="tab">Alerts <span class="badge-count" id="alertCount"></span></button>
+  <button class="tab" data-tab="scorecard" role="tab">Reporter scorecard</button>
+  <button class="tab" data-tab="sources" role="tab">Sources</button>
+  <button class="tab" data-tab="flags" role="tab">Flags <span class="badge-count warn" id="flagCount"></span></button>
+</nav>
+
+<main>
+
+<!-- ============================================================ REPORT -->
+<section class="panel active" id="panel-report">
+  <div class="panel-head">
+    <div>
+      <h2>Injury report — <span id="seasonWeek">—</span></h2>
+      <p class="muted">
+        The designation shown is the <strong>official nfl.com</strong> value whenever nfl.com
+        publishes one; only the league's Game Status Report is binding.
+        Policy:
+        <a href="https://operations.nfl.com/gameday/injury-report/" target="_blank" rel="noopener">NFL Injury Report Policy</a>
+      </p>
+    </div>
+    <div class="counters" id="reportCounters"></div>
+  </div>
+
+  <div class="controls">
+    <input type="search" id="playerSearch" placeholder="Search player, injury or team…" aria-label="Search players" />
+    <div class="chips" id="statusChips">
+      <button class="chip active" data-status="">All</button>
+      <button class="chip" data-status="OUT">Out / IR</button>
+      <button class="chip" data-status="DOUBTFUL">Doubtful</button>
+      <button class="chip" data-status="QUESTIONABLE">Questionable</button>
+      <button class="chip" data-status="ACTIVE">Active</button>
+    </div>
+    <label class="switch"><input type="checkbox" id="onlyDiscrepant" /> Only rows with flags</label>
+  </div>
+
+  <div class="controls">
+    <div class="chips" id="teamChips"></div>
+  </div>
+
+  <div id="teamSections"></div>
+</section>
+
+<!-- =============================================================== LIVE -->
+<section class="panel" id="panel-live">
+  <div class="panel-head">
+    <div>
+      <h2>Live injury feed</h2>
+      <p class="muted">
+        Chat-style stream, newest first. Every item carries a link to its origin so you can
+        verify it yourself. Auto-refreshes every 30&nbsp;s.
+      </p>
+    </div>
+    <div class="counters" id="liveCounters"></div>
+  </div>
+  <div class="controls">
+    <div class="chips" id="liveSourceChips">
+      <button class="chip active" data-src="">All sources</button>
+      <button class="chip" data-src="official">Official changes</button>
+      <button class="chip" data-src="bluesky">Bluesky</button>
+      <button class="chip" data-src="mastodon">Mastodon</button>
+      <button class="chip" data-src="google-news">News</button>
+      <button class="chip" data-src="reddit">Reddit</button>
+    </div>
+    <label class="switch"><input type="checkbox" id="autoRefresh" checked /> Auto-refresh</label>
+  </div>
+  <ol class="feed" id="feedList"></ol>
+  <p class="muted" id="liveNote"></p>
+</section>
+
+<!-- ============================================================= ALERTS -->
+<section class="panel" id="panel-alerts">
+  <div class="panel-head">
+    <div>
+      <h2>Status-change alerts</h2>
+      <p class="muted">
+        Emitted by diffing consecutive snapshots of the official report.
+        A change is only reported when the official designation actually moved.
+      </p>
+    </div>
+  </div>
+  <div id="alertList" class="alerts"></div>
+</section>
+
+<!-- ========================================================== SCORECARD -->
+<section class="panel" id="panel-scorecard">
+  <div class="panel-head">
+    <div>
+      <h2>Reporter accuracy scorecard</h2>
+      <p class="muted">
+        Forward-collected. A claim is scored against the official nfl.com designation for the
+        same club and player: <code>correct</code> when the availability class matches,
+        <code>wrong</code> when it does not, <code>unverifiable</code> when no official record
+        exists. A score is only published after
+        <span id="minResolved">5</span> resolved claims, and the headline figure is the
+        <a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval"
+           target="_blank" rel="noopener">Wilson lower bound</a>, not the raw ratio.
+      </p>
+    </div>
+    <div class="counters" id="scoreCounters"></div>
+  </div>
+  <div class="notice" id="scorecardNotice"></div>
+  <div class="table-wrap">
+    <table class="data" id="scoreTable">
+      <thead>
+        <tr>
+          <th>Reporter</th><th>Platform</th><th>Tier</th>
+          <th class="num">Correct</th><th class="num">Wrong</th>
+          <th class="num">Resolved</th><th class="num">Accuracy</th>
+          <th class="num">Wilson&nbsp;95%&nbsp;lower</th><th class="num">Score</th>
+          <th class="num">Avg lead</th><th>Evidence</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ SOURCES -->
+<section class="panel" id="panel-sources">
+  <div class="panel-head">
+    <div>
+      <h2>Source ledger</h2>
+      <p class="muted">
+        Every candidate source is probed on each run and the raw result is published here —
+        including the ones that do <em>not</em> work. Nothing on this page is hand-asserted.
+      </p>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table class="data" id="sourceTable">
+      <thead>
+        <tr><th>Source</th><th>Role</th><th class="num">HTTP</th><th class="num">Latency</th><th>Probe result</th><th>Link</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <h3 class="section-h">Social platforms</h3>
+  <div class="table-wrap">
+    <table class="data" id="socialTable">
+      <thead><tr><th>Platform</th><th class="num">HTTP</th><th>Result</th><th>Probe URL</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="notice warn" id="xNotice"></div>
+</section>
+
+<!-- ============================================================== FLAGS -->
+<section class="panel" id="panel-flags">
+  <div class="panel-head">
+    <div>
+      <h2>Irregularities flagged for review</h2>
+      <p class="muted">
+        Anything the pipeline could not reconcile is recorded here rather than silently
+        resolved or guessed at. Each entry carries evidence links.
+      </p>
+    </div>
+  </div>
+  <div id="flagList" class="flags"></div>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    Data is regenerated by a scheduled GitHub Actions run and committed to
+    <code>data/latest/</code>; this page is static and reads those files.
+    <a href="https://github.com/buffedlizard55-lab/NFLInjuryReport" target="_blank" rel="noopener">Source &amp; methodology</a>
+  </p>
+  <p class="muted">
+    Not affiliated with the NFL, ESPN or RotoWire. Designations are quoted from the sources
+    named on each row.
+  </p>
+</footer>
+
+<div id="banner" class="banner" hidden></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

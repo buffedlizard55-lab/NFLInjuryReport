@@ -1,0 +1,101 @@
+name: Collect injury data
+
+# Regenerates data/latest/*.json from the live sources and commits it.
+# No secrets are required: every source used here is keyless and public.
+#
+# Schedule note: GitHub Actions cron has a 5-minute floor and is best-effort, so
+# this runs every 10 minutes. That is the honest latency floor for this design --
+# it is NOT a sub-second push feed. The site compensates by also attempting a
+# direct browser fetch of the two keyless feeds, and it always states whether it
+# is showing a live fetch or a committed snapshot.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      with_rotowire:
+        description: "Also scrape RotoWire lineups (ToS review pending - off by default)"
+        type: boolean
+        default: false
+      with_social:
+        description: "Run the social verification layer"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history so the archive prune step can reason about age.
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Stdlib only, so there is no dependency install and no supply-chain step.
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -t . -v
+
+      - name: Probe every source
+        run: python3 -m collectors.pipeline verify
+
+      - name: Collect, reconcile, score
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.with_rotowire }}" = "true" ]; then ARGS="$ARGS --with-rotowire"; fi
+          if [ "${{ github.event.inputs.with_social }}" = "false" ]; then ARGS="$ARGS --no-social"; fi
+          python3 -m collectors.pipeline collect $ARGS
+        continue-on-error: true
+
+      - name: Prune archive older than 14 days
+        run: |
+          if [ -d data/archive ]; then
+            find data/archive -name 'report-*.json' -mtime +14 -print -delete
+            find data/archive -type d -empty -delete || true
+          fi
+
+      - name: Publish summary
+        run: |
+          python3 - <<'PY'
+          import json, os
+          p = "data/latest/meta.json"
+          if not os.path.exists(p):
+              print("No meta.json produced - the run collected nothing."); raise SystemExit
+          m = json.load(open(p))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as fh:
+              fh.write(f"### Run {m.get('generated_at')}\n\n")
+              fh.write(f"Season {m.get('season')} week {m.get('week')} · "
+                       f"{json.dumps(m.get('counts', {}))}\n\n")
+              errs = m.get("source_errors") or []
+              if errs:
+                  fh.write("**Source errors**\n\n")
+                  for e in errs:
+                      fh.write(f"- `{e['source']}`: {e['reason']} (HTTP {e.get('status')})\n")
+              else:
+                  fh.write("All enabled sources responded.\n")
+          PY
+
+      - name: Commit data
+        run: |
+          git config user.name  "nfl-injury-bot"
+          git config user.email "nfl-injury-bot@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+            git commit -m "data: injury snapshot ${STAMP}"
+            git push
+          fi

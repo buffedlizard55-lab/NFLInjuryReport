@@ -1,0 +1,68 @@
+{
+ "generated_at": "2026-09-10T22:39:26Z",
+ "irregularities": [
+  {
+   "code": "UNATTRIBUTED_TEAM",
+   "severity": "low",
+   "title": "rotowire row without a resolvable club",
+   "detail": "'A.J. Brown' was published by rotowire without a club code the pipeline could resolve, and no matching player exists in the official report yet. Row kept but unassigned to a team.",
+   "evidence": [
+    {
+     "label": "Source row",
+     "url": "https://www.rotowire.com/football/player/aj-brown-13432"
+    }
+   ]
+  },
+  {
+   "code": "UNATTRIBUTED_TEAM",
+   "severity": "low",
+   "title": "rotowire row without a resolvable club",
+   "detail": "'Sam Darnold' was published by rotowire without a club code the pipeline could resolve, and no matching player exists in the official report yet. Row kept but unassigned to a team.",
+   "evidence": [
+    {
+     "label": "Source row",
+     "url": "https://www.rotowire.com/football/player/sam-darnold-12490"
+    }
+   ]
+  },
+  {
+   "code": "TEAMS_WITHOUT_ROWS",
+   "severity": "low",
+   "title": "27 club(s) have no rows in the official report",
+   "detail": "Clubs with no entries in this snapshot: ATL, BAL, BUF, CAR, CHI, CIN, CLE, DAL, DEN, DET, GB, HOU, IND, JAX, KC, LAC, LV, MIA, MIN, NO, NYG, NYJ, PHI, PIT, TB, TEN, WAS. This is normal when a club has filed no injuries for the upcoming game(s) in the current report window, but it is surfaced so an unexpected gap is visible rather than silent.",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "ESPN_TEAM_UNRESOLVED",
+   "severity": "medium",
+   "title": "ESPN team could not be mapped to an NFL club code",
+   "detail": "Injury id=800009 was published under team block 'Mystery Squad' with abbreviation 'MYS', which is not one of the 32 NFL club codes. The row was SKIPPED instead of being assigned a guess.",
+   "evidence": [
+    {
+     "label": "ESPN injuries endpoint",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "RW_TEAM_AMBIGUOUS",
+   "severity": "low",
+   "title": "RotoWire lineup rows lack an explicit team marker",
+   "detail": "4 flagged RotoWire rows sit in a two-team game block with no unambiguous club marker in the markup, so `team` was left empty and both candidates were stored in raw.team_candidates. The reconciler resolves these against the official report rather than guessing.",
+   "evidence": [
+    {
+     "label": "RotoWire lineups",
+     "url": "https://www.rotowire.com/football/lineups.php"
+    }
+   ]
+  }
+ ],
+ "source_errors": [],
+ "bootstrap": true,
+ "note": "BOOTSTRAP SAMPLE — generated from tests/fixtures, which reproduce the response shapes captured live from nfl.com and ESPN on 2026-09-10. This is NOT a live snapshot and is replaced in full by the first scheduled `collect` run."
+}
