@@ -164,8 +164,9 @@ has had no free read tier since February 2026. The scorecard is therefore
       │  RotoWire (optional)─┘        │                                    │
       │                               ├─► flags.json     (irregularities)  │
       │  Mastodon ─┐                  ├─► scorecard.json (reporter scores) │
-      │  Google News ┼─► claims ──────┘                                    │
-      │  (Bluesky/Reddit probed, skipped when blocked)                     │
+      │  Google News ┼─► claims ──────┤                                    │
+      │  (Bluesky/Reddit probed,     ├─► directory.json (verified reporter │
+      │   skipped when blocked)      │     & official-source directory)    │
       │                               └─► health.json    (probe ledger)    │
       │                                        │ git commit data/          │
       └────────────────────────────────────────┼───────────────────────────┘
@@ -239,7 +240,67 @@ Guardrails against flattering small samples:
 
 ---
 
-## 7. Latency — what to actually expect
+## 7. Verified reporter & source directory — `directory.html`
+
+A subpage (linked from the main tab bar) listing **everyone who can verify an
+injury live**, in three tiers. Every row carries the link it was derived from
+so a human can check it in one click; nothing is a guessed handle.
+
+1. **League & 32 clubs.** The binding nfl.com injury report, NFL Communications
+   and, per club, the official website plus X / Facebook / Instagram /
+   Snapchat. These are **parsed out of each club's own nfl.com team page** —
+   the league-published social directory — by a layout-agnostic anchor parser
+   (`collectors/directory.py`). Parsed rows are cached
+   (`data/state/team_directory.json`) and re-fetched live every 7 days
+   (`--force-refresh-teams` for immediately). A page that fails fetching is
+   shown as “probe pending” with the error; the slot is never filled by a
+   guess. (Washington's page listed no Snapchat, so none is shown.) The
+   initial cache was populated from nfl.com team pages fetched and reviewed
+   2026-09-10; its provenance note is inside the state file and rendered on
+   the page's “How this is verified” tab.
+2. **National insiders.** A deliberately small, explicit, diff-able seed
+   (`collectors/directory_seed.json`, 14 names). Social accounts are
+   **re-verified on every build**, not trusted from the seed:
+   * Bluesky is queried through the keyless public AppView
+     (`app.bsky.actor.getProfile` / `app.bsky.actor.searchActors`; the older
+     `feed.searchActors` path was renamed and now returns
+     `MethodNotImplemented`). A green **verified** badge requires an exact
+     display-name match **and** `verification.verifiedStatus == "valid"`. An
+     exact name match without the platform checkmark is a yellow
+     **review** candidate — never called verified. Accounts with Bluesky's
+     own `impersonation`/`parody` moderation labels, `.mirrors.bot`/
+     `.bluesky.bot` handles, or self-described mirror/parody/bot bios are
+     rejected automatically and listed on the **Fraud warnings** tab
+     (observed live 2026-09-10: every exact-name Bluesky result for Adam
+     Schefter is a mirror, a parody, or carries Bluesky's `impersonation`
+     label; Ian Rapoport's `rapsheet.bsky.social` is genuinely
+     Bluesky-verified). Cached 24h in `data/state/directory_verification.json`.
+   * **X cannot be verified for free in 2026.** `publish.twitter.com/oembed`
+     returned HTTP 403 and the syndication widget an empty body on
+     2026-09-10; both are re-probed every run (and listed in
+     `health.json` / the source ledger) so if a keyless route works again the
+     badge upgrades automatically. Until then every X entry is explicitly a
+     one-click manual-review link, never labelled machine-verified.
+3. **Beat writers (per club).** Aggregated **only from bylines actually
+   printed in the live ESPN injury feed** (≥2 attributed updates): name and
+   outlet verbatim, the clubs whose players they are quoted on, update count,
+   latest timestamp, and the ESPN player-page evidence URLs. **No social
+   handles are asserted** for beat writers; rows provide exact-name X and
+   Google News *search* deep links so the genuine account can be confirmed by
+   hand. National seed names appearing in the feed are excluded (they live on
+   tier 2). Writers attributed across multiple clubs raise a
+   `DIRECTORY_CROSS_TEAM_BEAT` low-severity flag (usually shared-wire
+   attribution — kept as observed, never reassigned); near-identical names
+   raise `DIRECTORY_NAME_VARIANT`.
+
+CLI: `python3 -m collectors.directory build [--offline] [--force-refresh-teams]`.
+It also runs inside `pipeline collect` (failures are recorded as a source
+error and never abort the injury snapshot). Output:
+`data/latest/directory.json`, covered by `tests/test_directory.py`.
+
+---
+
+## 8. Latency — what to actually expect
 
 * **GitHub Actions cron floors at 5 minutes** and is best-effort; the schedule
   used is 10 minutes. The committed snapshot is therefore ~10 minutes old.
@@ -256,7 +317,7 @@ than faked inside a static site.
 
 ---
 
-## 8. Running it
+## 9. Running it
 
 ```bash
 python3 -m unittest discover -s tests -t .   # 106 tests
@@ -270,7 +331,7 @@ python3 -m http.server 8000                  # preview at http://localhost:8000/
 
 ---
 
-## 9. Repository layout
+## 10. Repository layout
 
 ```
 collectors/
@@ -284,22 +345,30 @@ collectors/
   reconcile.py   precedence merge, alerts, irregularity detection
   scoring.py     claim building and resolution against the official report
   social.py      Bluesky / Mastodon / Google News / Reddit adapters + X links
+  directory.py   official/national/beat directory builder + live verification
+  directory_seed.json  explicit, reviewable seed of 14 national insiders
   pipeline.py    CLI: collect | verify | bootstrap | status
 index.html       GitHub Pages site root (plain HTML/CSS/JS, no build step)
-assets/          app.css + app.js
-data/latest/     committed snapshot the site reads
-data/state/      accumulated roster + reporter registry
+directory.html   reporter & official-source directory subpage
+assets/          app.css + app.js + directory.js
+data/latest/     committed snapshot the site reads (incl. directory.json)
+data/state/      roster, reporter registry, parsed club-directory and
+                 social-verification caches (7-day / 24-hour TTLs)
 data/archive/    per-run history, pruned after 14 days by CI
-tests/           106 tests; fixtures reproduce shapes captured live
+tests/           129 tests; fixtures reproduce shapes captured live
 ```
 
 ---
 
-## 10. Verification log
+## 11. Verification log
 
 | Check | Action | Result |
 |-------|--------|--------|
-| Unit + integration | `python3 -m unittest discover -s tests -t .` | **Ran 106 tests — OK** |
+| Unit + integration | `python3 -m unittest discover -s tests -t .` | **Ran 129 tests — OK** (incl. 23 for the directory builder) |
+| Club social directory | fetch of all 32 `nfl.com/teams/<slug>/` pages, 2026-09-10 | All 32 fetched and reviewed; official sites + X/FB/IG/Snap handles recorded (Washington lists no Snapchat); parsed cache refreshed weekly by CI |
+| Bluesky identity verification | public AppView `getProfile`/`searchActors`, 2026-09-10 | Rapoport `rapsheet.bsky.social` verified (`verifiedStatus=valid`); Pelissero/Schultz/Glazer exact-name candidates without badges; Schefter search returns only mirrors/parodies and two accounts Bluesky itself labels `impersonation` → Fraud warnings |
+| X keyless verification | `publish.twitter.com/oembed` + syndication widget | HTTP 403 / empty body 2026-09-10 → X stays one-click manual-review; re-probed every build and auto-upgraded if a free route returns |
+| Directory page serving | `python3 -m http.server` + `curl` | `directory.html`, `assets/directory.js`, `data/latest/directory.json` all 200 |
 | Live collection | `collect.yml` on a GitHub runner, run 34539075886 | 823 players, 32/32 clubs, 0 source errors, 5 flags |
 | Live probe ledger | `pipeline verify` in CI | 8 sources probed; 6 reachable, 2 documented failures (401 NFL API, 404 policy PDFs) |
 | Live social probes | `probe_platforms()` in CI | Mastodon 200, Google News 200, **Bluesky 403**, **Reddit 403** |
@@ -313,7 +382,7 @@ tests/           106 tests; fixtures reproduce shapes captured live
 
 ---
 
-## 11. Legal / terms notes
+## 12. Legal / terms notes
 
 * Designations are quoted from nfl.com and attributed to their sources; nothing is
   republished as this project's own reporting.

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NFL Injury Report — verified reporter &amp; source directory</title>
+<meta name="description" content="Directory of official NFL/club channels, verified national insiders, and per-team beat writers who can verify injuries live — every account machine-verified where a free public source allows, otherwise an explicit one-click manual-review link." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🏈</text></svg>" />
+<link rel="stylesheet" href="assets/app.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">🏈</span>
+    <div>
+      <h1>Reporter &amp; source directory</h1>
+      <p class="brand-sub">Who can verify an injury live · every row links to its evidence</p>
+    </div>
+  </div>
+  <div class="status-cluster">
+    <a class="btn ghost" href="index.html">← Injury report</a>
+    <div class="status-pill" id="statusPill" title="Directory snapshot freshness">
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText">loading…</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-tab="clubs" role="tab">League &amp; 32 clubs</button>
+  <button class="tab" data-tab="national" role="tab">National insiders</button>
+  <button class="tab" data-tab="beat" role="tab">Beat writers</button>
+  <button class="tab" data-tab="warnings" role="tab">Fraud warnings <span class="badge-count warn" id="warnCount"></span></button>
+  <button class="tab" data-tab="method" role="tab">How this is verified</button>
+</nav>
+
+<main>
+  <div class="notice" id="globalNotice"></div>
+
+  <!-- ============================================================ CLUBS -->
+  <section class="panel active" id="panel-clubs">
+    <div class="panel-head">
+      <div>
+        <h2>Official league &amp; club channels</h2>
+        <p class="muted">
+          The only binding injury status is the league's Game Status Report at
+          <a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">nfl.com/injuries</a>.
+          Each club's website and social handle below is <strong>parsed from that club's own
+          nfl.com team page</strong> — the league-published social directory — never typed from
+          memory. A row whose page could not be fetched is marked “probe pending”; no handle is
+          ever guessed to fill a gap.
+        </p>
+      </div>
+      <div class="counters" id="clubCounters"></div>
+    </div>
+    <div class="controls">
+      <input type="search" id="clubSearch" placeholder="Search a club…" aria-label="Search clubs" />
+    </div>
+    <div class="dir-grid" id="clubGrid"></div>
+  </section>
+
+  <!-- ========================================================= NATIONAL -->
+  <section class="panel" id="panel-national">
+    <div class="panel-head">
+      <div>
+        <h2>National NFL insiders</h2>
+        <p class="muted">
+          Reporters whose injury news routinely breaks league-wide. Names are seeded in
+          <code>collectors/directory_seed.json</code> (a reviewable, diff-able file) and every
+          Bluesky account below is re-checked each day against the public Bluesky AppView:
+          <span class="vbadge verified">verified</span> means an exact name match <em>and</em>
+          a valid Bluesky verification; <span class="vbadge candidate">review</span> means the
+          name matches but the platform checkmark is absent; X offers no free verification API
+          in 2026, so every X link is an explicit one-click manual check.
+        </p>
+      </div>
+      <div class="counters" id="nationalCounters"></div>
+    </div>
+    <div class="controls">
+      <input type="search" id="nationalSearch" placeholder="Search a reporter…" aria-label="Search national reporters" />
+      <div class="chips" id="nationalChips">
+        <button class="chip active" data-filter="">All</button>
+        <button class="chip" data-filter="verified">Bluesky-verified</button>
+        <button class="chip" data-filter="feed">Seen in our feed</button>
+        <button class="chip" data-filter="unverified">Needs manual review</button>
+      </div>
+    </div>
+    <div class="dir-cards" id="nationalList"></div>
+  </section>
+
+  <!-- ============================================================== BEAT -->
+  <section class="panel" id="panel-beat">
+    <div class="panel-head">
+      <div>
+        <h2>Beat writers (per club)</h2>
+        <p class="muted">
+          These are the writers <strong>actually named in the live ESPN injury feed</strong> on
+          player status updates (name, outlet and club exactly as printed, grouped by the clubs
+          whose players they report on). We assert <strong>no social handles</strong> for them:
+          each row gives exact-name search deep links (X and Google News) plus the ESPN player
+          pages they were quoted on, so a human can confirm the genuine account before following.
+          Writers with fewer than two attributed updates are omitted.
+        </p>
+      </div>
+      <div class="counters" id="beatCounters"></div>
+    </div>
+    <div class="controls">
+      <input type="search" id="beatSearch" placeholder="Search a writer, outlet or club…" aria-label="Search beat writers" />
+      <div class="chips" id="beatTeamChips"></div>
+    </div>
+    <div id="beatGroups"></div>
+  </section>
+
+  <!-- ========================================================== WARNINGS -->
+  <section class="panel" id="panel-warnings">
+    <div class="panel-head">
+      <div>
+        <h2>Known impostors, mirrors &amp; fraud warnings</h2>
+        <p class="muted">
+          Accounts that come up when searching for the reporters above but are <strong>not</strong>
+          them. Bluesky's own moderation labels and self-described “mirror / bot / parody”
+          accounts are listed here precisely so nobody mistakes them for a source. They are never
+          linked as official anywhere on this site.
+        </p>
+      </div>
+    </div>
+    <div class="flags" id="warningList"></div>
+  </section>
+
+  <!-- ============================================================== METHOD -->
+  <section class="panel" id="panel-method">
+    <div class="panel-head">
+      <div>
+        <h2>How every entry is verified</h2>
+        <p class="muted">Four tiers, four different evidence standards.</p>
+      </div>
+    </div>
+    <div id="methodBody"></div>
+  </section>
+</main>
+
+<footer>
+  <p id="footStamp"></p>
+  <p>
+    Static GitHub Pages site · data regenerated by scheduled GitHub Actions from public sources ·
+    <a href="index.html">back to the injury report</a> ·
+    <a href="https://github.com/buffedlizard55-lab/NFLInjuryReport" target="_blank" rel="noopener">source &amp; verification code</a>
+  </p>
+</footer>
+
+<script src="assets/directory.js"></script>
+</body>
+</html>
