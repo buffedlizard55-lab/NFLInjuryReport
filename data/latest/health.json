@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T22:42:18Z",
+ "generated_at": "2026-09-10T22:46:51Z",
  "sources": [
   {
    "key": "nfl_official_report",
@@ -8,7 +8,7 @@
    "note": "OFFICIAL league Game Status Report. Primary ground truth.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 93,
+   "latency_ms": 56,
    "error": ""
   },
   {
@@ -18,7 +18,7 @@
    "note": "Official policy defining the report windows and designations.",
    "reachable": false,
    "status": 404,
-   "latency_ms": 113,
+   "latency_ms": 129,
    "error": "HTTP 404 Not Found"
   },
   {
@@ -28,7 +28,7 @@
    "note": "Free public JSON. Adds per-update timestamps + reporter attribution.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 83,
+   "latency_ms": 2111,
    "error": ""
   },
   {
@@ -38,7 +38,7 @@
    "note": "Club code <-> ESPN id mapping.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 49,
+   "latency_ms": 64,
    "error": ""
   },
   {
@@ -48,7 +48,7 @@
    "note": "VERIFIED BROKEN 2026-09-10: returns {} . Kept in the ledger so it is not re-tried.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 50,
+   "latency_ms": 175,
    "error": ""
   },
   {
@@ -58,7 +58,7 @@
    "note": "VERIFIED 401 Unauthorized 2026-09-10. Needs OAuth; not used.",
    "reachable": false,
    "status": 401,
-   "latency_ms": 49,
+   "latency_ms": 45,
    "error": "HTTP 401 Unauthorized"
   },
   {
@@ -68,7 +68,7 @@
    "note": "Reverse-engineering target. Free lineups + inactives.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 534,
+   "latency_ms": 513,
    "error": ""
   },
   {
@@ -78,37 +78,37 @@
    "note": "VERIFIED 2026-09-10: 'Est. Return' column renders 'Subscribers Only'.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 572,
+   "latency_ms": 518,
    "error": ""
   }
  ],
  "social_platforms": {
   "bluesky": {
-   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=bsky.app",
-   "reachable": true,
-   "status": 200,
-   "latency_ms": 24,
-   "error": ""
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
+   "reachable": false,
+   "status": 403,
+   "latency_ms": 35,
+   "error": "HTTP 403 Forbidden"
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 173,
+   "latency_ms": 43,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 76,
+   "latency_ms": 47,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 37,
+   "latency_ms": 54,
    "error": "HTTP 403 Blocked"
   }
  },
