@@ -1,18 +1,118 @@
 {
- "generated_at": "2026-09-10T22:39:26Z",
+ "generated_at": "2026-09-10T22:42:14Z",
  "season": 2026,
  "week": 1,
  "counts": {
-  "players": 10,
-  "teams": 5,
-  "out": 5,
-  "questionable": 4,
-  "doubtful": 0,
-  "alerts": 5,
-  "irregularities": 5
+  "players": 823,
+  "teams": 32,
+  "out": 177,
+  "questionable": 29,
+  "doubtful": 1,
+  "alerts": 174,
+  "irregularities": 59
  },
  "source_errors": [],
- "probes": [],
- "bootstrap": true,
- "note": "BOOTSTRAP SAMPLE — generated from tests/fixtures, which reproduce the response shapes captured live from nfl.com and ESPN on 2026-09-10. This is NOT a live snapshot and is replaced in full by the first scheduled `collect` run."
+ "probes": [
+  {
+   "source": "nfl.com",
+   "url": "https://www.nfl.com/injuries/",
+   "status": 200,
+   "bytes": 366471,
+   "latency_ms": 66,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-10T22:42:14Z"
+  },
+  {
+   "source": "espn",
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+   "status": 200,
+   "bytes": 8894236,
+   "latency_ms": 151,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-10T22:42:14Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=bsky.app",
+   "status": 200,
+   "bytes": 1054,
+   "latency_ms": 29,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-10T22:42:15Z"
+  },
+  {
+   "source": "mastodon",
+   "url": "https://mastodon.social/api/v1/instance",
+   "status": 200,
+   "bytes": 23384,
+   "latency_ms": 50,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-10T22:42:15Z"
+  },
+  {
+   "source": "google-news",
+   "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
+   "status": 200,
+   "bytes": 140884,
+   "latency_ms": 83,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-10T22:42:15Z"
+  },
+  {
+   "source": "reddit",
+   "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
+   "status": 403,
+   "bytes": 0,
+   "latency_ms": 54,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 403 Blocked",
+   "probed_at": "2026-09-10T22:42:15Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=Christian+Barmore+injury&limit=20&sort=latest",
+   "status": 403,
+   "bytes": 0,
+   "latency_ms": 37,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 403 Forbidden",
+   "probed_at": "2026-09-10T22:42:15Z"
+  },
+  {
+   "source": "mastodon",
+   "url": "https://mastodon.social/api/v1/timelines/tag/nfl?limit=40",
+   "status": 200,
+   "bytes": 186974,
+   "latency_ms": 919,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-10T22:42:16Z"
+  },
+  {
+   "source": "google-news",
+   "url": "https://news.google.com/rss/search?q=NFL+injury+report&hl=en-US&gl=US&ceid=US%3Aen",
+   "status": 200,
+   "bytes": 127276,
+   "latency_ms": 477,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-10T22:42:16Z"
+  }
+ ],
+ "rotowire_enabled": false,
+ "social_enabled": true
 }

@@ -1,17 +1,124 @@
 {
- "generated_at": "2026-09-10T22:39:26Z",
- "bootstrap": true,
- "note": "BOOTSTRAP SAMPLE — generated from tests/fixtures, which reproduce the response shapes captured live from nfl.com and ESPN on 2026-09-10. This is NOT a live snapshot and is replaced in full by the first scheduled `collect` run.",
- "sources": [],
- "social_platforms": {},
+ "generated_at": "2026-09-10T22:42:18Z",
+ "sources": [
+  {
+   "key": "nfl_official_report",
+   "source": "nfl.com",
+   "url": "https://www.nfl.com/injuries/",
+   "note": "OFFICIAL league Game Status Report. Primary ground truth.",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 93,
+   "error": ""
+  },
+  {
+   "key": "nfl_injury_policy",
+   "source": "nfl.com",
+   "url": "https://operations.nfl.com/gameday/injury-report/",
+   "note": "Official policy defining the report windows and designations.",
+   "reachable": false,
+   "status": 404,
+   "latency_ms": 113,
+   "error": "HTTP 404 Not Found"
+  },
+  {
+   "key": "espn_injuries",
+   "source": "espn",
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+   "note": "Free public JSON. Adds per-update timestamps + reporter attribution.",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 83,
+   "error": ""
+  },
+  {
+   "key": "espn_teams",
+   "source": "espn",
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams",
+   "note": "Club code <-> ESPN id mapping.",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 49,
+   "error": ""
+  },
+  {
+   "key": "espn_team_injuries_KNOWN_BROKEN",
+   "source": "espn",
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/22/injuries",
+   "note": "VERIFIED BROKEN 2026-09-10: returns {} . Kept in the ledger so it is not re-tried.",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 50,
+   "error": ""
+  },
+  {
+   "key": "nfl_api_injuries_REQUIRES_AUTH",
+   "source": "nfl.com",
+   "url": "https://api.nfl.com/experience/v1/gamecenter/injuries?week=1&season=2026",
+   "note": "VERIFIED 401 Unauthorized 2026-09-10. Needs OAuth; not used.",
+   "reachable": false,
+   "status": 401,
+   "latency_ms": 49,
+   "error": "HTTP 401 Unauthorized"
+  },
+  {
+   "key": "rotowire_lineups",
+   "source": "rotowire",
+   "url": "https://www.rotowire.com/football/lineups.php",
+   "note": "Reverse-engineering target. Free lineups + inactives.",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 534,
+   "error": ""
+  },
+  {
+   "key": "rotowire_injury_report_PAYWALLED",
+   "source": "rotowire",
+   "url": "https://www.rotowire.com/football/injury-report.php",
+   "note": "VERIFIED 2026-09-10: 'Est. Return' column renders 'Subscribers Only'.",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 572,
+   "error": ""
+  }
+ ],
+ "social_platforms": {
+  "bluesky": {
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=bsky.app",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 24,
+   "error": ""
+  },
+  "mastodon": {
+   "url": "https://mastodon.social/api/v1/instance",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 173,
+   "error": ""
+  },
+  "google-news": {
+   "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 76,
+   "error": ""
+  },
+  "reddit": {
+   "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
+   "reachable": false,
+   "status": 403,
+   "latency_ms": 37,
+   "error": "HTTP 403 Blocked"
+  }
+ },
  "x_twitter": {
   "usable_for_free": false,
-  "reason": "X discontinued its free API tier for new developers and moved to pay-per-use (~$0.005 per post read); Basic/Pro are closed to new signups. No free read path exists, so X is link-out only here.",
+  "reason": "X discontinued its free API tier for new developers and moved to pay-per-use (~$0.005 per post read); Basic/Pro are closed to new signups. No free read path exists, so X is link-out only in this project.",
   "refs": [
    "https://api.sorsa.io/blog/is-twitter-api-free",
    "https://www.socialcrawl.dev/blog/x-twitter-api-2026"
   ],
-  "link_out_example": "https://x.com/search?q=%22Ty%20Okada%22%20injury&f=live"
- },
- "probes_note": "Populated by `python3 -m collectors.pipeline verify`, which needs network access. Run it, or let the scheduled workflow do it."
+  "link_out_example": "https://x.com/search?q=%22Patrick%20Mahomes%22%20injury%20OR%20%23KC&src=typed_query&f=live"
+ }
 }
