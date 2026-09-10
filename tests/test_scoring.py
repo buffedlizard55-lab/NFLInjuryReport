@@ -44,12 +44,31 @@ class TestAvailabilityClasses(unittest.TestCase):
 
 
 class TestResolution(unittest.TestCase):
-    def test_matching_class_is_correct_and_lead_time_is_positive(self):
+    def test_matching_class_is_correct(self):
         claims, _ = resolve_claims([claim()], CANONICAL, now=_epoch("2026-09-11T00:00:00Z"))
         c = claims[0]
         self.assertEqual(c.resolution, "CORRECT")
-        self.assertEqual(c.lead_minutes, 65)  # posted 18:00, official 19:05
         self.assertEqual(c.evidence_url, "https://www.nfl.com/players/ty-okada/")
+
+    def test_lead_time_is_null_without_first_seen_history(self):
+        # nfl.com rows carry the game date at 00:00:00Z, not a publication time.
+        # Measuring lead against that produced a mean of 909 minutes and a max of
+        # 19 days on live data, so it must be null until real history exists.
+        claims, _ = resolve_claims([claim()], CANONICAL, now=_epoch("2026-09-11T00:00:00Z"))
+        self.assertIsNone(claims[0].lead_minutes)
+
+    def test_lead_time_uses_first_seen_not_the_source_timestamp(self):
+        gt = {"SEA:ty-okada": "2026-09-10T20:00:00Z"}  # first run that saw OUT
+        claims, _ = resolve_claims([claim()], CANONICAL,
+                                   now=_epoch("2026-09-11T00:00:00Z"), ground_truth_ts=gt)
+        # reporter posted 18:00, pipeline first observed the designation at 20:00
+        self.assertEqual(claims[0].lead_minutes, 120)
+
+    def test_negative_lead_is_preserved_not_clamped(self):
+        gt = {"SEA:ty-okada": "2026-09-10T17:00:00Z"}  # official before the post
+        claims, _ = resolve_claims([claim()], CANONICAL,
+                                   now=_epoch("2026-09-11T00:00:00Z"), ground_truth_ts=gt)
+        self.assertEqual(claims[0].lead_minutes, -60)
 
     def test_wrong_class_is_wrong(self):
         claims, flags = resolve_claims(

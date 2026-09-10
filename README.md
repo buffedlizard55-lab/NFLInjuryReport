@@ -82,7 +82,7 @@ and left it for review instead of picking a side.
 
 ---
 
-## 3. Three defects the live run exposed (and how they were fixed)
+## 3. Four defects the live run exposed (and how they were fixed)
 
 Running against the real internet contradicted three things that had been assumed.
 All three are fixed; this section exists so the reasoning is auditable.
@@ -107,6 +107,15 @@ conflict. Designations now carry provenance (`published` vs `inferred`); only
 published-vs-published raises a conflict, and inferred-vs-reported is reported
 once in aggregate. **Result: 59 irregularities → 5, and the 3 remaining
 `STATUS_CONFLICT`s are genuine.**
+
+**4. Reporter lead times were nonsense.** Mean **909 minutes**, maximum **19
+days**, with 252 of 302 values exactly zero. The cause: nfl.com publishes no
+per-row publication time, so those rows are stamped with the *game date at
+00:00:00Z*, and lead time was being measured against that synthetic instant. Lead
+time is now measured against the first pipeline run that actually observed the
+designation (`data/state/first_seen.json`), and is **null** until two runs have
+accumulated history for that player and status. It is never inferred from a
+source timestamp.
 
 The blank-designation inference is itself justified by the policy: a club is told
 that a player "not injured but has been rested in practice should not be listed
@@ -204,6 +213,20 @@ Ground truth is the official nfl.com designation for the same club + player.
 A reporter who says *"questionable"* about a player later **ruled out** scores
 `WRONG`: the player did not play, so the availability call was wrong.
 
+**Two caveats that change how the numbers read** (both published in
+`scorecard.json` and shown on the site):
+
+* `espn-attribution` claims are **not independent predictions**. ESPN names the
+  beat writer inside the same update whose status is being checked, so their
+  accuracy measures whether the reporter's characterisation matched the filed
+  designation — not whether they beat anyone to it. On the first live run
+  **301 of 303** claims were of this type. Read the social-platform rows for
+  prediction value.
+* Lead time is null until history accumulates (see defect 4 above).
+
+The summary is therefore broken down `by_platform` rather than reported as one
+blended figure.
+
 Guardrails against flattering small samples:
 
 * No score published before **5 resolved claims**.
@@ -236,7 +259,7 @@ than faked inside a static site.
 ## 8. Running it
 
 ```bash
-python3 -m unittest discover -s tests -t .   # 103 tests
+python3 -m unittest discover -s tests -t .   # 106 tests
 python3 -m collectors.pipeline verify        # probe every source -> health.json
 python3 -m collectors.pipeline collect       # fetch, reconcile, score, publish
 python3 -m collectors.pipeline collect --with-rotowire
@@ -267,7 +290,7 @@ assets/          app.css + app.js
 data/latest/     committed snapshot the site reads
 data/state/      accumulated roster + reporter registry
 data/archive/    per-run history, pruned after 14 days by CI
-tests/           103 tests; fixtures reproduce shapes captured live
+tests/           106 tests; fixtures reproduce shapes captured live
 ```
 
 ---
@@ -276,7 +299,7 @@ tests/           103 tests; fixtures reproduce shapes captured live
 
 | Check | Action | Result |
 |-------|--------|--------|
-| Unit + integration | `python3 -m unittest discover -s tests -t .` | **Ran 103 tests — OK** |
+| Unit + integration | `python3 -m unittest discover -s tests -t .` | **Ran 106 tests — OK** |
 | Live collection | `collect.yml` on a GitHub runner, run 34539075886 | 823 players, 32/32 clubs, 0 source errors, 5 flags |
 | Live probe ledger | `pipeline verify` in CI | 8 sources probed; 6 reachable, 2 documented failures (401 NFL API, 404 policy PDFs) |
 | Live social probes | `probe_platforms()` in CI | Mastodon 200, Google News 200, **Bluesky 403**, **Reddit 403** |
@@ -285,6 +308,8 @@ tests/           103 tests; fixtures reproduce shapes captured live
 | End-to-end | `tests/test_pipeline.py` (network stubbed) | All 7 JSON files written; official beats ESPN; second run diffs and emits a `cleared` alert; single-source outage exits 0; total outage exits 2 |
 | Cross-source catch | Live run | `Byron Young` LAR (nfl.com) vs PHI (ESPN) flagged; independent table confirms LAR |
 | Site serving | `python3 -m http.server` + `curl` | `/` 200, `assets/app.js` 200, `assets/app.css` 200, `data/latest/*.json` 200 |
+| Live deployment | `gh api …/pages/builds/latest` | `status: built` at commit `d9ceaf2` = `main` HEAD |
+| Scorecard on live data | first live run | 145 reporters auto-discovered from ESPN attribution, 303 claims, 302 resolved, 94.7% blended accuracy — no manual curation |
 
 ---
 
