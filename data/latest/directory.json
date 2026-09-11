@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-11T00:18:11Z",
- "mode": "offline",
+ "generated_at": "2026-09-11T00:18:51Z",
+ "mode": "live",
  "provenance": {
   "teams": "Club websites and social handles were read off each club's official nfl.com/teams/<slug>/ page (the league-published social directory), fetched and reviewed 2026-09-10. Washington's nfl.com page listed no Snapchat. The pipeline re-parses these pages live every 7 days and overwrites this cache; failed parses degrade to probe-pending and raise a DIRECTORY_TEAM_* flag instead of guessing.",
   "social": "Bluesky statuses transcribed verbatim from live keyless public AppView responses (app.bsky.actor.getProfile / app.bsky.actor.searchActors) fetched and reviewed 2026-09-10. The pipeline re-runs these probes every 24h and overwrites this cache. X cannot be verified without a paid/keyless-restored endpoint; oEmbed returned HTTP 403 on 2026-09-10, so every X row is a one-click manual-review link. CI validation 2026-09-10: the runner's health ledger probed app.bsky.actor.searchActors (200), app.bsky.actor.getProfile for rapsheet.bsky.social (200, verification valid) and publish.twitter.com oembed (200 from the runner IP); the remaining seed names are resolved by live search on the next collect run."
@@ -15,7 +15,7 @@
  "counts": {
   "teams": 32,
   "national": 14,
-  "beat": 53,
+  "beat": 54,
   "bluesky_verified": 1,
   "bluesky_candidates": 5,
   "irregularities": 6
@@ -1816,15 +1816,30 @@
     "status": "manual",
     "handle": "ProFootballTalk",
     "url": "https://x.com/ProFootballTalk",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
+    "status": "not-found",
     "handle": "",
     "url": "",
-    "detail": "",
-    "rejected": []
+    "detail": "no genuine account: every exact-name result was a mirror, bot, self-declared parody, or a different person with the same name",
+    "rejected": [
+     {
+      "handle": "mrmikeflorio.bsky.social",
+      "display_name": "Mike Florio",
+      "status": "non-official",
+      "reason": "same-name account with no reporter/outlet signal in bio (name collision; bio: Freelance VFX Supe/Mograph/Tech Director Guy, Die Hard Bills Fan, Metalhead, Hea)"
+     }
+    ]
    },
    "observed_in_feed": false,
    "feed_updates": 0,
@@ -1900,37 +1915,6 @@
    }
   },
   {
-   "key": "david furones",
-   "name": "David Furones",
-   "outlet": "South Florida Sun Sentinel",
-   "teams": [
-    "MIA",
-    "ARI"
-   ],
-   "updates": 7,
-   "latest_at": "2026-09-10T01:29:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4429275/trey-benson",
-    "https://www.espn.com/nfl/player/_/id/4566094/jacob-rodriguez",
-    "https://www.espn.com/nfl/player/_/id/3057956/zach-sieler",
-    "https://www.espn.com/nfl/player/_/id/4880236/will-kacmarek"
-   ],
-   "x_search_url": "https://x.com/search?q=%22David+Furones%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22David+Furones%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22David+Furones%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "greg auman",
    "name": "Greg Auman",
    "outlet": "Fox Sports",
@@ -1952,6 +1936,37 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Greg+Auman%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
+   "key": "david furones",
+   "name": "David Furones",
+   "outlet": "South Florida Sun Sentinel",
+   "teams": [
+    "MIA",
+    "ARI"
+   ],
+   "updates": 5,
+   "latest_at": "2026-09-10T01:29:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4429275/trey-benson",
+    "https://www.espn.com/nfl/player/_/id/4566094/jacob-rodriguez",
+    "https://www.espn.com/nfl/player/_/id/3057956/zach-sieler",
+    "https://www.espn.com/nfl/player/_/id/4711533/ollie-gordon-ii"
+   ],
+   "x_search_url": "https://x.com/search?q=%22David+Furones%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22David+Furones%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22David+Furones%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2980,6 +2995,34 @@
    }
   },
   {
+   "key": "joe schad",
+   "name": "Joe Schad",
+   "outlet": "Palm Beach Post",
+   "teams": [
+    "MIA"
+   ],
+   "updates": 2,
+   "latest_at": "2026-09-11T00:08:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4869961/chris-bell",
+    "https://www.espn.com/nfl/player/_/id/4433971/kyle-mccord"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Joe+Schad%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Joe+Schad%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Joe+Schad%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
    "key": "john boyle",
    "name": "John Boyle",
    "outlet": "team's official site",
@@ -3448,26 +3491,6 @@
   {
    "code": "DIRECTORY_CROSS_TEAM_BEAT",
    "severity": "low",
-   "title": "Beat writer David Furones is attributed across 2 clubs (MIA, ARI)",
-   "detail": "ESPN printed David Furones (South Florida Sun Sentinel) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
-   "evidence": [
-    {
-     "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/4429275/trey-benson"
-    },
-    {
-     "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4566094/jacob-rodriguez"
-    },
-    {
-     "label": "ESPN attribution #3",
-     "url": "https://www.espn.com/nfl/player/_/id/3057956/zach-sieler"
-    }
-   ]
-  },
-  {
-   "code": "DIRECTORY_CROSS_TEAM_BEAT",
-   "severity": "low",
    "title": "Beat writer Greg Auman is attributed across 2 clubs (TB, HOU)",
    "detail": "ESPN printed Greg Auman (Fox Sports) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
    "evidence": [
@@ -3488,6 +3511,26 @@
   {
    "code": "DIRECTORY_CROSS_TEAM_BEAT",
    "severity": "low",
+   "title": "Beat writer David Furones is attributed across 2 clubs (MIA, ARI)",
+   "detail": "ESPN printed David Furones (South Florida Sun Sentinel) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/4429275/trey-benson"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/4566094/jacob-rodriguez"
+    },
+    {
+     "label": "ESPN attribution #3",
+     "url": "https://www.espn.com/nfl/player/_/id/3057956/zach-sieler"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
    "title": "Beat writer Matt Zenitz is attributed across 2 clubs (JAX, LAC)",
    "detail": "ESPN printed Matt Zenitz (CBSSports.com) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
    "evidence": [
@@ -3502,5 +3545,116 @@
    ]
   }
  ],
- "probes": []
+ "probes": [
+  {
+   "source": "nfl.com",
+   "url": "https://www.nfl.com/injuries/",
+   "status": 200,
+   "bytes": 366634,
+   "latency_ms": 41,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:18:48Z"
+  },
+  {
+   "source": "espn",
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+   "status": 200,
+   "bytes": 8901912,
+   "latency_ms": 90,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:18:48Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
+   "status": 403,
+   "bytes": 0,
+   "latency_ms": 80,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 403 Forbidden",
+   "probed_at": "2026-09-11T00:18:48Z"
+  },
+  {
+   "source": "mastodon",
+   "url": "https://mastodon.social/api/v1/instance",
+   "status": 200,
+   "bytes": 23384,
+   "latency_ms": 30,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:18:48Z"
+  },
+  {
+   "source": "google-news",
+   "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
+   "status": 200,
+   "bytes": 139918,
+   "latency_ms": 39,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:18:48Z"
+  },
+  {
+   "source": "reddit",
+   "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
+   "status": 403,
+   "bytes": 0,
+   "latency_ms": 33,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 403 Blocked",
+   "probed_at": "2026-09-11T00:18:48Z"
+  },
+  {
+   "source": "mastodon",
+   "url": "https://mastodon.social/api/v1/timelines/tag/nfl?limit=40",
+   "status": 200,
+   "bytes": 201247,
+   "latency_ms": 546,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:18:49Z"
+  },
+  {
+   "source": "google-news",
+   "url": "https://news.google.com/rss/search?q=NFL+injury+report&hl=en-US&gl=US&ceid=US%3Aen",
+   "status": 200,
+   "bytes": 127226,
+   "latency_ms": 507,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:18:49Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Mike+Florio&limit=15",
+   "status": 200,
+   "bytes": 11528,
+   "latency_ms": 267,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:18:50Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FProFootballTalk",
+   "status": 200,
+   "bytes": 450,
+   "latency_ms": 271,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:18:50Z"
+  }
+ ]
 }
