@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T22:59:00Z",
+ "generated_at": "2026-09-10T23:59:42Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -29,6 +29,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for James Thompson Jr.",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/james-thompson-jr/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -81,10 +97,10 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "17 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Dani Sureck said QUESTIONABLE for Jeremiyah Love (official: see link); Ian Rapoport said QUESTIONABLE for Tua Tagovailoa (official: see link); Tori McElhaney said QUESTIONABLE for Zachariah Branch (official: see link); Will McFadden said QUESTIONABLE for Billy Bowman Jr. (official: see link); Marc Raimondi said OUT for Michael Penix Jr. (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Bo Brack said QUESTIONABLE for Jeremiyah Love (official: see link); Ian Rapoport said QUESTIONABLE for Tua Tagovailoa (official: see link); Tori McElhaney said QUESTIONABLE for Zachariah Branch (official: see link); Will McFadden said QUESTIONABLE for Billy Bowman Jr. (official: see link); Marc Raimondi said OUT for Michael Penix Jr. (official: see link)",
    "evidence": [
     {
-     "label": "Dani Sureck: Jeremiyah Love QUESTIONABLE",
+     "label": "Bo Brack: Jeremiyah Love QUESTIONABLE",
      "url": "https://www.nfl.com/players/jeremiyah-love/"
     },
     {
@@ -102,6 +118,106 @@
     {
      "label": "Marc Raimondi: Michael Penix Jr. OUT",
      "url": "https://www.nfl.com/players/michael-penix-jr/"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_LOOKALIKE_ACCOUNT",
+   "severity": "low",
+   "title": "Bluesky lookalike for Adam Schefter: adamschefter.bsky.social",
+   "detail": "The account is marked carries Bluesky moderation label 'impersonation'; it is listed nowhere as an official source and is shown only as a fraud warning.",
+   "evidence": [
+    {
+     "label": "adamschefter.bsky.social",
+     "url": "https://bsky.app/profile/adamschefter.bsky.social"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_LOOKALIKE_ACCOUNT",
+   "severity": "low",
+   "title": "Bluesky lookalike for Adam Schefter: handle.invalid",
+   "detail": "The account is marked carries Bluesky moderation label 'impersonation'; it is listed nowhere as an official source and is shown only as a fraud warning.",
+   "evidence": [
+    {
+     "label": "handle.invalid",
+     "url": "https://bsky.app/profile/handle.invalid"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
+   "title": "Beat writer Aaron Wilson is attributed across 4 clubs (HOU, BAL, LAR, MIA)",
+   "detail": "ESPN printed Aaron Wilson (KPRC 2 Houston) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/4433887/jahquez-robinson"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/4366031/tank-dell"
+    },
+    {
+     "label": "ESPN attribution #3",
+     "url": "https://www.espn.com/nfl/player/_/id/4240059/jamarcus-ingram"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
+   "title": "Beat writer David Furones is attributed across 2 clubs (MIA, ARI)",
+   "detail": "ESPN printed David Furones (South Florida Sun Sentinel) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/4429275/trey-benson"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/4566094/jacob-rodriguez"
+    },
+    {
+     "label": "ESPN attribution #3",
+     "url": "https://www.espn.com/nfl/player/_/id/3057956/zach-sieler"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
+   "title": "Beat writer Greg Auman is attributed across 2 clubs (TB, HOU)",
+   "detail": "ESPN printed Greg Auman (Fox Sports) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/4879242/sam-hagen"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/3121595/braden-smith"
+    },
+    {
+     "label": "ESPN attribution #3",
+     "url": "https://www.espn.com/nfl/player/_/id/4371733/kenny-gainwell"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
+   "title": "Beat writer Matt Zenitz is attributed across 2 clubs (JAX, LAC)",
+   "detail": "ESPN printed Matt Zenitz (CBSSports.com) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/5121433/zach-durfee"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/4383351/trey-lance"
     }
    ]
   }

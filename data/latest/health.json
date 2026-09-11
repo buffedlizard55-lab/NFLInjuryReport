@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T22:59:04Z",
+ "generated_at": "2026-09-10T23:59:45Z",
  "sources": [
   {
    "key": "nfl_official_report",
@@ -8,7 +8,7 @@
    "note": "OFFICIAL league Game Status Report. Primary ground truth.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 59,
+   "latency_ms": 45,
    "error": ""
   },
   {
@@ -18,7 +18,7 @@
    "note": "Personnel (Injury) Report Policy PDF. Returned 404 to this fetcher on 2026-09-10 despite being indexed. Not used as an evidence link until it resolves.",
    "reachable": false,
    "status": 404,
-   "latency_ms": 59,
+   "latency_ms": 41,
    "error": "HTTP 404 Not Found"
   },
   {
@@ -28,7 +28,7 @@
    "note": "Personnel (Injury) Report Policy PDF. Returned 404 to this fetcher on 2026-09-10 despite being indexed. Not used as an evidence link until it resolves.",
    "reachable": false,
    "status": 404,
-   "latency_ms": 48,
+   "latency_ms": 29,
    "error": "HTTP 404 Not Found"
   },
   {
@@ -38,7 +38,7 @@
    "note": "Free public JSON. Adds per-update timestamps + reporter attribution.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 91,
+   "latency_ms": 81,
    "error": ""
   },
   {
@@ -48,7 +48,7 @@
    "note": "Club code <-> ESPN id mapping.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 51,
+   "latency_ms": 57,
    "error": ""
   },
   {
@@ -58,7 +58,7 @@
    "note": "VERIFIED BROKEN 2026-09-10: returns {} . Kept in the ledger so it is not re-tried.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 58,
+   "latency_ms": 73,
    "error": ""
   },
   {
@@ -68,7 +68,7 @@
    "note": "VERIFIED 401 Unauthorized 2026-09-10. Needs OAuth; not used.",
    "reachable": false,
    "status": 401,
-   "latency_ms": 62,
+   "latency_ms": 26,
    "error": "HTTP 401 Unauthorized"
   },
   {
@@ -78,7 +78,7 @@
    "note": "Reverse-engineering target. Free lineups + inactives.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 594,
+   "latency_ms": 475,
    "error": ""
   },
   {
@@ -88,7 +88,47 @@
    "note": "VERIFIED 2026-09-10: 'Est. Return' column renders 'Subscribers Only'.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 548,
+   "latency_ms": 415,
+   "error": ""
+  },
+  {
+   "key": "nfl_team_directory_sample",
+   "source": "nfl.com",
+   "url": "https://www.nfl.com/teams/arizona-cardinals/",
+   "note": "Club-published social directory; parser extracts the official site + handles.",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 31,
+   "error": ""
+  },
+  {
+   "key": "bsky_actor_search",
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Ian%20Rapoport&limit=3",
+   "note": "Keyless public AppView identity search used by the reporter directory. (app.bsky.feed.searchActors was renamed to app.bsky.actor.searchActors.)",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 21,
+   "error": ""
+  },
+  {
+   "key": "bsky_verified_profile_rapsheet",
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=rapsheet.bsky.social",
+   "note": "Baseline verified-insider profile: must show verification.verifiedStatus='valid'.",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 23,
+   "error": ""
+  },
+  {
+   "key": "x_oembed_BLOCKED",
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FAdamSchefter",
+   "note": "VERIFIED HTTP 403 on 2026-09-10: no free keyless X identity check; X rows on the directory are therefore one-click manual-review links, never 'verified'.",
+   "reachable": true,
+   "status": 200,
+   "latency_ms": 195,
    "error": ""
   }
  ],
@@ -97,28 +137,28 @@
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 27,
+   "latency_ms": 22,
    "error": "HTTP 403 Forbidden"
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 174,
+   "latency_ms": 27,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 71,
+   "latency_ms": 27,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 51,
+   "latency_ms": 33,
    "error": "HTTP 403 Blocked"
   }
  },
