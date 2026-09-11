@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T09:55:11Z",
+ "generated_at": "2026-09-11T14:03:03Z",
  "mode": "live",
  "provenance": {
   "teams": "Club websites and social handles were read off each club's official nfl.com/teams/<slug>/ page (the league-published social directory), fetched and reviewed 2026-09-10. Washington's nfl.com page listed no Snapchat. The pipeline re-parses these pages live every 7 days and overwrites this cache; failed parses degrade to probe-pending and raise a DIRECTORY_TEAM_* flag instead of guessing.",
@@ -1189,20 +1189,13 @@
     "status": "manual",
     "handle": "RapSheet",
     "url": "https://x.com/RapSheet",
-    "detail": "X offers no free verification endpoint (oEmbed returned HTTP 403 and the syndication widget an empty body on 2026-09-10); this profile link is for one-click manual verification.",
-    "http_status": 403,
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
     "attempts": [
      {
       "endpoint": "oembed",
-      "ok": false,
-      "status": 403,
-      "error": "HTTP 403 (observed 2026-09-10)"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "empty body (observed 2026-09-10)"
+      "ok": true,
+      "author_name": ""
      }
     ]
    },
@@ -1227,7 +1220,7 @@
      ]
     },
     "labels": [],
-    "bio_snippet": "National Insider for ESPN and NFL Network and www.nfl.com. Made seven cameos in the movie Draft Day.",
+    "bio_snippet": "National Insider for ESPN and NFL Network and www.nfl.com. Made seven cameos in the movie Draft Day. Inquiries: shahob@william-raymond.com https://link.me/rapsheet",
     "rejected": [],
     "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=rapsheet.bsky.social"
    },
@@ -1262,20 +1255,13 @@
     "status": "manual",
     "handle": "AdamSchefter",
     "url": "https://x.com/AdamSchefter",
-    "detail": "X offers no free verification endpoint (oEmbed returned HTTP 403 and the syndication widget an empty body on 2026-09-10); this profile link is for one-click manual verification.",
-    "http_status": 403,
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
     "attempts": [
      {
       "endpoint": "oembed",
-      "ok": false,
-      "status": 403,
-      "error": "HTTP 403 (observed 2026-09-10)"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "empty body (observed 2026-09-10)"
+      "ok": true,
+      "author_name": ""
      }
     ]
    },
@@ -1283,23 +1269,14 @@
     "platform": "bluesky",
     "status": "not-found",
     "handle": "",
-    "did": "",
-    "display_name": "",
     "url": "",
-    "detail": "no genuine account: every exact-name result was a mirror, bot, or self-declared parody; one name-matching lookalike also carries Bluesky's own 'impersonation' moderation label",
-    "verification": {
-     "verified_status": "",
-     "trusted_status": "",
-     "issuers": []
-    },
-    "labels": [],
-    "bio_snippet": "",
+    "detail": "no genuine account: every exact-name result was a mirror, bot, self-declared parody, or a different person with the same name; one name-matching lookalike also carries Bluesky's own 'impersonation' moderation label",
     "rejected": [
      {
       "handle": "adamschefter-mirror.bluesky.bot",
       "display_name": "Adam Schefter - Mirror",
       "status": "non-official",
-      "reason": "bio/name says 'Mirror'; handle is a .bluesky.bot mirror"
+      "reason": "bio/name says 'Mirror'"
      },
      {
       "handle": "adamschefter.bsky.social",
@@ -1311,7 +1288,7 @@
       "handle": "adamscheftermirror.bsky.social",
       "display_name": "Adam Schefter ... Mirror",
       "status": "non-official",
-      "reason": "bio/name says 'Mirror'; bio: 'Account can be claimed by Adam Schefter'"
+      "reason": "bio/name says 'Mirror'"
      },
      {
       "handle": "blackadamschefter.bsky.social",
@@ -1324,9 +1301,14 @@
       "display_name": "Adam Schefter",
       "status": "non-official",
       "reason": "carries Bluesky moderation label 'impersonation'"
+     },
+     {
+      "handle": "shisanniu.bsky.social",
+      "display_name": "Adam Schefter",
+      "status": "non-official",
+      "reason": "same-name account with no reporter/outlet signal in bio (name collision; bio: (empty))"
      }
-    ],
-    "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Adam+Schefter&limit=15"
+    ]
    },
    "observed_in_feed": true,
    "feed_updates": 10,
@@ -1358,20 +1340,13 @@
     "status": "manual",
     "handle": "TomPelissero",
     "url": "https://x.com/TomPelissero",
-    "detail": "X offers no free verification endpoint (oEmbed returned HTTP 403 and the syndication widget an empty body on 2026-09-10); this profile link is for one-click manual verification.",
-    "http_status": 403,
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
     "attempts": [
      {
       "endpoint": "oembed",
-      "ok": false,
-      "status": 403,
-      "error": "HTTP 403 (observed 2026-09-10)"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "empty body (observed 2026-09-10)"
+      "ok": true,
+      "author_name": ""
      }
     ]
    },
@@ -1389,7 +1364,7 @@
      "issuers": []
     },
     "labels": [],
-    "bio_snippet": "The Ringer / Netflix Sports. tompelissero.substack.com",
+    "bio_snippet": "🎙️The Ringer 📺 Netflix Sports https://tompelissero.substack.com",
     "rejected": [],
     "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=tompelissero.bsky.social"
    },
@@ -1590,20 +1565,13 @@
     "status": "manual",
     "handle": "JayGlazer",
     "url": "https://x.com/JayGlazer",
-    "detail": "X offers no free verification endpoint (oEmbed returned HTTP 403 and the syndication widget an empty body on 2026-09-10); this profile link is for one-click manual verification.",
-    "http_status": 403,
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
     "attempts": [
      {
       "endpoint": "oembed",
-      "ok": false,
-      "status": 403,
-      "error": "HTTP 403 (observed 2026-09-10)"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "empty body (observed 2026-09-10)"
+      "ok": true,
+      "author_name": ""
      }
     ]
    },
@@ -1621,7 +1589,7 @@
      "issuers": []
     },
     "labels": [],
-    "bio_snippet": "NFL Insider for The NFL On FOX. Author of Unbreakable.",
+    "bio_snippet": "NFL Insider for The NFL On FOX Author of Unbreakable Husband to the amazing Rosie",
     "rejected": [],
     "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=jglazer.bsky.social"
    },
@@ -1673,20 +1641,13 @@
     "status": "manual",
     "handle": "Schultz_Report",
     "url": "https://x.com/Schultz_Report",
-    "detail": "X offers no free verification endpoint (oEmbed returned HTTP 403 and the syndication widget an empty body on 2026-09-10); this profile link is for one-click manual verification.",
-    "http_status": 403,
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
     "attempts": [
      {
       "endpoint": "oembed",
-      "ok": false,
-      "status": 403,
-      "error": "HTTP 403 (observed 2026-09-10)"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "empty body (observed 2026-09-10)"
+      "ok": true,
+      "author_name": ""
      }
     ]
    },
@@ -1704,7 +1665,7 @@
      "issuers": []
     },
     "labels": [],
-    "bio_snippet": "FOX Sports NFL Insider, Co-host: Why is Draymond Green talking about football?",
+    "bio_snippet": "FOX Sports NFL Insider 🏈, Co-host: Why is Draymond Green talking about football? With Jordan Schultz 🎤",
     "rejected": [],
     "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=schultzreport.bsky.social"
    },
@@ -3550,88 +3511,198 @@
    "url": "https://www.nfl.com/injuries/",
    "status": 200,
    "bytes": 366914,
-   "latency_ms": 101,
+   "latency_ms": 89,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-11T09:55:09Z"
+   "probed_at": "2026-09-11T14:02:54Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
    "status": 200,
-   "bytes": 8922367,
-   "latency_ms": 221,
+   "bytes": 8922349,
+   "latency_ms": 181,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-11T09:55:09Z"
+   "probed_at": "2026-09-11T14:02:54Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 156,
+   "latency_ms": 109,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Forbidden",
-   "probed_at": "2026-09-11T09:55:09Z"
+   "probed_at": "2026-09-11T14:02:55Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/instance",
    "status": 200,
    "bytes": 23384,
-   "latency_ms": 73,
+   "latency_ms": 55,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-11T09:55:09Z"
+   "probed_at": "2026-09-11T14:02:55Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "status": 200,
-   "bytes": 140280,
-   "latency_ms": 78,
+   "bytes": 142621,
+   "latency_ms": 142,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-11T09:55:10Z"
+   "probed_at": "2026-09-11T14:02:55Z"
   },
   {
    "source": "reddit",
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 97,
+   "latency_ms": 65,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Blocked",
-   "probed_at": "2026-09-11T09:55:10Z"
+   "probed_at": "2026-09-11T14:02:55Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/timelines/tag/nfl?limit=40",
    "status": 200,
-   "bytes": 216756,
-   "latency_ms": 842,
+   "bytes": 173383,
+   "latency_ms": 520,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-11T09:55:10Z"
+   "probed_at": "2026-09-11T14:02:55Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=NFL+injury+report&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 124251,
-   "latency_ms": 553,
+   "bytes": 123281,
+   "latency_ms": 715,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-11T09:55:11Z"
+   "probed_at": "2026-09-11T14:02:56Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Adam+Schefter&limit=15",
+   "status": 200,
+   "bytes": 10604,
+   "latency_ms": 295,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:02:57Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FAdamSchefter",
+   "status": 200,
+   "bytes": 441,
+   "latency_ms": 302,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:02:57Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=rapsheet.bsky.social",
+   "status": 200,
+   "bytes": 1349,
+   "latency_ms": 95,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:02:58Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FRapSheet",
+   "status": 200,
+   "bytes": 429,
+   "latency_ms": 233,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:02:58Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=tompelissero.bsky.social",
+   "status": 200,
+   "bytes": 809,
+   "latency_ms": 258,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:02:59Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FTomPelissero",
+   "status": 200,
+   "bytes": 441,
+   "latency_ms": 285,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:02:59Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=schultzreport.bsky.social",
+   "status": 200,
+   "bytes": 958,
+   "latency_ms": 301,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:03:00Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FSchultz_Report",
+   "status": 200,
+   "bytes": 447,
+   "latency_ms": 300,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:03:01Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=jglazer.bsky.social",
+   "status": 200,
+   "bytes": 769,
+   "latency_ms": 468,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:03:02Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FJayGlazer",
+   "status": 200,
+   "bytes": 432,
+   "latency_ms": 349,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T14:03:02Z"
   }
  ]
 }
