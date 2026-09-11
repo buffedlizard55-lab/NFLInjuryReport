@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-11T00:12:20Z",
- "mode": "offline",
+ "generated_at": "2026-09-11T00:13:16Z",
+ "mode": "live",
  "provenance": {
   "teams": "Club websites and social handles were read off each club's official nfl.com/teams/<slug>/ page (the league-published social directory), fetched and reviewed 2026-09-10. Washington's nfl.com page listed no Snapchat. The pipeline re-parses these pages live every 7 days and overwrites this cache; failed parses degrade to probe-pending and raise a DIRECTORY_TEAM_* flag instead of guessing.",
   "social": "Bluesky statuses transcribed verbatim from live keyless public AppView responses (app.bsky.actor.getProfile / app.bsky.actor.searchActors) fetched and reviewed 2026-09-10. The pipeline re-runs these probes every 24h and overwrites this cache. X cannot be verified without a paid/keyless-restored endpoint; oEmbed returned HTTP 403 on 2026-09-10, so every X row is a one-click manual-review link. CI validation 2026-09-10: the runner's health ledger probed app.bsky.actor.searchActors (200), app.bsky.actor.getProfile for rapsheet.bsky.social (200, verification valid) and publish.twitter.com oembed (200 from the runner IP); the remaining seed names are resolved by live search on the next collect run."
@@ -15,9 +15,9 @@
  "counts": {
   "teams": 32,
   "national": 14,
-  "beat": 54,
+  "beat": 53,
   "bluesky_verified": 1,
-  "bluesky_candidates": 3,
+  "bluesky_candidates": 6,
   "irregularities": 6
  },
  "league": [
@@ -1418,14 +1418,22 @@
     "status": "manual",
     "handle": "DanGrazianoESPN",
     "url": "https://x.com/DanGrazianoESPN",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
+    "status": "not-found",
     "handle": "",
     "url": "",
-    "detail": "",
+    "detail": "no genuine account: every exact-name result was a mirror, bot, or self-declared parody",
     "rejected": []
    },
    "observed_in_feed": true,
@@ -1451,14 +1459,22 @@
     "status": "manual",
     "handle": "JFowlerESPN",
     "url": "https://x.com/JFowlerESPN",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
+    "status": "not-found",
     "handle": "",
     "url": "",
-    "detail": "",
+    "detail": "no genuine account: every exact-name result was a mirror, bot, or self-declared parody",
     "rejected": []
    },
    "observed_in_feed": true,
@@ -1485,15 +1501,30 @@
     "status": "manual",
     "handle": "MikeGarafolo",
     "url": "https://x.com/MikeGarafolo",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
+    "status": "not-found",
     "handle": "",
     "url": "",
-    "detail": "",
-    "rejected": []
+    "detail": "no genuine account: every exact-name result was a mirror, bot, or self-declared parody",
+    "rejected": [
+     {
+      "handle": "mikegarafolobot.mirrors.bot",
+      "display_name": "Mike Garafolo (mirror)",
+      "status": "non-official",
+      "reason": "bio/name says 'mirror'"
+     }
+    ]
    },
    "observed_in_feed": true,
    "feed_updates": 3,
@@ -1519,14 +1550,29 @@
     "status": "manual",
     "handle": "diannaESPN",
     "url": "https://x.com/diannaESPN",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
+    "http_status": null,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": false,
+      "status": 404,
+      "error": "HTTP 404 Not Found"
+     },
+     {
+      "endpoint": "syndication",
+      "ok": false,
+      "status": 404,
+      "error": "HTTP 404 Not Found"
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
+    "status": "not-found",
     "handle": "",
     "url": "",
-    "detail": "",
+    "detail": "no genuine account: every exact-name result was a mirror, bot, or self-declared parody",
     "rejected": []
    },
    "observed_in_feed": false,
@@ -1594,14 +1640,22 @@
     "status": "manual",
     "handle": "JeffDarlington",
     "url": "https://x.com/JeffDarlington",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
+    "status": "not-found",
     "handle": "",
     "url": "",
-    "detail": "",
+    "detail": "no genuine account: every exact-name result was a mirror, bot, or self-declared parody",
     "rejected": []
    },
    "observed_in_feed": false,
@@ -1669,15 +1723,33 @@
     "status": "manual",
     "handle": "JosinaAnderson",
     "url": "https://x.com/JosinaAnderson",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
-    "handle": "",
-    "url": "",
-    "detail": "",
-    "rejected": []
+    "status": "candidate",
+    "handle": "josinaanderson.bsky.social",
+    "did": "did:plc:adytcldhre5adufe3g4fqkkf",
+    "display_name": "Josina Anderson",
+    "url": "https://bsky.app/profile/josinaanderson.bsky.social",
+    "detail": "exact name match but no Bluesky verification badge; manual review",
+    "verification": {
+     "verified_status": "",
+     "trusted_status": "",
+     "issuers": []
+    },
+    "labels": [],
+    "bio_snippet": "Emmy and NABJ award-winning journalist. Founder of London Farrow Productions, The Exhibit concept platform, network & podcast. Alum: ESPN, CBS, Showtime Inside the NFL, Fox31.",
+    "rejected": [],
+    "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Josina+Anderson&limit=15"
    },
    "observed_in_feed": false,
    "feed_updates": 0,
@@ -1694,15 +1766,40 @@
     "status": "manual",
     "handle": "kimberleyamartin",
     "url": "https://x.com/kimberleyamartin",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
+    "http_status": null,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": false,
+      "status": 404,
+      "error": "HTTP 404 Not Found"
+     },
+     {
+      "endpoint": "syndication",
+      "ok": false,
+      "status": 404,
+      "error": "HTTP 404 Not Found"
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
-    "handle": "",
-    "url": "",
-    "detail": "",
-    "rejected": []
+    "status": "candidate",
+    "handle": "kimberleymartin.bsky.social",
+    "did": "did:plc:vfopi2sed5foqg4g53h3ajn2",
+    "display_name": "Kimberley A. Martin",
+    "url": "https://bsky.app/profile/kimberleymartin.bsky.social",
+    "detail": "exact name match but no Bluesky verification badge; manual review",
+    "verification": {
+     "verified_status": "",
+     "trusted_status": "",
+     "issuers": []
+    },
+    "labels": [],
+    "bio_snippet": "🏈 on ESPN",
+    "rejected": [],
+    "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Kimberley+A.+Martin&limit=15"
    },
    "observed_in_feed": false,
    "feed_updates": 0,
@@ -1719,15 +1816,33 @@
     "status": "manual",
     "handle": "ProFootballTalk",
     "url": "https://x.com/ProFootballTalk",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
-    "handle": "",
-    "url": "",
-    "detail": "",
-    "rejected": []
+    "status": "candidate",
+    "handle": "mrmikeflorio.bsky.social",
+    "did": "did:plc:uqtgufs2mpdtfhtkebeiwzq6",
+    "display_name": "Mike Florio",
+    "url": "https://bsky.app/profile/mrmikeflorio.bsky.social",
+    "detail": "exact name match but no Bluesky verification badge; manual review",
+    "verification": {
+     "verified_status": "",
+     "trusted_status": "",
+     "issuers": []
+    },
+    "labels": [],
+    "bio_snippet": "Freelance VFX Supe/Mograph/Tech Director Guy, Die Hard Bills Fan, Metalhead, Heavy GIF User and Beer/Whiskey enthusiast. Currently booked but down to clown soon",
+    "rejected": [],
+    "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Mike+Florio&limit=15"
    },
    "observed_in_feed": false,
    "feed_updates": 0,
@@ -1744,14 +1859,22 @@
     "status": "manual",
     "handle": "PSchrags",
     "url": "https://x.com/PSchrags",
-    "detail": "Manual-review link: X has no free verification API."
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "not-probed",
+    "status": "not-found",
     "handle": "",
     "url": "",
-    "detail": "",
+    "detail": "no genuine account: every exact-name result was a mirror, bot, or self-declared parody",
     "rejected": []
    },
    "observed_in_feed": false,
@@ -2176,6 +2299,36 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Bo+Brack%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
+   "key": "nate atkins",
+   "name": "Nate Atkins",
+   "outlet": "Athletic",
+   "teams": [
+    "LAR"
+   ],
+   "updates": 4,
+   "latest_at": "2026-09-11T00:02:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4605951/cj-daniels",
+    "https://www.espn.com/nfl/player/_/id/4360797/tutu-atwell",
+    "https://www.espn.com/nfl/player/_/id/4685522/ty-simpson",
+    "https://www.espn.com/nfl/player/_/id/4259553/stetson-bennett-iv"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Nate+Atkins%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Nate+Atkins%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Nate+Atkins%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2985,34 +3138,6 @@
    }
   },
   {
-   "key": "nate atkins",
-   "name": "Nate Atkins",
-   "outlet": "Athletic",
-   "teams": [
-    "LAR"
-   ],
-   "updates": 2,
-   "latest_at": "2026-09-10T23:47:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4685522/ty-simpson",
-    "https://www.espn.com/nfl/player/_/id/4259553/stetson-bennett-iv"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Nate+Atkins%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Nate+Atkins%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Nate+Atkins%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "nathan brown",
    "name": "Nathan Brown",
    "outlet": "Indianapolis Star",
@@ -3115,34 +3240,6 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Scott+Petrak%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
-   "key": "tim mcmanus",
-   "name": "Tim McManus",
-   "outlet": "ESPN.com",
-   "teams": [
-    "PHI"
-   ],
-   "updates": 2,
-   "latest_at": "2026-09-10T00:34:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/3916409/jonathan-greenard",
-    "https://www.espn.com/nfl/player/_/id/4686273/quinyon-mitchell"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Tim+McManus%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Tim+McManus%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Tim+McManus%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -3423,5 +3520,314 @@
    ]
   }
  ],
- "probes": []
+ "probes": [
+  {
+   "source": "nfl.com",
+   "url": "https://www.nfl.com/injuries/",
+   "status": 200,
+   "bytes": 366634,
+   "latency_ms": 116,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:00Z"
+  },
+  {
+   "source": "espn",
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+   "status": 200,
+   "bytes": 8902158,
+   "latency_ms": 353,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:01Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
+   "status": 403,
+   "bytes": 0,
+   "latency_ms": 163,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 403 Forbidden",
+   "probed_at": "2026-09-11T00:13:01Z"
+  },
+  {
+   "source": "mastodon",
+   "url": "https://mastodon.social/api/v1/instance",
+   "status": 200,
+   "bytes": 23384,
+   "latency_ms": 76,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:01Z"
+  },
+  {
+   "source": "google-news",
+   "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
+   "status": 200,
+   "bytes": 136645,
+   "latency_ms": 81,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:01Z"
+  },
+  {
+   "source": "reddit",
+   "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
+   "status": 403,
+   "bytes": 0,
+   "latency_ms": 101,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 403 Blocked",
+   "probed_at": "2026-09-11T00:13:01Z"
+  },
+  {
+   "source": "mastodon",
+   "url": "https://mastodon.social/api/v1/timelines/tag/nfl?limit=40",
+   "status": 200,
+   "bytes": 214164,
+   "latency_ms": 839,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:02Z"
+  },
+  {
+   "source": "google-news",
+   "url": "https://news.google.com/rss/search?q=NFL+injury+report&hl=en-US&gl=US&ceid=US%3Aen",
+   "status": 200,
+   "bytes": 127437,
+   "latency_ms": 464,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:02Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Mike+Garafolo&limit=15",
+   "status": 200,
+   "bytes": 11735,
+   "latency_ms": 253,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:03Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FMikeGarafolo",
+   "status": 200,
+   "bytes": 441,
+   "latency_ms": 363,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:03Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Jeremy+Fowler&limit=15",
+   "status": 200,
+   "bytes": 10966,
+   "latency_ms": 254,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:04Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FJFowlerESPN",
+   "status": 200,
+   "bytes": 438,
+   "latency_ms": 405,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:05Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Dan+Graziano&limit=15",
+   "status": 200,
+   "bytes": 11639,
+   "latency_ms": 254,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:06Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FDanGrazianoESPN",
+   "status": 200,
+   "bytes": 450,
+   "latency_ms": 322,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:06Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Dianna+Russini&limit=15",
+   "status": 200,
+   "bytes": 9699,
+   "latency_ms": 327,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:07Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FdiannaESPN",
+   "status": 404,
+   "bytes": 0,
+   "latency_ms": 410,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 404 Not Found",
+   "probed_at": "2026-09-11T00:13:08Z"
+  },
+  {
+   "source": "x",
+   "url": "https://cdn.syndication.twimg.com/widgets/syndication/api/widget?url=https%3A%2F%2Fx.com%2FdiannaESPN",
+   "status": 404,
+   "bytes": 0,
+   "latency_ms": 176,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 404 Not Found",
+   "probed_at": "2026-09-11T00:13:08Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Jeff+Darlington&limit=15",
+   "status": 200,
+   "bytes": 12047,
+   "latency_ms": 325,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:09Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FJeffDarlington",
+   "status": 200,
+   "bytes": 447,
+   "latency_ms": 340,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:09Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Peter+Schrager&limit=15",
+   "status": 200,
+   "bytes": 13520,
+   "latency_ms": 339,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:10Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FPSchrags",
+   "status": 200,
+   "bytes": 429,
+   "latency_ms": 320,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:11Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Mike+Florio&limit=15",
+   "status": 200,
+   "bytes": 11528,
+   "latency_ms": 259,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:12Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FProFootballTalk",
+   "status": 200,
+   "bytes": 450,
+   "latency_ms": 385,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:12Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Josina+Anderson&limit=15",
+   "status": 200,
+   "bytes": 10380,
+   "latency_ms": 255,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:13Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FJosinaAnderson",
+   "status": 200,
+   "bytes": 447,
+   "latency_ms": 326,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:13Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Kimberley+A.+Martin&limit=15",
+   "status": 200,
+   "bytes": 14084,
+   "latency_ms": 369,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-11T00:13:15Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2Fkimberleyamartin",
+   "status": 404,
+   "bytes": 0,
+   "latency_ms": 309,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 404 Not Found",
+   "probed_at": "2026-09-11T00:13:15Z"
+  },
+  {
+   "source": "x",
+   "url": "https://cdn.syndication.twimg.com/widgets/syndication/api/widget?url=https%3A%2F%2Fx.com%2Fkimberleyamartin",
+   "status": 404,
+   "bytes": 0,
+   "latency_ms": 149,
+   "attempts": 0,
+   "result": "error",
+   "error": "HTTP 404 Not Found",
+   "probed_at": "2026-09-11T00:13:15Z"
+  }
+ ]
 }
