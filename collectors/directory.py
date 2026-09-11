@@ -500,8 +500,13 @@ def verify_bluesky(name: str, expected_handle: str = "") -> Dict[str, Any]:
             "rejected": rejected[:8], "queried_url": query_url}
 
 
-def verify_x(handle: str) -> Dict[str, Any]:
-    """Probe keyless X endpoints. Never raises; honest about what does not work."""
+def verify_x(handle: str, expected_name: str = "") -> Dict[str, Any]:
+    """Probe keyless X endpoints. Never raises; honest about what does not work.
+
+    A profile is only marked verified when oEmbed returns an ``author_name``
+    that matches the expected reporter name. A non-empty but mismatching name
+    degrades to manual review rather than asserting the wrong account.
+    """
 
     if not handle:
         return {"platform": "x", "status": "none", "handle": "", "url": "",
@@ -510,17 +515,22 @@ def verify_x(handle: str) -> Dict[str, Any]:
     attempts: List[Dict[str, Any]] = []
 
     # 1) publish.twitter.com oEmbed: on a working day it returns JSON whose
-    #    author_name must match. Observed HTTP 403 on 2026-09-10.
+    #    author_name must match. Observed HTTP 403 from some networks on
+    #    2026-09-10, but HTTP 200 from a GitHub Actions runner the same day.
     url = f"{X_OEMBED}?{urlencode({'url': profile})}"
     try:
         payload = fetch_json(url, source="x", retries=0)
         author = (payload or {}).get("author_name", "")
         attempts.append({"endpoint": "oembed", "ok": True, "author_name": author})
+        if author and expected_name and _name_key(author) != _name_key(expected_name):
+            return {"platform": "x", "status": "manual", "handle": handle, "url": profile,
+                    "detail": f"oEmbed returned author_name='{author}', which does not match "
+                              f"'{expected_name}'; click to review — do not treat as them.",
+                    "http_status": 200, "attempts": attempts}
         status = "verified" if author else "manual"
         return {"platform": "x", "status": status, "handle": handle, "url": profile,
                 "detail": (f"oEmbed author_name='{author}'" +
-                           (" (exact display-name match not checked client-side)" if author
-                            else "; empty author_name")),
+                           (f" matches '{expected_name}'" if author else "; empty author_name")),
                 "http_status": 200, "attempts": attempts}
     except FetchError as exc:
         attempts.append({"endpoint": "oembed", "ok": False, "status": exc.status,
@@ -708,6 +718,11 @@ def build_national_rows(*, offline: bool, verification_cache: Dict[str, Any],
         cached = cache.get(key) or {}
         age = _age_seconds(cached.get("verified_at", ""))
         fresh = age is not None and age < SOCIAL_CACHE_TTL_SECONDS
+        # A previous transient failure must not be cached for the TTL: retry on
+        # the very next build rather than showing "probe error" for 24 hours.
+        prior_status = cached.get("bluesky", {}).get("status", "")
+        if prior_status == "probe-error":
+            fresh = False
         if not offline and (not fresh or "bluesky" not in cached):
             try:
                 bsky = verify_bluesky(name, seed.get("bsky_expected_handle", ""))
@@ -715,14 +730,24 @@ def build_national_rows(*, offline: bool, verification_cache: Dict[str, Any],
                 bsky = {"platform": "bluesky", "status": "probe-error", "handle": "",
                         "url": bsky_profile_url(seed.get("bsky_expected_handle", "")),
                         "detail": f"{type(exc).__name__}: {exc}", "rejected": []}
-            xrow = verify_x(seed.get("x_handle", ""))
+            xrow = verify_x(seed.get("x_handle", ""), name)
             prior_good = cached.get("bluesky", {}).get("status") in (
                 "verified", "candidate", "not-found")
-            if not (bsky.get("status") == "probe-error" and prior_good):
-                # On a transient AppView failure keep the last successful
-                # result and leave verified_at untouched so the next run
-                # retries immediately.
-                cache[key] = {"verified_at": _now(), "bluesky": bsky, "x": xrow}
+            if bsky.get("status") == "probe-error" and prior_good:
+                # Transient AppView failure with a usable prior result: keep
+                # it and leave verified_at untouched so the next run retries.
+                pass
+            else:
+                cached = {"verified_at": _now(), "bluesky": bsky, "x": xrow}
+                cache[key] = cached
+            # Polite pacing between public-AppView / X requests: the public
+            # endpoints are shared infrastructure and a rapid-fire burst from
+            # one datacenter IP invites throttling.
+            time.sleep(0.8)
+        # Re-read cached AFTER probing, so first-time results reach the entry
+        # (previously this read the pre-probe (empty) dict and new results were
+        # written to state but never rendered).
+        cached = cache.get(key) or cached
         if "bluesky" in cached:
             entry["bluesky"] = cached["bluesky"]
         if "x" in cached:
@@ -777,12 +802,15 @@ def build(*, offline: bool = False, force_refresh_teams: bool = False,
     irregularities.extend(annotate_duplicate_variants(beat))
 
     # Caches are state even on offline builds (they hold previously-live data).
+    # Offline builds must not move the fetch timestamps forward, or the TTL
+    # freshness check would skip a real re-probe the data is due for.
+    stamp = _now() if not offline else ""
     _write_json(os.path.join(out_state, "team_directory.json"),
-                {"fetched_at": _now(),
+                {"fetched_at": team_cache.get("fetched_at", "") or stamp,
                  "provenance": team_cache.get("provenance", ""),
                  "teams": team_cache.get("teams", {})})
     _write_json(os.path.join(out_state, "directory_verification.json"),
-                {"fetched_at": _now(),
+                {"fetched_at": verification_cache.get("fetched_at", "") or stamp,
                  "provenance": verification_cache.get("provenance", ""),
                  "national": verification_cache.get("national", {})})
 
