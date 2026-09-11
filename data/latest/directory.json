@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-09-10T23:56:44Z",
+ "generated_at": "2026-09-11T00:11:19Z",
  "mode": "offline",
  "provenance": {
   "teams": "Club websites and social handles were read off each club's official nfl.com/teams/<slug>/ page (the league-published social directory), fetched and reviewed 2026-09-10. Washington's nfl.com page listed no Snapchat. The pipeline re-parses these pages live every 7 days and overwrites this cache; failed parses degrade to probe-pending and raise a DIRECTORY_TEAM_* flag instead of guessing.",
-  "social": "Bluesky statuses transcribed verbatim from live keyless public AppView responses (app.bsky.actor.getProfile / app.bsky.actor.searchActors) fetched and reviewed 2026-09-10. The pipeline re-runs these probes every 24h and overwrites this cache. X cannot be verified without a paid/keyless-restored endpoint; oEmbed returned HTTP 403 on 2026-09-10, so every X row is a one-click manual-review link."
+  "social": "Bluesky statuses transcribed verbatim from live keyless public AppView responses (app.bsky.actor.getProfile / app.bsky.actor.searchActors) fetched and reviewed 2026-09-10. The pipeline re-runs these probes every 24h and overwrites this cache. X cannot be verified without a paid/keyless-restored endpoint; oEmbed returned HTTP 403 on 2026-09-10, so every X row is a one-click manual-review link. CI validation 2026-09-10: the runner's health ledger probed app.bsky.actor.searchActors (200), app.bsky.actor.getProfile for rapsheet.bsky.social (200, verification valid) and publish.twitter.com oembed (200 from the runner IP); the remaining seed names are resolved by live search on the next collect run."
  },
  "methodology": {
   "official": "Club websites and social handles are parsed from each club's own nfl.com team page (the league-published social directory) and carry the fetch status/timestamp as evidence.",
@@ -1416,30 +1416,14 @@
     "status": "manual",
     "handle": "MikeGarafolo",
     "url": "https://x.com/MikeGarafolo",
-    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
-    "http_status": null,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     }
-    ]
+    "detail": "Manual-review link: X has no free verification API."
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "probe-error",
+    "status": "not-probed",
     "handle": "",
     "url": "",
-    "detail": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
-    "http_status": null,
+    "detail": "",
     "rejected": []
    },
    "observed_in_feed": true,
@@ -1468,30 +1452,14 @@
     "status": "manual",
     "handle": "DanGrazianoESPN",
     "url": "https://x.com/DanGrazianoESPN",
-    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
-    "http_status": null,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     }
-    ]
+    "detail": "Manual-review link: X has no free verification API."
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "probe-error",
+    "status": "not-probed",
     "handle": "",
     "url": "",
-    "detail": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
-    "http_status": null,
+    "detail": "",
     "rejected": []
    },
    "observed_in_feed": true,
@@ -1517,30 +1485,14 @@
     "status": "manual",
     "handle": "JFowlerESPN",
     "url": "https://x.com/JFowlerESPN",
-    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
-    "http_status": null,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     }
-    ]
+    "detail": "Manual-review link: X has no free verification API."
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "probe-error",
+    "status": "not-probed",
     "handle": "",
     "url": "",
-    "detail": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
-    "http_status": null,
+    "detail": "",
     "rejected": []
    },
    "observed_in_feed": true,
@@ -1567,30 +1519,14 @@
     "status": "manual",
     "handle": "diannaESPN",
     "url": "https://x.com/diannaESPN",
-    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
-    "http_status": null,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     }
-    ]
+    "detail": "Manual-review link: X has no free verification API."
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "probe-error",
+    "status": "not-probed",
     "handle": "",
     "url": "",
-    "detail": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
-    "http_status": null,
+    "detail": "",
     "rejected": []
    },
    "observed_in_feed": false,
@@ -1658,30 +1594,14 @@
     "status": "manual",
     "handle": "JeffDarlington",
     "url": "https://x.com/JeffDarlington",
-    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
-    "http_status": null,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     }
-    ]
+    "detail": "Manual-review link: X has no free verification API."
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "probe-error",
+    "status": "not-probed",
     "handle": "",
     "url": "",
-    "detail": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
-    "http_status": null,
+    "detail": "",
     "rejected": []
    },
    "observed_in_feed": false,
@@ -1749,30 +1669,14 @@
     "status": "manual",
     "handle": "JosinaAnderson",
     "url": "https://x.com/JosinaAnderson",
-    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
-    "http_status": null,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     }
-    ]
+    "detail": "Manual-review link: X has no free verification API."
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "probe-error",
+    "status": "not-probed",
     "handle": "",
     "url": "",
-    "detail": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
-    "http_status": null,
+    "detail": "",
     "rejected": []
    },
    "observed_in_feed": false,
@@ -1790,30 +1694,14 @@
     "status": "manual",
     "handle": "kimberleyamartin",
     "url": "https://x.com/kimberleyamartin",
-    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
-    "http_status": null,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     }
-    ]
+    "detail": "Manual-review link: X has no free verification API."
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "probe-error",
+    "status": "not-probed",
     "handle": "",
     "url": "",
-    "detail": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
-    "http_status": null,
+    "detail": "",
     "rejected": []
    },
    "observed_in_feed": false,
@@ -1831,30 +1719,14 @@
     "status": "manual",
     "handle": "ProFootballTalk",
     "url": "https://x.com/ProFootballTalk",
-    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
-    "http_status": null,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     }
-    ]
+    "detail": "Manual-review link: X has no free verification API."
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "probe-error",
+    "status": "not-probed",
     "handle": "",
     "url": "",
-    "detail": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
-    "http_status": null,
+    "detail": "",
     "rejected": []
    },
    "observed_in_feed": false,
@@ -1872,30 +1744,14 @@
     "status": "manual",
     "handle": "PSchrags",
     "url": "https://x.com/PSchrags",
-    "detail": "X offers no free verification endpoint (oEmbed/syndication both failed this run); profile link is for one-click manual verification",
-    "http_status": null,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     },
-     {
-      "endpoint": "syndication",
-      "ok": false,
-      "status": null,
-      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>"
-     }
-    ]
+    "detail": "Manual-review link: X has no free verification API."
    },
    "bluesky": {
     "platform": "bluesky",
-    "status": "probe-error",
+    "status": "not-probed",
     "handle": "",
     "url": "",
-    "detail": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
-    "http_status": null,
+    "detail": "",
     "rejected": []
    },
    "observed_in_feed": false,

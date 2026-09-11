@@ -160,9 +160,16 @@ class TestVerifyX(unittest.TestCase):
     def test_oembed_success_marks_verified(self):
         with mock.patch.object(d, "fetch_json",
                                return_value={"author_name": "Adam Schefter"}):
-            out = d.verify_x("AdamSchefter")
+            out = d.verify_x("AdamSchefter", "Adam Schefter")
         self.assertEqual(out["status"], "verified")
         self.assertEqual(out["url"], "https://x.com/AdamSchefter")
+
+    def test_oembed_name_mismatch_is_manual_not_verified(self):
+        with mock.patch.object(d, "fetch_json",
+                               return_value={"author_name": "Some Impostor"}):
+            out = d.verify_x("AdamSchefter", "Adam Schefter")
+        self.assertEqual(out["status"], "manual")
+        self.assertIn("does not match", out["detail"])
 
     def test_all_keyless_endpoints_fail_degrades_to_manual(self):
         with mock.patch.object(d, "fetch_json",
@@ -267,13 +274,60 @@ class TestLastGoodRetention(unittest.TestCase):
         with mock.patch.object(d, "verify_bluesky",
                                return_value={"platform": "bluesky", "status": "probe-error",
                                              "handle": "", "rejected": []}), \
-             mock.patch.object(d, "verify_x", return_value=good["x"]):
+             mock.patch.object(d, "verify_x", return_value=good["x"]), \
+             mock.patch.object(d.time, "sleep"):
             rows, _ = d.build_national_rows(offline=False, verification_cache=cache, observed={})
         rap = next(r for r in rows if r["name"] == "Ian Rapoport")
         self.assertEqual(rap["bluesky"]["status"], "verified")
         # stale timestamp kept so the next run retries immediately
         self.assertEqual(cache["national"][d._name_key("Ian Rapoport")]["verified_at"],
                          "2000-01-01T00:00:00Z")
+
+
+    def test_first_probe_results_are_rendered_and_retried(self):
+        """Regression: first-time probe results were written to state but the
+        rendered entry kept the pre-probe 'not-probed' status."""
+        from collectors.http import FetchError
+
+        def boom(url, **kw):
+            raise FetchError(url, "TLS EOF", None)
+
+        cache = {"national": {}}
+        with mock.patch.object(d, "fetch_json", side_effect=boom), \
+             mock.patch.object(d, "fetch_text", side_effect=boom), \
+             mock.patch.object(d.time, "sleep"):
+            rows1, _ = d.build_national_rows(
+                offline=False, verification_cache=cache, observed={})
+        # every first-time failure must reach the rendered entry ...
+        self.assertTrue(all(r["bluesky"]["status"] == "probe-error" for r in rows1))
+        # ... and be persisted so the next build can retry it.
+        self.assertTrue(all(v["bluesky"]["status"] == "probe-error"
+                            for v in cache["national"].values()))
+
+        ok = {"handle": "rapsheet.bsky.social", "did": "did:x",
+              "displayName": "Ian Rapoport", "labels": [],
+              "description": "National Insider",
+              "verification": {"verifiedStatus": "valid",
+                               "verifications": [{"issuerDisplayName": "Bluesky",
+                                                  "isValid": True}]}}
+        def fake_json(url, **kw):
+            return ok if "getProfile" in url else {"actors": [ok]}
+
+        with mock.patch.object(d, "fetch_json", side_effect=fake_json), \
+             mock.patch.object(d, "fetch_text", side_effect=boom), \
+             mock.patch.object(d.time, "sleep"):
+            rows2, _ = d.build_national_rows(
+                offline=False, verification_cache=cache, observed={})
+        rap = next(r for r in rows2 if r["name"] == "Ian Rapoport")
+        self.assertEqual(rap["bluesky"]["status"], "verified")
+
+    def test_offline_skips_all_network(self):
+        cache = {"national": {}}
+        with mock.patch.object(d, "fetch_json") as fj, \
+             mock.patch.object(d, "fetch_text") as ft:
+            d.build_national_rows(offline=True, verification_cache=cache, observed={})
+        fj.assert_not_called()
+        ft.assert_not_called()
 
 
 class TestLinkHelpers(unittest.TestCase):
