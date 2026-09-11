@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T17:43:30Z",
+ "generated_at": "2026-09-11T20:04:26Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -84,7 +84,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "52 player(s) have no official designation but do have an ESPN status",
+   "title": "42 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -96,12 +96,16 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "21 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Lineups said DOUBTFUL for Brock Bowers (official: see link); Josh Weinfuss said QUESTIONABLE for Jeremiyah Love (official: see link); Zach Gershman said QUESTIONABLE for Garrett Williams (official: see link); Tori McElhaney said OUT for Tua Tagovailoa (official: see link); Tori McElhaney said QUESTIONABLE for Zachariah Branch (official: see link)",
+   "title": "17 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said QUESTIONABLE for Joey Porter Jr. (official: see link); RichEisenShow@sportsbots.xyz said OUT for Cooper Rush (official: see link); Josh Weinfuss said QUESTIONABLE for Jeremiyah Love (official: see link); Zach Gershman said QUESTIONABLE for Garrett Williams (official: see link); Daniel Flick said OUT for Michael Penix Jr. (official: see link)",
    "evidence": [
     {
-     "label": "Lineups: Brock Bowers DOUBTFUL",
-     "url": "https://www.nfl.com/players/brock-bowers/"
+     "label": "Blitz_Burgh@sportsbots.xyz: Joey Porter Jr. QUESTIONABLE",
+     "url": "https://www.nfl.com/players/joey-porter-jr/"
+    },
+    {
+     "label": "RichEisenShow@sportsbots.xyz: Cooper Rush OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/2972515/cooper-rush"
     },
     {
      "label": "Josh Weinfuss: Jeremiyah Love QUESTIONABLE",
@@ -112,12 +116,8 @@
      "url": "https://www.nfl.com/players/garrett-williams/"
     },
     {
-     "label": "Tori McElhaney: Tua Tagovailoa OUT",
-     "url": "https://www.nfl.com/players/tua-tagovailoa/"
-    },
-    {
-     "label": "Tori McElhaney: Zachariah Branch QUESTIONABLE",
-     "url": "https://www.nfl.com/players/zachariah-branch/"
+     "label": "Daniel Flick: Michael Penix Jr. OUT",
+     "url": "https://www.nfl.com/players/michael-penix-jr/"
     }
    ]
   },
