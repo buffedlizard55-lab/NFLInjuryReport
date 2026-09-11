@@ -77,7 +77,8 @@ class TestClassifier(unittest.TestCase):
         self.assertIn("Bluesky", reason)
 
     def test_exact_name_without_badge_is_candidate_not_verified(self):
-        a = actor("tompelissero.bsky.social", "Tom Pelissero")
+        a = actor("tompelissero.bsky.social", "Tom Pelissero",
+                  description="The Ringer / Netflix Sports")
         status, _ = d.classify_bsky_actor(a, "Tom Pelissero")
         self.assertEqual(status, "candidate")
 
@@ -103,6 +104,33 @@ class TestClassifier(unittest.TestCase):
         a = actor("someone.bsky.social", "Ian Rapoport", labels=["bot"])
         status, _ = d.classify_bsky_actor(a, "Ian Rapoport")
         self.assertEqual(status, "non-official")
+
+    def test_unverified_same_name_without_role_bio_is_collision(self):
+        # Real person, same name, but a VFX artist rather than the NFL reporter.
+        a = actor("mrmikeflorio.bsky.social", "Mike Florio",
+                  description="Freelance VFX Supe/Mograph/Tech Director Guy, Die Hard Bills "
+                              "Fan, Metalhead, GIF user and beer enthusiast.")
+        status, reason = d.classify_bsky_actor(a, "Mike Florio")
+        self.assertEqual(status, "non-official")
+        self.assertIn("name collision", reason)
+
+    def test_unverified_same_name_with_reporter_bio_stays_candidate(self):
+        a = actor("kimberleymartin.bsky.social", "Kimberley A. Martin",
+                  description="\U0001F3C8 on ESPN")
+        status, _ = d.classify_bsky_actor(a, "Kimberley A. Martin")
+        self.assertEqual(status, "candidate")
+
+    def test_search_skips_collision_and_keeps_real_candidate(self):
+        collision = actor("mrmikeflorio.bsky.social", "Mike Florio",
+                          description="Freelance VFX supervisor, Bills fan.")
+        real = actor("florionfl.bsky.social", "Mike Florio",
+                     description="Pro Football Talk founder, NFL on NBC.")
+        payload = {"actors": [collision, real]}
+        with mock.patch.object(d, "fetch_json", return_value=payload):
+            out = d.verify_bluesky("Mike Florio", "")
+        self.assertEqual(out["status"], "candidate")
+        self.assertEqual(out["handle"], "florionfl.bsky.social")
+        self.assertTrue(any("name collision" in r["reason"] for r in out["rejected"]))
 
     def test_unrelated_name_is_weak(self):
         a = actor("adamkinzinger.substack.com", "Adam Kinzinger",
