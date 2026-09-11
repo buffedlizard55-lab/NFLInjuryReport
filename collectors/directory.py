@@ -115,6 +115,18 @@ NON_OFFICIAL_HANDLE_RE = re.compile(
 )
 IMPERSONATION_LABELS = {"impersonation", "parody", "compromised"}
 
+#: Role/outlet signals expected in an NFL reporter's own bio. An UNVERIFIED
+#: exact-name match whose bio contains none of these is treated as a same-name
+#: collision (a different, real person), not a review candidate. Only ever
+#: downgrades, never upgrades -- verified profiles need no keyword match.
+ROLE_SIGNAL_RE = re.compile(
+    r"(nfl|football|espn|nfl network|nfl network|reporter|journalist|insider|"
+    r"sport(s)? (writer|reporter)|editor|analyst|correspondent|host|fox sports|"
+    r"nbc|cbs|the ringer|the athletic|profootballtalk|football talk|media|"
+    r"network|podcast|writer)",
+    re.I,
+)
+
 #: Smells in the *text* of an account (display name + bio), as opposed to the
 #: handle. Tight word list so a genuine reporter bio ("NFL Insider") never trips
 #: it, but "Mirror of ...", "PARODY PAGE", "UNOFFICIAL BOT", "account can be
@@ -432,6 +444,10 @@ def classify_bsky_actor(actor: Dict[str, Any], wanted_name: str) -> Tuple[str, s
         if ver["verified_status"] == "valid":
             issuer = ver["issuers"][0]["issuer"] if ver["issuers"] else "a verifier"
             return "verified", f"exact name match; Bluesky verification valid (issuer: {issuer})"
+        if not ROLE_SIGNAL_RE.search(bio or ""):
+            snippet = re.sub(r"\s+", " ", (bio or "")).strip()[:80]
+            return "non-official", ("same-name account with no reporter/outlet signal in bio "
+                                    f"(name collision; bio: {snippet or '(empty)'})")
         return "candidate", "exact name match but no Bluesky verification badge; manual review"
     if name_matches and (bot_label or handle_smell or text_smell):
         why = (bot_label or
@@ -483,8 +499,8 @@ def verify_bluesky(name: str, expected_handle: str = "") -> Dict[str, Any]:
         # Surface the closest impersonation-labeled lookalike explicitly.
         labeled = [r for r in rejected if "impersonation" in r["reason"] or "parody" in r["reason"]]
         return {"platform": "bluesky", "status": "not-found", "handle": "", "url": "",
-                "detail": ("no genuine account: every exact-name result was a mirror, bot, or "
-                           "self-declared parody"
+                "detail": ("no genuine account: every exact-name result was a mirror, bot, "
+                           "self-declared parody, or a different person with the same name"
                            + ("; one name-matching lookalike also carries Bluesky's own "
                               "'impersonation' moderation label" if labeled else "")),
                 "rejected": rejected[:8]}
