@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-12T15:59:24Z",
+ "generated_at": "2026-09-12T18:17:43Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -52,6 +52,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Austin Ajiake",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/austin-ajiake/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Nick Emmanwori",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -90,6 +106,18 @@
     {
      "label": "Official NFL injury report",
      "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "1 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Pete Sweeney said QUESTIONABLE for Chris Jones (official: see link)",
+   "evidence": [
+    {
+     "label": "Pete Sweeney: Chris Jones QUESTIONABLE",
+     "url": "https://www.nfl.com/players/chris-jones/"
     }
    ]
   },
