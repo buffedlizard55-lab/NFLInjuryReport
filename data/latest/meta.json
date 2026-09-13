@@ -1,15 +1,15 @@
 {
- "generated_at": "2026-09-13T14:18:49Z",
+ "generated_at": "2026-09-13T17:27:45Z",
  "season": 2026,
  "week": 1,
  "counts": {
-  "players": 838,
+  "players": 839,
   "teams": 32,
-  "out": 189,
+  "out": 246,
   "questionable": 29,
   "doubtful": 8,
-  "alerts": 2,
-  "irregularities": 11
+  "alerts": 120,
+  "irregularities": 33
  },
  "source_errors": [],
  "probes": [
@@ -17,89 +17,199 @@
    "source": "nfl.com",
    "url": "https://www.nfl.com/injuries/",
    "status": 200,
-   "bytes": 362914,
-   "latency_ms": 35,
+   "bytes": 329589,
+   "latency_ms": 103,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-13T14:18:49Z"
+   "probed_at": "2026-09-13T17:27:46Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
    "status": 200,
-   "bytes": 8923559,
-   "latency_ms": 66,
+   "bytes": 8880173,
+   "latency_ms": 203,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-13T14:18:50Z"
+   "probed_at": "2026-09-13T17:27:46Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 25,
+   "latency_ms": 155,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Forbidden",
-   "probed_at": "2026-09-13T14:18:50Z"
+   "probed_at": "2026-09-13T17:27:46Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/instance",
    "status": 200,
    "bytes": 23384,
-   "latency_ms": 41,
+   "latency_ms": 76,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-13T14:18:50Z"
+   "probed_at": "2026-09-13T17:27:46Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "status": 200,
-   "bytes": 142380,
-   "latency_ms": 26,
+   "bytes": 138753,
+   "latency_ms": 78,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-13T14:18:50Z"
+   "probed_at": "2026-09-13T17:27:46Z"
   },
   {
    "source": "reddit",
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 29,
+   "latency_ms": 83,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Blocked",
-   "probed_at": "2026-09-13T14:18:50Z"
+   "probed_at": "2026-09-13T17:27:46Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/timelines/tag/nfl?limit=40",
    "status": 200,
-   "bytes": 236173,
-   "latency_ms": 657,
+   "bytes": 179377,
+   "latency_ms": 706,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-13T14:18:50Z"
+   "probed_at": "2026-09-13T17:27:47Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=NFL+injury+report&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 132363,
-   "latency_ms": 431,
+   "bytes": 131476,
+   "latency_ms": 659,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-13T14:18:51Z"
+   "probed_at": "2026-09-13T17:27:48Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Adam+Schefter&limit=15",
+   "status": 200,
+   "bytes": 10604,
+   "latency_ms": 330,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:48Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FAdamSchefter",
+   "status": 200,
+   "bytes": 441,
+   "latency_ms": 361,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:48Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=rapsheet.bsky.social",
+   "status": 200,
+   "bytes": 1349,
+   "latency_ms": 156,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:49Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FRapSheet",
+   "status": 200,
+   "bytes": 429,
+   "latency_ms": 259,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:50Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=tompelissero.bsky.social",
+   "status": 200,
+   "bytes": 809,
+   "latency_ms": 247,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:51Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FTomPelissero",
+   "status": 200,
+   "bytes": 441,
+   "latency_ms": 309,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:51Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=schultzreport.bsky.social",
+   "status": 200,
+   "bytes": 958,
+   "latency_ms": 244,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:52Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FSchultz_Report",
+   "status": 200,
+   "bytes": 447,
+   "latency_ms": 311,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:52Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=jglazer.bsky.social",
+   "status": 200,
+   "bytes": 769,
+   "latency_ms": 315,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:53Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FJayGlazer",
+   "status": 200,
+   "bytes": 432,
+   "latency_ms": 294,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-13T17:27:54Z"
   }
  ],
  "rotowire_enabled": false,
