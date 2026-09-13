@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T17:27:45Z",
+ "generated_at": "2026-09-13T19:40:33Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -25,6 +25,22 @@
    "evidence": [
     {
      "label": "espn: CLE, MIN",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Aaron Banks",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/aaron-banks/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -201,6 +217,22 @@
     },
     {
      "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Jeremiyah Love",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/jeremiyah-love/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -448,12 +480,44 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Tuli Tuipulotu",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/tuli-tuipulotu/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Ty Johnson",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/ty-johnson-x3152/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Ty'Ron Hopper",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/ty-ron-hopper/"
     },
     {
      "label": "ESPN (OUT)",
@@ -510,9 +574,25 @@
    ]
   },
   {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Zach Bako-Bewele",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/zach-tom/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "5 player(s) have no official designation but do have an ESPN status",
+   "title": "10 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -524,8 +604,8 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "6 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: CBS Sports said ACTIVE for Joey Porter Jr. (official: see link); Tampa Bay Buccaneers said ACTIVE for Christian Rozeboom (official: see link); Tom Pelissero said OUT for Myles Garrett (official: see link); Nick Underhill said OUT for Alvin Kamara (official: see link); Scott Smith said OUT for Sean Tucker (official: see link)",
+   "title": "9 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: CBS Sports said ACTIVE for Joey Porter Jr. (official: see link); Tampa Bay Buccaneers said ACTIVE for Christian Rozeboom (official: see link); Tori McElhaney said QUESTIONABLE for Da'Shawn Hand (official: see link); Ryan Mink said QUESTIONABLE for Zay Flowers (official: see link); Eric Smith said ACTIVE for Tuli Tuipulotu (official: see link)",
    "evidence": [
     {
      "label": "CBS Sports: Joey Porter Jr. ACTIVE",
@@ -536,16 +616,16 @@
      "url": "https://www.nfl.com/players/christian-rozeboom/"
     },
     {
-     "label": "Tom Pelissero: Myles Garrett OUT",
-     "url": "https://www.nfl.com/players/myles-garrett/"
+     "label": "Tori McElhaney: Da'Shawn Hand QUESTIONABLE",
+     "url": "https://www.nfl.com/players/da-shawn-hand/"
     },
     {
-     "label": "Nick Underhill: Alvin Kamara OUT",
-     "url": "https://www.nfl.com/players/alvin-kamara/"
+     "label": "Ryan Mink: Zay Flowers QUESTIONABLE",
+     "url": "https://www.nfl.com/players/zay-flowers/"
     },
     {
-     "label": "Scott Smith: Sean Tucker OUT",
-     "url": "https://www.nfl.com/players/sean-tucker/"
+     "label": "Eric Smith: Tuli Tuipulotu ACTIVE",
+     "url": "https://www.nfl.com/players/tuli-tuipulotu/"
     }
    ]
   },
