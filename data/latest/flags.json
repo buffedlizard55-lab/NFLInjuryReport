@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T21:45:48Z",
+ "generated_at": "2026-09-13T23:38:04Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -336,6 +336,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Malik Nabers",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/malik-nabers/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Nick Emmanwori",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -592,7 +608,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "10 player(s) have no official designation but do have an ESPN status",
+   "title": "12 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -604,7 +620,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "9 reporter claim(s) contradicted by the official report",
+   "title": "10 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: CBS Sports said ACTIVE for Joey Porter Jr. (official: see link); Tampa Bay Buccaneers said ACTIVE for Christian Rozeboom (official: see link); Tori McElhaney said QUESTIONABLE for Da'Shawn Hand (official: see link); Jonas Shaffer said QUESTIONABLE for Zay Flowers (official: see link); Eric Smith said ACTIVE for Tuli Tuipulotu (official: see link)",
    "evidence": [
     {
@@ -665,7 +681,7 @@
     },
     {
      "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/3859006/ronnie-harrison-jr"
+     "url": "https://www.espn.com/nfl/player/_/id/4880273/kyle-louis"
     },
     {
      "label": "ESPN attribution #3",
@@ -676,7 +692,7 @@
   {
    "code": "DIRECTORY_CROSS_TEAM_BEAT",
    "severity": "low",
-   "title": "Beat writer Greg Auman is attributed across 2 clubs (TB, HOU)",
+   "title": "Beat writer Greg Auman is attributed across 2 clubs (HOU, TB)",
    "detail": "ESPN printed Greg Auman (Fox Sports) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
    "evidence": [
     {
