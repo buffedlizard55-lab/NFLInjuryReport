@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-14T13:58:14Z",
+ "generated_at": "2026-09-14T19:09:46Z",
  "mode": "live",
  "provenance": {
   "teams": "Club websites and social handles were read off each club's official nfl.com/teams/<slug>/ page (the league-published social directory), fetched and reviewed 2026-09-10. Washington's nfl.com page listed no Snapchat. The pipeline re-parses these pages live every 7 days and overwrites this cache; failed parses degrade to probe-pending and raise a DIRECTORY_TEAM_* flag instead of guessing.",
@@ -15,10 +15,10 @@
  "counts": {
   "teams": 32,
   "national": 14,
-  "beat": 39,
+  "beat": 40,
   "bluesky_verified": 1,
   "bluesky_candidates": 5,
-  "irregularities": 5
+  "irregularities": 4
  },
  "league": [
   {
@@ -1228,11 +1228,10 @@
    "feed_updates": 12,
    "feed_teams": [
     "ARI",
+    "LAC",
     "SEA",
-    "ATL",
     "BAL",
     "CHI",
-    "LAC",
     "NE",
     "NYJ",
     "SF",
@@ -1241,10 +1240,10 @@
    "evidence": [
     "https://www.espn.com/nfl/player/_/id/4239944/hunter-long",
     "https://www.espn.com/nfl/player/_/id/3886633/hjalte-froholdt",
-    "https://www.espn.com/nfl/player/_/id/4360423/michael-penix-jr",
-    "https://www.espn.com/nfl/player/_/id/4429615/zay-flowers"
+    "https://www.espn.com/nfl/player/_/id/4429615/zay-flowers",
+    "https://www.espn.com/nfl/player/_/id/4361093/kyler-gordon"
    ],
-   "latest_feed_at": "2026-09-14T13:09:00Z"
+   "latest_feed_at": "2026-09-14T17:42:00Z"
   },
   {
    "name": "Adam Schefter",
@@ -1312,7 +1311,7 @@
     ]
    },
    "observed_in_feed": true,
-   "feed_updates": 7,
+   "feed_updates": 6,
    "feed_teams": [
     "DAL",
     "DET",
@@ -1323,8 +1322,8 @@
    "evidence": [
     "https://www.espn.com/nfl/player/_/id/4240603/malik-davis",
     "https://www.espn.com/nfl/player/_/id/4360967/brevyn-spann-ford",
-    "https://www.espn.com/nfl/player/_/id/4428990/broderick-jones",
-    "https://www.espn.com/nfl/player/_/id/4373825/penei-sewell"
+    "https://www.espn.com/nfl/player/_/id/4373825/penei-sewell",
+    "https://www.espn.com/nfl/player/_/id/4047365/josh-jacobs"
    ],
    "latest_feed_at": "2026-09-13T15:09:00Z"
   },
@@ -1378,57 +1377,6 @@
    "latest_feed_at": "2026-09-14T02:05:00Z"
   },
   {
-   "name": "Tom Pelissero",
-   "role": "NFL national reporter",
-   "outlet_evidence": "Listed as 'NFL Network' in live ESPN injury-feed attributions; Bluesky bio reads 'The Ringer / Netflix Sports' (probed 2026-09-10).",
-   "notes": "Bluesky name match found but no platform verification badge; shown as a manual-review candidate, not verified.",
-   "x": {
-    "platform": "x",
-    "status": "manual",
-    "handle": "TomPelissero",
-    "url": "https://x.com/TomPelissero",
-    "detail": "oEmbed author_name=''; empty author_name",
-    "http_status": 200,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": true,
-      "author_name": ""
-     }
-    ]
-   },
-   "bluesky": {
-    "platform": "bluesky",
-    "status": "candidate",
-    "handle": "tompelissero.bsky.social",
-    "did": "did:plc:wyd67i6kjxrsvw5cs776uhe6",
-    "display_name": "Tom Pelissero",
-    "url": "https://bsky.app/profile/tompelissero.bsky.social",
-    "detail": "exact name match but no Bluesky verification badge; manual review",
-    "verification": {
-     "verified_status": "",
-     "trusted_status": "",
-     "issuers": []
-    },
-    "labels": [],
-    "bio_snippet": "🎙️The Ringer 📺 Netflix Sports https://tompelissero.substack.com",
-    "rejected": [],
-    "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=tompelissero.bsky.social"
-   },
-   "observed_in_feed": true,
-   "feed_updates": 3,
-   "feed_teams": [
-    "MIN",
-    "LAR"
-   ],
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/3122132/myles-garrett",
-    "https://www.espn.com/nfl/player/_/id/4799994/brett-thorson",
-    "https://www.espn.com/nfl/player/_/id/4608794/tyler-batty"
-   ],
-   "latest_feed_at": "2026-09-13T15:23:00Z"
-  },
-  {
    "name": "Jeremy Fowler",
    "role": "ESPN senior national reporter",
    "outlet_evidence": "Listed as 'ESPN.com' in live ESPN injury-feed attributions collected 2026-09-10.",
@@ -1467,6 +1415,55 @@
     "https://www.espn.com/nfl/player/_/id/4044540/isaiah-rodgers"
    ],
    "latest_feed_at": "2026-09-12T17:05:00Z"
+  },
+  {
+   "name": "Tom Pelissero",
+   "role": "NFL national reporter",
+   "outlet_evidence": "Listed as 'NFL Network' in live ESPN injury-feed attributions; Bluesky bio reads 'The Ringer / Netflix Sports' (probed 2026-09-10).",
+   "notes": "Bluesky name match found but no platform verification badge; shown as a manual-review candidate, not verified.",
+   "x": {
+    "platform": "x",
+    "status": "manual",
+    "handle": "TomPelissero",
+    "url": "https://x.com/TomPelissero",
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
+   },
+   "bluesky": {
+    "platform": "bluesky",
+    "status": "candidate",
+    "handle": "tompelissero.bsky.social",
+    "did": "did:plc:wyd67i6kjxrsvw5cs776uhe6",
+    "display_name": "Tom Pelissero",
+    "url": "https://bsky.app/profile/tompelissero.bsky.social",
+    "detail": "exact name match but no Bluesky verification badge; manual review",
+    "verification": {
+     "verified_status": "",
+     "trusted_status": "",
+     "issuers": []
+    },
+    "labels": [],
+    "bio_snippet": "🎙️The Ringer 📺 Netflix Sports https://tompelissero.substack.com",
+    "rejected": [],
+    "queried_url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=tompelissero.bsky.social"
+   },
+   "observed_in_feed": true,
+   "feed_updates": 2,
+   "feed_teams": [
+    "MIN"
+   ],
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4799994/brett-thorson",
+    "https://www.espn.com/nfl/player/_/id/4608794/tyler-batty"
+   ],
+   "latest_feed_at": "2026-08-30T23:01:00Z"
   },
   {
    "name": "Dan Graziano",
@@ -1829,37 +1826,6 @@
  ],
  "beat": [
   {
-   "key": "david furones",
-   "name": "David Furones",
-   "outlet": "South Florida Sun Sentinel",
-   "teams": [
-    "MIA",
-    "ARI"
-   ],
-   "updates": 6,
-   "latest_at": "2026-09-13T23:19:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4429275/trey-benson",
-    "https://www.espn.com/nfl/player/_/id/4880273/kyle-louis",
-    "https://www.espn.com/nfl/player/_/id/4880236/will-kacmarek",
-    "https://www.espn.com/nfl/player/_/id/4566094/jacob-rodriguez"
-   ],
-   "x_search_url": "https://x.com/search?q=%22David+Furones%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22David+Furones%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22David+Furones%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "greg auman",
    "name": "Greg Auman",
    "outlet": "Fox Sports",
@@ -1867,11 +1833,10 @@
     "HOU",
     "TB"
    ],
-   "updates": 3,
+   "updates": 2,
    "latest_at": "2026-09-02T00:13:00Z",
    "evidence": [
     "https://www.espn.com/nfl/player/_/id/4879242/sam-hagen",
-    "https://www.espn.com/nfl/player/_/id/3121595/braden-smith",
     "https://www.espn.com/nfl/player/_/id/5093694/keionte-scott"
    ],
    "x_search_url": "https://x.com/search?q=%22Greg+Auman%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
@@ -1949,36 +1914,6 @@
    }
   },
   {
-   "key": "darin gantt",
-   "name": "Darin Gantt",
-   "outlet": "team's official site",
-   "teams": [
-    "CAR"
-   ],
-   "updates": 7,
-   "latest_at": "2026-09-13T16:05:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4567096/john-metchie-iii",
-    "https://www.espn.com/nfl/player/_/id/4431588/jatavion-sanders",
-    "https://www.espn.com/nfl/player/_/id/4428993/haynes-king",
-    "https://www.espn.com/nfl/player/_/id/4239934/aj-dillon"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Darin+Gantt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Darin+Gantt%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Darin+Gantt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "teresa varley",
    "name": "Teresa Varley",
    "outlet": "Steelers' official site",
@@ -2029,6 +1964,36 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Craig+Peters%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
+   "key": "david furones",
+   "name": "David Furones",
+   "outlet": "South Florida Sun Sentinel",
+   "teams": [
+    "MIA"
+   ],
+   "updates": 5,
+   "latest_at": "2026-09-13T23:19:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4880273/kyle-louis",
+    "https://www.espn.com/nfl/player/_/id/4880236/will-kacmarek",
+    "https://www.espn.com/nfl/player/_/id/4566094/jacob-rodriguez",
+    "https://www.espn.com/nfl/player/_/id/3057956/zach-sieler"
+   ],
+   "x_search_url": "https://x.com/search?q=%22David+Furones%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22David+Furones%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22David+Furones%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2099,26 +2064,26 @@
    }
   },
   {
-   "key": "dan salomone",
-   "name": "Dan Salomone",
-   "outlet": "Giants' official site",
+   "key": "darin gantt",
+   "name": "Darin Gantt",
+   "outlet": "team's official site",
    "teams": [
-    "NYG"
+    "CAR"
    ],
    "updates": 4,
-   "latest_at": "2026-09-13T23:21:00Z",
+   "latest_at": "2026-09-03T20:36:00Z",
    "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4241457/najee-harris",
-    "https://www.espn.com/nfl/player/_/id/3123075/braxton-berrios",
-    "https://www.espn.com/nfl/player/_/id/4429148/theo-johnson",
-    "https://www.espn.com/nfl/player/_/id/4360516/tyrone-tracy-jr"
+    "https://www.espn.com/nfl/player/_/id/4239934/aj-dillon",
+    "https://www.espn.com/nfl/player/_/id/4256062/brady-christensen",
+    "https://www.espn.com/nfl/player/_/id/4880613/bam-martin-scott",
+    "https://www.espn.com/nfl/player/_/id/2973051/taylor-moton"
    ],
-   "x_search_url": "https://x.com/search?q=%22Dan+Salomone%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Dan+Salomone%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "x_search_url": "https://x.com/search?q=%22Darin+Gantt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Darin+Gantt%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
    "platforms": {
     "x": {
      "status": "search-only",
-     "url": "https://x.com/search?q=%22Dan+Salomone%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "url": "https://x.com/search?q=%22Darin+Gantt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2159,36 +2124,6 @@
    }
   },
   {
-   "key": "matt maiocco",
-   "name": "Matt Maiocco",
-   "outlet": "NBC Sports Bay Area",
-   "teams": [
-    "SF"
-   ],
-   "updates": 4,
-   "latest_at": "2026-09-10T23:48:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4685523/ephesians-prysock",
-    "https://www.espn.com/nfl/player/_/id/4426698/tatum-bethune",
-    "https://www.espn.com/nfl/player/_/id/4431466/jordan-watkins",
-    "https://www.espn.com/nfl/player/_/id/4685397/jordan-james"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Matt+Maiocco%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Matt+Maiocco%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Matt+Maiocco%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "ross jackson",
    "name": "Ross Jackson",
    "outlet": "WWL Louisiana",
@@ -2219,26 +2154,25 @@
    }
   },
   {
-   "key": "zack rosenblatt",
-   "name": "Zack Rosenblatt",
-   "outlet": "Athletic",
+   "key": "dan salomone",
+   "name": "Dan Salomone",
+   "outlet": "team's official site",
    "teams": [
-    "NYJ"
+    "NYG"
    ],
-   "updates": 4,
-   "latest_at": "2026-09-12T21:14:00Z",
+   "updates": 3,
+   "latest_at": "2026-09-12T20:46:00Z",
    "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4259619/blake-grupe",
-    "https://www.espn.com/nfl/player/_/id/3124679/jason-sanders",
-    "https://www.espn.com/nfl/player/_/id/3134353/tim-patrick",
-    "https://www.espn.com/nfl/player/_/id/4685413/cade-klubnik"
+    "https://www.espn.com/nfl/player/_/id/3123075/braxton-berrios",
+    "https://www.espn.com/nfl/player/_/id/4429148/theo-johnson",
+    "https://www.espn.com/nfl/player/_/id/4360516/tyrone-tracy-jr"
    ],
-   "x_search_url": "https://x.com/search?q=%22Zack+Rosenblatt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Zack+Rosenblatt%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "x_search_url": "https://x.com/search?q=%22Dan+Salomone%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Dan+Salomone%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
    "platforms": {
     "x": {
      "status": "search-only",
-     "url": "https://x.com/search?q=%22Zack+Rosenblatt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "url": "https://x.com/search?q=%22Dan+Salomone%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2307,35 +2241,6 @@
    }
   },
   {
-   "key": "tori mcelhaney",
-   "name": "Tori McElhaney",
-   "outlet": "Falcons' official site",
-   "teams": [
-    "ATL"
-   ],
-   "updates": 3,
-   "latest_at": "2026-09-13T20:01:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/3672833/chris-lindstrom",
-    "https://www.espn.com/nfl/player/_/id/3126352/dashawn-hand",
-    "https://www.espn.com/nfl/player/_/id/4870612/zachariah-branch"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Tori+McElhaney%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Tori+McElhaney%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Tori+McElhaney%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "zach selby",
    "name": "Zach Selby",
    "outlet": "Commanders' official site",
@@ -2365,6 +2270,35 @@
    }
   },
   {
+   "key": "zack rosenblatt",
+   "name": "Zack Rosenblatt",
+   "outlet": "Athletic",
+   "teams": [
+    "NYJ"
+   ],
+   "updates": 3,
+   "latest_at": "2026-09-12T19:06:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/3124679/jason-sanders",
+    "https://www.espn.com/nfl/player/_/id/3134353/tim-patrick",
+    "https://www.espn.com/nfl/player/_/id/4685413/cade-klubnik"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Zack+Rosenblatt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Zack+Rosenblatt%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Zack+Rosenblatt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
    "key": "aaron wilson",
    "name": "Aaron Wilson",
    "outlet": "KPRC 2 Houston",
@@ -2383,6 +2317,62 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Aaron+Wilson%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
+   "key": "alec lewis",
+   "name": "Alec Lewis",
+   "outlet": "Athletic",
+   "teams": [
+    "MIN"
+   ],
+   "updates": 2,
+   "latest_at": "2026-09-14T18:52:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4360569/jordan-mason",
+    "https://www.espn.com/nfl/player/_/id/3917315/kyler-murray"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Alec+Lewis%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Alec+Lewis%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Alec+Lewis%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
+   "key": "amanda vogt",
+   "name": "Amanda Vogt",
+   "outlet": "Jets' official site",
+   "teams": [
+    "NYJ"
+   ],
+   "updates": 2,
+   "latest_at": "2026-09-13T16:26:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4259619/blake-grupe",
+    "https://www.espn.com/nfl/player/_/id/4692555/tyler-baron"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Amanda+Vogt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Amanda+Vogt%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Amanda+Vogt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2673,34 +2663,6 @@
    }
   },
   {
-   "key": "mary kay cabot",
-   "name": "Mary Kay Cabot",
-   "outlet": "Cleveland Plain Dealer",
-   "teams": [
-    "CLE"
-   ],
-   "updates": 2,
-   "latest_at": "2026-09-13T21:26:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/5081397/dylan-sampson",
-    "https://www.espn.com/nfl/player/_/id/4876017/carson-schwesinger"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Mary+Kay+Cabot%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Mary+Kay+Cabot%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Mary+Kay+Cabot%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "matt derrick",
    "name": "Matt Derrick",
    "outlet": "ChiefsDigest.com",
@@ -2729,24 +2691,24 @@
    }
   },
   {
-   "key": "nathan brown",
-   "name": "Nathan Brown",
-   "outlet": "Indianapolis Star",
+   "key": "mike reiss",
+   "name": "Mike Reiss",
+   "outlet": "ESPN.com",
    "teams": [
-    "IND"
+    "NE"
    ],
    "updates": 2,
-   "latest_at": "2026-09-13T23:41:00Z",
+   "latest_at": "2026-09-14T16:07:00Z",
    "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4360078/alec-pierce",
-    "https://www.espn.com/nfl/player/_/id/4429084/anthony-richardson-sr"
+    "https://www.espn.com/nfl/player/_/id/4432710/treveyon-henderson",
+    "https://www.espn.com/nfl/player/_/id/16910/daquan-jones"
    ],
-   "x_search_url": "https://x.com/search?q=%22Nathan+Brown%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Nathan+Brown%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "x_search_url": "https://x.com/search?q=%22Mike+Reiss%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Mike+Reiss%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
    "platforms": {
     "x": {
      "status": "search-only",
-     "url": "https://x.com/search?q=%22Nathan+Brown%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "url": "https://x.com/search?q=%22Mike+Reiss%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2841,6 +2803,34 @@
    }
   },
   {
+   "key": "sarah barshop",
+   "name": "Sarah Barshop",
+   "outlet": "ESPN.com",
+   "teams": [
+    "LAR"
+   ],
+   "updates": 2,
+   "latest_at": "2026-09-14T18:16:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/3122132/myles-garrett",
+    "https://www.espn.com/nfl/player/_/id/16716/aaron-donald"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Sarah+Barshop%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Sarah+Barshop%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Sarah+Barshop%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
    "key": "scott petrak",
    "name": "Scott Petrak",
    "outlet": "Elyria Chronicle-Telegram",
@@ -2859,6 +2849,34 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Scott+Petrak%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
+   "key": "tori mcelhaney",
+   "name": "Tori McElhaney",
+   "outlet": "Falcons' official site",
+   "teams": [
+    "ATL"
+   ],
+   "updates": 2,
+   "latest_at": "2026-09-13T20:01:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/3672833/chris-lindstrom",
+    "https://www.espn.com/nfl/player/_/id/4870612/zachariah-branch"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Tori+McElhaney%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Tori+McElhaney%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Tori+McElhaney%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2981,26 +2999,6 @@
   {
    "code": "DIRECTORY_CROSS_TEAM_BEAT",
    "severity": "low",
-   "title": "Beat writer David Furones is attributed across 2 clubs (MIA, ARI)",
-   "detail": "ESPN printed David Furones (South Florida Sun Sentinel) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
-   "evidence": [
-    {
-     "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/4429275/trey-benson"
-    },
-    {
-     "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4880273/kyle-louis"
-    },
-    {
-     "label": "ESPN attribution #3",
-     "url": "https://www.espn.com/nfl/player/_/id/4880236/will-kacmarek"
-    }
-   ]
-  },
-  {
-   "code": "DIRECTORY_CROSS_TEAM_BEAT",
-   "severity": "low",
    "title": "Beat writer Greg Auman is attributed across 2 clubs (HOU, TB)",
    "detail": "ESPN printed Greg Auman (Fox Sports) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
    "evidence": [
@@ -3010,10 +3008,6 @@
     },
     {
      "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/3121595/braden-smith"
-    },
-    {
-     "label": "ESPN attribution #3",
      "url": "https://www.espn.com/nfl/player/_/id/5093694/keionte-scott"
     }
    ]
@@ -3040,89 +3034,199 @@
    "source": "nfl.com",
    "url": "https://www.nfl.com/injuries/",
    "status": 200,
-   "bytes": 361457,
-   "latency_ms": 147,
+   "bytes": 361455,
+   "latency_ms": 39,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-14T13:58:12Z"
+   "probed_at": "2026-09-14T19:09:35Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
    "status": 200,
-   "bytes": 8857877,
-   "latency_ms": 300,
+   "bytes": 8776952,
+   "latency_ms": 79,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-14T13:58:12Z"
+   "probed_at": "2026-09-14T19:09:35Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 131,
+   "latency_ms": 25,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Forbidden",
-   "probed_at": "2026-09-14T13:58:12Z"
+   "probed_at": "2026-09-14T19:09:35Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/instance",
    "status": 200,
    "bytes": 23384,
-   "latency_ms": 64,
+   "latency_ms": 28,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-14T13:58:12Z"
+   "probed_at": "2026-09-14T19:09:35Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "status": 200,
-   "bytes": 140144,
-   "latency_ms": 132,
+   "bytes": 139733,
+   "latency_ms": 38,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-14T13:58:12Z"
+   "probed_at": "2026-09-14T19:09:35Z"
   },
   {
    "source": "reddit",
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 118,
+   "latency_ms": 35,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Blocked",
-   "probed_at": "2026-09-14T13:58:13Z"
+   "probed_at": "2026-09-14T19:09:36Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/timelines/tag/nfl?limit=40",
    "status": 200,
-   "bytes": 189860,
-   "latency_ms": 838,
+   "bytes": 188326,
+   "latency_ms": 868,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-14T13:58:13Z"
+   "probed_at": "2026-09-14T19:09:36Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=NFL+injury+report&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 128306,
-   "latency_ms": 698,
+   "bytes": 127487,
+   "latency_ms": 950,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-09-14T13:58:14Z"
+   "probed_at": "2026-09-14T19:09:37Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.searchActors?q=Adam+Schefter&limit=15",
+   "status": 200,
+   "bytes": 10605,
+   "latency_ms": 221,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:38Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FAdamSchefter",
+   "status": 200,
+   "bytes": 441,
+   "latency_ms": 2453,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:40Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=rapsheet.bsky.social",
+   "status": 200,
+   "bytes": 1349,
+   "latency_ms": 33,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:41Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FRapSheet",
+   "status": 200,
+   "bytes": 429,
+   "latency_ms": 278,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:41Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=tompelissero.bsky.social",
+   "status": 200,
+   "bytes": 810,
+   "latency_ms": 217,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:42Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FTomPelissero",
+   "status": 200,
+   "bytes": 441,
+   "latency_ms": 238,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:42Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=schultzreport.bsky.social",
+   "status": 200,
+   "bytes": 958,
+   "latency_ms": 224,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:43Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FSchultz_Report",
+   "status": 200,
+   "bytes": 447,
+   "latency_ms": 302,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:44Z"
+  },
+  {
+   "source": "bluesky",
+   "url": "https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=jglazer.bsky.social",
+   "status": 200,
+   "bytes": 769,
+   "latency_ms": 221,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:45Z"
+  },
+  {
+   "source": "x",
+   "url": "https://publish.twitter.com/oembed?url=https%3A%2F%2Fx.com%2FJayGlazer",
+   "status": 200,
+   "bytes": 432,
+   "latency_ms": 155,
+   "attempts": 1,
+   "result": "ok",
+   "error": "",
+   "probed_at": "2026-09-14T19:09:45Z"
   }
  ]
 }
