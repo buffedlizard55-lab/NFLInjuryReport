@@ -223,9 +223,13 @@ class TestInGameWiring(unittest.TestCase):
                                              "live": [{"id": "401872932"}],
                                              "hot_teams": ["BUF", "DET"], "count": 1}), \
              mock.patch.object(espn_mod, "collect_news",
-                               return_value={"items": [], "irregularities": []}), \
+                               return_value=espn_mod.parse_news(
+                                   fixture_json("espn_news.json"),
+                                   fetched_at="2026-09-18T02:17:00Z")), \
              mock.patch.object(rotowire_mod, "collect_news",
-                               return_value={"items": [], "irregularities": []}), \
+                               return_value=rotowire_mod.parse_news_rss(
+                                   fixture_text("rotowire_news.xml"),
+                                   fetched_at="2026-09-18T02:17:00Z")), \
              mock.patch.object(directory_mod, "build",
                                return_value={"irregularities": []}), \
              mock.patch.object(pipeline, "verify", return_value={"sources": []}), \
@@ -258,6 +262,22 @@ class TestInGameWiring(unittest.TestCase):
         self.assertTrue(alerts["log"], "the alert log must survive the run")
         ingame_alerts = [a for a in alerts["log"] if a["kind"] == "in-game"]
         self.assertTrue(any(a["player"] == "DJ Moore" for a in ingame_alerts))
+
+    def test_stat_recaps_do_not_become_injury_events(self):
+        # The RotoWire wire is real (five verbatim items, all performance
+        # recaps). None of them may reach the in-game feed: a 2-catch night is
+        # not an injury, and turning one into an alert would be exactly the
+        # fabrication this project is built to avoid.
+        self._run()
+        with open(os.path.join(pipeline.LATEST_DIR, "ingame.json"), encoding="utf-8") as fh:
+            ingame = json.load(fh)
+        recap_players = {"Jameson Williams", "Sam LaPorta", "Dalton Kincaid",
+                         "Jared Goff", "Amon-Ra St. Brown"}
+        named = {ev["player"] for ev in ingame["events"]}
+        self.assertFalse(named & recap_players,
+                         "a stat recap must never become an in-game injury event")
+        for ev in ingame["events"]:
+            self.assertTrue(ev.get("evidence"), "every event carries its sentence")
 
     def test_meta_publishes_measured_cadence_and_live_window(self):
         self._run()
