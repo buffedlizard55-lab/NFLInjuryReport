@@ -165,6 +165,7 @@ jobs:
           print(len(games))
           PY
           )
+          LIVE=${LIVE:-0}
           if [ "$LIVE" -lt 1 ]; then
             echo "No game in progress - the schedule will pick up the next run."
             exit 0
