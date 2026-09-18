@@ -205,6 +205,35 @@ game" was stored as `QUESTIONABLE` because that is what ESPN's status field said
   `meta.json` — with a `COLLECTOR_CADENCE_DEGRADED` flag whenever a gap exceeds
   60 minutes.
 
+### What the first live run caught (run 35318947720, 07:20Z)
+
+The fix was smoke-tested on the session branch against the live internet before
+merge, and the first run exposed four bugs that fixtures alone did not:
+
+| Symptom in the live snapshot | Cause | Fix |
+|---|---|---|
+| 28 events, including "players" named *Vikings Injury Report*, *Saints Thursday Injury Report*, *The NFL Concussion Protocol* | the headline fallback accepted any capitalised phrase before a colon as a person | an event requires a roster match; article titles are no longer invented as players |
+| practice-report items for clubs that were not playing were listed as in-game events | no club filter | the club must be inside the scoreboard's game window |
+| Ed Oliver went from `OUT_FOR_GAME` (23:10:58Z, verified post) to `INJURY_REPORTED` because a 23:46Z "injury update" headline was newer | newest-wins with no notion of what a report *states* | a report that states no availability cannot overwrite one that does; both stay attached |
+| DJ Moore's pre-kickoff 23:10Z headline beat Rapoport's 01:37:12Z post | RFC-822 pubDates and ISO timestamps were compared as **strings**, and `"Thu, …"` sorts after `"2026-…"` | compare parsed instants |
+| in-game log rows for clubs that were not playing, kept for 72 h | the log had no validity marker | in-game alerts record whether the club was in a game window, and rows without a roster player are dropped |
+
+The result on the next run (35319562036, 07:28Z) is seven in-game alerts, all of
+them real players on the two clubs that played:
+
+```
+Ty Johnson  (BUF RB) OUT_FOR_GAME  hamstring   lat=30071s
+DJ Moore    (BUF WR) OUT_FOR_GAME  shoulder    lat=10350s  VERIFIED (Rapoport)
+Keon Coleman(BUF WR) RETURNED                  lat=20490s
+Avonte Maddox(DET CB) OUT_FOR_GAME foot        lat=9334s
+Ed Oliver   (BUF DT) OUT_FOR_GAME  hip         lat=10423s  VERIFIED (Rapoport)
+T.J. Sanders(BUF DT) OUT_FOR_GAME  knee        lat=29970s
+Skyler Bell (BUF WR) OUT_FOR_GAME               lat=29970s
+```
+
+Every one carries the sentence it came from, the source's own timestamp, and
+ours — and the two the user asked about are in the list.
+
 ### What is still not solved
 
 * X/Twitter remains link-out only; there is no free read path, so "no tweets
@@ -484,6 +513,8 @@ tests/           182 tests; fixtures reproduce shapes captured live
 | X keyless verification | `publish.twitter.com/oembed` + syndication widget | HTTP 403 / empty body 2026-09-10 → X stays one-click manual-review; re-probed every build and auto-upgraded if a free route returns |
 | Directory page serving | `python3 -m http.server` + `curl` | `directory.html`, `assets/directory.js`, `data/latest/directory.json` all 200 |
 | Live collection | `collect.yml` on a GitHub runner, run 34539075886 | 823 players, 32/32 clubs, 0 source errors, 5 flags |
+| Live collection, in-game path | `collect.yml` on the session branch, run 35319562036 (2026-09-18T07:28Z) | 834 players, 0 source errors, **7 in-game alerts** (DJ Moore, Ed Oliver, Keon Coleman, Ty Johnson, T.J. Sanders, Skyler Bell, Avonte Maddox), watched handles read: 1 verified + 5 candidate author feeds, 30/20/20/13/3 posts returned |
+| Live cadence measurement | `cadence_metrics()` on the archived runs | median gap **187 minutes**, worst **412** — published in `meta.json`, not hidden |
 | Live probe ledger | `pipeline verify` in CI | 8 sources probed; 6 reachable, 2 documented failures (401 NFL API, 404 policy PDFs) |
 | Live social probes | `probe_platforms()` in CI | Mastodon 200, Google News 200, **Bluesky search 403**, **Reddit 403** |
 | Bluesky author feed | `getAuthorFeed` for the verified directory, 2026-09-18 | **200, keyless**; three Rapoport posts captured verbatim, including the DJ Moore shoulder post at `01:37:12.807Z` that the 2026-09-17 run never saw |

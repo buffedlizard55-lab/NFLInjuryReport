@@ -35,10 +35,7 @@ on:
   # Run once immediately after collector changes land, so a regression shows up
   # on the next commit rather than waiting for the next cron tick.
   push:
-    # Temporarily includes this session branch so the collector can be
-    # smoke-tested against the live internet before merge. Reverted in the
-    # next commit, back to [main].
-    branches: [main, "arena/01a0b349-nflinjuryreport"]
+    branches: [main]
     paths: ["collectors/**", "tests/**", ".github/workflows/collect.yml"]
   workflow_dispatch:
     inputs:
