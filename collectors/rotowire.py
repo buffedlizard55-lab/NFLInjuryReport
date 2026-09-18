@@ -319,3 +319,158 @@ def parse_lineups_html(html: str, *, fetched_at: Optional[str] = None) -> Dict[s
 def collect(*, url: str = LINEUPS_URL, fetched_at: Optional[str] = None) -> Dict[str, Any]:
     html = fetch_text(url, source=SOURCE_NAME, referer="https://www.rotowire.com/football/")
     return parse_lineups_html(html, fetched_at=fetched_at)
+
+
+# --------------------------------------------------------------- news wire ----
+#: RotoWire's PUBLISHED RSS feed -- a syndication feed the publisher itself makes
+#: available, which is a different thing from scraping the paywalled injury-report
+#: page. Verified live 2026-09-18 (HTTP 200) with this item shape (verbatim):
+#:
+#:   <item>
+#:     <title>Jameson Williams: Retains modest role in loss</title>
+#:     <link>https://www.rotowire.com//football/player/jameson-williams-15849</link>
+#:     <description>Williams brought in two of four targets for 33 yards ...</description>
+#:     <pubDate>Thu, 17 Sep 2026 9:54:00 PM PDT</pubDate>
+#:     <guid>637863</guid>
+#:   </item>
+#:
+#: RotoWire's news wire is the fastest free text feed for "X: Ruled out ..." /
+#: "X: Questionable to return" style updates, which is exactly the in-game
+#: vocabulary this project was missing on 2026-09-17. It is read as NEWS (title +
+#: description), never re-published as this project's own reporting, and it can be
+#: switched off with --no-rotowire-news.
+NEWS_RSS_URL = "https://www.rotowire.com/rss/news.php?sport=NFL"
+
+_TZ_OFFSETS = {
+    "UT": 0, "UTC": 0, "GMT": 0, "EST": -5, "EDT": -4, "CST": -6, "CDT": -5,
+    "MST": -7, "MDT": -6, "PST": -8, "PDT": -7,
+}
+
+
+def rss_time_to_iso(value: str) -> str:
+    """RFC822-ish RSS date -> ISO8601 Z. Returns "" when it cannot be parsed.
+
+    RotoWire writes "Thu, 17 Sep 2026 9:54:00 PM PDT", which is NOT RFC822 (the
+    hour is not zero-padded and the zone is a name). stdlib's
+    email.utils.parsedate_to_datetime accepts that string and returns the WRONG
+    instant -- 2026-09-17T09:54:00+00:00, i.e. the AM reading of "9:54:00 PM" with
+    the zone dropped (measured 2026-09-18). A silently shifted timestamp is exactly
+    the kind of quiet corruption this project must not ship, so the strict parser
+    runs FIRST and email.utils is only the fallback for standard forms. An
+    unparseable date yields an empty string rather than a fabricated timestamp.
+    """
+
+    import re as _re
+    from datetime import datetime, timedelta, timezone
+
+    if not value:
+        return ""
+    m = _re.match(
+        r"^(?:[A-Za-z]{3},?\s+)?(\d{1,2})\s+([A-Za-z]{3})\s+(\d{4})\s+"
+        r"(\d{1,2}):(\d{2})(?::(\d{2}))?\s*([AP]M)?\s*([A-Z]{2,4}|[+-]\d{4})?$",
+        value.strip(),
+    )
+    if m:
+        day, mon, year, hour, minute, second, ampm, tz = m.groups()
+        months = {name: i + 1 for i, name in enumerate(
+            ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+             "Nov", "Dec"])}
+        month = months.get(mon.capitalize())
+        if month:
+            hour = int(hour)
+            if ampm:
+                if ampm.upper() == "PM" and hour != 12:
+                    hour += 12
+                elif ampm.upper() == "AM" and hour == 12:
+                    hour = 0
+            tz = (tz or "UTC").upper()
+            if _re.match(r"^[+-]\d{4}$", tz):
+                sign = 1 if tz[0] == "+" else -1
+                offset = sign * (int(tz[1:3]) + int(tz[3:5]) / 60.0)
+            else:
+                offset = _TZ_OFFSETS.get(tz, 0)
+            try:
+                dt = datetime(int(year), month, int(day), hour, int(minute),
+                              int(second or 0), tzinfo=timezone.utc)
+            except ValueError:
+                return ""
+            return (dt - timedelta(hours=offset)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    try:
+        from email.utils import parsedate_to_datetime
+
+        dt = parsedate_to_datetime(value)
+    except (TypeError, ValueError):
+        return ""
+    if dt is None:
+        return ""
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def parse_news_rss(xml_text: str, *, fetched_at: Optional[str] = None) -> Dict[str, Any]:
+    """Parse the RotoWire news RSS feed into SocialPost records."""
+
+    import xml.etree.ElementTree as ET
+
+    from .social import SocialPost, classify
+
+    fetched_at = fetched_at or utc_now_iso()
+    items: List[SocialPost] = []
+    irregularities: List[Irregularity] = []
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError as exc:
+        irregularities.append(
+            Irregularity(
+                code="ROTOWIRE_NEWS_PARSE_ERROR", severity="low",
+                title="RotoWire news RSS could not be parsed",
+                detail=f"{type(exc).__name__}: {exc}. The feed was skipped for this run.",
+                evidence=[{"label": "RotoWire news RSS", "url": NEWS_RSS_URL}],
+            )
+        )
+        return {"source": "rotowire-news", "url": NEWS_RSS_URL, "fetched_at": fetched_at,
+                "items": items, "irregularities": irregularities}
+
+    for item in root.iter("item"):
+        title = (item.findtext("title") or "").strip()
+        link = (item.findtext("link") or "").strip()
+        desc = (item.findtext("description") or "").strip()
+        pub = rss_time_to_iso((item.findtext("pubDate") or "").strip())
+        guid = (item.findtext("guid") or "").strip()
+        text = f"{title}. {desc}".strip(" .")
+        if not text:
+            continue
+        cls = classify(text)
+        # "Jameson Williams: Retains modest role in loss" -> player before the colon.
+        player_hint = title.split(":", 1)[0].strip() if ":" in title else ""
+        items.append(
+            SocialPost(
+                platform="rotowire-news",
+                post_id=guid or link,
+                author="RotoWire",
+                author_name="RotoWire",
+                author_url="https://www.rotowire.com/football/news.php",
+                text=text[:1000],
+                posted_at=pub,
+                url=link,
+                predicted_status=cls["status"],
+                injury=cls["injury"],
+                signal=cls["signal"],
+                source_kind="wire",
+                # NOTE: the headline's "Player: ..." prefix is only a HINT kept in
+                # `raw`. `matched_player` is reserved for a positive match against
+                # the roster index (collectors/matching.py), which is the only
+                # place a name is tied to a club.
+                raw={"player_hint": player_hint, "description": desc},
+            )
+        )
+    return {"source": "rotowire-news", "url": NEWS_RSS_URL, "fetched_at": fetched_at,
+            "items": items, "irregularities": irregularities}
+
+
+def collect_news(*, url: str = NEWS_RSS_URL,
+                 fetched_at: Optional[str] = None) -> Dict[str, Any]:
+    xml_text = fetch_text(url, source="rotowire-news",
+                          referer="https://www.rotowire.com/football/news.php")
+    return parse_news_rss(xml_text, fetched_at=fetched_at)

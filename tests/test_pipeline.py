@@ -17,6 +17,9 @@ from collectors import directory as directory_mod
 from collectors import espn as espn_mod
 from collectors import nfl_com as nfl_mod
 from collectors import pipeline
+from collectors import rotowire as rotowire_mod
+from collectors import social as social_mod
+from collectors.matching import PlayerIndex
 
 from .helpers import fixture_json, fixture_text
 
@@ -40,8 +43,17 @@ class TestPipelineEndToEnd(unittest.TestCase):
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def _run(self, *, with_social=False):
+        # Every network call is stubbed: the sandbox and CI both run these tests
+        # offline, and a live call would make the suite depend on upstream uptime.
+        empty_news = {"items": [], "irregularities": []}
         with mock.patch.object(nfl_mod, "collect", return_value=self.official), \
              mock.patch.object(espn_mod, "collect", return_value=self.espn), \
+             mock.patch.object(espn_mod, "collect_scoreboard",
+                               return_value={"games": [], "live": [], "hot_teams": [],
+                                             "count": 0}), \
+             mock.patch.object(espn_mod, "collect_news", return_value=dict(empty_news)), \
+             mock.patch.object(rotowire_mod, "collect_news",
+                               return_value=dict(empty_news)), \
              mock.patch.object(directory_mod, "build",
                                return_value={"irregularities": []}), \
              mock.patch.object(pipeline, "verify", return_value={"sources": []}):
@@ -147,6 +159,122 @@ class TestPipelineEndToEnd(unittest.TestCase):
              mock.patch.object(pipeline, "verify", return_value={"sources": []}):
             args = argparse.Namespace(with_rotowire=False, no_social=True)
             self.assertEqual(pipeline.collect(args), 2)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+class TestInGameWiring(unittest.TestCase):
+    """End-to-end: a verified insider post must reach the alert log and ingame.json.
+
+    This is the 2026-09-17 regression test. The fixture is Ian Rapoport's actual
+    Bluesky post about DJ Moore's shoulder ("questionable to return ... X-ray"),
+    fetched live on 2026-09-18; the network is stubbed, the parsers are real.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.addCleanup(setattr, pipeline, "DATA_DIR", pipeline.DATA_DIR)
+        self.addCleanup(setattr, pipeline, "LATEST_DIR", pipeline.LATEST_DIR)
+        self.addCleanup(setattr, pipeline, "STATE_DIR", pipeline.STATE_DIR)
+        self.addCleanup(setattr, pipeline, "ARCHIVE_DIR", pipeline.ARCHIVE_DIR)
+        pipeline.DATA_DIR = self.tmp
+        pipeline.LATEST_DIR = os.path.join(self.tmp, "latest")
+        pipeline.STATE_DIR = os.path.join(self.tmp, "state")
+        pipeline.ARCHIVE_DIR = os.path.join(self.tmp, "archive")
+        os.makedirs(pipeline.STATE_DIR, exist_ok=True)
+        os.makedirs(pipeline.LATEST_DIR, exist_ok=True)
+
+        self.official = nfl_mod.parse_injuries_html(
+            fixture_text("nfl_injuries.html"), fetched_at="2026-09-18T02:17:00Z")
+        self.espn = espn_mod.parse_injuries(
+            fixture_json("espn_injuries.json"), fetched_at="2026-09-18T02:17:00Z")
+
+        # Roster state: the club index the run starts from.
+        index = PlayerIndex()
+        index.add("DJ Moore", "BUF", "WR",
+                  "https://www.espn.com/nfl/player/_/id/3915416/dj-moore", "espn")
+        index.add("Keon Coleman", "BUF", "WR",
+                  "https://www.espn.com/nfl/player/_/id/4635008/keon-coleman", "espn")
+        pipeline._write(os.path.join(pipeline.STATE_DIR, "players.json"), index.to_dict())
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _run(self):
+        probes = {
+            "bluesky": {"url": "u", "reachable": False, "status": 403, "error": "HTTP 403",
+                        "latency_ms": 10},
+            "bluesky-author-feed": {"url": "u", "reachable": True, "status": 200,
+                                    "error": "", "latency_ms": 10},
+            "mastodon": {"url": "u", "reachable": False, "status": None, "error": "down",
+                         "latency_ms": 10},
+            "google-news": {"url": "u", "reachable": True, "status": 200, "error": "",
+                            "latency_ms": 10},
+            "reddit": {"url": "u", "reachable": False, "status": 403, "error": "blocked",
+                       "latency_ms": 10},
+        }
+        empty_rss = "<rss><channel></channel></rss>"
+        with mock.patch.object(nfl_mod, "collect", return_value=self.official), \
+             mock.patch.object(espn_mod, "collect", return_value=self.espn), \
+             mock.patch.object(espn_mod, "collect_scoreboard",
+                               return_value={"games": [{"id": "401872932", "state": "in",
+                                                        "teams": []}],
+                                             "live": [{"id": "401872932"}],
+                                             "hot_teams": ["BUF", "DET"], "count": 1}), \
+             mock.patch.object(espn_mod, "collect_news",
+                               return_value={"items": [], "irregularities": []}), \
+             mock.patch.object(rotowire_mod, "collect_news",
+                               return_value={"items": [], "irregularities": []}), \
+             mock.patch.object(directory_mod, "build",
+                               return_value={"irregularities": []}), \
+             mock.patch.object(pipeline, "verify", return_value={"sources": []}), \
+             mock.patch.object(social_mod, "probe_platforms", return_value=probes), \
+             mock.patch.object(social_mod, "fetch_json",
+                               return_value=fixture_json("bsky_author_feed.json")), \
+             mock.patch.object(social_mod, "fetch_text", return_value=empty_rss):
+            args = argparse.Namespace(with_rotowire=False, no_social=False, no_news=False)
+            return pipeline.collect(args)
+
+    def test_ingame_event_and_alert_are_published(self):
+        self.assertEqual(self._run(), 0)
+        with open(os.path.join(pipeline.LATEST_DIR, "ingame.json"), encoding="utf-8") as fh:
+            ingame = json.load(fh)
+        events = {e["player_key"]: e for e in ingame["events"]}
+        self.assertIn("dj-moore", events)
+        moore = events["dj-moore"]
+        self.assertEqual(moore["team"], "BUF")
+        self.assertEqual(moore["in_game_status"], "RETURN_QUESTIONABLE")
+        self.assertTrue(moore["source_verified"])
+        self.assertIn("questionable to return", " ".join(moore["evidence"]))
+        # The seatbelt: the account is only "verified" because the payload said so,
+        # and the provenance class is carried through to the event.
+        self.assertEqual(moore["sources"][0]["source_kind"], "verified-insider")
+        self.assertEqual(moore["sources"][0]["author"], "Ian Rapoport")
+        self.assertTrue(moore["sources"][0]["verified"])
+
+        with open(os.path.join(pipeline.LATEST_DIR, "alerts.json"), encoding="utf-8") as fh:
+            alerts = json.load(fh)
+        self.assertTrue(alerts["log"], "the alert log must survive the run")
+        ingame_alerts = [a for a in alerts["log"] if a["kind"] == "in-game"]
+        self.assertTrue(any(a["player"] == "DJ Moore" for a in ingame_alerts))
+
+    def test_meta_publishes_measured_cadence_and_live_window(self):
+        self._run()
+        with open(os.path.join(pipeline.LATEST_DIR, "meta.json"), encoding="utf-8") as fh:
+            meta = json.load(fh)
+        self.assertIn("cadence", meta)
+        self.assertEqual(meta["live"]["hot_teams"], ["BUF", "DET"])
+        self.assertTrue(meta["live"]["live_games"] >= 1)
+
+    def test_social_payload_records_which_handles_were_read(self):
+        self._run()
+        with open(os.path.join(pipeline.LATEST_DIR, "social.json"), encoding="utf-8") as fh:
+            social = json.load(fh)
+        self.assertIn("watched_handles", social)
+        self.assertIn("fetches", social)
+        labels = [f["label"] for f in social["fetches"]]
+        self.assertTrue(any(label.startswith("author:") for label in labels))
 
 
 if __name__ == "__main__":

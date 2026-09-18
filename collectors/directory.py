@@ -676,6 +676,63 @@ def annotate_duplicate_variants(beat: List[Dict[str, Any]]) -> List[Irregularity
 
 # ============================================================== national tier ==
 
+def watched_handles(state_dir: str = STATE_DIR) -> Dict[str, List[str]]:
+    """Bluesky handles the collector must read on every run, with their basis.
+
+    WHY THIS FUNCTION EXISTS (2026-09-18 post-mortem)
+    -------------------------------------------------
+    data/state/watched.json was EMPTY, and the only other Bluesky path the
+    collector used was app.bsky.feed.searchPosts, which returns HTTP 403. Net
+    effect: the pipeline read zero insider posts, and missed Ian Rapoport's
+    verified post about DJ Moore's shoulder injury (2026-09-18T01:37:12Z) that
+    arrived 35 minutes before ESPN's injuries feed (02:12Z).
+
+    The handles are therefore derived from evidence this project already holds:
+
+      * "verified"   -- the national-insider directory's own verification cache
+                        says the profile carries a valid Bluesky verification
+                        (`status == "verified"`). Checked against the platform's
+                        response, not asserted by hand.
+      * "candidates" -- handles a human wrote into collectors/directory_seed.json
+                        as expected handles. They are followed because a person
+                        asserted the account, but every post they produce is
+                        labelled "insider-candidate (no platform badge)" and they
+                        are never counted as verified anywhere.
+
+    Nothing is invented: a handle appears here only because it is in the seed file
+    or because the platform itself said the profile is verified.
+    """
+
+    cache = _read_json(os.path.join(state_dir, "directory_verification.json"), {}) or {}
+    seed = _read_json(SEED_PATH, {}) or {}
+    verified: List[str] = []
+    candidates: List[str] = []
+    basis: Dict[str, str] = {}
+
+    for name, row in sorted((cache.get("national") or {}).items()):
+        bluesky = (row or {}).get("bluesky") or {}
+        handle = (bluesky.get("handle") or "").strip()
+        if not handle:
+            continue
+        if bluesky.get("status") == "verified":
+            if handle not in verified:
+                verified.append(handle)
+                basis[handle] = f"verification cache: {row.get('verified_at', '')}".strip()
+        elif handle not in candidates:
+            candidates.append(handle)
+            basis[handle] = "directory verification cache: no platform badge"
+
+    for row in (seed.get("national") or []):
+        handle = (row.get("bsky_expected_handle") or "").strip()
+        if not handle or handle in verified:
+            continue
+        if handle not in candidates:
+            candidates.append(handle)
+            basis[handle] = "collectors/directory_seed.json (hand-asserted handle)"
+
+    return {"verified": verified, "candidates": candidates, "basis": basis}
+
+
 def load_seed() -> List[Dict[str, Any]]:
     payload = _read_json(SEED_PATH, {})
     return payload.get("national", []) if isinstance(payload, dict) else []

@@ -52,7 +52,7 @@ from __future__ import annotations
 import re
 from typing import Any, Dict, List, Optional, Tuple
 
-from .http import fetch_json, utc_now_iso
+from .http import FetchError, fetch_json, utc_now_iso
 from .models import Irregularity, PlayerInjury, norm_status
 from .nfl_com import NFL_TEAMS
 
@@ -328,3 +328,185 @@ def collect(*, url: str = ENDPOINT, fetched_at: Optional[str] = None) -> Dict[st
 
     payload = fetch_json(url, source=SOURCE_NAME, referer="https://www.espn.com/nfl/")
     return parse_injuries(payload, fetched_at=fetched_at)
+
+
+# -------------------------------------------------------------- scoreboard ---
+#: ESPN's keyless scoreboard. Verified live 2026-09-18 (HTTP 200) for
+#: ?dates=20260917 -> the DET@BUF game (event 401872932, kickoff 2026-09-18T00:15Z,
+#: status.type.state="post", final 41-31). It is used for ONE thing: deciding
+#: which clubs are inside a game window right now, so the collector can spend its
+#: limited query budget on those clubs instead of spraying 32 club queries.
+SCOREBOARD_ENDPOINT = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
+
+
+def collect_scoreboard(*, dates: Optional[str] = None,
+                       fetched_at: Optional[str] = None) -> Dict[str, Any]:
+    """Games for a date (YYYYMMDD) or the current week. Never raises on bad shape."""
+
+    from .ingame import parse_scoreboard
+
+    url = SCOREBOARD_ENDPOINT + (f"?dates={dates}" if dates else "")
+    fetched_at = fetched_at or utc_now_iso()
+    try:
+        payload = fetch_json(url, source="espn")
+    except FetchError as exc:
+        return {"source": "espn-scoreboard", "url": url, "fetched_at": fetched_at,
+                "games": [], "live": [], "hot_teams": [], "count": 0,
+                "error": f"{exc.reason} (status={exc.status})"}
+    parsed = parse_scoreboard(payload)
+    parsed.update({"source": "espn-scoreboard", "url": url, "fetched_at": fetched_at})
+    return parsed
+
+
+# ------------------------------------------------------------------- news -----
+#: ESPN's keyless news API. Verified live 2026-09-18 (HTTP 200) with this shape
+#: (keys verbatim):
+#:   {"header": "NFL News",
+#:    "articles": [{"id": 49970421, "headline": "...", "description": "...",
+#:                  "published": "2026-09-18T06:35:37Z",
+#:                  "byline": "Eric Woodyard",
+#:                  "categories": [{"type": "team", "description": "Buffalo Bills",
+#:                                  "teamId": 2, "team": {"abbreviation": "BUF"}},
+#:                                 {"type": "athlete", "description": "DJ Moore",
+#:                                  "athleteId": 3915416}],
+#:                  "links": {"web": {"href": "https://www.espn.com/nfl/story/_/id/..."}}}]}
+#:
+#: IMPORTANT, measured 2026-09-18: the `?athlete=<id>` filter is IGNORED by this
+#: endpoint -- `?athlete=4635008&limit=2` returned the same league-wide articles
+#: as `?limit=2`, so it must never be presented as a per-player feed. Per-club
+#: filtering (`?team=2`) does work and is what the in-game collector uses, and
+#: articles that mention a player are still matched to that player locally via
+#: the `categories` array.
+NEWS_ENDPOINT = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news"
+
+
+def parse_news(payload: Any, *, fetched_at: Optional[str] = None,
+               source_kind: str = "news") -> Dict[str, Any]:
+    """Normalise ESPN news articles into SocialPost records.
+
+    Articles are news, not claims: they carry a headline and a timestamp, and the
+    in-game classifier in collectors/ingame.py decides whether the headline says
+    anything about availability. Nothing is inferred from the article body,
+    because the feed does not include one.
+    """
+
+    from .social import SocialPost, classify
+
+    fetched_at = fetched_at or utc_now_iso()
+    items: List[SocialPost] = []
+    irregularities: List[Irregularity] = []
+
+    if not isinstance(payload, dict):
+        irregularities.append(
+            Irregularity(
+                code="ESPN_NEWS_BAD_SHAPE", severity="medium",
+                title="ESPN news payload was not a JSON object",
+                detail=f"Expected an object, got {type(payload).__name__}.",
+                evidence=[{"label": "ESPN news endpoint", "url": NEWS_ENDPOINT}],
+            )
+        )
+        return {"source": "espn-news", "url": NEWS_ENDPOINT, "fetched_at": fetched_at,
+                "items": items, "irregularities": irregularities}
+
+    for art in payload.get("articles") or []:
+        if not isinstance(art, dict):
+            continue
+        headline = (art.get("headline") or "").strip()
+        description = (art.get("description") or "").strip()
+        text = f"{headline}. {description}".strip(" .")
+        if not text:
+            continue
+        cats = art.get("categories") or []
+        team_codes: List[str] = []
+        athletes: List[str] = []
+        for cat in cats:
+            if not isinstance(cat, dict):
+                continue
+            ctype = cat.get("type") or ""
+            if ctype == "team":
+                abbr = ((cat.get("team") or {}).get("abbreviation") or "").upper()
+                if abbr in NFL_TEAMS and abbr not in team_codes:
+                    team_codes.append(abbr)
+            elif ctype == "athlete":
+                nm = cat.get("description") or ""
+                if nm:
+                    athletes.append(nm)
+        url = (((art.get("links") or {}).get("web") or {}).get("href")
+               or (art.get("links") or {}).get("mobile", {}).get("href")
+               or "")
+        cls = classify(text)
+        items.append(
+            SocialPost(
+                platform="espn-news",
+                post_id=str(art.get("id") or url),
+                author=(art.get("byline") or "").strip(),
+                author_name=(art.get("byline") or "").strip(),
+                author_url="",
+                text=text,
+                posted_at=(art.get("published") or art.get("lastModified") or "").strip(),
+                url=url,
+                predicted_status=cls["status"],
+                injury=cls["injury"],
+                signal=cls["signal"],
+                source_kind=source_kind,
+                team=(team_codes[0] if len(team_codes) == 1 else ""),
+                raw={"teams": team_codes, "athletes": athletes,
+                     "type": art.get("type"), "headline": headline},
+            )
+        )
+    return {"source": "espn-news", "url": NEWS_ENDPOINT, "fetched_at": fetched_at,
+            "articles": len(payload.get("articles") or []), "items": items,
+            "irregularities": irregularities}
+
+
+def collect_news(*, team_ids: Optional[Dict[str, str]] = None,
+                 limit: int = 20, fetched_at: Optional[str] = None) -> Dict[str, Any]:
+    """Fetch league news, plus per-club news for clubs that are playing now.
+
+    `team_ids` maps club code -> ESPN team id (only the clubs in a live/finished
+    game window are passed by the pipeline, to stay within a small request budget).
+    """
+
+    items: List[SocialPost] = []
+    irregularities: List[Irregularity] = []
+    fetched_at = fetched_at or utc_now_iso()
+    calls: List[Dict[str, Any]] = []
+
+    try:
+        league = parse_news(
+            fetch_json(f"{NEWS_ENDPOINT}?limit={max(1, min(limit, 50))}", source="espn"),
+            fetched_at=fetched_at)
+        items.extend(league["items"])
+        irregularities.extend(league["irregularities"])
+        calls.append({"query": "league", "url": NEWS_ENDPOINT, "items": len(league["items"])})
+    except FetchError as exc:
+        irregularities.append(
+            Irregularity(
+                code="ESPN_NEWS_UNREACHABLE", severity="medium",
+                title="ESPN news API could not be read",
+                detail=f"{exc.reason} (status={exc.status}). In-game headline coverage is "
+                       "reduced to Google News for this run.",
+                evidence=[{"label": "ESPN news endpoint", "url": exc.url}],
+            )
+        )
+
+    for code, team_id in sorted((team_ids or {}).items()):
+        if not team_id:
+            continue
+        url = f"{NEWS_ENDPOINT}?team={team_id}&limit={max(1, min(limit, 50))}"
+        try:
+            payload = parse_news(fetch_json(url, source="espn"), fetched_at=fetched_at)
+            items.extend(payload["items"])
+            calls.append({"query": f"team:{code}", "url": url, "items": len(payload["items"])})
+        except FetchError as exc:
+            irregularities.append(
+                Irregularity(
+                    code="ESPN_NEWS_TEAM_UNREACHABLE", severity="low",
+                    title=f"ESPN news feed for {code} could not be read",
+                    detail=f"{exc.reason} (status={exc.status}) while fetching {exc.url}.",
+                    evidence=[{"label": "Failing URL", "url": exc.url}],
+                )
+            )
+
+    return {"source": "espn-news", "url": NEWS_ENDPOINT, "fetched_at": fetched_at,
+            "calls": calls, "items": items, "irregularities": irregularities}
