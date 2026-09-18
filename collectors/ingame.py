@@ -341,20 +341,32 @@ def parse_scoreboard(payload: Any) -> Dict[str, Any]:
 # ------------------------------------------------------- event construction ---
 
 def _epoch(value: str) -> Optional[float]:
-    """ISO8601 (or "2026-09-18") -> epoch seconds. None when unparseable."""
+    """ISO8601, a bare date, or an RFC-822 stamp -> epoch seconds.
+
+    RFC-822 matters because that is what Google News RSS returns in its pubDate
+    (``Fri, 18 Sep 2026 01:39:00 GMT``). Without this branch those items had no
+    usable clock, so their age could not be checked and no detection latency
+    could be computed for them.
+    """
 
     import re as _re
     from datetime import datetime, timezone
+    from email.utils import parsedate_to_datetime
 
     if not value:
         return None
     v = value.strip()
     if _re.match(r"^\d{4}-\d{2}-\d{2}$", v):
         v += "T00:00:00"
-    v = v.replace("Z", "+00:00")
+    dt = None
     try:
-        dt = datetime.fromisoformat(v)
+        dt = datetime.fromisoformat(v.replace("Z", "+00:00"))
     except ValueError:
+        try:
+            dt = parsedate_to_datetime(v)
+        except (TypeError, ValueError):
+            return None
+    if dt is None:
         return None
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
@@ -366,6 +378,14 @@ def _as_dict(post: Any) -> Dict[str, Any]:
         return post
     to_dict = getattr(post, "to_dict", None)
     return to_dict() if callable(to_dict) else {}
+
+
+#: A report older than this cannot become a live in-game event. The window is
+#: generous (a full day covers an overnight game and the next morning's
+#: follow-ups) but it keeps a month-old headline from being presented as
+#: tonight's injury -- which is exactly what a Google News fixture did when the
+#: query window was widened during development.
+MAX_EVENT_AGE_HOURS = 24.0
 
 
 def build_game_events(
@@ -405,6 +425,15 @@ def build_game_events(
             # real report but it is not attributable, so it must not become an
             # alert about a specific person.
             return
+        # Time guard: an event is only "in-game" if the source said it recently.
+        # Undated text cannot be placed in time, so it never becomes a live
+        # event; stale text is rejected outright.
+        if now:
+            if not posted_at:
+                return
+            a, b = _epoch(posted_at), _epoch(now)
+            if a is not None and b is not None and (b - a) / 3600.0 > MAX_EVENT_AGE_HOURS:
+                return
         key = f"{team or '??'}:{player_key or player.lower()}"
         buckets.setdefault(key, []).append({
             "team": team, "player": player, "player_key": player_key or "",

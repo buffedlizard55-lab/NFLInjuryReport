@@ -895,7 +895,11 @@
 
   function renderBadges() {
     var rep = state.data.report || {};
-    $("#alertCount").textContent = (rep.counts && rep.counts.alerts) || "";
+    var roster = (rep.counts && rep.counts.alerts) || 0;
+    var ingame = (((state.data.alerts || {}).log) || []).filter(function (a) {
+      return a.kind === "in-game";
+    }).length;
+    $("#alertCount").textContent = (roster + ingame) || "";
   }
 
   /* ------------------------------------------- opportunistic live layer */

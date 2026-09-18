@@ -199,5 +199,50 @@ class TestScoreboard(unittest.TestCase):
             self.assertIsInstance(parsed["hot_teams"], list)
 
 
+class TestEventTimeGuards(unittest.TestCase):
+    """A live event is something a source said *recently*.
+
+    These are the two cases caught while replaying the recorded payloads: a
+    month-old preseason headline (Google News returns old items when the query
+    window is widened) and a dated-in-UTC-but-not-ISO headline, whose RFC-822
+    clock previously made its age unmeasurable.
+    """
+
+    def _index(self):
+        index = PlayerIndex()
+        index.add("Keon Coleman", "BUF", "WR",
+                  "https://www.espn.com/nfl/player/_/id/4635008/keon-coleman", "espn")
+        return index
+
+    def _post(self, text, posted_at):
+        return {"platform": "google-news", "author": "aol.com", "author_name": "aol.com",
+                "url": "https://news.google.com/rss/articles/x", "text": text,
+                "posted_at": posted_at, "verified": False,
+                "verification_detail": "", "source_kind": "news"}
+
+    def test_rfc822_headline_gets_a_real_detection_latency(self):
+        events = build_game_events(
+            posts=[self._post("Keon Coleman injury update: Bills WR hurt vs. Lions",
+                              "Fri, 18 Sep 2026 01:39:00 GMT")],
+            player_index=self._index(), now="2026-09-18T02:17:00Z", hot_teams=["BUF"])
+        self.assertEqual(len(events), 1)
+        # 01:39:00Z headline, seen by the 02:17:00Z run: 38 minutes, measured.
+        self.assertEqual(events[0]["detection_latency_seconds"], 2280)
+
+    def test_month_old_headline_is_not_an_in_game_event(self):
+        events = build_game_events(
+            posts=[self._post("NFL Network: WR Keon Coleman suffered sprained foot/toe "
+                              "in Bills' preseason opener",
+                              "Tue, 18 Aug 2026 07:00:00 GMT")],
+            player_index=self._index(), now="2026-09-18T02:17:00Z", hot_teams=["BUF"])
+        self.assertEqual(events, [])
+
+    def test_undated_text_never_becomes_a_live_event(self):
+        events = build_game_events(
+            posts=[self._post("Bills WR Keon Coleman hurt vs. Lions", "")],
+            player_index=self._index(), now="2026-09-18T02:17:00Z", hot_teams=["BUF"])
+        self.assertEqual(events, [])
+
+
 if __name__ == "__main__":
     unittest.main()
