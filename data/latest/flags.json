@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-18T05:51:44Z",
+ "generated_at": "2026-09-18T07:20:40Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -92,28 +92,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "27 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: CBS Sports said QUESTIONABLE for Malik Nabers (official: see link); foxsports.com@web.brid.gy said OUT for DJ Moore (official: see link); Josh Weinfuss said QUESTIONABLE for Isaiah Adams (official: see link); Josh Weinfuss said QUESTIONABLE for Isaac Seumalo (official: see link); Darren Urban said QUESTIONABLE for Garrett Williams (official: see link)",
+   "title": "37 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Pride Of Detroit said ACTIVE for Ed Oliver (official: see link); Sportsnet.ca said OUT for DJ Moore (official: see link); sports.yahoo.com said OUT for DJ Moore (official: see link); Democrat and Chronicle said OUT for DJ Moore (official: see link); CBS Sports said QUESTIONABLE for Malik Nabers (official: see link)",
    "evidence": [
     {
-     "label": "CBS Sports: Malik Nabers QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4595348/malik-nabers"
+     "label": "Pride Of Detroit: Ed Oliver ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/4039303/ed-oliver"
     },
     {
-     "label": "foxsports.com@web.brid.gy: DJ Moore OUT",
+     "label": "Sportsnet.ca: DJ Moore OUT",
      "url": "https://www.espn.com/nfl/player/_/id/3915416/dj-moore"
     },
     {
-     "label": "Josh Weinfuss: Isaiah Adams QUESTIONABLE",
-     "url": "https://www.nfl.com/players/isaiah-adams/"
+     "label": "sports.yahoo.com: DJ Moore OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/3915416/dj-moore"
     },
     {
-     "label": "Josh Weinfuss: Isaac Seumalo QUESTIONABLE",
-     "url": "https://www.nfl.com/players/isaac-seumalo/"
+     "label": "Democrat and Chronicle: DJ Moore OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/3915416/dj-moore"
     },
     {
-     "label": "Darren Urban: Garrett Williams QUESTIONABLE",
-     "url": "https://www.nfl.com/players/garrett-williams/"
+     "label": "CBS Sports: Malik Nabers QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4595348/malik-nabers"
     }
    ]
   },
@@ -158,6 +158,18 @@
     {
      "label": "ESPN attribution #3",
      "url": "https://www.espn.com/nfl/player/_/id/4361196/cam-taylor-britt"
+    }
+   ]
+  },
+  {
+   "code": "COLLECTOR_CADENCE_DEGRADED",
+   "severity": "medium",
+   "title": "Longest gap between collector runs is 412 minutes",
+   "detail": "The workflow is scheduled every 5 minutes, but GitHub throttles and queues scheduled workflows, so this is the cadence the collector actually achieved over the archived runs. Alerts can only be as timely as this number: see the cadence panel on the site, which is fed from the same measurement.",
+   "evidence": [
+    {
+     "label": "Workflow schedule",
+     "url": "https://github.com/buffedlizard55-lab/NFLInjuryReport/actions/workflows/collect.yml"
     }
    ]
   }
