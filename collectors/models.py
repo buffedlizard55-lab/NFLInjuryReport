@@ -222,7 +222,8 @@ class Claim:
 @dataclass
 class Alert:
     ts: str
-    kind: str                    # status-change | new-injury | cleared | inactive | flag
+    kind: str                    # status-change | new-injury | cleared | removed |
+                                 # in-game
     severity: str                # low | medium | high | critical
     player: str
     player_key: str
@@ -233,6 +234,26 @@ class Alert:
     to_status: str
     detail: str
     sources: List[Dict[str, str]] = field(default_factory=list)
+    #: Stable id for the append-only alert log. Two runs that see the same event
+    #: produce the same id, so a user who opens the site hours later still sees the
+    #: alert (and its original detection time) exactly once.
+    alert_id: str = ""
+    #: In-game event key (see collectors/ingame.py) when kind == "in-game".
+    event_key: str = ""
+    #: When THIS pipeline first saw the alert, as opposed to `ts`, which is what
+    #: the source said. Both are shown, because the difference is the honesty gap.
+    first_seen_at: str = ""
+    reported_at: str = ""
+    detection_latency_seconds: Optional[int] = None
+    source_verified: bool = False
+    #: In-game alerts only: the club was inside a game window when the alert was
+    #: raised. False/absent marks a row that cannot be one (an article title
+    #: mistaken for a player, or a club that was not playing), which the alert-log
+    #: merge drops rather than carrying for 72 hours.
+    in_game_window: bool = False
+    in_game: bool = False
+    #: Verbatim sentence(s) the alert is based on.
+    evidence: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

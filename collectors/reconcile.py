@@ -25,6 +25,7 @@ from .models import (
     Irregularity,
     PlayerInjury,
     is_escalation,
+    short_id,
     slugify,
 )
 from .nfl_com import NFL_TEAMS
@@ -32,16 +33,112 @@ from .nfl_com import NFL_TEAMS
 #: How long a snapshot may be older than the previous one before we flag staleness.
 STALE_AFTER_HOURS = 30.0
 
+#: In-game events are only turned into alerts when the source reported them within
+#: this window. This is what stops the first run after a deploy from dumping a
+#: week of history into the alert feed, and it is also why the alert log matters:
+#: an alert raised at 01:42Z is still visible at 09:00Z.
+IN_GAME_ALERT_WINDOW_HOURS = 12.0
+
+#: The append-only alert log keeps this many hours (and at most ALERT_LOG_MAX rows)
+#: so a user who opens the page after the game can still see what happened during it.
+ALERT_LOG_RETENTION_HOURS = 72.0
+ALERT_LOG_MAX = 400
+
+
+def _in_game_alert(event: Dict[str, Any], *, now: str) -> Optional[Alert]:
+    """Build an alert from one in-game event, or None when it is out of window."""
+
+    reported_at = event.get("reported_at") or ""
+    age_h = None
+    a, b = _parse_ts(reported_at), _parse_ts(now)
+    if a and b:
+        age_h = (b - a).total_seconds() / 3600.0
+    if age_h is not None and age_h > IN_GAME_ALERT_WINDOW_HOURS:
+        return None
+
+    status_phrase = {
+        "OUT_FOR_GAME": "out for the rest of the game",
+        "RETURN_QUESTIONABLE": "questionable to return",
+        "EVALUATED": "being evaluated (locker room / X-rays)",
+        "RETURNED": "returned to the game",
+        "INJURY_REPORTED": "reported injured",
+    }.get(event.get("in_game_status", ""), event.get("in_game_status", ""))
+
+    sources = event.get("sources") or []
+    verified = [s for s in sources if s.get("verified")]
+    lead = ""
+    if verified:
+        lead = (f"Verified source: {verified[0].get('author') or verified[0].get('source')} "
+                f"({verified[0].get('verification_detail') or 'platform-verified'})"
+                f"{', posted ' + verified[0]['posted_at'] if verified[0].get('posted_at') else ''}. ")
+    elif sources:
+        src = sources[0]
+        lead = (f"Source: {src.get('author') or src.get('source')} "
+                f"({src.get('platform')})"
+                f"{', posted ' + src['posted_at'] if src.get('posted_at') else ''}. ")
+    evidence = " ".join(event.get("evidence") or [])[:400]
+    detail = (
+        f"{event.get('player') or 'Unidentified player'}"
+        + (f" ({event.get('team')}" + (f" {event.get('position')}" if event.get('position') else "")
+           + ")" if event.get("team") else "")
+        + f" — {status_phrase}"
+        + (f" ({event.get('injury')})" if event.get("injury") else "")
+        + f" (in-game status {event.get('in_game_status')}). "
+        + lead
+        + (f"“{evidence}”" if evidence else "")
+    )
+    return Alert(
+        ts=reported_at or now,
+        kind="in-game",
+        severity=event.get("severity") or "medium",
+        player=event.get("player") or "",
+        player_key=event.get("player_key") or "",
+        team=event.get("team") or "",
+        position=event.get("position") or "",
+        injury=event.get("injury") or "",
+        from_status="",
+        to_status=event.get("in_game_status") or "",
+        detail=detail.strip(),
+        sources=[{"source": s.get("source") or s.get("platform") or "",
+                  "url": s.get("url") or "",
+                  "observed_at": s.get("posted_at") or ""} for s in sources],
+        alert_id=f"ingame:{event.get('event_key') or ''}",
+        event_key=event.get("event_key") or "",
+        first_seen_at=event.get("first_seen_at") or now,
+        reported_at=reported_at,
+        detection_latency_seconds=event.get("detection_latency_seconds"),
+        source_verified=bool(event.get("source_verified")),
+        in_game=True,
+        in_game_window=bool(event.get("in_game_window")),
+        evidence=list(event.get("evidence") or []),
+    )
+
 
 def _parse_ts(value: str) -> Optional[datetime]:
+    """ISO8601 or RFC-822 -> aware UTC datetime, or None.
+
+    RFC-822 (``Thu, 17 Sep 2026 23:59:00 GMT``) is what Google News RSS returns,
+    and those items are exactly the ones that must respect the in-game alert
+    window: before this branch they parsed as None, so the age of the event was
+    unknown and an out-of-window event was still alerted on.
+    """
+
+    from email.utils import parsedate_to_datetime
+
     if not value:
         return None
     v = value.strip().replace("Z", "+00:00")
     if re.match(r"^\d{4}-\d{2}-\d{2}$", value.strip()):
         v += "T00:00:00+00:00"
+    dt = None
     try:
         dt = datetime.fromisoformat(v)
     except ValueError:
+        try:
+            dt = parsedate_to_datetime(value.strip())
+        except (TypeError, ValueError):
+            return None
+    if dt is None:
         return None
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
@@ -163,8 +260,23 @@ def reconcile(
     *,
     previous: Optional[Dict[str, Any]] = None,
     now: str = "",
+    game_events: Optional[List[Dict[str, Any]]] = None,
+    alert_log: Optional[List[Dict[str, Any]]] = None,
+    live_games: Optional[List[Dict[str, Any]]] = None,
 ) -> Dict[str, Any]:
-    """Build the canonical report, the alert feed and the irregularity list."""
+    """Build the canonical report, the alert feed and the irregularity list.
+
+    `game_events` are the in-game events derived by collectors/ingame.py (verified
+    insider posts, wires, first-party ESPN comments). They are alerts on their own
+    axis: a player who is "out for the rest of the game" is NOT a roster-status
+    change, and the roster report may not catch up to it for days -- on 2026-09-17
+    that is exactly what happened with DJ Moore (out of the game at ~01:37Z, ESPN
+    row still saying "Questionable" the next morning).
+
+    `alert_log` is the previous run's log. Alerts are merged into it by stable
+    `alert_id`, so an alert raised mid-game is still visible hours later instead of
+    disappearing with the next snapshot.
+    """
 
     now = now or time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     canonical: Dict[str, CanonicalPlayer] = {}
@@ -358,6 +470,9 @@ def reconcile(
                         position=cp.position, injury=cp.injury,
                         from_status="", to_status=cp.game_status,
                         detail=_describe_new(cp), sources=cp.sources,
+                        alert_id=short_id("new-injury", cp.team, cp.key, cp.game_status,
+                                          (cp.observed_at or now)[:13]),
+                        first_seen_at=now, reported_at=cp.observed_at or "",
                     )
                 )
             continue
@@ -383,6 +498,9 @@ def reconcile(
                     + (f". {cp.comment}" if cp.comment else "")
                 ),
                 sources=cp.sources,
+                alert_id=short_id(kind, cp.team, cp.key, old_status, cp.game_status,
+                                  (cp.observed_at or now)[:13]),
+                first_seen_at=now, reported_at=cp.observed_at or "",
             )
         )
 
@@ -401,10 +519,70 @@ def reconcile(
                     "injury report."
                 ),
                 sources=[],
+                alert_id=short_id("removed", old.get("team", ""), old.get("key", ""),
+                                  old.get("game_status", ""), now[:10]),
+                first_seen_at=now,
             )
         )
 
+    # ---- pass 3b: in-game events, and the append-only alert log -----------
+    in_game_alerts: List[Alert] = []
+    for event in game_events or []:
+        alert = _in_game_alert(event, now=now)
+        if alert is not None:
+            in_game_alerts.append(alert)
+    alerts.extend(in_game_alerts)
+
     alerts.sort(key=lambda a: a.ts or "", reverse=True)
+
+    # The log is what makes an alert survivable: `alerts` above is only THIS run's
+    # view, and on 2026-09-18 the user opened the page after the game and found
+    # nothing, because the DJ Moore alert had already rolled out of the diff.
+    merged_log: Dict[str, Dict[str, Any]] = {}
+    for row in alert_log or []:
+        if row.get("kind") == "in-game" and not (row.get("player_key")
+                                                 and row.get("in_game_window")):
+            # An in-game alert that names no roster player is not an alert about
+            # a person. The first live run (2026-09-18T07:20Z) proved that such a
+            # row can only come from a bug -- an article title matched as a name --
+            # so it is dropped from the log instead of being carried for 72 hours.
+            continue
+        rid = row.get("alert_id") or short_id("legacy", row.get("ts", ""), row.get("player", ""),
+                                              row.get("to_status", ""))
+        merged_log[rid] = dict(row, alert_id=rid)
+    for alert in alerts:
+        row = alert.to_dict()
+        rid = row.get("alert_id") or short_id("alert", row.get("ts", ""), row.get("player", ""))
+        row["alert_id"] = rid
+        existing = merged_log.get(rid)
+        if existing is None:
+            merged_log[rid] = row
+            continue
+        # Same event seen again: keep the ORIGINAL detection time (that is the
+        # honest latency) but pick up any new evidence/sources.
+        merged_sources = list(existing.get("sources") or [])
+        for src in row.get("sources") or []:
+            if src not in merged_sources:
+                merged_sources.append(src)
+        existing["sources"] = merged_sources
+        if row.get("detection_latency_seconds") is not None:
+            existing["detection_latency_seconds"] = row["detection_latency_seconds"]
+        for field_name in ("evidence", "detail"):
+            if row.get(field_name):
+                existing[field_name] = row[field_name]
+
+    cutoff = _parse_ts(now)
+    if cutoff is not None:
+        from datetime import timedelta
+
+        oldest = cutoff - timedelta(hours=ALERT_LOG_RETENTION_HOURS)
+        merged_log = {
+            rid: row for rid, row in merged_log.items()
+            if (_parse_ts(row.get("ts", "")) or cutoff) >= oldest
+        }
+    alert_log_out = sorted(merged_log.values(),
+                           key=lambda r: (r.get("ts") or "", r.get("alert_id") or ""),
+                           reverse=True)[:ALERT_LOG_MAX]
 
     # ---- pass 4: freshness / coverage flags -------------------------------
     official_ts = (official or {}).get("fetched_at", "")
@@ -498,11 +676,16 @@ def reconcile(
             "questionable": sum(1 for p in players if p["game_status"] == "QUESTIONABLE"),
             "doubtful": sum(1 for p in players if p["game_status"] == "DOUBTFUL"),
             "alerts": len(alerts),
+            "in_game_events": len(game_events or []),
+            "in_game_alerts": len(in_game_alerts),
             "irregularities": len(irregularities),
         },
         "teams": teams,
         "players": players,
         "alerts": [a.to_dict() for a in alerts],
+        "alert_log": alert_log_out,
+        "game_events": list(game_events or []),
+        "live_games": list(live_games or []),
         "irregularities": [i.to_dict() for i in irregularities],
     }
 

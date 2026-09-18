@@ -3,15 +3,35 @@ name: Collect injury data
 # Regenerates data/latest/*.json from the live sources and commits it.
 # No secrets are required: every source used here is keyless and public.
 #
-# Schedule note: GitHub Actions cron has a 5-minute floor and is best-effort, so
-# this runs every 10 minutes. That is the honest latency floor for this design --
-# it is NOT a sub-second push feed. The site compensates by also attempting a
-# direct browser fetch of the two keyless feeds, and it always states whether it
-# is showing a live fetch or a committed snapshot.
+# MEASURED UPTIME (this is the honest part)
+# -----------------------------------------
+# Between 2026-09-10 and 2026-09-18 the archived snapshots showed a median gap of
+# 188 minutes and a worst gap of 412 minutes, even though the schedule said every
+# 10 minutes: GitHub throttles and queues scheduled workflows on free runners, and
+# a workflow that only writes data (no `push` from a human) is the first to be
+# queued behind everything else. That is why no snapshot exists between
+# 2026-09-18T01:00Z and 05:51Z, which is the entire Bills/Lions game -- the
+# interval in which the two injuries the user asked about happened.
+#
+# Three mitigations, in order of importance:
+#   1. FOUR staggered cron entries instead of one. GitHub's scheduler is
+#      best-effort; independent schedules are queued independently, so staggered
+#      minutes recover most of the throttled slots without any paid service.
+#   2. GAME-DAY CHAINING: when the run sees a game in progress (or ending), it
+#      dispatches the next run itself. `workflow_dispatch` events created with
+#      GITHUB_TOKEN DO create runs (documented exception to the recursion rule),
+#      so this needs no PAT -- only `actions: write`. The chain is depth-capped
+#      and opt-out (`--no-chain`), so it can never loop forever.
+#   3. The achieved cadence is measured from the archive on every run and
+#      published in data/latest/meta.json, so the site shows what the collector
+#      actually did rather than what the cron said.
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/5 * * * *"     # floor of GitHub's scheduler
+    - cron: "1,16,31,46 * * * *"   # staggered offsets: more chances to be queued
+    - cron: "2,17,32,47 * * * *"
+    - cron: "3,18,33,48 * * * *"
   # Run once immediately after collector changes land, so a regression shows up
   # on the next commit rather than waiting for the next cron tick.
   push:
@@ -27,9 +47,16 @@ on:
         description: "Run the social verification layer"
         type: boolean
         default: true
+      chain:
+        description: "Internal: depth of the game-day chain (do not set by hand)"
+        type: string
+        default: "0"
 
 permissions:
   contents: write
+  # Needed for the game-day self-dispatch below. Without it the API returns
+  # "HTTP 403: Resource not accessible by integration" (observed 2026-09-18).
+  actions: write
 
 concurrency:
   group: collect
@@ -42,7 +69,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Full history so the archive prune step can reason about age.
           fetch-depth: 1
 
       - uses: actions/setup-python@v5
@@ -79,10 +105,22 @@ jobs:
           if not os.path.exists(p):
               print("No meta.json produced - the run collected nothing."); raise SystemExit
           m = json.load(open(p))
+          cad = m.get("cadence") or {}
+          live = m.get("live") or {}
+          watched = m.get("watched_handles") or {}
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as fh:
               fh.write(f"### Run {m.get('generated_at')}\n\n")
               fh.write(f"Season {m.get('season')} week {m.get('week')} · "
                        f"{json.dumps(m.get('counts', {}))}\n\n")
+              fh.write(f"Achieved cadence: {cad.get('runs_last_24h')} runs in 24h, "
+                       f"median gap {cad.get('median_gap_minutes')} min, "
+                       f"max gap {cad.get('max_gap_minutes')} min\n\n")
+              fh.write(f"In a game window: "
+                       f"{', '.join(live.get('hot_teams') or []) or 'none'} "
+                       f"({live.get('live_games', 0)} live)\n\n")
+              fh.write(f"Watched Bluesky handles: "
+                       f"{len(watched.get('verified') or [])} verified, "
+                       f"{len(watched.get('candidates') or [])} candidate\n\n")
               errs = m.get("source_errors") or []
               if errs:
                   fh.write("**Source errors**\n\n")
@@ -103,4 +141,47 @@ jobs:
             STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
             git commit -m "data: injury snapshot ${STAMP}"
             git push
+          fi
+
+      # ---------------------------------------------------------------- chain --
+      # While a game is in progress the roster report is not the interesting
+      # signal; in-game events are. So the run re-arms itself, up to CHAIN_CAP
+      # times (~1 hour at ~5 minutes a run). Outside a game window it does not,
+      # which keeps the schedule cheap and honest.
+      - name: Game-day chaining
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CHAIN="${{ github.event.inputs.chain }}"
+          CHAIN=${CHAIN:-0}
+          CAP=12
+          LIVE=$(python3 - <<'PY'
+          import json, os
+          try:
+              data = json.load(open("data/latest/ingame.json"))
+          except Exception:
+              print(0); raise SystemExit
+          games = [g for g in (data.get("live_games") or []) if g.get("state") == "in"]
+          print(len(games))
+          PY
+          )
+          LIVE=${LIVE:-0}
+          if [ "$LIVE" -lt 1 ]; then
+            echo "No game in progress - the schedule will pick up the next run."
+            exit 0
+          fi
+          if [ "$CHAIN" -ge "$CAP" ]; then
+            echo "Chain cap ($CAP) reached; the schedule takes over from here."
+            exit 0
+          fi
+          NEXT=$((CHAIN + 1))
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/collect.yml/dispatches" \
+            -d "{\"ref\":\"${GITHUB_REF_NAME}\",\"inputs\":{\"chain\":\"${NEXT}\"}}")
+          if [ "$STATUS" = "204" ]; then
+            echo "Live game detected - dispatched run $NEXT of $CAP."
+          else
+            echo "::warning::Game-day dispatch returned HTTP $STATUS; the schedule continues as before."
           fi

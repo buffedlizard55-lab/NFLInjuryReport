@@ -1,17 +1,27 @@
 /* NFL Injury Report — static front end.
  *
  * Data comes from data/latest/*.json, which a scheduled GitHub Actions run
- * regenerates and commits. On top of that snapshot the page attempts a direct
- * browser fetch of the two keyless public feeds (ESPN injuries JSON and Bluesky
- * search) so the feed can be fresher than the last CI run. Those calls are
- * subject to the upstream CORS policy, so failure is handled silently and the
- * committed snapshot is used instead — the UI always says which one it is
- * showing. It never pretends to be live when it is not.
+ * regenerates and commits. On top of that snapshot the page attempts direct
+ * browser fetches of keyless public feeds (ESPN injuries JSON and the Bluesky
+ * author feeds of the verified insider directory) so the feed can be fresher
+ * than the last CI run. Those calls are subject to the upstream CORS policy, so
+ * failure is handled silently and the committed snapshot is used instead — the
+ * UI always says which one it is showing. It never pretends to be live when it
+ * is not.
+ *
+ * TWO AXES, NOT ONE. A player's roster designation (OUT / QUESTIONABLE / ACTIVE)
+ * and whether they are available in the game being played are different things:
+ * a player can be ACTIVE on the official report and still be ruled out of the
+ * game 20 minutes later. In-game events come from data/latest/ingame.json and
+ * from the durable alert log, are kept for 72 hours, and are rendered first on
+ * the Alerts tab. If the browser has notification permission, new in-game
+ * events raise a desktop notification; without permission they raise the banner.
  */
 (function () {
   "use strict";
 
-  var DATA_FILES = ["report", "alerts", "flags", "social", "scorecard", "meta", "health"];
+  var DATA_FILES = ["report", "alerts", "flags", "social", "scorecard", "meta", "health",
+                    "ingame"];
   var state = {
     data: {},
     base: null,
@@ -29,8 +39,8 @@
 
   var ESPN_INJURIES =
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries";
-  var BSKY_SEARCH =
-    "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts";
+  var BSKY_AUTHOR_FEED =
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed";
 
   /* ------------------------------------------------------------ helpers */
 
@@ -84,6 +94,28 @@
   function badge(status) {
     var b = el("span", "badge b-" + (status || "UNKNOWN"), status || "UNKNOWN");
     return b;
+  }
+
+  /* In-game availability, mapped onto the badge palette the page already has.
+     The collector's own vocabulary (collectors/ingame.py) is the source of the
+     strings, so the two layers cannot drift apart on what "out" means. */
+  function igBadge(status) {
+    if (status === "OUT_FOR_GAME") return "OUT";
+    if (status === "RETURN_QUESTIONABLE") return "QUESTIONABLE";
+    if (status === "RETURNED") return "ACTIVE";
+    return "UNKNOWN";
+  }
+
+  /* Browser-side mirror of the collector's in-game rules. Deliberately narrow:
+     a post only counts when it says the player is out, questionable to return,
+     back, or being evaluated -- the same language the pipeline accepts. */
+  function classifyIngame(text) {
+    var t = (text || "").toLowerCase();
+    if (/will not return|ruled out for the (rest|remainder)|out for the (game|rest)|\b(has been )?ruled out\b|(left|exited) (the game|with)|carted off|taken (in)?to the locker room|locker room for x-?rays/.test(t)) return "OUT_FOR_GAME";
+    if (/questionable to return|return is questionable/.test(t)) return "RETURN_QUESTIONABLE";
+    if (/has returned|returned to the game|back (on the field|in the game)/.test(t)) return "RETURNED";
+    if (/being evaluated|in the medical tent|checked for/.test(t)) return "EVALUATED";
+    return "NONE";
   }
 
   function fmtNum(n, suffix) {
@@ -147,9 +179,12 @@
     renderStatus();
     renderCounters();
     renderTeamChips();
+    state.ingameMap = ingameByPlayer();
     renderReport();
     renderFeed();
     renderAlerts();
+    renderIngame();
+    scoreNotifications();
     renderScorecard();
     renderSources();
     renderFlags();
@@ -315,6 +350,19 @@
     }
   }
 
+  /* Keyed by player so the Report tab can show, beside a row that still reads
+     ACTIVE, that the player was reported hurt or out in the game being played.
+     Without this the two axes contradict each other on the same screen. */
+  function ingameByPlayer() {
+    var map = {};
+    var evs = ((state.data.report || {}).game_events
+               || (state.data.ingame || {}).events || []);
+    evs.forEach(function (e) {
+      if (e.player_key) map[e.player_key] = e;
+    });
+    return map;
+  }
+
   function playerRow(p) {
     var tr = el("tr");
 
@@ -327,6 +375,15 @@
       f.title = p.discrepancies.join(", ") + " — see Flags tab";
       nameCell.appendChild(document.createTextNode(" "));
       nameCell.appendChild(f);
+    }
+    var ev = (state.ingameMap || {})[p.key];
+    if (ev) {
+      var tag = el("span", "badge b-" + igBadge(ev.in_game_status),
+        "in-game: " + String(ev.in_game_status || "").replace(/_/g, " ").toLowerCase());
+      tag.title = ((ev.evidence || [])[0] || "") +
+        (ev.source_verified ? " (verified source)" : "");
+      nameCell.appendChild(document.createTextNode(" "));
+      nameCell.appendChild(tag);
     }
     tdName.appendChild(nameCell);
     if (p.attribution) {
@@ -392,6 +449,32 @@
         ts: p.posted_at, who: p.author_name || p.author,
         text: p.text, url: p.url, badge: p.predicted_status,
         extra: p.matched_player ? "re: " + p.matched_player : ""
+      });
+    });
+    // In-game events. The durable log comes first (it survives runs where the
+    // feed that reported the event has moved on); events not yet logged are
+    // added from ingame.json so nothing is shown twice.
+    var logged = {};
+    ((state.data.alerts || {}).log || []).forEach(function (a) {
+      if (a.kind !== "in-game") return;
+      logged[a.event_key || a.alert_id] = 1;
+      out.push({
+        src: "in-game", platform: "in-game alert", sev: a.severity || "high",
+        ts: a.ts, who: a.player + " (" + a.team + ")",
+        text: a.detail, url: (a.sources && a.sources[0] && a.sources[0].url) || "",
+        badge: igBadge(a.to_status), kind: "in-game"
+      });
+    });
+    ((state.data.ingame || {}).events || []).forEach(function (e) {
+      if (logged[e.event_key]) return;
+      out.push({
+        src: "in-game", platform: "in-game", sev: e.severity || "high",
+        ts: e.reported_at || e.first_seen_at,
+        who: e.player + " (" + e.team + ")",
+        text: (e.evidence && e.evidence[0]) || "",
+        url: (e.sources && e.sources[0] && e.sources[0].url) || "",
+        badge: igBadge(e.in_game_status), kind: "in-game",
+        extra: e.source_verified ? "verified source" : ""
       });
     });
     state.liveItems.forEach(function (p) { out.push(p); });
@@ -495,6 +578,109 @@
       card.appendChild(row);
       host.appendChild(card);
     });
+  }
+
+  function renderIngame() {
+    var host = $("#ingameList");
+    if (!host) return;
+    host.innerHTML = "";
+    var events = ((state.data.ingame || {}).events) || [];
+    var rows = ((state.data.alerts || {}).log || []).filter(function (a) {
+      return a.kind === "in-game";
+    });
+    if (!rows.length) {
+      rows = events.map(function (e) {
+        return {
+          player: e.player, team: e.team, position: e.position, ts: e.reported_at,
+          to_status: e.in_game_status, severity: e.severity, detail: (e.evidence || [])[0] || "",
+          sources: e.sources, sources_count: (e.sources || []).length,
+          source_verified: e.source_verified
+        };
+      });
+    }
+    var badgeHost = $("#ingameCount");
+    if (badgeHost) badgeHost.textContent = rows.length || "";
+    var rosterCount = (((state.data.alerts || {}).alerts) || []).length;
+    var ac = $("#alertCount");
+    if (ac) ac.textContent = (rosterCount + rows.length) || "";
+
+    if (!rows.length) {
+      host.appendChild(el("div", "empty",
+        "No in-game injury events in the last 72 hours. This is a separate axis from the " +
+        "roster designations below: it fires when a player is reported out of, or " +
+        "questionable to return to, a game that is being played."));
+      return;
+    }
+    rows.forEach(function (a) {
+      var card = el("div", "alert-card sev-" + (a.severity || "high"));
+      var head = el("div", "head");
+      head.appendChild(el("span", "platform-tag", "in-game"));
+      head.appendChild(el("strong", null, a.player));
+      head.appendChild(el("span", "muted", a.team + " " + (a.position || "")));
+      head.appendChild(badge(igBadge(a.to_status)));
+      if (a.source_verified) head.appendChild(el("span", "badge b-ACTIVE", "VERIFIED"));
+      head.appendChild(el("span", "when muted", relative(a.ts) + " · " + stamp(a.ts)));
+      card.appendChild(head);
+      card.appendChild(el("p", "detail", a.detail));
+      var row = el("div", "row3");
+      (a.sources || []).forEach(function (s) {
+        if (!s.url) return;
+        var label = s.source + (s.verified ? " ✓" : "");
+        row.appendChild(link(s.url, label));
+      });
+      if (a.sources_count > 1) {
+        row.appendChild(el("span", "muted", a.sources_count + " independent sources"));
+      }
+      card.appendChild(row);
+      host.appendChild(card);
+    });
+  }
+
+  /* --------------------------------------------------- notifications */
+
+  function scoreNotifications() {
+    var events = ((state.data.ingame || {}).events) || [];
+    var seen = state.seenEvents;
+    state.seenEvents = {};
+    events.forEach(function (e) { state.seenEvents[e.event_key] = 1; });
+    if (!seen) return;   // first load of the session: never buzz about history
+    var now = Date.now();
+    var fresh = events.filter(function (e) {
+      if (seen[e.event_key]) return false;
+      var t = Date.parse(e.reported_at || e.first_seen_at || 0);
+      return !t || (now - t) < 6 * 3600 * 1000;
+    });
+    if (!fresh.length) return;
+    var e = fresh[0];
+    var body = ((e.evidence && e.evidence[0]) || "").slice(0, 200);
+    var canNotify = ("Notification" in window) && Notification.permission === "granted";
+    if (canNotify) {
+      fresh.slice(0, 4).forEach(function (ev) {
+        try {
+          new Notification("NFL injury — " + ev.player + " (" + ev.team + ")",
+                           { body: ((ev.evidence && ev.evidence[0]) || "").slice(0, 180),
+                             tag: ev.event_key });
+        } catch (err) { /* constructor is restricted in some contexts */ }
+      });
+    }
+    showBanner("New in-game injury: " + e.player + " (" + e.team + ") — " +
+               (e.in_game_status || "").replace(/_/g, " ").toLowerCase(), false);
+  }
+
+  function wireNotify() {
+    var btn = $("#notifyBtn");
+    if (!btn || !("Notification" in window)) return;
+    btn.hidden = false;
+    function label() {
+      btn.textContent = Notification.permission === "granted" ? "🔔 Alerts on"
+        : Notification.permission === "denied" ? "🔕 Alerts blocked" : "🔔 Enable alerts";
+      btn.disabled = Notification.permission === "denied";
+    }
+    btn.addEventListener("click", function () {
+      var p = Notification.requestPermission(function () { label(); });
+      if (p && p.then) p.then(label);
+    });
+    label();
   }
 
   /* --------------------------------------------------------- scorecard */
@@ -709,7 +895,11 @@
 
   function renderBadges() {
     var rep = state.data.report || {};
-    $("#alertCount").textContent = (rep.counts && rep.counts.alerts) || "";
+    var roster = (rep.counts && rep.counts.alerts) || 0;
+    var ingame = (((state.data.alerts || {}).log) || []).filter(function (a) {
+      return a.kind === "in-game";
+    }).length;
+    $("#alertCount").textContent = (roster + ingame) || "";
   }
 
   /* ------------------------------------------- opportunistic live layer */
@@ -759,33 +949,46 @@
       })
       .catch(function () { /* CORS or offline: snapshot stays authoritative */ });
 
-    fetch(BSKY_SEARCH + "?q=" + encodeURIComponent("NFL injury ruled out") +
-          "&limit=30&sort=latest", { cache: "no-store" })
-      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-      .then(function (j) {
-        var extra = [];
-        ((j.posts || []).forEach || []).call(j.posts || [], function (p) {
-          var rec = p.record || {};
-          var auth = p.author || {};
-          var text = rec.text || "";
-          var st = classifyText(text);
-          if (st === "UNKNOWN") return;
-          var rkey = ((p.uri || "").match(/app\.bsky\.feed\.post\/([^/]+)$/) || [])[1] || "";
-          extra.push({
-            src: "bluesky", platform: "bluesky", sev: st === "OUT" ? "high" : "medium",
-            ts: rec.createdAt || "", who: auth.displayName || auth.handle || "",
-            text: text, badge: st, live: true,
-            url: rkey ? "https://bsky.app/profile/" + auth.handle + "/post/" + rkey : ""
+    // Bluesky: app.bsky.feed.searchPosts answered HTTP 403 on every probe
+    // (2026-09-10 .. 2026-09-18, from CI runners and from a browser), while
+    // app.bsky.feed.getAuthorFeed is keyless and works. So read the author feeds
+    // of the same verified directory the collector reads, instead of a keyword
+    // search that has never once succeeded.
+    var watched = (state.data.social || {}).watched_handles || {};
+    (watched.verified || []).concat(watched.candidates || []).slice(0, 6).forEach(function (handle) {
+      if (!handle) return;
+      fetch(BSKY_AUTHOR_FEED + "?actor=" + encodeURIComponent(handle) + "&limit=15",
+            { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(function (j) {
+          var extra = [];
+          (j.feed || []).forEach(function (entry) {
+            var p = entry.post || {};
+            var rec = p.record || {};
+            var auth = p.author || {};
+            var text = rec.text || "";
+            var st = classifyIngame(text);
+            if (st === "NONE") return;
+            var verified = ((auth.verification || {}).verifiedStatus === "valid");
+            var rkey = ((p.uri || "").match(/app\.bsky\.feed\.post\/([^/]+)$/) || [])[1] || "";
+            extra.push({
+              src: "bluesky", platform: "bluesky",
+              sev: st === "OUT_FOR_GAME" ? "high" : "medium",
+              ts: rec.createdAt || "",
+              who: (auth.displayName || auth.handle || "") + (verified ? " ✓" : ""),
+              text: text, badge: igBadge(st), live: true,
+              url: rkey ? "https://bsky.app/profile/" + auth.handle + "/post/" + rkey : ""
+            });
           });
-        });
-        if (extra.length) {
-          state.liveItems = state.liveItems.concat(extra);
-          state.liveAt = new Date().toISOString();
-          renderFeed();
-          renderStatus();
-        }
-      })
-      .catch(function () { /* same */ });
+          if (extra.length) {
+            state.liveItems = state.liveItems.concat(extra);
+            state.liveAt = new Date().toISOString();
+            renderFeed();
+            renderStatus();
+          }
+        })
+        .catch(function () { /* CORS or offline: the committed snapshot stays authoritative */ });
+    });
   }
 
   /* ------------------------------------------------------------- chrome */
@@ -852,6 +1055,7 @@
   }
 
   wire();
+  wireNotify();
   load().then(function () {
     tryLive();
     setInterval(function () {
