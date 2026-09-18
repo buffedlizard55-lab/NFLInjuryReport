@@ -246,6 +246,11 @@ class Alert:
     reported_at: str = ""
     detection_latency_seconds: Optional[int] = None
     source_verified: bool = False
+    #: In-game alerts only: the club was inside a game window when the alert was
+    #: raised. False/absent marks a row that cannot be one (an article title
+    #: mistaken for a player, or a club that was not playing), which the alert-log
+    #: merge drops rather than carrying for 72 hours.
+    in_game_window: bool = False
     in_game: bool = False
     #: Verbatim sentence(s) the alert is based on.
     evidence: List[str] = field(default_factory=list)

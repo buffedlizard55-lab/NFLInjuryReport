@@ -109,6 +109,7 @@ def _in_game_alert(event: Dict[str, Any], *, now: str) -> Optional[Alert]:
         detection_latency_seconds=event.get("detection_latency_seconds"),
         source_verified=bool(event.get("source_verified")),
         in_game=True,
+        in_game_window=bool(event.get("in_game_window")),
         evidence=list(event.get("evidence") or []),
     )
 
@@ -539,7 +540,8 @@ def reconcile(
     # nothing, because the DJ Moore alert had already rolled out of the diff.
     merged_log: Dict[str, Dict[str, Any]] = {}
     for row in alert_log or []:
-        if row.get("kind") == "in-game" and not row.get("player_key"):
+        if row.get("kind") == "in-game" and not (row.get("player_key")
+                                                 and row.get("in_game_window")):
             # An in-game alert that names no roster player is not an alert about
             # a person. The first live run (2026-09-18T07:20Z) proved that such a
             # row can only come from a bug -- an article title matched as a name --
