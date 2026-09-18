@@ -23,6 +23,8 @@
       <span class="dot" id="statusDot"></span>
       <span id="statusText">loading…</span>
     </div>
+    <button id="notifyBtn" class="btn ghost" type="button" hidden
+            title="Desktop notification when a player is reported out of a game">🔔 Enable alerts</button>
     <button id="refreshBtn" class="btn ghost" type="button" title="Re-fetch now">↻ Refresh</button>
   </div>
 </header>
@@ -85,7 +87,9 @@
       <h2>Live injury feed</h2>
       <p class="muted">
         Chat-style stream, newest first. Every item carries a link to its origin so you can
-        verify it yourself. Auto-refreshes every 30&nbsp;s.
+        verify it yourself. Auto-refreshes every 30&nbsp;s. <code>in-game</code> items are
+        injuries reported during a game — they are kept for 72 hours even after the source
+        feed has moved on, so they do not disappear before you see them.
       </p>
     </div>
     <div class="counters" id="liveCounters"></div>
@@ -94,6 +98,7 @@
     <div class="chips" id="liveSourceChips">
       <button class="chip active" data-src="">All sources</button>
       <button class="chip" data-src="official">Official changes</button>
+      <button class="chip" data-src="in-game">In-game</button>
       <button class="chip" data-src="bluesky">Bluesky</button>
       <button class="chip" data-src="mastodon">Mastodon</button>
       <button class="chip" data-src="google-news">News</button>
@@ -109,13 +114,20 @@
 <section class="panel" id="panel-alerts">
   <div class="panel-head">
     <div>
-      <h2>Status-change alerts</h2>
+      <h2>Alerts</h2>
       <p class="muted">
-        Emitted by diffing consecutive snapshots of the official report.
-        A change is only reported when the official designation actually moved.
+        Two different questions, two different lists. <strong>In-game events</strong> answer
+        "can this player still play tonight?" — they come from live game reporting, are
+        timestamped at the moment the source published, and are kept for 72 hours.
+        <strong>Status changes</strong> answer "did the official roster designation move?"
+        — they are produced only by diffing consecutive snapshots of the official report,
+        so an empty list there means the designations are stable, not that nothing happened.
       </p>
     </div>
   </div>
+  <h3 class="section-h">In-game events <span class="badge-count" id="ingameCount"></span></h3>
+  <div id="ingameList" class="alerts"></div>
+  <h3 class="section-h">Roster status changes</h3>
   <div id="alertList" class="alerts"></div>
 </section>
 

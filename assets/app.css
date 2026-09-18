@@ -300,3 +300,12 @@ footer p{margin:4px 0}
 .method-h{margin:0 0 6px; font-size:14.5px}
 .legend-line{display:flex; gap:10px; align-items:center; margin-top:7px; font-size:13px}
 #methodBody .dir-card p{margin:0; font-size:13px}
+
+/* ------------------------------------------------- in-game alert cards */
+/* In-game events use the same card, with the platform tag making clear that
+   this is game availability, not the roster designation. The left border is
+   the severity colour and the whole block sits above the roster diffs. */
+.alert-card .badge.b-ACTIVE + .when{margin-left:auto}
+.alert-card .row3 a[title]{font-weight:600}
+#ingameList .alert-card:first-child{border-left-width:4px}
+#panel-alerts .section-h:first-of-type{margin-top:0}
