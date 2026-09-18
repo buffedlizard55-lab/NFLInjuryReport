@@ -242,12 +242,28 @@ def _matched_terms(sentence: str) -> List[str]:
 
 
 def merge_events(events: List[Dict[str, Any]]) -> Dict[str, Any]:
-    """Collapse several reports about the same player into the most severe one.
+    """Collapse several reports about the same player into one status.
 
-    Severity order is IN_GAME_STATUSES order. A later "returned" beats an earlier
-    "questionable to return", because that is newer information; anything else
-    only escalates.
+    Rules, in order:
+
+      1. A report that *states availability* beats one that merely says an injury
+         happened, whenever it was published. "Ed Oliver injury update" adds no
+         availability information and must not overwrite "injured during warm-ups
+         and is out for the game" -- the first live run (2026-09-18) degraded
+         exactly that way.
+      2. Otherwise the newest report wins, compared as *parsed instants*. Google
+         News returns RFC-822 pubDates and the feeds return ISO, and comparing
+         those as strings put every headline after every post ("Thu, ..." sorts
+         after "2026-...").
+      3. Same instant: the more severe status wins.
     """
+
+    def rank(status: str) -> int:
+        return IN_GAME_STATUSES.index(status) if status in IN_GAME_STATUSES else 99
+
+    def instant(ev: Dict[str, Any]) -> float:
+        value = _epoch(ev.get("posted_at") or "")
+        return value if value is not None else float("-inf")
 
     best: Optional[Dict[str, Any]] = None
     for ev in events:
@@ -256,12 +272,14 @@ def merge_events(events: List[Dict[str, Any]]) -> Dict[str, Any]:
         if best is None:
             best = ev
             continue
-        old_rank = IN_GAME_STATUSES.index(best["status"]) if best["status"] in IN_GAME_STATUSES else 99
-        new_rank = IN_GAME_STATUSES.index(ev["status"]) if ev["status"] in IN_GAME_STATUSES else 99
-        # Newer information wins; otherwise the more severe state wins.
-        old_ts = best.get("posted_at") or ""
-        new_ts = ev.get("posted_at") or ""
-        if new_ts > old_ts or (new_ts == old_ts and new_rank < old_rank):
+        old_stated = best["status"] != "INJURY_REPORTED"
+        new_stated = ev["status"] != "INJURY_REPORTED"
+        if new_stated != old_stated:
+            if new_stated:
+                best = ev
+            continue
+        old_t, new_t = instant(best), instant(ev)
+        if new_t > old_t or (new_t == old_t and rank(ev["status"]) < rank(best["status"])):
             best = ev
     return best or {"status": "NONE", "event": "", "injury": "", "severe": False,
                     "sentences": [], "blurb": False, "terms": []}

@@ -208,6 +208,49 @@ class TestGameEventBuilding(unittest.TestCase):
                                    now="2026-09-18T07:20:00Z", hot_teams=["BUF", "DET"])
         self.assertEqual(events, [])
 
+    def test_a_vague_newer_headline_does_not_erase_a_stated_status(self):
+        # Live 2026-09-18: a 23:46Z "Ed Oliver injury update" headline was ranked
+        # above the 23:10:58Z verified post "injured during warm-ups and is out
+        # for the game", downgrading OUT_FOR_GAME to INJURY_REPORTED. A report
+        # that states no availability cannot overwrite one that does.
+        posts = [{
+            "platform": "bluesky", "author": "rapsheet.bsky.social",
+            "author_name": "Ian Rapoport", "url": "https://bsky.app/profile/x/post/1",
+            "text": OLIVER_POST, "posted_at": "2026-09-17T23:10:58Z", "verified": True,
+        }, {
+            "platform": "google-news", "author": "example.com", "author_name": "example.com",
+            "url": "https://news.google.com/rss/articles/oliver",
+            "text": "Ed Oliver injury update: latest on the Bills defensive tackle",
+            "posted_at": "Thu, 17 Sep 2026 23:46:00 GMT", "source_kind": "news",
+        }]
+        events = build_game_events(posts=posts, player_index=self._index(),
+                                   now="2026-09-18T02:17:00Z", hot_teams=["BUF"])
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0]["in_game_status"], "OUT_FOR_GAME")
+        # Both reports stay attached: the merge is auditable from the event.
+        self.assertEqual(len(events[0]["sources"]), 2)
+
+    def test_iso_post_wins_over_an_earlier_rfc822_headline(self):
+        # Live 2026-09-18: "Thu, 17 Sep 2026 23:10:00 GMT" sorted after the
+        # later ISO post "2026-09-18T01:37:12.807Z" as a plain string, so a
+        # pre-kickoff headline beat Rapoport's in-game report. Instants decide.
+        posts = [{
+            "platform": "google-news", "author": "example.com", "author_name": "example.com",
+            "url": "https://news.google.com/rss/articles/moore",
+            "text": "DJ Moore injury update: Bills WR banged up in practice",
+            "posted_at": "Thu, 17 Sep 2026 23:10:00 GMT", "source_kind": "news",
+        }, {
+            "platform": "bluesky", "author": "rapsheet.bsky.social",
+            "author_name": "Ian Rapoport", "url": "https://bsky.app/profile/x/post/2",
+            "text": MOORE_POST, "posted_at": "2026-09-18T01:37:12.807Z", "verified": True,
+        }]
+        events = build_game_events(posts=posts, player_index=self._index(),
+                                   now="2026-09-18T02:17:00Z", hot_teams=["BUF"])
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0]["in_game_status"], "RETURN_QUESTIONABLE")
+        # ...and the detection latency is computed from the post, not the headline.
+        self.assertEqual(events[0]["detection_latency_seconds"], 2387)
+
     def test_club_outside_the_game_window_is_not_an_in_game_event(self):
         # A real player, a real injury word -- but his club is not playing, so
         # this is a roster item and must not appear as an in-game event.

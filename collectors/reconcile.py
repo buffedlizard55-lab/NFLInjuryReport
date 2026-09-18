@@ -539,6 +539,12 @@ def reconcile(
     # nothing, because the DJ Moore alert had already rolled out of the diff.
     merged_log: Dict[str, Dict[str, Any]] = {}
     for row in alert_log or []:
+        if row.get("kind") == "in-game" and not row.get("player_key"):
+            # An in-game alert that names no roster player is not an alert about
+            # a person. The first live run (2026-09-18T07:20Z) proved that such a
+            # row can only come from a bug -- an article title matched as a name --
+            # so it is dropped from the log instead of being carried for 72 hours.
+            continue
         rid = row.get("alert_id") or short_id("legacy", row.get("ts", ""), row.get("player", ""),
                                               row.get("to_status", ""))
         merged_log[rid] = dict(row, alert_id=rid)
