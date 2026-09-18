@@ -101,6 +101,13 @@ _EVENT_RULES = [
      "OUT_FOR_GAME", "ruled-out-for-game"),
     (re.compile(r"\bdone\s+for\s+the\s+(?:game|night)\b", re.I),
      "OUT_FOR_GAME", "ruled-out-for-game"),
+    # Game-day inactive: this is the league's own mechanism for "cannot play
+    # tonight", so it belongs on the in-game axis and nowhere else.
+    (re.compile(r"\b(?:listed|declared|ruled|marked)\s+(?:as\s+)?inactive\b"
+                r"|\bis\s+inactive\b|\binactive\s+(?:for|on)\s+(?:tonight|today|"
+                r"thursday|friday|saturday|sunday|monday)\b|\bwon'?t\s+play\b"
+                r"|\bwill\s+not\s+play\b|\bnot\s+playing\s+(?:tonight|today)\b", re.I),
+     "OUT_FOR_GAME", "ruled-out-for-game"),
     # --- returned ---------------------------------------------------------
     (re.compile(r"\breturn(?:s|ed)?\s+(?:to\s+the\s+(?:game|field|lineup|huddle)|"
                 r"after|from)\b|\bhas\s+returned\b|\bback\s+in\s+the\s+game\b"
@@ -142,6 +149,16 @@ INJURY_WORD_RE = re.compile(
 _SEVERE_RE = re.compile(
     r"\b(concussion|protocol|cart(?:ed)?|stretcher|ambulance|hospital|fracture|broken|"
     r"torn|tear|surgery|stinger|neck|head)\b", re.I)
+
+#: Practice-report language. An injury mentioned ONLY in a practice report is a
+#: roster item: it does not say whether the player can play tonight, and the
+#: in-game list exists to answer exactly that. Practice mentions used to reach
+#: the in-game feed as "INJURY_REPORTED" for clubs that were not even playing.
+_PRACTICE_RE = re.compile(
+    r"\b(practice|practiced|practising|practicing|limited\s+participant|"
+    r"full\s+participant|did\s+not\s+practice|dnp|estimated|walk-?through|"
+    r"rest\s+day|practice\s+report|practice\s+squad|practising|week\s+\d+\s+"
+    r"practice)\b", re.I)
 
 #: Words that only ever appear in a post-game stat recap. Used to REJECT a row as
 #: an injury signal: on 2026-09-18 ESPN's injuries feed carried
@@ -206,6 +223,11 @@ def classify_game_event(text: str) -> Dict[str, Any]:
     for rx, status, event in _EVENT_RULES:
         for sent in sentences:
             if rx.search(sent):
+                if status == "INJURY_REPORTED" and _PRACTICE_RE.search(sent):
+                    # No availability word matched and the sentence is about
+                    # practice, so all this says is "something happened at some
+                    # point in the week". Not an in-game event.
+                    continue
                 out["status"] = status
                 out["event"] = event
                 out["sentences"] = [sent]
@@ -530,6 +552,21 @@ def build_game_events(
         if not merged or merged.get("status") == "NONE":
             continue
         team = merged.get("team") or ""
+        # Two hard requirements, both learned from the first live run (2026-09-18):
+        #
+        #  1. The event must name a player the roster index knows. The headline
+        #     fallback ("Vikings Injury Report: ...", "Saints Thursday Injury
+        #     Report") produced pseudo-players that were really article titles;
+        #     inventing a person out of a headline is precisely the fabrication
+        #     this project forbids.
+        #  2. The club must be in the game window right now. A practice report
+        #     for a club that is not playing is a roster item, not an in-game
+        #     event, and the in-game list is only allowed to answer "can this
+        #     player play tonight?".
+        if not merged.get("player_key"):
+            continue
+        if not hot or team not in hot:
+            continue
         # Collect every source that agrees with the merged status, so the UI can
         # show both the verified insider post and the first-party feed entry.
         sources = []

@@ -79,6 +79,21 @@ class TestGameEventClassification(unittest.TestCase):
         self.assertEqual(
             classify_game_event("Allen completes to Shakir for 12 yards.")["status"], "NONE")
 
+    def test_game_day_inactive_is_out_for_the_game(self):
+        # Verbatim shape of ESPN's injuries-feed comment for a game-day inactive.
+        ev = classify_game_event("Bills' Ty Johnson is listed as inactive Thursday "
+                                 "against the Lions.")
+        self.assertEqual(ev["status"], "OUT_FOR_GAME")
+        self.assertEqual(classify_game_event("Sanders (knee) won't play tonight")["status"],
+                         "OUT_FOR_GAME")
+
+    def test_practice_report_line_is_not_an_in_game_event(self):
+        # Verbatim ESPN injuries-feed practice line (2026-09-18, Isaiah Adams).
+        ev = classify_game_event("Adams (knee) was a limited participant at the "
+                                 "Cardinals' practice Thursday, Josh Weinfuss of "
+                                 "ESPN.com reports.")
+        self.assertEqual(ev["status"], "NONE")
+
     def test_severity_mapping(self):
         self.assertEqual(event_severity("OUT_FOR_GAME"), "critical")
         self.assertEqual(event_severity("RETURN_QUESTIONABLE"), "medium")
@@ -161,7 +176,7 @@ class TestGameEventBuilding(unittest.TestCase):
                                    now="2026-09-18T05:51:44Z", hot_teams=["BUF"])
         self.assertEqual(events, [])
 
-    def test_headline_naming_a_player_without_a_roster_match_is_still_recorded(self):
+    def test_headline_for_a_roster_player_in_a_live_game_is_recorded(self):
         posts = [{
             "platform": "google-news", "author": "aol.com", "author_name": "aol.com",
             "url": "https://news.google.com/rss/articles/x",
@@ -169,10 +184,45 @@ class TestGameEventBuilding(unittest.TestCase):
             "posted_at": "Fri, 18 Sep 2026 01:39:00 GMT", "source_kind": "news",
         }]
         events = build_game_events(posts=posts, player_index=self._index(),
-                                   now="2026-09-18T05:51:44Z")
+                                   now="2026-09-18T05:51:44Z", hot_teams=["BUF", "DET"])
         self.assertEqual(len(events), 1)
         self.assertEqual(events[0]["player"], "Keon Coleman")
         self.assertEqual(events[0]["team"], "BUF")
+
+    def test_article_titles_never_become_players(self):
+        # The first live run (2026-09-18) turned headlines like these into
+        # "players" because the headline fallback accepted any leading phrase
+        # before a colon. They are article titles, not people.
+        posts = [{
+            "platform": "google-news", "author": "example.com", "author_name": "example.com",
+            "url": "https://news.google.com/rss/articles/vikings",
+            "text": "Vikings Injury Report: Thursday practice updates for Minnesota",
+            "posted_at": "Fri, 18 Sep 2026 22:00:00 GMT", "source_kind": "news",
+        }, {
+            "platform": "mastodon", "author": "someone",
+            "url": "https://example.invalid/concussion",
+            "text": "The NFL Concussion Protocol returned a player to action",
+            "posted_at": "2026-09-17T17:55:00Z",
+        }]
+        events = build_game_events(posts=posts, player_index=self._index(),
+                                   now="2026-09-18T07:20:00Z", hot_teams=["BUF", "DET"])
+        self.assertEqual(events, [])
+
+    def test_club_outside_the_game_window_is_not_an_in_game_event(self):
+        # A real player, a real injury word -- but his club is not playing, so
+        # this is a roster item and must not appear as an in-game event.
+        index = PlayerIndex()
+        index.add("Justin Jefferson", "MIN", "WR",
+                  "https://www.espn.com/nfl/player/_/id/4262921/justin-jefferson", "espn")
+        posts = [{
+            "platform": "google-news", "author": "example.com", "author_name": "example.com",
+            "url": "https://news.google.com/rss/articles/min",
+            "text": "Justin Jefferson injury update: Vikings WR hurt vs. Eagles",
+            "posted_at": "Fri, 18 Sep 2026 22:00:00 GMT", "source_kind": "news",
+        }]
+        events = build_game_events(posts=posts, player_index=index,
+                                   now="2026-09-18T07:20:00Z", hot_teams=["BUF", "DET"])
+        self.assertEqual(events, [])
 
     def test_post_with_no_player_and_no_club_is_dropped(self):
         posts = [{"platform": "mastodon", "text": "Someone got hurt out there tonight",

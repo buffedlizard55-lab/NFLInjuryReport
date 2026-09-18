@@ -114,14 +114,30 @@ def _in_game_alert(event: Dict[str, Any], *, now: str) -> Optional[Alert]:
 
 
 def _parse_ts(value: str) -> Optional[datetime]:
+    """ISO8601 or RFC-822 -> aware UTC datetime, or None.
+
+    RFC-822 (``Thu, 17 Sep 2026 23:59:00 GMT``) is what Google News RSS returns,
+    and those items are exactly the ones that must respect the in-game alert
+    window: before this branch they parsed as None, so the age of the event was
+    unknown and an out-of-window event was still alerted on.
+    """
+
+    from email.utils import parsedate_to_datetime
+
     if not value:
         return None
     v = value.strip().replace("Z", "+00:00")
     if re.match(r"^\d{4}-\d{2}-\d{2}$", value.strip()):
         v += "T00:00:00+00:00"
+    dt = None
     try:
         dt = datetime.fromisoformat(v)
     except ValueError:
+        try:
+            dt = parsedate_to_datetime(value.strip())
+        except (TypeError, ValueError):
+            return None
+    if dt is None:
         return None
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
