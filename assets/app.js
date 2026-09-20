@@ -21,7 +21,7 @@
   "use strict";
 
   var DATA_FILES = ["report", "alerts", "flags", "social", "scorecard", "meta", "health",
-                    "ingame"];
+                    "ingame", "players"];
   var state = {
     data: {},
     base: null,
@@ -43,6 +43,68 @@
     "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed";
 
   /* ------------------------------------------------------------ helpers */
+
+  function slugify(name) {
+    if (!name) return "";
+    return name
+      .toLowerCase()
+      .replace(/\b(jr|sr|ii|iii|iv)\b\.?/g, "")
+      .replace(/\./g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function playerPos(name, team) {
+    if (!name) return "";
+    var slug = slugify(name);
+    var rawSlug = name.toLowerCase().replace(/\./g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    var players = (state.data.players || {}).players || {};
+
+    // 1. Exact team:slug lookup in players.json
+    var candidates = [
+      (team || "") + ":" + slug,
+      (team || "") + ":" + rawSlug,
+      ":" + slug,
+      ":" + rawSlug
+    ];
+    for (var i = 0; i < candidates.length; i++) {
+      var p = players[candidates[i]];
+      if (p) {
+        if (p.positions && p.positions.length) return p.positions[0];
+        if (p.position) return p.position;
+      }
+    }
+
+    // 2. Lookup in report.json
+    var reportList = (state.data.report || {}).players || [];
+    for (var j = 0; j < reportList.length; j++) {
+      var rp = reportList[j];
+      if (rp.name && rp.position) {
+        if (slugify(rp.name) === slug || rp.name.toLowerCase() === name.toLowerCase()) {
+          if (!team || rp.team === team) return rp.position;
+        }
+      }
+    }
+
+    // 3. Fallback scan across players.json by team or name
+    if (team) {
+      for (var k in players) {
+        var rec = players[k];
+        if (rec.team === team && (rec.key === slug || rec.key === rawSlug || slugify(rec.name || "") === slug)) {
+          if (rec.positions && rec.positions.length) return rec.positions[0];
+          if (rec.position) return rec.position;
+        }
+      }
+    }
+    for (var k2 in players) {
+      var rec2 = players[k2];
+      if (rec2.key === slug || rec2.key === rawSlug || slugify(rec2.name || "") === slug) {
+        if (rec2.positions && rec2.positions.length) return rec2.positions[0];
+        if (rec2.position) return rec2.position;
+      }
+    }
+    return "";
+  }
 
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
@@ -285,8 +347,9 @@
     if (state.teamFilter && p.team !== state.teamFilter) return false;
     if (state.onlyDiscrepant && !(p.discrepancies || []).length) return false;
     if (state.query) {
-      var hay = (p.name + " " + p.team + " " + p.position + " " + p.injury +
-                 " " + p.game_status + " " + (p.comment || "")).toLowerCase();
+      var pos = p.position || playerPos(p.name, p.team);
+      var hay = (p.name + " " + p.team + " " + pos + " " + (p.injury || "") +
+                 " " + (p.game_status || "") + " " + (p.comment || "")).toLowerCase();
       if (hay.indexOf(state.query) === -1) return false;
     }
     return true;
@@ -392,7 +455,8 @@
     }
     tr.appendChild(tdName);
 
-    tr.appendChild(el("td", "pos", p.position || ""));
+    var pos = p.position || playerPos(p.name, p.team);
+    tr.appendChild(el("td", "pos", pos || "—"));
     tr.appendChild(el("td", null, p.injury || "—"));
 
     var prac = { FULL: "Full", LIMITED: "Limited", DNP: "DNP", NONE: "—" };
@@ -435,20 +499,27 @@
   function feedItems() {
     var out = [];
     ((state.data.alerts || {}).alerts || []).forEach(function (a) {
+      var pos = a.position || playerPos(a.player, a.team);
+      var whoStr = a.player + " (" + a.team + (pos ? " · " + pos : "") + ")";
       out.push({
         src: "official", platform: "official", sev: a.severity || "low",
-        ts: a.ts, who: a.player + " (" + a.team + ")",
+        ts: a.ts, who: whoStr,
         text: a.detail, url: (a.sources && a.sources[0] && a.sources[0].url) ||
               "https://www.nfl.com/injuries/",
         badge: a.to_status, kind: a.kind
       });
     });
     ((state.data.social || {}).posts || []).forEach(function (p) {
+      var extra = "";
+      if (p.matched_player) {
+        var pos = p.position || playerPos(p.matched_player, p.team);
+        extra = "re: " + p.matched_player + (p.team ? " (" + p.team + (pos ? " · " + pos : "") + ")" : (pos ? " (" + pos + ")" : ""));
+      }
       out.push({
         src: p.platform, platform: p.platform, sev: p.predicted_status === "OUT" ? "high" : "medium",
         ts: p.posted_at, who: p.author_name || p.author,
         text: p.text, url: p.url, badge: p.predicted_status,
-        extra: p.matched_player ? "re: " + p.matched_player : ""
+        extra: extra
       });
     });
     // In-game events. The durable log comes first (it survives runs where the
@@ -458,19 +529,23 @@
     ((state.data.alerts || {}).log || []).forEach(function (a) {
       if (a.kind !== "in-game") return;
       logged[a.event_key || a.alert_id] = 1;
+      var pos = a.position || playerPos(a.player, a.team);
+      var whoStr = a.player + " (" + a.team + (pos ? " · " + pos : "") + ")";
       out.push({
         src: "in-game", platform: "in-game alert", sev: a.severity || "high",
-        ts: a.ts, who: a.player + " (" + a.team + ")",
+        ts: a.ts, who: whoStr,
         text: a.detail, url: (a.sources && a.sources[0] && a.sources[0].url) || "",
         badge: igBadge(a.to_status), kind: "in-game"
       });
     });
     ((state.data.ingame || {}).events || []).forEach(function (e) {
       if (logged[e.event_key]) return;
+      var pos = e.position || playerPos(e.player, e.team);
+      var whoStr = e.player + " (" + e.team + (pos ? " · " + pos : "") + ")";
       out.push({
         src: "in-game", platform: "in-game", sev: e.severity || "high",
         ts: e.reported_at || e.first_seen_at,
-        who: e.player + " (" + e.team + ")",
+        who: whoStr,
         text: (e.evidence && e.evidence[0]) || "",
         url: (e.sources && e.sources[0] && e.sources[0].url) || "",
         badge: igBadge(e.in_game_status), kind: "in-game",
@@ -561,7 +636,8 @@
       var head = el("div", "head");
       head.appendChild(el("span", "platform-tag", a.kind));
       head.appendChild(el("strong", null, a.player));
-      head.appendChild(el("span", "muted", a.team + " " + (a.position || "")));
+      var pos = a.position || playerPos(a.player, a.team);
+      head.appendChild(el("span", "muted", a.team + (pos ? " · " + pos : "")));
       if (a.from_status) {
         head.appendChild(badge(a.from_status));
         head.appendChild(el("span", "arrow", "→"));
@@ -616,7 +692,8 @@
       var head = el("div", "head");
       head.appendChild(el("span", "platform-tag", "in-game"));
       head.appendChild(el("strong", null, a.player));
-      head.appendChild(el("span", "muted", a.team + " " + (a.position || "")));
+      var pos = a.position || playerPos(a.player, a.team);
+      head.appendChild(el("span", "muted", a.team + (pos ? " · " + pos : "")));
       head.appendChild(badge(igBadge(a.to_status)));
       if (a.source_verified) head.appendChild(el("span", "badge b-ACTIVE", "VERIFIED"));
       head.appendChild(el("span", "when muted", relative(a.ts) + " · " + stamp(a.ts)));
@@ -927,14 +1004,17 @@
           (block.injuries || []).forEach(function (it) {
             var a = it.athlete || {};
             var team = (a.team || {}).abbreviation || "";
+            var posObj = a.position || {};
+            var pos = (posObj.abbreviation || posObj.displayName || posObj.name || "") || playerPos(a.displayName, team);
             var card = ((a.links || []).filter(function (l) {
               return (l.rel || []).indexOf("playercard") >= 0;
             })[0] || {}).href || "https://www.espn.com/nfl/";
+            var whoStr = (a.displayName || "") + " (" + team + (pos ? " · " + pos : "") + ")";
             items.push({
               src: "official", platform: "espn-live", sev:
                 it.status === "Out" ? "high" : "medium",
               ts: (it.date || "").replace(/(\d{2}:\d{2})Z$/, "$1:00Z"),
-              who: (a.displayName || "") + " (" + team + ")",
+              who: whoStr,
               text: it.shortComment || it.longComment || "",
               url: card, badge: (it.status || "UNKNOWN").toUpperCase(), live: true
             });

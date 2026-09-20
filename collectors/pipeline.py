@@ -558,6 +558,7 @@ def collect(args: argparse.Namespace) -> int:
             "watched_handles": {"verified": verified_handles,
                                 "candidates": candidate_handles}})
     _write(os.path.join(STATE_DIR, "players.json"), index.to_dict())
+    _write(os.path.join(LATEST_DIR, "players.json"), index.to_dict())
     _write(os.path.join(STATE_DIR, "reporters.json"), registry.to_dict())
     _write(os.path.join(STATE_DIR, "watched.json"),
            {"handles": candidate_handles, "verified": verified_handles,
@@ -685,6 +686,7 @@ def bootstrap() -> int:
                         "network access. Run it, or let the scheduled workflow do it."),
     })
     _write(os.path.join(STATE_DIR, "players.json"), index.to_dict())
+    _write(os.path.join(LATEST_DIR, "players.json"), index.to_dict())
     _write(os.path.join(STATE_DIR, "reporters.json"), registry.to_dict())
     _write(os.path.join(STATE_DIR, "watched.json"), {"handles": []})
     print(f"bootstrap: wrote sample data ({report['counts']['players']} players, "
