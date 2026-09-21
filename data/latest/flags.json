@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T02:51:31Z",
+ "generated_at": "2026-09-21T02:52:37Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -914,25 +914,13 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 74 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: :sam-darnold (official report lists the player under a different club); :treveyon-henderson (official report lists the player under a different club); :ty-okada (official report lists the player under a different club); PHI:byron-young (official report lists the player under a different club); HOU:aaron-banks (official report lists the player under a different club); HOU:warren-brinson (official report lists the player under a different club); HOU:brandon-cisse (official report lists the player under a different club); HOU:javon-hargrave (official report lists the player under a different club); HOU:ty-ron-hopper (official report lists the player under a different club); HOU:barryn-sorrell (official report lists the player under a different club); HOU:zach-bako-bewele (official report lists the player under a different club); HOU:lukas-van-ness (official report lists the player under a different club); HOU:devonte-wyatt (official report lists the player under a different club); NYJ:cedric-gray (official report lists the player under a different club); NYJ:james-williams (official report lists the player under a different club); PHI:blake-cashman (official report lists the player under a different club); PHI:jauan-jennings (official report lists the player under a different club); PHI:kyler-murray (official report lists the player under a different club); PHI:brian-o-neill (official report lists the player under a different club); PHI:andrew-van-ginkel (official report lists the player under a different club) (+54 more). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "48 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: USA Today said OUT for Alec Pierce (official: see link); Orange County Register said ACTIVE for Ladd McConkey (official: see link); Kansas City Star said OUT for Alec Pierce (official: see link); Charlotte Observer said OUT for Alec Pierce (official: see link); 4for4 said QUESTIONABLE for Alec Pierce (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: usatoday.com said OUT for Alec Pierce (official: see link); Orange County Register said ACTIVE for Ladd McConkey (official: see link); Kansas City Star said OUT for Alec Pierce (official: see link); Charlotte Observer said OUT for Alec Pierce (official: see link); 4for4 said QUESTIONABLE for Alec Pierce (official: see link)",
    "evidence": [
     {
-     "label": "USA Today: Alec Pierce OUT",
+     "label": "usatoday.com: Alec Pierce OUT",
      "url": "https://www.nfl.com/players/alec-pierce/"
     },
     {
