@@ -165,18 +165,26 @@
     if (status === "OUT_FOR_GAME") return "OUT";
     if (status === "RETURN_QUESTIONABLE") return "QUESTIONABLE";
     if (status === "RETURNED") return "ACTIVE";
+    if (status === "INJURY_REPORTED" || status === "EVALUATED") return "QUESTIONABLE";
     return "UNKNOWN";
   }
 
-  /* Browser-side mirror of the collector's in-game rules. Deliberately narrow:
-     a post only counts when it says the player is out, questionable to return,
-     back, or being evaluated -- the same language the pipeline accepts. */
+  /* Browser-side mirror of the collector's in-game rules. Must stay in sync
+     with collectors/ingame.py — when the pipeline adds a pattern, this must
+     gain it too so the live browser layer does not lag behind. Covers the
+     same vocabulary the pipeline uses: ruled-out-for-game, inactive,
+     carted/locker-room/evaluated, questionable-to-return and returns. */
   function classifyIngame(text) {
     var t = (text || "").toLowerCase();
-    if (/will not return|ruled out for the (rest|remainder)|out for the (game|rest)|\b(has been )?ruled out\b|(left|exited) (the game|with)|carted off|taken (in)?to the locker room|locker room for x-?rays/.test(t)) return "OUT_FOR_GAME";
-    if (/questionable to return|return is questionable/.test(t)) return "RETURN_QUESTIONABLE";
-    if (/has returned|returned to the game|back (on the field|in the game)/.test(t)) return "RETURNED";
+    if (/ruled\s+out[^.]{0,60}?remainder|out\s+for\s+the\s+(?:remainder|rest)\s+of\s+the\s+(?:game|half|night|contest)|out\s+for\s+the\s+(?:game|night)|\b(?:has|have|had|was|were|is|are|been)?\s*ruled\s+out\b/.test(t)) return "OUT_FOR_GAME";
+    if (/will\s+not\s+return|won'?t\s+return|not\s+expected\s+to\s+return|no\s+longer\s+in\s+the\s+game|done\s+for\s+the\s+(?:game|night)/.test(t)) return "OUT_FOR_GAME";
+    if (/(?:listed|declared|ruled|marked)\s+(?:as\s+)?inactive|\bis\s+inactive\b|inactive\s+(?:for|on)\s+(?:tonight|today|thursday|friday|saturday|sunday|monday)|won'?t\s+play|will\s+not\s+play|not\s+playing\s+(?:tonight|today)/.test(t)) return "OUT_FOR_GAME";
+    if (/carted?\s+off|carried\s+off|helped\s+off\s+the\s+field|taken\s+(?:in)?to\s+the\s+locker\s+room|went\s+(?:in)?to\s+the\s+locker\s+room|headed\s+to\s+the\s+locker\s+room/.test(t)) return "EVALUATED";
+    if (/(?:being|under)\s+evaluat|evaluat(?:ed|ing)\s+for|getting\s+(?:an?\s+)?(?:x-?rays?|mri)|x-?rays?\s+(?:were|are|is|on)/.test(t)) return "EVALUATED";
+    if (/questionable\s+to\s+return|uncertain\s+to\s+return|status\s+(?:is\s+)?questionable[^.]{0,40}return/.test(t)) return "RETURN_QUESTIONABLE";
+    if (/return(?:s|ed)?\s+(?:to\s+the\s+(?:game|field|lineup|huddle)|after|from)|has\s+returned|back\s+in\s+the\s+game|re-?entered\s+the\s+game|returned\s+to\s+action/.test(t)) return "RETURNED";
     if (/being evaluated|in the medical tent|checked for/.test(t)) return "EVALUATED";
+    if (/suffer(?:ed|s)?|injured|injur(?:y|ies)|hurt|exits?|exited|leaves?|left[^.]{0,60}(?:with|on|during|vs\.?|against|in)|injur(?:y|ies)\s+update|exits?\s+(?:with|after)|(?:out|doubtful|questionable)\s+(?:with|due\s+to)/.test(t)) return "INJURY_REPORTED";
     return "NONE";
   }
 
@@ -515,10 +523,16 @@
         var pos = p.position || playerPos(p.matched_player, p.team);
         extra = "re: " + p.matched_player + (p.team ? " (" + p.team + (pos ? " · " + pos : "") + ")" : (pos ? " (" + pos + ")" : ""));
       }
+      // p.predicted_status is OUT/DOUBTFUL/QUESTIONABLE/ACTIVE per the collector's
+      // score engine. UNKNOWN means the post mentioned an injury but did not carry a
+      // roster designation — show it as an injury mention, not a silent UNKNOWN badge.
+      var pbadge = p.predicted_status || "UNKNOWN";
+      var psev = (pbadge === "OUT" ? "high" : (pbadge === "UNKNOWN" ? "low" : "medium"));
+      if (pbadge === "UNKNOWN") pbadge = "INJURY";
       out.push({
-        src: p.platform, platform: p.platform, sev: p.predicted_status === "OUT" ? "high" : "medium",
+        src: p.platform, platform: p.platform, sev: psev,
         ts: p.posted_at, who: p.author_name || p.author,
-        text: p.text, url: p.url, badge: p.predicted_status,
+        text: p.text, url: p.url, badge: pbadge,
         extra: extra
       });
     });
@@ -583,8 +597,9 @@
       var r1 = el("div", "row1");
       r1.appendChild(el("span", "platform-tag", i.platform));
       r1.appendChild(el("span", "who", i.who));
-      if (i.badge && i.badge !== "UNKNOWN") r1.appendChild(badge(i.badge));
-      else if (i.src !== "official") r1.appendChild(el("span", "platform-tag", "mention"));
+      if (i.badge && i.badge !== "UNKNOWN" && i.badge !== "INJURY" && i.badge !== "NONE") r1.appendChild(badge(i.badge));
+      else if (i.src !== "official" && (!i.badge || i.badge === "UNKNOWN" || i.badge === "NONE")) r1.appendChild(el("span", "platform-tag", "mention"));
+      else if (i.badge === "INJURY") r1.appendChild(el("span", "platform-tag", "injury mention"));
       if (i.live) r1.appendChild(el("span", "badge b-ACTIVE", "LIVE"));
       r1.appendChild(el("span", "when",
         (relative(i.ts) ? relative(i.ts) + " · " : "") + stamp(i.ts)));
@@ -623,8 +638,11 @@
   function renderAlerts() {
     var host = $("#alertList");
     host.innerHTML = "";
-    var alerts = (state.data.alerts || {}).alerts || [];
-    $("#alertCount").textContent = alerts.length || "";
+    // Roster-change alerts only — in-game events have their own panel (#ingameList).
+    // Without this filter the same in-game incident renders twice (here and in renderIngame)
+    // whenever the alert kind is "in-game".
+    var allAlerts = (state.data.alerts || {}).alerts || [];
+    var alerts = allAlerts.filter(function (a) { return a.kind !== "in-game"; });
     if (!alerts.length) {
       host.appendChild(el("div", "empty",
         "No status changes since the previous snapshot. Alerts are produced by diffing " +
@@ -676,7 +694,10 @@
     }
     var badgeHost = $("#ingameCount");
     if (badgeHost) badgeHost.textContent = rows.length || "";
-    var rosterCount = (((state.data.alerts || {}).alerts) || []).length;
+    // rosterCount is roster-only (kind !== "in-game") so we do not double-count
+    // the same incident that appears both in alerts and in the durable log.
+    var allAlerts = ((state.data.alerts || {}).alerts) || [];
+    var rosterCount = allAlerts.filter(function (a) { return a.kind !== "in-game"; }).length;
     var ac = $("#alertCount");
     if (ac) ac.textContent = (rosterCount + rows.length) || "";
 
@@ -971,11 +992,24 @@
   }
 
   function renderBadges() {
+    // report.counts.alerts counts ALL alerts including in-game (see reconcile).
+    // Subtract in-game alerts that are also in counts so the header badge is
+    // roster + live, not roster + 2*in-game.
     var rep = state.data.report || {};
-    var roster = (rep.counts && rep.counts.alerts) || 0;
+    var totalAlerts = (rep.counts && rep.counts.alerts) || 0;
+    var totalInGameAlerts = (rep.counts && rep.counts.in_game_alerts) || 0;
+    var roster = totalAlerts - totalInGameAlerts;
+    if (roster < 0) roster = 0;
+    // Fall back to filtered alerts when report counts are absent (bootstrap).
+    if (!rep.counts || rep.counts.alerts === undefined) {
+      var allA = ((state.data.alerts || {}).alerts) || [];
+      roster = allA.filter(function (a) { return a.kind !== "in-game"; }).length;
+    }
     var ingame = (((state.data.alerts || {}).log) || []).filter(function (a) {
       return a.kind === "in-game";
     }).length;
+    // If log is empty but ingame.json still carries events, count those.
+    if (!ingame) ingame = (((state.data.ingame || {}).events) || []).length;
     $("#alertCount").textContent = (roster + ingame) || "";
   }
 

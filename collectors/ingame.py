@@ -526,11 +526,76 @@ def build_game_events(
             # (ESPN news `categories`, club feeds) or a headline names the player
             # ("DJ Moore: Ruled out ..."). A post that merely says "a receiver" is
             # not attached to anyone.
+            # Also handle ESPN news `categories` athlete list which names players
+            # without a colon headline (e.g. league news wire).
             team = team_hint or (post.get("team") or "") or ""
             headline_hint = ""
             m = re.match(r"^\s*([A-Z][\w.'\-]+(?:\s+[A-Z][\w.'\-]+){0,3})\s*:", text)
             if m:
                 headline_hint = m.group(1).strip()
+            # ESPN news carries athletes in raw["athletes"] (verified 2026-09-18).
+            # A single wire item can name multiple athletes (e.g. "Will Chris
+            # Jones, Alec Pierce Play?" lists one Chief and one Colt), so each
+            # attributable athlete is added separately rather than picking only one.
+            raw_athletes = (post.get("raw") or {}).get("athletes") or []
+            athletes_hint = ""
+            if raw_athletes and player_index is not None:
+                added = 0
+                for ath in raw_athletes:
+                    cand = player_index.find_in_text(ath, team_hint=team_hint)
+                    if cand:
+                        a_team = cand.get("team") or team_hint or (post.get("team") or "") or ""
+                        a_player = cand.get("name") or ath
+                        a_key = cand.get("key") or ""
+                        a_positions = cand.get("positions") or []
+                        a_pos = a_positions[0] if a_positions else ""
+                        add(a_team, a_player, a_key, a_pos, text,
+                            source=post.get("author") or post.get("platform") or "",
+                            platform=post.get("platform") or "",
+                            author=post.get("author_name") or post.get("author") or "",
+                            url=post.get("url") or "",
+                            posted_at=post.get("posted_at") or "",
+                            verified=bool(post.get("verified")),
+                            verification_detail=post.get("verification_detail") or "",
+                            source_kind=post.get("source_kind") or "")
+                        added += 1
+                        athletes_hint = ath
+                if added:
+                    continue
+                # No athlete matched the roster — treat the first athlete name as
+                # the hint so the player_key check below drops it rather than
+                # silently creating a pseudo-player from a headline.
+                if raw_athletes:
+                    headline_hint = raw_athletes[0].strip() or headline_hint
+            # For headlines that list multiple players without a structured
+            # athletes array (Google News team queries), scan the haystack for
+            # every roster name. This captures "Chris Jones, Alec Pierce" in
+            # one title without requiring two separate headlines.
+            if player_index is not None and not team_hint:
+                # team_hint is ambiguous when the title names two clubs (e.g.
+                # "Colts-Chiefs"), so we scan for all full-name hits and emit
+                # one event per player rather than collapsing to None.
+                import re as _re2
+                from .models import slugify as _slugify2
+                low_nopunct2 = _re2.sub(r"[^a-z0-9\s]", " ", text.lower())
+                haystack2 = _slugify2(low_nopunct2)
+                all_hits = [
+                    rec for rec in player_index.players.values()
+                    if rec["key"] and len(rec["key"]) >= 6 and rec["key"] in haystack2
+                ]
+                if len(all_hits) > 1:
+                    for rec in all_hits:
+                        add(rec.get("team") or "", rec.get("name") or "", rec.get("key") or "",
+                            (rec.get("positions") or [None])[0] or "", text,
+                            source=post.get("author") or post.get("platform") or "",
+                            platform=post.get("platform") or "",
+                            author=post.get("author_name") or post.get("author") or "",
+                            url=post.get("url") or "",
+                            posted_at=post.get("posted_at") or "",
+                            verified=bool(post.get("verified")),
+                            verification_detail=post.get("verification_detail") or "",
+                            source_kind=post.get("source_kind") or "")
+                    continue
             hint = ((post.get("raw") or {}).get("player_hint") or "").strip() or headline_hint
             if not team and not hint:
                 continue
@@ -583,7 +648,7 @@ def build_game_events(
         #     player play tonight?".
         if not merged.get("player_key"):
             continue
-        if not hot or team not in hot:
+        if hot and team not in hot:
             continue
         # Collect every source that agrees with the merged status, so the UI can
         # show both the verified insider post and the first-party feed entry.

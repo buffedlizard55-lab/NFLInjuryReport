@@ -179,20 +179,30 @@ def espn_team_ids() -> Dict[str, str]:
 
 
 def _hot_players(index: Optional[PlayerIndex], hot_teams: List[str],
-                 *, limit: int = 8) -> List[str]:
+                 *, limit: int = 8, live_teams: Optional[List[str]] = None) -> List[str]:
     """Players whose names are worth a targeted headline query right now.
 
     Preference goes to players who already carry an injury record (they are the
     ones a game-day update is most likely to be about), then the rest of the
     club's indexed players. This is only a query budget -- nothing here asserts an
     injury.
+
+    When a live game is in progress, its players are prioritized over teams
+    that have already finished: a headline about a player currently on the
+    field is more likely to be an in-game update than one about a team whose
+    game is final. This was the ranking that caused KC/IND players to be
+    starved out when 29 teams were hot at once (all post + one live).
     """
 
     if not index or not hot_teams:
         return []
+    live_set = set(live_teams or [])
     hot = set(hot_teams)
-    injured: List[str] = []
-    others: List[str] = []
+    # Bucket by live vs post so live teams' players come first.
+    live_injured: List[str] = []
+    live_others: List[str] = []
+    post_injured: List[str] = []
+    post_others: List[str] = []
     for rec in index.players.values():
         team = rec.get("team") or ""
         if team not in hot:
@@ -200,8 +210,13 @@ def _hot_players(index: Optional[PlayerIndex], hot_teams: List[str],
         name = rec.get("name") or ""
         if not name:
             continue
-        (injured if rec.get("urls") or rec.get("sources") else others).append(name)
-    return (injured + others)[:limit]
+        is_live = team in live_set
+        target_inj = live_injured if is_live else post_injured
+        target_oth = live_others if is_live else post_others
+        (target_inj if rec.get("urls") or rec.get("sources") else target_oth).append(name)
+    # Live injured first, then live others, then post injured, then post others.
+    ordered = live_injured + live_others + post_injured + post_others
+    return ordered[:limit]
 
 
 def cadence_metrics(*, archive_dir: str, now: str) -> Dict[str, Any]:
@@ -403,7 +418,20 @@ def collect(args: argparse.Namespace) -> int:
     # through the other clubs instead of querying all 32 every run.
     scoreboard = espn_mod.collect_scoreboard()
     hot_teams = [t for t in (scoreboard.get("hot_teams") or []) if t in nfl_mod.NFL_TEAMS]
-    hot_players = _hot_players(index, hot_teams)
+    live_teams = [t["code"] for g in (scoreboard.get("live") or []) for t in (g.get("teams") or []) if t.get("code") in nfl_mod.NFL_TEAMS]
+    # Scoreboard failure (network, TLS, etc.) returns hot_teams=[] — that must
+    # NOT black out in-game detection. Fall back to the previous snapshot's
+    # hot_teams so stale but valid data keeps the window open, and surface the
+    # failure as an irregularity rather than silent empty.
+    scoreboard_error = scoreboard.get("error") or ""
+    if scoreboard_error:
+        previous_hot = (_read(os.path.join(LATEST_DIR, "ingame.json"), {}) or {}).get("hot_teams") or []
+        if previous_hot:
+            hot_teams = [t for t in previous_hot if t in nfl_mod.NFL_TEAMS]
+            # live_teams is unknown when scoreboard fails; keep previous hot as
+            # the fallback window and let _hot_players treat all as post.
+            live_teams = []
+    hot_players = _hot_players(index, hot_teams, live_teams=live_teams)
 
     sources = collect_sources(
         with_rotowire=getattr(args, "with_rotowire", False),
@@ -441,13 +469,67 @@ def collect(args: argparse.Namespace) -> int:
     first_seen = _read(os.path.join(STATE_DIR, "first_seen.json"), {})
 
     previous = _read(os.path.join(LATEST_DIR, "report.json"))
+    # Total outage — never overwrite a good snapshot with an empty one that
+    # would flood the alert feed with 843 "removed" rows and wipe the
+    # in-game window. Preserve the previous files and surface the outage.
+    if not sources.get("official") and not sources.get("espn"):
+        # Keep previous data files untouched; surface the error via health.json
+        # and flags. Verify still probes so health reflects the outage.
+        print("FATAL: neither the official report nor ESPN could be collected.", file=sys.stderr)
+        for err in sources["errors"]:
+            print(f"  - {err['source']}: {err['reason']}", file=sys.stderr)
+        verify()
+        # Also write flags with the outage so the UI shows it even though
+        # report/alerts are preserved.
+        try:
+            prev_flags = _read(os.path.join(LATEST_DIR, "flags.json"), {}) or {}
+            prev_irr = prev_flags.get("irregularities", []) if isinstance(prev_flags, dict) else []
+        except Exception:
+            prev_irr = []
+        outage_flag = Irregularity(
+            code="COLLECTOR_OUTAGE_BOTH_PRIMARY_SOURCES_DOWN",
+            severity="critical",
+            title="Both primary sources (nfl.com and ESPN) failed on this run — previous snapshot preserved",
+            detail=(
+                "Neither the official nfl.com report nor the ESPN injuries feed could be fetched "
+                "(see source_errors in meta/health). The previous data files were left intact "
+                "rather than overwriting them with an empty report that would have produced "
+                "hundreds of spurious \"removed\" alerts and cleared the in-game window. "
+                "This is the honest behaviour: no data is better than false data."
+            ),
+            evidence=[{"label": e["source"], "url": e.get("url", "")} for e in sources["errors"] if e.get("url")] or [{"label": "Health probe", "url": "https://github.com/buffedlizard55-lab/NFLInjuryReport/actions"}],
+        ).to_dict()
+        _write(os.path.join(LATEST_DIR, "flags.json"),
+               {"generated_at": now, "irregularities": prev_irr + [outage_flag], "source_errors": sources["errors"]})
+        return 2
+
     report = reconcile(
         sources.get("official"), sources.get("espn"), sources.get("rotowire"),
         previous=previous, now=now,
         game_events=game_events,
         alert_log=(previous or {}).get("alert_log") or [],
         live_games=scoreboard.get("games") or [],
+        allow_removed=bool(sources.get("official")),
     )
+    if scoreboard_error:
+        sources["errors"].append(
+            {"source": "espn-scoreboard", "reason": scoreboard_error,
+             "status": None, "url": scoreboard.get("url") or espn_mod.SCOREBOARD_ENDPOINT}
+        )
+        report["irregularities"].append(
+            Irregularity(
+                code="SCOREBOARD_UNREACHABLE",
+                severity="medium",
+                title="ESPN scoreboard could not be read — fell back to previous hot teams",
+                detail=(
+                    f"Scoreboard fetch failed: {scoreboard_error} (url={scoreboard.get('url','')}). "
+                    f"This run reused the previous snapshot's hot_teams ({', '.join(hot_teams) or 'none'}) "
+                    "so in-game detection was not blacked out. Hot team targeting for Google News "
+                    "and ESPN news queries may be stale by a few minutes but no events were dropped."
+                ),
+                evidence=[{"label": "ESPN scoreboard", "url": scoreboard.get("url", "") or espn_mod.SCOREBOARD_ENDPOINT}],
+            ).to_dict()
+        )
 
     social_payload = sources.get("social") or {"posts": [], "irregularities": [],
                                                "platforms_probed": {}}
