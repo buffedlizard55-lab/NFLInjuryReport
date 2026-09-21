@@ -245,6 +245,12 @@ ours — and the two the user asked about are in the list.
   pipeline does not have.
 * Roster designations still come from nfl.com/ESPN; in-game events are a
   *reporting* trail, not a league status, and are labelled that way.
+* The game summary's box score only fills once the game starts: for a game in
+  `pre` state the player list is legitimately empty (observed live 2026-09-21
+  on NYG @ LAR, flagged as `ESPN_ROSTER_EMPTY` — the degradation working as
+  designed). Pre-game coverage for the second team therefore starts at
+  kickoff; a pre-game per-team roster fallback (ESPN's keyless team-roster
+  endpoint) is the natural next step.
 
 ---
 
