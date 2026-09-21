@@ -215,7 +215,8 @@ class TestInGameWiring(unittest.TestCase):
                        "latency_ms": 10},
         }
         empty_rss = "<rss><channel></channel></rss>"
-        with mock.patch.object(nfl_mod, "collect", return_value=self.official), \
+        with mock.patch.object(pipeline, "_now", return_value="2026-09-18T02:17:00Z"), \
+             mock.patch.object(nfl_mod, "collect", return_value=self.official), \
              mock.patch.object(espn_mod, "collect", return_value=self.espn), \
              mock.patch.object(espn_mod, "collect_scoreboard",
                                return_value={"games": [{"id": "401872932", "state": "in",
