@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T02:56:12Z",
+ "generated_at": "2026-09-21T02:57:21Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -886,18 +886,6 @@
     {
      "label": "Official NFL injury report",
      "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for IND @ KC parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872945 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872945"
     }
    ]
   },
