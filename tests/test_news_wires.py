@@ -56,6 +56,15 @@ class TestEspnNews(unittest.TestCase):
         self.assertIn("Jack Campbell", campbell.raw["athletes"])
         self.assertEqual(campbell.matched_player, "")
 
+    def test_serialisation_keeps_raw_attribution_metadata(self):
+        # The pipeline turns SocialPost objects into dictionaries before the
+        # in-game matcher runs. Dropping raw here loses ESPN's athlete categories
+        # and RotoWire's explicit player hint, which causes valid reports to be
+        # silently missed.
+        campbell = self.payload["items"][0]
+        serialised = campbell.to_dict()
+        self.assertIn("Jack Campbell", serialised["raw"]["athletes"])
+
 
 class TestRotowireNews(unittest.TestCase):
     def setUp(self):

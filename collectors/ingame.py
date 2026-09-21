@@ -517,7 +517,19 @@ def build_game_events(
         # scan: a club-targeted article that names two players ("Kelce and
         # Pierce both out") is still about both, and "all injury reports for
         # all players in ongoing games" means the second one is not dropped.
-        named = player_index.full_name_hits(text) if player_index else []
+        named = (player_index.full_name_hits(text, team_hint=team_hint)
+                 if player_index else [])
+        if named and not team_hint and len(hint_codes) > 1:
+            # A story that names two clubs (usually the two opponents) gives no
+            # single club constraint. If the same full name exists under more
+            # than one club, emitting every copy would be a fabricated duplicate;
+            # keep only names whose roster identity is unique in the index.
+            by_name: Dict[str, List[str]] = {}
+            for key in named:
+                rec = player_index.players[key]
+                by_name.setdefault(rec.get("key") or "", []).append(key)
+            named = [key for key in named
+                     if len(by_name.get(player_index.players[key].get("key") or "", [])) == 1]
         if named:
             for k in named:
                 rec = player_index.players[k]
@@ -537,6 +549,12 @@ def build_game_events(
 
         match = (player_index.find_in_text(text, team_hint=team_hint)
                  if player_index else None)
+        if len(hint_codes) > 1:
+            # Surname/initial matching cannot decide which opponent's player a
+            # multi-team article means. Full-name matches were handled above;
+            # this guard stops an outlet/place name such as "Boston Herald" from
+            # becoming a player through the unique-surname fallback.
+            match = None
         team = ""
         player = ""
         player_key = ""
@@ -647,7 +665,12 @@ def build_game_events(
         #     player play tonight?".
         if not merged.get("player_key"):
             continue
-        if hot and team not in hot:
+        # No scoreboard game window means there is no evidence that this is an
+        # in-game report. Previously an empty ``hot`` list let every ESPN injury
+        # comment through, including on weeks with no game in progress (or after
+        # a scoreboard outage with no previous window). An empty/unknown window
+        # must fail closed; showing no live event is safer than inventing one.
+        if not hot or team not in hot:
             continue
         # Collect every source that agrees with the merged status, so the UI can
         # show both the verified insider post and the first-party feed entry.

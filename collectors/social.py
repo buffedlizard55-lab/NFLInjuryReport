@@ -142,6 +142,12 @@ class SocialPost:
             "verification_detail": self.verification_detail,
             "author_did": self.author_did, "source_kind": self.source_kind,
             "in_game_status": self.in_game_status, "game_event": self.game_event,
+            # Keep source metadata used by the event builder (ESPN athlete/team
+            # categories and RotoWire's explicit player hint). It is evidence,
+            # not a guessed player assignment, and dropping it here made those
+            # carefully parsed fields unavailable after the pipeline serialised
+            # the post between collectors.
+            "raw": self.raw,
         }
 
 
@@ -340,8 +346,8 @@ GOOGLE_NEWS_RSS = "https://news.google.com/rss/search"
 #:      _hot_players) — a headline about an in-game injury often names only the
 #:      player and never the club, so club-level queries alone cannot find it.
 #:      Outside a game window the pipeline passes a small fallback budget.
-#:      GOOGLE_NEWS_PLAYER_QUERY_CAP is only a hard safety bound on request
-#:      volume (several simultaneous games, unexpectedly large rosters).
+#:      The fallback cap below is not applied to players on explicitly live
+#:      teams: silently truncating those names recreates the missing-player bug.
 #:   4. a rotating slice of the other 28 clubs so full coverage is still reached
 #:      several times an hour without 32 simultaneous queries.
 GOOGLE_NEWS_PLAYER_QUERY_CAP = 300
@@ -569,6 +575,7 @@ def collect_social(
     candidate_handles: Iterable[str] = (),
     hot_teams: Iterable[str] = (),
     hot_players: Iterable[str] = (),
+    live_teams: Iterable[str] = (),
     team_names: Optional[Dict[str, str]] = None,
     enabled: Optional[Dict[str, bool]] = None,
     max_posts: int = 1500,
@@ -596,6 +603,7 @@ def collect_social(
     watched = [h for h in dict.fromkeys(watched_handles) if h]
     candidates = [h for h in dict.fromkeys(candidate_handles) if h and h not in watched]
     hot_teams = [t for t in dict.fromkeys(hot_teams) if t]
+    live_teams = {t for t in dict.fromkeys(live_teams) if t}
 
     def record(label: str, res: Dict[str, Any], kind: str) -> None:
         fetched = res.get("posts") or []
@@ -671,7 +679,10 @@ def collect_social(
             for code in hot_teams:
                 name = (team_names or {}).get(code, code)
                 queries.append((google_news_injury_query(name), f"hot-team:{code}"))
-            for name in list(dict.fromkeys(hot_players))[:GOOGLE_NEWS_PLAYER_QUERY_CAP]:
+            player_queries = list(dict.fromkeys(hot_players))
+            if not live_teams:
+                player_queries = player_queries[:GOOGLE_NEWS_PLAYER_QUERY_CAP]
+            for name in player_queries:
                 queries.append((google_news_injury_query(name), "hot-player"))
             rotate = rotation_slice(sorted(team_names or {}), now=now,
                                     size=GOOGLE_NEWS_ROTATION_SIZE,
