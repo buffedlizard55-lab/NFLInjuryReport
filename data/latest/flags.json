@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T00:03:06Z",
+ "generated_at": "2026-09-21T01:04:43Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -890,22 +890,10 @@
    ]
   },
   {
-   "code": "STALE_SNAPSHOT",
-   "severity": "medium",
-   "title": "Snapshot is 59.6 hours newer than the last published one",
-   "detail": "The gap between published snapshots exceeded 30h, which suggests the collector did not run or was rate-limited. Latency claims on the site should be read against this.",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "47 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Seattle Seahawks said OUT for Brandon Pili (official: see link); TribLIVE.com said ACTIVE for Rico Dowdle (official: see link); CBS Sports said OUT for Jayden Daniels (official: see link); Field Gulls said OUT for Brandon Pili (official: see link); Seattle Seahawks said ACTIVE for Nick Emmanwori (official: see link)",
+   "title": "45 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Seattle Seahawks said OUT for Brandon Pili (official: see link); TribLIVE.com said ACTIVE for Rico Dowdle (official: see link); sports.yahoo.com said ACTIVE for Mansoor Delane (official: see link); CBS Sports said OUT for Jayden Daniels (official: see link); Field Gulls said OUT for Brandon Pili (official: see link)",
    "evidence": [
     {
      "label": "Seattle Seahawks: Brandon Pili OUT",
@@ -916,16 +904,16 @@
      "url": "https://www.espn.com/nfl/player/_/id/4038815/rico-dowdle"
     },
     {
+     "label": "sports.yahoo.com: Mansoor Delane ACTIVE",
+     "url": "https://www.nfl.com/players/mansoor-delane/"
+    },
+    {
      "label": "CBS Sports: Jayden Daniels OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4426348/jayden-daniels"
     },
     {
      "label": "Field Gulls: Brandon Pili OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4259651/brandon-pili"
-    },
-    {
-     "label": "Seattle Seahawks: Nick Emmanwori ACTIVE",
-     "url": "https://www.nfl.com/players/nick-emmanwori/"
     }
    ]
   },
@@ -976,7 +964,7 @@
   {
    "code": "COLLECTOR_CADENCE_DEGRADED",
    "severity": "medium",
-   "title": "Longest gap between collector runs is 412 minutes",
+   "title": "Longest gap between collector runs is 3575 minutes",
    "detail": "The workflow is scheduled every 5 minutes, but GitHub throttles and queues scheduled workflows, so this is the cadence the collector actually achieved over the archived runs. Alerts can only be as timely as this number: see the cadence panel on the site, which is fed from the same measurement.",
    "evidence": [
     {
