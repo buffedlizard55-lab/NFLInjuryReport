@@ -115,15 +115,13 @@ class TestEmptyPayloadIsFlagged(unittest.TestCase):
 class TestParseRoster(unittest.TestCase):
     """Game-day roster extraction from ESPN's game summary.
 
-    HONESTY NOTE: the payload below is the `site` API v2 box-score shape the
-    public espn.com game centre reads (boxscore.teams[].athletes[] with
-    displayName / position.abbreviation / team.abbreviation). Unlike the other
-    fixtures in this project it was NOT captured verbatim from a live response
-    (this endpoint was added to the ledger on 2026-09-21 and CI probes it on
-    every run as `espn_game_summary`). The parser is written to ignore any
-    shape it does not recognise rather than guess, and a shape mismatch shows
-    up as an ESPN_ROSTER_EMPTY flag in the published data — so a wrong shape
-    degrades to "no rosters", never to invented players.
+    PROVENANCE: tests/fixtures/espn_summary.json was captured from the live
+    endpoint on 2026-09-21 (game 401872945, IND@KC) — the IND block is
+    verbatim. The live payload's players live under boxscore.players[].
+    statistics[].athletes[] (NOT under boxscore.teams[], which carries only
+    team statistics); the parser's teams[].athletes[] branch is a defensive
+    fallback, kept and tested below. A shape the parser does not recognise
+    degrades to an ESPN_ROSTER_EMPTY flag, never to invented players.
     """
 
     GAME = {
@@ -183,6 +181,44 @@ class TestParseRoster(unittest.TestCase):
         self.assertEqual(parse_roster(None, game=self.GAME), [])
         self.assertEqual(parse_roster({}, game=self.GAME), [])
         self.assertEqual(parse_roster({"boxscore": "garbage"}, game=self.GAME), [])
+
+
+class TestParseRosterLiveShape(unittest.TestCase):
+    """The shape the live payload ACTUALLY carries (2026-09-21 capture).
+
+    boxscore.teams[] has NO athletes; the players are in boxscore.players[]
+    (one block per team, each with its own team.abbreviation) inside
+    statistics[] groups. Daniel Jones appears in both the passing and the
+    rushing groups of the capture and must yield exactly one row.
+    """
+
+    GAME = {
+        "id": "401872945", "short_name": "IND @ KC", "state": "in",
+        "teams": [{"code": "IND"}, {"code": "KC"}],
+    }
+
+    def test_live_payload_parses_every_boxscore_player(self):
+        from collectors.espn import parse_roster
+        rows = parse_roster(fixture_json("espn_summary.json"), game=self.GAME)
+        by_team = {}
+        for r in rows:
+            by_team.setdefault(r["team"], {})[r["name"]] = r
+        # IND block (verbatim from the capture): all four boxscore players.
+        self.assertEqual(
+            set(by_team["IND"]),
+            {"Daniel Jones", "Jonathan Taylor", "Deion Burks", "Tyler Warren"})
+        # KC block: same structure.
+        self.assertEqual(set(by_team["KC"]), {"Patrick Mahomes", "Isaiah Poe"})
+        # The live shape carries no position objects -> "", never invented.
+        self.assertEqual(by_team["IND"]["Daniel Jones"]["position"], "")
+        self.assertEqual(len(rows), 6)
+
+    def test_duplicate_stat_lines_dedupe_to_one_row(self):
+        from collectors.espn import parse_roster
+        rows = parse_roster(fixture_json("espn_summary.json"), game=self.GAME)
+        jones = [r for r in rows if r["name"] == "Daniel Jones"]
+        self.assertEqual(len(jones), 1,
+                         "a player with passing AND rushing lines appears once")
 
 
 if __name__ == "__main__":

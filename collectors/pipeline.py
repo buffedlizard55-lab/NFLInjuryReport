@@ -324,16 +324,18 @@ VERIFY_TARGETS: List[Dict[str, str]] = [
              "game window so query budget goes where injuries are happening."},
     {"key": "espn_game_summary", "source": "espn",
      "url": espn_mod.SUMMARY_ENDPOINT.format(event_id="401872932"),
-     "note": "ADDED 2026-09-21: per-game summary used to read the full game-day "
-             "rosters of live games (boxscore.teams[].athletes), so EVERY player in an "
-             "ongoing game is matchable to a headline, not just players with an injury "
-             "record. Same keyless `site` API family as the verified scoreboard endpoint. "
-             "The static probe uses a past game (401872932, DET@BUF 2026-09-18); the "
-             "collector's per-game fetches on live games are additionally recorded in "
-             "meta.json `probes` on every run. NOT yet verified from this project: the "
-             "collector degrades to injury-index-only coverage (with ESPN_ROSTER_* "
-             "flags) whenever a fetch or the parse fails. Do not describe it as verified "
-             "in the product until the ledger and the run probes show 200."},
+     "note": "ADDED 2026-09-21: per-game summary used to read the game rosters of "
+             "live games, so EVERY player in an ongoing game is matchable to a "
+             "headline, not just players with an injury record. Same keyless `site` "
+             "API family as the verified scoreboard endpoint. VERIFIED LIVE 2026-09-21 "
+             "from CI: the static probe (past game 401872932) and the live per-game "
+             "fetches (e.g. 401872945 IND@KC) returned 200; the payload's player list "
+             "lives in boxscore.players[].statistics[].athletes[] (fixture captured "
+             "verbatim, tests/fixtures/espn_summary.json). The collector degrades to "
+             "injury-index-only coverage (with ESPN_ROSTER_* flags) whenever a fetch "
+             "or the parse fails — that degradation fired on the first run when the "
+             "parser targeted the wrong shape, which is how the shape mismatch was "
+             "caught instead of shipping silently."},
     {"key": "bsky_author_feed_verified_insider", "source": "bluesky",
      "url": social_mod.BSKY_AUTHOR_FEED + "?actor=rapsheet.bsky.social&limit=3",
      "note": "Verified 200 keyless from an independent client 2026-09-18. This is the "
