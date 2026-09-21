@@ -200,7 +200,7 @@ game" was stored as `QUESTIONABLE` because that is what ESPN's status field said
   notification (or banner) when a new one arrives.
 * **The schedule is honest.** Four staggered cron entries at the 5-minute floor,
   plus **game-day self-dispatch**: while a game is in progress the run re-arms
-  itself via `workflow_dispatch` (depth-capped at 12), and every run measures the
+  itself via `workflow_dispatch` (depth-capped at 240), and every run measures the
   cadence it actually achieved from the archive and publishes it in
   `meta.json` — with a `COLLECTOR_CADENCE_DEGRADED` flag whenever a gap exceeds
   60 minutes.
@@ -295,7 +295,8 @@ state `in`, 3rd quarter). Four separate defects compounded:
   pipeline reads each live game's roster from ESPN's per-game summary (same
   keyless `site` API family as the scoreboard) and merges every `(team, name)`
   into the player index; every player of a live team then enters the
-  per-player headline query budget (cap 300). The endpoint is probed in the CI
+  per-player headline query set with no silent truncation for explicitly live
+  teams (the 300-query fallback cap applies only outside a live game). The endpoint is probed in the CI
   source ledger every run (`espn_game_summary`) and the per-game fetches land
   in `meta.json probes`; a fetch or parse failure degrades to injury-index-only
   coverage with `ESPN_ROSTER_UNREACHABLE` / `ESPN_ROSTER_EMPTY` flags rather
@@ -332,7 +333,38 @@ produce an HOU event (pruned index, and even unpruned the surname step is
 suppressed); the 2026-09-21 Bears headline must not resolve to
 `NO:jordyn-tyson`; an e2e run with a live game asserts the roster merge and
 `meta.live.hot_players` coverage; an e2e run asserts the stale-record prune and
-its `ROSTER_INDEX_PRUNED` flag. Full suite: **213 tests, OK** (2026-09-21).
+its `ROSTER_INDEX_PRUNED` flag. Full suite: **222 tests, OK** (2026-09-21).
+
+### Follow-up pass — conservative matching and delivery verification (2026-09-21)
+
+The next review found additional ways a real report could be missed or a false
+player could be created after the roster/query fix:
+
+* `SocialPost.to_dict()` now preserves the source's raw athlete/team categories
+  and explicit player hint. Those fields are evidence used by the event builder;
+  dropping them during serialisation silently lost valid ESPN/RotoWire matches.
+* A club hint is now a hard constraint. A headline mentioning the Patriots and
+  Steelers can no longer turn the outlet name "Boston Herald" into the unrelated
+  player `CLE:Denzel Boston`; the multi-team surname fallback fails closed.
+* Full-name matching uses token boundaries and a compiled index. This prevents
+  substring matches, keeps duplicate-club names ambiguous unless the text gives a
+  club constraint, and reduced the local replay of the archived 1,500-post
+  replay from about 38 seconds to about 0.3 seconds.
+* The empty scoreboard window fails closed for in-game events. The collector will
+  not label a weekly ESPN injury row as an in-game alert when it cannot prove a
+  game window. The browser's opportunistic ESPN/Bluesky layer also requires a
+  fresh scoreboard state, filters ESPN rows to teams whose state is `in`, and
+  removes stale `LIVE` items after a failed refresh.
+* Explicitly live teams are no longer silently truncated at 300 player queries;
+  the 300 cap remains only for the non-live fallback rotation. `social.json`'s
+  `fetches` list records the actual queries made. This increases request volume
+  during a Sunday slate, so source rate limiting and workflow duration remain
+  visible limitations rather than being hidden as missing players.
+
+The tests for each bullet are offline and pass with the fixture data. This is not
+a claim that every upstream article exists or that every source is reachable:
+when a source, scoreboard, or game roster fails, the site keeps the last known
+snapshot and publishes a flag instead of inventing a player or status.
 
 ---
 
@@ -523,7 +555,8 @@ error and never abort the injury snapshot). Output:
 * **GitHub Actions cron floors at 5 minutes** and is best-effort. The workflow
   now carries **four staggered cron entries** instead of one, and while a game is
   in progress it **re-arms itself** with a `workflow_dispatch` call (depth-capped
-  at 12, so a stuck game cannot loop forever). `workflow_dispatch` is the
+  at 240, so the chain covers a full game including overtime while still having
+  a circuit breaker). `workflow_dispatch` is the
   documented exception to the usual "GITHUB_TOKEN cannot trigger workflows" rule;
   the job asks for `actions: write` to do it.
 * **Measured, not promised.** Every run computes the cadence it actually achieved
@@ -553,7 +586,7 @@ than faked inside a static site.
 ## 10. Running it
 
 ```bash
-python3 -m unittest discover -s tests -t .   # 182 tests
+python3 -m unittest discover -s tests -t .   # 222 tests
 python3 -m collectors.pipeline verify        # probe every source -> health.json
 python3 -m collectors.pipeline collect       # fetch, reconcile, score, publish
 python3 -m collectors.pipeline collect --with-rotowire
@@ -592,7 +625,7 @@ data/latest/     committed snapshot the site reads (incl. directory.json and
 data/state/      roster, reporter registry, parsed club-directory and
                  social-verification caches (7-day / 24-hour TTLs)
 data/archive/    per-run history, pruned after 14 days by CI
-tests/           182 tests; fixtures reproduce shapes captured live
+tests/           222 tests; fixtures reproduce shapes captured live
                  (the 2026-09-18 captures are verbatim, incl. the
                  Bluesky author feed and the ESPN scoreboard payload)
 ```
@@ -603,7 +636,7 @@ tests/           182 tests; fixtures reproduce shapes captured live
 
 | Check | Action | Result |
 |-------|--------|--------|
-| Unit + integration | `python3 -m unittest discover -s tests -t .` | **Ran 213 tests — OK** (2026-09-21; adds the 2026-09-21 regressions: surname-fallback suppression, index pruning incl. the verbatim Packers-headline misattribution, game-roster parsing, per-player query budget/order, e2e roster merge + prune, and multi-player headline fan-out) |
+| Unit + integration | `python3 -m unittest discover -s tests -t .` | **Ran 222 tests — OK** (2026-09-21; adds strict club-constrained matching, token-boundary matching, raw source-metadata retention, empty-window fail-closed behavior, durable-alert UI deduplication, live-team query coverage, and the earlier 2026-09-21 roster/pruning regressions) |
 | Club social directory | fetch of all 32 `nfl.com/teams/<slug>/` pages, 2026-09-10 | All 32 fetched and reviewed; official sites + X/FB/IG/Snap handles recorded (Washington lists no Snapchat); parsed cache refreshed weekly by CI |
 | Bluesky identity verification | public AppView `getProfile`/`searchActors`, 2026-09-10 | Rapoport `rapsheet.bsky.social` verified (`verifiedStatus=valid`); Pelissero/Schultz/Glazer exact-name candidates without badges; Schefter search returns only mirrors/parodies and two accounts Bluesky itself labels `impersonation` → Fraud warnings |
 | X keyless verification | `publish.twitter.com/oembed` + syndication widget | HTTP 403 / empty body 2026-09-10 → X stays one-click manual-review; re-probed every build and auto-upgraded if a free route returns |

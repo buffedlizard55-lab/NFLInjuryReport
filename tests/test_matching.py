@@ -35,6 +35,17 @@ class TestPlayerIndex(unittest.TestCase):
         self.assertIsNotNone(rec)
         self.assertEqual(rec["team"], "KC")
 
+    def test_team_hint_rejects_a_name_from_another_club(self):
+        # A club named in the source must constrain matching. It must not fall
+        # back to the only same-surname player from another club.
+        self.assertIsNone(self.idx.find_in_text("Patriots injury: Jones is out",
+                                               team_hint="NE"))
+
+    def test_full_name_requires_token_boundaries(self):
+        self.assertEqual(self.idx.full_name_hits("Chris Jones is out"),
+                         ["KC:chris-jones", "NYJ:chris-jones"])
+        self.assertEqual(self.idx.full_name_hits("Chris Joneson is out"), [])
+
     def test_two_players_same_name_stay_separate(self):
         self.assertEqual(len(self.idx.candidates_for("Chris Jones")), 2)
 

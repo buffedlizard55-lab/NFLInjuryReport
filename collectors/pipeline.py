@@ -76,6 +76,7 @@ def collect_sources(
     candidate_handles: Optional[List[str]] = None,
     hot_teams: Optional[List[str]] = None,
     hot_players: Optional[List[str]] = None,
+    live_teams: Optional[List[str]] = None,
 ) -> Dict[str, Any]:
     """Fetch every enabled source. One source failing never aborts the run."""
 
@@ -129,6 +130,7 @@ def collect_sources(
                 candidate_handles=candidate_handles or [],
                 hot_teams=hot_teams or [],
                 hot_players=hot_players or [],
+                live_teams=live_teams or [],
                 team_names=nfl_mod.NFL_TEAMS,
             )
         except Exception as exc:  # noqa: BLE001 - social must never break the run
@@ -178,13 +180,6 @@ def espn_team_ids() -> Dict[str, str]:
     return ids or dict(_ESPN_TEAM_IDS)
 
 
-#: Hard safety cap on per-player headline queries per run (see
-#: collect_social). Live-game teams are the ones that get full per-player
-#: coverage; this only bounds the request budget if several games are live at
-#: once and the rosters are larger than expected.
-PLAYER_QUERY_CAP = 300
-
-
 def _hot_players(index: Optional[PlayerIndex], hot_teams: List[str],
                  *, limit: int = 8, live_teams: Optional[List[str]] = None) -> List[str]:
     """Players whose names are worth a targeted headline query right now.
@@ -198,7 +193,9 @@ def _hot_players(index: Optional[PlayerIndex], hot_teams: List[str],
 
     * When a game is in progress: EVERY player of the live teams in the index
       (injury records PLUS game-day rosters merged by the pipeline) gets a
-      targeted query. Capped at PLAYER_QUERY_CAP as a request-budget guard.
+      targeted query. There is deliberately no silent per-player truncation on
+      this path: truncating here was the exact reason valid reports for players
+      outside the old first-eight budget disappeared.
     * When no game is in progress: fall back to a small budget of hot teams'
       indexed players (the pre-existing behaviour), because outside a game
       window there is no "in-game" urgency.
@@ -220,7 +217,7 @@ def _hot_players(index: Optional[PlayerIndex], hot_teams: List[str],
             name = rec.get("name") or ""
             if name and name not in live_names:
                 live_names.append(name)
-        return live_names[:PLAYER_QUERY_CAP]
+        return live_names
 
     # No live game: budget of 8 hot-teams' players, injured first (a player
     # with any injury record is more likely to have a game-day update).
@@ -495,6 +492,7 @@ def collect(args: argparse.Namespace) -> int:
         candidate_handles=candidate_handles,
         hot_teams=hot_teams,
         hot_players=hot_players,
+        live_teams=live_teams,
     )
 
     # Grow the roster index from whatever this run returned. `seen_at` marks

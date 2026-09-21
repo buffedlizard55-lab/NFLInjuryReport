@@ -155,7 +155,7 @@ class TestCollectSocialBudgetAndOrder(unittest.TestCase):
     """
 
     def _run_collect_social(self, *, hot_teams=("KC", "IND"),
-                            hot_players=(), team_names=None):
+                            hot_players=(), live_teams=(), team_names=None):
         calls = []
 
         def fake_fetch_google_news(query, *, limit=40, source_kind="news"):
@@ -181,6 +181,7 @@ class TestCollectSocialBudgetAndOrder(unittest.TestCase):
             res = social_mod.collect_social(
                 watched_handles=[], candidate_handles=[],
                 hot_teams=list(hot_teams), hot_players=list(hot_players),
+                live_teams=list(live_teams),
                 team_names=team_names or {
                     "KC": "Kansas City Chiefs", "IND": "Indianapolis Colts",
                     "LAR": "Los Angeles Rams", "NYG": "New York Giants",
@@ -204,6 +205,12 @@ class TestCollectSocialBudgetAndOrder(unittest.TestCase):
         calls, _ = self._run_collect_social(hot_players=["A B", "A B", "C D"])
         self.assertEqual(calls.count('"A B" injury when:1d'), 1)
         self.assertIn('"C D" injury when:1d', calls)
+
+    def test_live_players_are_not_truncated_by_fallback_cap(self):
+        players = [f"Live Player {i}" for i in range(301)]
+        calls, _ = self._run_collect_social(hot_players=players, live_teams=["KC"])
+        player_calls = [q for q in calls if '"Live Player ' in q]
+        self.assertEqual(len(player_calls), len(players))
 
     def test_posts_sort_by_parsed_instant_not_string(self):
         # Before the fix this order was impossible: every RFC-822 string

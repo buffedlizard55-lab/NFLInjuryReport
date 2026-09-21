@@ -34,11 +34,15 @@
     autoRefresh: true,
     liveItems: [],
     liveAt: null,
+    liveTeams: {},
+    liveTeamsReady: false,
     collapsed: {}
   };
 
   var ESPN_INJURIES =
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries";
+  var ESPN_SCOREBOARD =
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";
   var BSKY_AUTHOR_FEED =
     "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed";
 
@@ -506,7 +510,11 @@
 
   function feedItems() {
     var out = [];
+    // In-game alerts are rendered from the durable log below. Keeping them out
+    // of this first loop prevents the same event appearing once as a current
+    // alert, once in the 72-hour log, and once again from ingame.json.
     ((state.data.alerts || {}).alerts || []).forEach(function (a) {
+      if (a.kind === "in-game") return;
       var pos = a.position || playerPos(a.player, a.team);
       var whoStr = a.player + " (" + a.team + (pos ? " · " + pos : "") + ")";
       out.push({
@@ -644,8 +652,24 @@
     // not only in the Live feed and the dedicated In-game panel. In-game rows
     // keep their own badge/tag so the two axes stay distinguishable, and the
     // In-game tab remains the detailed view of the same log.
-    var allAlerts = (state.data.alerts || {}).alerts || [];
-    var alerts = allAlerts.slice().sort(function (a, b) {
+    var currentAlerts = (state.data.alerts || {}).alerts || [];
+    var durableInGame = ((state.data.alerts || {}).log || []).filter(function (a) {
+      return a.kind === "in-game";
+    });
+    // `alerts` is the current-run view and in-game alerts intentionally age out
+    // of it after the 12-hour re-alert window. The append-only log is the user
+    // facing source of truth for those reports for 72 hours. Roster alerts remain
+    // current-run diffs. Merge by stable alert_id so an event is shown once.
+    var byId = {};
+    var alerts = [];
+    currentAlerts.concat(durableInGame).forEach(function (a) {
+      var id = a.alert_id || a.event_key ||
+        [a.kind, a.team, a.player_key, a.to_status, a.ts].join(":");
+      if (byId[id]) return;
+      byId[id] = true;
+      alerts.push(a);
+    });
+    alerts.sort(function (a, b) {
       var ta = Date.parse(a.ts || 0) || 0, tb = Date.parse(b.ts || 0) || 0;
       return tb - ta;
     });
@@ -1037,18 +1061,74 @@
     return status;
   }
 
+  function knownLivePlayer(text) {
+    var liveTeams = state.liveTeams || {};
+    if (!state.liveTeamsReady || !Object.keys(liveTeams).length) return false;
+    var haystack = slugify(text || "");
+    var players = (state.data.players || {}).players || {};
+    for (var key in players) {
+      var rec = players[key] || {};
+      if (!liveTeams[rec.team]) continue;
+      var nameKey = slugify(rec.name || "");
+      if (nameKey && new RegExp("(?:^|-)" + nameKey + "(?:-|$)").test(haystack)) {
+        return true;
+      }
+    }
+    // Do not use a surname-only fallback in the browser. The collector has the
+    // same conservative rule; otherwise an unrelated watched post can be shown
+    // as a live injury for the wrong player.
+    return false;
+  }
+
   function tryLive() {
+    // Do not let the independent Bluesky requests race the scoreboard request:
+    // until the current game window is known, no browser item may be labelled
+    // LIVE.
+    state.liveTeamsReady = false;
     // Both endpoints are keyless. Whether a browser may call them depends on
     // their CORS policy, which is not something this page can promise -- so any
     // failure leaves the committed snapshot in place and says so.
-    fetch(ESPN_INJURIES, { cache: "no-store" })
-      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-      .then(function (j) {
+    Promise.all([
+      fetch(ESPN_INJURIES, { cache: "no-store" }),
+      fetch(ESPN_SCOREBOARD, { cache: "no-store" })
+    ])
+      .then(function (responses) {
+        if (!responses[0].ok || !responses[1].ok) {
+          throw new Error("live ESPN source unavailable");
+        }
+        return Promise.all([responses[0].json(), responses[1].json()]);
+      })
+      .then(function (payloads) {
+        var j = payloads[0];
+        var scoreboard = payloads[1];
+        var liveTeams = {};
+        (scoreboard.events || []).forEach(function (game) {
+          var comp = (game.competitions || [])[0] || {};
+          var gameState = (((comp.status || {}).type || {}).state || "");
+          if (gameState !== "in") return;
+          (comp.competitors || []).forEach(function (side) {
+            var code = ((side.team || {}).abbreviation || "").toUpperCase();
+            if (code) liveTeams[code] = true;
+          });
+        });
+        state.liveTeams = liveTeams;
+        state.liveTeamsReady = true;
+        // The browser layer must not label a normal weekly injury row LIVE. If
+        // the scoreboard says no game is in progress, the committed snapshot is
+        // the only honest display until the next run.
         var items = [];
+        if (!Object.keys(liveTeams).length) {
+          state.liveItems = [];
+          state.liveAt = null;
+          renderFeed();
+          renderStatus();
+          return;
+        }
         ((j.injuries || [])).forEach(function (block) {
           (block.injuries || []).forEach(function (it) {
             var a = it.athlete || {};
-            var team = (a.team || {}).abbreviation || "";
+            var team = ((a.team || {}).abbreviation || "").toUpperCase();
+            if (!liveTeams[team]) return;
             var posObj = a.position || {};
             var pos = (posObj.abbreviation || posObj.displayName || posObj.name || "") || playerPos(a.displayName, team);
             var card = ((a.links || []).filter(function (l) {
@@ -1070,9 +1150,23 @@
           state.liveAt = new Date().toISOString();
           renderFeed();
           renderStatus();
+        } else {
+          state.liveItems = [];
+          state.liveAt = null;
+          renderFeed();
+          renderStatus();
         }
       })
-      .catch(function () { /* CORS or offline: snapshot stays authoritative */ });
+      .catch(function () {
+        // A failed scoreboard must not leave an old item labelled LIVE. The
+        // committed snapshot remains visible and its age is rendered honestly.
+        state.liveTeams = {};
+        state.liveTeamsReady = false;
+        state.liveItems = [];
+        state.liveAt = null;
+        renderFeed();
+        renderStatus();
+      });
 
     // Bluesky: app.bsky.feed.searchPosts answered HTTP 403 on every probe
     // (2026-09-10 .. 2026-09-18, from CI runners and from a browser), while
@@ -1093,7 +1187,7 @@
             var auth = p.author || {};
             var text = rec.text || "";
             var st = classifyIngame(text);
-            if (st === "NONE") return;
+            if (st === "NONE" || !knownLivePlayer(text)) return;
             var verified = ((auth.verification || {}).verifiedStatus === "valid");
             var rkey = ((p.uri || "").match(/app\.bsky\.feed\.post\/([^/]+)$/) || [])[1] || "";
             extra.push({

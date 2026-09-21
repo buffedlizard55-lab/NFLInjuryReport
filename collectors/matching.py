@@ -31,6 +31,10 @@ class PlayerIndex:
         self.players: Dict[str, Dict[str, Any]] = {}
         self._by_last: Dict[str, List[str]] = {}
         self._by_initial_last: Dict[str, List[str]] = {}
+        # Full-name matching runs once per collected post. Cache the compiled
+        # alternation for each club constraint so a large live-game snapshot does
+        # not recompile hundreds of regular expressions for every headline.
+        self._full_name_cache: Dict[str, Tuple[Any, List[str]]] = {}
 
     # -- build --------------------------------------------------------------
     def add(self, name: str, team: str, position: str = "", url: str = "",
@@ -51,6 +55,7 @@ class PlayerIndex:
             }
             self.players[key] = rec
             self._index(key, name)
+            self._full_name_cache.clear()
         if seen_at:
             # `last_seen` is the most recent run in which a live source still
             # asserted this (club, player). Pruning (see prune) uses it.
@@ -185,14 +190,20 @@ class PlayerIndex:
                 dropped.append(f"{full_key} ({reason})")
         if dropped:
             self._reindex()
+            self._full_name_cache.clear()
         return dropped
 
     # -- query --------------------------------------------------------------
     def _narrow(self, keys: List[str], team_hint: str) -> Optional[Dict[str, Any]]:
         if team_hint:
-            keys = [k for k in keys if k.startswith(f"{team_hint}:")] or keys
+            # A club named by the source is a constraint, not a preference. The
+            # previous ``or keys`` fallback attached "Patriots ... Boston" to
+            # CLE:Denzel Boston simply because Boston was the only matching
+            # surname in the index. A mismatch is unresolvable and must stay
+            # unmatched rather than becoming a fabricated injury report.
+            keys = [k for k in keys if k.startswith(f"{team_hint}:")]
         if len(keys) != 1:
-            return None  # ambiguous -> no match, never a guess
+            return None  # ambiguous or contradicted -> no match, never a guess
         return self.players[keys[0]]
 
     def lookup(self, name: str, team: str = "") -> Optional[Dict[str, Any]]:
@@ -202,24 +213,47 @@ class PlayerIndex:
         slug = slugify(name)
         return [r for k, r in self.players.items() if k.endswith(":" + slug)]
 
-    def full_name_hits(self, text: str) -> List[str]:
-        """Every roster record whose FULL name appears in `text`.
+    def full_name_hits(self, text: str, *, team_hint: str = "") -> List[str]:
+        """Every roster record whose FULL name appears in ``text``.
 
-        Unlike find_in_text (best single match), this returns all of them: a
+        Unlike ``find_in_text`` (best single match), this returns all of them: a
         headline that names two injured players ("Kelce and Pierce both out")
         is about both, and the in-game builder must be able to emit an event
-        for each. Same containment check find_in_text uses, so the two can
-        never disagree about who is named.
+        for each. Matching uses token boundaries, so a roster name cannot be
+        found merely because its key is a substring of an outlet or place name.
+        When the source names one club, only that club's records are eligible;
+        a club hint is a constraint, never a reason to choose a different club.
         """
 
         if not text:
             return []
         low_nopunct = re.sub(r"[^a-z0-9\s]", " ", text.lower())
         haystack = slugify(low_nopunct)
-        return [
-            k for k, rec in self.players.items()
-            if rec["key"] and len(rec["key"]) >= 6 and rec["key"] in haystack
-        ]
+        cached = self._full_name_cache.get(team_hint)
+        if cached is None:
+            candidate_keys = [
+                key for key, rec in self.players.items()
+                if len(rec.get("key") or "") >= 6
+                and (not team_hint or rec.get("team") == team_hint)
+            ]
+            names = sorted(
+                {self.players[key]["key"] for key in candidate_keys},
+                key=lambda value: (-len(value), value),
+            )
+            if names:
+                pattern = re.compile(
+                    r"(?<![a-z0-9])({})(?![a-z0-9])".format(
+                        "|".join(re.escape(n) for n in names)
+                    )
+                )
+            else:
+                pattern = re.compile(r"(?!x)x")
+            cached = (pattern, candidate_keys)
+            self._full_name_cache[team_hint] = cached
+
+        pattern, candidate_keys = cached
+        matched_names = {match.group(1) for match in pattern.finditer(haystack)}
+        return [key for key in candidate_keys if self.players[key]["key"] in matched_names]
 
     def find_in_text(self, text: str, *, team_hint: str = "") -> Optional[Dict[str, Any]]:
         """Best player match inside free text, or None when ambiguous/absent.
@@ -242,11 +276,9 @@ class PlayerIndex:
         low_nopunct = re.sub(r"[^a-z0-9\s]", " ", text.lower())
         haystack = slugify(low_nopunct)
 
-        # 1. full name
-        full_hits = [
-            k for k, rec in self.players.items()
-            if rec["key"] and len(rec["key"]) >= 6 and rec["key"] in haystack
-        ]
+        # 1. full name. Use token boundaries: a player key must be a complete
+        # name in the text, not a substring of an outlet, place, or another word.
+        full_hits = self.full_name_hits(text)
         if full_hits:
             hit = self._narrow(full_hits, team_hint)
             if hit:

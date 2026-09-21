@@ -272,6 +272,48 @@ class TestGameEventBuilding(unittest.TestCase):
                   "posted_at": "2026-09-18T01:00:00Z", "url": "https://example.invalid/1"}]
         self.assertEqual(build_game_events(posts=posts, player_index=self._index()), [])
 
+    def test_empty_game_window_fails_closed(self):
+        # A source can describe a real injury without proving that an NFL game is
+        # active. It must not enter the in-game feed when the scoreboard supplied
+        # no game window.
+        posts = [{
+            "platform": "espn-news", "author": "ESPN", "url": "https://example.invalid/1",
+            "text": "DJ Moore (shoulder) has been ruled out for the game",
+            "posted_at": "2026-09-18T01:37:12Z",
+        }]
+        self.assertEqual(build_game_events(posts=posts, player_index=self._index(),
+                                            now="2026-09-18T01:40:00Z",
+                                            hot_teams=[]), [])
+
+    def test_named_player_is_limited_to_explicit_club(self):
+        index = PlayerIndex()
+        index.add("Chris Jones", "KC", "DT")
+        index.add("Chris Jones", "NYJ", "CB")
+        posts = [{
+            "platform": "google-news", "author": "Wire", "url": "https://example.invalid/2",
+            "text": "Chiefs Chris Jones (ankle) is ruled out for the game",
+            "posted_at": "2026-09-18T01:37:12Z",
+        }]
+        events = build_game_events(posts=posts, player_index=index,
+                                   now="2026-09-18T01:40:00Z",
+                                   hot_teams=["KC", "NYJ"])
+        self.assertEqual([(e["team"], e["player"]) for e in events],
+                         [("KC", "Chris Jones")])
+
+    def test_multi_team_story_does_not_use_a_unique_surname_as_a_player(self):
+        index = PlayerIndex()
+        index.add("Denzel Boston", "CLE", "WR")
+        posts = [{
+            "platform": "google-news", "author": "Boston Herald",
+            "url": "https://example.invalid/3",
+            "text": "Longtime Patriots starter carted off with injury in win over Steelers",
+            "posted_at": "2026-09-20T23:44:01Z",
+        }]
+        events = build_game_events(posts=posts, player_index=index,
+                                   now="2026-09-21T00:00:00Z",
+                                   hot_teams=["CLE", "NE", "PIT"])
+        self.assertEqual(events, [])
+
 
 class TestScoreboard(unittest.TestCase):
     def test_live_shape_from_the_recorded_bills_lions_game(self):
