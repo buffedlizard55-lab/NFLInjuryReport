@@ -112,5 +112,78 @@ class TestEmptyPayloadIsFlagged(unittest.TestCase):
         self.assertIn("ESPN_BAD_SHAPE", [i.code for i in result["irregularities"]])
 
 
+class TestParseRoster(unittest.TestCase):
+    """Game-day roster extraction from ESPN's game summary.
+
+    HONESTY NOTE: the payload below is the `site` API v2 box-score shape the
+    public espn.com game centre reads (boxscore.teams[].athletes[] with
+    displayName / position.abbreviation / team.abbreviation). Unlike the other
+    fixtures in this project it was NOT captured verbatim from a live response
+    (this endpoint was added to the ledger on 2026-09-21 and CI probes it on
+    every run as `espn_game_summary`). The parser is written to ignore any
+    shape it does not recognise rather than guess, and a shape mismatch shows
+    up as an ESPN_ROSTER_EMPTY flag in the published data — so a wrong shape
+    degrades to "no rosters", never to invented players.
+    """
+
+    GAME = {
+        "id": "401872945", "short_name": "IND @ KC", "state": "in",
+        "teams": [{"code": "KC"}, {"code": "IND"}],
+    }
+
+    PAYLOAD = {
+        "boxscore": {
+            "teams": [
+                {"team": {"abbreviation": "KC"},
+                 "athletes": [
+                     {"displayName": "Patrick Mahomes",
+                      "position": {"abbreviation": "QB"}},
+                     {"displayName": "Travis Kelce",
+                      "position": {"abbreviation": "TE"}},
+                     {"displayName": "Some Player", "position": {"id": 9}},
+                 ]},
+                {"team": {"abbreviation": "IND"},
+                 "athletes": [
+                     {"displayName": "Anthony Richardson Sr.",
+                      "position": {"abbreviation": "QB"}},
+                     {"displayName": "", "position": {"abbreviation": "WR"}},
+                 ]},
+            ]
+        }
+    }
+
+    def test_rows_carry_team_name_and_position(self):
+        from collectors.espn import parse_roster
+        rows = parse_roster(self.PAYLOAD, game=self.GAME)
+        by_name = {r["name"]: r for r in rows}
+        self.assertEqual(by_name["Patrick Mahomes"]["team"], "KC")
+        self.assertEqual(by_name["Patrick Mahomes"]["position"], "QB")
+        self.assertEqual(by_name["Anthony Richardson Sr."]["team"], "IND")
+        # A position without a readable abbreviation is kept as "" — the player
+        # is real, only the position is unknown. Never invented.
+        self.assertEqual(by_name["Some Player"]["position"], "")
+        # An athlete without a displayName is skipped, never invented.
+        self.assertNotIn("", by_name)
+        self.assertEqual(len(rows), 4)
+
+    def test_team_falls_back_to_scoreboard_ordering(self):
+        from collectors.espn import parse_roster
+        payload = {"boxscore": {"teams": [
+            {"athletes": [{"displayName": "Player One",
+                           "position": {"abbreviation": "WR"}}]},
+            {"athletes": [{"displayName": "Player Two",
+                           "position": {"abbreviation": "WR"}}]},
+        ]}}
+        rows = parse_roster(payload, game=self.GAME)
+        self.assertEqual([(r["name"], r["team"]) for r in rows],
+                         [("Player One", "KC"), ("Player Two", "IND")])
+
+    def test_malformed_payload_is_empty_not_an_exception(self):
+        from collectors.espn import parse_roster
+        self.assertEqual(parse_roster(None, game=self.GAME), [])
+        self.assertEqual(parse_roster({}, game=self.GAME), [])
+        self.assertEqual(parse_roster({"boxscore": "garbage"}, game=self.GAME), [])
+
+
 if __name__ == "__main__":
     unittest.main()

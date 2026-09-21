@@ -178,29 +178,52 @@ def espn_team_ids() -> Dict[str, str]:
     return ids or dict(_ESPN_TEAM_IDS)
 
 
+#: Hard safety cap on per-player headline queries per run (see
+#: collect_social). Live-game teams are the ones that get full per-player
+#: coverage; this only bounds the request budget if several games are live at
+#: once and the rosters are larger than expected.
+PLAYER_QUERY_CAP = 300
+
+
 def _hot_players(index: Optional[PlayerIndex], hot_teams: List[str],
                  *, limit: int = 8, live_teams: Optional[List[str]] = None) -> List[str]:
     """Players whose names are worth a targeted headline query right now.
 
-    Preference goes to players who already carry an injury record (they are the
-    ones a game-day update is most likely to be about), then the rest of the
-    club's indexed players. This is only a query budget -- nothing here asserts an
-    injury.
+    The requirement this exists for (2026-09-21, user-reported gap): while a
+    game is in progress, the live feed must be able to carry an injury report
+    for ANY player on either live team, not just a handful. Headlines about an
+    in-game injury often name only the player ("Mahomes (shoulder) out for the
+    rest of the game") and never the club, so a club-level query alone cannot
+    find them.
 
-    When a live game is in progress, its players are prioritized over teams
-    that have already finished: a headline about a player currently on the
-    field is more likely to be an in-game update than one about a team whose
-    game is final. This was the ranking that caused KC/IND players to be
-    starved out when 29 teams were hot at once (all post + one live).
+    * When a game is in progress: EVERY player of the live teams in the index
+      (injury records PLUS game-day rosters merged by the pipeline) gets a
+      targeted query. Capped at PLAYER_QUERY_CAP as a request-budget guard.
+    * When no game is in progress: fall back to a small budget of hot teams'
+      indexed players (the pre-existing behaviour), because outside a game
+      window there is no "in-game" urgency.
     """
 
-    if not index or not hot_teams:
+    if not index:
         return []
     live_set = set(live_teams or [])
     hot = set(hot_teams)
-    # Bucket by live vs post so live teams' players come first.
-    live_injured: List[str] = []
-    live_others: List[str] = []
+    if not hot:
+        return []
+
+    if live_set:
+        live_names: List[str] = []
+        for rec in index.players.values():
+            team = rec.get("team") or ""
+            if team not in live_set:
+                continue
+            name = rec.get("name") or ""
+            if name and name not in live_names:
+                live_names.append(name)
+        return live_names[:PLAYER_QUERY_CAP]
+
+    # No live game: budget of 8 hot-teams' players, injured first (a player
+    # with any injury record is more likely to have a game-day update).
     post_injured: List[str] = []
     post_others: List[str] = []
     for rec in index.players.values():
@@ -210,13 +233,15 @@ def _hot_players(index: Optional[PlayerIndex], hot_teams: List[str],
         name = rec.get("name") or ""
         if not name:
             continue
-        is_live = team in live_set
-        target_inj = live_injured if is_live else post_injured
-        target_oth = live_others if is_live else post_others
-        (target_inj if rec.get("urls") or rec.get("sources") else target_oth).append(name)
-    # Live injured first, then live others, then post injured, then post others.
-    ordered = live_injured + live_others + post_injured + post_others
-    return ordered[:limit]
+        (post_injured if rec.get("urls") or rec.get("sources") else post_others).append(name)
+    ordered = post_injured + post_others
+    seen: set = set()
+    out: List[str] = []
+    for name in ordered:
+        if name not in seen:
+            seen.add(name)
+            out.append(name)
+    return out[:limit]
 
 
 def cadence_metrics(*, archive_dir: str, now: str) -> Dict[str, Any]:
@@ -297,6 +322,18 @@ VERIFY_TARGETS: List[Dict[str, str]] = [
      "note": "Verified 200 2026-09-18 (event 401872932 DET@BUF, kickoff "
              "2026-09-18T00:15Z, state=post). Used ONLY to decide which clubs are in a "
              "game window so query budget goes where injuries are happening."},
+    {"key": "espn_game_summary", "source": "espn",
+     "url": espn_mod.SUMMARY_ENDPOINT.format(event_id="401872932"),
+     "note": "ADDED 2026-09-21: per-game summary used to read the full game-day "
+             "rosters of live games (boxscore.teams[].athletes), so EVERY player in an "
+             "ongoing game is matchable to a headline, not just players with an injury "
+             "record. Same keyless `site` API family as the verified scoreboard endpoint. "
+             "The static probe uses a past game (401872932, DET@BUF 2026-09-18); the "
+             "collector's per-game fetches on live games are additionally recorded in "
+             "meta.json `probes` on every run. NOT yet verified from this project: the "
+             "collector degrades to injury-index-only coverage (with ESPN_ROSTER_* "
+             "flags) whenever a fetch or the parse fails. Do not describe it as verified "
+             "in the product until the ledger and the run probes show 200."},
     {"key": "bsky_author_feed_verified_insider", "source": "bluesky",
      "url": social_mod.BSKY_AUTHOR_FEED + "?actor=rapsheet.bsky.social&limit=3",
      "note": "Verified 200 keyless from an independent client 2026-09-18. This is the "
@@ -431,6 +468,20 @@ def collect(args: argparse.Namespace) -> int:
             # live_teams is unknown when scoreboard fails; keep previous hot as
             # the fallback window and let _hot_players treat all as post.
             live_teams = []
+
+    # Game-day rosters for games that are live (or about to start). The injury
+    # index alone only contains players who have an injury record; a player
+    # with no record at all could never be matched to a headline, which is the
+    # gap behind "not all injury reports for all players in ongoing games".
+    # Merged into the index BEFORE the per-player query budget is computed so
+    # every player on a live team gets a targeted query. Fails soft: a fetch
+    # problem degrades to the injury-index-only coverage plus a flag.
+    roster_payload = espn_mod.collect_rosters(scoreboard.get("games") or [])
+    sources_roster_rows = list(roster_payload.get("rows") or [])
+    for row in sources_roster_rows:
+        index.add(row["name"], row["team"], row.get("position", ""),
+                  source="espn-roster", seen_at=now)
+
     hot_players = _hot_players(index, hot_teams, live_teams=live_teams)
 
     sources = collect_sources(
@@ -444,11 +495,41 @@ def collect(args: argparse.Namespace) -> int:
         hot_players=hot_players,
     )
 
-    # Grow the roster index from whatever this run returned.
+    # Grow the roster index from whatever this run returned. `seen_at` marks
+    # the record as asserted by a live source on this run, which is what the
+    # stale-prune below relies on (records no source asserts age out after 14
+    # days instead of persisting forever).
     for key in ("official", "espn", "rotowire"):
         payload = sources.get(key)
         if payload:
-            index.add_many(payload.get("injuries", []))
+            index.add_many(payload.get("injuries", []), seen_at=now)
+
+    # Prune index records the current sources no longer support. Two rules
+    # (see PlayerIndex.prune): a club the official report contradicts is
+    # dropped when no current source still asserts it (the 2026-09-16
+    # misattribution incident — HOU/GB Aaron Banks and co. — could otherwise
+    # keep mis-attributing events forever), and records no source has asserted
+    # in 14 days are dropped. Skipped entirely when the official report is
+    # missing: without it there is no authoritative view to contradict.
+    official_payload = sources.get("official")
+    official_pairs = [
+        (rec.team, rec.player_key)
+        for rec in (official_payload or {}).get("injuries", [])
+        if rec.team and rec.player_key
+    ]
+    asserted_pairs = set()
+    for key in ("official", "espn", "rotowire"):
+        payload = sources.get(key)
+        if payload:
+            for rec in payload.get("injuries", []):
+                if rec.team and rec.player_key:
+                    asserted_pairs.add((rec.team, rec.player_key))
+    for row in sources_roster_rows:
+        if row.get("team"):
+            from .models import slugify as _slugify_roster
+            asserted_pairs.add((row["team"], _slugify_roster(row["name"])))
+    pruned = index.prune(now=now, official_pairs=official_pairs,
+                         asserted_pairs=asserted_pairs)
 
     # Every text item this run collected: social platforms AND the fast wires.
     # The wires matter because they are the only sources that reported either of
@@ -511,6 +592,38 @@ def collect(args: argparse.Namespace) -> int:
         live_games=scoreboard.get("games") or [],
         allow_removed=bool(sources.get("official")),
     )
+    # Game-day roster fetch problems (per-game flags from espn_mod.collect_rosters)
+    # and the index-prune audit row. Both are reported, not hidden: a silent
+    # missing roster is exactly how a coverage hole stays invisible.
+    report["irregularities"].extend(
+        i.to_dict() for i in roster_payload.get("irregularities", [])
+    )
+    # The fast news wires were previously dropped here (their irregularities
+    # never reached the site); an unreachable ESPN news feed should be visible.
+    for key in ("espn_news", "rotowire_news"):
+        payload = sources.get(key) or {}
+        report["irregularities"].extend(
+            i.to_dict() for i in payload.get("irregularities", [])
+        )
+    if pruned:
+        report["irregularities"].append(
+            Irregularity(
+                code="ROSTER_INDEX_PRUNED",
+                severity="low",
+                title=f"Roster index pruned {len(pruned)} record(s) no current source supports",
+                detail=(
+                    "The player index is pruned each run: a (club, player) record is dropped "
+                    "when the official report names the player under a different club and no "
+                    "current source still asserts it, or when no source has asserted it for 14 "
+                    "days. Dropped this run: " + "; ".join(pruned[:20])
+                    + (f" (+{len(pruned) - 20} more)" if len(pruned) > 20 else "") + ". "
+                    "This is the guard against stale records mis-attributing in-game events "
+                    "(see the 2026-09-16 HOU/GB misattribution in the README verification log)."
+                ),
+                evidence=[{"label": "Official NFL injury report",
+                           "url": "https://www.nfl.com/injuries/"}],
+            ).to_dict()
+        )
     if scoreboard_error:
         sources["errors"].append(
             {"source": "espn-scoreboard", "reason": scoreboard_error,

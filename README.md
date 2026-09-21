@@ -248,6 +248,82 @@ ours — and the two the user asked about are in the list.
 
 ---
 
+## 4.1 Incident — 2026-09-21: live games, but no injury reports for most of their players
+
+> "On the live feed and the alerts feed I should be getting all injury reports
+> for all players in ongoing games and that is just not happening right now."
+> — project owner, 2026-09-21
+
+Diagnosed line by line against the snapshot the site was actually serving
+(`data/latest/`, generated `2026-09-21T02:23:50Z`, game `401872945` IND @ KC,
+state `in`, 3rd quarter). Four separate defects compounded:
+
+1. **Coverage — only players who already had a record were searchable.**
+   The player index is built from injury records, so a healthy starter had no
+   record and no way to be matched to a headline. The per-player Google News
+   budget targeted 8 names that run; `ingame.json` shows the 8 `hot_players`
+   (Haulcy, Ogletree, Pierce, Richardson Sr., Stewart, Van Pran-Granger,
+   Cochrane, Conner). A headline like "Mahomes (shoulder) out for the rest of
+   the game" had neither a query to find it nor a record to attach it to.
+2. **Attribution — surname fallback guessed.** With no full-name hit,
+   `find_in_text` fell back to surnames. Verified against the live data: the
+   Bears headline "Caleb Williams Leaves … Tyson Bagent Enters" has two full
+   names (ambiguous) and the surname step resolved "tyson" to
+   `NO:jordyn-tyson` — a Cardinals player — instead of no one.
+3. **Stale index — add-only, nothing was ever dropped.** A one-off 2026-09-16
+   official-report glitch listed Aaron Banks, Zach Bako-Bewele, Brock Bowers
+   and Kyler Murray under a second club (archive `report-2131.json`); every
+   later run listed them correctly, but the wrong-club records stayed in the
+   index and kept mis-attributing in-game events (e.g. the 2026-09-20 23:49Z
+   Post-Crescent Packers headline produced an HOU:aaron-banks event).
+4. **Delivery — the Alerts feed only rendered roster alerts**, and the
+   collector's own cadence had degraded: chained re-runs stopped at a 12-chain
+   cap (~13 minutes) and the commit step failed with non-fast-forward pushes
+   (checkout pinned to the run's `head_sha` while main advanced) — failed
+   runs 35551108922/35551167921/35551194822, gaps 00:20→01:04 and 01:44→02:23
+   on 2026-09-21, 8/8 failures on Sunday night 2026-09-20 21:03–23:58.
+
+**Fixes on this branch**
+
+* **Game-day rosters join the index.** While any game is `in`/`pre`, the
+  pipeline reads each live game's full roster from ESPN's per-game summary
+  (`boxscore.teams[].athletes`, same keyless `site` API family as the
+  scoreboard) and merges every `(team, name, position)` into the player index;
+  every player of a live team then enters the per-player headline query budget
+  (cap 300). The endpoint is **not yet verified from this project** — the
+  sandbox has no outbound network — so the CI source ledger probes it every
+  run (`espn_game_summary`) and the per-game fetches land in `meta.json
+  probes`; until both show 200 the collector degrades to injury-index-only
+  coverage with `ESPN_ROSTER_UNREACHABLE` / `ESPN_ROSTER_EMPTY` flags rather
+  than guessing.
+* **Full names win; the surname fallback is suppressed** while the text names
+  a known player. Ambiguous text with several full names now emits **one event
+  per named player**, each attributed to the club the index knows for that
+  player (record team is authoritative; a club name in the text is a hint, not
+  a veto).
+* **The index is pruned every run.** A record the current official report
+  contradicts is dropped, and a record whose last assertion is >14 days old is
+  dropped (genuine current conflicts — e.g. a player the official report lists
+  under two clubs in the *same* run — are kept and flagged, never guessed).
+  Every drop is audited as `ROSTER_INDEX_PRUNED`.
+* **The Alerts feed now includes in-game alerts** (own in-game badge, VERIFIED
+  tag when the source carries a platform badge), so the two feeds the user
+  named both carry the injury reports for players in ongoing games.
+* **The collector stays alive through a game day.** Commit step is
+  rebase-safe (fetch `main` → rebase → retry, ×3) instead of dying on a
+  non-fast-forward push, and the re-run chain cap went 12 → 240 so a chain
+  outlasts any single game including overtime.
+
+**Evidence** — 31 regression tests, all offline (network stubbed to verbatim
+fixtures): the verbatim 2026-09-20 Post-Crescent Packers headline must not
+produce an HOU event (pruned index, and even unpruned the surname step is
+suppressed); the 2026-09-21 Bears headline must not resolve to
+`NO:jordyn-tyson`; an e2e run with a live game asserts the roster merge and
+`meta.live.hot_players` coverage; an e2e run asserts the stale-record prune and
+its `ROSTER_INDEX_PRUNED` flag. Full suite: **213 tests, OK** (2026-09-21).
+
+---
+
 ## 5. Irregularity catalogue
 
 All auto-derived on every run and published to the **Flags** tab with evidence
@@ -264,6 +340,9 @@ links. Nothing here is hand-maintained.
 | `RW_TEAM_AMBIGUOUS` | low | RotoWire rows sit in two-team blocks with no per-row club marker. |
 | `UNATTRIBUTED_TEAM` | low | A row whose club could not be resolved; kept but unassigned. |
 | `TEAMS_WITHOUT_ROWS` | low | Clubs with no entries in the current window. |
+| `ESPN_ROSTER_UNREACHABLE` | low | A live game's per-game summary could not be fetched; that game falls back to injury-index-only coverage. |
+| `ESPN_ROSTER_EMPTY` | low | The summary fetched but contained no readable athletes; same fallback, flagged instead of silent. |
+| `ROSTER_INDEX_PRUNED` | low | Index records dropped this run (contradicted by the official report, or unasserted for >14 days). Each drop is listed in the detail. |
 | `CLAIMS_CONTRADICTED` | low | Reporter claims the official report contradicts. Retained as scoring evidence. |
 | `SOCIAL_UNREACHABLE_*` / `SOCIAL_FETCH_ERROR_*` | medium | A platform failed its probe or its adapter. Skipped, not retried into a block. |
 | `STALE_SNAPSHOT` | medium | Gap between published snapshots exceeded 30 h. |
@@ -303,6 +382,11 @@ has had no free read tier since February 2026. The scorecard is therefore
 * **Standard library only** — no `pip install`, so no supply-chain step in CI.
 * **Nothing is guessed.** Unmappable clubs are dropped, ambiguous player matches
   return no match, every disagreement becomes a flag with evidence links.
+* **In-game coverage (2026-09-21).** While a game is in progress, each live
+  game's full roster is read from the ESPN per-game summary and merged into the
+  player index, so *every* player of a live team — not just players who already
+  have an injury record — is matchable to a headline and gets a targeted
+  per-player query (§4.1).
 
 | Rank | Source | Wins |
 |------|--------|------|
@@ -507,7 +591,7 @@ tests/           182 tests; fixtures reproduce shapes captured live
 
 | Check | Action | Result |
 |-------|--------|--------|
-| Unit + integration | `python3 -m unittest discover -s tests -t .` | **Ran 182 tests — OK** (2026-09-18; adds in-game classification, alert-log persistence and pruning, ESPN news + RotoWire RSS wire parsers, the mocked Bluesky author-feed path, and the end-to-end regression for the 2026-09-17 miss) |
+| Unit + integration | `python3 -m unittest discover -s tests -t .` | **Ran 213 tests — OK** (2026-09-21; adds the 2026-09-21 regressions: surname-fallback suppression, index pruning incl. the verbatim Packers-headline misattribution, game-roster parsing, per-player query budget/order, e2e roster merge + prune, and multi-player headline fan-out) |
 | Club social directory | fetch of all 32 `nfl.com/teams/<slug>/` pages, 2026-09-10 | All 32 fetched and reviewed; official sites + X/FB/IG/Snap handles recorded (Washington lists no Snapchat); parsed cache refreshed weekly by CI |
 | Bluesky identity verification | public AppView `getProfile`/`searchActors`, 2026-09-10 | Rapoport `rapsheet.bsky.social` verified (`verifiedStatus=valid`); Pelissero/Schultz/Glazer exact-name candidates without badges; Schefter search returns only mirrors/parodies and two accounts Bluesky itself labels `impersonation` → Fraud warnings |
 | X keyless verification | `publish.twitter.com/oembed` + syndication widget | HTTP 403 / empty body 2026-09-10 → X stays one-click manual-review; re-probed every build and auto-upgraded if a free route returns |
@@ -522,7 +606,10 @@ tests/           182 tests; fixtures reproduce shapes captured live
 | RotoWire RSS dates | `tests/test_news_wires.py` | `"Thu, 17 Sep 2026 9:54:00 PM PDT"` → `2026-09-18T04:54:00Z`. Caught a real bug: `email.utils` read the non-padded 12-hour clock as AM, so the strict regex now runs first |
 | Parser correctness | `tests/test_nfl_com.py` | Correct club attribution across 4 tables, correct designations, correct provenance tagging |
 | ESPN parser | `tests/test_espn.py` on verbatim live values | `Jeremiyah Love / ARI / QUESTIONABLE / ankle`, attribution `Dani Sureck` → `Cardinals' official site` |
-| End-to-end | `tests/test_pipeline.py` (network stubbed) | All 7 JSON files written; official beats ESPN; second run diffs and emits a `cleared` alert; single-source outage exits 0; total outage exits 2 |
+| End-to-end | `tests/test_pipeline.py` (network stubbed) | All 7 JSON files written; official beats ESPN; second run diffs and emits a `cleared` alert; single-source outage exits 0; total outage exits 2; live-game run merges game rosters into the index and prunes the stale 2026-09-16 record (with `ROSTER_INDEX_PRUNED` audit) |
+| 2026-09-21 misattributions | replayed against the live snapshot of that morning | `CHI` Bears headline no longer resolves to `NO:jordyn-tyson`; the Post-Crescent Packers headline (2026-09-20 23:49Z, verbatim in the test) emits GB events only — pruned index and surname suppression both covered |
+| ESPN game-summary endpoint | **sandbox has no outbound network**, so it could not be probed here | honest status: *pending CI verification*. The CI ledger probes it every run (`espn_game_summary`), per-game fetches appear in `meta.json` `probes`, and the collector degrades to index-only coverage with `ESPN_ROSTER_*` flags until both show 200 — it is deliberately not described as verified in the product |
+| Commit-step non-fast-forward failures | job timeline of failed runs 35551108922 / 35551167921 / 35551194822 (GitHub jobs API) | checkout pinned to creation-time `head_sha` while `main` advanced → push rejected in 1s. Fix: fetch + rebase (+`-X theirs` fallback) + retry ×3; concurrency group already serialized the runs |
 | Cross-source catch | Live run | `Byron Young` LAR (nfl.com) vs PHI (ESPN) flagged; independent table confirms LAR |
 | Site serving | `python3 -m http.server` + `curl` | `/` 200, `assets/app.js` 200, `assets/app.css` 200, `data/latest/*.json` 200 |
 | Live deployment | `gh api …/pages/builds/latest` | `status: built` at commit `d9ceaf2` = `main` HEAD |

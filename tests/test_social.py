@@ -145,5 +145,108 @@ class TestGoogleNewsQueries(unittest.TestCase):
         self.assertEqual(seen, set(teams))
 
 
+class TestCollectSocialBudgetAndOrder(unittest.TestCase):
+    """collect_social orchestration, with every adapter stubbed.
+
+    The user-reported gap (2026-09-21): while a game is in progress the
+    pipeline flags EVERY player on the live teams, and each of them needs a
+    targeted headline query — the old hard-coded cap of 6 silently starved
+    most of them.
+    """
+
+    def _run_collect_social(self, *, hot_teams=("KC", "IND"),
+                            hot_players=(), team_names=None):
+        calls = []
+
+        def fake_fetch_google_news(query, *, limit=40, source_kind="news"):
+            calls.append(query)
+            return {"platform": "google-news", "query": query, "url": "u",
+                    "posts": [], "error": ""}
+
+        probes = {
+            "bluesky": {"reachable": False, "url": "u", "status": 403,
+                        "latency_ms": 1, "error": "HTTP 403"},
+            "bluesky-author-feed": {"reachable": False, "url": "u", "status": 403,
+                                    "latency_ms": 1, "error": "HTTP 403"},
+            "mastodon": {"reachable": False, "url": "u", "status": None,
+                         "latency_ms": 1, "error": "down"},
+            "google-news": {"reachable": True, "url": "u", "status": 200,
+                            "latency_ms": 1, "error": ""},
+            "reddit": {"reachable": False, "url": "u", "status": 403,
+                       "latency_ms": 1, "error": "HTTP 403"},
+        }
+        with mock.patch.object(social_mod, "probe_platforms", return_value=probes), \
+             mock.patch.object(social_mod, "fetch_google_news",
+                               side_effect=fake_fetch_google_news):
+            res = social_mod.collect_social(
+                watched_handles=[], candidate_handles=[],
+                hot_teams=list(hot_teams), hot_players=list(hot_players),
+                team_names=team_names or {
+                    "KC": "Kansas City Chiefs", "IND": "Indianapolis Colts",
+                    "LAR": "Los Angeles Rams", "NYG": "New York Giants",
+                },
+                now=1_000_000.0,
+            )
+        return calls, res
+
+    def test_every_live_game_player_gets_a_targeted_query(self):
+        players = [f"Player {i}" for i in range(30)]  # e.g. both live teams' rosters
+        calls, _ = self._run_collect_social(hot_players=players)
+        for name in players:
+            self.assertIn(f'"{name}" injury when:1d', calls,
+                          f"no targeted query for {name}")
+        # Club + league queries are still there.
+        self.assertIn('"Kansas City Chiefs" injury when:1d', calls)
+        self.assertIn('"Indianapolis Colts" injury when:1d', calls)
+        self.assertIn("NFL injury report", calls)
+
+    def test_duplicate_names_are_queried_once(self):
+        calls, _ = self._run_collect_social(hot_players=["A B", "A B", "C D"])
+        self.assertEqual(calls.count('"A B" injury when:1d'), 1)
+        self.assertIn('"C D" injury when:1d', calls)
+
+    def test_posts_sort_by_parsed_instant_not_string(self):
+        # Before the fix this order was impossible: every RFC-822 string
+        # ("Mon, ...") sorts AFTER every ISO string ("2026-..."), so the
+        # newest insider post (ISO) would be dropped by the max_posts cap.
+        posts = [
+            social_mod.SocialPost(
+                platform="bluesky", post_id="iso-newest", author="h", author_name="h",
+                author_url="", text="Player A (ankle) has been ruled out",
+                posted_at="2026-09-21T02:00:00Z", url="u1"),
+            social_mod.SocialPost(
+                platform="google-news", post_id="rfc822-mid", author="o",
+                author_name="o", author_url="",
+                text="Player B (knee) has been ruled out",
+                posted_at="Mon, 21 Sep 2026 01:00:00 GMT", url="u2"),
+            social_mod.SocialPost(
+                platform="google-news", post_id="rfc822-old", author="o",
+                author_name="o", author_url="",
+                text="Player C (hamstring) has been ruled out",
+                posted_at="Sun, 20 Sep 2026 23:00:00 GMT", url="u3"),
+            social_mod.SocialPost(
+                platform="mastodon", post_id="undated", author="m", author_name="m",
+                author_url="", text="Player D (shoulder) has been ruled out",
+                posted_at="", url="u4"),
+        ]
+
+        def fake_fetch(query, *, limit=40, source_kind="news"):
+            return {"platform": "google-news", "query": query, "url": "u",
+                    "posts": list(posts), "error": ""}
+
+        probes = {name: {"reachable": (name == "google-news"), "url": "u",
+                         "status": 200, "latency_ms": 1, "error": ""}
+                  for name in ("bluesky", "bluesky-author-feed", "mastodon",
+                               "google-news", "reddit")}
+        with mock.patch.object(social_mod, "probe_platforms", return_value=probes), \
+             mock.patch.object(social_mod, "fetch_google_news",
+                               side_effect=fake_fetch):
+            res = social_mod.collect_social(
+                hot_teams=["KC"], hot_players=[],
+                team_names={"KC": "Kansas City Chiefs"}, now=1_000_000.0)
+        order = [p["post_id"] for p in res["posts"]]
+        self.assertEqual(order, ["iso-newest", "rfc822-mid", "rfc822-old", "undated"])
+
+
 if __name__ == "__main__":
     unittest.main()

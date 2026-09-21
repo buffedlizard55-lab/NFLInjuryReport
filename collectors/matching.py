@@ -34,7 +34,8 @@ class PlayerIndex:
 
     # -- build --------------------------------------------------------------
     def add(self, name: str, team: str, position: str = "", url: str = "",
-            source: str = "", ids: Optional[Dict[str, str]] = None) -> None:
+            source: str = "", ids: Optional[Dict[str, str]] = None,
+            seen_at: str = "") -> None:
         if not name:
             return
         name_key = slugify(name)
@@ -46,9 +47,14 @@ class PlayerIndex:
             rec = {
                 "key": name_key, "name": name, "team": team,
                 "positions": [], "urls": {}, "ids": {}, "sources": [],
+                "last_seen": seen_at,
             }
             self.players[key] = rec
             self._index(key, name)
+        if seen_at:
+            # `last_seen` is the most recent run in which a live source still
+            # asserted this (club, player). Pruning (see prune) uses it.
+            rec["last_seen"] = seen_at
         if len(name) > len(rec["name"]):
             rec["name"] = name
         if position and position not in rec["positions"]:
@@ -61,11 +67,11 @@ class PlayerIndex:
             if idv:
                 rec["ids"][idk] = idv
 
-    def add_many(self, injuries: Iterable[Any]) -> None:
+    def add_many(self, injuries: Iterable[Any], *, seen_at: str = "") -> None:
         for rec in injuries:
             self.add(
                 rec.player, rec.team, rec.position, rec.url, rec.source,
-                getattr(rec, "source_ids", None),
+                getattr(rec, "source_ids", None), seen_at=seen_at,
             )
 
     def _index(self, key: str, name: str) -> None:
@@ -82,6 +88,105 @@ class PlayerIndex:
             if key not in self._by_initial_last[ik]:
                 self._by_initial_last[ik].append(key)
 
+    def _reindex(self) -> None:
+        """Rebuild the surname/initial indexes from the surviving records."""
+
+        self._by_last = {}
+        self._by_initial_last = {}
+        for key, rec in self.players.items():
+            self._index(key, rec.get("name") or "")
+
+    # -- pruning --------------------------------------------------------------
+    def prune(
+        self,
+        *,
+        now: str,
+        official_pairs: Iterable[Tuple[str, str]] = (),
+        asserted_pairs: Iterable[Tuple[str, str]] = (),
+        stale_days: float = 14.0,
+    ) -> List[str]:
+        """Drop index records that current sources no longer support.
+
+        The index used to be append-only. That had two observed consequences
+        (both verified against archived snapshots on 2026-09-21):
+
+        * A one-off official-report misattribution on 2026-09-16 (archive
+          `report-2131.json` lists Aaron Banks and Zach Bako-Bewele under BOTH
+          HOU and GB, Kyler Murray under BOTH PHI and MIN, Brock Bowers under
+          BOTH CAR and LV; every later snapshot lists them under one club only)
+          left permanent duplicate records that made the in-game event builder
+          attribute a Green Bay injury headline to a Houston player.
+        * A player traded or released keeps his old (club, name) record forever,
+          which both mis-attributes events and poisons ambiguity checks.
+
+        Rules, in order (a record is dropped when EITHER fires):
+
+        1. CONTRADICTION — the official report names the player under club T and
+           this record attaches him to T' != T, and NO current source (official,
+           ESPN, RotoWire, or a game-day roster) still asserts (T', name). A
+           genuine cross-source conflict (Justin Jefferson: nfl.com CLE, ESPN
+           MIN) survives, because the asserting source keeps its record and the
+           conflict is already flagged by reconcile.
+        2. STALE — `last_seen` (set by add/add_many on every run in which a live
+           source asserts the record) is older than `stale_days`. Records
+           predating the last_seen field (no value) are given today's date and
+           survive this run; they become prunable only after a full missed
+           window.
+
+        `official_pairs` is ((club, player_key), ...) from the CURRENT official
+        report; `asserted_pairs` is the union over all current sources. When
+        the official report is missing, `official_pairs` is empty and the
+        contradiction rule is skipped entirely — there is no authoritative view
+        to contradict.
+
+        Returns the dropped "TEAM:name-slug (reason)" rows, for audit.
+        """
+
+        import datetime as _dt
+
+        official_by_key: Dict[str, List[str]] = {}
+        for team, key in official_pairs:
+            if team and key:
+                official_by_key.setdefault(key, [])
+                if team not in official_by_key[key]:
+                    official_by_key[key].append(team)
+        asserted = {(t, k) for t, k in asserted_pairs if t and k}
+
+        now_dt = None
+        try:
+            now_dt = _dt.datetime.strptime(now[:19], "%Y-%m-%dT%H:%M:%S")
+        except ValueError:
+            now_dt = None
+
+        dropped: List[str] = []
+        for full_key, rec in list(self.players.items()):
+            team = rec.get("team") or ""
+            key = rec.get("key") or ""
+            reason = ""
+            if (official_by_key and key in official_by_key
+                    and team not in official_by_key[key]
+                    and (team, key) not in asserted):
+                reason = "official report lists the player under a different club"
+            if not reason and now_dt is not None:
+                last = rec.get("last_seen") or ""
+                if not last:
+                    rec["last_seen"] = now  # backfill; prunable next window
+                else:
+                    try:
+                        last_dt = _dt.datetime.strptime(last[:19], "%Y-%m-%dT%H:%M:%S")
+                    except ValueError:
+                        last_dt = None
+                    if last_dt is not None:
+                        age_days = (now_dt - last_dt).total_seconds() / 86400.0
+                        if age_days > stale_days:
+                            reason = f"not asserted by any source for {age_days:.1f} days"
+            if reason:
+                del self.players[full_key]
+                dropped.append(f"{full_key} ({reason})")
+        if dropped:
+            self._reindex()
+        return dropped
+
     # -- query --------------------------------------------------------------
     def _narrow(self, keys: List[str], team_hint: str) -> Optional[Dict[str, Any]]:
         if team_hint:
@@ -97,12 +202,39 @@ class PlayerIndex:
         slug = slugify(name)
         return [r for k, r in self.players.items() if k.endswith(":" + slug)]
 
+    def full_name_hits(self, text: str) -> List[str]:
+        """Every roster record whose FULL name appears in `text`.
+
+        Unlike find_in_text (best single match), this returns all of them: a
+        headline that names two injured players ("Kelce and Pierce both out")
+        is about both, and the in-game builder must be able to emit an event
+        for each. Same containment check find_in_text uses, so the two can
+        never disagree about who is named.
+        """
+
+        if not text:
+            return []
+        low_nopunct = re.sub(r"[^a-z0-9\s]", " ", text.lower())
+        haystack = slugify(low_nopunct)
+        return [
+            k for k, rec in self.players.items()
+            if rec["key"] and len(rec["key"]) >= 6 and rec["key"] in haystack
+        ]
+
     def find_in_text(self, text: str, *, team_hint: str = "") -> Optional[Dict[str, Any]]:
         """Best player match inside free text, or None when ambiguous/absent.
 
         Preference order: full name, then initial+surname, then unique surname.
         A surname shared by more than one known player is NOT resolved without a
         team hint that narrows it to exactly one.
+
+        When the text contains at least one KNOWN FULL name, the surname step is
+        suppressed: the text is naming someone by full name, so a bare-surname
+        hit on a *different* player is a misread, not a match. Verified live
+        2026-09-21: "Caleb Williams Leaves Bears-Vikings Game With Injury; Tyson
+        Bagent Enters" used to fall through to the surname step and return
+        NO:jordyn-tyson because the FIRST name "Tyson" is a known surname — an
+        injury event about two Bears/Vikings players was attributed to a Saint.
         """
 
         if not text:
@@ -119,6 +251,11 @@ class PlayerIndex:
             hit = self._narrow(full_hits, team_hint)
             if hit:
                 return hit
+            # The text names known players by full name but the match is
+            # ambiguous (several full names, or none narrowed by the hint).
+            # Returning here — instead of trying surname matches — is what keeps
+            # "Tyson Bagent" from resolving to a player surnamed Tyson.
+            return None
 
         words = [w for w in low_nopunct.split() if w not in _SUFFIXES]
 
@@ -157,6 +294,7 @@ class PlayerIndex:
                 "urls": dict(rec.get("urls", {})),
                 "ids": dict(rec.get("ids", {})),
                 "sources": list(rec.get("sources", [])),
+                "last_seen": rec.get("last_seen", ""),
             }
             idx._index(key, rec.get("name", ""))
         return idx

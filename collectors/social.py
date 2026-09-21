@@ -53,6 +53,7 @@ from dataclasses import dataclass
 from typing import Any, Dict, Iterable, List, Optional
 
 from .http import FetchError, fetch_json, fetch_text, probe, utc_now_iso
+from .ingame import _epoch as _parse_instant
 from .ingame import classify_game_event, find_injury_word
 from .models import Irregularity, norm_status
 
@@ -334,11 +335,16 @@ GOOGLE_NEWS_RSS = "https://news.google.com/rss/search"
 #: reported *right now*:
 #:   1. the league-wide injury query (always),
 #:   2. every club currently in a live/finished game window ("hot"),
-#:   3. up to GOOGLE_NEWS_HOT_PLAYERS of those clubs' players who already have an
-#:      open injury record,
+#:   3. the players the pipeline flagged as hot. While a game is in progress
+#:      that is EVERY player on the live teams (the pipeline decides; see
+#:      _hot_players) — a headline about an in-game injury often names only the
+#:      player and never the club, so club-level queries alone cannot find it.
+#:      Outside a game window the pipeline passes a small fallback budget.
+#:      GOOGLE_NEWS_PLAYER_QUERY_CAP is only a hard safety bound on request
+#:      volume (several simultaneous games, unexpectedly large rosters).
 #:   4. a rotating slice of the other 28 clubs so full coverage is still reached
 #:      several times an hour without 32 simultaneous queries.
-GOOGLE_NEWS_HOT_PLAYERS = 6
+GOOGLE_NEWS_PLAYER_QUERY_CAP = 300
 GOOGLE_NEWS_ROTATION_SIZE = 8
 GOOGLE_NEWS_ROTATION_SECONDS = 600
 
@@ -565,7 +571,7 @@ def collect_social(
     hot_players: Iterable[str] = (),
     team_names: Optional[Dict[str, str]] = None,
     enabled: Optional[Dict[str, bool]] = None,
-    max_posts: int = 400,
+    max_posts: int = 1500,
     now: Optional[float] = None,
 ) -> Dict[str, Any]:
     """Run every enabled social adapter, skipping platforms whose probe failed.
@@ -665,7 +671,7 @@ def collect_social(
             for code in hot_teams:
                 name = (team_names or {}).get(code, code)
                 queries.append((google_news_injury_query(name), f"hot-team:{code}"))
-            for name in list(hot_players)[:GOOGLE_NEWS_HOT_PLAYERS]:
+            for name in list(dict.fromkeys(hot_players))[:GOOGLE_NEWS_PLAYER_QUERY_CAP]:
                 queries.append((google_news_injury_query(name), "hot-player"))
             rotate = rotation_slice(sorted(team_names or {}), now=now,
                                     size=GOOGLE_NEWS_ROTATION_SIZE,
@@ -705,7 +711,20 @@ def collect_social(
         p for p in posts
         if p.signal >= 0.3 or p.in_game_status != "NONE"
     ]
-    injury_posts.sort(key=lambda p: (p.posted_at or ""), reverse=True)
+    # Sort by PARSED instant, not by the raw string. Google News returns RFC-822
+    # pubDates ("Sun, 20 Sep 2026 ...") while Bluesky/ESPN return ISO
+    # ("2026-09-21T...Z"); as strings every weekday name sorts after "2", so a
+    # string sort put ALL of Google News ahead of every insider post and ESPN
+    # article — and the max_posts cap below then dropped the newest, most
+    # valuable items (verified 2026-09-21: social.json was capped at exactly
+    # 400 rows). Undated items sort last: they cannot be placed in time.
+    def _sort_instant(p: "SocialPost") -> float:
+        if not p.posted_at:
+            return float("-inf")
+        t = _parse_instant(p.posted_at)
+        return t if t is not None else float("-inf")
+
+    injury_posts.sort(key=_sort_instant, reverse=True)
 
     # De-duplicate by URL: the same headline can arrive from several queries.
     seen: set = set()

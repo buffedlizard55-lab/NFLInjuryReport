@@ -509,6 +509,32 @@ def build_game_events(
                 if code not in hint_codes:
                     hint_codes.append(code)
         team_hint = hint_codes[0] if len(hint_codes) == 1 else ""
+
+        # Every FULL name in the text is a real, named player: one event each,
+        # attributed to the club the index knows for that player (the record's
+        # team is authoritative — the text names the person, the index names
+        # the club). This generalises the old "no hint and more than one hit"
+        # scan: a club-targeted article that names two players ("Kelce and
+        # Pierce both out") is still about both, and "all injury reports for
+        # all players in ongoing games" means the second one is not dropped.
+        named = player_index.full_name_hits(text) if player_index else []
+        if named:
+            for k in named:
+                rec = player_index.players[k]
+                a_positions = rec.get("positions") or []
+                add(rec.get("team") or team_hint, rec.get("name") or "",
+                    rec.get("key") or "", a_positions[0] if a_positions else "",
+                    text,
+                    source=post.get("author") or post.get("platform") or "",
+                    platform=post.get("platform") or "",
+                    author=post.get("author_name") or post.get("author") or "",
+                    url=post.get("url") or "",
+                    posted_at=post.get("posted_at") or "",
+                    verified=bool(post.get("verified")),
+                    verification_detail=post.get("verification_detail") or "",
+                    source_kind=post.get("source_kind") or "")
+            continue
+
         match = (player_index.find_in_text(text, team_hint=team_hint)
                  if player_index else None)
         team = ""
@@ -567,35 +593,8 @@ def build_game_events(
                 # silently creating a pseudo-player from a headline.
                 if raw_athletes:
                     headline_hint = raw_athletes[0].strip() or headline_hint
-            # For headlines that list multiple players without a structured
-            # athletes array (Google News team queries), scan the haystack for
-            # every roster name. This captures "Chris Jones, Alec Pierce" in
-            # one title without requiring two separate headlines.
-            if player_index is not None and not team_hint:
-                # team_hint is ambiguous when the title names two clubs (e.g.
-                # "Colts-Chiefs"), so we scan for all full-name hits and emit
-                # one event per player rather than collapsing to None.
-                import re as _re2
-                from .models import slugify as _slugify2
-                low_nopunct2 = _re2.sub(r"[^a-z0-9\s]", " ", text.lower())
-                haystack2 = _slugify2(low_nopunct2)
-                all_hits = [
-                    rec for rec in player_index.players.values()
-                    if rec["key"] and len(rec["key"]) >= 6 and rec["key"] in haystack2
-                ]
-                if len(all_hits) > 1:
-                    for rec in all_hits:
-                        add(rec.get("team") or "", rec.get("name") or "", rec.get("key") or "",
-                            (rec.get("positions") or [None])[0] or "", text,
-                            source=post.get("author") or post.get("platform") or "",
-                            platform=post.get("platform") or "",
-                            author=post.get("author_name") or post.get("author") or "",
-                            url=post.get("url") or "",
-                            posted_at=post.get("posted_at") or "",
-                            verified=bool(post.get("verified")),
-                            verification_detail=post.get("verification_detail") or "",
-                            source_kind=post.get("source_kind") or "")
-                    continue
+            # (Full names were already handled above, one event per named
+            # player, before find_in_text was consulted.)
             hint = ((post.get("raw") or {}).get("player_hint") or "").strip() or headline_hint
             if not team and not hint:
                 continue

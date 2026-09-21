@@ -51,6 +51,9 @@ class TestPipelineEndToEnd(unittest.TestCase):
              mock.patch.object(espn_mod, "collect_scoreboard",
                                return_value={"games": [], "live": [], "hot_teams": [],
                                              "count": 0}), \
+             mock.patch.object(espn_mod, "collect_rosters",
+                               return_value={"rows": [], "calls": [],
+                                             "irregularities": []}), \
              mock.patch.object(espn_mod, "collect_news", return_value=dict(empty_news)), \
              mock.patch.object(rotowire_mod, "collect_news",
                                return_value=dict(empty_news)), \
@@ -137,6 +140,16 @@ class TestPipelineEndToEnd(unittest.TestCase):
                                side_effect=FetchError("https://www.nfl.com/injuries/",
                                                       "HTTP 503 Service Unavailable", 503)), \
              mock.patch.object(espn_mod, "collect", return_value=self.espn), \
+             mock.patch.object(espn_mod, "collect_scoreboard",
+                               return_value={"games": [], "live": [], "hot_teams": [],
+                                             "count": 0}), \
+             mock.patch.object(espn_mod, "collect_rosters",
+                               return_value={"rows": [], "calls": [],
+                                             "irregularities": []}), \
+             mock.patch.object(espn_mod, "collect_news",
+                               return_value={"items": [], "irregularities": []}), \
+             mock.patch.object(rotowire_mod, "collect_news",
+                               return_value={"items": [], "irregularities": []}), \
              mock.patch.object(directory_mod, "build",
                                return_value={"irregularities": []}), \
              mock.patch.object(pipeline, "verify", return_value={"sources": []}):
@@ -154,15 +167,22 @@ class TestPipelineEndToEnd(unittest.TestCase):
 
         with mock.patch.object(nfl_mod, "collect", side_effect=FetchError("u", "down")), \
              mock.patch.object(espn_mod, "collect", side_effect=FetchError("u", "down")), \
+             mock.patch.object(espn_mod, "collect_scoreboard",
+                               return_value={"games": [], "live": [], "hot_teams": [],
+                                             "count": 0}), \
+             mock.patch.object(espn_mod, "collect_rosters",
+                               return_value={"rows": [], "calls": [],
+                                             "irregularities": []}), \
+             mock.patch.object(espn_mod, "collect_news",
+                               return_value={"items": [], "irregularities": []}), \
+             mock.patch.object(rotowire_mod, "collect_news",
+                               return_value={"items": [], "irregularities": []}), \
              mock.patch.object(directory_mod, "build",
                                return_value={"irregularities": []}), \
              mock.patch.object(pipeline, "verify", return_value={"sources": []}):
             args = argparse.Namespace(with_rotowire=False, no_social=True)
             self.assertEqual(pipeline.collect(args), 2)
 
-
-if __name__ == "__main__":
-    unittest.main()
 
 class TestInGameWiring(unittest.TestCase):
     """End-to-end: a verified insider post must reach the alert log and ingame.json.
@@ -223,6 +243,9 @@ class TestInGameWiring(unittest.TestCase):
                                                         "teams": []}],
                                              "live": [{"id": "401872932"}],
                                              "hot_teams": ["BUF", "DET"], "count": 1}), \
+             mock.patch.object(espn_mod, "collect_rosters",
+                               return_value={"rows": [], "calls": [],
+                                             "irregularities": []}), \
              mock.patch.object(espn_mod, "collect_news",
                                return_value=espn_mod.parse_news(
                                    fixture_json("espn_news.json"),
@@ -296,6 +319,108 @@ class TestInGameWiring(unittest.TestCase):
         self.assertIn("fetches", social)
         labels = [f["label"] for f in social["fetches"]]
         self.assertTrue(any(label.startswith("author:") for label in labels))
+
+
+class TestLiveGameRosterAndPruning(unittest.TestCase):
+    """The 2026-09-21 user-reported gap, end to end:
+
+    * every player in an ongoing game (not just players with an injury
+      record) must be matchable to a headline, so the game-day rosters are
+      merged into the player index and enter the per-player query budget;
+    * index records no current source supports must be pruned, so a stale
+      (club, player) record can never mis-attribute an in-game event.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.addCleanup(setattr, pipeline, "DATA_DIR", pipeline.DATA_DIR)
+        self.addCleanup(setattr, pipeline, "LATEST_DIR", pipeline.LATEST_DIR)
+        self.addCleanup(setattr, pipeline, "STATE_DIR", pipeline.STATE_DIR)
+        self.addCleanup(setattr, pipeline, "ARCHIVE_DIR", pipeline.ARCHIVE_DIR)
+        pipeline.DATA_DIR = self.tmp
+        pipeline.LATEST_DIR = os.path.join(self.tmp, "latest")
+        pipeline.STATE_DIR = os.path.join(self.tmp, "state")
+        pipeline.ARCHIVE_DIR = os.path.join(self.tmp, "archive")
+        os.makedirs(pipeline.STATE_DIR, exist_ok=True)
+        os.makedirs(pipeline.LATEST_DIR, exist_ok=True)
+
+        self.official = nfl_mod.parse_injuries_html(
+            fixture_text("nfl_injuries.html"), fetched_at="2026-09-21T02:17:00Z")
+        self.espn = espn_mod.parse_injuries(
+            fixture_json("espn_injuries.json"), fetched_at="2026-09-21T02:17:00Z")
+
+        self.game = {
+            "id": "401872945", "short_name": "IND @ KC", "state": "in",
+            "date": "2026-09-21T00:20Z",
+            "teams": [{"code": "KC", "name": "Kansas City Chiefs",
+                       "home_away": "home", "score": "17"},
+                      {"code": "IND", "name": "Indianapolis Colts",
+                       "home_away": "away", "score": "14"}],
+        }
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _run(self, *, roster_rows, seed_state=None):
+        if seed_state is not None:
+            pipeline._write(os.path.join(pipeline.STATE_DIR, "players.json"),
+                            seed_state)
+        empty_news = {"items": [], "irregularities": []}
+        with mock.patch.object(pipeline, "_now", return_value="2026-09-21T02:17:00Z"), \
+             mock.patch.object(nfl_mod, "collect", return_value=self.official), \
+             mock.patch.object(espn_mod, "collect", return_value=self.espn), \
+             mock.patch.object(espn_mod, "collect_scoreboard",
+                               return_value={"games": [self.game], "live": [self.game],
+                                             "hot_teams": ["KC", "IND"], "count": 1}), \
+             mock.patch.object(espn_mod, "collect_rosters",
+                               return_value={"rows": roster_rows, "calls": [],
+                                             "irregularities": []}), \
+             mock.patch.object(espn_mod, "collect_news", return_value=dict(empty_news)), \
+             mock.patch.object(rotowire_mod, "collect_news",
+                               return_value=dict(empty_news)), \
+             mock.patch.object(directory_mod, "build",
+                               return_value={"irregularities": []}), \
+             mock.patch.object(pipeline, "verify", return_value={"sources": []}):
+            args = argparse.Namespace(with_rotowire=False, no_social=True,
+                                      no_news=True)
+            return pipeline.collect(args)
+
+    def test_game_day_rosters_join_the_index_and_the_query_budget(self):
+        code = self._run(roster_rows=[
+            {"team": "KC", "name": "Healthy Quarterback", "position": "QB"},
+            {"team": "IND", "name": "Healthy Linebacker", "position": "LB"},
+        ])
+        self.assertEqual(code, 0)
+        with open(os.path.join(pipeline.STATE_DIR, "players.json"), encoding="utf-8") as fh:
+            state = json.load(fh)
+        self.assertIn("KC:healthy-quarterback", state["players"])
+        self.assertIn("IND:healthy-linebacker", state["players"])
+        # A player with NO injury record is still in the per-player query set:
+        # his injury headline must be findable during the game.
+        with open(os.path.join(pipeline.LATEST_DIR, "meta.json"), encoding="utf-8") as fh:
+            meta = json.load(fh)
+        hot_players = meta["live"]["hot_players"]
+        self.assertIn("Healthy Quarterback", hot_players)
+        self.assertIn("Healthy Linebacker", hot_players)
+
+    def test_stale_index_record_is_pruned_and_audited(self):
+        index = PlayerIndex()
+        # Current run asserts GB (fresh); the HOU record is from the 2026-09-16
+        # misattribution and no current source asserts it.
+        index.add("Aaron Banks", "GB", "G", seen_at="2026-09-21T01:00:00Z")
+        index.add("Aaron Banks", "HOU", "G", seen_at="2026-09-01T00:00:00Z")
+        code = self._run(roster_rows=[], seed_state=index.to_dict())
+        self.assertEqual(code, 0)
+        with open(os.path.join(pipeline.STATE_DIR, "players.json"), encoding="utf-8") as fh:
+            state = json.load(fh)
+        self.assertNotIn("HOU:aaron-banks", state["players"])
+        self.assertIn("GB:aaron-banks", state["players"])
+        with open(os.path.join(pipeline.LATEST_DIR, "flags.json"), encoding="utf-8") as fh:
+            flags = json.load(fh)
+        pruned = [i for i in flags["irregularities"]
+                  if i["code"] == "ROSTER_INDEX_PRUNED"]
+        self.assertEqual(len(pruned), 1)
+        self.assertIn("HOU:aaron-banks", pruned[0]["detail"])
 
 
 if __name__ == "__main__":

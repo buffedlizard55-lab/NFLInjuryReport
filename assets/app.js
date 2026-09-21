@@ -638,18 +638,26 @@
   function renderAlerts() {
     var host = $("#alertList");
     host.innerHTML = "";
-    // Roster-change alerts only — in-game events have their own panel (#ingameList).
-    // Without this filter the same in-game incident renders twice (here and in renderIngame)
-    // whenever the alert kind is "in-game".
+    // The Alerts feed is every alert the collector raised, roster changes AND
+    // in-game injury reports: the requirement (2026-09-21, user-reported gap)
+    // is that injury reports for players in ongoing games arrive in this feed,
+    // not only in the Live feed and the dedicated In-game panel. In-game rows
+    // keep their own badge/tag so the two axes stay distinguishable, and the
+    // In-game tab remains the detailed view of the same log.
     var allAlerts = (state.data.alerts || {}).alerts || [];
-    var alerts = allAlerts.filter(function (a) { return a.kind !== "in-game"; });
+    var alerts = allAlerts.slice().sort(function (a, b) {
+      var ta = Date.parse(a.ts || 0) || 0, tb = Date.parse(b.ts || 0) || 0;
+      return tb - ta;
+    });
     if (!alerts.length) {
       host.appendChild(el("div", "empty",
-        "No status changes since the previous snapshot. Alerts are produced by diffing " +
-        "consecutive official reports, so an empty list means the designations are stable."));
+        "No alerts yet. Roster alerts are produced by diffing consecutive official " +
+        "reports; in-game injury reports appear here as soon as the collector sees a " +
+        "verified insider post, wire story or official update about a player in a game."));
       return;
     }
     alerts.forEach(function (a) {
+      var inGame = a.kind === "in-game";
       var card = el("div", "alert-card sev-" + (a.severity || "low"));
       var head = el("div", "head");
       head.appendChild(el("span", "platform-tag", a.kind));
@@ -657,10 +665,11 @@
       var pos = a.position || playerPos(a.player, a.team);
       head.appendChild(el("span", "muted", a.team + (pos ? " · " + pos : "")));
       if (a.from_status) {
-        head.appendChild(badge(a.from_status));
+        head.appendChild(badge(inGame ? igBadge(a.from_status) : a.from_status));
         head.appendChild(el("span", "arrow", "→"));
       }
-      head.appendChild(badge(a.to_status));
+      head.appendChild(badge(inGame ? igBadge(a.to_status) : a.to_status));
+      if (a.source_verified) head.appendChild(el("span", "badge b-ACTIVE", "VERIFIED"));
       head.appendChild(el("span", "when muted", relative(a.ts) + " · " + stamp(a.ts)));
       card.appendChild(head);
       card.appendChild(el("p", "detail", a.detail));
@@ -668,7 +677,9 @@
       (a.sources || []).forEach(function (s) {
         if (s.url) row.appendChild(link(s.url, s.source));
       });
-      row.appendChild(link("https://www.nfl.com/injuries/", "official report"));
+      // In-game alerts already link their own sources (insider post / wire /
+      // ESPN); the official-report link only makes sense for roster designations.
+      if (!inGame) row.appendChild(link("https://www.nfl.com/injuries/", "official report"));
       card.appendChild(row);
       host.appendChild(card);
     });
