@@ -358,6 +358,144 @@ def collect_scoreboard(*, dates: Optional[str] = None,
     return parsed
 
 
+# ----------------------------------------------------------------- rosters ---
+#: ESPN's keyless game summary. The scoreboard (verified 2026-09-18) carries no
+#: player lists, so "every player in an ongoing game" cannot be known from it
+#: alone: the injury index only contains players who have an injury record, and
+#: a player with no record at all was invisible to in-game matching (2026-09-21
+#: gap: a headline naming such a player could never resolve to a roster entry).
+#: The public espn.com game centre reads per-game rosters from this `site`
+#: family endpoint (same host/shape family as the verified scoreboard/injuries/
+#: news endpoints). It is PROBED in the source ledger on every run
+#: (`espn_game_summary`) and parsed defensively: any shape the parser does not
+#: recognise is ignored rather than guessed, and a fetch failure degrades to an
+#: empty roster plus a flag instead of aborting the run.
+SUMMARY_ENDPOINT = (
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event={event_id}"
+)
+
+
+def parse_roster(payload: Any, *, game: Optional[Dict[str, Any]] = None) -> List[Dict[str, str]]:
+    """Extract (team, name, position) rows from a game summary payload.
+
+    Tries the documented `boxscore.teams[].athletes[]` shape first. Team codes
+    come from the payload when present; otherwise from the scoreboard game's
+    team list in the same order. Any row without a usable name is skipped —
+    nothing is invented.
+    """
+
+    rows: List[Dict[str, str]] = []
+    if not isinstance(payload, dict):
+        return rows
+
+    box = payload.get("boxscore")
+    if not isinstance(box, dict):
+        return rows
+    teams_blocks = box.get("teams")
+    if not isinstance(teams_blocks, list):
+        return rows
+    game_teams = [t.get("code") or "" for t in ((game or {}).get("teams") or [])]
+
+    def _position_of(athlete: Dict[str, Any]) -> str:
+        pos = athlete.get("position")
+        if isinstance(pos, dict):
+            return (pos.get("abbreviation") or pos.get("displayName") or "").strip().upper()
+        if isinstance(pos, str):
+            return pos.strip().upper()
+        return ""
+
+    for i, block in enumerate(teams_blocks):
+        if not isinstance(block, dict):
+            continue
+        team_obj = block.get("team") or {}
+        code = (team_obj.get("abbreviation") or "").upper()
+        if code not in NFL_TEAMS:
+            # Fall back to the scoreboard's ordering for this game.
+            code = game_teams[i] if i < len(game_teams) else ""
+        if code not in NFL_TEAMS:
+            continue
+        athletes = block.get("athletes")
+        if not isinstance(athletes, list):
+            continue
+        for athlete in athletes:
+            if not isinstance(athlete, dict):
+                continue
+            name = (athlete.get("displayName") or "").strip()
+            if not name:
+                continue
+            rows.append({"team": code, "name": name,
+                         "position": _position_of(athlete)})
+    return rows
+
+
+def collect_rosters(games: List[Dict[str, Any]], *,
+                    fetched_at: Optional[str] = None) -> Dict[str, Any]:
+    """Game-day rosters for games that are live or about to start.
+
+    `games` is the scoreboard's game list; only state in ("in", "pre") is
+    fetched, because "all players in ongoing games" is what the query budget
+    needs (a finished game's rosters add nothing the injury index lacks for
+    alerting purposes). Each game is one request; a failure on one game never
+    stops the others.
+    """
+
+    fetched_at = fetched_at or utc_now_iso()
+    rows: List[Dict[str, str]] = []
+    calls: List[Dict[str, Any]] = []
+    irregularities: List[Irregularity] = []
+
+    for game in games or []:
+        state = (game or {}).get("state") or ""
+        if state not in ("in", "pre"):
+            continue
+        event_id = str((game or {}).get("id") or "")
+        if not event_id:
+            continue
+        url = SUMMARY_ENDPOINT.format(event_id=event_id)
+        try:
+            payload = fetch_json(url, source="espn", referer="https://www.espn.com/nfl/")
+        except FetchError as exc:
+            irregularities.append(
+                Irregularity(
+                    code="ESPN_ROSTER_UNREACHABLE", severity="low",
+                    title=f"Game-day roster for {game.get('short_name') or event_id} could not be read",
+                    detail=(
+                        f"{exc.reason} (status={exc.status}) while fetching {url}. The "
+                        "game-day roster for this game is missing from the player index, so "
+                        "players who carry no injury record cannot be matched to a headline "
+                        "for this game on this run. Other games were still tried."
+                    ),
+                    evidence=[{"label": "Failing URL", "url": url}],
+                )
+            )
+            calls.append({"game": game.get("short_name") or event_id, "url": url,
+                          "rows": 0, "error": exc.reason})
+            continue
+        game_rows = parse_roster(payload, game=game)
+        rows.extend(game_rows)
+        calls.append({"game": game.get("short_name") or event_id, "url": url,
+                      "rows": len(game_rows), "error": ""})
+        if not game_rows:
+            # The endpoint answered but gave no recognisable athletes: the
+            # shape may have changed. Report it so a silent coverage hole is
+            # visible in health/flags instead of hiding as "no rosters".
+            irregularities.append(
+                Irregularity(
+                    code="ESPN_ROSTER_EMPTY", severity="low",
+                    title=f"Game-day roster for {game.get('short_name') or event_id} parsed zero athletes",
+                    detail=(
+                        f"ESPN answered from {url} but the payload contained no "
+                        "boxscore.teams[].athletes the parser recognises. The roster is "
+                        "skipped rather than guessed; if this persists the parser and the "
+                        "ledger probe need a look."
+                    ),
+                    evidence=[{"label": "Summary URL", "url": url}],
+                )
+            )
+    return {"source": "espn-roster", "fetched_at": fetched_at, "rows": rows,
+            "calls": calls, "irregularities": irregularities}
+
+
 # ------------------------------------------------------------------- news -----
 #: ESPN's keyless news API. Verified live 2026-09-18 (HTTP 200) with this shape
 #: (keys verbatim):

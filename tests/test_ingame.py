@@ -337,5 +337,97 @@ class TestEventTimeGuards(unittest.TestCase):
         self.assertEqual(events, [])
 
 
+class TestStaleRecordDoesNotMisattribute(unittest.TestCase):
+    """The 2026-09-16 incident, end to end.
+
+    For one run the official report listed Aaron Banks (and Zach Bako-Bewele)
+    under BOTH HOU and GB (archive report-2131.json); every later run listed
+    them under GB only. The append-only index kept the HOU record, so an
+    in-game headline about the Packers players produced an HOU:aaron-banks
+    event — an injury attributed to a club the player does not play for.
+
+    Two layers now stop this:
+      * PlayerIndex.prune drops the record the official report contradicts;
+      * even before pruning, a text that names known players by FULL name must
+        not fall through to a bare-surname match on a different player.
+    """
+
+    #: Verbatim Google News headline, 2026-09-20T23:49Z, about the Packers
+    #: game vs the Jets (observed in data/latest/ingame.json on 2026-09-21).
+    PACKERS_HEADLINE = ("Packers starters Jayden Reed, Zach Bako-Bewele and "
+                        "Aaron Banks lost to injuries vs Jets - The Post-Crescent")
+
+    def _index_with_stale_record(self):
+        index = PlayerIndex()
+        index.add("Aaron Banks", "GB", "G", seen_at="2026-09-21T01:00:00Z")
+        index.add("Aaron Banks", "HOU", "G", seen_at="2026-09-16T21:31:00Z")
+        index.add("Zach Bako-Bewele", "GB", "QB", seen_at="2026-09-21T01:00:00Z")
+        index.add("Zach Bako-Bewele", "HOU", "QB", seen_at="2026-09-16T21:31:00Z")
+        index.add("Jayden Reed", "GB", "WR", seen_at="2026-09-21T01:00:00Z")
+        return index
+
+    def test_pruned_index_emits_events_only_for_the_real_club(self):
+        index = self._index_with_stale_record()
+        dropped = index.prune(
+            now="2026-09-21T02:24:00Z",
+            official_pairs=[("GB", "aaron-banks"), ("GB", "zach-bako-bewele"),
+                            ("GB", "jayden-reed")],
+            asserted_pairs={("GB", "aaron-banks"), ("GB", "zach-bako-bewele"),
+                            ("GB", "jayden-reed")},
+        )
+        self.assertEqual(sorted(d.split(" ")[0] for d in dropped),
+                         ["HOU:aaron-banks", "HOU:zach-bako-bewele"])
+        events = build_game_events(
+            posts=[{"platform": "google-news", "author": "The Post-Crescent",
+                    "author_name": "The Post-Crescent",
+                    "url": "https://news.google.com/rss/articles/banks",
+                    "text": self.PACKERS_HEADLINE,
+                    "posted_at": "Sun, 20 Sep 2026 23:49:00 GMT",
+                    "source_kind": "news"}],
+            player_index=index, now="2026-09-21T02:24:00Z",
+            hot_teams=["GB", "NYJ"])
+        self.assertEqual(sorted(e["team"] for e in events), ["GB", "GB", "GB"])
+        self.assertEqual(sorted(e["player_key"] for e in events),
+                         ["aaron-banks", "jayden-reed", "zach-bako-bewele"])
+
+    def test_unpruned_index_never_emits_the_stale_club_via_surname_step(self):
+        # Even before pruning, the surname step must not turn "Zach Bako-Bewele"
+        # or any first name into a different player; with full names present and
+        # ambiguous, the multi-hit path (or nothing) is the only allowed result.
+        index = self._index_with_stale_record()
+        match = index.find_in_text(self.PACKERS_HEADLINE, team_hint="")
+        self.assertIsNone(match)
+
+    def test_headline_naming_two_players_emits_one_event_each(self):
+        # "All injury reports for all players in ongoing games": a headline
+        # that names two players is about both — one event per player, each
+        # attributed to the club the index knows for that player (a single club
+        # name in the text is a hint, not a veto).
+        index = PlayerIndex()
+        index.add("Chris Jones", "KC", "DT", seen_at="2026-09-21T01:00:00Z")
+        index.add("Alec Pierce", "IND", "WR", seen_at="2026-09-21T01:00:00Z")
+        events = build_game_events(
+            posts=[{"platform": "google-news", "author": "Wire", "author_name": "Wire",
+                    "url": "https://news.google.com/rss/articles/two",
+                    "text": ("Chris Jones (ankle) has been ruled out for the rest of "
+                             "the game; Alec Pierce returns to the field after being "
+                             "helped off"),
+                    "posted_at": "Sun, 20 Sep 2026 23:49:00 GMT",
+                    "source_kind": "news"}],
+            player_index=index, now="2026-09-21T02:24:00Z",
+            hot_teams=["KC", "IND"])
+        by_player = {e["player"]: e for e in events}
+        # Both players get their own event with the correct club.
+        self.assertEqual(set(by_player), {"Chris Jones", "Alec Pierce"})
+        self.assertEqual(by_player["Chris Jones"]["team"], "KC")
+        self.assertEqual(by_player["Alec Pierce"]["team"], "IND")
+        # One post carries one classification (the most severe status stated
+        # wins, most-severe-tested-first); if Pierce later gets his own
+        # "returned" report, merge_events' newest-stated-report rule corrects
+        # his status on the next run.
+        self.assertEqual(by_player["Chris Jones"]["in_game_status"], "OUT_FOR_GAME")
+        self.assertEqual(by_player["Alec Pierce"]["in_game_status"], "OUT_FOR_GAME")
+
+
 if __name__ == "__main__":
     unittest.main()

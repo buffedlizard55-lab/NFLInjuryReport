@@ -140,21 +140,63 @@ jobs:
           else
             STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
             git commit -m "data: injury snapshot ${STAMP}"
-            git push
+            # A queued run checks out the SHA it was CREATED for (github.sha).
+            # With the staggered crons and game-day chain several runs queue up,
+            # so by the time a queued run starts, main has usually moved: a plain
+            # `git push` is then rejected, the run fails, and — because the
+            # chaining step never runs — the game-day chain is severed (measured
+            # 2026-09-21: run 35551194822 failed its push in 1s and the next
+            # snapshot was 40 minutes away mid-game). Rebase onto current main
+            # before pushing. data/ is regenerated wholesale on every run, so on
+            # conflict the NEWER local snapshot wins (-X theirs during a rebase
+            # is the commit being replayed, i.e. ours).
+            PUSHED=0
+            for attempt in 1 2 3; do
+              git fetch origin main --quiet
+              if ! git rebase origin/main >/dev/null 2>&1; then
+                git rebase --abort >/dev/null 2>&1 || true
+                if ! git rebase -X theirs origin/main >/dev/null 2>&1; then
+                  git rebase --abort >/dev/null 2>&1 || true
+                  echo "::warning::rebase onto origin/main failed (attempt ${attempt}/3)"
+                  sleep 5
+                  continue
+                fi
+              fi
+              if git push; then
+                PUSHED=1
+                break
+              fi
+              echo "::warning::git push failed (attempt ${attempt}/3)"
+              sleep 5
+            done
+            if [ "$PUSHED" -ne 1 ]; then
+              echo "::error::data commit could not be published after 3 attempts"
+              exit 1
+            fi
           fi
 
       # ---------------------------------------------------------------- chain --
       # While a game is in progress the roster report is not the interesting
       # signal; in-game events are. So the run re-arms itself, up to CHAIN_CAP
-      # times (~1 hour at ~5 minutes a run). Outside a game window it does not,
-      # which keeps the schedule cheap and honest.
+      # times. Each chained run takes ~1 minute, so CAP=240 covers a full game
+      # including delays and overtime at the observed ~1-minute pace — longer
+      # than any NFL game can last. The chain terminates on its own the moment
+      # the scoreboard says no game is in progress (the dispatch condition is
+      # re-checked against a FRESH scoreboard every run), so the cap is only a
+      # circuit breaker against a scoreboard bug, not a pacing device.
+      #
+      # WHY 240 and not 12: measured 2026-09-21, a cap of 12 (~13 minutes)
+      # expired mid-game and left the next 40 minutes to GitHub's cron
+      # scheduler, which was dropping runs — the entire interval in which the
+      # live game had no snapshots. Outside a game window the chain does not
+      # fire at all, so a higher cap costs nothing on non-game days.
       - name: Game-day chaining
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           CHAIN="${{ github.event.inputs.chain }}"
           CHAIN=${CHAIN:-0}
-          CAP=12
+          CAP=240
           LIVE=$(python3 - <<'PY'
           import json, os
           try:
