@@ -263,6 +263,7 @@ def reconcile(
     game_events: Optional[List[Dict[str, Any]]] = None,
     alert_log: Optional[List[Dict[str, Any]]] = None,
     live_games: Optional[List[Dict[str, Any]]] = None,
+    allow_removed: bool = True,
 ) -> Dict[str, Any]:
     """Build the canonical report, the alert feed and the irregularity list.
 
@@ -506,6 +507,13 @@ def reconcile(
 
     for key, old in prev_index.items():
         if key in canonical:
+            continue
+        # When the official report is missing, "removed" is not trustworthy:
+        # we have no authoritative view of who is still on the report.
+        # The pipeline's total-outage guard already preserves the previous
+        # snapshot; this guard stops a single missing official fetch from
+        # flooding the feed with hundreds of "removed" alerts.
+        if not allow_removed:
             continue
         alerts.append(
             Alert(
