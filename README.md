@@ -286,16 +286,22 @@ state `in`, 3rd quarter). Four separate defects compounded:
 **Fixes on this branch**
 
 * **Game-day rosters join the index.** While any game is `in`/`pre`, the
-  pipeline reads each live game's full roster from ESPN's per-game summary
-  (`boxscore.teams[].athletes`, same keyless `site` API family as the
-  scoreboard) and merges every `(team, name, position)` into the player index;
-  every player of a live team then enters the per-player headline query budget
-  (cap 300). The endpoint is **not yet verified from this project** — the
-  sandbox has no outbound network — so the CI source ledger probes it every
-  run (`espn_game_summary`) and the per-game fetches land in `meta.json
-  probes`; until both show 200 the collector degrades to injury-index-only
+  pipeline reads each live game's roster from ESPN's per-game summary (same
+  keyless `site` API family as the scoreboard) and merges every `(team, name)`
+  into the player index; every player of a live team then enters the
+  per-player headline query budget (cap 300). The endpoint is probed in the CI
+  source ledger every run (`espn_game_summary`) and the per-game fetches land
+  in `meta.json probes`; a fetch or parse failure degrades to injury-index-only
   coverage with `ESPN_ROSTER_UNREACHABLE` / `ESPN_ROSTER_EMPTY` flags rather
   than guessing.
+  *Verified live 2026-09-21 from CI:* the static probe and the live per-game
+  fetch (game `401872945`, IND@KC) both returned 200. The first run's parse
+  targeted `boxscore.teams[].athletes` and got **zero athletes** — the real
+  payload carries its players under `boxscore.players[].statistics[].athletes[]`.
+  The defensive degradation surfaced that as an `ESPN_ROSTER_EMPTY` flag
+  instead of shipping an empty roster silently; a verbatim copy of the payload
+  is now `tests/fixtures/espn_summary.json` and the parser reads the real
+  shape (deduplicating players who have lines in several stat groups).
 * **Full names win; the surname fallback is suppressed** while the text names
   a known player. Ambiguous text with several full names now emits **one event
   per named player**, each attributed to the club the index knows for that
@@ -608,7 +614,7 @@ tests/           182 tests; fixtures reproduce shapes captured live
 | ESPN parser | `tests/test_espn.py` on verbatim live values | `Jeremiyah Love / ARI / QUESTIONABLE / ankle`, attribution `Dani Sureck` → `Cardinals' official site` |
 | End-to-end | `tests/test_pipeline.py` (network stubbed) | All 7 JSON files written; official beats ESPN; second run diffs and emits a `cleared` alert; single-source outage exits 0; total outage exits 2; live-game run merges game rosters into the index and prunes the stale 2026-09-16 record (with `ROSTER_INDEX_PRUNED` audit) |
 | 2026-09-21 misattributions | replayed against the live snapshot of that morning | `CHI` Bears headline no longer resolves to `NO:jordyn-tyson`; the Post-Crescent Packers headline (2026-09-20 23:49Z, verbatim in the test) emits GB events only — pruned index and surname suppression both covered |
-| ESPN game-summary endpoint | **sandbox has no outbound network**, so it could not be probed here | honest status: *pending CI verification*. The CI ledger probes it every run (`espn_game_summary`), per-game fetches appear in `meta.json` `probes`, and the collector degrades to index-only coverage with `ESPN_ROSTER_*` flags until both show 200 — it is deliberately not described as verified in the product |
+| ESPN game-summary endpoint | sandbox has no outbound network → first verification came from CI (run 35555528156, 2026-09-21) | ledger probe `espn_game_summary` → **200** (198 ms); live per-game fetch `event=401872945` → **200**. First-run parse mismatch (players live in `boxscore.players[]`, not `boxscore.teams[]`) surfaced as `ESPN_ROSTER_EMPTY` — exactly the designed degradation; parser then fixed against a verbatim payload capture (`tests/fixtures/espn_summary.json`) |
 | Commit-step non-fast-forward failures | job timeline of failed runs 35551108922 / 35551167921 / 35551194822 (GitHub jobs API) | checkout pinned to creation-time `head_sha` while `main` advanced → push rejected in 1s. Fix: fetch + rebase (+`-X theirs` fallback) + retry ×3; concurrency group already serialized the runs |
 | Cross-source catch | Live run | `Byron Young` LAR (nfl.com) vs PHI (ESPN) flagged; independent table confirms LAR |
 | Site serving | `python3 -m http.server` + `curl` | `/` 200, `assets/app.js` 200, `assets/app.css` 200, `data/latest/*.json` 200 |

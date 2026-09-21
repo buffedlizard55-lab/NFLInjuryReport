@@ -366,10 +366,13 @@ def collect_scoreboard(*, dates: Optional[str] = None,
 #: gap: a headline naming such a player could never resolve to a roster entry).
 #: The public espn.com game centre reads per-game rosters from this `site`
 #: family endpoint (same host/shape family as the verified scoreboard/injuries/
-#: news endpoints). It is PROBED in the source ledger on every run
-#: (`espn_game_summary`) and parsed defensively: any shape the parser does not
-#: recognise is ignored rather than guessed, and a fetch failure degrades to an
-#: empty roster plus a flag instead of aborting the run.
+#: news endpoints). VERIFIED LIVE 2026-09-21 from CI (run 35555528156): the
+#: ledger probe and a live per-game fetch (event 401872945) returned 200, and
+#: the payload structure is captured verbatim in
+#: tests/fixtures/espn_summary.json. It is PROBED in the source ledger on
+#: every run (`espn_game_summary`) and parsed defensively: any shape the
+#: parser does not recognise is ignored rather than guessed, and a fetch
+#: failure degrades to an empty roster plus a flag instead of aborting the run.
 SUMMARY_ENDPOINT = (
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event={event_id}"
 )
@@ -378,10 +381,25 @@ SUMMARY_ENDPOINT = (
 def parse_roster(payload: Any, *, game: Optional[Dict[str, Any]] = None) -> List[Dict[str, str]]:
     """Extract (team, name, position) rows from a game summary payload.
 
-    Tries the documented `boxscore.teams[].athletes[]` shape first. Team codes
-    come from the payload when present; otherwise from the scoreboard game's
-    team list in the same order. Any row without a usable name is skipped —
-    nothing is invented.
+    VERIFIED LIVE 2026-09-21 (game 401872945, IND@KC — the first CI run
+    carrying this code fetched it; a copy of the payload structure is
+    tests/fixtures/espn_summary.json, keys verbatim): the `boxscore.teams[]`
+    blocks carry NO athletes, only team statistics. The players sit in
+    `boxscore.players[]` — one block per team, each with its own `team`
+    object (with `abbreviation`) and a `statistics[]` list of groups
+    ("passing", "rushing", "receiving", "defensive", ...) whose
+    `athletes[]` entries are `{athlete: {displayName, jersey, ...},
+    stats: [...]}`. A player with lines in several groups appears several
+    times, so rows are deduplicated per (team, name).
+
+    Coverage: every player with a boxscore line — i.e. every player who was
+    actually in the game, which is the population an in-game injury headline
+    can be about. Bench-only players have no boxscore line and are not
+    listed; they were not in the game.
+
+    The `boxscore.teams[].athletes[]` branch is kept as a defensive fallback
+    for any ESPN shape that does carry team-level athlete lists. Any row
+    without a usable name or club is skipped — nothing is invented.
     """
 
     rows: List[Dict[str, str]] = []
@@ -391,10 +409,8 @@ def parse_roster(payload: Any, *, game: Optional[Dict[str, Any]] = None) -> List
     box = payload.get("boxscore")
     if not isinstance(box, dict):
         return rows
-    teams_blocks = box.get("teams")
-    if not isinstance(teams_blocks, list):
-        return rows
     game_teams = [t.get("code") or "" for t in ((game or {}).get("teams") or [])]
+    seen: set = set()
 
     def _position_of(athlete: Dict[str, Any]) -> str:
         pos = athlete.get("position")
@@ -404,27 +420,58 @@ def parse_roster(payload: Any, *, game: Optional[Dict[str, Any]] = None) -> List
             return pos.strip().upper()
         return ""
 
-    for i, block in enumerate(teams_blocks):
-        if not isinstance(block, dict):
-            continue
-        team_obj = block.get("team") or {}
-        code = (team_obj.get("abbreviation") or "").upper()
-        if code not in NFL_TEAMS:
-            # Fall back to the scoreboard's ordering for this game.
-            code = game_teams[i] if i < len(game_teams) else ""
-        if code not in NFL_TEAMS:
-            continue
-        athletes = block.get("athletes")
-        if not isinstance(athletes, list):
-            continue
-        for athlete in athletes:
-            if not isinstance(athlete, dict):
+    def _emit(code: str, name: Any, position: str) -> None:
+        name = (name or "").strip()
+        if not name or code not in NFL_TEAMS or (code, name) in seen:
+            return
+        seen.add((code, name))
+        rows.append({"team": code, "name": name, "position": position})
+
+    # Shape A (defensive fallback): team blocks carrying their own athlete
+    # lists. Team codes come from the payload when present, otherwise from the
+    # scoreboard game's team list in the same order.
+    teams_blocks = box.get("teams")
+    if isinstance(teams_blocks, list):
+        for i, block in enumerate(teams_blocks):
+            if not isinstance(block, dict):
                 continue
-            name = (athlete.get("displayName") or "").strip()
-            if not name:
+            code = ((block.get("team") or {}).get("abbreviation") or "").upper()
+            if code not in NFL_TEAMS:
+                code = game_teams[i] if i < len(game_teams) else ""
+            if code not in NFL_TEAMS:
                 continue
-            rows.append({"team": code, "name": name,
-                         "position": _position_of(athlete)})
+            athletes = block.get("athletes")
+            if not isinstance(athletes, list):
+                continue
+            for athlete in athletes:
+                if not isinstance(athlete, dict):
+                    continue
+                _emit(code, athlete.get("displayName"), _position_of(athlete))
+
+    # Shape B (verified live 2026-09-21): per-team player blocks with
+    # statistics groups; athletes nested under each group.
+    players_blocks = box.get("players")
+    if isinstance(players_blocks, list):
+        for block in players_blocks:
+            if not isinstance(block, dict):
+                continue
+            code = ((block.get("team") or {}).get("abbreviation") or "").upper()
+            if code not in NFL_TEAMS:
+                continue
+            groups = block.get("statistics")
+            if not isinstance(groups, list):
+                continue
+            for group in groups:
+                if not isinstance(group, dict):
+                    continue
+                athletes = group.get("athletes")
+                if not isinstance(athletes, list):
+                    continue
+                for entry in athletes:
+                    athlete = (entry or {}).get("athlete") or {}
+                    if not isinstance(athlete, dict):
+                        continue
+                    _emit(code, athlete.get("displayName"), _position_of(athlete))
     return rows
 
 
