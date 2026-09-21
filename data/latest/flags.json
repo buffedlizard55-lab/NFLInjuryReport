@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T18:40:08Z",
+ "generated_at": "2026-09-21T18:55:23Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -912,7 +912,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "10 player(s) have no official designation but do have an ESPN status",
+   "title": "8 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -936,8 +936,8 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "65 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said QUESTIONABLE for Joey Porter Jr. (official: see link); NBC Sports said OUT for Caleb Williams (official: see link); Yahoo Sports said OUT for Mansoor Delane (official: see link); heavy.com said OUT for Mansoor Delane (official: see link); The New York Times said OUT for Alec Pierce (official: see link)",
+   "title": "62 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said QUESTIONABLE for Joey Porter Jr. (official: see link); NBC Sports said OUT for Caleb Williams (official: see link); Yahoo Sports said IR for Isaiah Likely (official: see link); Yahoo Sports said OUT for Mansoor Delane (official: see link); heavy.com said OUT for Mansoor Delane (official: see link)",
    "evidence": [
     {
      "label": "Blitz_Burgh@sportsbots.xyz: Joey Porter Jr. QUESTIONABLE",
@@ -948,16 +948,16 @@
      "url": "https://www.espn.com/nfl/player/_/id/4431611/caleb-williams"
     },
     {
+     "label": "Yahoo Sports: Isaiah Likely IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4361050/isaiah-likely"
+    },
+    {
      "label": "Yahoo Sports: Mansoor Delane OUT",
      "url": "https://www.nfl.com/players/mansoor-delane/"
     },
     {
      "label": "heavy.com: Mansoor Delane OUT",
      "url": "https://www.nfl.com/players/mansoor-delane/"
-    },
-    {
-     "label": "The New York Times: Alec Pierce OUT",
-     "url": "https://www.nfl.com/players/alec-pierce/"
     }
    ]
   },
