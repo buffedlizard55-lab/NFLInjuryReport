@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-22T16:48:16Z",
+ "generated_at": "2026-09-22T17:34:23Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -25,6 +25,22 @@
     },
     {
      "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for A.J. Terrell",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/a-j-terrell/"
+    },
+    {
+     "label": "ESPN (IR)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -912,22 +928,6 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
-   "title": "Designation conflict for Tyson Campbell",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/tyson-campbell/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
    "title": "Designation conflict for Will McDonald IV",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -988,9 +988,17 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "63 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said OUT for Jaxson Dart (official: see link); Sportsnet.ca said OUT for Puka Nacua (official: see link); Fox 59 said QUESTIONABLE for Alec Pierce (official: see link); nwitimes.com said OUT for Caleb Williams (official: see link); sports.yahoo.com said ACTIVE for Kyler Murray (official: see link)",
+   "title": "65 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: tompelissero.bsky.social said IR for A.J. Terrell Jr. (official: see link); Atlanta Falcons said IR for A.J. Terrell Jr. (official: see link); rapsheet.bsky.social said OUT for Jaxson Dart (official: see link); Sportsnet.ca said OUT for Puka Nacua (official: see link); Fox 59 said QUESTIONABLE for Alec Pierce (official: see link)",
    "evidence": [
+    {
+     "label": "tompelissero.bsky.social: A.J. Terrell Jr. IR",
+     "url": "https://www.nfl.com/players/a-j-terrell/"
+    },
+    {
+     "label": "Atlanta Falcons: A.J. Terrell Jr. IR",
+     "url": "https://www.nfl.com/players/a-j-terrell/"
+    },
     {
      "label": "rapsheet.bsky.social: Jaxson Dart OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4689114/jaxson-dart"
@@ -1002,14 +1010,6 @@
     {
      "label": "Fox 59: Alec Pierce QUESTIONABLE",
      "url": "https://www.nfl.com/players/alec-pierce/"
-    },
-    {
-     "label": "nwitimes.com: Caleb Williams OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4431611/caleb-williams"
-    },
-    {
-     "label": "sports.yahoo.com: Kyler Murray ACTIVE",
-     "url": "https://www.nfl.com/players/kyler-murray/"
     }
    ]
   },
