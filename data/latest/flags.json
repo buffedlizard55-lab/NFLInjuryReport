@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-22T19:56:39Z",
+ "generated_at": "2026-09-22T20:29:27Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -321,14 +321,14 @@
    "code": "STATUS_CONFLICT",
    "severity": "medium",
    "title": "Designation conflict for Deonte Banks",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/deonte-banks/"
     },
     {
-     "label": "ESPN (ACTIVE)",
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -550,22 +550,6 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/kaelon-black/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Kamren Kinchens",
-   "detail": "nfl.com (official) says OUT; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (OUT)",
-     "url": "https://www.nfl.com/players/kamren-kinchens/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -897,14 +881,14 @@
    "code": "STATUS_CONFLICT",
    "severity": "medium",
    "title": "Designation conflict for Tua Tagovailoa",
-   "detail": "nfl.com (official) says DOUBTFUL; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "detail": "nfl.com (official) says DOUBTFUL; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
     {
      "label": "Official (DOUBTFUL)",
      "url": "https://www.nfl.com/players/tua-tagovailoa/"
     },
     {
-     "label": "ESPN (OUT)",
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1008,7 +992,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "6 player(s) have no official designation but do have an ESPN status",
+   "title": "5 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1020,7 +1004,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "71 reporter claim(s) contradicted by the official report",
+   "title": "70 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: nfl@sportsfeed.me said OUT for Jaxson Dart (official: see link); NFL.com said OUT for Jaxson Dart (official: see link); The Atlanta Journal-Constitution said IR for A.J. Terrell Jr. (official: see link); The New York Times said IR for A.J. Terrell Jr. (official: see link); Yahoo Sports said IR for A.J. Terrell Jr. (official: see link)",
    "evidence": [
     {
