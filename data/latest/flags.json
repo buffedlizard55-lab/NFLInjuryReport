@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T23:40:03Z",
+ "generated_at": "2026-09-22T00:49:32Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -986,41 +986,29 @@
    ]
   },
   {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for NYG @ LAR parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872947 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872947"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "74 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Troy Fautanu (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Joey Porter Jr. (official: see link); Kingsharksports said OUT for Caleb Williams (official: see link); Newsday said OUT for Will Johnson (official: see link); Bluefield Daily Telegraph said OUT for Will Johnson (official: see link)",
+   "title": "73 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Sportsnet.ca said OUT for Puka Nacua (official: see link); Big News Network.com said OUT for Puka Nacua (official: see link); Bozeman Daily Chronicle said OUT for Will Johnson (official: see link); Oskaloosa Herald said OUT for Will Johnson (official: see link); Mankato Free Press said OUT for Will Johnson (official: see link)",
    "evidence": [
     {
-     "label": "Blitz_Burgh@sportsbots.xyz: Troy Fautanu ACTIVE",
-     "url": "https://www.nfl.com/players/troy-fautanu/"
+     "label": "Sportsnet.ca: Puka Nacua OUT",
+     "url": "https://www.nfl.com/players/puka-nacua/"
     },
     {
-     "label": "Blitz_Burgh@sportsbots.xyz: Joey Porter Jr. ACTIVE",
-     "url": "https://www.nfl.com/players/joey-porter-jr/"
+     "label": "Big News Network.com: Puka Nacua OUT",
+     "url": "https://www.nfl.com/players/puka-nacua/"
     },
     {
-     "label": "Kingsharksports: Caleb Williams OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4431611/caleb-williams"
-    },
-    {
-     "label": "Newsday: Will Johnson OUT",
+     "label": "Bozeman Daily Chronicle: Will Johnson OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4685408/will-johnson"
     },
     {
-     "label": "Bluefield Daily Telegraph: Will Johnson OUT",
+     "label": "Oskaloosa Herald: Will Johnson OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/4685408/will-johnson"
+    },
+    {
+     "label": "Mankato Free Press: Will Johnson OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4685408/will-johnson"
     }
    ]
