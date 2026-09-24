@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-24T23:18:07Z",
+ "generated_at": "2026-09-24T23:30:17Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -64,7 +64,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "77 player(s) have no official designation but do have an ESPN status",
+   "title": "76 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -269,27 +269,27 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "36 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Dallas News said OUT for DeeJay Dallas (official: see link); heavy.com said ACTIVE for Jayden Daniels (official: see link); tompelissero.bsky.social said OUT for Sam Darnold (official: see link); Josh Weinfuss said QUESTIONABLE for Max Melton (official: see link); Josh Weinfuss said QUESTIONABLE for Garrett Williams (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Javon Hargrave (official: see link); Acme Packing Company said ACTIVE for Javon Hargrave (official: see link); Sports Illustrated said OUT for DeeJay Dallas (official: see link); Dallas News said OUT for DeeJay Dallas (official: see link); tompelissero.bsky.social said OUT for Sam Darnold (official: see link)",
    "evidence": [
+    {
+     "label": "Yahoo Sports: Javon Hargrave ACTIVE",
+     "url": "https://www.nfl.com/players/javon-hargrave/"
+    },
+    {
+     "label": "Acme Packing Company: Javon Hargrave ACTIVE",
+     "url": "https://www.nfl.com/players/javon-hargrave/"
+    },
+    {
+     "label": "Sports Illustrated: DeeJay Dallas OUT",
+     "url": "https://www.nfl.com/players/deejay-dallas/"
+    },
     {
      "label": "Dallas News: DeeJay Dallas OUT",
      "url": "https://www.nfl.com/players/deejay-dallas/"
     },
     {
-     "label": "heavy.com: Jayden Daniels ACTIVE",
-     "url": "https://www.nfl.com/players/jayden-daniels/"
-    },
-    {
      "label": "tompelissero.bsky.social: Sam Darnold OUT",
      "url": "https://www.nfl.com/players/sam-darnold/"
-    },
-    {
-     "label": "Josh Weinfuss: Max Melton QUESTIONABLE",
-     "url": "https://www.nfl.com/players/max-melton/"
-    },
-    {
-     "label": "Josh Weinfuss: Garrett Williams QUESTIONABLE",
-     "url": "https://www.nfl.com/players/garrett-williams/"
     }
    ]
   },
