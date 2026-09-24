@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-24T00:42:33Z",
+ "generated_at": "2026-09-24T01:26:41Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -16,7 +16,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "83 player(s) have no official designation but do have an ESPN status",
+   "title": "84 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -218,21 +218,9 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 43 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: ARI:nick-bosa (official report lists the player under a different club); ARI:mike-evans (official report lists the player under a different club); ARI:dre-greenlaw (official report lists the player under a different club); ARI:romello-height (official report lists the player under a different club); ARI:christian-mccaffrey (official report lists the player under a different club); ARI:demarcus-robinson (official report lists the player under a different club); ARI:james-thompson (official report lists the player under a different club); ARI:trent-williams (official report lists the player under a different club); SF:deejay-dallas (official report lists the player under a different club); SF:jake-golday (official report lists the player under a different club); SF:tyrion-ingram-dawkins (official report lists the player under a different club); SF:aaron-jones (official report lists the player under a different club); SF:brian-o-neill (official report lists the player under a different club); SF:jalen-redmond (official report lists the player under a different club); SF:nick-samac (official report lists the player under a different club); SF:brett-thorson (official report lists the player under a different club); TB:teddye-buchanan (official report lists the player under a different club); TB:calais-campbell (official report lists the player under a different club); TB:zay-flowers (official report lists the player under a different club); TB:trey-hendrickson (official report lists the player under a different club) (+23 more). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "23 reporter claim(s) contradicted by the official report",
+   "title": "27 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: tompelissero.bsky.social said OUT for Sam Darnold (official: see link); Matt Parrino said QUESTIONABLE for DJ Moore (official: see link); Joe Person said QUESTIONABLE for Jalen Coker (official: see link); Daniel Oyefusi said QUESTIONABLE for Tyson Campbell (official: see link); Aric DiLalla said QUESTIONABLE for Marvin Mims Jr. (official: see link)",
    "evidence": [
     {
