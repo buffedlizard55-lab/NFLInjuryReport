@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-09-25T00:38:28Z",
+ "generated_at": "2026-09-25T00:39:34Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 22,
+   "latency_ms": 20,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 23,
+   "latency_ms": 20,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 24,
+   "latency_ms": 177,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 69,
+   "latency_ms": 74,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 55,
+   "latency_ms": 60,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -181,7 +181,7 @@
    "label": "news:hot-player",
    "query": "\"Tua Tagovailoa\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tua+Tagovailoa%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 18,
+   "posts": 19,
    "error": ""
   },
   {
@@ -780,6 +780,13 @@
    "error": ""
   },
   {
+   "label": "news:hot-player",
+   "query": "\"Sydney Brown\" injury when:1d",
+   "url": "https://news.google.com/rss/search?q=%22Sydney+Brown%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "posts": 1,
+   "error": ""
+  },
+  {
    "label": "news:rotation:NYJ",
    "query": "\"New York Jets\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22New+York+Jets%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
@@ -878,7 +885,7 @@
    "predicted_status": "UNKNOWN",
    "injury": "back",
    "signal": 0.6,
-   "engagement": 1,
+   "engagement": 2,
    "verified": false,
    "verification_detail": "",
    "author_did": "",
@@ -904,7 +911,7 @@
    "predicted_status": "UNKNOWN",
    "injury": "",
    "signal": 0.3,
-   "engagement": 0,
+   "engagement": 1,
    "verified": false,
    "verification_detail": "",
    "author_did": "",
@@ -1483,10 +1490,10 @@
   {
    "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNWHRSODFNeTc2NkZrNENHQVoyVC1Rdzl6WGZRME5YNWJpV08xSm9fY1l0NHEwakRTMGY3OGxsRTFsU2FEMUFqakgybU5JZkxta0VYM2d2YVZFeklTMTNmN25QZHBwNHdUc2w3dkFYTDNadEdtNjg5TXlJV1g0RmtDNF82Z282eWJnS3dyaC1LWnEwQzMwdjd2YXIwMW1Va2lSM1VuMUZZdnNueWM?oc=5",
-   "author": "Milwaukee Journal Sentinel",
-   "author_name": "Milwaukee Journal Sentinel",
+   "author": "jsonline.com",
+   "author_name": "jsonline.com",
    "author_url": "https://www.jsonline.com",
-   "text": "Jayden Reed injury update from Packers wide receiver's fiancée - Milwaukee Journal Sentinel",
+   "text": "Jayden Reed injury update from Packers wide receiver's fiancée - jsonline.com",
    "posted_at": "Thu, 24 Sep 2026 23:31:00 GMT",
    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNWHRSODFNeTc2NkZrNENHQVoyVC1Rdzl6WGZRME5YNWJpV08xSm9fY1l0NHEwakRTMGY3OGxsRTFsU2FEMUFqakgybU5JZkxta0VYM2d2YVZFeklTMTNmN25QZHBwNHdUc2w3dkFYTDNadEdtNjg5TXlJV1g0RmtDNF82Z282eWJnS3dyaC1LWnEwQzMwdjd2YXIwMW1Va2lSM1VuMUZZdnNueWM?oc=5",
    "matched_player": "",
@@ -1503,7 +1510,7 @@
    "in_game_status": "INJURY_REPORTED",
    "game_event": "injury-reported",
    "raw": {
-    "outlet": "Milwaukee Journal Sentinel",
+    "outlet": "jsonline.com",
     "query": "\"Green Bay Packers\" injury when:1d"
    }
   },
@@ -2474,6 +2481,33 @@
    "raw": {
     "outlet": "NJ.com",
     "query": "\"Philadelphia Eagles\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNR3JicUQydW4wbUlrbkFoeWRNcnBaNlFBYWhESndmUFpOa1hDdGxPZ1pnMjNyLUFlNkVoTDlSQWNKUF81SHhKdFAtTGd4OElua0djWHZuSFNFOE13ZzVoY040WlotNExFUkpwNzNXTjdzRG5SblFzdzNHNk1aV3g5aXJQY3hpdGRzT2VYUw?oc=5",
+   "author": "49ers Webzone",
+   "author_name": "49ers Webzone",
+   "author_url": "https://www.49erswebzone.com",
+   "text": "49ers vs. Cardinals injury report: Mike Evans, Nick Bosa don’t practice - 49ers Webzone",
+   "posted_at": "Thu, 24 Sep 2026 22:54:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNR3JicUQydW4wbUlrbkFoeWRNcnBaNlFBYWhESndmUFpOa1hDdGxPZ1pnMjNyLUFlNkVoTDlSQWNKUF81SHhKdFAtTGd4OElua0djWHZuSFNFOE13ZzVoY040WlotNExFUkpwNzNXTjdzRG5SblFzdzNHNk1aV3g5aXJQY3hpdGRzT2VYUw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "49ers Webzone",
+    "query": "\"San Francisco 49ers\" injury when:1d"
    }
   },
   {
@@ -8576,33 +8610,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPOXVZdzE0dzBmTE1odmh6ZS1ROEpXY043RkNtd1RJOHgta0pUZDdlZ0gweXN5VFUxMlBrVGhqUlg4UlRDYllpVWVaV1pkZlIydTZRc3ZZbkdTdGRSX1ZyN0FaOTN5UWY4Y0o2bWdHenY0MWcybV9vS25kTGNoeWFxNjQtMFU1R091dmJ5VzR1VFNLY1g0ek9oX2NnZldFNzJXU3JsdUxBcU9WdG5JNEI3QzJfeEp4eGgxN0hiRHFuNnI0c3B5cVdQal9iWF9ZLS1DU1U5NEpaRjVjR0E?oc=5",
-   "author": "Arizona Sports",
-   "author_name": "Arizona Sports",
-   "author_url": "https://arizonasports.com",
-   "text": "Cardinals-49ers injury report: Arizona running low on corners ahead of NFC West battle - Arizona Sports",
-   "posted_at": "Thu, 24 Sep 2026 00:39:22 GMT",
-   "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPOXVZdzE0dzBmTE1odmh6ZS1ROEpXY043RkNtd1RJOHgta0pUZDdlZ0gweXN5VFUxMlBrVGhqUlg4UlRDYllpVWVaV1pkZlIydTZRc3ZZbkdTdGRSX1ZyN0FaOTN5UWY4Y0o2bWdHenY0MWcybV9vS25kTGNoeWFxNjQtMFU1R091dmJ5VzR1VFNLY1g0ek9oX2NnZldFNzJXU3JsdUxBcU9WdG5JNEI3QzJfeEp4eGgxN0hiRHFuNnI0c3B5cVdQal9iWF9ZLS1DU1U5NEpaRjVjR0E?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.15,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "Arizona Sports",
-    "query": "\"San Francisco 49ers\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPMkx4OHk3Y1lxNDFRYnRsWXpKcXMxUG5XN203amNlVjRSa1BSZDdXbHp0cGdrWWxzSzFudlByUWpsdnVyMzFJNEZsQVVEMl9hZEdpSENHV3gwaHFIVjZjNjUyNTljRHJmOTd3YzZpLUt3WS05SnlzQ2g2VU5BcnlNWDhTWHBQQUtlQ2NNUmttUFFsQ2tBbmRkRlJ4dkl4bUlHMmtEeDZVTFA3cVNObG5j?oc=5",
    "author": "usatoday.com",
    "author_name": "usatoday.com",
@@ -8760,6 +8767,33 @@
    "game_event": "injury-reported",
    "raw": {
     "outlet": "Yahoo Sports",
+    "query": "NFL injury report"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNSVB0bWlEQ0ExeFhRUnhRM2lDVnFZX21hSWFUcWhOTFlraVVCV0llcmRwaXJQS2c0UlRWcnZUMDNvUHNWZHRyM1Rod2xNaDd5RHNHRlRJcG9qTy1IajVIUWxOakd6YTVXZU9BZEREbFZNajVudVY5bF90SU44eUJqWkNHNTQwUTBQdjlpQlJiWXBodWM?oc=5",
+   "author": "Fantasy Points",
+   "author_name": "Fantasy Points",
+   "author_url": "https://www.fantasypoints.com",
+   "text": "2026 Week 3 NFL Fantasy Football Injury Report - Fantasy Points",
+   "posted_at": "Wed, 23 Sep 2026 00:11:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNSVB0bWlEQ0ExeFhRUnhRM2lDVnFZX21hSWFUcWhOTFlraVVCV0llcmRwaXJQS2c0UlRWcnZUMDNvUHNWZHRyM1Rod2xNaDd5RHNHRlRJcG9qTy1IajVIUWxOakd6YTVXZU9BZEREbFZNajVudVY5bF90SU44eUJqWkNHNTQwUTBQdjlpQlJiWXBodWM?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.45,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Fantasy Points",
     "query": "NFL injury report"
    }
   },
@@ -9112,33 +9146,6 @@
    "raw": {
     "watched_handle": "rapsheet.bsky.social",
     "did": "did:plc:hlvr2omhnmvdmfnvmcuhyevz"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPdmtLUkVJMUJrYVJjckFOUE9EcG1VY2dWbXVlOXZNYnJVMzJScUZOT00wTnB0c1g1Y3U5TGpPblJzM004a2dVcFZwVXI5X3JxajlHbk9uVkVBWFc5M3FibTVaaHpNdWNncGQ5RE02dmZpcEplY3N3MnNIaUVBSGoxaGsza1VTMmR2UFlDaTRUc0HSAZYBQVVfeXFMTnR2c24xTEtRaWJKandUblk3bzRwWjloU0oxT1JNV0wzRWFPVml5bnBmZlNDUVVibXZUYmxROGtIemtVVGZtYjM5RUpmaENmWFlXUXR3bmlZS1hfUkgzRTY4T1o3dUl6N1VwYmZDbmNycHZLb3VaZVB5TXp4Yzh5OG4tWFVFNHJvWjVieE95NWdCQ1ctZ01n?oc=5",
-   "author": "FantasyPros",
-   "author_name": "FantasyPros",
-   "author_url": "https://www.fantasypros.com",
-   "text": "Fantasy Football Injury Report & Updates: Week 3 (2026) - FantasyPros",
-   "posted_at": "Mon, 21 Sep 2026 11:21:02 GMT",
-   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPdmtLUkVJMUJrYVJjckFOUE9EcG1VY2dWbXVlOXZNYnJVMzJScUZOT00wTnB0c1g1Y3U5TGpPblJzM004a2dVcFZwVXI5X3JxajlHbk9uVkVBWFc5M3FibTVaaHpNdWNncGQ5RE02dmZpcEplY3N3MnNIaUVBSGoxaGsza1VTMmR2UFlDaTRUc0HSAZYBQVVfeXFMTnR2c24xTEtRaWJKandUblk3bzRwWjloU0oxT1JNV0wzRWFPVml5bnBmZlNDUVVibXZUYmxROGtIemtVVGZtYjM5RUpmaENmWFlXUXR3bmlZS1hfUkgzRTY4T1o3dUl6N1VwYmZDbmNycHZLb3VaZVB5TXp4Yzh5OG4tWFVFNHJvWjVieE95NWdCQ1ctZ01n?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.45,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "FantasyPros",
-    "query": "NFL injury report"
    }
   },
   {
