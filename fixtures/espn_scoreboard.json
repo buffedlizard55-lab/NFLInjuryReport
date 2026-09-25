@@ -1,0 +1,50 @@
+{
+ "_fixture_note": "VERBATIM key fields from https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=20260917 fetched 2026-09-18: the DET@BUF game (id 401872932, kickoff 2026-09-18T00:15Z, final BUF 41 - DET 31, attendance 60644, status.type.state=post). League/calendar metadata and the logo/link arrays are elided; every field parse_scoreboard() reads (events[].id/.date/.name/.shortName/.week.number, competitions[0].status.type.state/.period/.displayClock, competitors[].homeAway/.score/.winner/.team.abbreviation/.team.displayName) is exactly as returned.",
+ "events": [
+  {
+   "id": "401872932",
+   "date": "2026-09-18T00:15Z",
+   "name": "Detroit Lions at Buffalo Bills",
+   "shortName": "DET @ BUF",
+   "season": {"year": 2026, "type": 2, "slug": "regular-season"},
+   "week": {"number": 2},
+   "competitions": [
+    {
+     "id": "401872932",
+     "date": "2026-09-18T00:15Z",
+     "attendance": 60644,
+     "timeValid": true,
+     "neutralSite": false,
+     "playByPlayAvailable": true,
+     "recent": true,
+     "venue": {"id": "11938", "fullName": "Highmark Stadium", "indoor": false},
+     "status": {
+      "clock": 0.0,
+      "displayClock": "0:00",
+      "period": 4,
+      "type": {"id": "3", "name": "STATUS_FINAL", "state": "post", "completed": true,
+               "detail": "Final", "shortDetail": "Final"}
+     },
+     "competitors": [
+      {
+       "id": "2", "uid": "s:20~l:28~t:2", "type": "team", "order": 0,
+       "homeAway": "home", "winner": true,
+       "team": {"id": "2", "location": "Buffalo", "name": "Bills", "abbreviation": "BUF",
+                "displayName": "Buffalo Bills", "shortDisplayName": "Bills"},
+       "score": "41",
+       "records": [{"name": "overall", "type": "total", "summary": "2-0"}]
+      },
+      {
+       "id": "8", "uid": "s:20~l:28~t:8", "type": "team", "order": 1,
+       "homeAway": "away", "winner": false,
+       "team": {"id": "8", "location": "Detroit", "name": "Lions", "abbreviation": "DET",
+                "displayName": "Detroit Lions", "shortDisplayName": "Lions"},
+       "score": "31",
+       "records": [{"name": "overall", "type": "total", "summary": "1-1"}]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
