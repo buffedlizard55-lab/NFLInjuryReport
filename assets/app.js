@@ -33,12 +33,18 @@
     liveSource: "",
     autoRefresh: true,
     liveItems: [],
+    backendAlerts: [],
     liveAt: null,
     liveTeams: {},
     liveTeamsReady: false,
     collapsed: {}
   };
 
+  var BACKEND_ALERTS_URL =
+    window.BACKEND_API_URL ||
+    (typeof location !== "undefined" && (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+      ? "/api/alerts"
+      : "https://nfl-nba-alert-backend.onrender.com/api/alerts");
   var ESPN_INJURIES =
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries";
   var ESPN_SCOREBOARD =
@@ -575,6 +581,7 @@
       });
     });
     state.liveItems.forEach(function (p) { out.push(p); });
+    (state.backendAlerts || []).forEach(function (p) { out.push(p); });
 
     out.sort(function (a, b) {
       var ta = Date.parse(a.ts || 0) || 0, tb = Date.parse(b.ts || 0) || 0;
@@ -1273,10 +1280,42 @@
     });
   }
 
+  function pollBackendAlerts() {
+    fetch(BACKEND_ALERTS_URL, { cache: "no-store" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        if (!data || !Array.isArray(data.alerts) || !data.alerts.length) return;
+        var backendItems = data.alerts.map(function (a) {
+          return {
+            src: a.source === "play-by-play" ? "official" : "social",
+            platform: a.source || "backend-alert",
+            sev: a.status === "OUT_FOR_GAME" ? "high" : "medium",
+            ts: a.timestamp_first_seen || a.timestamp_source,
+            who: (a.player_name || "Unknown") + " (" + (a.team || "NFL") + ")",
+            text: a.verbatim_text || "",
+            url: a.source_url || "",
+            badge: (a.status || "INJURY_REPORTED").replace(/_/g, " "),
+            live: true,
+            latency_ms: a.latency_ms
+          };
+        });
+        state.backendAlerts = backendItems;
+        state.liveAt = new Date().toISOString();
+        renderFeed();
+        renderStatus();
+      })
+      .catch(function () {});
+  }
+
   wire();
   wireNotify();
   load().then(function () {
     tryLive();
+    pollBackendAlerts();
+    setInterval(pollBackendAlerts, 2000);
     setInterval(function () {
       if (state.autoRefresh) { load(); tryLive(); }
     }, 30000);

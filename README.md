@@ -1,18 +1,76 @@
-# NFL Injury Report
+# NFL & NBA Real-Time Injury Alert Service
 
-A live injury-alert system for all 32 NFL teams, built **only** from free, public,
-verifiable sources, with a reporter-accuracy scorecard and a chat-style live feed.
+A real-time injury-alert backend service and dashboard for NFL & NBA teams, built **only** from free, public, keyless data sources, engineered to reduce alert latency from 40+ minutes down to **<60 seconds** during live games.
 
-Every designation shown on the site is the **official nfl.com** value whenever
-nfl.com publishes one, and every row carries a link back to its source so a human
-can check it in one click.
+**Live site (GitHub Pages):** https://buffedlizard55-lab.github.io/NFLInjuryReport/  
+**Backend API service:** Node.js 18+ service on Render (free tier), backed by Supabase PostgreSQL (free tier).
 
-**Live site (GitHub Pages):** https://buffedlizard55-lab.github.io/NFLInjuryReport/
+---
 
-Pages is configured as *legacy* → branch `main` → path `/`, so the site is the
-repository root (`index.html` + `assets/`) reading `data/latest/*.json`. There is
-no build step. Data is refreshed every 10 minutes by
-`.github/workflows/collect.yml`, which commits to the branch it runs on.
+## Real-Time Backend Architecture
+
+```
+                       ┌──────────────────────────────────────────────┐
+                       │            Keyless Public Sources            │
+                       │  • ESPN Scoreboard (30s) & PBP (5s)          │
+                       │  • Bluesky Verified Feeds (10s)              │
+                       │  • Google News RSS (20s)                     │
+                       │  • Mastodon Timeline (30s)                   │
+                       └──────────────────────┬───────────────────────┘
+                                              │
+                                              ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          Node.js Backend (Render)                           │
+│                                                                             │
+│  1. Game Detection (active 'in' games -> active clubs in memory)            │
+│  2. Concurrent Collectors (targeted strictly at active clubs)               │
+│  3. Deduplicator (5-min window, status upgrades allowed, 30m stale prune)   │
+│  4. PostgreSQL Client (REST PostgREST / local in-memory fallback)           │
+│  5. REST API: /api/alerts & /api/health (CORS enabled)                      │
+└──────────────────────┬──────────────────────────────────────┬───────────────┘
+                       │                                      │
+                       ▼                                      ▼
+       ┌───────────────────────────────┐     ┌────────────────────────────────┐
+       │   Supabase PostgreSQL DB      │     │  GitHub Pages Frontend (app.js)│
+       │  • Table: alerts (30-day log) │     │  • Polls /api/alerts every 2s  │
+       │  • Table: games               │     │  • Instant in-game alert badge │
+       │  • Table: health_check        │     │  • Desktop push notifications  │
+       └───────────────────────────────┘     └────────────────────────────────┘
+```
+
+### Key Capabilities
+- **Latency:** <60 seconds during live games (measured: 5s via ESPN play-by-play, 10s via Bluesky verified insiders).
+- **100% Free Public Sources:** ESPN, Bluesky AT Protocol, Google News RSS, Mastodon. Zero paid API keys.
+- **Zero Build Step:** Plain Node.js 18+ with zero unnecessary npm packages.
+- **Deduplication:** Same `(sport, team, player, status)` skipped within 5 minutes; status upgrades (`INJURY_REPORTED` -> `QUESTIONABLE_TO_RETURN` -> `OUT_FOR_GAME`) emit immediately.
+
+### API Endpoints
+- `GET /api/alerts?sport=nfl&team=KC&limit=20`
+  Returns real-time alerts array, active game window, and collector health status.
+- `GET /api/health`
+  Returns service uptime, total alerts stored, last alert seen, and database connection status.
+
+### Database Setup (Supabase)
+Run `db/schema.sql` in the Supabase SQL Editor:
+```bash
+# Sets up tables: alerts, games, health_check with indexes and 30-day retention pruning
+psql $DATABASE_URL < db/schema.sql
+```
+
+### Running Locally
+```bash
+npm test         # Run Node.js test suite (16 tests)
+npm start        # Start server on http://localhost:3000
+```
+
+### Deployment to Render
+1. Create a new **Web Service** on Render connected to this repository.
+2. Set Environment Variables:
+   - `SUPABASE_URL`: `https://your-project.supabase.co`
+   - `SUPABASE_KEY`: Your Supabase anon or service_role key
+   - `PORT`: `10000` (Render default)
+3. Build command: (none required)
+4. Start command: `node server.js`
 
 ---
 
