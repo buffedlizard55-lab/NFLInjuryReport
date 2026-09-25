@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-25T19:59:11Z",
+ "generated_at": "2026-09-25T20:28:40Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -64,7 +64,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "79 player(s) have no official designation but do have an ESPN status",
+   "title": "74 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -256,28 +256,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "36 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said OUT for Rico Dowdle (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Marcelino McCrary-Ball (official: see link); New York Post said QUESTIONABLE for Adonai Mitchell (official: see link); FantasyPros said ACTIVE for Billy Bowman Jr. (official: see link); Yahoo Sports said ACTIVE for Javon Hargrave (official: see link)",
+   "title": "38 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Los Angeles Chargers said QUESTIONABLE for Rodney Shelley (official: see link); Audacy said OUT for Brock Bowers (official: see link); silverandblackpride.com said ACTIVE for Brock Bowers (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Marcelino McCrary-Ball (official: see link); Yahoo Sports said QUESTIONABLE for Trey Lance (official: see link)",
    "evidence": [
     {
-     "label": "Yahoo Sports: Rico Dowdle OUT",
-     "url": "https://www.nfl.com/players/rico-dowdle/"
+     "label": "Los Angeles Chargers: Rodney Shelley QUESTIONABLE",
+     "url": "https://www.nfl.com/players/rodney-shelley/"
+    },
+    {
+     "label": "Audacy: Brock Bowers OUT",
+     "url": "https://www.nfl.com/players/brock-bowers/"
+    },
+    {
+     "label": "silverandblackpride.com: Brock Bowers ACTIVE",
+     "url": "https://www.nfl.com/players/brock-bowers/"
     },
     {
      "label": "Blitz_Burgh@sportsbots.xyz: Marcelino McCrary-Ball ACTIVE",
      "url": "https://www.espn.com/nfl/player/_/id/4045299/marcelino-mccrary-ball"
     },
     {
-     "label": "New York Post: Adonai Mitchell QUESTIONABLE",
-     "url": "https://www.nfl.com/players/adonai-mitchell/"
-    },
-    {
-     "label": "FantasyPros: Billy Bowman Jr. ACTIVE",
-     "url": "https://www.nfl.com/players/billy-bowman-jr/"
-    },
-    {
-     "label": "Yahoo Sports: Javon Hargrave ACTIVE",
-     "url": "https://www.nfl.com/players/javon-hargrave/"
+     "label": "Yahoo Sports: Trey Lance QUESTIONABLE",
+     "url": "https://www.nfl.com/players/trey-lance/"
     }
    ]
   },
@@ -302,22 +302,6 @@
     {
      "label": "handle.invalid",
      "url": "https://bsky.app/profile/handle.invalid"
-    }
-   ]
-  },
-  {
-   "code": "DIRECTORY_CROSS_TEAM_BEAT",
-   "severity": "low",
-   "title": "Beat writer Aaron Wilson is attributed across 2 clubs (HOU, IND)",
-   "detail": "ESPN printed Aaron Wilson (KPRC 2 Houston) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
-   "evidence": [
-    {
-     "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/4258173/nico-collins"
-    },
-    {
-     "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4361196/cam-taylor-britt"
     }
    ]
   },
