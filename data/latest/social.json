@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-09-25T01:18:07Z",
+ "generated_at": "2026-09-25T01:19:19Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 90,
+   "latency_ms": 91,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 104,
+   "latency_ms": 67,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 77,
+   "latency_ms": 46,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 79,
+   "latency_ms": 119,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 102,
+   "latency_ms": 73,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -181,7 +181,7 @@
    "label": "news:hot-player",
    "query": "\"Tua Tagovailoa\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tua+Tagovailoa%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 19,
+   "posts": 18,
    "error": ""
   },
   {
@@ -873,6 +873,33 @@
  ],
  "posts": [
   {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNbTFMOG5ibnlnQ2ZyZVI2Yk1OM2lMTmJUYWZjM1d3YS0yQjlsS2xBVnp5azdDd1FSQ2ZxVHFDM2xrdHY4dTRlRWtBVXgzX2JPZ3M1ckFvTUFxVW9mTHBNSUFKTGpuemUxbDVNckNNMmtzUFpHQWFqVnR1SUlWbkpHNmhiN3ZualJBbzZpUkR3OXU1U1M1TEhwaFVtOHZhZGlHTVloNDRvbDd5MHFVZ3N2TGlYUFpEYVZDcXQ0SWppNlpiZC04VjRTcDQxd3dvR0U?oc=5",
+   "author": "The Washington Post",
+   "author_name": "The Washington Post",
+   "author_url": "https://www.washingtonpost.com",
+   "text": "Packers' Javon Hargrave, Falcons' Tua Tagovailoa active for Green Bay's home opener - The Washington Post",
+   "posted_at": "Fri, 25 Sep 2026 01:18:30 GMT",
+   "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNbTFMOG5ibnlnQ2ZyZVI2Yk1OM2lMTmJUYWZjM1d3YS0yQjlsS2xBVnp5azdDd1FSQ2ZxVHFDM2xrdHY4dTRlRWtBVXgzX2JPZ3M1ckFvTUFxVW9mTHBNSUFKTGpuemUxbDVNckNNMmtzUFpHQWFqVnR1SUlWbkpHNmhiN3ZualJBbzZpUkR3OXU1U1M1TEhwaFVtOHZhZGlHTVloNDRvbDd5MHFVZ3N2TGlYUFpEYVZDcXQ0SWppNlpiZC04VjRTcDQxd3dvR0U?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "ACTIVE",
+   "injury": "",
+   "signal": 0.4,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "The Washington Post",
+    "query": "\"Billy Bowman Jr.\" injury when:1d"
+   }
+  },
+  {
    "platform": "mastodon",
    "post_id": "117329023592903825",
    "author": "RandAlThor@lemmy.ca",
@@ -1486,33 +1513,6 @@
    "raw": {
     "outlet": "Field Gulls",
     "query": "\"Seattle Seahawks\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNbTFMOG5ibnlnQ2ZyZVI2Yk1OM2lMTmJUYWZjM1d3YS0yQjlsS2xBVnp5azdDd1FSQ2ZxVHFDM2xrdHY4dTRlRWtBVXgzX2JPZ3M1ckFvTUFxVW9mTHBNSUFKTGpuemUxbDVNckNNMmtzUFpHQWFqVnR1SUlWbkpHNmhiN3ZualJBbzZpUkR3OXU1U1M1TEhwaFVtOHZhZGlHTVloNDRvbDd5MHFVZ3N2TGlYUFpEYVZDcXQ0SWppNlpiZC04VjRTcDQxd3dvR0U?oc=5",
-   "author": "The Washington Post",
-   "author_name": "The Washington Post",
-   "author_url": "https://www.washingtonpost.com",
-   "text": "Packers' Javon Hargrave, Falcons' Tua Tagovailoa active for Green Bay's home opener - The Washington Post",
-   "posted_at": "Thu, 24 Sep 2026 23:51:51 GMT",
-   "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNbTFMOG5ibnlnQ2ZyZVI2Yk1OM2lMTmJUYWZjM1d3YS0yQjlsS2xBVnp5azdDd1FSQ2ZxVHFDM2xrdHY4dTRlRWtBVXgzX2JPZ3M1ckFvTUFxVW9mTHBNSUFKTGpuemUxbDVNckNNMmtzUFpHQWFqVnR1SUlWbkpHNmhiN3ZualJBbzZpUkR3OXU1U1M1TEhwaFVtOHZhZGlHTVloNDRvbDd5MHFVZ3N2TGlYUFpEYVZDcXQ0SWppNlpiZC04VjRTcDQxd3dvR0U?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "ACTIVE",
-   "injury": "",
-   "signal": 0.4,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "The Washington Post",
-    "query": "\"Billy Bowman Jr.\" injury when:1d"
    }
   },
   {
@@ -6427,13 +6427,13 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNbjJjU3pRTDRHMmY4MUVhZ3R5LVRKS21rcHJSNGpBbEpHTjZlUFA4MVlhc25BV1NrblhaQXNRUkNKTXIxenhZNEp4SUZtN3lQMFlVd1AzTDBIY2dESUpiamxzTWw5SDhIY2JKOTBPSkNpeTR5TDRGblZ6RVNLSFh0Q1Z4ZzctQQ?oc=5",
-   "author": "The Big Lead",
-   "author_name": "The Big Lead",
-   "author_url": "https://www.thebiglead.com",
-   "text": "Washington Commanders clap back at suggestion team ‘abandoned’ Jayden Daniels after injury - The Big Lead",
-   "posted_at": "Thu, 24 Sep 2026 13:14:29 GMT",
-   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNbjJjU3pRTDRHMmY4MUVhZ3R5LVRKS21rcHJSNGpBbEpHTjZlUFA4MVlhc25BV1NrblhaQXNRUkNKTXIxenhZNEp4SUZtN3lQMFlVd1AzTDBIY2dESUpiamxzTWw5SDhIY2JKOTBPSkNpeTR5TDRGblZ6RVNLSFh0Q1Z4ZzctQQ?oc=5",
+   "post_id": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQRW5DTDlzVUk5MjZqRmRfRmZpX09EQ3Z6YW51aXVrdU5LUXJhbFBRYXUtSndRR0p0R1Roa2ppaWxwVG1PcHJmdExzT2JxQloza3lHdnZxY1JINlI5SVNCMjVPNFQ3VFh6Qk1xQXEwVHk0eTVVbVF2a0ZnLXZFeWJ1ZnFneFNaQnlMUGtqbFFHdGY3cnFZZ3c?oc=5",
+   "author": "Yahoo Sports",
+   "author_name": "Yahoo Sports",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Washington Commanders clap back at suggestion team ‘abandoned’ Jayden Daniels after injury - Yahoo Sports",
+   "posted_at": "Thu, 24 Sep 2026 13:09:52 GMT",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQRW5DTDlzVUk5MjZqRmRfRmZpX09EQ3Z6YW51aXVrdU5LUXJhbFBRYXUtSndRR0p0R1Roa2ppaWxwVG1PcHJmdExzT2JxQloza3lHdnZxY1JINlI5SVNCMjVPNFQ3VFh6Qk1xQXEwVHk0eTVVbVF2a0ZnLXZFeWJ1ZnFneFNaQnlMUGtqbFFHdGY3cnFZZ3c?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -6448,7 +6448,7 @@
    "in_game_status": "NONE",
    "game_event": "",
    "raw": {
-    "outlet": "The Big Lead",
+    "outlet": "Yahoo Sports",
     "query": "\"Washington Commanders\" injury when:1d"
    }
   },
