@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-25T23:15:58Z",
+ "generated_at": "2026-09-25T23:23:36Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -57,6 +57,22 @@
     },
     {
      "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Jordan Hancock",
+   "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/jordan-hancock/"
+    },
+    {
+     "label": "ESPN (IR)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -256,28 +272,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "8 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Field Gulls said OUT for Sam Darnold (official: see link); steelersdepot.com said DOUBTFUL for Jonathan Allen (official: see link); spectrumnews1.com said ACTIVE for Javon Hargrave (official: see link); tompelissero.bsky.social said OUT for Sam Darnold (official: see link); Kevin Fishbain said OUT for Shemar Turner (official: see link)",
+   "title": "11 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Sports Illustrated said QUESTIONABLE for Ronnie Stanley (official: see link); steelersdepot.com said DOUBTFUL for Jonathan Allen (official: see link); Yahoo Sports said ACTIVE for Zay Flowers (official: see link); ABC11 News said QUESTIONABLE for Devin Lloyd (official: see link); ESPN said QUESTIONABLE for Devin Lloyd (official: see link)",
    "evidence": [
     {
-     "label": "Field Gulls: Sam Darnold OUT",
-     "url": "https://www.nfl.com/players/sam-darnold/"
+     "label": "Sports Illustrated: Ronnie Stanley QUESTIONABLE",
+     "url": "https://www.nfl.com/players/ronnie-stanley/"
     },
     {
      "label": "steelersdepot.com: Jonathan Allen DOUBTFUL",
      "url": "https://www.nfl.com/players/jonathan-allen/"
     },
     {
-     "label": "spectrumnews1.com: Javon Hargrave ACTIVE",
-     "url": "https://www.nfl.com/players/javon-hargrave/"
+     "label": "Yahoo Sports: Zay Flowers ACTIVE",
+     "url": "https://www.nfl.com/players/zay-flowers/"
     },
     {
-     "label": "tompelissero.bsky.social: Sam Darnold OUT",
-     "url": "https://www.nfl.com/players/sam-darnold/"
+     "label": "ABC11 News: Devin Lloyd QUESTIONABLE",
+     "url": "https://www.nfl.com/players/devin-lloyd/"
     },
     {
-     "label": "Kevin Fishbain: Shemar Turner OUT",
-     "url": "https://www.nfl.com/players/shemar-turner/"
+     "label": "ESPN: Devin Lloyd QUESTIONABLE",
+     "url": "https://www.nfl.com/players/devin-lloyd/"
     }
    ]
   },
@@ -322,6 +338,22 @@
     {
      "label": "ESPN attribution #3",
      "url": "https://www.espn.com/nfl/player/_/id/4037361/charvarius-ward"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
+   "title": "Beat writer Matt McMullen is attributed across 2 clubs (KC, MIA)",
+   "detail": "ESPN printed Matt McMullen (Chiefs' official site) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/4040432/ljarius-sneed"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/4369466/ryan-miller"
     }
    ]
   },
