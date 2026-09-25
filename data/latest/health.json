@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-25T02:10:16Z",
+ "generated_at": "2026-09-25T02:11:25Z",
  "sources": [
   {
    "key": "nfl_official_report",
@@ -18,7 +18,7 @@
    "note": "Personnel (Injury) Report Policy PDF. Returned 404 to this fetcher on 2026-09-10 despite being indexed. Not used as an evidence link until it resolves.",
    "reachable": false,
    "status": 404,
-   "latency_ms": 49,
+   "latency_ms": 255,
    "error": "HTTP 404 Not Found"
   },
   {
@@ -28,7 +28,7 @@
    "note": "Personnel (Injury) Report Policy PDF. Returned 404 to this fetcher on 2026-09-10 despite being indexed. Not used as an evidence link until it resolves.",
    "reachable": false,
    "status": 404,
-   "latency_ms": 48,
+   "latency_ms": 260,
    "error": "HTTP 404 Not Found"
   },
   {
@@ -38,7 +38,7 @@
    "note": "Free public JSON. Adds per-update timestamps + reporter attribution.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 238,
+   "latency_ms": 257,
    "error": ""
   },
   {
@@ -48,7 +48,7 @@
    "note": "Club code <-> ESPN id mapping.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 104,
+   "latency_ms": 60,
    "error": ""
   },
   {
@@ -58,7 +58,7 @@
    "note": "VERIFIED BROKEN 2026-09-10: returns {} . Kept in the ledger so it is not re-tried.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 124,
+   "latency_ms": 43,
    "error": ""
   },
   {
@@ -68,7 +68,7 @@
    "note": "VERIFIED 401 Unauthorized 2026-09-10. Needs OAuth; not used.",
    "reachable": false,
    "status": 401,
-   "latency_ms": 76,
+   "latency_ms": 52,
    "error": "HTTP 401 Unauthorized"
   },
   {
@@ -78,7 +78,7 @@
    "note": "Verified 200 from an independent client 2026-09-18. Headline feed with published timestamps, team and athlete categories. MEASURED: the ?athlete=<id> filter is IGNORED by this endpoint (it returns the league feed), so it is never used as a per-player source; ?team=<id> does filter.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 79,
+   "latency_ms": 210,
    "error": ""
   },
   {
@@ -88,7 +88,7 @@
    "note": "Verified 200 2026-09-18 (event 401872932 DET@BUF, kickoff 2026-09-18T00:15Z, state=post). Used ONLY to decide which clubs are in a game window so query budget goes where injuries are happening.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 113,
+   "latency_ms": 94,
    "error": ""
   },
   {
@@ -98,7 +98,7 @@
    "note": "ADDED 2026-09-21: per-game summary used to read the game rosters of live games, so EVERY player in an ongoing game is matchable to a headline, not just players with an injury record. Same keyless `site` API family as the verified scoreboard endpoint. VERIFIED LIVE 2026-09-21 from CI: the static probe (past game 401872932) and the live per-game fetches (e.g. 401872945 IND@KC) returned 200; the payload's player list lives in boxscore.players[].statistics[].athletes[] (fixture captured verbatim, tests/fixtures/espn_summary.json). The collector degrades to injury-index-only coverage (with ESPN_ROSTER_* flags) whenever a fetch or the parse fails — that degradation fired on the first run when the parser targeted the wrong shape, which is how the shape mismatch was caught instead of shipping silently.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 80,
+   "latency_ms": 128,
    "error": ""
   },
   {
@@ -108,7 +108,7 @@
    "note": "Verified 200 keyless from an independent client 2026-09-18. This is the Bluesky path that WORKS (searchPosts is 403) and it returns the author's own verification state. It is the fix for the missed 01:37Z DJ Moore post.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 205,
+   "latency_ms": 106,
    "error": ""
   },
   {
@@ -118,7 +118,7 @@
    "note": "Verified 200 2026-09-18. RotoWire's PUBLISHED RSS news feed (distinct from the paywalled injury-report page): fastest free wire for 'Player: ruled out / questionable to return' style updates.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 435,
+   "latency_ms": 400,
    "error": ""
   },
   {
@@ -128,7 +128,7 @@
    "note": "Verified 200 2026-09-18: this exact query returned the in-game reports for Keon Coleman (aol 01:39Z, Yahoo 01:40Z, Democrat and Chronicle 01:47Z). The previous collector only ever asked the league-wide question, which is why neither player's update appeared.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 48,
+   "latency_ms": 54,
    "error": ""
   },
   {
@@ -138,7 +138,7 @@
    "note": "MEASURED 2026-09-18: returns the same league-wide articles as ?limit=2, so the athlete filter does nothing. Kept in the ledger so nobody builds a per-player feed on it.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 69,
+   "latency_ms": 92,
    "error": ""
   },
   {
@@ -148,7 +148,7 @@
    "note": "VERIFIED 404 on 2026-09-18 ('404 - Flag on the Play'). There is no per-club injury page on nfl.com; https://www.nfl.com/injuries/ is the only official injury surface, so club-level coverage has to come from club posts and wires. Recorded so it is not re-tried.",
    "reachable": false,
    "status": 404,
-   "latency_ms": 137,
+   "latency_ms": 130,
    "error": "HTTP 404 Not Found"
   },
   {
@@ -158,7 +158,7 @@
    "note": "Reverse-engineering target. Free lineups + inactives.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 557,
+   "latency_ms": 547,
    "error": ""
   },
   {
@@ -168,7 +168,7 @@
    "note": "VERIFIED 2026-09-10: 'Est. Return' column renders 'Subscribers Only'.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 620,
+   "latency_ms": 533,
    "error": ""
   },
   {
@@ -178,7 +178,7 @@
    "note": "Club-published social directory; parser extracts the official site + handles.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 120,
+   "latency_ms": 196,
    "error": ""
   },
   {
@@ -188,7 +188,7 @@
    "note": "Keyless public AppView identity search used by the reporter directory. (app.bsky.feed.searchActors was renamed to app.bsky.actor.searchActors.)",
    "reachable": true,
    "status": 200,
-   "latency_ms": 149,
+   "latency_ms": 99,
    "error": ""
   },
   {
@@ -198,7 +198,7 @@
    "note": "Baseline verified-insider profile: must show verification.verifiedStatus='valid'.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 137,
+   "latency_ms": 83,
    "error": ""
   },
   {
@@ -208,7 +208,7 @@
    "note": "VERIFIED HTTP 403 on 2026-09-10: no free keyless X identity check; X rows on the directory are therefore one-click manual-review links, never 'verified'.",
    "reachable": true,
    "status": 200,
-   "latency_ms": 172,
+   "latency_ms": 190,
    "error": ""
   }
  ],
@@ -217,35 +217,35 @@
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 37,
+   "latency_ms": 21,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 140,
+   "latency_ms": 92,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 40,
+   "latency_ms": 166,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 48,
+   "latency_ms": 72,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 55,
+   "latency_ms": 40,
    "error": "HTTP 403 Blocked"
   }
  },
