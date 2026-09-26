@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-26T15:42:03Z",
+ "generated_at": "2026-09-26T17:47:30Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -9,6 +9,22 @@
    "evidence": [
     {
      "label": "espn: CLE, MIN",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Alec Pierce",
+   "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/alec-pierce/"
+    },
+    {
+     "label": "ESPN (IR)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -73,6 +89,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Kene Nwangwu",
+   "detail": "nfl.com (official) says DOUBTFUL; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (DOUBTFUL)",
+     "url": "https://www.nfl.com/players/kene-nwangwu/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -288,12 +320,20 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "9 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Boston.com said QUESTIONABLE for Denzel Boston (official: see link); Audacy said OUT for Brock Bowers (official: see link); Silver And Black Pride said ACTIVE for Brock Bowers (official: see link); tompelissero.bsky.social said OUT for Sam Darnold (official: see link); RotoWire said ACTIVE for Zay Flowers (official: see link)",
+   "title": "13 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Boston Herald said IR for Denzel Boston (official: see link); Boston.com said QUESTIONABLE for Denzel Boston (official: see link); New England Patriots said OUT for Carlton Davis III (official: see link); Audacy said OUT for Brock Bowers (official: see link); Silver And Black Pride said ACTIVE for Brock Bowers (official: see link)",
    "evidence": [
+    {
+     "label": "Boston Herald: Denzel Boston IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4832800/denzel-boston"
+    },
     {
      "label": "Boston.com: Denzel Boston QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4832800/denzel-boston"
+    },
+    {
+     "label": "New England Patriots: Carlton Davis III OUT",
+     "url": "https://www.nfl.com/players/carlton-davis/"
     },
     {
      "label": "Audacy: Brock Bowers OUT",
@@ -302,14 +342,6 @@
     {
      "label": "Silver And Black Pride: Brock Bowers ACTIVE",
      "url": "https://www.nfl.com/players/brock-bowers/"
-    },
-    {
-     "label": "tompelissero.bsky.social: Sam Darnold OUT",
-     "url": "https://www.nfl.com/players/sam-darnold/"
-    },
-    {
-     "label": "RotoWire: Zay Flowers ACTIVE",
-     "url": "https://www.nfl.com/players/zay-flowers/"
     }
    ]
   },
