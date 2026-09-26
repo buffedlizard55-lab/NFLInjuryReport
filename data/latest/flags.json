@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-26T20:51:03Z",
+ "generated_at": "2026-09-26T21:34:05Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -112,6 +112,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Demarcus Robinson",
+   "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/demarcus-robinson/"
+    },
+    {
+     "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Gennings Dunker",
    "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -185,6 +201,22 @@
     },
     {
      "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Nick Samac",
+   "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/nick-samac/"
+    },
+    {
+     "label": "ESPN (IR)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -500,7 +532,7 @@
   {
    "code": "DIRECTORY_CROSS_TEAM_BEAT",
    "severity": "low",
-   "title": "Beat writer Adam Caplan is attributed across 3 clubs (PIT, HOU, IND)",
+   "title": "Beat writer Adam Caplan is attributed across 3 clubs (HOU, IND, PIT)",
    "detail": "ESPN printed Adam Caplan (SiriusXM NFL Radio) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
    "evidence": [
     {
