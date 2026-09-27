@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-09-27T07:06:37Z",
+ "generated_at": "2026-09-27T08:49:15Z",
  "season": 2026,
  "week": 3,
- "official_fetched_at": "2026-09-27T07:06:38Z",
- "espn_source_timestamp": "2026-09-27T07:06:37Z",
+ "official_fetched_at": "2026-09-27T08:49:16Z",
+ "espn_source_timestamp": "2026-09-27T08:49:13Z",
  "counts": {
   "players": 853,
   "teams": 32,
   "out": 104,
   "questionable": 48,
   "doubtful": 7,
-  "alerts": 0,
+  "alerts": 1,
   "in_game_events": 0,
   "in_game_alerts": 0,
   "irregularities": 19
@@ -3941,19 +3941,19 @@
      "team": "CHI",
      "position": "S",
      "injury": "",
-     "game_status": "IR",
+     "game_status": "OUT",
      "designation_source": "",
      "practice_status": "NONE",
      "est_return": "",
-     "comment": "ir",
+     "comment": "out",
      "attribution": "",
      "outlet": "",
-     "observed_at": "2026-09-27T06:00:00Z",
+     "observed_at": "2026-09-27T08:00:00Z",
      "sources": [
       {
        "source": "espn",
        "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
-       "observed_at": "2026-09-27T06:00:00Z"
+       "observed_at": "2026-09-27T08:00:00Z"
       }
      ],
      "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
@@ -29367,19 +29367,19 @@
    "team": "CHI",
    "position": "S",
    "injury": "",
-   "game_status": "IR",
+   "game_status": "OUT",
    "designation_source": "",
    "practice_status": "NONE",
    "est_return": "",
-   "comment": "ir",
+   "comment": "out",
    "attribution": "",
    "outlet": "",
-   "observed_at": "2026-09-27T06:00:00Z",
+   "observed_at": "2026-09-27T08:00:00Z",
    "sources": [
     {
      "source": "espn",
      "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
-     "observed_at": "2026-09-27T06:00:00Z"
+     "observed_at": "2026-09-27T08:00:00Z"
     }
    ],
    "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
@@ -50663,7 +50663,37 @@
    "discrepancies": []
   }
  ],
- "alerts": [],
+ "alerts": [
+  {
+   "ts": "2026-09-27T08:00:00Z",
+   "kind": "status-change",
+   "severity": "medium",
+   "player": "Anthony Johnson Jr.",
+   "player_key": "anthony-johnson",
+   "team": "CHI",
+   "position": "S",
+   "injury": "",
+   "from_status": "IR",
+   "to_status": "OUT",
+   "detail": "Anthony Johnson Jr. (CHI S) moved IR -> OUT. out",
+   "sources": [
+    {
+     "source": "espn",
+     "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
+     "observed_at": "2026-09-27T08:00:00Z"
+    }
+   ],
+   "alert_id": "a59bdf1583ec4db2",
+   "event_key": "",
+   "first_seen_at": "2026-09-27T08:49:15Z",
+   "reported_at": "2026-09-27T08:00:00Z",
+   "detection_latency_seconds": null,
+   "source_verified": false,
+   "in_game_window": false,
+   "in_game": false,
+   "evidence": []
+  }
+ ],
  "alert_log": [
   {
    "ts": "Thu, 24 Sep 2026 23:57:02 GMT",
@@ -52185,6 +52215,35 @@
    "event_key": "",
    "first_seen_at": "2026-09-24T23:18:07Z",
    "reported_at": "2026-09-28T00:00:00Z",
+   "detection_latency_seconds": null,
+   "source_verified": false,
+   "in_game_window": false,
+   "in_game": false,
+   "evidence": []
+  },
+  {
+   "ts": "2026-09-27T08:00:00Z",
+   "kind": "status-change",
+   "severity": "medium",
+   "player": "Anthony Johnson Jr.",
+   "player_key": "anthony-johnson",
+   "team": "CHI",
+   "position": "S",
+   "injury": "",
+   "from_status": "IR",
+   "to_status": "OUT",
+   "detail": "Anthony Johnson Jr. (CHI S) moved IR -> OUT. out",
+   "sources": [
+    {
+     "source": "espn",
+     "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
+     "observed_at": "2026-09-27T08:00:00Z"
+    }
+   ],
+   "alert_id": "a59bdf1583ec4db2",
+   "event_key": "",
+   "first_seen_at": "2026-09-27T08:49:15Z",
+   "reported_at": "2026-09-27T08:00:00Z",
    "detection_latency_seconds": null,
    "source_verified": false,
    "in_game_window": false,
@@ -62291,9 +62350,13 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "4 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: tompelissero.bsky.social said OUT for Sam Darnold (official: see link); Mike Spofford said OUT for Anthony Campbell (official: see link); Mike Spofford said ACTIVE for Javon Hargrave (official: see link); Ryan McFadden said OUT for Aidan O'Connell (official: see link)",
+   "title": "5 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Bills Wire said IR for Greg Dortch (official: see link); tompelissero.bsky.social said OUT for Sam Darnold (official: see link); Mike Spofford said OUT for Anthony Campbell (official: see link); Mike Spofford said ACTIVE for Javon Hargrave (official: see link); Ryan McFadden said OUT for Aidan O'Connell (official: see link)",
    "evidence": [
+    {
+     "label": "Bills Wire: Greg Dortch IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4037235/greg-dortch"
+    },
     {
      "label": "tompelissero.bsky.social: Sam Darnold OUT",
      "url": "https://www.nfl.com/players/sam-darnold/"
