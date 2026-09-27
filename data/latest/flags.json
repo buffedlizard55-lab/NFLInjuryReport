@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-27T20:04:23Z",
+ "generated_at": "2026-09-27T20:07:04Z",
  "irregularities": [
   {
    "code": "STATUS_CONFLICT",
@@ -848,30 +848,6 @@
   {
    "code": "ESPN_ROSTER_EMPTY",
    "severity": "low",
-   "title": "Game-day roster for ARI @ SF parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872958 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872958"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for MIN @ TB parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872959 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872959"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
    "title": "Game-day roster for BAL VS DAL parsed zero athletes",
    "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872960 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
    "evidence": [
@@ -920,7 +896,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "79 reporter claim(s) contradicted by the official report",
+   "title": "88 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: USA Today said OUT for Christian Benford (official: see link); AOL.com said OUT for Jalen Coker (official: see link); USA Today said OUT for Jalen Coker (official: see link); AOL.com said OUT for Donte Jackson (official: see link); RotoWire said OUT for Jalen Coker (official: see link)",
    "evidence": [
     {
