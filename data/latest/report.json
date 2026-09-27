@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-09-27T05:02:08Z",
+ "generated_at": "2026-09-27T06:53:55Z",
  "season": 2026,
  "week": 3,
- "official_fetched_at": "2026-09-27T05:02:10Z",
- "espn_source_timestamp": "2026-09-27T05:01:58Z",
+ "official_fetched_at": "2026-09-27T06:53:57Z",
+ "espn_source_timestamp": "2026-09-27T06:53:51Z",
  "counts": {
   "players": 853,
   "teams": 32,
   "out": 104,
   "questionable": 48,
   "doubtful": 7,
-  "alerts": 3,
+  "alerts": 1,
   "in_game_events": 0,
   "in_game_alerts": 0,
   "irregularities": 19
@@ -3941,19 +3941,19 @@
      "team": "CHI",
      "position": "S",
      "injury": "",
-     "game_status": "OUT",
+     "game_status": "IR",
      "designation_source": "",
      "practice_status": "NONE",
      "est_return": "",
-     "comment": "out",
+     "comment": "ir",
      "attribution": "",
      "outlet": "",
-     "observed_at": "2026-09-27T04:02:00Z",
+     "observed_at": "2026-09-27T06:00:00Z",
      "sources": [
       {
        "source": "espn",
        "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
-       "observed_at": "2026-09-27T04:02:00Z"
+       "observed_at": "2026-09-27T06:00:00Z"
       }
      ],
      "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
@@ -29367,19 +29367,19 @@
    "team": "CHI",
    "position": "S",
    "injury": "",
-   "game_status": "OUT",
+   "game_status": "IR",
    "designation_source": "",
    "practice_status": "NONE",
    "est_return": "",
-   "comment": "out",
+   "comment": "ir",
    "attribution": "",
    "outlet": "",
-   "observed_at": "2026-09-27T04:02:00Z",
+   "observed_at": "2026-09-27T06:00:00Z",
    "sources": [
     {
      "source": "espn",
      "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
-     "observed_at": "2026-09-27T04:02:00Z"
+     "observed_at": "2026-09-27T06:00:00Z"
     }
    ],
    "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
@@ -50665,80 +50665,28 @@
  ],
  "alerts": [
   {
-   "ts": "2026-09-27T05:02:08Z",
-   "kind": "removed",
-   "severity": "low",
-   "player": "Chris Lindstrom",
-   "player_key": "chris-lindstrom",
-   "team": "ATL",
-   "position": "G",
-   "injury": "concussion",
-   "from_status": "ACTIVE",
-   "to_status": "REMOVED_FROM_REPORT",
-   "detail": "Chris Lindstrom (ATL) is no longer on the official injury report.",
-   "sources": [],
-   "alert_id": "56e4461b0e05d361",
-   "event_key": "",
-   "first_seen_at": "2026-09-27T05:02:08Z",
-   "reported_at": "",
-   "detection_latency_seconds": null,
-   "source_verified": false,
-   "in_game_window": false,
-   "in_game": false,
-   "evidence": []
-  },
-  {
-   "ts": "2026-09-27T04:02:00Z",
+   "ts": "2026-09-27T06:00:00Z",
    "kind": "status-change",
-   "severity": "medium",
+   "severity": "critical",
    "player": "Anthony Johnson Jr.",
    "player_key": "anthony-johnson",
    "team": "CHI",
    "position": "S",
    "injury": "",
-   "from_status": "IR",
-   "to_status": "OUT",
-   "detail": "Anthony Johnson Jr. (CHI S) moved IR -> OUT. out",
+   "from_status": "OUT",
+   "to_status": "IR",
+   "detail": "Anthony Johnson Jr. (CHI S) moved OUT -> IR. ir",
    "sources": [
     {
      "source": "espn",
      "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
-     "observed_at": "2026-09-27T04:02:00Z"
+     "observed_at": "2026-09-27T06:00:00Z"
     }
    ],
-   "alert_id": "122cecebc6547c1a",
+   "alert_id": "0241db5a61e0aa6d",
    "event_key": "",
-   "first_seen_at": "2026-09-27T05:02:08Z",
-   "reported_at": "2026-09-27T04:02:00Z",
-   "detection_latency_seconds": null,
-   "source_verified": false,
-   "in_game_window": false,
-   "in_game": false,
-   "evidence": []
-  },
-  {
-   "ts": "2026-09-24T00:00:00Z",
-   "kind": "status-change",
-   "severity": "high",
-   "player": "A.J. Terrell",
-   "player_key": "aj-terrell",
-   "team": "ATL",
-   "position": "CB",
-   "injury": "",
-   "from_status": "IR",
-   "to_status": "UNKNOWN",
-   "detail": "A.J. Terrell (ATL CB) moved IR -> UNKNOWN",
-   "sources": [
-    {
-     "source": "nfl.com",
-     "url": "https://www.nfl.com/players/a-j-terrell/",
-     "observed_at": "2026-09-24T00:00:00Z"
-    }
-   ],
-   "alert_id": "695eec9ff875d802",
-   "event_key": "",
-   "first_seen_at": "2026-09-27T05:02:08Z",
-   "reported_at": "2026-09-24T00:00:00Z",
+   "first_seen_at": "2026-09-27T06:53:55Z",
+   "reported_at": "2026-09-27T06:00:00Z",
    "detection_latency_seconds": null,
    "source_verified": false,
    "in_game_window": false,
@@ -52267,6 +52215,35 @@
    "event_key": "",
    "first_seen_at": "2026-09-24T23:18:07Z",
    "reported_at": "2026-09-28T00:00:00Z",
+   "detection_latency_seconds": null,
+   "source_verified": false,
+   "in_game_window": false,
+   "in_game": false,
+   "evidence": []
+  },
+  {
+   "ts": "2026-09-27T06:00:00Z",
+   "kind": "status-change",
+   "severity": "critical",
+   "player": "Anthony Johnson Jr.",
+   "player_key": "anthony-johnson",
+   "team": "CHI",
+   "position": "S",
+   "injury": "",
+   "from_status": "OUT",
+   "to_status": "IR",
+   "detail": "Anthony Johnson Jr. (CHI S) moved OUT -> IR. ir",
+   "sources": [
+    {
+     "source": "espn",
+     "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
+     "observed_at": "2026-09-27T06:00:00Z"
+    }
+   ],
+   "alert_id": "0241db5a61e0aa6d",
+   "event_key": "",
+   "first_seen_at": "2026-09-27T06:53:55Z",
+   "reported_at": "2026-09-27T06:00:00Z",
    "detection_latency_seconds": null,
    "source_verified": false,
    "in_game_window": false,
@@ -61459,35 +61436,6 @@
    "in_game_window": false,
    "in_game": false,
    "evidence": []
-  },
-  {
-   "ts": "2026-09-24T06:00:00Z",
-   "kind": "status-change",
-   "severity": "critical",
-   "player": "Anthony Johnson Jr.",
-   "player_key": "anthony-johnson",
-   "team": "CHI",
-   "position": "S",
-   "injury": "",
-   "from_status": "OUT",
-   "to_status": "IR",
-   "detail": "Anthony Johnson Jr. (CHI S) moved OUT -> IR. ir",
-   "sources": [
-    {
-     "source": "espn",
-     "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
-     "observed_at": "2026-09-24T06:00:00Z"
-    }
-   ],
-   "alert_id": "1de8f618c4acb6a1",
-   "event_key": "",
-   "first_seen_at": "2026-09-24T06:36:21Z",
-   "reported_at": "2026-09-24T06:00:00Z",
-   "detection_latency_seconds": null,
-   "source_verified": false,
-   "in_game_window": false,
-   "in_game": false,
-   "evidence": []
   }
  ],
  "game_events": [],
@@ -62373,9 +62321,17 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "4 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: tompelissero.bsky.social said OUT for Sam Darnold (official: see link); Mike Spofford said OUT for Anthony Campbell (official: see link); Mike Spofford said ACTIVE for Javon Hargrave (official: see link); Ryan McFadden said OUT for Aidan O'Connell (official: see link)",
+   "title": "6 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Alec Pierce (official: see link); roundtable.io said QUESTIONABLE for James Houston (official: see link); tompelissero.bsky.social said OUT for Sam Darnold (official: see link); Mike Spofford said OUT for Anthony Campbell (official: see link); Mike Spofford said ACTIVE for Javon Hargrave (official: see link)",
    "evidence": [
+    {
+     "label": "Yahoo Sports: Alec Pierce ACTIVE",
+     "url": "https://www.nfl.com/players/alec-pierce/"
+    },
+    {
+     "label": "roundtable.io: James Houston QUESTIONABLE",
+     "url": "https://www.nfl.com/players/james-houston/"
+    },
     {
      "label": "tompelissero.bsky.social: Sam Darnold OUT",
      "url": "https://www.nfl.com/players/sam-darnold/"
@@ -62387,10 +62343,6 @@
     {
      "label": "Mike Spofford: Javon Hargrave ACTIVE",
      "url": "https://www.nfl.com/players/javon-hargrave/"
-    },
-    {
-     "label": "Ryan McFadden: Aidan O'Connell OUT",
-     "url": "https://www.nfl.com/players/aidan-o-connell/"
     }
    ]
   },
