@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-27T19:06:13Z",
+ "generated_at": "2026-09-27T19:10:12Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -182,6 +182,22 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/brian-burns/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Brock Bowers",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/brock-bowers/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -528,6 +544,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Kwity Paye",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/kwity-paye/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Max Melton",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -832,7 +864,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "5 player(s) have no official designation but do have an ESPN status",
+   "title": "6 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -916,19 +948,19 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "86 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: silverandblackpride.com said ACTIVE for Brock Bowers (official: see link); Athlon Sports said ACTIVE for Brock Bowers (official: see link); AOL.com said OUT for Leo Chenal (official: see link); Los Angeles Chargers said ACTIVE for Trey Lance (official: see link); RotoBaller said QUESTIONABLE for Nick Emmanwori (official: see link)",
+   "title": "88 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: nyt_sports@robot.villas said ACTIVE for Zay Flowers (official: see link); aol.com said OUT for Leo Chenal (official: see link); Yahoo Sports said OUT for Leo Chenal (official: see link); Los Angeles Chargers said ACTIVE for Trey Lance (official: see link); RotoBaller said QUESTIONABLE for Nick Emmanwori (official: see link)",
    "evidence": [
     {
-     "label": "silverandblackpride.com: Brock Bowers ACTIVE",
-     "url": "https://www.nfl.com/players/brock-bowers/"
+     "label": "nyt_sports@robot.villas: Zay Flowers ACTIVE",
+     "url": "https://www.nfl.com/players/zay-flowers/"
     },
     {
-     "label": "Athlon Sports: Brock Bowers ACTIVE",
-     "url": "https://www.nfl.com/players/brock-bowers/"
+     "label": "aol.com: Leo Chenal OUT",
+     "url": "https://www.nfl.com/players/leo-chenal/"
     },
     {
-     "label": "AOL.com: Leo Chenal OUT",
+     "label": "Yahoo Sports: Leo Chenal OUT",
      "url": "https://www.nfl.com/players/leo-chenal/"
     },
     {
