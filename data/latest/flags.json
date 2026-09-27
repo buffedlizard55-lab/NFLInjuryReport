@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-27T18:27:25Z",
+ "generated_at": "2026-09-27T18:32:25Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -720,6 +720,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Tyson Bagent",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/tyson-bagent/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Tyson Campbell",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -836,8 +852,8 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "69 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Seattle Seahawks said QUESTIONABLE for Nick Emmanwori (official: see link); NBC Sports said QUESTIONABLE for Spencer Shrader (official: see link); Yahoo Sports said QUESTIONABLE for Spencer Shrader (official: see link); AOL.com said QUESTIONABLE for Spencer Shrader (official: see link); Colts Wire said QUESTIONABLE for Spencer Shrader (official: see link)",
+   "title": "70 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Seattle Seahawks said QUESTIONABLE for Nick Emmanwori (official: see link); NBC Sports said QUESTIONABLE for Spencer Shrader (official: see link); Yahoo Sports said QUESTIONABLE for Spencer Shrader (official: see link); AOL.com said QUESTIONABLE for Spencer Shrader (official: see link); coltswire.usatoday.com said QUESTIONABLE for Spencer Shrader (official: see link)",
    "evidence": [
     {
      "label": "Seattle Seahawks: Nick Emmanwori QUESTIONABLE",
@@ -856,7 +872,7 @@
      "url": "https://www.espn.com/nfl/player/_/id/4571557/spencer-shrader"
     },
     {
-     "label": "Colts Wire: Spencer Shrader QUESTIONABLE",
+     "label": "coltswire.usatoday.com: Spencer Shrader QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4571557/spencer-shrader"
     }
    ]
