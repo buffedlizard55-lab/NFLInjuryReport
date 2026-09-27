@@ -1,18 +1,6 @@
 {
- "generated_at": "2026-09-27T19:10:12Z",
+ "generated_at": "2026-09-27T19:15:04Z",
  "irregularities": [
-  {
-   "code": "PLAYER_TEAM_CONFLICT",
-   "severity": "high",
-   "title": "'Justin Jefferson' is listed under conflicting clubs",
-   "detail": "Sources disagree about which club 'Justin Jefferson' belongs to (CLE, MIN). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
-   "evidence": [
-    {
-     "label": "espn: CLE, MIN",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
@@ -560,6 +548,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Martin Emerson",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/martin-emerson/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Max Melton",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -948,13 +952,9 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "88 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: nyt_sports@robot.villas said ACTIVE for Zay Flowers (official: see link); aol.com said OUT for Leo Chenal (official: see link); Yahoo Sports said OUT for Leo Chenal (official: see link); Los Angeles Chargers said ACTIVE for Trey Lance (official: see link); RotoBaller said QUESTIONABLE for Nick Emmanwori (official: see link)",
+   "title": "86 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: aol.com said OUT for Leo Chenal (official: see link); Yahoo Sports said OUT for Leo Chenal (official: see link); Los Angeles Chargers said ACTIVE for Trey Lance (official: see link); RotoBaller said QUESTIONABLE for Nick Emmanwori (official: see link); yardbarker.com said ACTIVE for Brian Burns (official: see link)",
    "evidence": [
-    {
-     "label": "nyt_sports@robot.villas: Zay Flowers ACTIVE",
-     "url": "https://www.nfl.com/players/zay-flowers/"
-    },
     {
      "label": "aol.com: Leo Chenal OUT",
      "url": "https://www.nfl.com/players/leo-chenal/"
@@ -970,6 +970,10 @@
     {
      "label": "RotoBaller: Nick Emmanwori QUESTIONABLE",
      "url": "https://www.nfl.com/players/nick-emmanwori/"
+    },
+    {
+     "label": "yardbarker.com: Brian Burns ACTIVE",
+     "url": "https://www.nfl.com/players/brian-burns/"
     }
    ]
   },
