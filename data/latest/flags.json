@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-27T23:12:38Z",
+ "generated_at": "2026-09-27T23:15:25Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -233,6 +233,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Colby Parkinson",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/colby-parkinson/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -489,6 +505,22 @@
     },
     {
      "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Kamren Kinchens",
+   "detail": "nfl.com (official) says DOUBTFUL; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (DOUBTFUL)",
+     "url": "https://www.nfl.com/players/kamren-kinchens/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -933,10 +965,14 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "105 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: FantasyPros said OUT for Mike Evans (official: see link); The New York Times said OUT for Mike Evans (official: see link); Hindustan Times said QUESTIONABLE for Trent Williams (official: see link); SuaraGarut.ID said OUT for Mike Evans (official: see link); bastillepost.com said OUT for Mike Evans (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: FantasyPros said OUT for Mike Evans (official: see link); CBS Sports said OUT for Mike Evans (official: see link); The New York Times said OUT for Mike Evans (official: see link); Hindustan Times said QUESTIONABLE for Trent Williams (official: see link); SuaraGarut.ID said OUT for Mike Evans (official: see link)",
    "evidence": [
     {
      "label": "FantasyPros: Mike Evans OUT",
+     "url": "https://www.nfl.com/players/mike-evans/"
+    },
+    {
+     "label": "CBS Sports: Mike Evans OUT",
      "url": "https://www.nfl.com/players/mike-evans/"
     },
     {
@@ -949,10 +985,6 @@
     },
     {
      "label": "SuaraGarut.ID: Mike Evans OUT",
-     "url": "https://www.nfl.com/players/mike-evans/"
-    },
-    {
-     "label": "bastillepost.com: Mike Evans OUT",
      "url": "https://www.nfl.com/players/mike-evans/"
     }
    ]
