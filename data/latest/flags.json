@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-27T18:43:54Z",
+ "generated_at": "2026-09-27T18:48:10Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -528,6 +528,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Max Melton",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/max-melton/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Michael Pittman",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -598,6 +614,22 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/rodney-shelley/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Roy Lopez",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/roy-lopez/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -768,7 +800,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "6 player(s) have no official designation but do have an ESPN status",
+   "title": "5 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -852,9 +884,13 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "72 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: RotoBaller said QUESTIONABLE for Nick Emmanwori (official: see link); Yardbarker said ACTIVE for Brian Burns (official: see link); Seattle Seahawks said QUESTIONABLE for Nick Emmanwori (official: see link); NBC Sports said QUESTIONABLE for Spencer Shrader (official: see link); Yahoo Sports said QUESTIONABLE for Spencer Shrader (official: see link)",
+   "title": "74 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Los Angeles Chargers said ACTIVE for Trey Lance (official: see link); RotoBaller said QUESTIONABLE for Nick Emmanwori (official: see link); Yardbarker said ACTIVE for Brian Burns (official: see link); Seattle Seahawks said QUESTIONABLE for Nick Emmanwori (official: see link); NBC Sports said QUESTIONABLE for Spencer Shrader (official: see link)",
    "evidence": [
+    {
+     "label": "Los Angeles Chargers: Trey Lance ACTIVE",
+     "url": "https://www.nfl.com/players/trey-lance/"
+    },
     {
      "label": "RotoBaller: Nick Emmanwori QUESTIONABLE",
      "url": "https://www.nfl.com/players/nick-emmanwori/"
@@ -869,10 +905,6 @@
     },
     {
      "label": "NBC Sports: Spencer Shrader QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4571557/spencer-shrader"
-    },
-    {
-     "label": "Yahoo Sports: Spencer Shrader QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4571557/spencer-shrader"
     }
    ]
