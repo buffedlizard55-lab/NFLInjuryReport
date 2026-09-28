@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-28T22:30:05Z",
+ "generated_at": "2026-09-28T22:49:42Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -256,22 +256,6 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
-   "title": "Designation conflict for Colby Parkinson",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/colby-parkinson/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
    "title": "Designation conflict for Craig Woodson",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -377,22 +361,6 @@
     },
     {
      "label": "ESPN (IR)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Grant Delpit",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/grant-delpit/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -912,7 +880,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "9 player(s) have no official designation but do have an ESPN status",
+   "title": "11 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -937,7 +905,7 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "53 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Fort Worth Star-Telegram said IR for DeeJay Dallas (official: see link); Yahoo Sports said OUT for Baker Mayfield (official: see link); A to Z Sports said QUESTIONABLE for Jaxson Dart (official: see link); CBS Sports said OUT for Mike Evans (official: see link); rapsheet.bsky.social said ACTIVE for Brock Bowers (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Fort Worth Star-Telegram said IR for DeeJay Dallas (official: see link); Yahoo Sports said OUT for Baker Mayfield (official: see link); A to Z Sports said QUESTIONABLE for Jaxson Dart (official: see link); Yahoo Sports said ACTIVE for Tyson Bagent (official: see link); Windy City Gridiron said ACTIVE for Tyson Bagent (official: see link)",
    "evidence": [
     {
      "label": "Fort Worth Star-Telegram: DeeJay Dallas IR",
@@ -952,12 +920,12 @@
      "url": "https://www.nfl.com/players/jaxson-dart/"
     },
     {
-     "label": "CBS Sports: Mike Evans OUT",
-     "url": "https://www.nfl.com/players/mike-evans/"
+     "label": "Yahoo Sports: Tyson Bagent ACTIVE",
+     "url": "https://www.nfl.com/players/tyson-bagent/"
     },
     {
-     "label": "rapsheet.bsky.social: Brock Bowers ACTIVE",
-     "url": "https://www.nfl.com/players/brock-bowers/"
+     "label": "Windy City Gridiron: Tyson Bagent ACTIVE",
+     "url": "https://www.nfl.com/players/tyson-bagent/"
     }
    ]
   },
