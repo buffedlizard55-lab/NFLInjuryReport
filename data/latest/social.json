@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-09-28T03:08:57Z",
+ "generated_at": "2026-09-28T03:10:22Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 70,
+   "latency_ms": 275,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 286,
+   "latency_ms": 251,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 46,
+   "latency_ms": 27,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 96,
+   "latency_ms": 40,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 71,
+   "latency_ms": 37,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -328,7 +328,7 @@
    "label": "news:hot-player",
    "query": "\"Tyler Higbee\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tyler+Higbee%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -349,7 +349,7 @@
    "label": "news:hot-player",
    "query": "\"Byron Young\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Byron+Young%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 8,
    "error": ""
   },
   {
@@ -377,7 +377,7 @@
    "label": "news:hot-player",
    "query": "\"Tyler Badie\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tyler+Badie%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 7,
    "error": ""
   },
   {
@@ -398,7 +398,7 @@
    "label": "news:hot-player",
    "query": "\"Pat Bryant\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Pat+Bryant%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -517,7 +517,7 @@
    "label": "news:hot-player",
    "query": "\"Nate Adkins\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Nate+Adkins%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 1,
+   "posts": 2,
    "error": ""
   },
   {
@@ -622,7 +622,7 @@
    "label": "news:hot-player",
    "query": "\"CJ Daniels\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22CJ+Daniels%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 9,
    "error": ""
   },
   {
@@ -769,7 +769,7 @@
    "label": "news:hot-player",
    "query": "\"Sam Ehlinger\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Sam+Ehlinger%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 9,
    "error": ""
   },
   {
@@ -1044,9 +1044,50 @@
    "url": "https://news.google.com/rss/search?q=%22Joe+Cardona%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "posts": 1,
    "error": ""
+  },
+  {
+   "label": "news:rotation:PHI",
+   "query": "\"Philadelphia Eagles\" injury when:1d",
+   "url": "https://news.google.com/rss/search?q=%22Philadelphia+Eagles%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "posts": 25,
+   "error": ""
+  },
+  {
+   "label": "news:rotation:WAS",
+   "query": "\"Washington Commanders\" injury when:1d",
+   "url": "https://news.google.com/rss/search?q=%22Washington+Commanders%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "posts": 25,
+   "error": ""
   }
  ],
  "posts": [
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPSnVSeEhtaF92SU9haUp2OTlSbFVaLVh0TVZhS2w1UkYzcUZ5cWltdkhVRjZNRlFLTG1nQU9aRTdFSWJiaWYwc0cxS1V4SVV4ejY0ZjgzX1dUYmxDaXUwYks0dWRSeXVXdFpRWVE4QkRFWHhvMkZ4dnpKMy05OXhpdERIWExSUllfM1JYbTB0T19FYkNNUzFKXzg2YVVVZGxqNERJbzBlZHlMcFNTR3RiSUhaQTczbWxYdEFKSTFLNmgxLUJmZUQxeE1BZGpPaFZfdUx5d0c1dndKSVhqdHQ2N2xSZTZNalBFTnZGQjBKdVpmN3N00gH6AUFVX3lxTE1OOXhneWFMWmo5eEQxZW9RM3BSQ2p6UFhpWTRuaUV3eVVHYjhZdVVxSzRPbF9aWDlvaVVLWHVlMER2SXUwYW9ZNE91VHpiM003aVBnWDRiMkdaOWhwUS14QWdZYnZqcGlQdVJzeVJFT2VwU0czbUhOSTl6alZTd1Q1bFo2MldYa01heVNlRjBTZTl6NkQwdUhLUW1QNWlJdzM4ZFA4Y1pmc0N1dUZ6eGtIY1ktNUN0dWVUWl81MUJOMUdYTUIwcUZRNFBuSGMzQVd3YWp4UDlXRGl2TnlVZEY3YlV0Y0podVlGbmlmX1hfTFUyd1ZlMWJUb3c?oc=5",
+   "author": "Hindustan Times",
+   "author_name": "Hindustan Times",
+   "author_url": "https://www.hindustantimes.com",
+   "text": "RJ Harvey injury update: What happened to Broncos RB? Latest status after concussion evaluation | Hindustan Times - Hindustan Times",
+   "posted_at": "Mon, 28 Sep 2026 03:03:53 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPSnVSeEhtaF92SU9haUp2OTlSbFVaLVh0TVZhS2w1UkYzcUZ5cWltdkhVRjZNRlFLTG1nQU9aRTdFSWJiaWYwc0cxS1V4SVV4ejY0ZjgzX1dUYmxDaXUwYks0dWRSeXVXdFpRWVE4QkRFWHhvMkZ4dnpKMy05OXhpdERIWExSUllfM1JYbTB0T19FYkNNUzFKXzg2YVVVZGxqNERJbzBlZHlMcFNTR3RiSUhaQTczbWxYdEFKSTFLNmgxLUJmZUQxeE1BZGpPaFZfdUx5d0c1dndKSVhqdHQ2N2xSZTZNalBFTnZGQjBKdVpmN3N00gH6AUFVX3lxTE1OOXhneWFMWmo5eEQxZW9RM3BSQ2p6UFhpWTRuaUV3eVVHYjhZdVVxSzRPbF9aWDlvaVVLWHVlMER2SXUwYW9ZNE91VHpiM003aVBnWDRiMkdaOWhwUS14QWdZYnZqcGlQdVJzeVJFT2VwU0czbUhOSTl6alZTd1Q1bFo2MldYa01heVNlRjBTZTl6NkQwdUhLUW1QNWlJdzM4ZFA4Y1pmc0N1dUZ6eGtIY1ktNUN0dWVUWl81MUJOMUdYTUIwcUZRNFBuSGMzQVd3YWp4UDlXRGl2TnlVZEY3YlV0Y0podVlGbmlmX1hfTFUyd1ZlMWJUb3c?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "concussion",
+   "signal": 0.6,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Hindustan Times",
+    "query": "\"RJ Harvey\" injury when:1d"
+   }
+  },
   {
    "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPWDE5X0NITzgtbzRJWGNKb0RkMlRWVWVkXzE4Zl9LUUNDMlBuUGFPNkJsdHJCNlpCVVRzVFozT1Z3Q0p2aUtsUDVNalRCem1EVU01VVF2eGFuR0J1WWg5NVFaUERQRjQtbUppTXFuM1VBMEE3Rm1aRnFKdEV2eVcxWG5PNjcxc1pnRDlZN3ZWbkpoSWdseWc4SllsTk82a0lKZ0tVeHJR?oc=5",
@@ -1531,33 +1572,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOVXh1dkphYWYtdXRZRm1lZGp1clZfUkdZMmxqdzA5ck5fZ01pRFh2MTE2R0xhMWl3NU1qNVNta0FrRWhrR2pjTk40WFBqai1tR2pQM05JUG5rbmREamhVaEpZNWRuRFBnM0lRcHJfZkVfc3lDZEFYeEJIbG1rUDNCWjlLS0lqOG1WbFFJRlcyUVZWcUlkeDhQaExjV2QwNS0tQzM4?oc=5",
-   "author": "On3",
-   "author_name": "On3",
-   "author_url": "https://www.on3.com",
-   "text": "Tracking former Tennessee football players in the NFL in Week 3 - On3",
-   "posted_at": "Mon, 28 Sep 2026 02:15:05 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOVXh1dkphYWYtdXRZRm1lZGp1clZfUkdZMmxqdzA5ck5fZ01pRFh2MTE2R0xhMWl3NU1qNVNta0FrRWhrR2pjTk40WFBqai1tR2pQM05JUG5rbmREamhVaEpZNWRuRFBnM0lRcHJfZkVfc3lDZEFYeEJIbG1rUDNCWjlLS0lqOG1WbFFJRlcyUVZWcUlkeDhQaExjV2QwNS0tQzM4?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "On3",
-    "query": "\"Byron Young\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOcklOd2ljTWI4SkM1cVNmMTBRU1VUXzFMRmcwT3VrMjlFekw3U0kzTUpIeVZKWFRoczhHYkZHVy1iUlJFV0k3WGZ6a0NjMVVYTzk3WVFkelIzV2FobEVlNW1sWFFPMkMzTWV1U2hEc3hpX0t3TXJIVEItcm96WWhPZ1lHRWdMa2NCeVdBSXpkTWh6WFJBQnd0bFFOcUZ6UXlzM1BpSmFJWldGdlotVnQ5S1gzYldUN0xxcU9UdXUtQldNVVpfNGxHZ1hjcWdvdWFtYXNJTG5R?oc=5",
    "author": "Bay News 9",
    "author_name": "Bay News 9",
@@ -1929,6 +1943,33 @@
    "raw": {
     "outlet": "49ers Webzone",
     "query": "\"Arizona Cardinals\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQM1h5WXFsaTJRUjAtbXplTzZrTWVtWGxWSU1GSDg2VHA4eVF2Ul93OVE4bVlQTGs2ZUhSN2pDLUV0UzlScVdhb19lelByZHFSVzhjMGJIbFdWSkdibHRyeks4c3YtbUhET3dScm1wLWJVTWlwcFBKRklSOTIwYlJZTjBhZWNKajE5OVcxVGdn?oc=5",
+   "author": "Bleacher Report",
+   "author_name": "Bleacher Report",
+   "author_url": "https://bleacherreport.com",
+   "text": "Buffalo Bills vs. Los Angeles Chargers - September 27, 2026 | Live Scores, Updates, Odds, Injury News and Recaps - Bleacher Report",
+   "posted_at": "Mon, 28 Sep 2026 01:30:55 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQM1h5WXFsaTJRUjAtbXplTzZrTWVtWGxWSU1GSDg2VHA4eVF2Ul93OVE4bVlQTGs2ZUhSN2pDLUV0UzlScVdhb19lelByZHFSVzhjMGJIbFdWSkdibHRyeks4c3YtbUhET3dScm1wLWJVTWlwcFBKRklSOTIwYlJZTjBhZWNKajE5OVcxVGdn?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Bleacher Report",
+    "query": "\"Buffalo Bills\" injury when:1d"
    }
   },
   {
@@ -2716,10 +2757,10 @@
   {
    "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPcHhOSVNqNC0ySUlVdzFYZF9McDRoZDFGZGJRdEtOWFktdTNMei1UR184LTNGZXB2YW53NjZIRFlselZUdlB3dnpfeXlRZnllY0pxSWN4T0FTMUZ4VGlGdG9hVjlraWhzTm1IX3VUMmlKcjVHU3JaTS10UXZRMWFlS1JfOU9EMGxtSDFNOTVmeHk3SmZ4RkR6cmZwU3Yya0pIRlUzc1p5b0FScVM5UlZsU0hEWUU3U2JUMzN4SXd4Z1ZMakNfN25XZmxDb3psdlp0dEotMEdFU3ZEQ1RJQXV0NVFEaTJsUHkyVTM3YzNQT0IyUQ?oc=5",
-   "author": "Madison Courier",
-   "author_name": "Madison Courier",
+   "author": "madisoncourier.com",
+   "author_name": "madisoncourier.com",
    "author_url": "https://www.madisoncourier.com",
-   "text": "Receiver Mike Evans leaves 49ers' win over Cardinals with a rib injury - Madison Courier",
+   "text": "Receiver Mike Evans leaves 49ers' win over Cardinals with a rib injury - madisoncourier.com",
    "posted_at": "Mon, 28 Sep 2026 00:42:07 GMT",
    "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPcHhOSVNqNC0ySUlVdzFYZF9McDRoZDFGZGJRdEtOWFktdTNMei1UR184LTNGZXB2YW53NjZIRFlselZUdlB3dnpfeXlRZnllY0pxSWN4T0FTMUZ4VGlGdG9hVjlraWhzTm1IX3VUMmlKcjVHU3JaTS10UXZRMWFlS1JfOU9EMGxtSDFNOTVmeHk3SmZ4RkR6cmZwU3Yya0pIRlUzc1p5b0FScVM5UlZsU0hEWUU3U2JUMzN4SXd4Z1ZMakNfN25XZmxDb3psdlp0dEotMEdFU3ZEQ1RJQXV0NVFEaTJsUHkyVTM3YzNQT0IyUQ?oc=5",
    "matched_player": "",
@@ -2736,7 +2777,7 @@
    "in_game_status": "INJURY_REPORTED",
    "game_event": "injury-reported",
    "raw": {
-    "outlet": "Madison Courier",
+    "outlet": "madisoncourier.com",
     "query": "\"Arizona Cardinals\" injury when:1d"
    }
   },
@@ -3012,6 +3053,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQZndUWEhHZmJ2cFR2aTRicmZBZF9CcnhaNV9scVV3MTVvTGo2X3Jfbl9lc05QNHBsQWVOVzgyYWlCYkhreDBqQUQ2TlZUWEpKWFNpUjlhcllJd05lMnlNMDlaUW4wTmtkXzhMcVAwMWxvZVRLZnJuOENuV1ExUEZBcjZ2b1ZDVzdYWkZDRFV4VDM5dFZsbGd0NTBFbVQya2RfOHRpTmZsLVVfaWc0MFRxamlzZ3QtcEJLdTVBM19odVA0LUZ2dDZTellGNEdDb3lXMXhKOVdTUkFteExNMXBWeG1EREhqZnVpSF9kUHpTSW5mU1U?oc=5",
+   "author": "sports.yahoo.com",
+   "author_name": "sports.yahoo.com",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Commanders LB Leo Chenal carted off on backboard after sustaining neck injury, has movement in his extremities - sports.yahoo.com",
+   "posted_at": "Mon, 28 Sep 2026 00:19:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQZndUWEhHZmJ2cFR2aTRicmZBZF9CcnhaNV9scVV3MTVvTGo2X3Jfbl9lc05QNHBsQWVOVzgyYWlCYkhreDBqQUQ2TlZUWEpKWFNpUjlhcllJd05lMnlNMDlaUW4wTmtkXzhMcVAwMWxvZVRLZnJuOENuV1ExUEZBcjZ2b1ZDVzdYWkZDRFV4VDM5dFZsbGd0NTBFbVQya2RfOHRpTmZsLVVfaWc0MFRxamlzZ3QtcEJLdTVBM19odVA0LUZ2dDZTellGNEdDb3lXMXhKOVdTUkFteExNMXBWeG1EREhqZnVpSF9kUHpTSW5mU1U?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "neck",
+   "signal": 0.9,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "EVALUATED",
+   "game_event": "injury-being-evaluated",
+   "raw": {
+    "outlet": "sports.yahoo.com",
+    "query": "\"Washington Commanders\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQUFFIcm9rYXdjdENZZXFRSmx5Qk9lTXJkRHNTT3NpSTd4WEc3VzNQNW5rZFdYeGp4Q3F2WFNtalNxbkJSNUgxRGJCcmVSVjRMS1U5SzBrOWxNb1ZBZHktdDlVRk1KZ29BNUxaTlJINERCelZHMVlicFBhRnEyczF1dHdjbGtVd0Fkc1F6ZUJIdlFDX2kxYk0yZmh5R05zTzRKM0Faekh1dmthODNHVGhsLUhzNmNjS180a3U2ZGdGNFVMUk0wNVAzbA?oc=5",
    "author": "Bucs Nation",
    "author_name": "Bucs Nation",
@@ -3174,33 +3242,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQM1h5WXFsaTJRUjAtbXplTzZrTWVtWGxWSU1GSDg2VHA4eVF2Ul93OVE4bVlQTGs2ZUhSN2pDLUV0UzlScVdhb19lelByZHFSVzhjMGJIbFdWSkdibHRyeks4c3YtbUhET3dScm1wLWJVTWlwcFBKRklSOTIwYlJZTjBhZWNKajE5OVcxVGdn?oc=5",
-   "author": "Bleacher Report",
-   "author_name": "Bleacher Report",
-   "author_url": "https://bleacherreport.com",
-   "text": "Buffalo Bills vs. Los Angeles Chargers - September 27, 2026 | Live Scores, Updates, Odds, Injury News and Recaps - Bleacher Report",
-   "posted_at": "Mon, 28 Sep 2026 00:00:54 GMT",
-   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQM1h5WXFsaTJRUjAtbXplTzZrTWVtWGxWSU1GSDg2VHA4eVF2Ul93OVE4bVlQTGs2ZUhSN2pDLUV0UzlScVdhb19lelByZHFSVzhjMGJIbFdWSkdibHRyeks4c3YtbUhET3dScm1wLWJVTWlwcFBKRklSOTIwYlJZTjBhZWNKajE5OVcxVGdn?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Bleacher Report",
-    "query": "\"Los Angeles Chargers\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNWVY1NHUxeGJpWXg1Q3dlLVEzNW9vT254U0NRUllESTVGQTg3d3p2VHZtMXJFTDVuaUJnZmpiQUR3aElJMWRhZmRuaWRlTWlOdDFObUpoS3FUTzBpdVVQeXpXNjNBdXA1Smg0MzZoQ1BCWXlyOXZVUUczc0RQTXRJbzBObw?oc=5",
    "author": "sports.yahoo.com",
    "author_name": "sports.yahoo.com",
@@ -3305,6 +3346,33 @@
    "raw": {
     "outlet": "Steelers Depot",
     "query": "\"Pittsburgh Steelers\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMisAJBVV95cUxNdEZYdUlndFZlWEUyaWNQdkM5WjgyR2RWZGJJUnNOeUdxdWNadjl5QldKdTI1ZVdfZ0dmakdXSTMyZzU1d2hGNU5SMF90dHdacEJZc2o4MFVSZU5CaThxWjg0S19xN1JIYVpQVGJTQS1pNHhzOFpxYndOQnJmZW40SHFNZnhSWmlnNEszUWpMcVVRcHVwb3RYNTZWU1hSRlVyeEFfb21yQk81Q295TWZyZ1ZUZmVmSUlyc0pVNU1naGRNelg2b05TYlpyMnNXRWRzUllaQVFTZmxpUTVPMkctVC1GbVl1ajZKSktETzRIdmg1ZVNOZ0d1bUR1Vjk2TFNfLUhER1BMOElYSWZyRHBiRXJvZG4zdzYzZHJRbGkwNFExRVY4Rm9TR3Z0anhmQjl5?oc=5",
+   "author": "ABC7 Chicago",
+   "author_name": "ABC7 Chicago",
+   "author_url": "https://abc7chicago.com",
+   "text": "Chicago Bears quarterback Caleb Williams' injury considered to have 3-4 week timeline, sources say - ABC7 Chicago",
+   "posted_at": "Sun, 27 Sep 2026 23:51:06 GMT",
+   "url": "https://news.google.com/rss/articles/CBMisAJBVV95cUxNdEZYdUlndFZlWEUyaWNQdkM5WjgyR2RWZGJJUnNOeUdxdWNadjl5QldKdTI1ZVdfZ0dmakdXSTMyZzU1d2hGNU5SMF90dHdacEJZc2o4MFVSZU5CaThxWjg0S19xN1JIYVpQVGJTQS1pNHhzOFpxYndOQnJmZW40SHFNZnhSWmlnNEszUWpMcVVRcHVwb3RYNTZWU1hSRlVyeEFfb21yQk81Q295TWZyZ1ZUZmVmSUlyc0pVNU1naGRNelg2b05TYlpyMnNXRWRzUllaQVFTZmxpUTVPMkctVC1GbVl1ajZKSktETzRIdmg1ZVNOZ0d1bUR1Vjk2TFNfLUhER1BMOElYSWZyRHBiRXJvZG4zdzYzZHJRbGkwNFExRVY4Rm9TR3Z0anhmQjl5?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.6,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "ABC7 Chicago",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
   {
@@ -4929,6 +4997,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPclRPYVo5OGRyNmNSd29jWm9LNUhKOXZKWElPaWtvQWVCRlRLYWU3SWdCS2VkRjF2WTBTNzhzeGw5Wm1rbTdNWHZyNHROTWxnUmMtRFpNZ2Q5VzE1OVlzM2pIWEZfYkFpT214TnRqWTlWS01tOWtsWFZfQ29JVUJIMzAzUk1qQ252cmg3ODBGLUdGWmtDUEpJZUcxXzFvSWl6YlpPdWhOdFJzOHhVaVZEejh0ZTV5WG1SX3JOMG5OazVValpyVVlrNElfLVVRaTdiUTZYYW5va3JzNm8?oc=5",
+   "author": "Commanders Wire",
+   "author_name": "Commanders Wire",
+   "author_url": "https://commanderswire.usatoday.com",
+   "text": "Dan Quinn gives injury update on Commanders LB Leo Chenal - Commanders Wire",
+   "posted_at": "Sun, 27 Sep 2026 22:29:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPclRPYVo5OGRyNmNSd29jWm9LNUhKOXZKWElPaWtvQWVCRlRLYWU3SWdCS2VkRjF2WTBTNzhzeGw5Wm1rbTdNWHZyNHROTWxnUmMtRFpNZ2Q5VzE1OVlzM2pIWEZfYkFpT214TnRqWTlWS01tOWtsWFZfQ29JVUJIMzAzUk1qQ252cmg3ODBGLUdGWmtDUEpJZUcxXzFvSWl6YlpPdWhOdFJzOHhVaVZEejh0ZTV5WG1SX3JOMG5OazVValpyVVlrNElfLVVRaTdiUTZYYW5va3JzNm8?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Commanders Wire",
+    "query": "\"Washington Commanders\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOYXAyVVEyR3JQUVVfOUtyd29OdDg5dExzU2VUSGpQRnNvMDF4aGFyTEtYSFIyY0t3clFzeDFtbVdFVmcxa3I4MmgyT2dKWFdlUEFyTUdVWmlWRWZvRjUwdzJoRkZScFVwS1cxR0hoMGV2dmFtN2wyenVpWTdnX2tHRmRKTkdhNVBNMDg3UlR5M1hRdWZpLUNVYmhYTXRXajF6WUJ0cXFpYm9xTll4QXFRdkJnbFY5UExXaXNCOTdZYUw3ZWlPQ05FOENB?oc=5",
    "author": "Queen City News",
    "author_name": "Queen City News",
@@ -5739,6 +5834,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOVzJyU0dXelFRS0YyRjk1TzdZclVvY1d2djNSZzE1YTNvRzc1bnZiV2hTTUZyX054cjBaNUVZOFVTbGhlOUIyalczOTdEc3RJNTVCUlV4TDA5NHBNeVBuMGJyaXFEMVkyS3VUV3I0bGhJdGNKWlY0QzdEUlRsb1RvVzlBcHRtelI0TG9oeFdhLVZsTUpUak1tUzJsbExtMDhTcktjdko4VnN3YkI3bm1HVmQ3NjN3LVZIUE9xTWhCOVVDS0VXWTkyYlExYXBCS0djY2ZKbw?oc=5",
+   "author": "Bleacher Report",
+   "author_name": "Bleacher Report",
+   "author_url": "https://bleacherreport.com",
+   "text": "New Tyson Bagent Injury Update Revealed Ahead of Bears' Game vs. Eagles amid Caleb Williams' Injury - Bleacher Report",
+   "posted_at": "Sun, 27 Sep 2026 21:59:28 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOVzJyU0dXelFRS0YyRjk1TzdZclVvY1d2djNSZzE1YTNvRzc1bnZiV2hTTUZyX054cjBaNUVZOFVTbGhlOUIyalczOTdEc3RJNTVCUlV4TDA5NHBNeVBuMGJyaXFEMVkyS3VUV3I0bGhJdGNKWlY0QzdEUlRsb1RvVzlBcHRtelI0TG9oeFdhLVZsTUpUak1tUzJsbExtMDhTcktjdko4VnN3YkI3bm1HVmQ3NjN3LVZIUE9xTWhCOVVDS0VXWTkyYlExYXBCS0djY2ZKbw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Bleacher Report",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPYVpycTVzSThLZng0RjJvQVhha0NJV2RmMURld3R0d01QTFE3RkdfdlI2amQzTmE0UDhQOEE0OTFxVEhUdS1XM2UwRm4yZV9DdUlob2lLR2N4TkRDWXVXSTRXSE9WUG82eWc4dlRvLS0wZUhuYWJ3RlZnN1JVcTNlYjI4NFZmOXFXWjlUNnpXTEc1dEk0Q1poekxGQnBac0pzTV9FcUxmWDVGMnE2My0wR3N1YUVmNzk3WXM5cWNhVXJxQ05wQlZtTkUwdlA4S2RBOUtYdGVFY2l3TlQ2dFpYYndlMEZNbGt5djQ3RGxPRTN2Y0ZiX1k0?oc=5",
    "author": "Bozeman Daily Chronicle",
    "author_name": "Bozeman Daily Chronicle",
@@ -6221,6 +6343,33 @@
    "raw": {
     "outlet": "A to Z Sports",
     "query": "\"Miami Dolphins\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNSFBEYWVITy02S25lUlVJcmFjZFBzZXQwYTBxUWdSZVJIZmtZMFZrTXI5MFc3UGJMVGdzc1pXbXgydjF2dVd3RDR6d2lFbVgtUWZySW9XeEkzU2RyYzBqRWhHMy1pYWprSHZKd3M1dUQzZ21IeW5vdUZfWUc3Q1NiRmhQLXFMdw?oc=5",
+   "author": "sports.yahoo.com",
+   "author_name": "sports.yahoo.com",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Leo Chenal Injury Update: Scary Moment for $24.75 Million Commanders LB - sports.yahoo.com",
+   "posted_at": "Sun, 27 Sep 2026 21:23:44 GMT",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNSFBEYWVITy02S25lUlVJcmFjZFBzZXQwYTBxUWdSZVJIZmtZMFZrTXI5MFc3UGJMVGdzc1pXbXgydjF2dVd3RDR6d2lFbVgtUWZySW9XeEkzU2RyYzBqRWhHMy1pYWprSHZKd3M1dUQzZ21IeW5vdUZfWUc3Q1NiRmhQLXFMdw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "sports.yahoo.com",
+    "query": "\"Washington Commanders\" injury when:1d"
    }
   },
   {
@@ -7116,6 +7265,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPWEZGbkFXOXVzWjVtSXhVZzhWODdrRzhRMG9uWUFGVEI1Q0Q1YlB3d1dQT3c3LXhLYk5ETjlwWnNPNnFrV014OEdQSDRNWDMycGtIRkZTbG5MV2VLSVRadVFKU1lOZ0FXYWtjZ3ZubFYxZDhxYmxDZkVBeG5VLXNicmVmelM4T0VPQm9sTmJUeFMzeVh3ejRuZ0cxLTQtUEt3Wngxdy1KSVdFWEV1U3ZYcUdyNmNxUm5LMXFBc016eGRHdFZabHZRcw?oc=5",
+   "author": "sports.yahoo.com",
+   "author_name": "sports.yahoo.com",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Commanders LB Leo Chenal carted off on backboard after sustaining neck injury - sports.yahoo.com",
+   "posted_at": "Sun, 27 Sep 2026 20:17:17 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPWEZGbkFXOXVzWjVtSXhVZzhWODdrRzhRMG9uWUFGVEI1Q0Q1YlB3d1dQT3c3LXhLYk5ETjlwWnNPNnFrV014OEdQSDRNWDMycGtIRkZTbG5MV2VLSVRadVFKU1lOZ0FXYWtjZ3ZubFYxZDhxYmxDZkVBeG5VLXNicmVmelM4T0VPQm9sTmJUeFMzeVh3ejRuZ0cxLTQtUEt3Wngxdy1KSVdFWEV1U3ZYcUdyNmNxUm5LMXFBc016eGRHdFZabHZRcw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "neck",
+   "signal": 0.9,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "EVALUATED",
+   "game_event": "injury-being-evaluated",
+   "raw": {
+    "outlet": "sports.yahoo.com",
+    "query": "\"Washington Commanders\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOdUNDb2MyS0FQdUNPTk9nZHZaQWFSMFd0Z1NkaWQwdGU0ZU1WelZhNGd4UkUwMDJYNzZMWEJTaXhaOV94N2lpa3l2UkVRXzNzYkxtd3FzcDU1UUZLemt4RHBMaloyajFwTGQzd3JJVkpxSlg1UDFXWFl2dndjN2cxRnlFbkk2dk1uV2NvTVlOT0NRLXI2LTk3bGZfM2djbFRQMmo2dzNmNVRITFpUS2ZGT2dLSWlSdENYcWN1Ynln?oc=5",
    "author": "Sports Illustrated",
    "author_name": "Sports Illustrated",
@@ -7359,6 +7535,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQaE9ORG9mX0dTSXF2dWI5TkZNMEZaVlgydGZkUDMzZ2JqRmJnbDlhd2RoS216R2V2R3dxaVBfQW1FdVhCSkxyZ19JeWhPeWg2ZC1rZEkwZHg5M3RmMnBBVjdsRTRkdTRuaU13NHF2d081VEt3TjFFRzdiMHhMVno4OEVhOVUxVTJua1NvY25jZWhHdDNWaU5vMGlCTUxWTThKRXYwODgyeVc1UF9zSG0wRlByanVMby1rNXJHX0Y2QTBjQzUxUUtoQjk1U1dzQQ?oc=5",
+   "author": "NBC Sports",
+   "author_name": "NBC Sports",
+   "author_url": "https://www.nbcsports.com",
+   "text": "Commanders’ Leo Chenal carted off on stretcher with neck injury - NBC Sports",
+   "posted_at": "Sun, 27 Sep 2026 19:59:46 GMT",
+   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQaE9ORG9mX0dTSXF2dWI5TkZNMEZaVlgydGZkUDMzZ2JqRmJnbDlhd2RoS216R2V2R3dxaVBfQW1FdVhCSkxyZ19JeWhPeWg2ZC1rZEkwZHg5M3RmMnBBVjdsRTRkdTRuaU13NHF2d081VEt3TjFFRzdiMHhMVno4OEVhOVUxVTJua1NvY25jZWhHdDNWaU5vMGlCTUxWTThKRXYwODgyeVc1UF9zSG0wRlByanVMby1rNXJHX0Y2QTBjQzUxUUtoQjk1U1dzQQ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "neck",
+   "signal": 0.75,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "EVALUATED",
+   "game_event": "injury-being-evaluated",
+   "raw": {
+    "outlet": "NBC Sports",
+    "query": "\"Washington Commanders\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNN3Q3a011bnBmZ1FQcjU0c0xfOXEtcWNGeWpxX1pXVzBJQnBrZG1OV2FmTTcxOXdkTWp4bFJhdkdVRmp2MG9kaTljY0xXQmhSSVlJa1FhMklhTFhjVnh0WWxENGN2TXNLNzBJMnNhMk9nMVQ3dmRvbzNyRVl4RUQ0aFlSY09pOEJi?oc=5",
    "author": "heavy.com",
    "author_name": "heavy.com",
@@ -7490,6 +7693,33 @@
    "raw": {
     "outlet": "KCTV",
     "query": "\"Miami Dolphins\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNSmxLeU5BdHNvYmtYdk81TXRwdXhvUHdVRDZ4Ylg4TzRDZlZxV0psdnBwLV93NVNjSlBfb2FKcVpPZkRnbmZNRHFXNEY1aHVkUjRqbTJSVXFYSFhIT1llc2c3WEcwRmtjMzJmU2VQWnd4RUtRdEdmNVJVWkhtMFZLSU81SVFULTRuNHQ2UXg1bVYwQ0t1N2U1MWRNcmdyb3JRcjRUUWJpdUpaT1NIUVEwSlE1OFotaEpEeEZneVo0OFBpUGlnTmtNZWJ5N1Ewb1FuZEw2eEg3OWRYUzYzNmxhSUlwYkNIWDA?oc=5",
+   "author": "Bozeman Daily Chronicle",
+   "author_name": "Bozeman Daily Chronicle",
+   "author_url": "https://www.bozemandailychronicle.com",
+   "text": "Bears QB Tyson Bagent clears NFL concussion protocol - Bozeman Daily Chronicle",
+   "posted_at": "Sun, 27 Sep 2026 19:48:14 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNSmxLeU5BdHNvYmtYdk81TXRwdXhvUHdVRDZ4Ylg4TzRDZlZxV0psdnBwLV93NVNjSlBfb2FKcVpPZkRnbmZNRHFXNEY1aHVkUjRqbTJSVXFYSFhIT1llc2c3WEcwRmtjMzJmU2VQWnd4RUtRdEdmNVJVWkhtMFZLSU81SVFULTRuNHQ2UXg1bVYwQ0t1N2U1MWRNcmdyb3JRcjRUUWJpdUpaT1NIUVEwSlE1OFotaEpEeEZneVo0OFBpUGlnTmtNZWJ5N1Ewb1FuZEw2eEg3OWRYUzYzNmxhSUlwYkNIWDA?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "concussion",
+   "signal": 0.45,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Bozeman Daily Chronicle",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
   {
@@ -7845,6 +8075,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPT3pCS2JjdUpLdHExM2d6azFGQ0t2eXMtQU1jd0hvbjRmSlIzM24zUkJVSi1GeVROSGFpTTQ5a1o0VTFaaWlRZWVWNGNMV2RHZldPTEV2eVd2bzFTOXFfVGNFS3E1N0E2c2JoUDZSTTcxODF2ZDN1eXFsSUVoT3UwVjlaNXRUUWlMZTI4R25JRjE0cTE1QzNMRWR3?oc=5",
+   "author": "heavy.com",
+   "author_name": "heavy.com",
+   "author_url": "https://heavy.com",
+   "text": "Leo Chenal Injury Update: Scary Moment for $24.75 Million Commanders LB - heavy.com",
+   "posted_at": "Sun, 27 Sep 2026 19:31:37 GMT",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPT3pCS2JjdUpLdHExM2d6azFGQ0t2eXMtQU1jd0hvbjRmSlIzM24zUkJVSi1GeVROSGFpTTQ5a1o0VTFaaWlRZWVWNGNMV2RHZldPTEV2eVd2bzFTOXFfVGNFS3E1N0E2c2JoUDZSTTcxODF2ZDN1eXFsSUVoT3UwVjlaNXRUUWlMZTI4R25JRjE0cTE1QzNMRWR3?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "heavy.com",
+    "query": "\"Washington Commanders\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRlNqS2xGMzVNSVBDbVRqQ2ZjeXNaU1RYMm55aHpDTUZSZnNrWVc1QTF5SVRSNGowUVpJU1pIM2p3SHN2WmtObGZzdGxOWjF6TzRUTmtud2FJTnNqamRhLWZpbDNEVnNISV9jRmlONXFuY1p5SXBOS3dYd0o5emV1Y1dzNlU?oc=5",
    "author": "sports.yahoo.com",
    "author_name": "sports.yahoo.com",
@@ -7895,33 +8152,6 @@
    "raw": {
     "outlet": "tennessean.com",
     "query": "\"Tennessee Titans\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPUXlRcExYUWtQeV82VU1EUkY2WGkyNzFDQmtJaERqM01jeVY5Z2VBNHdBWmJ1cGJQNFo2TWY1NFE1M0ZnWHhsT1RLLUt5anJodU9MNmNVX0h6dFVaRUtFZllTTmxuUEhwd2I4ZWpkY0FhSlVYbGo2ZXlMcDdVeTcteGIwRU1GXzhERnZpa3NHc1pjRFZQZFN2WG9iXzlRSXZqUGZEVHRjSHR4dmNtaURmX0VvcnBqMVI1bXJHRHBVRW13RGhmb1JnTzlJd21ycklDMGNOb1JCcXhJZw?oc=5",
-   "author": "facebook.com",
-   "author_name": "facebook.com",
-   "author_url": "https://www.facebook.com",
-   "text": "Steelers QB Aaron Rodgers suffers concerning injury in Week 3 vs. Bengals | See link below ⬇️ 📸 Barry Reeger, IMAGN IMAGES via Reuters Connect - facebook.com",
-   "posted_at": "Sun, 27 Sep 2026 19:30:11 GMT",
-   "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPUXlRcExYUWtQeV82VU1EUkY2WGkyNzFDQmtJaERqM01jeVY5Z2VBNHdBWmJ1cGJQNFo2TWY1NFE1M0ZnWHhsT1RLLUt5anJodU9MNmNVX0h6dFVaRUtFZllTTmxuUEhwd2I4ZWpkY0FhSlVYbGo2ZXlMcDdVeTcteGIwRU1GXzhERnZpa3NHc1pjRFZQZFN2WG9iXzlRSXZqUGZEVHRjSHR4dmNtaURmX0VvcnBqMVI1bXJHRHBVRW13RGhmb1JnTzlJd21ycklDMGNOb1JCcXhJZw?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "facebook.com",
-    "query": "\"Pittsburgh Steelers\" injury when:1d"
    }
   },
   {
@@ -8601,6 +8831,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNdWhtcFZ6VnFXM25VcXBVa2RnSERSM0s3bWhsRGd5TmJjQUprWWUzY3NxV1RMekp0ZncxTzNIX25aS2dZZ3NyZFVkX0VQRWV2azZ6cmZJYzRsYlVUcndyMER5NGZXZmN0aU9GMTZ4dmlpc0N6Z0NtN3oxNnlKOXlTR3pfRUJjUG53YmxYUzNR?oc=5",
+   "author": "New York Post",
+   "author_name": "New York Post",
+   "author_url": "https://nypost.com",
+   "text": "Bears make starting QB decision for Eagles game with Caleb Williams injured - New York Post",
+   "posted_at": "Sun, 27 Sep 2026 18:54:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNdWhtcFZ6VnFXM25VcXBVa2RnSERSM0s3bWhsRGd5TmJjQUprWWUzY3NxV1RMekp0ZncxTzNIX25aS2dZZ3NyZFVkX0VQRWV2azZ6cmZJYzRsYlVUcndyMER5NGZXZmN0aU9GMTZ4dmlpc0N6Z0NtN3oxNnlKOXlTR3pfRUJjUG53YmxYUzNR?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.45,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "New York Post",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPb2JuNXhXWXdjZUd6eW9xRmItQ2JRTkhUeHpHd0cyYmtxM0ZXUlM5aXRDTFdkS0k4dEhydXFRVmJTUDhOLUFud21oanMwSGp4VXE3XzVTbDllZ2RiNEhobTdRUDBKY21fQlpXTGpabEd4NVVfZ1JKVUg3dXRUTWpSWA?oc=5",
    "author": "sports.yahoo.com",
    "author_name": "sports.yahoo.com",
@@ -8817,6 +9074,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWXMtZFZNYjFjdERiSUtLaEwzN2lPMUVvalBsQkZwWjhvZktVS2VXTGN2d3MyRGo0bzdWUllvRzkwSmVHcXZuXzg5T1h2QW1BaVp6NG4zRER4czVGN2R2UU9zcmg3NkEtQUhEeUdlZTV5d3JacmxvVFhNdXhhVEdjbW55bnE4bHBsN1RoRExwTWNzRmwxcEpaUFltd05sYnFIRnc?oc=5",
+   "author": "CBS News",
+   "author_name": "CBS News",
+   "author_url": "https://www.cbsnews.com",
+   "text": "Bears quarterback Caleb Williams to be out 3-4 weeks with hamstring injury - CBS News",
+   "posted_at": "Sun, 27 Sep 2026 18:43:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWXMtZFZNYjFjdERiSUtLaEwzN2lPMUVvalBsQkZwWjhvZktVS2VXTGN2d3MyRGo0bzdWUllvRzkwSmVHcXZuXzg5T1h2QW1BaVp6NG4zRER4czVGN2R2UU9zcmg3NkEtQUhEeUdlZTV5d3JacmxvVFhNdXhhVEdjbW55bnE4bHBsN1RoRExwTWNzRmwxcEpaUFltd05sYnFIRnc?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "hamstring",
+   "signal": 1.0,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "CBS News",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNX1FzRU5JWml6VExoUm83UE1pQ2FNOE1hYmRJRm9ZZWJ2bE04ZjBkazlLd1ZORUpzYWlYaXJsQVpfaEVjQ09hRXdqYUI0ME54QWx0c1h3WFN6bVZodVB6ZlpPMk9Jd2tNUWpmblRCSXo4S1NpcWVFVko1ajR3aFRNNFdMQVQwYWpEb29ia3JlN1Zkc1MwVzdsM1Q1SWtCc01IeUNHUmN5cjFRVlotOWg2OTFHSzc3WUNDYjRXZVlnTlMxLTF0a3p0R2VDaTMyX2VzR0Y2NHVzT3BUdw?oc=5",
    "author": "democratandchronicle.com",
    "author_name": "democratandchronicle.com",
@@ -8867,6 +9151,33 @@
    "raw": {
     "outlet": "sports.yahoo.com",
     "query": "\"Carolina Panthers\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiggJBVV95cUxQZHBUZGRGS1JGVFBNUlRPNlZxckJQTzNGN1BocXFlN3h0dmNkQ2I5eWhGanJCTW8tclIxdVhWSGx2S1RFU3hGRmRXbE1iMHhVV1RmWXQzYU9uQkFWZXlLcTdOVHN3cDY5SHRqdDhsSERrZDdPTDhneVF5S1QxOFpnOXNYdjNTak5xM21VQnRPanpXdVZ5NHh5RVEwYldrVTNxUnZNeU5Mck9Va3ZEVTE1WEJWd1l5QmR3VmlzS3phM0hwSktDQ0FyQVZNQUpwUXpQX1d2WElfTWpSWXZIaFh3eVV1OGJfR0VLZ0ZweUQtZmNFdXF2eGFiaWRLb1VPOExSUnfSAYcCQVVfeXFMTnY5MllNWTQ1cHRRSlBISEJlWmlnNHdEUzE5U1lpck5HN3ZvRHFRck5pX2lrc1ZudDAtRDdxcU5ZQnI0OVdPVzBWZEc1aHVCdkpub1c5Rzh1a09uTjViVEdDR0hvb1dnVWtSRWtGcTBLS0s1OUpzMHZqLWNmNmc4LUVYelRzVFV5Vk9YMXlvTFhnNEhUVE9Ca0JXaVJzQ0U3R25INmxKMi1GbThMMmc0eWYyc3o1RnZ5SEI3WHR0UjNXSWszSkZRcTl0Y1N3SUJGNUxTbGoxNGZJclpoWUZjM2dNeEZENHVRZ0hwVl9RaGhwNm1DS3hrd1B1cUtXSXFtRVZuM2ZzWEk?oc=5",
+   "author": "Hindustan Times",
+   "author_name": "Hindustan Times",
+   "author_url": "https://www.hindustantimes.com",
+   "text": "Leo Chenal injury update: What happened to the Commanders linebacker? Scary moment vs Seahawks | Hindustan Times - Hindustan Times",
+   "posted_at": "Sun, 27 Sep 2026 18:36:27 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxQZHBUZGRGS1JGVFBNUlRPNlZxckJQTzNGN1BocXFlN3h0dmNkQ2I5eWhGanJCTW8tclIxdVhWSGx2S1RFU3hGRmRXbE1iMHhVV1RmWXQzYU9uQkFWZXlLcTdOVHN3cDY5SHRqdDhsSERrZDdPTDhneVF5S1QxOFpnOXNYdjNTak5xM21VQnRPanpXdVZ5NHh5RVEwYldrVTNxUnZNeU5Mck9Va3ZEVTE1WEJWd1l5QmR3VmlzS3phM0hwSktDQ0FyQVZNQUpwUXpQX1d2WElfTWpSWXZIaFh3eVV1OGJfR0VLZ0ZweUQtZmNFdXF2eGFiaWRLb1VPOExSUnfSAYcCQVVfeXFMTnY5MllNWTQ1cHRRSlBISEJlWmlnNHdEUzE5U1lpck5HN3ZvRHFRck5pX2lrc1ZudDAtRDdxcU5ZQnI0OVdPVzBWZEc1aHVCdkpub1c5Rzh1a09uTjViVEdDR0hvb1dnVWtSRWtGcTBLS0s1OUpzMHZqLWNmNmc4LUVYelRzVFV5Vk9YMXlvTFhnNEhUVE9Ca0JXaVJzQ0U3R25INmxKMi1GbThMMmc0eWYyc3o1RnZ5SEI3WHR0UjNXSWszSkZRcTl0Y1N3SUJGNUxTbGoxNGZJclpoWUZjM2dNeEZENHVRZ0hwVl9RaGhwNm1DS3hrd1B1cUtXSXFtRVZuM2ZzWEk?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Hindustan Times",
+    "query": "\"Washington Commanders\" injury when:1d"
    }
   },
   {
@@ -8948,6 +9259,33 @@
    "raw": {
     "outlet": "sports.yahoo.com",
     "query": "\"Jaylen Waddle\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNU3ZuRVo2MDk0SkQyX3F3aVZSUE5UaWlFdFJHZlVVUnE1TzRkczdDR2hOckNMR21fVzB6UENOeXdsZ3FTd0pfLVRJUXI3NlhqbHZGbndaaDBxOWFjQV9tNW84M1NETlhEQWFLMWVjUTV4dlFtZmNBRDdHQ21nTkkyWkdJa1JNOFFIRGdB?oc=5",
+   "author": "CBS Sports",
+   "author_name": "CBS Sports",
+   "author_url": "https://www.cbssports.com",
+   "text": "Tyson Bagent clears concussion protocol: Bears QB avoids injury designation for Week 3 game against Eagles - CBS Sports",
+   "posted_at": "Sun, 27 Sep 2026 18:32:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNU3ZuRVo2MDk0SkQyX3F3aVZSUE5UaWlFdFJHZlVVUnE1TzRkczdDR2hOckNMR21fVzB6UENOeXdsZ3FTd0pfLVRJUXI3NlhqbHZGbndaaDBxOWFjQV9tNW84M1NETlhEQWFLMWVjUTV4dlFtZmNBRDdHQ21nTkkyWkdJa1JNOFFIRGdB?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "concussion",
+   "signal": 0.75,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "CBS Sports",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
   {
@@ -9114,6 +9452,60 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPeFRiRDdkTFBoTlZjMWY5N0Q3Y3VRa01JbFRXVEdwY2YweFF4NUFMbm9PZzVBTkFaNFhPT2xNUUd5eEZuVk10OXowVHA5YndoVHVVOW8ydXp0dDZUNFlhNHVDaTEwRkVXY1lOUWFvNXpkUlg4dGRpb2FBbUdVbGw1WXpGajZGdw?oc=5",
+   "author": "AOL.ca",
+   "author_name": "AOL.ca",
+   "author_url": "https://www.aol.ca",
+   "text": "Multiple Patriots players leave game vs. Jaguars early with injuries - AOL.ca",
+   "posted_at": "Sun, 27 Sep 2026 18:23:51 GMT",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPeFRiRDdkTFBoTlZjMWY5N0Q3Y3VRa01JbFRXVEdwY2YweFF4NUFMbm9PZzVBTkFaNFhPT2xNUUd5eEZuVk10OXowVHA5YndoVHVVOW8ydXp0dDZUNFlhNHVDaTEwRkVXY1lOUWFvNXpkUlg4dGRpb2FBbUdVbGw1WXpGajZGdw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.0,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "AOL.ca",
+    "query": "\"Jacksonville Jaguars\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOQ28wMzRjVTF0UGhLOWhDelB1bUt6Y1VvQ0UxTkJBTG1CTjdZdXdobXZpVG03RHl4Yk9NdDJCT3ZCVXNrSlZxQTB1dkVaS09oV1hsamlHYVU0MVFFWmhJRTNsMWIxMjRnT0NUcVNCU25USlJjLVZPSVA3Nl9rNFlWdDNIV0o?oc=5",
+   "author": "sports.yahoo.com",
+   "author_name": "sports.yahoo.com",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Leo Chenal injury update: Latest news on Commanders LB's status in Week 3 game - sports.yahoo.com",
+   "posted_at": "Sun, 27 Sep 2026 18:21:20 GMT",
+   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOQ28wMzRjVTF0UGhLOWhDelB1bUt6Y1VvQ0UxTkJBTG1CTjdZdXdobXZpVG03RHl4Yk9NdDJCT3ZCVXNrSlZxQTB1dkVaS09oV1hsamlHYVU0MVFFWmhJRTNsMWIxMjRnT0NUcVNCU25USlJjLVZPSVA3Nl9rNFlWdDNIV0o?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "sports.yahoo.com",
+    "query": "\"Washington Commanders\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMif0FVX3lxTE90Qnp5Q1dtVlBIUndNMV96SHh5MzMtR25aaUNrNFZXN1gxRTNBUjJnQkFfeFpvWlV5eENPYUs3YTF4WTgxYlM3RjgyM09aTXltcFlGcTJ2VXFzOXE5WlBqQ0tteTVrNWRCdF82aHBGQWcxZ3dDNkZPNkJBdkJCQUk?oc=5",
    "author": "sports.yahoo.com",
    "author_name": "sports.yahoo.com",
@@ -9244,7 +9636,7 @@
    "game_event": "injury-reported",
    "raw": {
     "outlet": "Cincy Jungle",
-    "query": "\"Cincinnati Bengals\" injury when:1d"
+    "query": "\"Pittsburgh Steelers\" injury when:1d"
    }
   },
   {
@@ -9600,6 +9992,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPQ0VDbjJ4MjRvNktIQjEwLVJQbFJoZlQxRlJ1T1ZVZ2VELWpUYTduWHlEVEpPc1BrV1B3UDVjSzdZZXFOM3R4ZVVrdERKbF9Fcl81bl80ZkRwbWVUa0pPbzFEWjlIMTIyU3dBMHlQODk5UVdqc2lRRU9OSVZ6TTBqSTM3V3FHV1k?oc=5",
+   "author": "AOL.com",
+   "author_name": "AOL.com",
+   "author_url": "https://www.aol.com",
+   "text": "Colts K Spencer Shrader questionable to return v. Texans - AOL.com",
+   "posted_at": "Sun, 27 Sep 2026 17:20:16 GMT",
+   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPQ0VDbjJ4MjRvNktIQjEwLVJQbFJoZlQxRlJ1T1ZVZ2VELWpUYTduWHlEVEpPc1BrV1B3UDVjSzdZZXFOM3R4ZVVrdERKbF9Fcl81bl80ZkRwbWVUa0pPbzFEWjlIMTIyU3dBMHlQODk5UVdqc2lRRU9OSVZ6TTBqSTM3V3FHV1k?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "QUESTIONABLE",
+   "injury": "",
+   "signal": 0.55,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "RETURN_QUESTIONABLE",
+   "game_event": "questionable-to-return",
+   "raw": {
+    "outlet": "AOL.com",
+    "query": "\"Houston Texans\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNVGNsWDhuV1hEbTNDU1ZxSlhkSldCUWlPYVA2NXRfN1l3VFdralFoZDBGa0d6VGlTakhHZ0t2a2tLUlhEeU9ZakF5dXlvWEZGU2hXYjY3bmplb0VTTmVRQ1RtczY0MmhlT2pRakloUHhmNEhqamhldkI4YXdqa2dEanA5ZUJmbHdneHpKYzFR?oc=5",
    "author": "sports.yahoo.com",
    "author_name": "sports.yahoo.com",
@@ -9812,6 +10231,33 @@
    "raw": {
     "outlet": "NBC Sports",
     "query": "\"Aaron Donald\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPQXQ5Tzh2YnN6anVkaXphN3VsVV85Q1dnOHhNSV95T3Q3MVIzb3JXWVdEakVUSm50VGZNdFM1ZTRFcXNsNDlxSl9GalR0N1FwNm5zZkRwcWJaQUlvcnk3eGZObi1nSkZfUndBWFVwUWNCc1l4RXNQN0FKbHJOQVJ0QWx5Zw?oc=5",
+   "author": "AOL.com",
+   "author_name": "AOL.com",
+   "author_url": "https://www.aol.com",
+   "text": "Caleb Williams to miss several weeks - AOL.com",
+   "posted_at": "Sun, 27 Sep 2026 17:09:08 GMT",
+   "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPQXQ5Tzh2YnN6anVkaXphN3VsVV85Q1dnOHhNSV95T3Q3MVIzb3JXWVdEakVUSm50VGZNdFM1ZTRFcXNsNDlxSl9GalR0N1FwNm5zZkRwcWJaQUlvcnk3eGZObi1nSkZfUndBWFVwUWNCc1l4RXNQN0FKbHJOQVJ0QWx5Zw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "AOL.com",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
   {
@@ -10248,6 +10694,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNYV8xUU9ucHFhUzlMTUQ2clB2TmU4UWIzS1pweGxKdFk0Y1ZoS3I5N0xPYVNuRF95V2tIWW95LW14M09MNjBiT1lJWHV4OGhONUtwcjZPbTZQWEdNM1F2LWlSZjFHX2praktGaXh1OU5oa29FbjJPWEp6eVRUN0Y5YUFvY3N3eFUtb1BsRVRFc01WUTN5dFJZODVQalpyVWZ3N1E?oc=5",
+   "author": "New York Post",
+   "author_name": "New York Post",
+   "author_url": "https://nypost.com",
+   "text": "New Jayden Daniels injury update is encouraging for Commanders - New York Post",
+   "posted_at": "Sun, 27 Sep 2026 16:11:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNYV8xUU9ucHFhUzlMTUQ2clB2TmU4UWIzS1pweGxKdFk0Y1ZoS3I5N0xPYVNuRF95V2tIWW95LW14M09MNjBiT1lJWHV4OGhONUtwcjZPbTZQWEdNM1F2LWlSZjFHX2praktGaXh1OU5oa29FbjJPWEp6eVRUN0Y5YUFvY3N3eFUtb1BsRVRFc01WUTN5dFJZODVQalpyVWZ3N1E?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.15,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "New York Post",
+    "query": "\"Washington Commanders\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSV9rNHVnaWluaFpGcnBFTHVBNDBwd1Yxa0R4QVAtWmt3YmtPUVpWS3pjUVRjVm1KRzg5aFNTTWZPbnNZMmFhRDY5bXloSWd1N2hTZ1M3eFRZN2xOY25EZEV3aG50MnN4RU9vTWMtLW1mN2drZnBJelBwX19mdnJKVVhxdEdUTGJuQmtteFE2dHFNekRfTVQzQ1pXVXlPX29sRXhLYXZHbXpZeDA2SVBCLUROeHVvc0RFV0loRXlBWTA?oc=5",
    "author": "turfshowtimes.com",
    "author_name": "turfshowtimes.com",
@@ -10487,6 +10960,33 @@
    "raw": {
     "outlet": "New York Post",
     "query": "\"New York Giants\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOeFdWVVRQWnprdmU0UGgwMEgzeklqRjFrSkN5TEdTN1VUSzBGZDlHSEhXdF8zTzhhakhlcURXdTJBWGNrR1AzejZQTjczRk0zcWM1NGo1QWVXQ055VVU0Zjdqbkd5cUVIVW55YXFLU2JvblkwRTV6ZVZwTW5rbjBfYUF6a2ZocnUwTVRMVmp6LU9aLTdVUEYyY0FpOThXalFzWGtKd3o1SVlrU05ESVlva19fVmRDLXY1V3hwdHlkS3RIc09VNTJBemtB?oc=5",
+   "author": "Hogs Haven",
+   "author_name": "Hogs Haven",
+   "author_url": "https://www.hogshaven.com",
+   "text": "Commanders QB Jayden Daniels reportedly back ‘within three weeks’ - Hogs Haven",
+   "posted_at": "Sun, 27 Sep 2026 15:53:17 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOeFdWVVRQWnprdmU0UGgwMEgzeklqRjFrSkN5TEdTN1VUSzBGZDlHSEhXdF8zTzhhakhlcURXdTJBWGNrR1AzejZQTjczRk0zcWM1NGo1QWVXQ055VVU0Zjdqbkd5cUVIVW55YXFLU2JvblkwRTV6ZVZwTW5rbjBfYUF6a2ZocnUwTVRMVmp6LU9aLTdVUEYyY0FpOThXalFzWGtKd3o1SVlrU05ESVlva19fVmRDLXY1V3hwdHlkS3RIc09VNTJBemtB?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "back",
+   "signal": 0.6,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Hogs Haven",
+    "query": "\"Washington Commanders\" injury when:1d"
    }
   },
   {
@@ -11247,38 +11747,11 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQSG16WGZ1cFJqWnFOZW5ZSFJ4WUlLcXBtMnNsQ2hzb1FNaGU0ZnRqZzhLNkJ5S2NLMjY4Ujh3MDhBbmd3aTk3SlRneHVUcFFodDFnZkd0MnRGWVFESzFhb0NGOFNrNXhGY2JHNXBVUW5wQjViZUk4Njhwa1FSS1dWNThzTnRmSnhzSUhwVmo2UmhWV1l5RmQxajhnTFc1aThC?oc=5",
-   "author": "FanSided",
-   "author_name": "FanSided",
-   "author_url": "https://fansided.com",
-   "text": "Is DJ Moore playing today? Bills injury report with WR a game-time decision - FanSided",
-   "posted_at": "Sun, 27 Sep 2026 15:06:06 GMT",
-   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQSG16WGZ1cFJqWnFOZW5ZSFJ4WUlLcXBtMnNsQ2hzb1FNaGU0ZnRqZzhLNkJ5S2NLMjY4Ujh3MDhBbmd3aTk3SlRneHVUcFFodDFnZkd0MnRGWVFESzFhb0NGOFNrNXhGY2JHNXBVUW5wQjViZUk4Njhwa1FSS1dWNThzTnRmSnhzSUhwVmo2UmhWV1l5RmQxajhnTFc1aThC?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "QUESTIONABLE",
-   "injury": "",
-   "signal": 0.7,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "FanSided",
-    "query": "\"Buffalo Bills\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNEZZU19YbVZzYjZSd0ZzckFWQUhRWjZHS1BuWDV6ejlCX3BWRzhLOHhOc3pBN0k2WEY4clRzUlNxRVJHc2RfQ3JjTjlENHZaU1VJLWNleU5Wd0JxT25LTFNGcFN5bkhkV1RXeDZyZ2xmUHlWRGxuSWNZdTRTcEhpZG8zUnZxZW1EUlRoUnZaTQ?oc=5",
-   "author": "gazette.com",
-   "author_name": "gazette.com",
+   "author": "Colorado Springs Gazette",
+   "author_name": "Colorado Springs Gazette",
    "author_url": "https://gazette.com",
-   "text": "Motorcyclist seriously injured in 2-vehicle crash: CSPD - gazette.com",
+   "text": "Motorcyclist seriously injured in 2-vehicle crash: CSPD - Colorado Springs Gazette",
    "posted_at": "Sun, 27 Sep 2026 15:04:30 GMT",
    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNEZZU19YbVZzYjZSd0ZzckFWQUhRWjZHS1BuWDV6ejlCX3BWRzhLOHhOc3pBN0k2WEY4clRzUlNxRVJHc2RfQ3JjTjlENHZaU1VJLWNleU5Wd0JxT25LTFNGcFN5bkhkV1RXeDZyZ2xmUHlWRGxuSWNZdTRTcEhpZG8zUnZxZW1EUlRoUnZaTQ?oc=5",
    "matched_player": "",
@@ -11295,7 +11768,7 @@
    "in_game_status": "INJURY_REPORTED",
    "game_event": "injury-reported",
    "raw": {
-    "outlet": "gazette.com",
+    "outlet": "Colorado Springs Gazette",
     "query": "\"Tyler Higbee\" injury when:1d"
    }
   },
@@ -11486,6 +11959,33 @@
    "raw": {
     "outlet": "Sports Illustrated",
     "query": "\"Blake Corum\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPbVBiSEc0WkFhSk9UV0d3UE9scko2MlJFc0Q0aUQxeWsyMlYwd2tkUUNvTWd5REc2eFlEZXdFc2QxOXMwRVJrSWJtMXNnYXFzQjZhZjBmZG05QThrMTlGS2J5cEsxT3VDRHNxTkp2blB0cXRRSlMwaWI4aUJkZTk3a09heUd0enc3SHpBM2I0dw?oc=5",
+   "author": "sports.yahoo.com",
+   "author_name": "sports.yahoo.com",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Jayden Daniels injury update confirms faster than expected return timeline for Commanders QB - sports.yahoo.com",
+   "posted_at": "Sun, 27 Sep 2026 14:51:53 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPbVBiSEc0WkFhSk9UV0d3UE9scko2MlJFc0Q0aUQxeWsyMlYwd2tkUUNvTWd5REc2eFlEZXdFc2QxOXMwRVJrSWJtMXNnYXFzQjZhZjBmZG05QThrMTlGS2J5cEsxT3VDRHNxTkp2blB0cXRRSlMwaWI4aUJkZTk3a09heUd0enc3SHpBM2I0dw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.45,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "sports.yahoo.com",
+    "query": "\"Washington Commanders\" injury when:1d"
    }
   },
   {
@@ -12296,6 +12796,33 @@
    "raw": {
     "outlet": "sports.yahoo.com",
     "query": "\"Dallas Cowboys\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5qOUZCd0dvaG9Xb1BjUzRkLXlKVHVQTGl3STZVOExMcVh1aWFuR2E0d0ZQRmpJYWhKaG5ySWctcmROdkY4c1ZtRE5qeFZucjYtRU9IaThwYmJfaW1LNTE5WVFRa2hLck9Fd20yVjc5dXctUVB2SUIwdFdOMVY?oc=5",
+   "author": "covers.com",
+   "author_name": "covers.com",
+   "author_url": "https://www.covers.com",
+   "text": "Eagles vs Bears Prediction, Picks & Odds: Monday Night Football Week 3 - covers.com",
+   "posted_at": "Sun, 27 Sep 2026 13:33:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5qOUZCd0dvaG9Xb1BjUzRkLXlKVHVQTGl3STZVOExMcVh1aWFuR2E0d0ZQRmpJYWhKaG5ySWctcmROdkY4c1ZtRE5qeFZucjYtRU9IaThwYmJfaW1LNTE5WVFRa2hLck9Fd20yVjc5dXctUVB2SUIwdFdOMVY?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "covers.com",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
   {
@@ -13974,6 +14501,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVXJoUGVZUWpJM1BJNVlRNlA1YTNSOW8yNHdhM0E4QjEtRGh3RTJ0cEN6TGlCV3gwNEItZ05RR25ONElSYldSam9pS0tEeFdPb1dYQ00zdDZCcDNOSlJiMU9ybFNBUXljMHZDVFF4aVZNdFlocWV4VWNyM2hRSG52U3MzNUY3N3pjcUd1S0hUV3Z3YjRZRjE4RWduY0pSVTJJMkR1Z2EyXzJjQQ?oc=5",
+   "author": "Bear Goggles On",
+   "author_name": "Bear Goggles On",
+   "author_url": "https://beargoggleson.com",
+   "text": "Bears news roundup: Latest on QB situation, Eagles injury update, starter re-signed - Bear Goggles On",
+   "posted_at": "Sun, 27 Sep 2026 10:00:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVXJoUGVZUWpJM1BJNVlRNlA1YTNSOW8yNHdhM0E4QjEtRGh3RTJ0cEN6TGlCV3gwNEItZ05RR25ONElSYldSam9pS0tEeFdPb1dYQ00zdDZCcDNOSlJiMU9ybFNBUXljMHZDVFF4aVZNdFlocWV4VWNyM2hRSG52U3MzNUY3N3pjcUd1S0hUV3Z3YjRZRjE4RWduY0pSVTJJMkR1Z2EyXzJjQQ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.15,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Bear Goggles On",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNVnp6R0RxLWJad3VQVFd1ZFByc29RcVNZYk82eEh6VFJ3S1RMOGZOXzdfUjJRcmxBSjBJNzRZYXpFeGc4ek9Tbm51SDJYRDEtdzRqSnVTOFhudFE5NGtqQ2ZTeWtOeXFZeC1mdm5halBJMFltT1dpVjI5RHJudG1xcA?oc=5",
    "author": "FantraxHQ",
    "author_name": "FantraxHQ",
@@ -13997,6 +14551,33 @@
    "raw": {
     "outlet": "FantraxHQ",
     "query": "\"Courtland Sutton\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNUFpZLWE2ekZnWWdiVmRqYVlfV3FZWHZ0Nk5MY0tPVmhxNG1lZzZMN3lfU0lTWkdQMEpiMVdRNlVOUE1NRk9oQ2NJYXpFaEN6Sjl0VHBtS2hiZFltd3RrU2pCVE5tcHlvdFVEUFFDeU5lUURzX0I3Y25xelhVU3ctOUgzdF85a3psRmg1ZG02ZTIxcmhpbzByMWdHYzJUd0psV2JvcnVNSUdGTmx1TWJqNTg1MGY?oc=5",
+   "author": "roundtable.io",
+   "author_name": "roundtable.io",
+   "author_url": "https://roundtable.io",
+   "text": "Bears QB Update: Caleb Williams Out, Tyson Bagent Questionable vs. Eagles - roundtable.io",
+   "posted_at": "Sun, 27 Sep 2026 09:46:13 GMT",
+   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNUFpZLWE2ekZnWWdiVmRqYVlfV3FZWHZ0Nk5MY0tPVmhxNG1lZzZMN3lfU0lTWkdQMEpiMVdRNlVOUE1NRk9oQ2NJYXpFaEN6Sjl0VHBtS2hiZFltd3RrU2pCVE5tcHlvdFVEUFFDeU5lUURzX0I3Y25xelhVU3ctOUgzdF85a3psRmg1ZG02ZTIxcmhpbzByMWdHYzJUd0psV2JvcnVNSUdGTmx1TWJqNTg1MGY?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "QUESTIONABLE",
+   "injury": "",
+   "signal": 0.7,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "roundtable.io",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
   {
@@ -14078,6 +14659,33 @@
    "raw": {
     "outlet": "Sports Illustrated",
     "query": "\"Houston Texans\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPMXNCNmxCY3FTRFJhRzVkY0t5TXA0Mk8xQTNORnNmOGtZYUg4TzBINWxaMTlRaEFhMW5uQW1KRzl6QUNvNW1wRkpTTS1YQk1TbGpCbVJWMVk4Sm0tOEZVQ2hIWHp4azJBQXRwMExTODZUNG5JdGNIT2RlSHlVTG4zNlBPQWN2Q2E2T0pIT29hOThGTENyRHY2eTFfcU1VNjlqTE5UdGhWWEx6QzJLM1Yw?oc=5",
+   "author": "Inside the Iggles",
+   "author_name": "Inside the Iggles",
+   "author_url": "https://insidetheiggles.com",
+   "text": "Eagles news roundup: Bears QB situation, Philly injury update, preseason star returns - Inside the Iggles",
+   "posted_at": "Sun, 27 Sep 2026 09:00:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPMXNCNmxCY3FTRFJhRzVkY0t5TXA0Mk8xQTNORnNmOGtZYUg4TzBINWxaMTlRaEFhMW5uQW1KRzl6QUNvNW1wRkpTTS1YQk1TbGpCbVJWMVk4Sm0tOEZVQ2hIWHp4azJBQXRwMExTODZUNG5JdGNIT2RlSHlVTG4zNlBPQWN2Q2E2T0pIT29hOThGTENyRHY2eTFfcU1VNjlqTE5UdGhWWEx6QzJLM1Yw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Inside the Iggles",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
   {
@@ -14267,6 +14875,33 @@
    "raw": {
     "outlet": "sports.yahoo.com",
     "query": "\"Kyren Williams\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQaXNVVUZFcUUydVlQXy0yYzROOGxrdTloS2tGai11NDZFYk5ja0l0T0RObFNCdnlma0FDRlRweUtydnlrX0FibU9QWGhxMl9DbVlJTklENHlFTDFZaUlHaDdNbVNGX09MdG5hRGNWbmdQTzItVjA2ZE40cXQxVTVZZkMwRkFfWmhVc1RlM1FCRkZlR1lIS1BKbDdyb0NadUVPbS0tdXRxV3ZpWWFIUWlPdE9VVC04TEdqSmJR?oc=5",
+   "author": "roundtable.io",
+   "author_name": "roundtable.io",
+   "author_url": "https://roundtable.io",
+   "text": "Eagles Drop Injury Report With Updates to DeVonta Smith and Saquon Barkley - roundtable.io",
+   "posted_at": "Sun, 27 Sep 2026 04:39:20 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQaXNVVUZFcUUydVlQXy0yYzROOGxrdTloS2tGai11NDZFYk5ja0l0T0RObFNCdnlma0FDRlRweUtydnlrX0FibU9QWGhxMl9DbVlJTklENHlFTDFZaUlHaDdNbVNGX09MdG5hRGNWbmdQTzItVjA2ZE40cXQxVTVZZkMwRkFfWmhVc1RlM1FCRkZlR1lIS1BKbDdyb0NadUVPbS0tdXRxV3ZpWWFIUWlPdE9VVC04TEdqSmJR?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.15,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "roundtable.io",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
   {
