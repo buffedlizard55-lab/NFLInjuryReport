@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-28T01:16:51Z",
+ "generated_at": "2026-09-28T01:18:08Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -233,6 +233,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Colby Parkinson",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/colby-parkinson/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -920,7 +936,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "76 reporter claim(s) contradicted by the official report",
+   "title": "77 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: SSBCrack said ACTIVE for Colby Parkinson (official: see link); Yahoo Sports said OUT for De'Von Achane (official: see link); CBS Sports said ACTIVE for Colby Parkinson (official: see link); AOL.co.uk said OUT for Puka Nacua (official: see link); CBS Sports said OUT for Mike Evans (official: see link)",
    "evidence": [
     {
