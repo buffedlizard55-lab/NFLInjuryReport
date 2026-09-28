@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-09-28T01:06:36Z",
+ "generated_at": "2026-09-28T01:07:52Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 28,
+   "latency_ms": 22,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 28,
+   "latency_ms": 21,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 26,
+   "latency_ms": 44,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 76,
+   "latency_ms": 64,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 29,
+   "latency_ms": 35,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -405,7 +405,7 @@
    "label": "news:hot-player",
    "query": "\"Jaylen Waddle\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jaylen+Waddle%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 24,
+   "posts": 25,
    "error": ""
   },
   {
@@ -622,7 +622,7 @@
    "label": "news:hot-player",
    "query": "\"CJ Daniels\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22CJ+Daniels%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 8,
    "error": ""
   },
   {
@@ -699,7 +699,7 @@
    "label": "news:hot-player",
    "query": "\"Ronnie Rivers\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Ronnie+Rivers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 2,
+   "posts": 1,
    "error": ""
   },
   {
@@ -1005,6 +1005,33 @@
   }
  ],
  "posts": [
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOa3dCbWhrcXhOYUNHaHNRQUkzTmFSWmdsWk05dVJua0F0aVBUcjlYRmNKaHgwSURKamFiYk85YXh1bmV0eUROT016YkMwOGw5UlFqaXF5UFBwSHVabmwwRmRLU2RZb2R0SnlMZnN6cmpBOVpiREY5SVJ2UDFlbU01WXlQLTBDbFd5WmZVWTN5ZWxyU2IwV1hRUGdTWlpCbWlWOFVweFJscWIzeThNYXhRcW9uNU4yQWhXSkdLNQ?oc=5",
+   "author": "Rams Wire",
+   "author_name": "Rams Wire",
+   "author_url": "https://theramswire.usatoday.com",
+   "text": "Rams' Colby Parkinson injures shoulder in 1st quarter vs. Broncos - Rams Wire",
+   "posted_at": "Mon, 28 Sep 2026 01:03:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOa3dCbWhrcXhOYUNHaHNRQUkzTmFSWmdsWk05dVJua0F0aVBUcjlYRmNKaHgwSURKamFiYk85YXh1bmV0eUROT016YkMwOGw5UlFqaXF5UFBwSHVabmwwRmRLU2RZb2R0SnlMZnN6cmpBOVpiREY5SVJ2UDFlbU01WXlQLTBDbFd5WmZVWTN5ZWxyU2IwV1hRUGdTWlpCbWlWOFVweFJscWIzeThNYXhRcW9uNU4yQWhXSkdLNQ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "shoulder",
+   "signal": 0.75,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Rams Wire",
+    "query": "\"Terrance Ferguson\" injury when:1d"
+   }
+  },
   {
    "platform": "mastodon",
    "post_id": "117345965641050320",
@@ -3283,6 +3310,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNajdkQlUyYWN2dDFmYVhuTWNQU01SSjZJT0pDbzJpRkJRU01UVnZRSDlDTnY3ZWxDNEhpM01hTHlVcG84NjdKMFk5bUNyOEw4b3FoSU9pYTVCdnJVSEFBdmR3MjFxWnJRbmVxcVF6eEZrc2FZVHJYaGt6Mnp1dndySW41T1p6c2VSTkZyamY5VExORGVPejEtUnlieV9lVFp1amk4YUlhVjQ3YXo5M1JIQzdQdDhaVlpQNmo5LU1CS3VqNThBcjMzdVA1eEZ0ZFVQ0gHQAUFVX3lxTE1qN2RCVTJhY3Z0MWZhWG5NY1BTTVJKNklPSkNvMmlGQlFTTVRWdlFIOUNOdjdlbEM0SGkzTWFMeVVwbzg2N0owWTltQ3I4TDhvcWhJT2lhNUJ2clVIQUF2ZHcyMXFaclFuZXFxUXp4RmtzYVlUclhoa3oyenV2d3JJbjVPWnpzZVJORnJqZjlUTE5EZU96MS1SeWJ5X2VUWnVqaThhSWFWNDdhejkzUkhDN1B0OFpWWlA2ajktTUJLdWo1OEFyMzN1UDV4RnRkVVA?oc=5",
+   "author": "BettingPros",
+   "author_name": "BettingPros",
+   "author_url": "https://www.bettingpros.com",
+   "text": "NFL Sunday Night Football Touchdown Scorers: Rams vs. Broncos (Week 3) - BettingPros",
+   "posted_at": "Sun, 27 Sep 2026 23:03:25 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNajdkQlUyYWN2dDFmYVhuTWNQU01SSjZJT0pDbzJpRkJRU01UVnZRSDlDTnY3ZWxDNEhpM01hTHlVcG84NjdKMFk5bUNyOEw4b3FoSU9pYTVCdnJVSEFBdmR3MjFxWnJRbmVxcVF6eEZrc2FZVHJYaGt6Mnp1dndySW41T1p6c2VSTkZyamY5VExORGVPejEtUnlieV9lVFp1amk4YUlhVjQ3YXo5M1JIQzdQdDhaVlpQNmo5LU1CS3VqNThBcjMzdVA1eEZ0ZFVQ0gHQAUFVX3lxTE1qN2RCVTJhY3Z0MWZhWG5NY1BTTVJKNklPSkNvMmlGQlFTTVRWdlFIOUNOdjdlbEM0SGkzTWFMeVVwbzg2N0owWTltQ3I4TDhvcWhJT2lhNUJ2clVIQUF2ZHcyMXFaclFuZXFxUXp4RmtzYVlUclhoa3oyenV2d3JJbjVPWnpzZVJORnJqZjlUTE5EZU96MS1SeWJ5X2VUWnVqaThhSWFWNDdhejkzUkhDN1B0OFpWWlA2ajktTUJLdWo1OEFyMzN1UDV4RnRkVVA?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "BettingPros",
+    "query": "\"Jaylen Waddle\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMifEFVX3lxTE4tcl84ejZ4VE8tTFMxT29rdkRDYzBDbHQtM3lucXo0LTFIRkRXcXYxNno2cFp6SzMtTVZOdTh2emNDZmZGRGlvM2VEMzB4dWRqUUhIYXBHVG5JVnlCWGgtXzA2RHljUGV4ZDRmNmkxREhWX1NkQVJDdFlRQXg?oc=5",
    "author": "AOL.co.uk",
    "author_name": "AOL.co.uk",
@@ -3387,6 +3441,33 @@
    "raw": {
     "outlet": "Yahoo Sports",
     "query": "\"Dallas Cowboys\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQWVpSYWdNQWN1aDBnTV9HMDhKQjJoa3FKbmdfb1VwdTc0TmFPVVdtX3pEbDFhbzQ2aDljV0RDOXd0UEtQSUwtVnh5VnZUQ0twMXJ6eDVNSUZOLXV2VklpenNLLTRMWDJWdWNkX1RCLVZBdWlpQkhZLWZ4VXRkMlhETmtxYmpPclh6bnpwTVBhNF9OaWVBX1VtQm9DNkNNQk9zVU50QjVIeVR2Mi1RNjRuamFVQlhHRV9CM1YxdUk1UG12MnZTZjZmR3NXZmRHMXpZQ211VnAxOWlsbG96SFdjMmlHcDRueUJnT3h2YlFRa1B1Vl9saFE?oc=5",
+   "author": "Central Oregon Daily",
+   "author_name": "Central Oregon Daily",
+   "author_url": "https://www.centraloregondaily.com",
+   "text": "Travis Etienne injury update as Saints RB injures leg, exits Week 3 game - Central Oregon Daily",
+   "posted_at": "Sun, 27 Sep 2026 22:56:07 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQWVpSYWdNQWN1aDBnTV9HMDhKQjJoa3FKbmdfb1VwdTc0TmFPVVdtX3pEbDFhbzQ2aDljV0RDOXd0UEtQSUwtVnh5VnZUQ0twMXJ6eDVNSUZOLXV2VklpenNLLTRMWDJWdWNkX1RCLVZBdWlpQkhZLWZ4VXRkMlhETmtxYmpPclh6bnpwTVBhNF9OaWVBX1VtQm9DNkNNQk9zVU50QjVIeVR2Mi1RNjRuamFVQlhHRV9CM1YxdUk1UG12MnZTZjZmR3NXZmRHMXpZQ211VnAxOWlsbG96SFdjMmlHcDRueUJnT3h2YlFRa1B1Vl9saFE?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.45,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Central Oregon Daily",
+    "query": "\"New Orleans Saints\" injury when:1d"
    }
   },
   {
@@ -6104,7 +6185,7 @@
    "predicted_status": "UNKNOWN",
    "injury": "knee",
    "signal": 0.6,
-   "engagement": 78,
+   "engagement": 79,
    "verified": true,
    "verification_detail": "Bluesky verification status=valid (issuer: Bluesky)",
    "author_did": "did:plc:hlvr2omhnmvdmfnvmcuhyevz",
@@ -6141,6 +6222,33 @@
    "raw": {
     "outlet": "Yahoo Sports",
     "query": "\"Seattle Seahawks\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9PbS1CUzVHd1RISFBOelAwdlhjbmYxb1lGTDJFcHdWcWstYkMycGF5a21aMk1uMzdWVFFPaVdpTnNxNUs5TmR0WA?oc=5",
+   "author": "RealGM",
+   "author_name": "RealGM",
+   "author_url": "https://football.realgm.com",
+   "text": "Football Wiretap - RealGM",
+   "posted_at": "Sun, 27 Sep 2026 20:39:33 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9PbS1CUzVHd1RISFBOelAwdlhjbmYxb1lGTDJFcHdWcWstYkMycGF5a21aMk1uMzdWVFFPaVdpTnNxNUs5TmR0WA?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "RealGM",
+    "query": "\"Jacksonville Jaguars\" injury when:1d"
    }
   },
   {
@@ -7734,33 +7842,6 @@
    "raw": {
     "outlet": "RotoBaller",
     "query": "\"Terrance Ferguson\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPVlkwTHkzZzRnamtpRzU1RmVfN1RZYjF1czdqUENfa21kNWprTTM0UU1MM1Vfd0habUF5U1NHem1ZUWJuVnhyMkJ1WnFMbFI2aVp6YjZVTzc2cnRBUFpIZEFXUkZyTVl5ak1NUjNZS3hwMTdyOHBLMmg1dlo5amJXOEYtWnZla1ZBNEJma2xGUTV0UkNWNWt5UlNkQWFsajNtWDNDVA?oc=5",
-   "author": "ESPN",
-   "author_name": "ESPN",
-   "author_url": "https://africa.espn.com",
-   "text": "Dolphins RB De'Von Achane suffers knee injury vs. Chiefs - ESPN",
-   "posted_at": "Sun, 27 Sep 2026 19:07:06 GMT",
-   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPVlkwTHkzZzRnamtpRzU1RmVfN1RZYjF1czdqUENfa21kNWprTTM0UU1MM1Vfd0habUF5U1NHem1ZUWJuVnhyMkJ1WnFMbFI2aVp6YjZVTzc2cnRBUFpIZEFXUkZyTVl5ak1NUjNZS3hwMTdyOHBLMmg1dlo5amJXOEYtWnZla1ZBNEJma2xGUTV0UkNWNWt5UlNkQWFsajNtWDNDVA?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "knee",
-   "signal": 0.6,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "ESPN",
-    "query": "\"Kansas City Chiefs\" injury when:1d"
    }
   },
   {
@@ -12594,6 +12675,33 @@
    "raw": {
     "outlet": "Yahoo Sports",
     "query": "\"Blake Corum\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOWjdTMU9ocHo4WHNQZm96dzliMkJJOVc0eGtxVU81dGhJTEdldVY4VlgtT1VjdU1FbTllOFFLNXkzUmxOQjZlVmlkZG8zUExxanVwVnFEbWtMQ2FjQ0pnNkpndHN6b2RIaEZjdjBDaDlOaktPZmxZR04wZUFTT3FnSnJoVDVMeWZXNVJpcTczYk4tNGFnR2F0TG8wR2NWOHlBME5QNmZld093dXl1R3M2aWJYaEFQcWs?oc=5",
+   "author": "Sports Mockery",
+   "author_name": "Sports Mockery",
+   "author_url": "https://www.sportsmockery.com",
+   "text": "The Caleb Williams Injury Was Worse Than Expected And What It Means - Sports Mockery",
+   "posted_at": "Sun, 27 Sep 2026 12:28:50 GMT",
+   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOWjdTMU9ocHo4WHNQZm96dzliMkJJOVc0eGtxVU81dGhJTEdldVY4VlgtT1VjdU1FbTllOFFLNXkzUmxOQjZlVmlkZG8zUExxanVwVnFEbWtMQ2FjQ0pnNkpndHN6b2RIaEZjdjBDaDlOaktPZmxZR04wZUFTT3FnSnJoVDVMeWZXNVJpcTczYk4tNGFnR2F0TG8wR2NWOHlBME5QNmZld093dXl1R3M2aWJYaEFQcWs?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.45,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Sports Mockery",
+    "query": "\"Green Bay Packers\" injury when:1d"
    }
   },
   {
