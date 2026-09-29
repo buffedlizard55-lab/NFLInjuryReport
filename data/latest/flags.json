@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-29T20:01:20Z",
+ "generated_at": "2026-09-29T22:30:44Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -193,14 +193,14 @@
    "code": "STATUS_CONFLICT",
    "severity": "medium",
    "title": "Designation conflict for Brian Burns",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/brian-burns/"
     },
     {
-     "label": "ESPN (OUT)",
+     "label": "ESPN (IR)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1440,7 +1440,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "11 player(s) have no official designation but do have an ESPN status",
+   "title": "12 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1452,28 +1452,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "58 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: roundtable.io said OUT for Baker Mayfield (official: see link); rapsheet.bsky.social said ACTIVE for Tyson Bagent (official: see link); Bleeding Green Nation said ACTIVE for Jonathan Greenard (official: see link); rapsheet.bsky.social said ACTIVE for Brock Bowers (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link)",
+   "title": "61 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Baltimore Sun said IR for Fernando Carmona (official: see link); Toronto Star said IR for Fernando Carmona (official: see link); Bozeman Daily Chronicle said IR for Fernando Carmona (official: see link); Boston Herald said IR for Denzel Boston (official: see link); roundtable.io said OUT for Baker Mayfield (official: see link)",
    "evidence": [
+    {
+     "label": "Baltimore Sun: Fernando Carmona IR",
+     "url": "https://www.nfl.com/players/fernando-carmona/"
+    },
+    {
+     "label": "Toronto Star: Fernando Carmona IR",
+     "url": "https://www.nfl.com/players/fernando-carmona/"
+    },
+    {
+     "label": "Bozeman Daily Chronicle: Fernando Carmona IR",
+     "url": "https://www.nfl.com/players/fernando-carmona/"
+    },
+    {
+     "label": "Boston Herald: Denzel Boston IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4832800/denzel-boston"
+    },
     {
      "label": "roundtable.io: Baker Mayfield OUT",
      "url": "https://www.nfl.com/players/baker-mayfield/"
-    },
-    {
-     "label": "rapsheet.bsky.social: Tyson Bagent ACTIVE",
-     "url": "https://www.nfl.com/players/tyson-bagent/"
-    },
-    {
-     "label": "Bleeding Green Nation: Jonathan Greenard ACTIVE",
-     "url": "https://www.nfl.com/players/jonathan-greenard/"
-    },
-    {
-     "label": "rapsheet.bsky.social: Brock Bowers ACTIVE",
-     "url": "https://www.nfl.com/players/brock-bowers/"
-    },
-    {
-     "label": "rapsheet.bsky.social: De'Von Achane QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4429160/devon-achane"
     }
    ]
   },
