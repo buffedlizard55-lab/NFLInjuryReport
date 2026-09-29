@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-28T22:49:42Z",
+ "generated_at": "2026-09-29T00:26:37Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -441,6 +441,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Jonathan Greenard",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/jonathan-greenard/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -890,42 +906,30 @@
    ]
   },
   {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for PHI @ CHI parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872963 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872963"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "53 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Fort Worth Star-Telegram said IR for DeeJay Dallas (official: see link); Yahoo Sports said OUT for Baker Mayfield (official: see link); A to Z Sports said QUESTIONABLE for Jaxson Dart (official: see link); Yahoo Sports said ACTIVE for Tyson Bagent (official: see link); Windy City Gridiron said ACTIVE for Tyson Bagent (official: see link)",
+   "title": "66 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said ACTIVE for Tyson Bagent (official: see link); FantasyPros said ACTIVE for Tyson Bagent (official: see link); Bleeding Green Nation said ACTIVE for Jonathan Greenard (official: see link); The New York Times said OUT for Brian Burns (official: see link); Fort Worth Star-Telegram said IR for DeeJay Dallas (official: see link)",
    "evidence": [
+    {
+     "label": "rapsheet.bsky.social: Tyson Bagent ACTIVE",
+     "url": "https://www.nfl.com/players/tyson-bagent/"
+    },
+    {
+     "label": "FantasyPros: Tyson Bagent ACTIVE",
+     "url": "https://www.nfl.com/players/tyson-bagent/"
+    },
+    {
+     "label": "Bleeding Green Nation: Jonathan Greenard ACTIVE",
+     "url": "https://www.nfl.com/players/jonathan-greenard/"
+    },
+    {
+     "label": "The New York Times: Brian Burns OUT",
+     "url": "https://www.nfl.com/players/brian-burns/"
+    },
     {
      "label": "Fort Worth Star-Telegram: DeeJay Dallas IR",
      "url": "https://www.nfl.com/players/deejay-dallas/"
-    },
-    {
-     "label": "Yahoo Sports: Baker Mayfield OUT",
-     "url": "https://www.nfl.com/players/baker-mayfield/"
-    },
-    {
-     "label": "A to Z Sports: Jaxson Dart QUESTIONABLE",
-     "url": "https://www.nfl.com/players/jaxson-dart/"
-    },
-    {
-     "label": "Yahoo Sports: Tyson Bagent ACTIVE",
-     "url": "https://www.nfl.com/players/tyson-bagent/"
-    },
-    {
-     "label": "Windy City Gridiron: Tyson Bagent ACTIVE",
-     "url": "https://www.nfl.com/players/tyson-bagent/"
     }
    ]
   },
@@ -956,7 +960,7 @@
   {
    "code": "DIRECTORY_CROSS_TEAM_BEAT",
    "severity": "low",
-   "title": "Beat writer Aaron Wilson is attributed across 2 clubs (HOU, IND)",
+   "title": "Beat writer Aaron Wilson is attributed across 3 clubs (HOU, IND, MIN)",
    "detail": "ESPN printed Aaron Wilson (KPRC 2 Houston) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
    "evidence": [
     {
@@ -970,6 +974,26 @@
     {
      "label": "ESPN attribution #3",
      "url": "https://www.espn.com/nfl/player/_/id/4361196/cam-taylor-britt"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
+   "title": "Beat writer Adam Caplan is attributed across 2 clubs (CLE, PIT)",
+   "detail": "ESPN printed Adam Caplan (SiriusXM NFL Radio) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/4379397/tyson-campbell"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/4242208/grant-delpit"
+    },
+    {
+     "label": "ESPN attribution #3",
+     "url": "https://www.espn.com/nfl/player/_/id/4241424/tylan-wallace"
     }
    ]
   },
