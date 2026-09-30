@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-30T19:15:38Z",
+ "generated_at": "2026-09-30T19:51:58Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -16,7 +16,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "7 player(s) have no official designation but do have an ESPN status",
+   "title": "4 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -220,9 +220,21 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "9 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Steelers Now said OUT for Joey Porter Jr. (official: see link); Behind the Steel Curtain said OUT for Joey Porter Jr. (official: see link); steelerswire.usatoday.com said QUESTIONABLE for Joey Porter Jr. (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link)",
+   "title": "10 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: 937theFan@sportsbots.xyz said OUT for Joey Porter Jr. (official: see link); WTAJ said OUT for Joey Porter Jr. (official: see link); Steel Curtain Network said OUT for Joey Porter Jr. (official: see link); Steelers Now said OUT for Joey Porter Jr. (official: see link); Behind the Steel Curtain said OUT for Joey Porter Jr. (official: see link)",
    "evidence": [
+    {
+     "label": "937theFan@sportsbots.xyz: Joey Porter Jr. OUT",
+     "url": "https://www.nfl.com/players/joey-porter-jr/"
+    },
+    {
+     "label": "WTAJ: Joey Porter Jr. OUT",
+     "url": "https://www.nfl.com/players/joey-porter-jr/"
+    },
+    {
+     "label": "Steel Curtain Network: Joey Porter Jr. OUT",
+     "url": "https://www.nfl.com/players/joey-porter-jr/"
+    },
     {
      "label": "Steelers Now: Joey Porter Jr. OUT",
      "url": "https://www.nfl.com/players/joey-porter-jr/"
@@ -230,18 +242,6 @@
     {
      "label": "Behind the Steel Curtain: Joey Porter Jr. OUT",
      "url": "https://www.nfl.com/players/joey-porter-jr/"
-    },
-    {
-     "label": "steelerswire.usatoday.com: Joey Porter Jr. QUESTIONABLE",
-     "url": "https://www.nfl.com/players/joey-porter-jr/"
-    },
-    {
-     "label": "rapsheet.bsky.social: De'Von Achane QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4429160/devon-achane"
-    },
-    {
-     "label": "tompelissero.bsky.social: Jayden Daniels OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4426348/jayden-daniels"
     }
    ]
   },
