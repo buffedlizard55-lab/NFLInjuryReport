@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-30T23:30:44Z",
+ "generated_at": "2026-09-30T23:46:34Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -926,23 +926,15 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 37 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: LAR:josh-wallace (official report lists the player under a different club); CHI:tucker-addington (official report lists the player under a different club); CHI:rob-beal (official report lists the player under a different club); CHI:chris-bell (official report lists the player under a different club); CHI:zeek-biggers (official report lists the player under a different club); CHI:julius-brents (official report lists the player under a different club); CHI:aaron-brewer (official report lists the player under a different club); CHI:caleb-douglas (official report lists the player under a different club); CHI:storm-duck (official report lists the player under a different club); CHI:dante-trader (official report lists the player under a different club); CHI:seydou-traore (official report lists the player under a different club); CHI:joshua-uche (official report lists the player under a different club); CHI:jaylen-wright (official report lists the player under a different club); CIN:kayode-awosika (official report lists the player under a different club); CIN:justin-eboigbe (official report lists the player under a different club); CIN:donte-jackson (official report lists the player under a different club); CIN:derwin-james (official report lists the player under a different club); CIN:charlie-kolar (official report lists the player under a different club); LAR:felix-anudike-uzomah (official report lists the player under a different club); LAR:jadon-canady (official report lists the player under a different club) (+17 more). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "10 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); Sam Cohn said QUESTIONABLE for Zay Flowers (official: see link); Mike Garafolo said QUESTIONABLE for Lamar Jackson (official: see link)",
+   "title": "11 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: WPXI said OUT for Joey Porter Jr. (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); Sam Cohn said QUESTIONABLE for Zay Flowers (official: see link)",
    "evidence": [
+    {
+     "label": "WPXI: Joey Porter Jr. OUT",
+     "url": "https://www.nfl.com/players/joey-porter-jr/"
+    },
     {
      "label": "rapsheet.bsky.social: De'Von Achane QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4429160/devon-achane"
@@ -958,10 +950,6 @@
     {
      "label": "Sam Cohn: Zay Flowers QUESTIONABLE",
      "url": "https://www.nfl.com/players/zay-flowers/"
-    },
-    {
-     "label": "Mike Garafolo: Lamar Jackson QUESTIONABLE",
-     "url": "https://www.nfl.com/players/lamar-jackson/"
     }
    ]
   },
