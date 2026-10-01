@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-01T16:18:44Z",
+ "generated_at": "2026-10-01T16:26:22Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -218,18 +218,6 @@
     {
      "label": "Summary URL",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872979"
-    }
-   ]
-  },
-  {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 54 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: LAR:byron-young (official report lists the player under a different club); CHI:lequint-allen (official report lists the player under a different club); CHI:christian-braswell (official report lists the player under a different club); CHI:montaric-brown (official report lists the player under a different club); CHI:davon-hamilton (official report lists the player under a different club); CHI:jarrian-jones (official report lists the player under a different club); CHI:jakobi-meyers (official report lists the player under a different club); CHI:albert-regis (official report lists the player under a different club); CHI:cole-van-lanen (official report lists the player under a different club); CIN:davante-adams (official report lists the player under a different club); CIN:aaron-donald (official report lists the player under a different club); CIN:terrance-ferguson (official report lists the player under a different club); CIN:kamren-kinchens (official report lists the player under a different club); CIN:nate-landman (official report lists the player under a different club); CIN:puka-nacua (official report lists the player under a different club); CIN:colby-parkinson (official report lists the player under a different club); CIN:josh-wallace (official report lists the player under a different club); CIN:jaylen-watson (official report lists the player under a different club); LAR:tucker-addington (official report lists the player under a different club); LAR:rob-beal (official report lists the player under a different club) (+34 more). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
     }
    ]
   },
