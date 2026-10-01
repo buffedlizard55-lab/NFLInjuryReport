@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-01T02:08:23Z",
+ "generated_at": "2026-10-01T02:19:02Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -676,7 +676,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "79 player(s) have no official designation but do have an ESPN status",
+   "title": "78 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -878,35 +878,11 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 71 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: MIA:seydou-traore (official report lists the player under a different club); ARI:deonte-banks (official report lists the player under a different club); ARI:elijah-campbell (official report lists the player under a different club); ARI:nic-jones (official report lists the player under a different club); ARI:tyler-nubin (official report lists the player under a different club); ARI:patrick-ricard (official report lists the player under a different club); ARI:andrew-thomas (official report lists the player under a different club); ARI:tyrone-tracy (official report lists the player under a different club); NYG:kingsley-enagbare (official report lists the player under a different club); NYG:minkah-fitzpatrick (official report lists the player under a different club); NYG:breece-hall (official report lists the player under a different club); NYG:francisco-mauigoa (official report lists the player under a different club); NYG:adonai-mitchell (official report lists the player under a different club); NYG:kene-nwangwu (official report lists the player under a different club); NYG:dylan-parham (official report lists the player under a different club); NYG:jeremy-ruckert (official report lists the player under a different club); NYG:kenyon-sadiq (official report lists the player under a different club); NYG:mason-taylor (official report lists the player under a different club); NYJ:lequint-allen (official report lists the player under a different club); NYJ:christian-braswell (official report lists the player under a different club) (+51 more). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "17 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: steelcurtainnetwork.com said OUT for Joey Porter Jr. (official: see link); Steelers Now said OUT for Joey Porter Jr. (official: see link); Queen City News said IR for Patrick Queen (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link)",
+   "title": "14 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); Tyler Drake said QUESTIONABLE for Mack Wilson Sr. (official: see link); Sam Cohn said QUESTIONABLE for Zay Flowers (official: see link)",
    "evidence": [
-    {
-     "label": "steelcurtainnetwork.com: Joey Porter Jr. OUT",
-     "url": "https://www.nfl.com/players/joey-porter-jr/"
-    },
-    {
-     "label": "Steelers Now: Joey Porter Jr. OUT",
-     "url": "https://www.nfl.com/players/joey-porter-jr/"
-    },
-    {
-     "label": "Queen City News: Patrick Queen IR",
-     "url": "https://www.espn.com/nfl/player/_/id/4242207/patrick-queen"
-    },
     {
      "label": "rapsheet.bsky.social: De'Von Achane QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4429160/devon-achane"
@@ -914,6 +890,18 @@
     {
      "label": "tompelissero.bsky.social: Jayden Daniels OUT",
      "url": "https://www.nfl.com/players/jayden-daniels/"
+    },
+    {
+     "label": "tompelissero.bsky.social: Ladd McConkey ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/4612826/ladd-mcconkey"
+    },
+    {
+     "label": "Tyler Drake: Mack Wilson Sr. QUESTIONABLE",
+     "url": "https://www.nfl.com/players/mack-wilson/"
+    },
+    {
+     "label": "Sam Cohn: Zay Flowers QUESTIONABLE",
+     "url": "https://www.nfl.com/players/zay-flowers/"
     }
    ]
   },
