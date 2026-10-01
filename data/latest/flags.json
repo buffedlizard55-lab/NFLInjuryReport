@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-01T16:29:40Z",
+ "generated_at": "2026-10-01T18:48:44Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -20,7 +20,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "94 player(s) have no official designation but do have an ESPN status",
+   "title": "92 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -224,9 +224,13 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "24 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); Tyler Drake said QUESTIONABLE for Mack Wilson Sr. (official: see link); Sam Cohn said QUESTIONABLE for Zay Flowers (official: see link); Mike Garafolo said QUESTIONABLE for Lamar Jackson (official: see link)",
+   "title": "25 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Joey Porter Jr. (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); Tyler Drake said QUESTIONABLE for Mack Wilson Sr. (official: see link); Cordell Woodland said QUESTIONABLE for Lamar Jackson (official: see link)",
    "evidence": [
+    {
+     "label": "Blitz_Burgh@sportsbots.xyz: Joey Porter Jr. ACTIVE",
+     "url": "https://www.nfl.com/players/joey-porter-jr/"
+    },
     {
      "label": "rapsheet.bsky.social: De'Von Achane QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4429160/devon-achane"
@@ -240,11 +244,7 @@
      "url": "https://www.nfl.com/players/mack-wilson/"
     },
     {
-     "label": "Sam Cohn: Zay Flowers QUESTIONABLE",
-     "url": "https://www.nfl.com/players/zay-flowers/"
-    },
-    {
-     "label": "Mike Garafolo: Lamar Jackson QUESTIONABLE",
+     "label": "Cordell Woodland: Lamar Jackson QUESTIONABLE",
      "url": "https://www.nfl.com/players/lamar-jackson/"
     }
    ]
