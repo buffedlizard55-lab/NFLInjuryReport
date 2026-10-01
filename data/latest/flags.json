@@ -1,6 +1,70 @@
 {
- "generated_at": "2026-10-01T18:48:44Z",
+ "generated_at": "2026-10-01T21:08:47Z",
  "irregularities": [
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Anfernee Jennings' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Anfernee Jennings' belongs to (ATL, NO). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "nfl.com: ATL",
+     "url": "https://www.nfl.com/injuries/"
+    },
+    {
+     "label": "espn: NO",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Barion Brown' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Barion Brown' belongs to (ATL, NO). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "nfl.com: ATL",
+     "url": "https://www.nfl.com/injuries/"
+    },
+    {
+     "label": "espn: NO",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Carl Granderson' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Carl Granderson' belongs to (ATL, NO). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "nfl.com: ATL",
+     "url": "https://www.nfl.com/injuries/"
+    },
+    {
+     "label": "espn: NO",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Christen Miller' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Christen Miller' belongs to (ATL, NO). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "nfl.com: ATL",
+     "url": "https://www.nfl.com/injuries/"
+    },
+    {
+     "label": "espn: NO",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
   {
    "code": "PLAYER_TEAM_CONFLICT",
    "severity": "high",
@@ -18,9 +82,57 @@
    ]
   },
   {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Martin Emerson' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Martin Emerson' belongs to (ATL, NO). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "nfl.com: ATL",
+     "url": "https://www.nfl.com/injuries/"
+    },
+    {
+     "label": "espn: NO",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Noah Fant' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Noah Fant' belongs to (ATL, NO). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "nfl.com: ATL",
+     "url": "https://www.nfl.com/injuries/"
+    },
+    {
+     "label": "espn: NO",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Pete Werner' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Pete Werner' belongs to (ATL, NO). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "nfl.com: ATL",
+     "url": "https://www.nfl.com/injuries/"
+    },
+    {
+     "label": "espn: NO",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "92 player(s) have no official designation but do have an ESPN status",
+   "title": "85 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -222,13 +334,29 @@
    ]
   },
   {
-   "code": "CLAIMS_CONTRADICTED",
+   "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "25 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Joey Porter Jr. (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); Tyler Drake said QUESTIONABLE for Mack Wilson Sr. (official: see link); Cordell Woodland said QUESTIONABLE for Lamar Jackson (official: see link)",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: NO:kaden-elliss (official report lists the player under a different club). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
-     "label": "Blitz_Burgh@sportsbots.xyz: Joey Porter Jr. ACTIVE",
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "23 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: nfl@sportsfeed.me said ACTIVE for Joey Porter Jr. (official: see link); nyt_sports@robot.villas said ACTIVE for Joey Porter Jr. (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); Tyler Drake said QUESTIONABLE for Mack Wilson Sr. (official: see link)",
+   "evidence": [
+    {
+     "label": "nfl@sportsfeed.me: Joey Porter Jr. ACTIVE",
+     "url": "https://www.nfl.com/players/joey-porter-jr/"
+    },
+    {
+     "label": "nyt_sports@robot.villas: Joey Porter Jr. ACTIVE",
      "url": "https://www.nfl.com/players/joey-porter-jr/"
     },
     {
@@ -242,10 +370,6 @@
     {
      "label": "Tyler Drake: Mack Wilson Sr. QUESTIONABLE",
      "url": "https://www.nfl.com/players/mack-wilson/"
-    },
-    {
-     "label": "Cordell Woodland: Lamar Jackson QUESTIONABLE",
-     "url": "https://www.nfl.com/players/lamar-jackson/"
     }
    ]
   },
