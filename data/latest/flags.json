@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-02T13:00:40Z",
+ "generated_at": "2026-10-02T15:34:30Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -84,7 +84,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "95 player(s) have no official designation but do have an ESPN status",
+   "title": "97 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -276,28 +276,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "29 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); TWSN said QUESTIONABLE for Ladd McConkey (official: see link); Yahoo Sports said ACTIVE for Jalen Ramsey (official: see link); News 5 Cleveland WEWS said OUT for Mason Graham (official: see link); cleveland.com said OUT for Mason Graham (official: see link)",
+   "title": "31 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Cleveland.com said OUT for Mason Graham (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link)",
    "evidence": [
     {
-     "label": "Blitz_Burgh@sportsbots.xyz: Mason Graham ACTIVE",
+     "label": "Cleveland.com: Mason Graham OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4873232/mason-graham"
     },
     {
-     "label": "TWSN: Ladd McConkey QUESTIONABLE",
+     "label": "rapsheet.bsky.social: De'Von Achane QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4429160/devon-achane"
+    },
+    {
+     "label": "tompelissero.bsky.social: Jayden Daniels OUT",
+     "url": "https://www.nfl.com/players/jayden-daniels/"
+    },
+    {
+     "label": "tompelissero.bsky.social: Ladd McConkey ACTIVE",
      "url": "https://www.nfl.com/players/ladd-mcconkey/"
     },
     {
-     "label": "Yahoo Sports: Jalen Ramsey ACTIVE",
-     "url": "https://www.nfl.com/players/jalen-ramsey/"
-    },
-    {
-     "label": "News 5 Cleveland WEWS: Mason Graham OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4873232/mason-graham"
-    },
-    {
-     "label": "cleveland.com: Mason Graham OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4873232/mason-graham"
+     "label": "Sarah Barshop: Myles Garrett ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/3122132/myles-garrett"
     }
    ]
   },
