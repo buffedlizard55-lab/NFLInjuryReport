@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-03T18:50:37Z",
+ "generated_at": "2026-10-03T19:22:27Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -208,7 +208,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "7 player(s) have no official designation but do have an ESPN status",
+   "title": "5 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -400,28 +400,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "17 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Newsday said OUT for Keenan Allen (official: see link); Oskaloosa Herald said OUT for Keenan Allen (official: see link); couriernews.com said OUT for Keenan Allen (official: see link); 49ers.com said OUT for Mike Evans (official: see link); Sports Illustrated said QUESTIONABLE for James Houston (official: see link)",
+   "title": "12 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Edgerrin Cooper (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); Stephen Holder said OUT for Keenan Allen (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link)",
    "evidence": [
     {
-     "label": "Newsday: Keenan Allen OUT",
+     "label": "Yahoo Sports: Edgerrin Cooper ACTIVE",
+     "url": "https://www.nfl.com/players/edgerrin-cooper/"
+    },
+    {
+     "label": "rapsheet.bsky.social: De'Von Achane QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4429160/devon-achane"
+    },
+    {
+     "label": "tompelissero.bsky.social: Ladd McConkey ACTIVE",
+     "url": "https://www.nfl.com/players/ladd-mcconkey/"
+    },
+    {
+     "label": "Stephen Holder: Keenan Allen OUT",
      "url": "https://www.nfl.com/players/keenan-allen/"
     },
     {
-     "label": "Oskaloosa Herald: Keenan Allen OUT",
-     "url": "https://www.nfl.com/players/keenan-allen/"
-    },
-    {
-     "label": "couriernews.com: Keenan Allen OUT",
-     "url": "https://www.nfl.com/players/keenan-allen/"
-    },
-    {
-     "label": "49ers.com: Mike Evans OUT",
-     "url": "https://www.nfl.com/players/mike-evans/"
-    },
-    {
-     "label": "Sports Illustrated: James Houston QUESTIONABLE",
-     "url": "https://www.nfl.com/players/james-houston/"
+     "label": "Sarah Barshop: Myles Garrett ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/3122132/myles-garrett"
     }
    ]
   },
