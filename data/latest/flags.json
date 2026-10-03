@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-03T12:11:57Z",
+ "generated_at": "2026-10-03T14:44:39Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -105,6 +105,22 @@
     },
     {
      "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Keenan Allen",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/keenan-allen/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -337,16 +353,8 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "10 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: San Francisco 49ers said OUT for Mike Evans (official: see link); Sports Illustrated said QUESTIONABLE for James Houston (official: see link); rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link); Daniel Oyefusi said OUT for Mason Graham (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link)",
    "evidence": [
-    {
-     "label": "San Francisco 49ers: Mike Evans OUT",
-     "url": "https://www.nfl.com/players/mike-evans/"
-    },
-    {
-     "label": "Sports Illustrated: James Houston QUESTIONABLE",
-     "url": "https://www.nfl.com/players/james-houston/"
-    },
     {
      "label": "rapsheet.bsky.social: De'Von Achane QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4429160/devon-achane"
@@ -354,6 +362,14 @@
     {
      "label": "tompelissero.bsky.social: Ladd McConkey ACTIVE",
      "url": "https://www.nfl.com/players/ladd-mcconkey/"
+    },
+    {
+     "label": "Sarah Barshop: Myles Garrett ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/3122132/myles-garrett"
+    },
+    {
+     "label": "Daniel Oyefusi: Mason Graham OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/4873232/mason-graham"
     },
     {
      "label": "Sarah Barshop: Myles Garrett ACTIVE",
