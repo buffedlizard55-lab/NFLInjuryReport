@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-03T22:18:53Z",
+ "generated_at": "2026-10-04T00:05:08Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -137,22 +137,6 @@
     },
     {
      "label": "ESPN (IR)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Jacob Parrish",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/jacob-parrish/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -336,7 +320,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "5 player(s) have no official designation but do have an ESPN status",
+   "title": "2 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -528,28 +512,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "20 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Baltimore Sun said OUT for Keenan Allen (official: see link); Yahoo Sports said ACTIVE for Edgerrin Cooper (official: see link); Sportsnet.ca said OUT for Keenan Allen (official: see link); Toronto Star said OUT for Keenan Allen (official: see link); couriernews.com said OUT for Keenan Allen (official: see link)",
+   "title": "11 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said QUESTIONABLE for De'Von Achane (official: see link); tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); Stephen Holder said OUT for Keenan Allen (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link); Daniel Oyefusi said OUT for Mason Graham (official: see link)",
    "evidence": [
     {
-     "label": "Baltimore Sun: Keenan Allen OUT",
+     "label": "rapsheet.bsky.social: De'Von Achane QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4429160/devon-achane"
+    },
+    {
+     "label": "tompelissero.bsky.social: Ladd McConkey ACTIVE",
+     "url": "https://www.nfl.com/players/ladd-mcconkey/"
+    },
+    {
+     "label": "Stephen Holder: Keenan Allen OUT",
      "url": "https://www.nfl.com/players/keenan-allen/"
     },
     {
-     "label": "Yahoo Sports: Edgerrin Cooper ACTIVE",
-     "url": "https://www.nfl.com/players/edgerrin-cooper/"
+     "label": "Sarah Barshop: Myles Garrett ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/3122132/myles-garrett"
     },
     {
-     "label": "Sportsnet.ca: Keenan Allen OUT",
-     "url": "https://www.nfl.com/players/keenan-allen/"
-    },
-    {
-     "label": "Toronto Star: Keenan Allen OUT",
-     "url": "https://www.nfl.com/players/keenan-allen/"
-    },
-    {
-     "label": "couriernews.com: Keenan Allen OUT",
-     "url": "https://www.nfl.com/players/keenan-allen/"
+     "label": "Daniel Oyefusi: Mason Graham OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/4873232/mason-graham"
     }
    ]
   },
