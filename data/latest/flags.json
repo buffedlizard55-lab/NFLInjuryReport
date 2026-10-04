@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-04T20:25:48Z",
+ "generated_at": "2026-10-04T20:28:01Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1036,42 +1036,6 @@
   {
    "code": "ESPN_ROSTER_EMPTY",
    "severity": "low",
-   "title": "Game-day roster for KC @ LV parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872976 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872976"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for DEN @ SF parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872975 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872975"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for LAC @ SEA parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872977 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872977"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
    "title": "Game-day roster for DET @ CAR parsed zero athletes",
    "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872978 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
    "evidence": [
@@ -1096,13 +1060,9 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "67 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: liquorice@lemmy.world said QUESTIONABLE for Saquon Barkley (official: see link); Blitz_Burgh@sportsbots.xyz said IR for Derrick Harmon (official: see link); CBS Sports said ACTIVE for Donte Jackson (official: see link); Dallas News said QUESTIONABLE for Alijah Clark (official: see link); CBS Sports said ACTIVE for Trey Lance (official: see link)",
+   "title": "81 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said IR for Derrick Harmon (official: see link); CBS Sports said ACTIVE for Donte Jackson (official: see link); RotoWire said ACTIVE for Donte Jackson (official: see link); sports.yahoo.com said ACTIVE for Mike Evans (official: see link); Dallas News said QUESTIONABLE for Alijah Clark (official: see link)",
    "evidence": [
-    {
-     "label": "liquorice@lemmy.world: Saquon Barkley QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/3929630/saquon-barkley"
-    },
     {
      "label": "Blitz_Burgh@sportsbots.xyz: Derrick Harmon IR",
      "url": "https://www.espn.com/nfl/player/_/id/4682980/derrick-harmon"
@@ -1112,12 +1072,16 @@
      "url": "https://www.nfl.com/players/donte-jackson/"
     },
     {
-     "label": "Dallas News: Alijah Clark QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4595352/alijah-clark"
+     "label": "RotoWire: Donte Jackson ACTIVE",
+     "url": "https://www.nfl.com/players/donte-jackson/"
     },
     {
-     "label": "CBS Sports: Trey Lance ACTIVE",
-     "url": "https://www.nfl.com/players/trey-lance/"
+     "label": "sports.yahoo.com: Mike Evans ACTIVE",
+     "url": "https://www.nfl.com/players/mike-evans/"
+    },
+    {
+     "label": "Dallas News: Alijah Clark QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4595352/alijah-clark"
     }
    ]
   },
