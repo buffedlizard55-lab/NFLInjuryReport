@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-04T18:59:44Z",
+ "generated_at": "2026-10-04T19:04:26Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -288,6 +288,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Dre Greenlaw",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/dre-greenlaw-x9042/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Dre'Mont Jones",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -393,6 +409,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Jaden Dugger",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/jaden-dugger/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -544,6 +576,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Keion White",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/keion-white/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Kenyon Sadiq",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -592,12 +640,44 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Ladd McConkey",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/ladd-mcconkey/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Logan Hall",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/logan-hall/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Mike Evans",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/mike-evans/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -864,7 +944,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "7 player(s) have no official designation but do have an ESPN status",
+   "title": "8 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -948,28 +1028,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "90 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Democrat and Chronicle said DOUBTFUL for DJ Moore (official: see link); On3 said QUESTIONABLE for Lamar Jackson (official: see link); FantasyPros said QUESTIONABLE for Lamar Jackson (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link); rapsheet.bsky.social said QUESTIONABLE for Lamar Jackson (official: see link)",
+   "title": "94 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC Sports said QUESTIONABLE for Lamar Jackson (official: see link); Democrat and Chronicle said DOUBTFUL for DJ Moore (official: see link); AOL.com said DOUBTFUL for DJ Moore (official: see link); on3.com said QUESTIONABLE for Lamar Jackson (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link)",
    "evidence": [
+    {
+     "label": "NBC Sports: Lamar Jackson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
+    },
     {
      "label": "Democrat and Chronicle: DJ Moore DOUBTFUL",
      "url": "https://www.nfl.com/players/d-j-moore/"
     },
     {
-     "label": "On3: Lamar Jackson QUESTIONABLE",
-     "url": "https://www.nfl.com/players/lamar-jackson/"
+     "label": "AOL.com: DJ Moore DOUBTFUL",
+     "url": "https://www.nfl.com/players/d-j-moore/"
     },
     {
-     "label": "FantasyPros: Lamar Jackson QUESTIONABLE",
+     "label": "on3.com: Lamar Jackson QUESTIONABLE",
      "url": "https://www.nfl.com/players/lamar-jackson/"
     },
     {
      "label": "rapsheet.bsky.social: Marlon Humphrey OUT",
      "url": "https://www.nfl.com/players/marlon-humphrey/"
-    },
-    {
-     "label": "rapsheet.bsky.social: Lamar Jackson QUESTIONABLE",
-     "url": "https://www.nfl.com/players/lamar-jackson/"
     }
    ]
   },
