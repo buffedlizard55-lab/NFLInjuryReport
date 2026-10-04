@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-04T19:13:58Z",
+ "generated_at": "2026-10-04T19:18:31Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -166,6 +166,22 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/channing-canada/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Chazz Surratt",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/chazz-surratt/"
     },
     {
      "label": "ESPN (OUT)",
@@ -912,6 +928,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Ty Okada",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/ty-okada/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Tyjae Spears",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -1076,9 +1108,13 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "94 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: The Sunday Guardian said OUT for Marlon Humphrey (official: see link); Livemint said QUESTIONABLE for Saquon Barkley (official: see link); Sports Illustrated said QUESTIONABLE for Lamar Jackson (official: see link); The New York Times said QUESTIONABLE for Lamar Jackson (official: see link); NBC Sports said QUESTIONABLE for Lamar Jackson (official: see link)",
+   "title": "97 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: RotoBaller said ACTIVE for Mike Evans (official: see link); The Sunday Guardian said OUT for Marlon Humphrey (official: see link); Livemint said QUESTIONABLE for Saquon Barkley (official: see link); Sports Illustrated said QUESTIONABLE for Lamar Jackson (official: see link); The New York Times said QUESTIONABLE for Lamar Jackson (official: see link)",
    "evidence": [
+    {
+     "label": "RotoBaller: Mike Evans ACTIVE",
+     "url": "https://www.nfl.com/players/mike-evans/"
+    },
     {
      "label": "The Sunday Guardian: Marlon Humphrey OUT",
      "url": "https://www.nfl.com/players/marlon-humphrey/"
@@ -1093,10 +1129,6 @@
     },
     {
      "label": "The New York Times: Lamar Jackson QUESTIONABLE",
-     "url": "https://www.nfl.com/players/lamar-jackson/"
-    },
-    {
-     "label": "NBC Sports: Lamar Jackson QUESTIONABLE",
      "url": "https://www.nfl.com/players/lamar-jackson/"
     }
    ]
