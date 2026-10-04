@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-04T20:04:11Z",
+ "generated_at": "2026-10-04T20:08:11Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1024,24 +1024,12 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "12 player(s) have no official designation but do have an ESPN status",
+   "title": "13 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
      "label": "Official NFL injury report",
      "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for MIA @ MIN parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872974 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872974"
     }
    ]
   },
@@ -1108,12 +1096,16 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "96 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: liquorice@lemmy.world said QUESTIONABLE for Saquon Barkley (official: see link); Dailyhunt said QUESTIONABLE for Saquon Barkley (official: see link); Dallas News said QUESTIONABLE for Alijah Clark (official: see link); Dallas News said QUESTIONABLE for Alijah Clark (official: see link); sundayguardianlive.com said OUT for Marlon Humphrey (official: see link)",
+   "title": "97 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: liquorice@lemmy.world said QUESTIONABLE for Saquon Barkley (official: see link); Blitz_Burgh@sportsbots.xyz said IR for Derrick Harmon (official: see link); Dailyhunt said QUESTIONABLE for Saquon Barkley (official: see link); Dallas News said QUESTIONABLE for Alijah Clark (official: see link); Dallas News said QUESTIONABLE for Alijah Clark (official: see link)",
    "evidence": [
     {
      "label": "liquorice@lemmy.world: Saquon Barkley QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/3929630/saquon-barkley"
+    },
+    {
+     "label": "Blitz_Burgh@sportsbots.xyz: Derrick Harmon IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4682980/derrick-harmon"
     },
     {
      "label": "Dailyhunt: Saquon Barkley QUESTIONABLE",
@@ -1126,10 +1118,6 @@
     {
      "label": "Dallas News: Alijah Clark QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4595352/alijah-clark"
-    },
-    {
-     "label": "sundayguardianlive.com: Marlon Humphrey OUT",
-     "url": "https://www.nfl.com/players/marlon-humphrey/"
     }
    ]
   },
