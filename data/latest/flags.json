@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-04T21:19:00Z",
+ "generated_at": "2026-10-04T21:21:49Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -313,6 +313,22 @@
     },
     {
      "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Donte Jackson",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/donte-jackson/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1028,8 +1044,8 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "83 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Arrowhead Pride said QUESTIONABLE for Rashee Rice (official: see link); Yahoo Sports said QUESTIONABLE for Rashee Rice (official: see link); NBC Sports said ACTIVE for Mike Evans (official: see link); Yahoo Sports said OUT for Saquon Barkley (official: see link); CBS Sports said ACTIVE for Donte Jackson (official: see link)",
+   "title": "82 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Arrowhead Pride said QUESTIONABLE for Rashee Rice (official: see link); Yahoo Sports said QUESTIONABLE for Rashee Rice (official: see link); nbcsports.com said ACTIVE for Mike Evans (official: see link); Yahoo Sports said OUT for Saquon Barkley (official: see link); CBS Sports said ACTIVE for Donte Jackson (official: see link)",
    "evidence": [
     {
      "label": "Arrowhead Pride: Rashee Rice QUESTIONABLE",
@@ -1040,7 +1056,7 @@
      "url": "https://www.nfl.com/players/rashee-rice/"
     },
     {
-     "label": "NBC Sports: Mike Evans ACTIVE",
+     "label": "nbcsports.com: Mike Evans ACTIVE",
      "url": "https://www.nfl.com/players/mike-evans/"
     },
     {
