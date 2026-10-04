@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-10-04T16:51:56Z",
+ "generated_at": "2026-10-04T16:56:17Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 95,
+   "latency_ms": 97,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 101,
+   "latency_ms": 82,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 47,
+   "latency_ms": 184,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 103,
+   "latency_ms": 100,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 80,
+   "latency_ms": 59,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -569,7 +569,7 @@
    "predicted_status": "UNKNOWN",
    "injury": "mcl",
    "signal": 1.0,
-   "engagement": 40,
+   "engagement": 47,
    "verified": true,
    "verification_detail": "Bluesky verification status=valid (issuer: Bluesky)",
    "author_did": "did:plc:hlvr2omhnmvdmfnvmcuhyevz",
@@ -820,32 +820,6 @@
    "raw": {
     "outlet": "sports.yahoo.com",
     "query": "\"Houston Texans\" injury when:1d"
-   }
-  },
-  {
-   "platform": "mastodon",
-   "post_id": "117383426906888863",
-   "author": "slessans.bsky.social@bsky.brid.gy",
-   "author_name": "Seth “Football Collector”",
-   "author_url": "https://bsky.brid.gy/r/https://bsky.app/profile/did:plc:gs6u2pkupaaj56bvpcyo4rg2/post/3mx2quhs3cp2a",
-   "text": "Jeremy Reaves is questionable to return with a finger injury. #NFL | #HTTC | #Commanders | #RaiseHail",
-   "posted_at": "2026-10-04T15:49:10.755Z",
-   "url": "https://bsky.brid.gy/r/https://bsky.app/profile/did:plc:gs6u2pkupaaj56bvpcyo4rg2/post/3mx2quhs3cp2a",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "QUESTIONABLE",
-   "injury": "finger",
-   "signal": 1.0,
-   "engagement": 1,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "social",
-   "in_game_status": "RETURN_QUESTIONABLE",
-   "game_event": "questionable-to-return",
-   "raw": {
-    "instance": "https://mastodon.social"
    }
   },
   {
@@ -1281,6 +1255,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQeG9BN0toNjNpMGU0QmxobW44SVlTZXdEU09BQ1JaUXBmVTU5bDBUUEZ2N19rU1R1a0g3bTd6aWwwaDUxZkQ2cFVOSGpEcFdaN250Y3NmTFJuYmhsSlE0VHBTLTRWTlV2Vi1tdU91b1g0VkpHWlFwR2RxVWxraTdCSkI2ZER0bFZlUEt2V2I1YlhXYVo5YVNOWEhBcVo?oc=5",
+   "author": "TSN",
+   "author_name": "TSN",
+   "author_url": "https://www.tsn.ca",
+   "text": "Washington Commanders’ QB Marcus Mariota suffers leg injury against Indianapolis Colts in London - TSN",
+   "posted_at": "Sun, 04 Oct 2026 14:48:48 GMT",
+   "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQeG9BN0toNjNpMGU0QmxobW44SVlTZXdEU09BQ1JaUXBmVTU5bDBUUEZ2N19rU1R1a0g3bTd6aWwwaDUxZkQ2cFVOSGpEcFdaN250Y3NmTFJuYmhsSlE0VHBTLTRWTlV2Vi1tdU91b1g0VkpHWlFwR2RxVWxraTdCSkI2ZER0bFZlUEt2V2I1YlhXYVo5YVNOWEhBcVo?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.15,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "TSN",
+    "query": "\"Indianapolis Colts\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQbkV2a0ltdXNSSkN2bVJYS3BRV3RmNHQweXF2NnRYaVI1OGRkNHIyaV95c1JnR0drWXBqYmwwTTlYaV84TmVfTE5NWGdiUnYxOVFLczVxN0JRRzJ2dXliSnVxVElEVlp4c1RZR3ZILXFJdnhVX1liaVdlTjByNUQ5VGtyZUV5dw?oc=5",
    "author": "sports.yahoo.com",
    "author_name": "sports.yahoo.com",
@@ -1483,7 +1484,7 @@
    "predicted_status": "QUESTIONABLE",
    "injury": "knee",
    "signal": 1.0,
-   "engagement": 74,
+   "engagement": 75,
    "verified": true,
    "verification_detail": "Bluesky verification status=valid (issuer: Bluesky)",
    "author_did": "did:plc:hlvr2omhnmvdmfnvmcuhyevz",
@@ -1655,33 +1656,6 @@
    "raw": {
     "outlet": "sports.yahoo.com",
     "query": "\"Cleveland Browns\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWXpCVmtMdWxld2dvVzN1OEpGdW1nQmU1TnNqLU5sdXNkMC1hUHlvems4cElScmkyQ1NZZ05xb1dKcXJpakpNTTFMX1FuOExzRHNYUGg2RkRyMHQyVXB6T0ZfQndxRlg0RmhsdjFjUWtqWHBaLVBKdjZvOHBDVGpVSQ?oc=5",
-   "author": "AOL.com",
-   "author_name": "AOL.com",
-   "author_url": "https://www.aol.com",
-   "text": "Steelers DT Derrick Harmon to miss several weeks with injury - AOL.com",
-   "posted_at": "Sun, 04 Oct 2026 13:48:18 GMT",
-   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWXpCVmtMdWxld2dvVzN1OEpGdW1nQmU1TnNqLU5sdXNkMC1hUHlvems4cElScmkyQ1NZZ05xb1dKcXJpakpNTTFMX1FuOExzRHNYUGg2RkRyMHQyVXB6T0ZfQndxRlg0RmhsdjFjUWtqWHBaLVBKdjZvOHBDVGpVSQ?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "AOL.com",
-    "query": "\"Pittsburgh Steelers\" injury when:1d"
    }
   },
   {
@@ -2158,7 +2132,7 @@
    "predicted_status": "UNKNOWN",
    "injury": "foot",
    "signal": 0.9,
-   "engagement": 38,
+   "engagement": 39,
    "verified": true,
    "verification_detail": "Bluesky verification status=valid (issuer: Bluesky)",
    "author_did": "did:plc:hlvr2omhnmvdmfnvmcuhyevz",
@@ -2239,7 +2213,7 @@
    "predicted_status": "UNKNOWN",
    "injury": "rib",
    "signal": 0.9,
-   "engagement": 56,
+   "engagement": 57,
    "verified": true,
    "verification_detail": "Bluesky verification status=valid (issuer: Bluesky)",
    "author_did": "did:plc:hlvr2omhnmvdmfnvmcuhyevz",
@@ -2303,6 +2277,33 @@
    "raw": {
     "outlet": "Sports Illustrated",
     "query": "\"Denver Broncos\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPVERSUllNRmZWZC1mTGcyNmU1STZ2OVF5RURtVXM1SmlvS0pNUFI2Q2Vvemc1NjdESjBpWmdoNkNvNVBSMVRlbVpnLU9WVkt0Q0xXTVpHX3I4MkFKMURLX1JleF9sclo0RzVVQ2xGNVFUNGRTdXZjai1nM1NvYjFhM0toU2dfcDN2OXN1NGViWkVMcDIzNTR1NGFtMXVtV2k5MFFkUEV5N3NrQUZCN2g2ZUJR?oc=5",
+   "author": "heavy.com",
+   "author_name": "heavy.com",
+   "author_url": "https://heavy.com",
+   "text": "When is Alec Pierce Coming Back? Injury Return Timeline for Colts WR - heavy.com",
+   "posted_at": "Sun, 04 Oct 2026 12:24:50 GMT",
+   "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPVERSUllNRmZWZC1mTGcyNmU1STZ2OVF5RURtVXM1SmlvS0pNUFI2Q2Vvemc1NjdESjBpWmdoNkNvNVBSMVRlbVpnLU9WVkt0Q0xXTVpHX3I4MkFKMURLX1JleF9sclo0RzVVQ2xGNVFUNGRTdXZjai1nM1NvYjFhM0toU2dfcDN2OXN1NGViWkVMcDIzNTR1NGFtMXVtV2k5MFFkUEV5N3NrQUZCN2g2ZUJR?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "back",
+   "signal": 0.6,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "heavy.com",
+    "query": "\"Alec Pierce\" injury when:1d"
    }
   },
   {
@@ -3037,10 +3038,10 @@
   {
    "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMipAJBVV95cUxPZUt1dXZCMFJGYnJOS1VSNXBnWG1XVThGZ3FjS1VmRzdQLTQwR1B6MW8wMUlyZEU4LS1vSUtSZmZNU192clVUblNFOWxuMlJwV3BXY0k4T01sbVRENmtLZF9aSFltUkNHWkhZd09kdkRxRjl4ZVNWZWpRTWlyV1FQZnZRczFPQUxzNHp4YklVaDhSVU5penBBTHQ2b3VhZzBuNkJQSE1NUHNDNXZkYzV2dXZCQThMVkhlOXhMOEtNNFNzajZLaWs4cjdoUklhclZRRVpDa0NBR0FXam5lRHgyYjl0WG5mMWFMOV8tM2hacGl2MWNwTklhc0VaSWgtSWVxNTkwbFpJQzlmX0FVaXhVdFdQVzllZXZaYmNwc1dSRHVmSndo0gGqAkFVX3lxTE0zTHhEdzZxbllWdEdONl9RLWk0ZHJwSS1PcmJfcWFZVzdpQ0xBRzRYbC1SLUYtUXRHa3ZLYlZ3MGxDRHc4LWs1N3pKUkpvWUxvcTJKVXdEVGdyemd2Q3p2dWdSdXVFWHo2aFJJZXJkVll1MFpFR0lYb0RISmk5MmNXU3NDcmZrM2V5QjNoYTNBcUlKTDFNUGY4azNZVWpCc0tic1ZJVTlKVGVEb1dKWnQ5eWZELWlpTDNob3Y0Z3NQNlVKMjRMakFyd0xyTVdQUU41YzVwRVZ2bUtkNV8tOUNYcEc5ZVVhbWswUW4xV0UwdHZZTWk4cE9NdXZMWnFBNnN0YXU3aTBiRTRCOTR1WXB4M3JfbkZ6M0RkWmJ4endSMTlsS1M4TzVtWXc?oc=5",
-   "author": "The Times of India",
-   "author_name": "The Times of India",
+   "author": "timesofindia.indiatimes.com",
+   "author_name": "timesofindia.indiatimes.com",
    "author_url": "https://timesofindia.indiatimes.com",
-   "text": "Will Patrick Mahomes play against the Las Vegas Raiders today? Latest injury update on the Kansas City Ch - The Times of India",
+   "text": "Will Patrick Mahomes play against the Las Vegas Raiders today? Latest injury update on the Kansas City Ch - timesofindia.indiatimes.com",
    "posted_at": "Sun, 04 Oct 2026 10:00:00 GMT",
    "url": "https://news.google.com/rss/articles/CBMipAJBVV95cUxPZUt1dXZCMFJGYnJOS1VSNXBnWG1XVThGZ3FjS1VmRzdQLTQwR1B6MW8wMUlyZEU4LS1vSUtSZmZNU192clVUblNFOWxuMlJwV3BXY0k4T01sbVRENmtLZF9aSFltUkNHWkhZd09kdkRxRjl4ZVNWZWpRTWlyV1FQZnZRczFPQUxzNHp4YklVaDhSVU5penBBTHQ2b3VhZzBuNkJQSE1NUHNDNXZkYzV2dXZCQThMVkhlOXhMOEtNNFNzajZLaWs4cjdoUklhclZRRVpDa0NBR0FXam5lRHgyYjl0WG5mMWFMOV8tM2hacGl2MWNwTklhc0VaSWgtSWVxNTkwbFpJQzlmX0FVaXhVdFdQVzllZXZaYmNwc1dSRHVmSndo0gGqAkFVX3lxTE0zTHhEdzZxbllWdEdONl9RLWk0ZHJwSS1PcmJfcWFZVzdpQ0xBRzRYbC1SLUYtUXRHa3ZLYlZ3MGxDRHc4LWs1N3pKUkpvWUxvcTJKVXdEVGdyemd2Q3p2dWdSdXVFWHo2aFJJZXJkVll1MFpFR0lYb0RISmk5MmNXU3NDcmZrM2V5QjNoYTNBcUlKTDFNUGY4azNZVWpCc0tic1ZJVTlKVGVEb1dKWnQ5eWZELWlpTDNob3Y0Z3NQNlVKMjRMakFyd0xyTVdQUU41YzVwRVZ2bUtkNV8tOUNYcEc5ZVVhbWswUW4xV0UwdHZZTWk4cE9NdXZMWnFBNnN0YXU3aTBiRTRCOTR1WXB4M3JfbkZ6M0RkWmJ4endSMTlsS1M4TzVtWXc?oc=5",
    "matched_player": "",
@@ -3057,7 +3058,7 @@
    "in_game_status": "INJURY_REPORTED",
    "game_event": "injury-reported",
    "raw": {
-    "outlet": "The Times of India",
+    "outlet": "timesofindia.indiatimes.com",
     "query": "\"Kansas City Chiefs\" injury when:1d"
    }
   },
@@ -4063,10 +4064,10 @@
   {
    "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQcjdOVDZMd2pkMlJaSGdkck83dUFjbXJwTnR5SGlDZi1jNG1EWDJaRk9OQWRfX0FuZXlVN0ZVOWZ5TVdYNGlaVHZIWDU4eklNSG9fV1V6R0Zqb2N3bXhReXpkQjNscWl1cWxrZVhoT3hmYnY4ZjY4R3lxTHYzLVZfY05rYUVwV3VKNUFJc2hadXNaQmozQVVpb0VLNVdxT0xiTTFMdXZ1cFMxemhkdXhHWGkyWGN3eFl1dDk2QWtNVkZhUmhzZkYtb2VfUWhjdERSdHVseTNiTUdvYXJDcXIxZ1FQXzlGNTMy?oc=5",
-   "author": "Texans Wire",
-   "author_name": "Texans Wire",
+   "author": "texanswire.usatoday.com",
+   "author_name": "texanswire.usatoday.com",
    "author_url": "https://texanswire.usatoday.com",
-   "text": "Joey Porter Jr. injury update: Will new Cowboys CB play vs. Texans in Week 4? - Texans Wire",
+   "text": "Joey Porter Jr. injury update: Will new Cowboys CB play vs. Texans in Week 4? - texanswire.usatoday.com",
    "posted_at": "Sat, 03 Oct 2026 19:30:00 GMT",
    "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQcjdOVDZMd2pkMlJaSGdkck83dUFjbXJwTnR5SGlDZi1jNG1EWDJaRk9OQWRfX0FuZXlVN0ZVOWZ5TVdYNGlaVHZIWDU4eklNSG9fV1V6R0Zqb2N3bXhReXpkQjNscWl1cWxrZVhoT3hmYnY4ZjY4R3lxTHYzLVZfY05rYUVwV3VKNUFJc2hadXNaQmozQVVpb0VLNVdxT0xiTTFMdXZ1cFMxemhkdXhHWGkyWGN3eFl1dDk2QWtNVkZhUmhzZkYtb2VfUWhjdERSdHVseTNiTUdvYXJDcXIxZ1FQXzlGNTMy?oc=5",
    "matched_player": "",
@@ -4083,7 +4084,7 @@
    "in_game_status": "INJURY_REPORTED",
    "game_event": "injury-reported",
    "raw": {
-    "outlet": "Texans Wire",
+    "outlet": "texanswire.usatoday.com",
     "query": "\"Joey Porter Jr.\" injury when:1d"
    }
   },
