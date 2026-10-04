@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-04T12:07:57Z",
+ "generated_at": "2026-10-04T12:22:09Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -54,6 +54,22 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/aidan-o-connell/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Ashton Dulin",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/ashton-dulin/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -513,15 +529,15 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "9 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: sports.yahoo.com said OUT for Christian Benford (official: see link); tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link); Daniel Oyefusi said OUT for Mason Graham (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: tompelissero.bsky.social said ACTIVE for Ladd McConkey (official: see link); John Keim said OUT for Terry McLaurin (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link); Daniel Oyefusi said OUT for Mason Graham (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link)",
    "evidence": [
-    {
-     "label": "sports.yahoo.com: Christian Benford OUT",
-     "url": "https://www.nfl.com/players/christian-benford/"
-    },
     {
      "label": "tompelissero.bsky.social: Ladd McConkey ACTIVE",
      "url": "https://www.nfl.com/players/ladd-mcconkey/"
+    },
+    {
+     "label": "John Keim: Terry McLaurin OUT",
+     "url": "https://www.nfl.com/players/terry-mclaurin/"
     },
     {
      "label": "Sarah Barshop: Myles Garrett ACTIVE",
