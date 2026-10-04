@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-10-04T16:25:51Z",
+ "generated_at": "2026-10-04T16:26:47Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 76,
+   "latency_ms": 24,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 69,
+   "latency_ms": 26,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 41,
+   "latency_ms": 55,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 47,
+   "latency_ms": 29,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 54,
+   "latency_ms": 38,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -146,7 +146,7 @@
    "label": "news:hot-player",
    "query": "\"Alec Pierce\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Alec+Pierce%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 14,
+   "posts": 13,
    "error": ""
   },
   {
@@ -237,7 +237,7 @@
    "label": "news:hot-player",
    "query": "\"Keenan Allen\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Keenan+Allen%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 24,
+   "posts": 25,
    "error": ""
   },
   {
@@ -279,7 +279,7 @@
    "label": "news:hot-player",
    "query": "\"Riley Leonard\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Riley+Leonard%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 2,
+   "posts": 4,
    "error": ""
   },
   {
@@ -503,7 +503,7 @@
    "label": "news:hot-player",
    "query": "\"Nick Westbrook-Ikhine\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Nick+Westbrook-Ikhine%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 12,
+   "posts": 13,
    "error": ""
   },
   {
@@ -585,6 +585,33 @@
   }
  ],
  "posts": [
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOS1BtUWUzbEQ0RDktSVFnbjBoaElreDJweURySy1DalFVZFhzdno4YWRTd2xTaEVsMU1OUzhtbTNzVktmaG8wamsxdDU0Vjc5OU9TZm0yd1l3dzNxNTNsMURmTVd0M0JaT1lNTzgzWGpjN1VKc0l4TDRRX2xRY3R6RjNSaE5FQ0JobHpoTDZUYnlUczNheUVxeU4zY0RRNm8ySHBBQjllV1RsZkE?oc=5",
+   "author": "Sports Illustrated",
+   "author_name": "Sports Illustrated",
+   "author_url": "https://www.si.com",
+   "text": "Bills' Week 4 Inactives: Christian Benford Will Miss Showdown with Patriots - Sports Illustrated",
+   "posted_at": "Sun, 04 Oct 2026 16:24:15 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOS1BtUWUzbEQ0RDktSVFnbjBoaElreDJweURySy1DalFVZFhzdno4YWRTd2xTaEVsMU1OUzhtbTNzVktmaG8wamsxdDU0Vjc5OU9TZm0yd1l3dzNxNTNsMURmTVd0M0JaT1lNTzgzWGpjN1VKc0l4TDRRX2xRY3R6RjNSaE5FQ0JobHpoTDZUYnlUczNheUVxeU4zY0RRNm8ySHBBQjllV1RsZkE?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Sports Illustrated",
+    "query": "\"New England Patriots\" injury when:1d"
+   }
+  },
   {
    "platform": "mastodon",
    "post_id": "117383558854374612",
@@ -706,7 +733,7 @@
    "predicted_status": "UNKNOWN",
    "injury": "mcl",
    "signal": 1.0,
-   "engagement": 22,
+   "engagement": 24,
    "verified": true,
    "verification_detail": "Bluesky verification status=valid (issuer: Bluesky)",
    "author_did": "did:plc:hlvr2omhnmvdmfnvmcuhyevz",
@@ -1818,29 +1845,29 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOb2NQdjMtaVVuZFY0bVBMUC1hdUpDSXdHcno5OTRMZmhfeEo0TVNjdV9xN3hDX2dRYjNRVUdZbnRhLUQwaURZcXZwaUdIR2t2Tjl0eWozSUxfSTVYWkFKeXZRaS1BRGJua1N3WDctaFZLWjc0aldFMW1wdnNrQzZuZy1RTlY2UjZmRUN2VXA4NzQwaGNDRGNER282TkZRWnZUVTFZQg?oc=5",
-   "author": "NFL.com",
-   "author_name": "NFL.com",
-   "author_url": "https://www.nfl.com",
-   "text": "Commanders QB Marcus Mariota (knee) ruled out vs. Colts, replaced by rookie Athan Kaliakmanis - NFL.com",
-   "posted_at": "Sun, 04 Oct 2026 15:10:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOb2NQdjMtaVVuZFY0bVBMUC1hdUpDSXdHcno5OTRMZmhfeEo0TVNjdV9xN3hDX2dRYjNRVUdZbnRhLUQwaURZcXZwaUdIR2t2Tjl0eWozSUxfSTVYWkFKeXZRaS1BRGJua1N3WDctaFZLWjc0aldFMW1wdnNrQzZuZy1RTlY2UjZmRUN2VXA4NzQwaGNDRGNER282TkZRWnZUVTFZQg?oc=5",
+   "post_id": "https://news.google.com/rss/articles/CBMijwJBVV95cUxQazFaa2JqNERDelk2U3ZyTWhMeEpxOVd6T1J5aWoyb0xzekV3aTZ0VDZBVEtpSkp4UDU4OG5Dbk1hcjNEQUVTWnJ6b0lkVVd2Zk1fNndEejJ4QzVsZUs4VmtsSDBqOHJYbFhpT1JPSzVSZ1ZYVmxIUE1yM0FIN21mMXNMT2xwQThqTThTQ3hMS2lFZnZnWG9DZjFkcTlqdlhSd3p5czBERWJ6dDhiNmZMMXREeUZ0ajgxQjhjT1gzUnNJSmUyS2xVaGZGQjJBTWdEektrelp4QWJiU3ZrRFVwY3phbFdqR3lNYVhTS2FYSUFoRVljQ2RYcVlzLWdsQTg5bG95UE9lVmd1c243aDln?oc=5",
+   "author": "Bozeman Daily Chronicle",
+   "author_name": "Bozeman Daily Chronicle",
+   "author_url": "https://www.bozemandailychronicle.com",
+   "text": "Commanders QB Mariota injures his knee in game vs. Colts, rookie Kaliakmanis playing - Bozeman Daily Chronicle",
+   "posted_at": "Sun, 04 Oct 2026 15:08:59 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxQazFaa2JqNERDelk2U3ZyTWhMeEpxOVd6T1J5aWoyb0xzekV3aTZ0VDZBVEtpSkp4UDU4OG5Dbk1hcjNEQUVTWnJ6b0lkVVd2Zk1fNndEejJ4QzVsZUs4VmtsSDBqOHJYbFhpT1JPSzVSZ1ZYVmxIUE1yM0FIN21mMXNMT2xwQThqTThTQ3hMS2lFZnZnWG9DZjFkcTlqdlhSd3p5czBERWJ6dDhiNmZMMXREeUZ0ajgxQjhjT1gzUnNJSmUyS2xVaGZGQjJBTWdEektrelp4QWJiU3ZrRFVwY3phbFdqR3lNYVhTS2FYSUFoRVljQ2RYcVlzLWdsQTg5bG95UE9lVmd1c243aDln?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
-   "predicted_status": "OUT",
+   "predicted_status": "UNKNOWN",
    "injury": "knee",
-   "signal": 1.0,
+   "signal": 0.6,
    "engagement": 0,
    "verified": false,
    "verification_detail": "",
    "author_did": "",
    "source_kind": "news",
-   "in_game_status": "OUT_FOR_GAME",
-   "game_event": "ruled-out-for-game",
+   "in_game_status": "NONE",
+   "game_event": "",
    "raw": {
-    "outlet": "NFL.com",
-    "query": "\"Adetomiwa Adebawore\" injury when:1d"
+    "outlet": "Bozeman Daily Chronicle",
+    "query": "\"Jaylahn Tuimoloau\" injury when:1d"
    }
   },
   {
@@ -1984,7 +2011,7 @@
    "author": "TSN",
    "author_name": "TSN",
    "author_url": "https://www.tsn.ca",
-   "text": "Commanders’ QB Mariota suffers leg injury against Colts in London - TSN",
+   "text": "Washington Commanders’ QB Marcus Mariota suffers leg injury against Indianapolis Colts in London - TSN",
    "posted_at": "Sun, 04 Oct 2026 14:48:48 GMT",
    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQeG9BN0toNjNpMGU0QmxobW44SVlTZXdEU09BQ1JaUXBmVTU5bDBUUEZ2N19rU1R1a0g3bTd6aWwwaDUxZkQ2cFVOSGpEcFdaN250Y3NmTFJuYmhsSlE0VHBTLTRWTlV2Vi1tdU91b1g0VkpHWlFwR2RxVWxraTdCSkI2ZER0bFZlUEt2V2I1YlhXYVo5YVNOWEhBcVo?oc=5",
    "matched_player": "",
@@ -2326,7 +2353,7 @@
    "game_event": "injury-reported",
    "raw": {
     "outlet": "NBC4 Washington",
-    "query": "\"DeForest Buckner\" injury when:1d"
+    "query": "\"Jonathan Taylor\" injury when:1d"
    }
   },
   {
@@ -2624,33 +2651,6 @@
    "raw": {
     "outlet": "New Orleans Saints | NewOrleansSaints.com",
     "query": "\"New Orleans Saints\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPMkxUSF9VR0pkTUlMWkwyZmhmcmdMbkdaRkJLS2JEYUJiTHVrc0V1MHhZQ2hVcV9KSlVEbUplMlVUQ3JxX1RIRS00ZnA0UGRaSkQ3ZVZvX0ZNYWVSM1hiOTZwRHRjOThiYVJjNzVjTkdlc1NLSDNmRV9SX2pHS2dlalBzYjBRRDlkXzllaUFiVTl0RFNDRXB3c1R2QzU1TVlRSWIwMkQ4d0lYb05Eanc5QkxSLTM?oc=5",
-   "author": "heavy.com",
-   "author_name": "heavy.com",
-   "author_url": "https://heavy.com",
-   "text": "Marcus Mariota Injury Update Brings Backup QB Athan Kaliakmanis vs. Colts - heavy.com",
-   "posted_at": "Sun, 04 Oct 2026 14:01:15 GMT",
-   "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPMkxUSF9VR0pkTUlMWkwyZmhmcmdMbkdaRkJLS2JEYUJiTHVrc0V1MHhZQ2hVcV9KSlVEbUplMlVUQ3JxX1RIRS00ZnA0UGRaSkQ3ZVZvX0ZNYWVSM1hiOTZwRHRjOThiYVJjNzVjTkdlc1NLSDNmRV9SX2pHS2dlalBzYjBRRDlkXzllaUFiVTl0RFNDRXB3c1R2QzU1TVlRSWIwMkQ4d0lYb05Eanc5QkxSLTM?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "heavy.com",
-    "query": "\"Indianapolis Colts\" injury when:1d"
    }
   },
   {
@@ -3546,6 +3546,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPVF9scXlWcWphM1lDOEdXRXZqN29Uem8tQy0wM0c5QzM2QzNuaUhvNDh2NWstNldHanNXLWpUemNqcXU5X2ZVRGNacmZKekUxQ0d3Q0pZQW93czdBTndpU191ZlBTYjVuOFpvV2NyNC1PNnQ3NDlaRExUUXBnWGNvM1NmWURLbjNa?oc=5",
+   "author": "Yahoo Sports",
+   "author_name": "Yahoo Sports",
+   "author_url": "https://ca.sports.yahoo.com",
+   "text": "Commanders WR Terry McLaurin won't play London game because of hamstring injury - Yahoo Sports",
+   "posted_at": "Sun, 04 Oct 2026 12:24:35 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPVF9scXlWcWphM1lDOEdXRXZqN29Uem8tQy0wM0c5QzM2QzNuaUhvNDh2NWstNldHanNXLWpUemNqcXU5X2ZVRGNacmZKekUxQ0d3Q0pZQW93czdBTndpU191ZlBTYjVuOFpvV2NyNC1PNnQ3NDlaRExUUXBnWGNvM1NmWURLbjNa?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "hamstring",
+   "signal": 0.75,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "OUT_FOR_GAME",
+   "game_event": "ruled-out-for-game",
+   "raw": {
+    "outlet": "Yahoo Sports",
+    "query": "\"Riley Leonard\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPdXJ6WDhyLWpHbERYVG5JbkdSMGhPMktILWpUdVhqUktUbEZ2dWFKSVI5dFY1QzFpa3c1MXFCT2FxZ2o1UjBtLWNKWUIxaVY5QVdKWXhBRVJaWVY5RnNIRXR5UXhpeGQzY29VSW4tRGxZZ3Q2RVRqMUUzdVA2TExDbk1jUUZISFJaMnlqV3pmNFc3NDdQWUhlZS14bXEtY3hlZHUwVWY3czk0QjZyMDBrVDI0TWNpeC1BaFFIYU5HMkRISU9taDROLUF3MXhRbXBtcEVpcThIaHRJX2ZubnNOWVl4SkNrTzlpSHFjM1RmWnVCR3hQOUVfanRMLS1raWMzb2Y2clE4dGc?oc=5",
    "author": "WUSA9",
    "author_name": "WUSA9",
@@ -3569,6 +3596,33 @@
    "raw": {
     "outlet": "WUSA9",
     "query": "\"DJ Giddens\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQc0d0bjNlNGwzcGFGTWt0cGFST0FnQnUyOFYtam5OWFNuZEtyRzZQTWNFeUx0YVU2ZUZwejA2bV9PTGlUc0N0Y1VJOVVNR21lVlZpaUs1NUllc3hnV0ljMUJDQ1NOSS1LV1U0WW5uNjRtYzFVZl9FcXowd0JsQ04tbVh6SEFQM1dtMDlQUUwtckhPeldCTERoLV9hOXgtRERZ?oc=5",
+   "author": "RotoWire",
+   "author_name": "RotoWire",
+   "author_url": "https://www.rotowire.com",
+   "text": "Riley Leonard News: No. 3 quarterback for Week 4 - RotoWire",
+   "posted_at": "Sun, 04 Oct 2026 12:19:32 GMT",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQc0d0bjNlNGwzcGFGTWt0cGFST0FnQnUyOFYtam5OWFNuZEtyRzZQTWNFeUx0YVU2ZUZwejA2bV9PTGlUc0N0Y1VJOVVNR21lVlZpaUs1NUllc3hnV0ljMUJDQ1NOSS1LV1U0WW5uNjRtYzFVZl9FcXowd0JsQ04tbVh6SEFQM1dtMDlQUUwtckhPeldCTERoLV9hOXgtRERZ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.45,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "RotoWire",
+    "query": "\"Riley Leonard\" injury when:1d"
    }
   },
   {
@@ -4140,6 +4194,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMijApBVV95cUxPeWJUakNFY241bzJJYldpYTNDQXhBMEZEVFFnMkI5WHh3aUJ2N0ZHWEpKMWhYOXoweDVTTm1JTVVpY1lqRm5sYTgwcUNKSVpZTUdDd2tRQ2V4ZVBZaXZvRDAwVy01STR0OGdYWFhCTG5UYXBfakItTlJWWGRYekFqRUhINnBMUVNuX1JKVkRHS1Nta0ZFbkxxUjEzQzVObl92X24xX25XejF4ZlJTZTVpR1BpcmVGWUloMFRfeWliTFlrckpLMGpLN2dGWEI3bUxrUlpBU012NXliSGY4WGNWa0ZzTFpEbi1LVjVTMlNGYXlFMnVhXzJDQ05DZkdKeGtiQUVLMVJaRnFSMW5xUVAzUlB5UEtTbEZtTWFGVHNTVmoxeTBXRk44a2dDTmVBU2RNVXczSGkxYVJMb0hFV1lSMklFeFo0SERSMVh6eFcxS1JtNnhvdTVVbGt2dFhpQjN3S3dCaVZTZVRFNmp3UXZ3Q1JPS3BKc2g1bGJFWmZLUG1jUmJVQTlhcml2djlMaTE2bmc4NHgxRDhYSWxyZmh1bzJ6Uk9CeWVRUjhwV05GUGdzSDdLczF1Ql82Wl9fUUxCSkh5bVZ0WkVfS0tFN3o1WjFvUFRkVGt5cENGb2ZtNS10Y0dGVTVKR2dTZXRhelU2aGcwZ3pONUNNdUh1UU1udEZ0T1VnQ3N1Q05Rc3U5ejZKNk9tTC1FMHBDVk12QjhDZzREZjUyTW1hWTI4dERrNEF0dHd1akN2bS16b01VMWZPX0daZkRDaWxESDBWZjFyOFhmNVBOS2lib0tWQ0ZjYTlvMWNDMXZtY2JjMkJmZ0lEN1pRUGQ5SjlsUy05ejdDNGFIZW53bjl6QTZjSnpNakpjd0V1N0ZQekxQVkZfa01mamRsYmlkT1NvX1pkanQ3WDlRbmR2N1JKQnBNQkNFenVCU0NfZk5hVWwwUWhNQ2dOX080dlNmNWlwLS1QNXM0c2hlQUd0UnNzaXlrOE1QUHNnUjBrUkFGamVyb0xORlB4SWl2SVhtLU41MjhCdEc0LW16bnEzZnQ4TkswcTJZVFJ2SllpcVVSMGlVVDNtLUJxQnp0OXVwY19qUjlvaUVJYm9tWVpWdGtlTld3ZkkyYzFuUjNnSTRiWThmWHZILU9zRkYyMlFjNGhqeVhZT05iZTZvcmxwb1R0MkFqWTZ0UWhtVWFSUXlWU01EdkFKem54U0pDUG9JTHZpZ05OdUt1bHRlU0lTT25lR1ptSnpDUmpFd3FTbks0RUdvSVhvY2RhdFh0MXUwbmNoYTRUZUlJb1M2akdUUnRpamJ2OU9vdTF2cFdnQzhZSlc5VHI2R2UwQkxTcFN4UTlqSkJ1TnVNVm5YTWlsRjQzb1JJcjZveENYQV93d3lBeExIdVNRUjdiZXN1ZUNBaGNfQmM2UnhXQ1JNck9FdjllUlN1QUhjVTNvUGV0V0RscHlFeDRoZFRVbVZrSVp1S3RyVlYweFVWRW92SVMxbm9nZ3hNVkUtWmt5VU1rODZkUGN0dTlPY0w1aTU5Z01ReVlZSXFVVF9sSHhiMDhYN1R2R1dKczk4b0toTmhaaEVNaENyLTVQZ2RycjRySXVYRHlhOXM0aThwWFh0ZlRBX0czS2dTYjlnSnRnaHhJeldJdS0tWlBYVmZRaVJZOUZldW9JbTJpUWRLRXJJTW40M3J3ZUQ5UENGTGZ6R2FBZTZ6N3JPYw?oc=5",
+   "author": "ABC7 Eyewitness News",
+   "author_name": "ABC7 Eyewitness News",
+   "author_url": "https://abc7ny.com",
+   "text": "Sources: Giants WR Darius Slayton has core-muscle surgery - ABC7 Eyewitness News",
+   "posted_at": "Sun, 04 Oct 2026 11:15:03 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijApBVV95cUxPeWJUakNFY241bzJJYldpYTNDQXhBMEZEVFFnMkI5WHh3aUJ2N0ZHWEpKMWhYOXoweDVTTm1JTVVpY1lqRm5sYTgwcUNKSVpZTUdDd2tRQ2V4ZVBZaXZvRDAwVy01STR0OGdYWFhCTG5UYXBfakItTlJWWGRYekFqRUhINnBMUVNuX1JKVkRHS1Nta0ZFbkxxUjEzQzVObl92X24xX25XejF4ZlJTZTVpR1BpcmVGWUloMFRfeWliTFlrckpLMGpLN2dGWEI3bUxrUlpBU012NXliSGY4WGNWa0ZzTFpEbi1LVjVTMlNGYXlFMnVhXzJDQ05DZkdKeGtiQUVLMVJaRnFSMW5xUVAzUlB5UEtTbEZtTWFGVHNTVmoxeTBXRk44a2dDTmVBU2RNVXczSGkxYVJMb0hFV1lSMklFeFo0SERSMVh6eFcxS1JtNnhvdTVVbGt2dFhpQjN3S3dCaVZTZVRFNmp3UXZ3Q1JPS3BKc2g1bGJFWmZLUG1jUmJVQTlhcml2djlMaTE2bmc4NHgxRDhYSWxyZmh1bzJ6Uk9CeWVRUjhwV05GUGdzSDdLczF1Ql82Wl9fUUxCSkh5bVZ0WkVfS0tFN3o1WjFvUFRkVGt5cENGb2ZtNS10Y0dGVTVKR2dTZXRhelU2aGcwZ3pONUNNdUh1UU1udEZ0T1VnQ3N1Q05Rc3U5ejZKNk9tTC1FMHBDVk12QjhDZzREZjUyTW1hWTI4dERrNEF0dHd1akN2bS16b01VMWZPX0daZkRDaWxESDBWZjFyOFhmNVBOS2lib0tWQ0ZjYTlvMWNDMXZtY2JjMkJmZ0lEN1pRUGQ5SjlsUy05ejdDNGFIZW53bjl6QTZjSnpNakpjd0V1N0ZQekxQVkZfa01mamRsYmlkT1NvX1pkanQ3WDlRbmR2N1JKQnBNQkNFenVCU0NfZk5hVWwwUWhNQ2dOX080dlNmNWlwLS1QNXM0c2hlQUd0UnNzaXlrOE1QUHNnUjBrUkFGamVyb0xORlB4SWl2SVhtLU41MjhCdEc0LW16bnEzZnQ4TkswcTJZVFJ2SllpcVVSMGlVVDNtLUJxQnp0OXVwY19qUjlvaUVJYm9tWVpWdGtlTld3ZkkyYzFuUjNnSTRiWThmWHZILU9zRkYyMlFjNGhqeVhZT05iZTZvcmxwb1R0MkFqWTZ0UWhtVWFSUXlWU01EdkFKem54U0pDUG9JTHZpZ05OdUt1bHRlU0lTT25lR1ptSnpDUmpFd3FTbks0RUdvSVhvY2RhdFh0MXUwbmNoYTRUZUlJb1M2akdUUnRpamJ2OU9vdTF2cFdnQzhZSlc5VHI2R2UwQkxTcFN4UTlqSkJ1TnVNVm5YTWlsRjQzb1JJcjZveENYQV93d3lBeExIdVNRUjdiZXN1ZUNBaGNfQmM2UnhXQ1JNck9FdjllUlN1QUhjVTNvUGV0V0RscHlFeDRoZFRVbVZrSVp1S3RyVlYweFVWRW92SVMxbm9nZ3hNVkUtWmt5VU1rODZkUGN0dTlPY0w1aTU5Z01ReVlZSXFVVF9sSHhiMDhYN1R2R1dKczk4b0toTmhaaEVNaENyLTVQZ2RycjRySXVYRHlhOXM0aThwWFh0ZlRBX0czS2dTYjlnSnRnaHhJeldJdS0tWlBYVmZRaVJZOUZldW9JbTJpUWRLRXJJTW40M3J3ZUQ5UENGTGZ6R2FBZTZ6N3JPYw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "core",
+   "signal": 0.45,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "ABC7 Eyewitness News",
+    "query": "\"Darius Slayton\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNTDBaQVFSWUJxRHdZdnFETU9ObERKRVptZHNLcUJXbGd3SXlWd2FDTkphQmNxM1Q2Ul9mVWZwSEI0MXVWaDQwUGJCdG0xdGhZWTJ2X1F4WWlNRGQzcW5xVEhVX3RfLUktVlBiTmhLNW40Zm13T2Z6X0tONmJ4dGFMRkdNb04tX1lXeGlKek54QWtSZ1B3OXZKSE05VlpqLUxRaXJhX2dKWWNBalkyTk5BOWZ3VVFjUmhoeHhJbkc1YXhQaC1vVDBDRlFOQkpkNDhpSGtIZW5xM0pkd0ZqOFMxTnV5dHZTdWF1OGs1ZDJ3bXU4QkkzV0RFTEdzUzVqZDNZ?oc=5",
    "author": "Chiefs Wire",
    "author_name": "Chiefs Wire",
@@ -4244,6 +4325,33 @@
    "raw": {
     "outlet": "Sports Illustrated",
     "query": "\"Los Angeles Rams\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPU2dhWU8tNnlVQTlJc3p3R2R2NUl6a3YwcTUxLU5rLWpwOHVlLThUMXBVMG82M0Rzb0p3dEF0akRmekdDbEM5VzV1dWItTmdqWVQxSG80OEQtN0g3Yl9Eei02U0N6OS1xU3pqdU9leFpGQWxUVjljcU5MTWJOMkJyUkhCNXJNMFZ1UC12QTBCRk5RZw?oc=5",
+   "author": "Yahoo Sports",
+   "author_name": "Yahoo Sports",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Jayden Daniels injury update: Latest on Commanders QB's status for today's game - Yahoo Sports",
+   "posted_at": "Sun, 04 Oct 2026 11:03:04 GMT",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPU2dhWU8tNnlVQTlJc3p3R2R2NUl6a3YwcTUxLU5rLWpwOHVlLThUMXBVMG82M0Rzb0p3dEF0akRmekdDbEM5VzV1dWItTmdqWVQxSG80OEQtN0g3Yl9Eei02U0N6OS1xU3pqdU9leFpGQWxUVjljcU5MTWJOMkJyUkhCNXJNMFZ1UC12QTBCRk5RZw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.15,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Yahoo Sports",
+    "query": "NFL injury report"
    }
   },
   {
@@ -4946,33 +5054,6 @@
    "raw": {
     "outlet": "ABC7 Chicago",
     "query": "\"Minnesota Vikings\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPb2xLeUJ0Z19WZkx0TTV4RDIzZ2ZRWlk3QWxBNWZZZ09iX0s0cHhLS2tCQmNsUWZHY0otaWh1Rmw3TjRoWlI2S1hxQXVMdXBHSXVhOXZVSFZTYVpjNnJuclU0eGk1VU5iTWFyVFBqU3BVRUNFZE00UlFHbDZiQmNyYlkwRmw5VllsYUQ1bVhaTQ?oc=5",
-   "author": "PlayerProfiler",
-   "author_name": "PlayerProfiler",
-   "author_url": "https://www.playerprofiler.com",
-   "text": "NFL Injury Report | Fantasy Football Week 4, 2026 - PlayerProfiler",
-   "posted_at": "Sun, 04 Oct 2026 05:18:36 GMT",
-   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPb2xLeUJ0Z19WZkx0TTV4RDIzZ2ZRWlk3QWxBNWZZZ09iX0s0cHhLS2tCQmNsUWZHY0otaWh1Rmw3TjRoWlI2S1hxQXVMdXBHSXVhOXZVSFZTYVpjNnJuclU0eGk1VU5iTWFyVFBqU3BVRUNFZE00UlFHbDZiQmNyYlkwRmw5VllsYUQ1bVhaTQ?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.45,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "PlayerProfiler",
-    "query": "NFL injury report"
    }
   },
   {
@@ -6057,6 +6138,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMif0FVX3lxTE16Y0hib0RsOGVKRU4xQnRqcVNVbk9QbVM5ZG9LWXRGYmZHZWdsRnhJRERZNVVidzhIQUFsWmJEUndISmllRDFQMDNZcXliNnVwWFBVd0lVbjdndW5tY2dkeHkyLUtVTDYyYV9WczFXUVZRbjFBQ2xjQTdidi1WcDg?oc=5",
+   "author": "AOL.com",
+   "author_name": "AOL.com",
+   "author_url": "https://www.aol.com",
+   "text": "Keenan Allen downgraded to out for Week 4 - AOL.com",
+   "posted_at": "Sat, 03 Oct 2026 21:07:32 GMT",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE16Y0hib0RsOGVKRU4xQnRqcVNVbk9QbVM5ZG9LWXRGYmZHZWdsRnhJRERZNVVidzhIQUFsWmJEUndISmllRDFQMDNZcXliNnVwWFBVd0lVbjdndW5tY2dkeHkyLUtVTDYyYV9WczFXUVZRbjFBQ2xjQTdidi1WcDg?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "OUT",
+   "injury": "",
+   "signal": 0.7,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "AOL.com",
+    "query": "\"Keenan Allen\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQTHRQb1pUdWY2Ql9VajMteWE0Y1lRRXg5Uk9OOWtmU1pfVnZPQkYtRjhhc0pzcmcwd3hMM0lPUjJiSjkzS3JUbU1NLXdGN3dIbnByMEhxbnd0eEtoLTl1bTY4YklzWnI2S1g5QUVlTExEZXEwb0NiMHZ4eVJ6dHRfRzBMUUJoOXhVX0R3c3RMNWtrQVpEQ21mcUliNzhDaEwzT2FIelFlVGc?oc=5",
    "author": "DraftKings Network",
    "author_name": "DraftKings Network",
@@ -6786,13 +6894,13 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQdDNnSXhXU2JUbG1MMUdCLWZRYVVkMXZoSURJcjZISFJRU3dtUUM1emN0SE8tY0oyQ1k0bWkzb2pKeXNXSmd6dkJoOHF1QkVRT0IwbjRROHUtVnY5dmpCZDRQMkNYNldoalJISDFlU19DSVliLTF4VkxudS1BYmJXdzFaODE1clBhS1ZxX000TGpRQTJIS3FYOUlGV1BHWm4xWlBPcEFzTDF1STRtdmdfRHNPeDZ2TFdvUjVXYXEwNE1SS2p4VVYxdzlSXzZSMkZIM2J3WDh0S216SGxDX1ZFc3dNZ0xmVFdOcmNN?oc=5",
-   "author": "Canal Street Chronicles",
-   "author_name": "Canal Street Chronicles",
-   "author_url": "https://www.canalstreetchronicles.com",
-   "text": "Saturday’s Final Saints vs. Falcons Injury Report: LB Kaden Elliss has been ruled out - Canal Street Chronicles",
+   "post_id": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNS3pEMGNHVDVjU1Z5N1BnVmtoWkpLdzN4bG1yRW82LVhnUU90OWhuNTdrZWlwT3l4OFBEV3FxT3Zqc0FNb1pFcWFkTmc4Y2hFdmpFWWNWVHdLYXcxaVhCc1k5blRvRndvNW5lRFBWT3ZVX0cyWElENHZ2VEgwWTBqenlsdk5IY3R0?oc=5",
+   "author": "Yahoo Sports",
+   "author_name": "Yahoo Sports",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Saturday’s Final Saints vs. Falcons Injury Report: LB Kaden Elliss has been ruled out - Yahoo Sports",
    "posted_at": "Sat, 03 Oct 2026 18:15:33 GMT",
-   "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQdDNnSXhXU2JUbG1MMUdCLWZRYVVkMXZoSURJcjZISFJRU3dtUUM1emN0SE8tY0oyQ1k0bWkzb2pKeXNXSmd6dkJoOHF1QkVRT0IwbjRROHUtVnY5dmpCZDRQMkNYNldoalJISDFlU19DSVliLTF4VkxudS1BYmJXdzFaODE1clBhS1ZxX000TGpRQTJIS3FYOUlGV1BHWm4xWlBPcEFzTDF1STRtdmdfRHNPeDZ2TFdvUjVXYXEwNE1SS2p4VVYxdzlSXzZSMkZIM2J3WDh0S216SGxDX1ZFc3dNZ0xmVFdOcmNN?oc=5",
+   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNS3pEMGNHVDVjU1Z5N1BnVmtoWkpLdzN4bG1yRW82LVhnUU90OWhuNTdrZWlwT3l4OFBEV3FxT3Zqc0FNb1pFcWFkTmc4Y2hFdmpFWWNWVHdLYXcxaVhCc1k5blRvRndvNW5lRFBWT3ZVX0cyWElENHZ2VEgwWTBqenlsdk5IY3R0?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -6807,7 +6915,7 @@
    "in_game_status": "OUT_FOR_GAME",
    "game_event": "ruled-out-for-game",
    "raw": {
-    "outlet": "Canal Street Chronicles",
+    "outlet": "Yahoo Sports",
     "query": "\"New Orleans Saints\" injury when:1d"
    }
   },
