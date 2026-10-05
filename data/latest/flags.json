@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-05T03:41:28Z",
+ "generated_at": "2026-10-05T07:00:23Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1062,22 +1062,30 @@
    ]
   },
   {
-   "code": "CLAIMS_CONTRADICTED",
+   "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "72 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: ESPN said DOUBTFUL for Rashee Rice (official: see link); Seattle Seahawks said QUESTIONABLE for Leonard Williams (official: see link); Yahoo Sports said OUT for Kyle Juszczyk (official: see link); Yahoo Sports said OUT for Riley Moss (official: see link); Yahoo Sports said OUT for Ladd McConkey (official: see link)",
+   "title": "Roster index pruned 2 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: IND:tahj-chambers (not asserted by any source for 14.1 days); IND:cj-allen (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
-     "label": "ESPN: Rashee Rice DOUBTFUL",
-     "url": "https://www.nfl.com/players/rashee-rice/"
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "69 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: usatoday.com said OUT for Saquon Barkley (official: see link); Seattle Seahawks said QUESTIONABLE for Leonard Williams (official: see link); Yahoo Sports said OUT for Riley Moss (official: see link); Yahoo Sports said OUT for Ladd McConkey (official: see link); ABC7 Los Angeles said DOUBTFUL for Rashee Rice (official: see link)",
+   "evidence": [
+    {
+     "label": "usatoday.com: Saquon Barkley OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/3929630/saquon-barkley"
     },
     {
      "label": "Seattle Seahawks: Leonard Williams QUESTIONABLE",
      "url": "https://www.nfl.com/players/leonard-williams/"
-    },
-    {
-     "label": "Yahoo Sports: Kyle Juszczyk OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/16002/kyle-juszczyk"
     },
     {
      "label": "Yahoo Sports: Riley Moss OUT",
@@ -1086,6 +1094,10 @@
     {
      "label": "Yahoo Sports: Ladd McConkey OUT",
      "url": "https://www.nfl.com/players/ladd-mcconkey/"
+    },
+    {
+     "label": "ABC7 Los Angeles: Rashee Rice DOUBTFUL",
+     "url": "https://www.nfl.com/players/rashee-rice/"
     }
    ]
   },
