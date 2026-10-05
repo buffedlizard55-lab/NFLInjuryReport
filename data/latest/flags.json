@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-05T22:11:40Z",
+ "generated_at": "2026-10-05T22:44:23Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -864,6 +864,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Rueben Bain Jr.",
+   "detail": "nfl.com (official) says OUT; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/rueben-bain-jr/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Swayze Bozeman",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -1040,7 +1056,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "10 player(s) have no official designation but do have an ESPN status",
+   "title": "11 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1062,23 +1078,19 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CHI:jahdae-walker (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "60 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Metro Philadelphia said IR for Tank Bigsby (official: see link); rapsheet.bsky.social said IR for Tank Bigsby (official: see link); Yahoo Sports said QUESTIONABLE for Lamar Jackson (official: see link); SNY said IR for Braxton Berrios (official: see link); AOL.com said IR for Braxton Berrios (official: see link)",
+   "title": "59 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Baltimore Sun said QUESTIONABLE for Lamar Jackson (official: see link); Bleeding Green Nation said IR for Tank Bigsby (official: see link); Metro Philadelphia said IR for Tank Bigsby (official: see link); rapsheet.bsky.social said IR for Tank Bigsby (official: see link); Yahoo Sports said QUESTIONABLE for Lamar Jackson (official: see link)",
    "evidence": [
+    {
+     "label": "Baltimore Sun: Lamar Jackson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
+    },
+    {
+     "label": "Bleeding Green Nation: Tank Bigsby IR",
+     "url": "https://www.nfl.com/players/tank-bigsby/"
+    },
     {
      "label": "Metro Philadelphia: Tank Bigsby IR",
      "url": "https://www.nfl.com/players/tank-bigsby/"
@@ -1090,14 +1102,6 @@
     {
      "label": "Yahoo Sports: Lamar Jackson QUESTIONABLE",
      "url": "https://www.nfl.com/players/lamar-jackson/"
-    },
-    {
-     "label": "SNY: Braxton Berrios IR",
-     "url": "https://www.espn.com/nfl/player/_/id/3123075/braxton-berrios"
-    },
-    {
-     "label": "AOL.com: Braxton Berrios IR",
-     "url": "https://www.espn.com/nfl/player/_/id/3123075/braxton-berrios"
     }
    ]
   },
