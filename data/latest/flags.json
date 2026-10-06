@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-05T23:18:10Z",
+ "generated_at": "2026-10-06T00:27:48Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1146,41 +1146,29 @@
    ]
   },
   {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for ATL @ NO parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872979 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872979"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "60 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Baltimore Sun said QUESTIONABLE for Lamar Jackson (official: see link); Bleeding Green Nation said IR for Tank Bigsby (official: see link); Metro Philadelphia said IR for Tank Bigsby (official: see link); rapsheet.bsky.social said IR for Tank Bigsby (official: see link); Yahoo Sports said QUESTIONABLE for Lamar Jackson (official: see link)",
+   "title": "73 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: CBS Sports said ACTIVE for Samson Ebukam (official: see link); Canal Street Chronicles said OUT for Noah Fant (official: see link); Yahoo Sports said OUT for Noah Fant (official: see link); Yahoo Sports said QUESTIONABLE for Lamar Jackson (official: see link); Baltimore Sun said QUESTIONABLE for Lamar Jackson (official: see link)",
    "evidence": [
     {
-     "label": "Baltimore Sun: Lamar Jackson QUESTIONABLE",
-     "url": "https://www.nfl.com/players/lamar-jackson/"
+     "label": "CBS Sports: Samson Ebukam ACTIVE",
+     "url": "https://www.nfl.com/players/samson-ebukam/"
     },
     {
-     "label": "Bleeding Green Nation: Tank Bigsby IR",
-     "url": "https://www.nfl.com/players/tank-bigsby/"
+     "label": "Canal Street Chronicles: Noah Fant OUT",
+     "url": "https://www.nfl.com/players/noah-fant-x4946/"
     },
     {
-     "label": "Metro Philadelphia: Tank Bigsby IR",
-     "url": "https://www.nfl.com/players/tank-bigsby/"
-    },
-    {
-     "label": "rapsheet.bsky.social: Tank Bigsby IR",
-     "url": "https://www.nfl.com/players/tank-bigsby/"
+     "label": "Yahoo Sports: Noah Fant OUT",
+     "url": "https://www.nfl.com/players/noah-fant-x4946/"
     },
     {
      "label": "Yahoo Sports: Lamar Jackson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
+    },
+    {
+     "label": "Baltimore Sun: Lamar Jackson QUESTIONABLE",
      "url": "https://www.nfl.com/players/lamar-jackson/"
     }
    ]
@@ -1206,22 +1194,6 @@
     {
      "label": "handle.invalid",
      "url": "https://bsky.app/profile/handle.invalid"
-    }
-   ]
-  },
-  {
-   "code": "DIRECTORY_CROSS_TEAM_BEAT",
-   "severity": "low",
-   "title": "Beat writer Aaron Wilson is attributed across 2 clubs (HOU, MIN)",
-   "detail": "ESPN printed Aaron Wilson (KPRC 2 Houston) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
-   "evidence": [
-    {
-     "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/4837286/wade-woodaz"
-    },
-    {
-     "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4360637/jeshaun-jones"
     }
    ]
   },
