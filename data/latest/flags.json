@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-06T01:48:08Z",
+ "generated_at": "2026-10-06T01:49:46Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1146,13 +1146,29 @@
    ]
   },
   {
-   "code": "CLAIMS_CONTRADICTED",
+   "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "73 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: cbssports.com said ACTIVE for Samson Ebukam (official: see link); Canal Street Chronicles said OUT for Noah Fant (official: see link); sports.yahoo.com said OUT for Noah Fant (official: see link); Baltimore Sun said QUESTIONABLE for Lamar Jackson (official: see link); metrophiladelphia.com said IR for Tank Bigsby (official: see link)",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: MIN:dillon-bell (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
-     "label": "cbssports.com: Samson Ebukam ACTIVE",
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "74 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC Sports said QUESTIONABLE for Za'Darius Smith (official: see link); CBS Sports said ACTIVE for Samson Ebukam (official: see link); Canal Street Chronicles said OUT for Noah Fant (official: see link); Yahoo Sports said OUT for Noah Fant (official: see link); Baltimore Sun said QUESTIONABLE for Lamar Jackson (official: see link)",
+   "evidence": [
+    {
+     "label": "NBC Sports: Za'Darius Smith QUESTIONABLE",
+     "url": "https://www.nfl.com/players/za-darius-smith/"
+    },
+    {
+     "label": "CBS Sports: Samson Ebukam ACTIVE",
      "url": "https://www.nfl.com/players/samson-ebukam/"
     },
     {
@@ -1160,16 +1176,12 @@
      "url": "https://www.nfl.com/players/noah-fant-x4946/"
     },
     {
-     "label": "sports.yahoo.com: Noah Fant OUT",
+     "label": "Yahoo Sports: Noah Fant OUT",
      "url": "https://www.nfl.com/players/noah-fant-x4946/"
     },
     {
      "label": "Baltimore Sun: Lamar Jackson QUESTIONABLE",
      "url": "https://www.nfl.com/players/lamar-jackson/"
-    },
-    {
-     "label": "metrophiladelphia.com: Tank Bigsby IR",
-     "url": "https://www.nfl.com/players/tank-bigsby/"
     }
    ]
   },
