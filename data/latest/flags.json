@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-07T23:30:26Z",
+ "generated_at": "2026-10-07T23:45:15Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1854,18 +1854,6 @@
     {
      "label": "Summary URL",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872994"
-    }
-   ]
-  },
-  {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 115 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: HOU:trent-brown (official report lists the player under a different club); JAX:lequint-allen (official report lists the player under a different club); MIN:jordan-mason (not asserted by any source for 14.0 days); WAS:tanoa-togiai (not asserted by any source for 14.0 days); WAS:ricky-barber (not asserted by any source for 14.0 days); HOU:wade-woodaz (official report lists the player under a different club); JAX:eric-murray (official report lists the player under a different club); PHI:azeez-al-shaair (official report lists the player under a different club); PHI:will-anderson (official report lists the player under a different club); PHI:trent-brown (official report lists the player under a different club); PHI:jadeveon-clowney (official report lists the player under a different club); PHI:nico-collins (official report lists the player under a different club); PHI:tank-dell (official report lists the player under a different club); PHI:logan-hall (official report lists the player under a different club); PHI:jamal-hill (official report lists the player under a different club); PHI:kayden-mcdonald (official report lists the player under a different club); PHI:braden-smith (official report lists the player under a different club); PHI:mj-stewart (official report lists the player under a different club); PHI:nathan-thomas (official report lists the player under a different club); PHI:wade-woodaz (official report lists the player under a different club) (+95 more). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
     }
    ]
   },
