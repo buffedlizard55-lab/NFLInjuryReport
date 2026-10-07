@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-07T00:59:33Z",
+ "generated_at": "2026-10-07T02:20:45Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1658,9 +1658,21 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 7 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CIN:ja-sir-taylor (not asserted by any source for 14.0 days); IND:dj-montgomery (not asserted by any source for 14.0 days); KC:jimmy-holiday (not asserted by any source for 14.0 days); LAR:max-klare (not asserted by any source for 14.0 days); NE:karon-prunty (not asserted by any source for 14.0 days); TB:david-sills-v (not asserted by any source for 14.0 days); SF:jake-tonges (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "67 reporter claim(s) contradicted by the official report",
+   "title": "66 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said IR for Tank Bigsby (official: see link); Philadelphia Eagles said IR for Tank Bigsby (official: see link); Green Bay Packers – packers.com said IR for Edgerrin Cooper (official: see link); The Baltimore Banner said OUT for Durham Smythe (official: see link); Broncos Wire said IR for Pat Surtain II (official: see link)",
    "evidence": [
     {
