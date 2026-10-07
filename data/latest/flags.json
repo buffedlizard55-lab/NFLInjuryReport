@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-07T19:33:00Z",
+ "generated_at": "2026-10-07T20:11:44Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -202,18 +202,6 @@
     {
      "label": "Summary URL",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872994"
-    }
-   ]
-  },
-  {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 5 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CIN:brian-parker (not asserted by any source for 14.0 days); CLE:jeremiah-owusu-koramoah (not asserted by any source for 14.0 days); CLE:dylan-sampson (not asserted by any source for 14.0 days); DET:juice-scruggs (not asserted by any source for 14.0 days); CLE:dawand-jones (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
     }
    ]
   },
