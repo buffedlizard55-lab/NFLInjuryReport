@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T19:29:18Z",
+ "generated_at": "2026-10-08T20:37:16Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -36,7 +36,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "120 player(s) have no official designation but do have an ESPN status",
+   "title": "122 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -226,25 +226,21 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 119 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: PHI:josh-hines-allen (official report lists the player under a different club); PHI:lequint-allen (official report lists the player under a different club); PHI:montaric-brown (official report lists the player under a different club); PHI:davon-hamilton (official report lists the player under a different club); PHI:anton-harrison (official report lists the player under a different club); PHI:jarrian-jones (official report lists the player under a different club); PHI:jaylon-jones (official report lists the player under a different club); PHI:jourdan-lewis (official report lists the player under a different club); PHI:jakobi-meyers (official report lists the player under a different club); PHI:eric-murray (official report lists the player under a different club); PHI:cole-van-lanen (official report lists the player under a different club); JAX:azeez-al-shaair (official report lists the player under a different club); JAX:will-anderson (official report lists the player under a different club); JAX:trent-brown (official report lists the player under a different club); JAX:jadeveon-clowney (official report lists the player under a different club); JAX:nico-collins (official report lists the player under a different club); JAX:tank-dell (official report lists the player under a different club); JAX:logan-hall (official report lists the player under a different club); JAX:jamal-hill (official report lists the player under a different club); JAX:kayden-mcdonald (official report lists the player under a different club) (+99 more). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "40 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said IR for Tyler Smith (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link); rapsheet.bsky.social said ACTIVE for Monroe Freeling (official: see link); rapsheet.bsky.social said QUESTIONABLE for Zay Flowers (official: see link); rapsheet.bsky.social said QUESTIONABLE for Jadeveon Clowney (official: see link)",
+   "title": "43 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said IR for Tyler Smith (official: see link); Yahoo Sports said IR for Matthew Golden (official: see link); Yahoo Sports said OUT for Tyler Smith (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link); rapsheet.bsky.social said ACTIVE for Monroe Freeling (official: see link)",
    "evidence": [
     {
      "label": "rapsheet.bsky.social: Tyler Smith IR",
+     "url": "https://www.nfl.com/players/tyler-smith/"
+    },
+    {
+     "label": "Yahoo Sports: Matthew Golden IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4701936/matthew-golden"
+    },
+    {
+     "label": "Yahoo Sports: Tyler Smith OUT",
      "url": "https://www.nfl.com/players/tyler-smith/"
     },
     {
@@ -254,14 +250,6 @@
     {
      "label": "rapsheet.bsky.social: Monroe Freeling ACTIVE",
      "url": "https://www.espn.com/nfl/player/_/id/4870694/monroe-freeling"
-    },
-    {
-     "label": "rapsheet.bsky.social: Zay Flowers QUESTIONABLE",
-     "url": "https://www.nfl.com/players/zay-flowers/"
-    },
-    {
-     "label": "rapsheet.bsky.social: Jadeveon Clowney QUESTIONABLE",
-     "url": "https://www.nfl.com/players/jadeveon-clowney/"
     }
    ]
   },
