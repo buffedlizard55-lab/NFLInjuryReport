@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T01:15:51Z",
+ "generated_at": "2026-10-08T02:50:25Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1412,22 +1412,6 @@
   {
    "code": "PLAYER_TEAM_CONFLICT",
    "severity": "high",
-   "title": "'Nico Collins' is listed under conflicting clubs",
-   "detail": "Sources disagree about which club 'Nico Collins' belongs to (HOU, JAX). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
-   "evidence": [
-    {
-     "label": "nfl.com: JAX",
-     "url": "https://www.nfl.com/injuries/"
-    },
-    {
-     "label": "espn: HOU",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "PLAYER_TEAM_CONFLICT",
-   "severity": "high",
    "title": "'Rashod Bateman' is listed under conflicting clubs",
    "detail": "Sources disagree about which club 'Rashod Bateman' belongs to (BAL, PIT). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
    "evidence": [
@@ -1886,6 +1870,18 @@
     {
      "label": "Summary URL",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872994"
+    }
+   ]
+  },
+  {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 3 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: HOU:nico-collins (official report lists the player under a different club); SF:de-zhaun-stribling (not asserted by any source for 14.1 days); HOU:aiden-fisher (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
     }
    ]
   },
