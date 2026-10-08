@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-10-08T09:47:32Z",
+ "generated_at": "2026-10-08T10:07:26Z",
  "season": 2026,
  "week": 5,
- "official_fetched_at": "2026-10-08T09:47:35Z",
- "espn_source_timestamp": "2026-10-08T09:47:33Z",
+ "official_fetched_at": "2026-10-08T10:07:28Z",
+ "espn_source_timestamp": "2026-10-08T10:07:26Z",
  "counts": {
   "players": 931,
   "teams": 32,
   "out": 65,
-  "questionable": 169,
+  "questionable": 170,
   "doubtful": 12,
-  "alerts": 1,
+  "alerts": 2,
   "in_game_events": 0,
   "in_game_alerts": 0,
   "irregularities": 106
@@ -1466,7 +1466,7 @@
    "name": "Baltimore Ravens",
    "count": 25,
    "out": 1,
-   "questionable": 10,
+   "questionable": 11,
    "doubtful": 0,
    "players": [
     {
@@ -1561,11 +1561,11 @@
      "team": "BAL",
      "position": "WR",
      "injury": "",
-     "game_status": "ACTIVE",
+     "game_status": "QUESTIONABLE",
      "designation_source": "",
      "practice_status": "NONE",
      "est_return": "",
-     "comment": "",
+     "comment": "questionable",
      "attribution": "",
      "outlet": "",
      "observed_at": "2026-10-08T09:00:00Z",
@@ -3659,19 +3659,19 @@
      "team": "CHI",
      "position": "S",
      "injury": "",
-     "game_status": "IR",
+     "game_status": "OUT",
      "designation_source": "",
      "practice_status": "NONE",
      "est_return": "",
-     "comment": "ir",
+     "comment": "out",
      "attribution": "",
      "outlet": "",
-     "observed_at": "2026-10-08T09:00:00Z",
+     "observed_at": "2026-10-08T10:00:00Z",
      "sources": [
       {
        "source": "espn",
        "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
-       "observed_at": "2026-10-08T09:00:00Z"
+       "observed_at": "2026-10-08T10:00:00Z"
       }
      ],
      "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
@@ -28798,11 +28798,11 @@
    "team": "BAL",
    "position": "WR",
    "injury": "",
-   "game_status": "ACTIVE",
+   "game_status": "QUESTIONABLE",
    "designation_source": "",
    "practice_status": "NONE",
    "est_return": "",
-   "comment": "",
+   "comment": "questionable",
    "attribution": "",
    "outlet": "",
    "observed_at": "2026-10-08T09:00:00Z",
@@ -30866,19 +30866,19 @@
    "team": "CHI",
    "position": "S",
    "injury": "",
-   "game_status": "IR",
+   "game_status": "OUT",
    "designation_source": "",
    "practice_status": "NONE",
    "est_return": "",
-   "comment": "ir",
+   "comment": "out",
    "attribution": "",
    "outlet": "",
-   "observed_at": "2026-10-08T09:00:00Z",
+   "observed_at": "2026-10-08T10:00:00Z",
    "sources": [
     {
      "source": "espn",
      "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
-     "observed_at": "2026-10-08T09:00:00Z"
+     "observed_at": "2026-10-08T10:00:00Z"
     }
    ],
    "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
@@ -54227,17 +54227,46 @@
  ],
  "alerts": [
   {
+   "ts": "2026-10-08T10:00:00Z",
+   "kind": "status-change",
+   "severity": "medium",
+   "player": "Anthony Johnson Jr.",
+   "player_key": "anthony-johnson",
+   "team": "CHI",
+   "position": "S",
+   "injury": "",
+   "from_status": "IR",
+   "to_status": "OUT",
+   "detail": "Anthony Johnson Jr. (CHI S) moved IR -> OUT. out",
+   "sources": [
+    {
+     "source": "espn",
+     "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
+     "observed_at": "2026-10-08T10:00:00Z"
+    }
+   ],
+   "alert_id": "e784afbfb59378f7",
+   "event_key": "",
+   "first_seen_at": "2026-10-08T10:07:26Z",
+   "reported_at": "2026-10-08T10:00:00Z",
+   "detection_latency_seconds": null,
+   "source_verified": false,
+   "in_game_window": false,
+   "in_game": false,
+   "evidence": []
+  },
+  {
    "ts": "2026-10-08T09:00:00Z",
-   "kind": "cleared",
+   "kind": "status-change",
    "severity": "high",
    "player": "Chris Moore",
    "player_key": "chris-moore",
    "team": "BAL",
    "position": "WR",
    "injury": "",
-   "from_status": "QUESTIONABLE",
-   "to_status": "ACTIVE",
-   "detail": "Chris Moore (BAL WR) moved QUESTIONABLE -> ACTIVE",
+   "from_status": "ACTIVE",
+   "to_status": "QUESTIONABLE",
+   "detail": "Chris Moore (BAL WR) moved ACTIVE -> QUESTIONABLE. questionable",
    "sources": [
     {
      "source": "espn",
@@ -54245,9 +54274,9 @@
      "observed_at": "2026-10-08T09:00:00Z"
     }
    ],
-   "alert_id": "9309fb2f327930ed",
+   "alert_id": "acc4d815117deab9",
    "event_key": "",
-   "first_seen_at": "2026-10-08T09:47:32Z",
+   "first_seen_at": "2026-10-08T10:07:26Z",
    "reported_at": "2026-10-08T09:00:00Z",
    "detection_latency_seconds": null,
    "source_verified": false,
@@ -58882,6 +58911,64 @@
    "event_key": "",
    "first_seen_at": "2026-10-07T21:28:50Z",
    "reported_at": "2026-10-11T00:00:00Z",
+   "detection_latency_seconds": null,
+   "source_verified": false,
+   "in_game_window": false,
+   "in_game": false,
+   "evidence": []
+  },
+  {
+   "ts": "2026-10-08T10:00:00Z",
+   "kind": "status-change",
+   "severity": "medium",
+   "player": "Anthony Johnson Jr.",
+   "player_key": "anthony-johnson",
+   "team": "CHI",
+   "position": "S",
+   "injury": "",
+   "from_status": "IR",
+   "to_status": "OUT",
+   "detail": "Anthony Johnson Jr. (CHI S) moved IR -> OUT. out",
+   "sources": [
+    {
+     "source": "espn",
+     "url": "https://www.espn.com/nfl/player/_/id/4361748/anthony-johnson-jr",
+     "observed_at": "2026-10-08T10:00:00Z"
+    }
+   ],
+   "alert_id": "e784afbfb59378f7",
+   "event_key": "",
+   "first_seen_at": "2026-10-08T10:07:26Z",
+   "reported_at": "2026-10-08T10:00:00Z",
+   "detection_latency_seconds": null,
+   "source_verified": false,
+   "in_game_window": false,
+   "in_game": false,
+   "evidence": []
+  },
+  {
+   "ts": "2026-10-08T09:00:00Z",
+   "kind": "status-change",
+   "severity": "high",
+   "player": "Chris Moore",
+   "player_key": "chris-moore",
+   "team": "BAL",
+   "position": "WR",
+   "injury": "",
+   "from_status": "ACTIVE",
+   "to_status": "QUESTIONABLE",
+   "detail": "Chris Moore (BAL WR) moved ACTIVE -> QUESTIONABLE. questionable",
+   "sources": [
+    {
+     "source": "espn",
+     "url": "https://www.espn.com/nfl/player/_/id/2576581/chris-moore",
+     "observed_at": "2026-10-08T09:00:00Z"
+    }
+   ],
+   "alert_id": "acc4d815117deab9",
+   "event_key": "",
+   "first_seen_at": "2026-10-08T10:07:26Z",
+   "reported_at": "2026-10-08T09:00:00Z",
    "detection_latency_seconds": null,
    "source_verified": false,
    "in_game_window": false,
@@ -66543,52 +66630,6 @@
    "in_game_window": false,
    "in_game": false,
    "evidence": []
-  },
-  {
-   "ts": "2026-10-07T05:54:49Z",
-   "kind": "removed",
-   "severity": "low",
-   "player": "Quinn Ewers",
-   "player_key": "quinn-ewers",
-   "team": "JAX",
-   "position": "QB",
-   "injury": "",
-   "from_status": "ACTIVE",
-   "to_status": "REMOVED_FROM_REPORT",
-   "detail": "Quinn Ewers (JAX) is no longer on the official injury report.",
-   "sources": [],
-   "alert_id": "49d7b2851ec3b080",
-   "event_key": "",
-   "first_seen_at": "2026-10-07T05:54:49Z",
-   "reported_at": "",
-   "detection_latency_seconds": null,
-   "source_verified": false,
-   "in_game_window": false,
-   "in_game": false,
-   "evidence": []
-  },
-  {
-   "ts": "2026-10-07T05:54:49Z",
-   "kind": "removed",
-   "severity": "low",
-   "player": "Grover Stewart",
-   "player_key": "grover-stewart",
-   "team": "IND",
-   "position": "DT",
-   "injury": "",
-   "from_status": "ACTIVE",
-   "to_status": "REMOVED_FROM_REPORT",
-   "detail": "Grover Stewart (IND) is no longer on the official injury report.",
-   "sources": [],
-   "alert_id": "4986a06671acaa5e",
-   "event_key": "",
-   "first_seen_at": "2026-10-07T05:54:49Z",
-   "reported_at": "",
-   "detection_latency_seconds": null,
-   "source_verified": false,
-   "in_game_window": false,
-   "in_game": false,
-   "evidence": []
   }
  ],
  "game_events": [],
@@ -68653,7 +68694,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "86 player(s) have no official designation but do have an ESPN status",
+   "title": "87 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
