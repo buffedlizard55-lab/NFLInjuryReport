@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T21:47:46Z",
+ "generated_at": "2026-10-08T22:18:29Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -36,7 +36,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "121 player(s) have no official designation but do have an ESPN status",
+   "title": "119 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -228,28 +228,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "37 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said IR for Tyler Smith (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link); rapsheet.bsky.social said ACTIVE for Monroe Freeling (official: see link); rapsheet.bsky.social said QUESTIONABLE for Zay Flowers (official: see link); rapsheet.bsky.social said QUESTIONABLE for Jadeveon Clowney (official: see link)",
+   "title": "39 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: KRCG said QUESTIONABLE for Kenneth Walker III (official: see link); rapsheet.bsky.social said IR for Tyler Smith (official: see link); Ventura County Star said IR for Cole Payton (official: see link); Oskaloosa Herald said OUT for Keenan Allen (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link)",
    "evidence": [
+    {
+     "label": "KRCG: Kenneth Walker III QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4567048/kenneth-walker-iii"
+    },
     {
      "label": "rapsheet.bsky.social: Tyler Smith IR",
      "url": "https://www.nfl.com/players/tyler-smith/"
     },
     {
+     "label": "Ventura County Star: Cole Payton IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4879250/cole-payton"
+    },
+    {
+     "label": "Oskaloosa Herald: Keenan Allen OUT",
+     "url": "https://www.nfl.com/players/keenan-allen/"
+    },
+    {
      "label": "rapsheet.bsky.social: Marlon Humphrey OUT",
      "url": "https://www.nfl.com/players/marlon-humphrey/"
-    },
-    {
-     "label": "rapsheet.bsky.social: Monroe Freeling ACTIVE",
-     "url": "https://www.espn.com/nfl/player/_/id/4870694/monroe-freeling"
-    },
-    {
-     "label": "rapsheet.bsky.social: Zay Flowers QUESTIONABLE",
-     "url": "https://www.nfl.com/players/zay-flowers/"
-    },
-    {
-     "label": "rapsheet.bsky.social: Jadeveon Clowney QUESTIONABLE",
-     "url": "https://www.nfl.com/players/jadeveon-clowney/"
     }
    ]
   },
