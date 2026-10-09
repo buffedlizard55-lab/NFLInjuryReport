@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-10-09T02:23:08Z",
+ "generated_at": "2026-10-09T02:24:25Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 30,
+   "latency_ms": 21,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 33,
+   "latency_ms": 40,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 49,
+   "latency_ms": 23,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 71,
+   "latency_ms": 74,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 64,
+   "latency_ms": 34,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -334,7 +334,7 @@
    "label": "news:hot-player",
    "query": "\"Chris Godwin Jr.\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Chris+Godwin+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -885,6 +885,33 @@
   }
  ],
  "posts": [
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPcDBfR2dqV0FuWFJtcDBldW41TXdjSkdEX0FpdkJ0Um9obF83S1hHTGxHV0sya19vM2hEVFNFemdlRHUzYU0yS0hlUEYya3lyNTVfU2hBMmJjZVdRcFZoVUFfbzAwWXk2RUM4WkIzTm9Ic2RmdjZaMGpmYzVUVUpveU15alNtcWJUa3NqbkpsUzZaY3pqRlFvQXBPeUp0MkFjMVZhVmJXR3B4LV9vdkVlb2VoT3hzd0Qzemo1YzNVZllrdF8tZHRJOS1rVm1LQQ?oc=5",
+   "author": "NESN",
+   "author_name": "NESN",
+   "author_url": "https://nesn.com",
+   "text": "Patriots’ Latest Injury Setback Could Put More Pressure On Drake Maye - NESN",
+   "posted_at": "Fri, 09 Oct 2026 02:08:33 GMT",
+   "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPcDBfR2dqV0FuWFJtcDBldW41TXdjSkdEX0FpdkJ0Um9obF83S1hHTGxHV0sya19vM2hEVFNFemdlRHUzYU0yS0hlUEYya3lyNTVfU2hBMmJjZVdRcFZoVUFfbzAwWXk2RUM4WkIzTm9Ic2RmdjZaMGpmYzVUVUpveU15alNtcWJUa3NqbkpsUzZaY3pqRlFvQXBPeUp0MkFjMVZhVmJXR3B4LV9vdkVlb2VoT3hzd0Qzemo1YzNVZllrdF8tZHRJOS1rVm1LQQ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "NESN",
+    "query": "\"New England Patriots\" injury when:1d"
+   }
+  },
   {
    "platform": "mastodon",
    "post_id": "117408472715900519",
@@ -5796,33 +5823,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPeWsxZzdUNW5sZ2pqYkhtRUFhSTZ2d1ppd0w2R3lnOFlvNTM5cnk4SDhFQ21mMGZkcDRGTUYxU2RodW1OUFo1ckEyWlhITXpMSWFpR01LM2ljenF5ZllOV21jVHd1ZHBQZS1OM01HM0ZOWFpxa1hWeHhSalFRTHBKT3VnUkduXzh2SnRWUE5NVkkwbVg1bkRDeU05VTlITU9qZ1VCcDRR0gGmAUFVX3lxTE95azFnN1Q1bmxnampiSG1FQWFJNnZ3Wml3TDZHeWc4WW81MzlyeThIOEVDbWYwZmRwNEZNRjFTZGh1bU5QWjVyQTJaWEhNekxJYWlHTUszaWN6cXlmWU5XbWNUd3VkcFBlLU4zTUczRk5YWnFrWFZ4eFJqUVFMcEpPdWdSR25fOHZKdFZQTk1WSTBtWDVuREN5TTlVOUhNT2pnVUJwNFE?oc=5",
-   "author": "FantasyPros",
-   "author_name": "FantasyPros",
-   "author_url": "https://www.fantasypros.com",
-   "text": "Fantasy Football Week 5 Start/Sit Advice: Sleepers & Duds (2026) - FantasyPros",
-   "posted_at": "Thu, 08 Oct 2026 17:06:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPeWsxZzdUNW5sZ2pqYkhtRUFhSTZ2d1ppd0w2R3lnOFlvNTM5cnk4SDhFQ21mMGZkcDRGTUYxU2RodW1OUFo1ckEyWlhITXpMSWFpR01LM2ljenF5ZllOV21jVHd1ZHBQZS1OM01HM0ZOWFpxa1hWeHhSalFRTHBKT3VnUkduXzh2SnRWUE5NVkkwbVg1bkRDeU05VTlITU9qZ1VCcDRR0gGmAUFVX3lxTE95azFnN1Q1bmxnampiSG1FQWFJNnZ3Wml3TDZHeWc4WW81MzlyeThIOEVDbWYwZmRwNEZNRjFTZGh1bU5QWjVyQTJaWEhNekxJYWlHTUszaWN6cXlmWU5XbWNUd3VkcFBlLU4zTUczRk5YWnFrWFZ4eFJqUVFMcEpPdWdSR25fOHZKdFZQTk1WSTBtWDVuREN5TTlVOUhNT2pnVUJwNFE?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "FantasyPros",
-    "query": "\"Ryan Flournoy\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQbFQ2blBzSllsREJtMGkzUjFUSnpXLXBzUWJaZFhOenFlaWhrSEdSUmRVZVlXc2o2VjloTEt2LUZGMWNsU1Zhbm03cmdaSjNqSm5aNEliRVBDd3hpWlZwZUtYN3dMdzVUUzJxeDZJMVpTUTBkWmNMS0VWUjNGQVRCSkJ0OG8teGk4cjE2WF9WS0xtcG52Q0s2dzRGYUNRREx0TXfSAaIBQVVfeXFMUGxUNm5Qc0pZbERCbTBpM1IxVEp6Vy1wc1FiWmRYTnpxZWloa0hHUlJkVWVZV3NqNlY5aExLdi1GRjFjbFNWYW5tN3JnWkozakpuWjRJYkVQQ3d4aVpWcGVLWDd3THc1VFMycXg2STFaU1EwZFpjTEtFVlIzRkFUQkpCdDhvLXhpOHIxNlhfVktMbXBudkNLNnc0RmFDUURMdE13?oc=5",
    "author": "FantasyPros",
    "author_name": "FantasyPros",
@@ -5845,7 +5845,34 @@
    "game_event": "",
    "raw": {
     "outlet": "FantasyPros",
-    "query": "\"Ted Hurst III\" injury when:1d"
+    "query": "\"Ryan Flournoy\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPeWsxZzdUNW5sZ2pqYkhtRUFhSTZ2d1ppd0w2R3lnOFlvNTM5cnk4SDhFQ21mMGZkcDRGTUYxU2RodW1OUFo1ckEyWlhITXpMSWFpR01LM2ljenF5ZllOV21jVHd1ZHBQZS1OM01HM0ZOWFpxa1hWeHhSalFRTHBKT3VnUkduXzh2SnRWUE5NVkkwbVg1bkRDeU05VTlITU9qZ1VCcDRR0gGmAUFVX3lxTE95azFnN1Q1bmxnampiSG1FQWFJNnZ3Wml3TDZHeWc4WW81MzlyeThIOEVDbWYwZmRwNEZNRjFTZGh1bU5QWjVyQTJaWEhNekxJYWlHTUszaWN6cXlmWU5XbWNUd3VkcFBlLU4zTUczRk5YWnFrWFZ4eFJqUVFMcEpPdWdSR25fOHZKdFZQTk1WSTBtWDVuREN5TTlVOUhNT2pnVUJwNFE?oc=5",
+   "author": "FantasyPros",
+   "author_name": "FantasyPros",
+   "author_url": "https://www.fantasypros.com",
+   "text": "Fantasy Football Week 5 Start/Sit Advice: Sleepers & Duds (2026) - FantasyPros",
+   "posted_at": "Thu, 08 Oct 2026 17:06:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPeWsxZzdUNW5sZ2pqYkhtRUFhSTZ2d1ppd0w2R3lnOFlvNTM5cnk4SDhFQ21mMGZkcDRGTUYxU2RodW1OUFo1ckEyWlhITXpMSWFpR01LM2ljenF5ZllOV21jVHd1ZHBQZS1OM01HM0ZOWFpxa1hWeHhSalFRTHBKT3VnUkduXzh2SnRWUE5NVkkwbVg1bkRDeU05VTlITU9qZ1VCcDRR0gGmAUFVX3lxTE95azFnN1Q1bmxnampiSG1FQWFJNnZ3Wml3TDZHeWc4WW81MzlyeThIOEVDbWYwZmRwNEZNRjFTZGh1bU5QWjVyQTJaWEhNekxJYWlHTUszaWN6cXlmWU5XbWNUd3VkcFBlLU4zTUczRk5YWnFrWFZ4eFJqUVFMcEpPdWdSR25fOHZKdFZQTk1WSTBtWDVuREN5TTlVOUhNT2pnVUJwNFE?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "FantasyPros",
+    "query": "\"Jake Ferguson\" injury when:1d"
    }
   },
   {
@@ -6764,33 +6791,6 @@
    "raw": {
     "outlet": "Cincinnati Enquirer",
     "query": "\"Baker Mayfield\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQazlDYWVDWmJMMFVWbUIwZGFIMURESTFNY2VPQUh4ZWRpb3BpSEM3clowX3hRdjY1N2xadFFNWkJET3RtMllvekpkQ3E5enhrc0lUN3Q0VzItREx4aWhLOWJfN2VIS1RGUS1LWldtdEVJS0luRnFxN0FzenJ3dkI2QjlITXRydVRpbk5yLXZVRWxFbzhuWmVNbHpXdV9oZlpPdTBxU2F3OFBtR0JSOTVPTWlINWxCWXEwQ1B2akt4Z0NXaVdybHkwYi0zRHNfeWZoOUZhbi1qdWlxaVJvTmc?oc=5",
-   "author": "Sports Illustrated",
-   "author_name": "Sports Illustrated",
-   "author_url": "https://www.si.com",
-   "text": "CeeDee Lamb Headlines Perfect Fantasy Football DraftKings NFL DFS Showdown Lineup for Thursday Night Football - Sports Illustrated",
-   "posted_at": "Thu, 08 Oct 2026 13:30:33 GMT",
-   "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQazlDYWVDWmJMMFVWbUIwZGFIMURESTFNY2VPQUh4ZWRpb3BpSEM3clowX3hRdjY1N2xadFFNWkJET3RtMllvekpkQ3E5enhrc0lUN3Q0VzItREx4aWhLOWJfN2VIS1RGUS1LWldtdEVJS0luRnFxN0FzenJ3dkI2QjlITXRydVRpbk5yLXZVRWxFbzhuWmVNbHpXdV9oZlpPdTBxU2F3OFBtR0JSOTVPTWlINWxCWXEwQ1B2akt4Z0NXaVdybHkwYi0zRHNfeWZoOUZhbi1qdWlxaVJvTmc?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Sports Illustrated",
-    "query": "\"CeeDee Lamb\" injury when:1d"
    }
   },
   {
