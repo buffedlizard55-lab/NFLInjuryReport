@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T15:52:08Z",
+ "generated_at": "2026-10-10T17:28:57Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -29,6 +29,22 @@
     },
     {
      "label": "espn: CLE, MIN",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Arden Key",
+   "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/arden-key/"
+    },
+    {
+     "label": "ESPN (IR)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -93,6 +109,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Darius Slayton",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/darius-slayton/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -678,27 +710,11 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: IND:sedrick-van-pran-granger (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "20 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: liquorice@lemmy.world said OUT for Joey Porter Jr. (official: see link); rapsheet.bsky.social said OUT for Joey Porter Jr. (official: see link); rapsheet.bsky.social said IR for Tyler Smith (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link); rapsheet.bsky.social said QUESTIONABLE for Lamar Jackson (official: see link)",
+   "title": "18 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said OUT for Joey Porter Jr. (official: see link); rapsheet.bsky.social said IR for Tyler Smith (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link); rapsheet.bsky.social said QUESTIONABLE for Lamar Jackson (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link)",
    "evidence": [
-    {
-     "label": "liquorice@lemmy.world: Joey Porter Jr. OUT",
-     "url": "https://www.nfl.com/players/joey-porter-jr/"
-    },
     {
      "label": "rapsheet.bsky.social: Joey Porter Jr. OUT",
      "url": "https://www.nfl.com/players/joey-porter-jr/"
@@ -714,6 +730,10 @@
     {
      "label": "rapsheet.bsky.social: Lamar Jackson QUESTIONABLE",
      "url": "https://www.nfl.com/players/lamar-jackson/"
+    },
+    {
+     "label": "tompelissero.bsky.social: Jayden Daniels OUT",
+     "url": "https://www.nfl.com/players/jayden-daniels/"
     }
    ]
   },
