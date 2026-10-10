@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-10T02:11:43Z",
+ "generated_at": "2026-10-10T02:36:18Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -694,31 +694,11 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: BUF:jedrick-wills (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "23 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Raiders.com said OUT for Ashton Jeanty (official: see link); Broncos Wire said ACTIVE for Pat Bryant (official: see link); rapsheet.bsky.social said OUT for Joey Porter Jr. (official: see link); rapsheet.bsky.social said IR for Tyler Smith (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link)",
+   "title": "21 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said OUT for Joey Porter Jr. (official: see link); rapsheet.bsky.social said IR for Tyler Smith (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link); rapsheet.bsky.social said QUESTIONABLE for Lamar Jackson (official: see link); rapsheet.bsky.social said ACTIVE for Monroe Freeling (official: see link)",
    "evidence": [
-    {
-     "label": "Raiders.com: Ashton Jeanty OUT",
-     "url": "https://www.nfl.com/players/ashton-jeanty/"
-    },
-    {
-     "label": "Broncos Wire: Pat Bryant ACTIVE",
-     "url": "https://www.nfl.com/players/pat-bryant/"
-    },
     {
      "label": "rapsheet.bsky.social: Joey Porter Jr. OUT",
      "url": "https://www.nfl.com/players/joey-porter-jr/"
@@ -730,6 +710,14 @@
     {
      "label": "rapsheet.bsky.social: Marlon Humphrey OUT",
      "url": "https://www.nfl.com/players/marlon-humphrey/"
+    },
+    {
+     "label": "rapsheet.bsky.social: Lamar Jackson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
+    },
+    {
+     "label": "rapsheet.bsky.social: Monroe Freeling ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/4870694/monroe-freeling"
     }
    ]
   },
@@ -765,15 +753,15 @@
    "evidence": [
     {
      "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/4427238/dillon-gabriel"
+     "url": "https://www.espn.com/nfl/player/_/id/4038457/teven-jenkins"
     },
     {
      "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4241424/tylan-wallace"
+     "url": "https://www.espn.com/nfl/player/_/id/4427238/dillon-gabriel"
     },
     {
      "label": "ESPN attribution #3",
-     "url": "https://www.espn.com/nfl/player/_/id/4685540/carsen-ryan"
+     "url": "https://www.espn.com/nfl/player/_/id/4241424/tylan-wallace"
     }
    ]
   },
