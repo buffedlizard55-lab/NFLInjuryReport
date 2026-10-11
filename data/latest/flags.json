@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T17:42:53Z",
+ "generated_at": "2026-10-11T17:47:04Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1376,7 +1376,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "8 player(s) have no official designation but do have an ESPN status",
+   "title": "7 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1446,26 +1446,14 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: MIA:julius-wood (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "90 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Cleveland Browns said OUT for KC Concepcion (official: see link); WKZO said ACTIVE for Ashton Jeanty (official: see link); WTVB said ACTIVE for Ashton Jeanty (official: see link); NBC Sports said OUT for KC Concepcion (official: see link); CBS Sports said ACTIVE for Brian O'Neill (official: see link)",
+   "title": "89 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC Sports said OUT for Aaron Jones Sr. (official: see link); WKZO said ACTIVE for Ashton Jeanty (official: see link); WTVB said ACTIVE for Ashton Jeanty (official: see link); Fresno Bee said ACTIVE for Ashton Jeanty (official: see link); CBS Sports said ACTIVE for Brian O'Neill (official: see link)",
    "evidence": [
     {
-     "label": "Cleveland Browns: KC Concepcion OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4870653/kc-concepcion"
+     "label": "NBC Sports: Aaron Jones Sr. OUT",
+     "url": "https://www.nfl.com/players/aaron-jones/"
     },
     {
      "label": "WKZO: Ashton Jeanty ACTIVE",
@@ -1476,8 +1464,8 @@
      "url": "https://www.nfl.com/players/ashton-jeanty/"
     },
     {
-     "label": "NBC Sports: KC Concepcion OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4870653/kc-concepcion"
+     "label": "Fresno Bee: Ashton Jeanty ACTIVE",
+     "url": "https://www.nfl.com/players/ashton-jeanty/"
     },
     {
      "label": "CBS Sports: Brian O'Neill ACTIVE",
