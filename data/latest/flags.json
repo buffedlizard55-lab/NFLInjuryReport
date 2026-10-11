@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T17:03:27Z",
+ "generated_at": "2026-10-11T17:07:55Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1388,54 +1388,6 @@
   {
    "code": "ESPN_ROSTER_EMPTY",
    "severity": "low",
-   "title": "Game-day roster for CHI @ GB parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872990 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872990"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for CIN @ MIA parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872982 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872982"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for MIN @ NO parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872987 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872987"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for CLE @ NYJ parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872983 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872983"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
    "title": "Game-day roster for DEN @ LAC parsed zero athletes",
    "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872989 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
    "evidence": [
@@ -1496,9 +1448,13 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "84 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); Yahoo Sports said ACTIVE for Terry McLaurin (official: see link); Commanders Wire said ACTIVE for Terry McLaurin (official: see link); RotoWire said OUT for Anton Harrison (official: see link)",
+   "title": "93 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Big News Network.com said ACTIVE for Ashton Jeanty (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); Yahoo Sports said ACTIVE for Terry McLaurin (official: see link); Commanders Wire said ACTIVE for Terry McLaurin (official: see link)",
    "evidence": [
+    {
+     "label": "Big News Network.com: Ashton Jeanty ACTIVE",
+     "url": "https://www.nfl.com/players/ashton-jeanty/"
+    },
     {
      "label": "Blitz_Burgh@sportsbots.xyz: Mason Graham ACTIVE",
      "url": "https://www.nfl.com/players/mason-graham/"
@@ -1514,10 +1470,6 @@
     {
      "label": "Commanders Wire: Terry McLaurin ACTIVE",
      "url": "https://www.nfl.com/players/terry-mclaurin/"
-    },
-    {
-     "label": "RotoWire: Anton Harrison OUT",
-     "url": "https://www.nfl.com/players/anton-harrison/"
     }
    ]
   },
