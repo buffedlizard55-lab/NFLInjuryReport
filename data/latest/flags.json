@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T22:55:32Z",
+ "generated_at": "2026-10-11T22:58:05Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1522,21 +1522,9 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 3 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: DEN:jarrett-stidham (not asserted by any source for 14.0 days); DEN:jonathon-cooper (not asserted by any source for 14.0 days); DEN:nick-gargiulo (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "74 reporter claim(s) contradicted by the official report",
+   "title": "76 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC Sports said OUT for Deebo Samuel Sr. (official: see link); AOL.com said OUT for Tom Kennedy (official: see link); Lions Wire said OUT for Tom Kennedy (official: see link); SSBCrack said ACTIVE for George Holani (official: see link); RotoBaller said ACTIVE for Charlie Kolar (official: see link)",
    "evidence": [
     {
