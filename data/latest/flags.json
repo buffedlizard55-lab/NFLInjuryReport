@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T15:17:41Z",
+ "generated_at": "2026-10-11T15:19:06Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -794,27 +794,11 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: WAS:isaac-yiadom (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "20 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NJ.com said OUT for Jonathan Greenard (official: see link); Inside the Iggles said OUT for Jonathan Greenard (official: see link); JetNation.com said IR for Tim Patrick (official: see link); morning-times.com said IR for Tim Patrick (official: see link); Oskaloosa Herald said IR for Tim Patrick (official: see link)",
+   "title": "19 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Inside the Iggles said OUT for Jonathan Greenard (official: see link); JetNation.com said IR for Tim Patrick (official: see link); morning-times.com said IR for Tim Patrick (official: see link); Oskaloosa Herald said IR for Tim Patrick (official: see link); Medicine Hat News said IR for Tim Patrick (official: see link)",
    "evidence": [
-    {
-     "label": "NJ.com: Jonathan Greenard OUT",
-     "url": "https://www.nfl.com/players/jonathan-greenard/"
-    },
     {
      "label": "Inside the Iggles: Jonathan Greenard OUT",
      "url": "https://www.nfl.com/players/jonathan-greenard/"
@@ -829,6 +813,10 @@
     },
     {
      "label": "Oskaloosa Herald: Tim Patrick IR",
+     "url": "https://www.nfl.com/players/tim-patrick/"
+    },
+    {
+     "label": "Medicine Hat News: Tim Patrick IR",
      "url": "https://www.nfl.com/players/tim-patrick/"
     }
    ]
