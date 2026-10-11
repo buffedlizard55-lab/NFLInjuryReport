@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T18:23:21Z",
+ "generated_at": "2026-10-11T18:27:49Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1446,9 +1446,21 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 2 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CIN:shemar-stewart (not asserted by any source for 14.0 days); LAC:logan-taylor (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "92 reporter claim(s) contradicted by the official report",
+   "title": "90 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said QUESTIONABLE for T.J. Watt (official: see link); The Sunday Guardian said QUESTIONABLE for Aaron Jones Sr. (official: see link); NBC Sports said OUT for Aaron Jones Sr. (official: see link); Yahoo Sports said OUT for Aaron Jones Sr. (official: see link); WKZO said ACTIVE for Ashton Jeanty (official: see link)",
    "evidence": [
     {
