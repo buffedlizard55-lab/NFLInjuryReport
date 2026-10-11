@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T16:02:59Z",
+ "generated_at": "2026-10-11T16:04:30Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -29,6 +29,18 @@
     },
     {
      "label": "espn: CLE, MIN",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Michael Carter II' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Michael Carter II' belongs to (PHI, TEN). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "espn: PHI, TEN",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -122,6 +134,22 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/ashton-jeanty/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Barion Brown",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/barion-brown/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -308,6 +336,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Christen Miller",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/christen-miller/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Colbie Young",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -317,6 +361,22 @@
     },
     {
      "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Craig Woodson",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/craig-woodson/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -621,6 +681,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Julian Blackmon",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/julian-blackmon/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1308,28 +1384,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "25 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Bear Goggles On said OUT for Caleb Williams (official: see link); Inside the Iggles said OUT for Jonathan Greenard (official: see link); Yahoo said IR for Tim Patrick (official: see link); Bozeman Daily Chronicle said IR for Tim Patrick (official: see link); Queen City News said OUT for Patrick Queen (official: see link)",
+   "title": "26 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Sports Illustrated said OUT for DJ Moore (official: see link); Bear Goggles On said OUT for Caleb Williams (official: see link); NBC Sports Philadelphia said QUESTIONABLE for Will Shipley (official: see link); Bleeding Green Nation said QUESTIONABLE for Will Shipley (official: see link); Yahoo Sports said QUESTIONABLE for Will Shipley (official: see link)",
    "evidence": [
+    {
+     "label": "Sports Illustrated: DJ Moore OUT",
+     "url": "https://www.nfl.com/players/d-j-moore/"
+    },
     {
      "label": "Bear Goggles On: Caleb Williams OUT",
      "url": "https://www.nfl.com/players/caleb-williams/"
     },
     {
-     "label": "Inside the Iggles: Jonathan Greenard OUT",
-     "url": "https://www.nfl.com/players/jonathan-greenard/"
+     "label": "NBC Sports Philadelphia: Will Shipley QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4431545/will-shipley"
     },
     {
-     "label": "Yahoo: Tim Patrick IR",
-     "url": "https://www.nfl.com/players/tim-patrick/"
+     "label": "Bleeding Green Nation: Will Shipley QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4431545/will-shipley"
     },
     {
-     "label": "Bozeman Daily Chronicle: Tim Patrick IR",
-     "url": "https://www.nfl.com/players/tim-patrick/"
-    },
-    {
-     "label": "Queen City News: Patrick Queen OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4242207/patrick-queen"
+     "label": "Yahoo Sports: Will Shipley QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4431545/will-shipley"
     }
    ]
   },
