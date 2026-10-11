@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-10-11T16:20:29Z",
+ "generated_at": "2026-10-11T16:22:02Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 23,
+   "latency_ms": 36,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 23,
+   "latency_ms": 39,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 23,
+   "latency_ms": 39,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 66,
+   "latency_ms": 91,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 56,
+   "latency_ms": 49,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -208,7 +208,7 @@
    "label": "news:hot-player",
    "query": "\"Brian Thomas Jr.\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Brian+Thomas+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 20,
+   "posts": 21,
    "error": ""
   },
   {
@@ -397,7 +397,7 @@
    "label": "news:hot-player",
    "query": "\"Bryan Thomas Jr.\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Bryan+Thomas+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 10,
+   "posts": 11,
    "error": ""
   },
   {
@@ -1489,7 +1489,7 @@
    "predicted_status": "UNKNOWN",
    "injury": "",
    "signal": 0.3,
-   "engagement": 43,
+   "engagement": 46,
    "verified": true,
    "verification_detail": "Bluesky verification status=valid (issuer: Bluesky)",
    "author_did": "did:plc:hlvr2omhnmvdmfnvmcuhyevz",
@@ -1570,7 +1570,7 @@
    "predicted_status": "ACTIVE",
    "injury": "",
    "signal": 0.55,
-   "engagement": 40,
+   "engagement": 43,
    "verified": true,
    "verification_detail": "Bluesky verification status=valid (issuer: Bluesky)",
    "author_did": "did:plc:hlvr2omhnmvdmfnvmcuhyevz",
@@ -3273,6 +3273,33 @@
    "game_event": "",
    "raw": {
     "instance": "https://mastodon.social"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPajk5bFhmdUQ4TkN6S3dDU1d5V3NyaWhxV01aZ2lyOFZCNGx1NUR3ZC1acFZ3X29QVEhmUVI2YjlscURGWVAyVEhDN3R5OHZlYmwyX1VFV0dISGpEc1J4a28yVUpmMmVqZGhTVC15MnM2MDZYYzJWVHB4dHVUQU1KbDNB?oc=5",
+   "author": "Yahoo Sports",
+   "author_name": "Yahoo Sports",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Steelers’ Rico Dowdle Week 5 injury update deals another blow alongside Michael Pittman Jr. - Yahoo Sports",
+   "posted_at": "Sun, 11 Oct 2026 14:37:39 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPajk5bFhmdUQ4TkN6S3dDU1d5V3NyaWhxV01aZ2lyOFZCNGx1NUR3ZC1acFZ3X29QVEhmUVI2YjlscURGWVAyVEhDN3R5OHZlYmwyX1VFV0dISGpEc1J4a28yVUpmMmVqZGhTVC15MnM2MDZYYzJWVHB4dHVUQU1KbDNB?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Yahoo Sports",
+    "query": "\"Dallas Cowboys\" injury when:1d"
    }
   },
   {
@@ -6916,7 +6943,7 @@
    "game_event": "",
    "raw": {
     "outlet": "PlayerProfiler",
-    "query": "NFL injury report"
+    "query": "\"Tank Bigsby\" injury when:1d"
    }
   },
   {
@@ -7083,33 +7110,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZkhRemRXZWxfWDVWUWZwSlFiSXJUSGN2UVJobWxBU0VEOTlGZkhVYjFBYjdXZVYyclVYdjIzbWlIOXlKNWkzcTYwUWpBQjhFbTYxNEF4YWxsTjJtWkE5dFI1dmY4eVNFUElaMXZYVmE1SHJ6YTBvNS1qbDFaZW5taDdLa3ZpdVNYVnJYaXItTEo4R2Z6cktqdlpTMFZvSm9rZTRpcWhESGlGdTk1Z3c?oc=5",
-   "author": "roundtable.io",
-   "author_name": "roundtable.io",
-   "author_url": "https://roundtable.io",
-   "text": "Dolphins Final Week 5 Injury Report: Jaylen Wright Questionable - roundtable.io",
-   "posted_at": "Sun, 11 Oct 2026 00:59:35 GMT",
-   "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOZkhRemRXZWxfWDVWUWZwSlFiSXJUSGN2UVJobWxBU0VEOTlGZkhVYjFBYjdXZVYyclVYdjIzbWlIOXlKNWkzcTYwUWpBQjhFbTYxNEF4YWxsTjJtWkE5dFI1dmY4eVNFUElaMXZYVmE1SHJ6YTBvNS1qbDFaZW5taDdLa3ZpdVNYVnJYaXItTEo4R2Z6cktqdlpTMFZvSm9rZTRpcWhESGlGdTk1Z3c?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "QUESTIONABLE",
-   "injury": "",
-   "signal": 0.85,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "roundtable.io",
-    "query": "\"Miami Dolphins\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBycDdKdENnRWFWb1Y5RTA5ZlZtMjd6Qk9aaUdMOVRLY1lfR2o5UzQ4dlRnd2dWczhpc3BGcnRYUFlrdmNqQ1lWUUhKT0ZIZ3ZxOWpuV3lsSkdwU2p1c2pLWVYtbUc3dXo5ZGJ2ekJDNzhaazkyMjlwYWhXaUtLakk?oc=5",
    "author": "NFL Rumors - ProFootballRumors.com",
    "author_name": "NFL Rumors - ProFootballRumors.com",
@@ -7160,33 +7160,6 @@
    "raw": {
     "outlet": "Giants.com",
     "query": "\"New York Giants\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPeTB3TFFGZEgzbnZjTF83bzF2ckpYRTQ1cENSVDRBMU43ZGxfVlJQZC1lcVFoQzMtQm55MllxeDhPenJLQWJPbE9zWXUtWGktdzJUaFVDQVZZQ013Nk5zbXlibFc5QUktTDhwb3RPdG1uX3BXa3l2S05FX1Exb3AzSHhiblRwV1l1?oc=5",
-   "author": "Yahoo Sports",
-   "author_name": "Yahoo Sports",
-   "author_url": "https://sports.yahoo.com",
-   "text": "Former Clemson star running back is ready for first career NFL start - Yahoo Sports",
-   "posted_at": "Sun, 11 Oct 2026 00:12:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPeTB3TFFGZEgzbnZjTF83bzF2ckpYRTQ1cENSVDRBMU43ZGxfVlJQZC1lcVFoQzMtQm55MllxeDhPenJLQWJPbE9zWXUtWGktdzJUaFVDQVZZQ013Nk5zbXlibFc5QUktTDhwb3RPdG1uX3BXa3l2S05FX1Exb3AzSHhiblRwV1l1?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "back",
-   "signal": 0.6,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Yahoo Sports",
-    "query": "\"Will Shipley\" injury when:1d"
    }
   },
   {
@@ -9189,6 +9162,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOR2ZIWjNCaTUwZmZ4cXRzUUM0R2VLVUYxekVqUlM2LUhVWWhsd0pmd3pqQ1RkN1BIRDlCV2tEOUROMm51OElzWHdSbDRzSmxlYW1WOU5qZ1lXTXo1ZG8tdm84S2pKRTZVUzNrYUwtRGpWMUJXNERWTFY1dUNzU3VacDlzNENHQQ?oc=5",
+   "author": "Fantasy Points",
+   "author_name": "Fantasy Points",
+   "author_url": "https://www.fantasypoints.com",
+   "text": "2026 Fantasy Football Injury Tracker - Fantasy Points",
+   "posted_at": "Sat, 10 Oct 2026 00:54:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOR2ZIWjNCaTUwZmZ4cXRzUUM0R2VLVUYxekVqUlM2LUhVWWhsd0pmd3pqQ1RkN1BIRDlCV2tEOUROMm51OElzWHdSbDRzSmxlYW1WOU5qZ1lXTXo1ZG8tdm84S2pKRTZVUzNrYUwtRGpWMUJXNERWTFY1dUNzU3VacDlzNENHQQ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Fantasy Points",
+    "query": "NFL injury report"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOQzNQS2FrTHI2R3ZHa3FGSVRGczVRR3QxU0o2Wnk0TXF5OG93OFBDUFF1dFRnQUw5V3QydFFMenVzbl9DZFBkWnhDQkxQdHRCSmtldzN3aUdtdnhwTjNmNnJsQWR3cV8tZUh3TzNuQ0N1a2FsVkpheU1qOEo2NzdYX0NrRWdrbnc?oc=5",
    "author": "NFL.com",
    "author_name": "NFL.com",
@@ -9405,19 +9405,19 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQSUdKNlhPSEJYdHhUYWIyY0RYOVU3MERhNkJiN2txaDY4NlNHZUhZSjRIOUFZS3VMV252dVVYRnpvNi1zQWxSVzBRSzFzMlNsZ0ZfdFhLbnVIUW02a2oxSlZXaTB5WTE0Tmxub0JsVDRuUkVWNnVJVEowMERVVjREQ2JJc1R2LUMteG5uMVg1NFp2VGVkOS1TRmxkaExPQWN3aUxwNmZJZms5eVo5aGttaGc2UG0zOGZOa0pBOHNn?oc=5",
-   "author": "The New York Times",
-   "author_name": "The New York Times",
-   "author_url": "https://www.nytimes.com",
-   "text": "NFL Week 5 fantasy football injury report, weather forecast and streaming opportunities - The Athletic - The New York Times",
-   "posted_at": "Thu, 08 Oct 2026 16:18:38 GMT",
-   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQSUdKNlhPSEJYdHhUYWIyY0RYOVU3MERhNkJiN2txaDY4NlNHZUhZSjRIOUFZS3VMV252dVVYRnpvNi1zQWxSVzBRSzFzMlNsZ0ZfdFhLbnVIUW02a2oxSlZXaTB5WTE0Tmxub0JsVDRuUkVWNnVJVEowMERVVjREQ2JJc1R2LUMteG5uMVg1NFp2VGVkOS1TRmxkaExPQWN3aUxwNmZJZms5eVo5aGttaGc2UG0zOGZOa0pBOHNn?oc=5",
+   "post_id": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNdEFfc3B4cjktbWYyWGxCWF9tR05sVjBXNnBTTXdSaHJPWlEyMDRlMzNwanZUdzh3Skx2Z3djeUFHbjBjeFRqU214VHcyX1d5ZTE1Yy05UU9ndG9ZRlhkcHVUUTI5UWtqa0M1cmg1VGFUU2hKMDdnYTBEZkh5M0JxS1JERkl4dG5jbHc3bDlOWkM?oc=5",
+   "author": "CBS Sports",
+   "author_name": "CBS Sports",
+   "author_url": "https://www.cbssports.com",
+   "text": "NFL Week 5 injury report: Lamar Jackson, Ja'Marr Chase among several stars uncertain for Sunday - CBS Sports",
+   "posted_at": "Thu, 08 Oct 2026 00:46:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNdEFfc3B4cjktbWYyWGxCWF9tR05sVjBXNnBTTXdSaHJPWlEyMDRlMzNwanZUdzh3Skx2Z3djeUFHbjBjeFRqU214VHcyX1d5ZTE1Yy05UU9ndG9ZRlhkcHVUUTI5UWtqa0M1cmg1VGFUU2hKMDdnYTBEZkh5M0JxS1JERkl4dG5jbHc3bDlOWkM?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
-   "predicted_status": "UNKNOWN",
+   "predicted_status": "QUESTIONABLE",
    "injury": "",
-   "signal": 0.45,
+   "signal": 0.7,
    "engagement": 0,
    "verified": false,
    "verification_detail": "",
@@ -9426,7 +9426,7 @@
    "in_game_status": "NONE",
    "game_event": "",
    "raw": {
-    "outlet": "The New York Times",
+    "outlet": "CBS Sports",
     "query": "NFL injury report"
    }
   },
