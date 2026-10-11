@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T17:02:03Z",
+ "generated_at": "2026-10-11T17:03:27Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1400,36 +1400,12 @@
   {
    "code": "ESPN_ROSTER_EMPTY",
    "severity": "low",
-   "title": "Game-day roster for HOU @ TEN parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872984 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872984"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
    "title": "Game-day roster for CIN @ MIA parsed zero athletes",
    "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872982 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
    "evidence": [
     {
      "label": "Summary URL",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872982"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for LV @ NE parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872986 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872986"
     }
    ]
   },
@@ -1454,30 +1430,6 @@
     {
      "label": "Summary URL",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872983"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for IND @ PIT parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872985 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872985"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for NYG @ WSH parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872988 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872988"
     }
    ]
   },
@@ -1544,8 +1496,8 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "39 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); RotoWire said OUT for Anton Harrison (official: see link); CBS Sports said QUESTIONABLE for Tyler Steen (official: see link); RotoWire said QUESTIONABLE for Montaric Brown (official: see link)",
+   "title": "84 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); Yahoo Sports said ACTIVE for Terry McLaurin (official: see link); Commanders Wire said ACTIVE for Terry McLaurin (official: see link); RotoWire said OUT for Anton Harrison (official: see link)",
    "evidence": [
     {
      "label": "Blitz_Burgh@sportsbots.xyz: Mason Graham ACTIVE",
@@ -1556,16 +1508,16 @@
      "url": "https://www.nfl.com/players/mason-graham/"
     },
     {
+     "label": "Yahoo Sports: Terry McLaurin ACTIVE",
+     "url": "https://www.nfl.com/players/terry-mclaurin/"
+    },
+    {
+     "label": "Commanders Wire: Terry McLaurin ACTIVE",
+     "url": "https://www.nfl.com/players/terry-mclaurin/"
+    },
+    {
      "label": "RotoWire: Anton Harrison OUT",
      "url": "https://www.nfl.com/players/anton-harrison/"
-    },
-    {
-     "label": "CBS Sports: Tyler Steen QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4362805/tyler-steen"
-    },
-    {
-     "label": "RotoWire: Montaric Brown QUESTIONABLE",
-     "url": "https://www.nfl.com/players/montaric-brown/"
     }
    ]
   },
