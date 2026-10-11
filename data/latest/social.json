@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-10-11T17:21:22Z",
+ "generated_at": "2026-10-11T17:25:40Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 87,
+   "latency_ms": 22,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 82,
+   "latency_ms": 22,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 28,
+   "latency_ms": 48,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 37,
+   "latency_ms": 66,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 33,
+   "latency_ms": 47,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -103,6 +103,20 @@
    "label": "news:league",
    "query": "NFL injury report",
    "url": "https://news.google.com/rss/search?q=NFL+injury+report&hl=en-US&gl=US&ceid=US%3Aen",
+   "posts": 25,
+   "error": ""
+  },
+  {
+   "label": "news:hot-team:JAX",
+   "query": "\"Jacksonville Jaguars\" injury when:1d",
+   "url": "https://news.google.com/rss/search?q=%22Jacksonville+Jaguars%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "posts": 25,
+   "error": ""
+  },
+  {
+   "label": "news:hot-team:PHI",
+   "query": "\"Philadelphia Eagles\" injury when:1d",
+   "url": "https://news.google.com/rss/search?q=%22Philadelphia+Eagles%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "posts": 25,
    "error": ""
   },
@@ -212,20 +226,6 @@
    "error": ""
   },
   {
-   "label": "news:hot-team:JAX",
-   "query": "\"Jacksonville Jaguars\" injury when:1d",
-   "url": "https://news.google.com/rss/search?q=%22Jacksonville+Jaguars%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 25,
-   "error": ""
-  },
-  {
-   "label": "news:hot-team:PHI",
-   "query": "\"Philadelphia Eagles\" injury when:1d",
-   "url": "https://news.google.com/rss/search?q=%22Philadelphia+Eagles%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 25,
-   "error": ""
-  },
-  {
    "label": "news:hot-team:DAL",
    "query": "\"Dallas Cowboys\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Dallas+Cowboys%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
@@ -257,7 +257,7 @@
    "label": "news:hot-player",
    "query": "\"Tyson Bagent\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tyson+Bagent%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 20,
+   "posts": 21,
    "error": ""
   },
   {
@@ -299,7 +299,7 @@
    "label": "news:hot-player",
    "query": "\"Davon Godchaux\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Davon+Godchaux%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -313,7 +313,7 @@
    "label": "news:hot-player",
    "query": "\"Alvin Kamara\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Alvin+Kamara%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 15,
+   "posts": 16,
    "error": ""
   },
   {
@@ -439,7 +439,7 @@
    "label": "news:hot-player",
    "query": "\"Alec Pierce\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Alec+Pierce%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
@@ -502,7 +502,7 @@
    "label": "news:hot-player",
    "query": "\"Javon Hargrave\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Javon+Hargrave%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 7,
    "error": ""
   },
   {
@@ -698,14 +698,14 @@
    "label": "news:hot-player",
    "query": "\"Mike Gesicki\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Mike+Gesicki%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 10,
+   "posts": 11,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Chase Brown\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Chase+Brown%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 15,
+   "posts": 16,
    "error": ""
   },
   {
@@ -789,7 +789,7 @@
    "label": "news:hot-player",
    "query": "\"Dillon Gabriel\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Dillon+Gabriel%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -817,7 +817,7 @@
    "label": "news:hot-player",
    "query": "\"Jerry Jeudy\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jerry+Jeudy%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 6,
    "error": ""
   },
   {
@@ -873,7 +873,7 @@
    "label": "news:hot-player",
    "query": "\"Deshaun Watson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Deshaun+Watson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 21,
+   "posts": 20,
    "error": ""
   },
   {
@@ -894,7 +894,7 @@
    "label": "news:hot-player",
    "query": "\"Tucker Kraft\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tucker+Kraft%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 9,
    "error": ""
   },
   {
@@ -929,7 +929,7 @@
    "label": "news:hot-player",
    "query": "\"Christian Watson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Christian+Watson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 10,
+   "posts": 9,
    "error": ""
   },
   {
@@ -992,7 +992,7 @@
    "label": "news:hot-player",
    "query": "\"Brevin Jordan\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Brevin+Jordan%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 1,
+   "posts": 0,
    "error": ""
   },
   {
@@ -1062,7 +1062,7 @@
    "label": "news:hot-player",
    "query": "\"Sauce Gardner\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Sauce+Gardner%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 10,
+   "posts": 9,
    "error": ""
   },
   {
@@ -1076,14 +1076,14 @@
    "label": "news:hot-player",
    "query": "\"Tyler Warren\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tyler+Warren%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 8,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Jonathan Taylor\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jonathan+Taylor%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 16,
+   "posts": 17,
    "error": ""
   },
   {
@@ -1097,14 +1097,14 @@
    "label": "news:hot-player",
    "query": "\"Keenan Allen\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Keenan+Allen%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 10,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Spencer Shrader\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Spencer+Shrader%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -1125,7 +1125,7 @@
    "label": "news:hot-player",
    "query": "\"Riley Leonard\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Riley+Leonard%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
@@ -1153,7 +1153,7 @@
    "label": "news:hot-player",
    "query": "\"Mike Washington Jr.\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Mike+Washington+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 11,
+   "posts": 12,
    "error": ""
   },
   {
@@ -1167,7 +1167,7 @@
    "label": "news:hot-player",
    "query": "\"Michael Mayer\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Michael+Mayer%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 10,
+   "posts": 9,
    "error": ""
   },
   {
@@ -1223,7 +1223,7 @@
    "label": "news:hot-player",
    "query": "\"Malik Benson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Malik+Benson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -1307,7 +1307,7 @@
    "label": "news:hot-player",
    "query": "\"Jaylen Wright\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jaylen+Wright%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 9,
    "error": ""
   },
   {
@@ -1335,7 +1335,7 @@
    "label": "news:hot-player",
    "query": "\"Chukwuebuka Godrick\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Chukwuebuka+Godrick%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 7,
    "error": ""
   },
   {
@@ -1370,7 +1370,7 @@
    "label": "news:hot-player",
    "query": "\"Harrison Smith\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Harrison+Smith%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -1391,14 +1391,14 @@
    "label": "news:hot-player",
    "query": "\"Kyler Murray\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Kyler+Murray%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 23,
+   "posts": 22,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Jauan Jennings\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jauan+Jennings%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 7,
    "error": ""
   },
   {
@@ -1419,7 +1419,7 @@
    "label": "news:hot-player",
    "query": "\"Aaron Jones Sr.\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Aaron+Jones+Sr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
@@ -1433,7 +1433,7 @@
    "label": "news:hot-player",
    "query": "\"Brett Thorson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Brett+Thorson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -1454,7 +1454,7 @@
    "label": "news:hot-player",
    "query": "\"Jeshaun Jones\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jeshaun+Jones%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 8,
    "error": ""
   },
   {
@@ -1573,7 +1573,7 @@
    "label": "news:hot-player",
    "query": "\"Christian Gonzalez\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Christian+Gonzalez%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 11,
+   "posts": 12,
    "error": ""
   },
   {
@@ -1636,7 +1636,7 @@
    "label": "news:hot-player",
    "query": "\"Travis Etienne Jr.\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Travis+Etienne+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 7,
    "error": ""
   },
   {
@@ -1650,7 +1650,7 @@
    "label": "news:hot-player",
    "query": "\"Colby Wooden\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Colby+Wooden%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 2,
+   "posts": 1,
    "error": ""
   },
   {
@@ -1741,14 +1741,14 @@
    "label": "news:hot-player",
    "query": "\"Jaxson Dart\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jaxson+Dart%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 14,
+   "posts": 13,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Cam Skattebo\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Cam+Skattebo%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 18,
+   "posts": 17,
    "error": ""
   },
   {
@@ -1825,7 +1825,7 @@
    "label": "news:hot-player",
    "query": "\"Mason Taylor\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Mason+Taylor%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 7,
    "error": ""
   },
   {
@@ -1846,7 +1846,7 @@
    "label": "news:hot-player",
    "query": "\"Garrett Wilson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Garrett+Wilson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 11,
+   "posts": 15,
    "error": ""
   },
   {
@@ -1881,7 +1881,7 @@
    "label": "news:hot-player",
    "query": "\"Jalen Ramsey\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jalen+Ramsey%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 9,
    "error": ""
   },
   {
@@ -1895,7 +1895,7 @@
    "label": "news:hot-player",
    "query": "\"Ben Skowronek\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Ben+Skowronek%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 10,
+   "posts": 9,
    "error": ""
   },
   {
@@ -1916,7 +1916,7 @@
    "label": "news:hot-player",
    "query": "\"Pat Freiermuth\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Pat+Freiermuth%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 10,
+   "posts": 9,
    "error": ""
   },
   {
@@ -1944,14 +1944,14 @@
    "label": "news:hot-player",
    "query": "\"Jaylen Warren\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jaylen+Warren%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 12,
+   "posts": 11,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Darnell Washington\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Darnell+Washington%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 7,
    "error": ""
   },
   {
@@ -1965,7 +1965,7 @@
    "label": "news:hot-player",
    "query": "\"Eli Heidenreich\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Eli+Heidenreich%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 9,
    "error": ""
   },
   {
@@ -2035,7 +2035,7 @@
    "label": "news:hot-player",
    "query": "\"Tony Pollard\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tony+Pollard%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 10,
    "error": ""
   },
   {
@@ -2091,7 +2091,7 @@
    "label": "news:hot-player",
    "query": "\"Marcus Harris\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Marcus+Harris%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 5,
    "error": ""
   },
   {
@@ -2126,7 +2126,7 @@
    "label": "news:hot-player",
    "query": "\"Robert Spillane\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Robert+Spillane%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 3,
+   "posts": 4,
    "error": ""
   },
   {
@@ -2147,7 +2147,7 @@
    "label": "news:hot-player",
    "query": "\"Dexter Lawrence II\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Dexter+Lawrence+II%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 7,
    "error": ""
   },
   {
@@ -2350,7 +2350,7 @@
    "label": "news:hot-player",
    "query": "\"Dalton Tucker\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Dalton+Tucker%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
@@ -2371,7 +2371,7 @@
    "label": "news:hot-player",
    "query": "\"Khristian Boyd\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Khristian+Boyd%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 2,
+   "posts": 1,
    "error": ""
   },
   {
@@ -2476,7 +2476,7 @@
    "label": "news:hot-player",
    "query": "\"DJ Campbell\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22DJ+Campbell%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -2490,7 +2490,7 @@
    "label": "news:hot-player",
    "query": "\"Zemaiah Vaughn\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Zemaiah+Vaughn%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 0,
+   "posts": 1,
    "error": ""
   },
   {
@@ -2539,7 +2539,7 @@
    "label": "news:hot-player",
    "query": "\"Devaughn Vele\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Devaughn+Vele%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 9,
    "error": ""
   },
   {
@@ -2567,7 +2567,7 @@
    "label": "news:hot-player",
    "query": "\"J.C. Davis\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22J.C.+Davis%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 7,
    "error": ""
   },
   {
@@ -2623,7 +2623,7 @@
    "label": "news:hot-player",
    "query": "\"Jonnu Smith\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jonnu+Smith%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -2665,7 +2665,7 @@
    "label": "news:hot-player",
    "query": "\"Kaleb Johnson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Kaleb+Johnson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -2686,7 +2686,7 @@
    "label": "news:hot-player",
    "query": "\"Myles Price\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Myles+Price%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 5,
+   "posts": 4,
    "error": ""
   },
   {
@@ -2707,7 +2707,7 @@
    "label": "news:hot-player",
    "query": "\"Keisean Nixon\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Keisean+Nixon%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 2,
+   "posts": 1,
    "error": ""
   },
   {
@@ -2721,7 +2721,7 @@
    "label": "news:hot-player",
    "query": "\"Amani Hooker\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Amani+Hooker%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -2735,7 +2735,7 @@
    "label": "news:hot-player",
    "query": "\"T.J. Edwards\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22T.J.+Edwards%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 5,
+   "posts": 4,
    "error": ""
   },
   {
@@ -2763,7 +2763,7 @@
    "label": "news:hot-player",
    "query": "\"Zaire Franklin\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Zaire+Franklin%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 3,
+   "posts": 2,
    "error": ""
   },
   {
@@ -2791,7 +2791,7 @@
    "label": "news:hot-player",
    "query": "\"Maxx Crosby\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Maxx+Crosby%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 12,
+   "posts": 13,
    "error": ""
   },
   {
@@ -2812,7 +2812,7 @@
    "label": "news:hot-player",
    "query": "\"Blake Cashman\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Blake+Cashman%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 0,
+   "posts": 1,
    "error": ""
   },
   {
@@ -2959,7 +2959,7 @@
    "label": "news:hot-player",
    "query": "\"Chase Young\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Chase+Young%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 5,
    "error": ""
   },
   {
@@ -2973,7 +2973,7 @@
    "label": "news:hot-player",
    "query": "\"Will McDonald IV\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Will+McDonald+IV%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 8,
    "error": ""
   },
   {
@@ -2987,7 +2987,7 @@
    "label": "news:hot-player",
    "query": "\"Chauncey Golston\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Chauncey+Golston%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 9,
    "error": ""
   },
   {
@@ -3008,7 +3008,7 @@
    "label": "news:hot-player",
    "query": "\"Dareke Young\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Dareke+Young%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 3,
+   "posts": 2,
    "error": ""
   },
   {
@@ -3099,7 +3099,7 @@
    "label": "news:hot-player",
    "query": "\"Tristin McCollum\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tristin+McCollum%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -3197,7 +3197,7 @@
    "label": "news:hot-player",
    "query": "\"Laquon Treadwell\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Laquon+Treadwell%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 5,
    "error": ""
   },
   {
@@ -3295,7 +3295,7 @@
    "label": "news:hot-player",
    "query": "\"Dallas Turner\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Dallas+Turner%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 5,
    "error": ""
   },
   {
@@ -3330,7 +3330,7 @@
    "label": "news:hot-player",
    "query": "\"Arvell Reese\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Arvell+Reese%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 10,
    "error": ""
   },
   {
@@ -3351,7 +3351,7 @@
    "label": "news:hot-player",
    "query": "\"Evan Williams\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Evan+Williams%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
@@ -3365,7 +3365,7 @@
    "label": "news:hot-player",
    "query": "\"Brian Burns\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Brian+Burns%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 5,
    "error": ""
   },
   {
@@ -3442,7 +3442,7 @@
    "label": "news:hot-player",
    "query": "\"Foster Moreau\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Foster+Moreau%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 1,
+   "posts": 0,
    "error": ""
   },
   {
@@ -3540,7 +3540,7 @@
    "label": "news:hot-player",
    "query": "\"Jamel Dean\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jamel+Dean%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 12,
+   "posts": 13,
    "error": ""
   },
   {
@@ -3568,7 +3568,7 @@
    "label": "news:hot-player",
    "query": "\"Reggie Gilliam\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Reggie+Gilliam%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 15,
+   "posts": 14,
    "error": ""
   },
   {
@@ -3750,7 +3750,7 @@
    "label": "news:hot-player",
    "query": "\"Jacob Monk\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jacob+Monk%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 5,
    "error": ""
   },
   {
@@ -3806,14 +3806,14 @@
    "label": "news:hot-player",
    "query": "\"Lew Nichols\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Lew+Nichols%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Laken Tomlinson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Laken+Tomlinson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 7,
    "error": ""
   },
   {
@@ -3834,7 +3834,7 @@
    "label": "news:hot-player",
    "query": "\"Mike Hall Jr.\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Mike+Hall+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
@@ -4016,7 +4016,7 @@
    "label": "news:hot-player",
    "query": "\"Jordan Battle\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jordan+Battle%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 7,
    "error": ""
   },
   {
@@ -4044,7 +4044,7 @@
    "label": "news:hot-player",
    "query": "\"Marcus Jones\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Marcus+Jones%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
@@ -4156,7 +4156,7 @@
    "label": "news:hot-player",
    "query": "\"Gabe Jacas\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Gabe+Jacas%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 3,
+   "posts": 4,
    "error": ""
   },
   {
@@ -4296,7 +4296,7 @@
    "label": "news:hot-player",
    "query": "\"Daylen Everette\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Daylen+Everette%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
@@ -4478,7 +4478,7 @@
    "label": "news:hot-player",
    "query": "\"Dylan Parham\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Dylan+Parham%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 8,
    "error": ""
   },
   {
@@ -4506,7 +4506,7 @@
    "label": "news:hot-player",
    "query": "\"Mike Brown\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Mike+Brown%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 10,
    "error": ""
   },
   {
@@ -4520,7 +4520,7 @@
    "label": "news:hot-player",
    "query": "\"Kayvon Thibodeaux\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Kayvon+Thibodeaux%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -4625,7 +4625,7 @@
    "label": "news:hot-player",
    "query": "\"Tai Felton\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Tai+Felton%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -4793,7 +4793,7 @@
    "label": "news:hot-player",
    "query": "\"Jackson Powers-Johnson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jackson+Powers-Johnson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -4891,7 +4891,7 @@
    "label": "news:hot-player",
    "query": "\"Mitchell Tinsley\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Mitchell+Tinsley%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -4940,14 +4940,14 @@
    "label": "news:hot-player",
    "query": "\"Kingsley Enagbare\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Kingsley+Enagbare%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Francisco Mauigoa\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Francisco+Mauigoa%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 1,
+   "posts": 0,
    "error": ""
   },
   {
@@ -5101,7 +5101,7 @@
    "label": "news:hot-player",
    "query": "\"Marlin Klein\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Marlin+Klein%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 5,
    "error": ""
   },
   {
@@ -5332,7 +5332,7 @@
    "label": "news:hot-player",
    "query": "\"Zayne Anderson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Zayne+Anderson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 0,
+   "posts": 1,
    "error": ""
   },
   {
@@ -5430,7 +5430,7 @@
    "label": "news:hot-player",
    "query": "\"Savion Williams\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Savion+Williams%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 5,
+   "posts": 6,
    "error": ""
   },
   {
@@ -5451,28 +5451,28 @@
    "label": "news:hot-player",
    "query": "\"Kayden McDonald\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Kayden+McDonald%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Jamal Hill\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Jamal+Hill%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Will Anderson Jr.\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Will+Anderson+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 8,
    "error": ""
   },
   {
    "label": "news:hot-player",
    "query": "\"Spencer Burford\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Spencer+Burford%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 2,
+   "posts": 1,
    "error": ""
   },
   {
@@ -5500,7 +5500,7 @@
    "label": "news:hot-player",
    "query": "\"Carlton Davis III\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Carlton+Davis+III%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 4,
+   "posts": 3,
    "error": ""
   },
   {
@@ -5521,7 +5521,7 @@
    "label": "news:hot-player",
    "query": "\"Nate Lynn\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Nate+Lynn%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -5535,7 +5535,7 @@
    "label": "news:hot-player",
    "query": "\"Michael Jurgens\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Michael+Jurgens%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 8,
+   "posts": 7,
    "error": ""
   },
   {
@@ -5549,7 +5549,7 @@
    "label": "news:hot-player",
    "query": "\"Nico Collins\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Nico+Collins%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 17,
+   "posts": 18,
    "error": ""
   },
   {
@@ -5577,7 +5577,7 @@
    "label": "news:hot-player",
    "query": "\"Brenden Schooler\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Brenden+Schooler%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 8,
    "error": ""
   },
   {
@@ -5605,7 +5605,7 @@
    "label": "news:hot-player",
    "query": "\"Noah Sewell\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Noah+Sewell%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 8,
    "error": ""
   },
   {
@@ -5640,7 +5640,7 @@
    "label": "news:hot-player",
    "query": "\"Blake Fisher\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Blake+Fisher%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 5,
    "error": ""
   },
   {
@@ -5668,7 +5668,7 @@
    "label": "news:hot-player",
    "query": "\"DeShon Elliott\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22DeShon+Elliott%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 5,
+   "posts": 6,
    "error": ""
   },
   {
@@ -5793,12 +5793,145 @@
  ],
  "posts": [
   {
+   "platform": "mastodon",
+   "post_id": "117423441171033549",
+   "author": "Nefex@ruhr.social",
+   "author_name": "Florian",
+   "author_url": "https://ruhr.social/@Nefex/117423441115868129",
+   "text": "Was für eine Dramatik in den letzten Minuten des Spiels #Eagles vs #Jaguars und ein Field Goal in der letzten Sekunde entscheidet das Spiel.#JacksonvilleJaguars #PhiladelphiaEagles #NFL #Football #CamLittle",
+   "posted_at": "2026-10-11T17:25:18.000Z",
+   "url": "https://ruhr.social/@Nefex/117423441115868129",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 1,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "social",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "instance": "https://mastodon.social"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOZWxXNHFHNEFTRzluME5PNVE4aUpYQVR3MUFHcHJlcVd4RVdCamFKZVN5ckZJSUNlS1pQUXA2X0s5OERzUk45NXZBb0xkUnFObFZVYmVEenhBelNrQzBXNFlGbEhOem5VSzlaaGZQcjAyX2wybGxGa1FQYlRocXF0ZFlKQXdmZVA2eUhyeXhLUdIBlAFBVV95cUxPLXJpOTZXSmZTWnZXQkFKU3FobXY1ZjF2Rzl4RC1mTG5zYnE5SkctR0dXS2JBV0VnRmVHOWtLbEdwX0JIU3ZPYVc2QWFfcjVMZkRDY2VMODJTTWxlWFh4ZlN0QlZsWlhWV3MyTFdDTk5oZGNnUkxCQVhpdUJkdGhTa1lBTUZ3VDZtZ1ZJZTVSZHNnV3Vv?oc=5",
+   "author": "FantasyPros",
+   "author_name": "FantasyPros",
+   "author_url": "https://www.fantasypros.com",
+   "text": "The Primer: Week 5 Edition (2026 Fantasy Football) - FantasyPros",
+   "posted_at": "Sun, 11 Oct 2026 17:25:18 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOZWxXNHFHNEFTRzluME5PNVE4aUpYQVR3MUFHcHJlcVd4RVdCamFKZVN5ckZJSUNlS1pQUXA2X0s5OERzUk45NXZBb0xkUnFObFZVYmVEenhBelNrQzBXNFlGbEhOem5VSzlaaGZQcjAyX2wybGxGa1FQYlRocXF0ZFlKQXdmZVA2eUhyeXhLUdIBlAFBVV95cUxPLXJpOTZXSmZTWnZXQkFKU3FobXY1ZjF2Rzl4RC1mTG5zYnE5SkctR0dXS2JBV0VnRmVHOWtLbEdwX0JIU3ZPYVc2QWFfcjVMZkRDY2VMODJTTWxlWFh4ZlN0QlZsWlhWV3MyTFdDTk5oZGNnUkxCQVhpdUJkdGhTa1lBTUZ3VDZtZ1ZJZTVSZHNnV3Vv?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "FantasyPros",
+    "query": "\"Tyler Warren\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQVmsybmRTRm9iQUJHSlhxWU4yRk5pa3ZfbldLNkZvZEJzcHdDTWZfREJ5SWgtdjBtdmp2c1NlcEFBeU5HanN3MVdBRElDd2FFZGNSS3lVbzFDcjZVU1FiWFkzNUNjc0FHajdKZDlCcjRubFdHajdIMVZ3M3E5YUpwSVJjSEk4clRtajJ3cmJUS1BYbHJRMlREUHdZZzQwcS14dUVSb2NnQllWY1k2VklreGtCdlIxVGR3WWVad1M0eVJncUh1bFNjODNxSU5GOHFocXc?oc=5",
+   "author": "DraftKings Network",
+   "author_name": "DraftKings Network",
+   "author_url": "https://dknetwork.draftkings.com",
+   "text": "What happened to T.J. Hockenson? Live injury updates for Vikings vs. Saints on Sunday 10/11/26 - DraftKings Network",
+   "posted_at": "Sun, 11 Oct 2026 17:24:52 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQVmsybmRTRm9iQUJHSlhxWU4yRk5pa3ZfbldLNkZvZEJzcHdDTWZfREJ5SWgtdjBtdmp2c1NlcEFBeU5HanN3MVdBRElDd2FFZGNSS3lVbzFDcjZVU1FiWFkzNUNjc0FHajdKZDlCcjRubFdHajdIMVZ3M3E5YUpwSVJjSEk4clRtajJ3cmJUS1BYbHJRMlREUHdZZzQwcS14dUVSb2NnQllWY1k2VklreGtCdlIxVGR3WWVad1M0eVJncUh1bFNjODNxSU5GOHFocXc?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.15,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "DraftKings Network",
+    "query": "\"T.J. Hockenson\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOY0M4U0ZpVUZYMk0tMG9SS0Z5Z1UydndSWU5yaWtwRlBCTEI1cTJkNmRpZkd5ZHR0ZmdudnFaQ1IwdmZNMWZsMkhiRDgxRnEtRms5bzlxR3VVMThRc3lpeG1uWGp0dk9aU2g5dkc1UUxLUG9WSmlvVTlEMTU1YWdkMHUtZw?oc=5",
+   "author": "Yahoo Sports",
+   "author_name": "Yahoo Sports",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Final Week 5 injury statuses for Vikings’ Justin Jefferson, Jordan Addison, Odell Beckham Jr. - Yahoo Sports",
+   "posted_at": "Sun, 11 Oct 2026 17:24:31 GMT",
+   "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOY0M4U0ZpVUZYMk0tMG9SS0Z5Z1UydndSWU5yaWtwRlBCTEI1cTJkNmRpZkd5ZHR0ZmdudnFaQ1IwdmZNMWZsMkhiRDgxRnEtRms5bzlxR3VVMThRc3lpeG1uWGp0dk9aU2g5dkc1UUxLUG9WSmlvVTlEMTU1YWdkMHUtZw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Yahoo Sports",
+    "query": "\"Kyler Murray\" injury when:1d"
+   }
+  },
+  {
+   "platform": "mastodon",
+   "post_id": "117423429423860907",
+   "author": "top_news",
+   "author_name": "News",
+   "author_url": "https://mastodon.social/@top_news/117423429423860907",
+   "text": "Jayden Daniels is back for Commanders in Week 5, but some NFL doctors think this is stupidThe Washington Commanders will get Jayden Daniels back in Week 5 . Washington’s franchise quarterback is finally back from his elbow injury. But some doctors around the NFL are skeptical about his return to the field. Daniels visited multiple specialists in New York and Los Angeles followi..https://sports.yahoo.com/articles/jayden-daniels-back-commanders-week-164256379.html#TopNews #News #NFL #Daniels #Commanders",
+   "posted_at": "2026-10-11T17:22:20.578Z",
+   "url": "https://mastodon.social/@top_news/117423429423860907",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "back",
+   "signal": 1.0,
+   "engagement": 1,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "social",
+   "in_game_status": "RETURNED",
+   "game_event": "returned-to-game",
+   "raw": {
+    "instance": "https://mastodon.social"
+   }
+  },
+  {
    "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQaDhlX0wtRGhvcGJoQzdqaDVzZzNhUkI0ZzExRDJkTGpXUnltUUNORzFla0RDMnVJa1hEQkNmT0hPanZPZzI1WVZaOG1YY3RzT042OTlfck9vUzlTTmlaZ2FTX0YtUGRSeXNia1BYTkNWZHZYc0pmZlZndk05aUlQTVVDQkJUU3JzNGVVNUhaMA?oc=5",
-   "author": "heavy.com",
-   "author_name": "heavy.com",
+   "author": "Heavy.com",
+   "author_name": "Heavy.com",
    "author_url": "https://heavy.com",
-   "text": "Vikings Announce T.J. Hockenson Injury During Saints Game - heavy.com",
+   "text": "Vikings Announce T.J. Hockenson Injury During Saints Game - Heavy.com",
    "posted_at": "Sun, 11 Oct 2026 17:20:53 GMT",
    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQaDhlX0wtRGhvcGJoQzdqaDVzZzNhUkI0ZzExRDJkTGpXUnltUUNORzFla0RDMnVJa1hEQkNmT0hPanZPZzI1WVZaOG1YY3RzT042OTlfck9vUzlTTmlaZ2FTX0YtUGRSeXNia1BYTkNWZHZYc0pmZlZndk05aUlQTVVDQkJUU3JzNGVVNUhaMA?oc=5",
    "matched_player": "",
@@ -5815,7 +5948,7 @@
    "in_game_status": "INJURY_REPORTED",
    "game_event": "injury-reported",
    "raw": {
-    "outlet": "heavy.com",
+    "outlet": "Heavy.com",
     "query": "\"Minnesota Vikings\" injury when:1d"
    }
   },
@@ -5847,55 +5980,30 @@
    }
   },
   {
-   "platform": "mastodon",
-   "post_id": "117423401267392375",
-   "author": "slessans.bsky.social@bsky.brid.gy",
-   "author_name": "Seth “Football Collector”",
-   "author_url": "https://bsky.brid.gy/r/https://bsky.app/profile/did:plc:gs6u2pkupaaj56bvpcyo4rg2/post/3mxmiworiqv2z",
-   "text": "I take back every bad thing I said about the Jags!#NFL | #Jaguars",
-   "posted_at": "2026-10-11T17:15:10.526Z",
-   "url": "https://bsky.brid.gy/r/https://bsky.app/profile/did:plc:gs6u2pkupaaj56bvpcyo4rg2/post/3mxmiworiqv2z",
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMikgFBVV95cUxON2t1T0dlUFNJYUFlcTYzQ2dDZkdabTFfbXp5U0hweUFlOEs4X29MWVczX3FmeEVBNkJCQWo0bWVKTi1xaUtDQ1V2NjgySFIwN195SEZHbUM1aUZOVXVGaXpHWGlkdjlEWTEzQ3BkTjlxRTlZRXNrZnVqU0c4YnZJQzNMYXVOUVZvQ3A0NkNncy1HQQ?oc=5",
+   "author": "KMJ Now",
+   "author_name": "KMJ Now",
+   "author_url": "https://www.kmjnow.com",
+   "text": "Raiders RB Ashton Jeanty listed as active vs. Patriots - KMJ Now",
+   "posted_at": "Sun, 11 Oct 2026 17:14:47 GMT",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxON2t1T0dlUFNJYUFlcTYzQ2dDZkdabTFfbXp5U0hweUFlOEs4X29MWVczX3FmeEVBNkJCQWo0bWVKTi1xaUtDQ1V2NjgySFIwN195SEZHbUM1aUZOVXVGaXpHWGlkdjlEWTEzQ3BkTjlxRTlZRXNrZnVqU0c4YnZJQzNMYXVOUVZvQ3A0NkNncy1HQQ?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "back",
-   "signal": 0.45,
-   "engagement": 1,
+   "predicted_status": "ACTIVE",
+   "injury": "",
+   "signal": 0.4,
+   "engagement": 0,
    "verified": false,
    "verification_detail": "",
    "author_did": "",
-   "source_kind": "social",
+   "source_kind": "news",
    "in_game_status": "NONE",
    "game_event": "",
    "raw": {
-    "instance": "https://mastodon.social"
-   }
-  },
-  {
-   "platform": "mastodon",
-   "post_id": "117423401461820050",
-   "author": "slessans2@mysportgallery.com",
-   "author_name": "Seth \"Football Collector\"",
-   "author_url": "https://mysportgallery.com/@slessans2/117423401229061218",
-   "text": "I take back every bad thing I said about the Jags!#NFL | #Jaguars",
-   "posted_at": "2026-10-11T17:15:10.000Z",
-   "url": "https://mysportgallery.com/@slessans2/117423401229061218",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "back",
-   "signal": 0.45,
-   "engagement": 1,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "social",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "instance": "https://mastodon.social"
+    "outlet": "KMJ Now",
+    "query": "\"Tristin McCollum\" injury when:1d"
    }
   },
   {
@@ -5952,59 +6060,6 @@
    }
   },
   {
-   "platform": "mastodon",
-   "post_id": "117423395310038932",
-   "author": "Blitz_Burgh@sportsbots.xyz",
-   "author_name": "Blitzburgh 🤖",
-   "author_url": "https://twitter.com/Blitz_Burgh/status/2109330697781440655",
-   "text": "Patrick Graham is back on the sidelines calling plays for the Steelers #Steelers #NFL",
-   "posted_at": "2026-10-11T17:10:02.000Z",
-   "url": "https://twitter.com/Blitz_Burgh/status/2109330697781440655",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "ACTIVE",
-   "injury": "back",
-   "signal": 0.85,
-   "engagement": 1,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "social",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "instance": "https://mastodon.social"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiggFBVV95cUxONVNKRFhYM0ZfWHlURTRXTVQ0S0gyc29mNVBERDNkLWlUbUlsOVhyTndESjZPU09fNGxzUHJWV0NncExDSTBFMkpmUy1OVkMwRk1fSWFXOGFwUmhnc29aaW44R0lnZTRYOWpkUlc3dEY5ZVpSMWRncHJQT1pSMUMzQlZn?oc=5",
-   "author": "Yahoo Sports",
-   "author_name": "Yahoo Sports",
-   "author_url": "https://sports.yahoo.com",
-   "text": "T.J. Hockenson injury update: Latest news on Vikings TE's status in Week 5 game - Yahoo Sports",
-   "posted_at": "Sun, 11 Oct 2026 17:08:22 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxONVNKRFhYM0ZfWHlURTRXTVQ0S0gyc29mNVBERDNkLWlUbUlsOVhyTndESjZPU09fNGxzUHJWV0NncExDSTBFMkpmUy1OVkMwRk1fSWFXOGFwUmhnc29aaW44R0lnZTRYOWpkUlc3dEY5ZVpSMWRncHJQT1pSMUMzQlZn?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "Yahoo Sports",
-    "query": "\"Minnesota Vikings\" injury when:1d"
-   }
-  },
-  {
    "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQZVJRcXd5UEN3UkdBVkc1V1hnbDBUcUNDM2tBcFo5WlhXN1FkOVF3UEw5LUEySU1TaU50OUFab0FqbFFQRWp1dmRucUE5dzExSVVhOE9GbDZIOUtNcmducEZXMnFYb0d5RFhSeDhtc0hVbG9QOHplTkhXMUdnUXFJVUxhdHowVG1zeTM4UUVsSFlKVWVHM0xOUDF3WTBSdnB6?oc=5",
    "author": "Big News Network.com",
@@ -6028,7 +6083,7 @@
    "game_event": "",
    "raw": {
     "outlet": "Big News Network.com",
-    "query": "\"Aidan O'Connell\" injury when:1d"
+    "query": "\"Behren Morton\" injury when:1d"
    }
   },
   {
@@ -6060,33 +6115,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5sX1huSG1Fc0FtTnNpTi1kZXhNb1Zlb0xpSXQyMm1HeUJYRXlwc25Hd2F4NDlWbWdMajl2RnFYTlpWUDhteWJaeUJ1dDA2RjRFbDBFRGY2Vy1jcDFzVTdHZnkyZVdTQjNPdmc?oc=5",
-   "author": "Sun Herald",
-   "author_name": "Sun Herald",
-   "author_url": "https://www.sunherald.com",
-   "text": "Raiders RB Ashton Jeanty listed as active vs. Patriots - Sun Herald",
-   "posted_at": "Sun, 11 Oct 2026 17:02:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5sX1huSG1Fc0FtTnNpTi1kZXhNb1Zlb0xpSXQyMm1HeUJYRXlwc25Hd2F4NDlWbWdMajl2RnFYTlpWUDhteWJaeUJ1dDA2RjRFbDBFRGY2Vy1jcDFzVTdHZnkyZVdTQjNPdmc?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "ACTIVE",
-   "injury": "",
-   "signal": 0.4,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Sun Herald",
-    "query": "\"Behren Morton\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA1NmJMQ1k5XzZYbmx5VmE2Q1BUX3RpLTdGM0dsdElGampRU0hnRDNzRVRhVk1oOTdWTE9jMU5OX2hyTzN2aEowTGxpZnlXeE1reE5zbFhXQ3ZZejJUYUlPOFhxQk1iLVNxTUE?oc=5",
    "author": "Fresno Bee",
    "author_name": "Fresno Bee",
@@ -6109,7 +6137,7 @@
    "game_event": "",
    "raw": {
     "outlet": "Fresno Bee",
-    "query": "\"Tristin McCollum\" injury when:1d"
+    "query": "\"Aidan O'Connell\" injury when:1d"
    }
   },
   {
@@ -6244,7 +6272,7 @@
    "game_event": "injury-reported",
    "raw": {
     "outlet": "Yahoo Sports",
-    "query": "\"Matthew Golden\" injury when:1d"
+    "query": "\"Chicago Bears\" injury when:1d"
    }
   },
   {
@@ -6735,6 +6763,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOTlNqM3ZWc1lmQkRsQ2JVWWhfbVZmZG5XdTFiRklOSzBQRVFRTGpvdGxpdG5OVDg4WjZLZVZoVEpUOFJfMzQxVWFUTmFnMFJORWJTN256cmV4cU9VeW1COXZXTXJ3RW5fT3g5MVN5QWw5eGhYUnMxWTltS1U3TkE2T2pzMXh6cFRET1p3cmpvVW0xZw?oc=5",
+   "author": "6abc Philadelphia",
+   "author_name": "6abc Philadelphia",
+   "author_url": "https://6abc.com",
+   "text": "Eagles, already depleted at RB, lose Will Shipley to foot injury - 6abc Philadelphia",
+   "posted_at": "Sun, 11 Oct 2026 16:30:09 GMT",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOTlNqM3ZWc1lmQkRsQ2JVWWhfbVZmZG5XdTFiRklOSzBQRVFRTGpvdGxpdG5OVDg4WjZLZVZoVEpUOFJfMzQxVWFUTmFnMFJORWJTN256cmV4cU9VeW1COXZXTXJ3RW5fT3g5MVN5QWw5eGhYUnMxWTltS1U3TkE2T2pzMXh6cFRET1p3cmpvVW0xZw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "foot",
+   "signal": 0.9,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "6abc Philadelphia",
+    "query": "\"Michael Carter\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQRTNGcnBRVk8tQWtCekk2eDg3emJldElaaHBQNFIxTjlWQm9MNEFTNlJkcGZTYjVZcEhkb1RmYkNVSlV5eWR1T0FMd3JYcHNzR2taR1J0cTQ5S2o1R2VualRzNTlxTy02bGZPbTJXM3VjRHJFYTlUY19zTzBMVmZVWURYVzdIazVlYVlJN2l3QVhSZkQwWVBWNm5icw?oc=5",
    "author": "Sports Illustrated",
    "author_name": "Sports Illustrated",
@@ -6838,7 +6893,7 @@
    "game_event": "",
    "raw": {
     "outlet": "The Washington Post",
-    "query": "\"Tyson Bagent\" injury when:1d"
+    "query": "\"Case Keenum\" injury when:1d"
    }
   },
   {
@@ -6893,6 +6948,33 @@
    "raw": {
     "outlet": "Heavy.com",
     "query": "\"Indianapolis Colts\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQbV95QmZUX1l2ZXdadHJYdGVUM0lCVWxnOEhXNXB4VjBRQzZ6ZDRZZnpDNEVZM0ZyaVJSQ0dxTkxoTWlUeDc3eXN5NHo4UVNxSG9XWWt2a3Nsb01tWFhWbHd5VnUwMDNHSzdReWNodTMzWFZaeFVXS2VUNHc3cTJHOVBPeXViNk1kZnY0eHpKQ2wxaGZFa0d4T0pVNEYwWjBzT1FnMGZkRFozdll4?oc=5",
+   "author": "Houston Chronicle",
+   "author_name": "Houston Chronicle",
+   "author_url": "https://www.houstonchronicle.com",
+   "text": "Commanders receiver Terry McLaurin active after hamstring injury - Houston Chronicle",
+   "posted_at": "Sun, 11 Oct 2026 16:27:35 GMT",
+   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQbV95QmZUX1l2ZXdadHJYdGVUM0lCVWxnOEhXNXB4VjBRQzZ6ZDRZZnpDNEVZM0ZyaVJSQ0dxTkxoTWlUeDc3eXN5NHo4UVNxSG9XWWt2a3Nsb01tWFhWbHd5VnUwMDNHSzdReWNodTMzWFZaeFVXS2VUNHc3cTJHOVBPeXViNk1kZnY0eHpKQ2wxaGZFa0d4T0pVNEYwWjBzT1FnMGZkRFozdll4?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "ACTIVE",
+   "injury": "hamstring",
+   "signal": 1.0,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Houston Chronicle",
+    "query": "\"C.J. Stroud\" injury when:1d"
    }
   },
   {
@@ -7216,7 +7298,7 @@
    "game_event": "",
    "raw": {
     "outlet": "Bleeding Green Nation",
-    "query": "\"Michael Carter\" injury when:1d"
+    "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
   {
@@ -7680,6 +7762,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMigAJBVV95cUxPOTZqNVk2bEJMS3J0WXgwd3NvVTZLZDJlMk9PNHFRUzFiSTZzNURGQ1lDcnZqSkt1TjhYaDVQSmh4blF6d0pqWkt4ZXRPT0IwYjJMYzJ4Y2NBajU2LUJKZEd3MWV5Q3VFRWhNSTFITEpCWWpPZUo5N2FzaFFpR3k4MVhBa18ycUdKeGFaTC1uNEFQTUF6ZjZaNGVGUTlnSHFFOVo1U29QSDloOFA1N3FLNjZsUU81X2JfVXIxZWgxVzRIV3IxVHJSTHcxLTk2dk1HUFVhdkhVREx5TXVHT3hKV3NkcDlfcmZTSkVObEw5dXZSUGd0c3psRFZjQ2dYZlF1?oc=5",
+   "author": "Beloit Daily News",
+   "author_name": "Beloit Daily News",
+   "author_url": "http://www.beloitdailynews.com",
+   "text": "Bears QB Caleb Williams misses third straight game with hamstring injury - Beloit Daily News",
+   "posted_at": "Sun, 11 Oct 2026 16:03:45 GMT",
+   "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxPOTZqNVk2bEJMS3J0WXgwd3NvVTZLZDJlMk9PNHFRUzFiSTZzNURGQ1lDcnZqSkt1TjhYaDVQSmh4blF6d0pqWkt4ZXRPT0IwYjJMYzJ4Y2NBajU2LUJKZEd3MWV5Q3VFRWhNSTFITEpCWWpPZUo5N2FzaFFpR3k4MVhBa18ycUdKeGFaTC1uNEFQTUF6ZjZaNGVGUTlnSHFFOVo1U29QSDloOFA1N3FLNjZsUU81X2JfVXIxZWgxVzRIV3IxVHJSTHcxLTk2dk1HUFVhdkhVREx5TXVHT3hKV3NkcDlfcmZTSkVObEw5dXZSUGd0c3psRFZjQ2dYZlF1?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "hamstring",
+   "signal": 0.9,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Beloit Daily News",
+    "query": "\"Chicago Bears\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOZG5lZlc3TDRmSktJbVFwY3pnb1FJNm94R0N3OFZfaFB2UnlHRWhTX3hPcE5sSWVaNGxBWXlKcUkyTmdOLVVkUFAtU1NQQ1RQZ1FhZFZqN3pGdFQwM19OTjZscmFKakhwVzU1Y01EdG5PVGNYdzdHNVktRGx4WGNXdGhLSmlWQUllU1dvc2dHOHRPdnZNYzBQLUFfUjVOVFdsWnJaMUt3bmliYzlFT1Jxa0hhQ3ctUFR1QWJmd0dvNnQyelBDekNhZnZNV2pudXc5RzhJdnJLcEtLMDdRcmZCU0lET183UQ?oc=5",
    "author": "Eagle-Tribune",
    "author_name": "Eagle-Tribune",
@@ -7842,29 +7951,29 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNY3gzdl9ybkZXeWlhR0plSUZ1am5UZUp6OEZkSEhkam9FcWVmUlhDMTdPaHZPLTZ3d010Wkg1ODJOdjNmTnBLeEpQV3hmZU01LWZGYWFSZVFmTS00Umc5b0JxVGRfSDhQVkpHS181cHB4aVJ1WEpnSmU3QXlyZXRuLVBmTU8?oc=5",
-   "author": "Yahoo Sports",
-   "author_name": "Yahoo Sports",
-   "author_url": "https://sports.yahoo.com",
-   "text": "Eagles lose four more players to injuries against Jaguars in London - Yahoo Sports",
-   "posted_at": "Sun, 11 Oct 2026 16:02:54 GMT",
-   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNY3gzdl9ybkZXeWlhR0plSUZ1am5UZUp6OEZkSEhkam9FcWVmUlhDMTdPaHZPLTZ3d010Wkg1ODJOdjNmTnBLeEpQV3hmZU01LWZGYWFSZVFmTS00Umc5b0JxVGRfSDhQVkpHS181cHB4aVJ1WEpnSmU3QXlyZXRuLVBmTU8?oc=5",
+   "post_id": "https://news.google.com/rss/articles/CBMigAJBVV95cUxORTQ5M2VrREQ4MloxZEh3ZS1SNUlqVVRLOUNfZlYzalVyN2lfRVlNQmtKcU5zUDZmcENhUTBtMnlDMXdFaEZMQVg2Ym51RjhqZV9QNUctUnR4SWlwUVFra2c5SGljUW1jQmtrR3RaMjFPTGxTUERIVDlSb0dKeHVUeHlhVmVJa3hsVUZZX1BZMFBDeFl4dnFTUzdRSnZKekhzR2QxQ2dySS14NXlERlZJM3Q1WnkxVjkyeGpJUFdtOUdoYy1RZ2RCY2hzYXJCVk5WOHo2SzB0cFJ4aFFYTkswczVSeUJIajl6RXpjSkEzRFg3ZlBjQUlHZllNSThjQ0pf?oc=5",
+   "author": "wusa9.com",
+   "author_name": "wusa9.com",
+   "author_url": "https://www.wusa9.com",
+   "text": "Bears QB Caleb Williams misses third straight game with hamstring injury - wusa9.com",
+   "posted_at": "Sun, 11 Oct 2026 16:03:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxORTQ5M2VrREQ4MloxZEh3ZS1SNUlqVVRLOUNfZlYzalVyN2lfRVlNQmtKcU5zUDZmcENhUTBtMnlDMXdFaEZMQVg2Ym51RjhqZV9QNUctUnR4SWlwUVFra2c5SGljUW1jQmtrR3RaMjFPTGxTUERIVDlSb0dKeHVUeHlhVmVJa3hsVUZZX1BZMFBDeFl4dnFTUzdRSnZKekhzR2QxQ2dySS14NXlERlZJM3Q1WnkxVjkyeGpJUFdtOUdoYy1RZ2RCY2hzYXJCVk5WOHo2SzB0cFJ4aFFYTkswczVSeUJIajl6RXpjSkEzRFg3ZlBjQUlHZllNSThjQ0pf?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
    "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.0,
+   "injury": "hamstring",
+   "signal": 0.9,
    "engagement": 0,
    "verified": false,
    "verification_detail": "",
    "author_did": "",
    "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
+   "in_game_status": "NONE",
+   "game_event": "",
    "raw": {
-    "outlet": "Yahoo Sports",
-    "query": "\"Philadelphia Eagles\" injury when:1d"
+    "outlet": "wusa9.com",
+    "query": "\"Tyson Bagent\" injury when:1d"
    }
   },
   {
@@ -7950,40 +8059,13 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQSW82emdKUWcxSDJCRng5cHh4dGxORHVFamNKalZ3N3NCU1pudm1TTTZ4Y05tcWxObUFWd3oyb05sVUtzZ3dhZU9kUUJ2TDl3ck9QYWROSEVqODd4SGhubjhxemotODg5WE1iWFhEOEsyOG03U3kxbVRJSnllMkdLNnZLaG9jdmM?oc=5",
-   "author": "purplePTSD",
-   "author_name": "purplePTSD",
-   "author_url": "https://purpleptsd.com",
-   "text": "Vikings Injury Update: Justin Jefferson Active, Addison Out - purplePTSD",
-   "posted_at": "Sun, 11 Oct 2026 16:01:54 GMT",
-   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQSW82emdKUWcxSDJCRng5cHh4dGxORHVFamNKalZ3N3NCU1pudm1TTTZ4Y05tcWxObUFWd3oyb05sVUtzZ3dhZU9kUUJ2TDl3ck9QYWROSEVqODd4SGhubjhxemotODg5WE1iWFhEOEsyOG03U3kxbVRJSnllMkdLNnZLaG9jdmM?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "ACTIVE",
-   "injury": "",
-   "signal": 0.55,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "purplePTSD",
-    "query": "\"Minnesota Vikings\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPck8ybGlENlBocElrZ3AwejNKakFHMnBMZVpfV0otUU1HQkVPS1FUdzZkTzhFeVBhQUtONllpWU5ueV92NTByTmw3b092cFhYaVZha3BCWmZtSEd2UmViUUFwUEY0eXlySVJuQjdISFBlWnhqWHZRdW84aVRjcFdHcFhMSHJSc2hJaXlyREM2bk9xWThtZGhySEExN2xVeG5NVG51NEVJUnFuWXBTVG5FUVVjWWozVm9vYlVza3M4RUxnemozNHhRWVJVdjlwOUdSVTRtRldn0gHWAUFVX3lxTE9yTzJsaUQ2UGhwSWtncDB6M0pqQUcycExlWl9XSi1RTUdCRU9LUVR3NmRPOEV5UGFBS042WWlZTm55X3Y1MHJObDdvT3ZwWFhpVmFrcEJaZm1IR3ZSZWJRQXBQRjR5eXJJUm5CN0hIUGVaeGpYdlF1bzhpVGNwV0dwWExIclJzaElpeXJEQzZuT3FZOG1kaHJIQTE3bFV4bk1UbnU0RUlScW5ZcFNUbkVRVWNZajNWb29iVXNrczhFTGd6ajM0eFFZUlV2OXA5R1JVNG1GV2c?oc=5",
+   "post_id": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNTGdla3UybHRzZkxkcFhreGVQVUlpZ2J2aXN3aEhwZzRlQlV5SVlUbnNobFVuRC1iVmRISC02bTM4VHVPTmt5aHgyWEl4cmxDTDc4Y0lRWEM4NDBUd1dhcnVlU3pLMWVSbzgzMzAxVm04XzlScDJGNElDa2EyVm9vR0NFRnFpaEVzdmtLbFVkMjVsaElXQW12dm1IUzd6UTlNQXlFVTNMenZicnBrSDZ1cE1EbjVGcEdzTHhNSXpGYU9pZ9IB1gFBVV95cUxPck8ybGlENlBocElrZ3AwejNKakFHMnBMZVpfV0otUU1HQkVPS1FUdzZkTzhFeVBhQUtONllpWU5ueV92NTByTmw3b092cFhYaVZha3BCWmZtSEd2UmViUUFwUEY0eXlySVJuQjdISFBlWnhqWHZRdW84aVRjcFdHcFhMSHJSc2hJaXlyREM2bk9xWThtZGhySEExN2xVeG5NVG51NEVJUnFuWXBTVG5FUVVjWWozVm9vYlVza3M4RUxnemozNHhRWVJVdjlwOUdSVTRtRldn?oc=5",
    "author": "Diario AS",
    "author_name": "Diario AS",
    "author_url": "https://en.as.com",
    "text": "Why isn’t Caleb Williams playing for the Bears against the Packers? Chicago QB’s injury status - Diario AS",
    "posted_at": "Sun, 11 Oct 2026 16:01:32 GMT",
-   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPck8ybGlENlBocElrZ3AwejNKakFHMnBMZVpfV0otUU1HQkVPS1FUdzZkTzhFeVBhQUtONllpWU5ueV92NTByTmw3b092cFhYaVZha3BCWmZtSEd2UmViUUFwUEY0eXlySVJuQjdISFBlWnhqWHZRdW84aVRjcFdHcFhMSHJSc2hJaXlyREM2bk9xWThtZGhySEExN2xVeG5NVG51NEVJUnFuWXBTVG5FUVVjWWozVm9vYlVza3M4RUxnemozNHhRWVJVdjlwOUdSVTRtRldn0gHWAUFVX3lxTE9yTzJsaUQ2UGhwSWtncDB6M0pqQUcycExlWl9XSi1RTUdCRU9LUVR3NmRPOEV5UGFBS042WWlZTm55X3Y1MHJObDdvT3ZwWFhpVmFrcEJaZm1IR3ZSZWJRQXBQRjR5eXJJUm5CN0hIUGVaeGpYdlF1bzhpVGNwV0dwWExIclJzaElpeXJEQzZuT3FZOG1kaHJIQTE3bFV4bk1UbnU0RUlScW5ZcFNUbkVRVWNZajNWb29iVXNrczhFTGd6ajM0eFFZUlV2OXA5R1JVNG1GV2c?oc=5",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNTGdla3UybHRzZkxkcFhreGVQVUlpZ2J2aXN3aEhwZzRlQlV5SVlUbnNobFVuRC1iVmRISC02bTM4VHVPTmt5aHgyWEl4cmxDTDc4Y0lRWEM4NDBUd1dhcnVlU3pLMWVSbzgzMzAxVm04XzlScDJGNElDa2EyVm9vR0NFRnFpaEVzdmtLbFVkMjVsaElXQW12dm1IUzd6UTlNQXlFVTNMenZicnBrSDZ1cE1EbjVGcEdzTHhNSXpGYU9pZ9IB1gFBVV95cUxPck8ybGlENlBocElrZ3AwejNKakFHMnBMZVpfV0otUU1HQkVPS1FUdzZkTzhFeVBhQUtONllpWU5ueV92NTByTmw3b092cFhYaVZha3BCWmZtSEd2UmViUUFwUEY0eXlySVJuQjdISFBlWnhqWHZRdW84aVRjcFdHcFhMSHJSc2hJaXlyREM2bk9xWThtZGhySEExN2xVeG5NVG51NEVJUnFuWXBTVG5FUVVjWWozVm9vYlVza3M4RUxnemozNHhRWVJVdjlwOUdSVTRtRldn?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -8027,6 +8109,33 @@
    "raw": {
     "outlet": "SuaraGarut.ID",
     "query": "\"Michael Carter\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNVTFSM3NRZlA2ZTE5aDc0N1g1ZVZqcDctZXVTeF9VMnVYdkcybk5HSURfQVlVbnNULUJHcjdGNVJ1YnROQ3FwLWdPTUNCY1FYNVFrd0ZSb3diVlQ1WEIyNjI5UHBCa01ZWHlkWTRwNDJPX0RQSUZ0dWxpb1JYa2RSZzVyX1BKZERtOXZxNi0wZGJRLTZJ?oc=5",
+   "author": "RotoWire",
+   "author_name": "RotoWire",
+   "author_url": "https://www.rotowire.com",
+   "text": "Kingsley Enagbare News: Ready for Week 5 - RotoWire",
+   "posted_at": "Sun, 11 Oct 2026 16:00:47 GMT",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNVTFSM3NRZlA2ZTE5aDc0N1g1ZVZqcDctZXVTeF9VMnVYdkcybk5HSURfQVlVbnNULUJHcjdGNVJ1YnROQ3FwLWdPTUNCY1FYNVFrd0ZSb3diVlQ1WEIyNjI5UHBCa01ZWHlkWTRwNDJPX0RQSUZ0dWxpb1JYa2RSZzVyX1BKZERtOXZxNi0wZGJRLTZJ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "RotoWire",
+    "query": "\"Kingsley Enagbare\" injury when:1d"
    }
   },
   {
@@ -8107,7 +8216,34 @@
    "game_event": "returned-to-game",
    "raw": {
     "outlet": "Bleacher Report",
-    "query": "\"Dohnte Meyers\" injury when:1d"
+    "query": "\"Cincinnati Bengals\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOT3lCS0tFeXBlMEUwMlBBc0hCMGw3QnRQalp0N2NaRFA5WFR6bUNISElkNGNldkpRUFZndkg2ZjYtMVhTRk5mVnBTdzFIVDd2TlAwNXJzZW9GUE1rQlpJRG9HZWZQQlIzRE5IR2J4c0F1QWs5ZENObDBoa0dIZUxRblFrTDI3RjFxalVuRzVzM1M?oc=5",
+   "author": "RotoWire",
+   "author_name": "RotoWire",
+   "author_url": "https://www.rotowire.com",
+   "text": "Craig Woodson News: Suiting up Week 5 - RotoWire",
+   "posted_at": "Sun, 11 Oct 2026 15:58:06 GMT",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOT3lCS0tFeXBlMEUwMlBBc0hCMGw3QnRQalp0N2NaRFA5WFR6bUNISElkNGNldkpRUFZndkg2ZjYtMVhTRk5mVnBTdzFIVDd2TlAwNXJzZW9GUE1rQlpJRG9HZWZQQlIzRE5IR2J4c0F1QWs5ZENObDBoa0dIZUxRblFrTDI3RjFxalVuRzVzM1M?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "RotoWire",
+    "query": "\"Craig Woodson\" injury when:1d"
    }
   },
   {
@@ -8215,7 +8351,7 @@
    "game_event": "",
    "raw": {
     "outlet": "Las Vegas Review-Journal",
-    "query": "\"Jack Bech\" injury when:1d"
+    "query": "\"Las Vegas Raiders\" injury when:1d"
    }
   },
   {
@@ -8301,13 +8437,40 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMimgJBVV95cUxOcTZlMDZkTmo3N1ppQ1BxenJVY1Q3eWp3OHF1LWpscVJiZnotUkVxZm9MZUJyYU92LS1RUFZDa1dwZzNGd2lRazJmVzVxQy1OY1pMLUFqRHp3cjVnSW5LUWt2UDFLWld5TTkyYTcybjdEeGtHMUdMZVNzSUhwbmFybzFZRE1Ib2hRRG1YdzZ6MXJuTnBDejNJWVhmVlZJQzAxWktsLUZPT01jLXdJQjVOSnRhclNlSV92TXlHM2YwVHFoSnh5T0ZnYnFNVDR2YWVFRWZlaU5vaURGWmdGOXMxN08zOTZ2SlJubGNtMnNqYmdGMWY3QkpTSkdqSzBuMFB2VkNzclkxZnYxMEhoMUs4eEJudzBsaGs0eHfSAZ8CQVVfeXFMTkx4YXI1cXRYRzhxbFdJX2NwSlBoTjR3QzlxbndLTWpGazZGQmNHbFF5SFJFZ25YWlpYMm1TVldDMTZPUHl4RUxFSldIUUppX2VyWk10QzhTVUZYUmFVTndpQ2pnRlBfNk9hMG1hY3RLTWp5QjVWSVI5bENjLUFLZUhUcVZEVHhJSVpQQzlSNGtSUFkwdGJLb2FWRm0ta1FzOEQ3aU13UjFROGwyT1ZTdmZpbjlkaXljdE83UGxUY3VrOVFwVU5FWmhhWS1jTzEtYWhUTUh6NlBLWWV6cE4tbWZYM2lUWnVaU1RYSU1SaUsxSldGcUdpU3NZbGRlTnZ3NXRtaVNneEVJdjVFSmtKVjdGN3UtQVQtRGp6NEQ4UjA?oc=5",
+   "post_id": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOdTlxbG80aTFuR0ZuVWM0Z3FjeXJCbGhTUVBBQnFCRkVPazNHR3F6c0ktSXJfLXR2N2ZONnk4bGRPNnBRQjNwRV9HRl9xUUJVTk1lWERoejNrMVV5VUpsRTVlSlhXWl8wazRET1c0NWMzMWpDckRSU2gySDVwZWhfWENwYVBVdDVHNXRXZG1kZ21ieDUzd1JUb1hiMGc2WjdYWWVHTXdubFRibHhaV0MtUmU2T1dFa05Jb3B5cW9ZWVFVcUVjSDR5b2dxWS12ZHNxTVBxXw?oc=5",
+   "author": "LehighValleyLive.com",
+   "author_name": "LehighValleyLive.com",
+   "author_url": "https://www.lehighvalleylive.com",
+   "text": "Eagles offensive starter ruled out as injury crisis continues vs. Jaguars - LehighValleyLive.com",
+   "posted_at": "Sun, 11 Oct 2026 15:51:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOdTlxbG80aTFuR0ZuVWM0Z3FjeXJCbGhTUVBBQnFCRkVPazNHR3F6c0ktSXJfLXR2N2ZONnk4bGRPNnBRQjNwRV9HRl9xUUJVTk1lWERoejNrMVV5VUpsRTVlSlhXWl8wazRET1c0NWMzMWpDckRSU2gySDVwZWhfWENwYVBVdDVHNXRXZG1kZ21ieDUzd1JUb1hiMGc2WjdYWWVHTXdubFRibHhaV0MtUmU2T1dFa05Jb3B5cW9ZWVFVcUVjSDR5b2dxWS12ZHNxTVBxXw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "OUT",
+   "injury": "",
+   "signal": 0.7,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "OUT_FOR_GAME",
+   "game_event": "ruled-out-for-game",
+   "raw": {
+    "outlet": "LehighValleyLive.com",
+    "query": "\"Philadelphia Eagles\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMinwJBVV95cUxOTHhhcjVxdFhHOHFsV0lfY3BKUGhONHdDOXFud0tNakZrNkZCY0dsUXlIUkVnblhaWlgybVNWV0MxNk9QeXhFTEVKV0hRSmlfZXJaTXRDOFNVRlhSYVVOd2lDamdGUF82T2EwbWFjdEtNanlCNVZJUjlsQ2MtQUtlSFRxVkRUeElJWlBDOVI0a1JQWTB0YktvYVZGbS1rUXM4RDdpTXdSMVE4bDJPVlN2ZmluOWRpeWN0TzdQbFRjdWs5UXBVTkVaaGFZLWNPMS1haFRNSHo2UEtZZXpwTi1tZlgzaVRadVpTVFhJTVJpSzFKV0ZxR2lTc1lsZGVOdnc1dG1pU2d4RUl2NUVKa0pWN0Y3dS1BVC1Eano0RDhSMNIBnwJBVV95cUxOTHhhcjVxdFhHOHFsV0lfY3BKUGhONHdDOXFud0tNakZrNkZCY0dsUXlIUkVnblhaWlgybVNWV0MxNk9QeXhFTEVKV0hRSmlfZXJaTXRDOFNVRlhSYVVOd2lDamdGUF82T2EwbWFjdEtNanlCNVZJUjlsQ2MtQUtlSFRxVkRUeElJWlBDOVI0a1JQWTB0YktvYVZGbS1rUXM4RDdpTXdSMVE4bDJPVlN2ZmluOWRpeWN0TzdQbFRjdWs5UXBVTkVaaGFZLWNPMS1haFRNSHo2UEtZZXpwTi1tZlgzaVRadVpTVFhJTVJpSzFKV0ZxR2lTc1lsZGVOdnc1dG1pU2d4RUl2NUVKa0pWN0Y3dS1BVC1Eano0RDhSMA?oc=5",
    "author": "The Sunday Guardian",
    "author_name": "The Sunday Guardian",
    "author_url": "https://sundayguardianlive.com",
    "text": "Vikings Official Inactives vs Saints: Jordan Addison And Odell Beckham Jr. Ruled Out as Justin Jefferson Starts - The Sunday Guardian",
-   "posted_at": "Sun, 11 Oct 2026 15:50:47 GMT",
-   "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxOcTZlMDZkTmo3N1ppQ1BxenJVY1Q3eWp3OHF1LWpscVJiZnotUkVxZm9MZUJyYU92LS1RUFZDa1dwZzNGd2lRazJmVzVxQy1OY1pMLUFqRHp3cjVnSW5LUWt2UDFLWld5TTkyYTcybjdEeGtHMUdMZVNzSUhwbmFybzFZRE1Ib2hRRG1YdzZ6MXJuTnBDejNJWVhmVlZJQzAxWktsLUZPT01jLXdJQjVOSnRhclNlSV92TXlHM2YwVHFoSnh5T0ZnYnFNVDR2YWVFRWZlaU5vaURGWmdGOXMxN08zOTZ2SlJubGNtMnNqYmdGMWY3QkpTSkdqSzBuMFB2VkNzclkxZnYxMEhoMUs4eEJudzBsaGs0eHfSAZ8CQVVfeXFMTkx4YXI1cXRYRzhxbFdJX2NwSlBoTjR3QzlxbndLTWpGazZGQmNHbFF5SFJFZ25YWlpYMm1TVldDMTZPUHl4RUxFSldIUUppX2VyWk10QzhTVUZYUmFVTndpQ2pnRlBfNk9hMG1hY3RLTWp5QjVWSVI5bENjLUFLZUhUcVZEVHhJSVpQQzlSNGtSUFkwdGJLb2FWRm0ta1FzOEQ3aU13UjFROGwyT1ZTdmZpbjlkaXljdE83UGxUY3VrOVFwVU5FWmhhWS1jTzEtYWhUTUh6NlBLWWV6cE4tbWZYM2lUWnVaU1RYSU1SaUsxSldGcUdpU3NZbGRlTnZ3NXRtaVNneEVJdjVFSmtKVjdGN3UtQVQtRGp6NEQ4UjA?oc=5",
+   "posted_at": "Sun, 11 Oct 2026 15:50:50 GMT",
+   "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxOTHhhcjVxdFhHOHFsV0lfY3BKUGhONHdDOXFud0tNakZrNkZCY0dsUXlIUkVnblhaWlgybVNWV0MxNk9QeXhFTEVKV0hRSmlfZXJaTXRDOFNVRlhSYVVOd2lDamdGUF82T2EwbWFjdEtNanlCNVZJUjlsQ2MtQUtlSFRxVkRUeElJWlBDOVI0a1JQWTB0YktvYVZGbS1rUXM4RDdpTXdSMVE4bDJPVlN2ZmluOWRpeWN0TzdQbFRjdWs5UXBVTkVaaGFZLWNPMS1haFRNSHo2UEtZZXpwTi1tZlgzaVRadVpTVFhJTVJpSzFKV0ZxR2lTc1lsZGVOdnc1dG1pU2d4RUl2NUVKa0pWN0Y3dS1BVC1Eano0RDhSMNIBnwJBVV95cUxOTHhhcjVxdFhHOHFsV0lfY3BKUGhONHdDOXFud0tNakZrNkZCY0dsUXlIUkVnblhaWlgybVNWV0MxNk9QeXhFTEVKV0hRSmlfZXJaTXRDOFNVRlhSYVVOd2lDamdGUF82T2EwbWFjdEtNanlCNVZJUjlsQ2MtQUtlSFRxVkRUeElJWlBDOVI0a1JQWTB0YktvYVZGbS1rUXM4RDdpTXdSMVE4bDJPVlN2ZmluOWRpeWN0TzdQbFRjdWs5UXBVTkVaaGFZLWNPMS1haFRNSHo2UEtZZXpwTi1tZlgzaVRadVpTVFhJTVJpSzFKV0ZxR2lTc1lsZGVOdnc1dG1pU2d4RUl2NUVKa0pWN0Y3dS1BVC1Eano0RDhSMA?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -8462,33 +8625,6 @@
    }
   },
   {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPMnZJX2pHY1MxbzZfeG1XMDFteEdsZVl4QjFabGc0cnIxSEtPZzc5Rk8teDNzR0xDQmJjdWR1aWdIQW1YTWlWcTYxWnVvQlNCZGhOcE9OQkFrYm9uRmNkNVZDZU1aV2lZMWJzRS1qOXhlYXVOdjZrcWZIU2JYUHVzQVV5a3h2YkFvMGJyall3?oc=5",
-   "author": "Yahoo Sports",
-   "author_name": "Yahoo Sports",
-   "author_url": "https://sports.yahoo.com",
-   "text": "Bengals vs. Dolphins inactive players in Week 5: Ja’Marr Chase, Tee Higgins cleared for game - Yahoo Sports",
-   "posted_at": "Sun, 11 Oct 2026 15:49:54 GMT",
-   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPMnZJX2pHY1MxbzZfeG1XMDFteEdsZVl4QjFabGc0cnIxSEtPZzc5Rk8teDNzR0xDQmJjdWR1aWdIQW1YTWlWcTYxWnVvQlNCZGhOcE9OQkFrYm9uRmNkNVZDZU1aV2lZMWJzRS1qOXhlYXVOdjZrcWZIU2JYUHVzQVV5a3h2YkFvMGJyall3?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "ACTIVE",
-   "injury": "",
-   "signal": 0.55,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Yahoo Sports",
-    "query": "\"Ja'Marr Chase\" injury when:1d"
-   }
-  },
-  {
    "platform": "bluesky",
    "post_id": "at://did:plc:hlvr2omhnmvdmfnvmcuhyevz/app.bsky.feed.post/3mxme5smgt22l",
    "author": "rapsheet.bsky.social",
@@ -8625,19 +8761,19 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMihANBVV95cUxOaE9ab2k1MkFzbjBZXzNpdU9udmF5NFhzUEU2NjQ4UXFQNGN2LWZrM2x5NDRDR1NIYV96cnBXQUtZWThkMGxsWXhkcFFYdmlOV1Z0NXB6b0NIZmVDZ0pHcWhRaUhBbnlsNjJYMWFOUkJSZllFa3YxZWdpU0pHVEpGT1VrUUtOaXZOeEtUSEVqaEJHWVhyRmJwR1hYdk1oTEpfSThVTDR0QlNpUExSSWgyVXF0bkFqUUs0bF9ydC1VeXhscnFMR211aHR4VkJCcFEwNkFFMVlONUZWTlNKUVJKdXFubGJMLUxiR0FuWXh4TVdzTW1BMFZ4dmNQZF9DLWVJQl9OVmVXU25JT0taVkxET0ZuNWpFUUdOd210Rld1cGVJUHAwLWZldG5vdUtPRTZOUGpnbHhkeUxEWGxkdktBOF9iTm5yQlprY2dRX0ZLbGR6NFB1cUhncldOc3JRUllQNkhrV3ZDdjd5N3E0VkpSMnJqYzlyQzBSakltLVJEaEJocFh4?oc=5",
-   "author": "Las Vegas Review-Journal",
-   "author_name": "Las Vegas Review-Journal",
-   "author_url": "https://www.reviewjournal.com",
-   "text": "Raiders running back Ashton Jeanty set to play against Patriots - Las Vegas Review-Journal",
-   "posted_at": "Sun, 11 Oct 2026 15:48:54 GMT",
-   "url": "https://news.google.com/rss/articles/CBMihANBVV95cUxOaE9ab2k1MkFzbjBZXzNpdU9udmF5NFhzUEU2NjQ4UXFQNGN2LWZrM2x5NDRDR1NIYV96cnBXQUtZWThkMGxsWXhkcFFYdmlOV1Z0NXB6b0NIZmVDZ0pHcWhRaUhBbnlsNjJYMWFOUkJSZllFa3YxZWdpU0pHVEpGT1VrUUtOaXZOeEtUSEVqaEJHWVhyRmJwR1hYdk1oTEpfSThVTDR0QlNpUExSSWgyVXF0bkFqUUs0bF9ydC1VeXhscnFMR211aHR4VkJCcFEwNkFFMVlONUZWTlNKUVJKdXFubGJMLUxiR0FuWXh4TVdzTW1BMFZ4dmNQZF9DLWVJQl9OVmVXU25JT0taVkxET0ZuNWpFUUdOd210Rld1cGVJUHAwLWZldG5vdUtPRTZOUGpnbHhkeUxEWGxkdktBOF9iTm5yQlprY2dRX0ZLbGR6NFB1cUhncldOc3JRUllQNkhrV3ZDdjd5N3E0VkpSMnJqYzlyQzBSakltLVJEaEJocFh4?oc=5",
+   "post_id": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTEt6Vjh3TFNlSDlJS1gzQldCb2lYc05tcEFYSmNWb2F1bTh2WmREY3hla1dLdlc4cGlvTHE1dHJzWjFGRG8ybmxmd3N2Q2hqMm9BMmxjXzc3ejd2NG5tSUh5djlNWUpickp1dS00eENsX28wUEsxSzhrT2pTM3EwSE95b01hUTIwbnpYcWJnN0lFLWJhUG9sRGJneEhOTFAyc2lFc3U4R3RrcGV2cEMzeVFtbFJVOUJQdWpIQ1dhVjBkNEpqNy01ZQ?oc=5",
+   "author": "ClutchPoints",
+   "author_name": "ClutchPoints",
+   "author_url": "https://clutchpoints.com",
+   "text": "Final Week 5 injury statuses for Vikings’ Justin Jefferson, Jordan Addison, Odell Beckham Jr. - ClutchPoints",
+   "posted_at": "Sun, 11 Oct 2026 15:48:36 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNTEt6Vjh3TFNlSDlJS1gzQldCb2lYc05tcEFYSmNWb2F1bTh2WmREY3hla1dLdlc4cGlvTHE1dHJzWjFGRG8ybmxmd3N2Q2hqMm9BMmxjXzc3ejd2NG5tSUh5djlNWUpickp1dS00eENsX28wUEsxSzhrT2pTM3EwSE95b01hUTIwbnpYcWJnN0lFLWJhUG9sRGJneEhOTFAyc2lFc3U4R3RrcGV2cEMzeVFtbFJVOUJQdWpIQ1dhVjBkNEpqNy01ZQ?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
    "predicted_status": "UNKNOWN",
-   "injury": "back",
-   "signal": 0.45,
+   "injury": "",
+   "signal": 0.3,
    "engagement": 0,
    "verified": false,
    "verification_detail": "",
@@ -8646,8 +8782,8 @@
    "in_game_status": "NONE",
    "game_event": "",
    "raw": {
-    "outlet": "Las Vegas Review-Journal",
-    "query": "\"Las Vegas Raiders\" injury when:1d"
+    "outlet": "ClutchPoints",
+    "query": "\"Mike Gesicki\" injury when:1d"
    }
   },
   {
@@ -8659,6 +8795,33 @@
    "text": "Alvin Kamara (back) active for Week 5 - FantasyPros",
    "posted_at": "Sun, 11 Oct 2026 15:48:11 GMT",
    "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQQ0FvdzdCeVI0VnFwM04wM1A0ZkREejVmMFNLOExnRjhGRG9reUtBWHh1Tlp4WjlJdVhfSU1LbmZOdTJ0ZXhtREotdU1zTkw3SDdkSHNzMWhLMDhfRmg1Wkk3V0xxZDBYQnhZZ3NrTDFJLXozaFFOY3dnRXQ2Wk5rdWxGdTVXUdIBiwFBVV95cUxNUkpMLVVWdndLUk9LY1JCZmE0NlhRTDVKTzA1OVU3eFltMDVLZkR2WGowMXFyeDFaaTBVYS1TcVBUREZyVHVxMmE0YnJiRTYxSktBdXhxVl9HM3NOdl9QQTJnTTJhUGxHRFhkOGxUVVBNZzIzdUNXbzgwZnVkbFZkY0xsODd5ZHlQSTRB?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "ACTIVE",
+   "injury": "back",
+   "signal": 1.0,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "FantasyPros",
+    "query": "\"Alvin Kamara\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNaFJJMzRUemlqQ3FDUkhWMVB3cWs0aFo3TW1hN0MxWnozbUhYZEtrQk00bEZPZ3R1NTNqSkZQX2tRLTJsMncwNHU4dGVhalR5cEU0NjFHcTBuYXZWaThMN09oZGR3eUcxeTh4R2ZzV3Y0bUdGNnhXWGdvVU9WMGZKaFV0RWRBYlotZmVzcFB5ZUJMS0puRUdBVWU3eWR0OTZhSFVwWUUyY1dfRUZSQTM0aWZIaVJwQlNxeXFJVVctd9IBiwFBVV95cUxNUkpMLVVWdndLUk9LY1JCZmE0NlhRTDVKTzA1OVU3eFltMDVLZkR2WGowMXFyeDFaaTBVYS1TcVBUREZyVHVxMmE0YnJiRTYxSktBdXhxVl9HM3NOdl9QQTJnTTJhUGxHRFhkOGxUVVBNZzIzdUNXbzgwZnVkbFZkY0xsODd5ZHlQSTRB?oc=5",
+   "author": "FantasyPros",
+   "author_name": "FantasyPros",
+   "author_url": "https://www.fantasypros.com",
+   "text": "Alvin Kamara (back) active for Week 5 - FantasyPros",
+   "posted_at": "Sun, 11 Oct 2026 15:48:11 GMT",
+   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNaFJJMzRUemlqQ3FDUkhWMVB3cWs0aFo3TW1hN0MxWnozbUhYZEtrQk00bEZPZ3R1NTNqSkZQX2tRLTJsMncwNHU4dGVhalR5cEU0NjFHcTBuYXZWaThMN09oZGR3eUcxeTh4R2ZzV3Y0bUdGNnhXWGdvVU9WMGZKaFV0RWRBYlotZmVzcFB5ZUJMS0puRUdBVWU3eWR0OTZhSFVwWUUyY1dfRUZSQTM0aWZIaVJwQlNxeXFJVVctd9IBiwFBVV95cUxNUkpMLVVWdndLUk9LY1JCZmE0NlhRTDVKTzA1OVU3eFltMDVLZkR2WGowMXFyeDFaaTBVYS1TcVBUREZyVHVxMmE0YnJiRTYxSktBdXhxVl9HM3NOdl9QQTJnTTJhUGxHRFhkOGxUVVBNZzIzdUNXbzgwZnVkbFZkY0xsODd5ZHlQSTRB?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -9219,19 +9382,19 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQZjZoQy1BWU1VT0tCQXdKNEc3VTNxUEJzWXMybUQtZkswdVJUcmhlQXVTUlh2UVZjRVV0QlZTSUNTYkNmUlFVc3hyRGZMMzhCZDR2ajhsamVJVlA0S2JBVF9WMXA1ZGFqalBraGJ0dU5nWTUwTDd4UDc1dC10QURydWY4WHZaeFJVMXhXTWlQUjhFZE1RbWs0ZWh0bHZsMDJkYXFxOEd6dXE0T1AyQkthd29xRk5HdWZwNm5tRTdxSUhWSF8xWmxqTWMwSkc5bzlQbmJ5TWNibEdnY2hVbXd2bHE3UWZlOUsxenpGd2dXVURPZjlndGxHOW1zVzZYWGxrTGIwalJ5Y0hnSGPSAYsCQVVfeXFMUGY2aEMtQVlNVU9LQkF3SjRHN1UzcVBCc1lzMm1ELWZLMHVSVHJoZUF1U1JYdlFWY0VVdEJWU0lDU2JDZlJRVXN4ckRmTDM4QmQ0dmo4bGplSVZQNEtiQVRfVjFwNWRhampQa2hidHVOZ1k1MEw3eFA3NXQtdEFEcnVmOFh2WnhSVTF4V01pUFI4RWRNUW1rNGVodGx2bDAyZGFxcThHenVxNE9QMkJLYXdvcUZOR3VmcDZubUU3cUlIVkhfMVpsak1jMEpHOW85UG5ieU1jYmxHZ2NoVW13dmxxN1FmZTlLMXp6RndnV1VET2Y5Z3RsRzltc1c2WFhsa0xiMGpSeWNIZ0hj?oc=5",
-   "author": "NOLA.com",
-   "author_name": "NOLA.com",
-   "author_url": "https://www.nola.com",
-   "text": "An illness surprisingly makes two defensive starters unavailable for the Saints vs Vikings - NOLA.com",
+   "post_id": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPMnZJX2pHY1MxbzZfeG1XMDFteEdsZVl4QjFabGc0cnIxSEtPZzc5Rk8teDNzR0xDQmJjdWR1aWdIQW1YTWlWcTYxWnVvQlNCZGhOcE9OQkFrYm9uRmNkNVZDZU1aV2lZMWJzRS1qOXhlYXVOdjZrcWZIU2JYUHVzQVV5a3h2YkFvMGJyall3?oc=5",
+   "author": "Yahoo Sports",
+   "author_name": "Yahoo Sports",
+   "author_url": "https://sports.yahoo.com",
+   "text": "Bengals vs. Dolphins inactive players in Week 5: Ja’Marr Chase, Tee Higgins cleared for game - Yahoo Sports",
    "posted_at": "Sun, 11 Oct 2026 15:42:11 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQZjZoQy1BWU1VT0tCQXdKNEc3VTNxUEJzWXMybUQtZkswdVJUcmhlQXVTUlh2UVZjRVV0QlZTSUNTYkNmUlFVc3hyRGZMMzhCZDR2ajhsamVJVlA0S2JBVF9WMXA1ZGFqalBraGJ0dU5nWTUwTDd4UDc1dC10QURydWY4WHZaeFJVMXhXTWlQUjhFZE1RbWs0ZWh0bHZsMDJkYXFxOEd6dXE0T1AyQkthd29xRk5HdWZwNm5tRTdxSUhWSF8xWmxqTWMwSkc5bzlQbmJ5TWNibEdnY2hVbXd2bHE3UWZlOUsxenpGd2dXVURPZjlndGxHOW1zVzZYWGxrTGIwalJ5Y0hnSGPSAYsCQVVfeXFMUGY2aEMtQVlNVU9LQkF3SjRHN1UzcVBCc1lzMm1ELWZLMHVSVHJoZUF1U1JYdlFWY0VVdEJWU0lDU2JDZlJRVXN4ckRmTDM4QmQ0dmo4bGplSVZQNEtiQVRfVjFwNWRhampQa2hidHVOZ1k1MEw3eFA3NXQtdEFEcnVmOFh2WnhSVTF4V01pUFI4RWRNUW1rNGVodGx2bDAyZGFxcThHenVxNE9QMkJLYXdvcUZOR3VmcDZubUU3cUlIVkhfMVpsak1jMEpHOW85UG5ieU1jYmxHZ2NoVW13dmxxN1FmZTlLMXp6RndnV1VET2Y5Z3RsRzltc1c2WFhsa0xiMGpSeWNIZ0hj?oc=5",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPMnZJX2pHY1MxbzZfeG1XMDFteEdsZVl4QjFabGc0cnIxSEtPZzc5Rk8teDNzR0xDQmJjdWR1aWdIQW1YTWlWcTYxWnVvQlNCZGhOcE9OQkFrYm9uRmNkNVZDZU1aV2lZMWJzRS1qOXhlYXVOdjZrcWZIU2JYUHVzQVV5a3h2YkFvMGJyall3?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "illness",
-   "signal": 0.6,
+   "predicted_status": "ACTIVE",
+   "injury": "",
+   "signal": 0.55,
    "engagement": 0,
    "verified": false,
    "verification_detail": "",
@@ -9240,8 +9403,8 @@
    "in_game_status": "NONE",
    "game_event": "",
    "raw": {
-    "outlet": "NOLA.com",
-    "query": "\"Davon Godchaux\" injury when:1d"
+    "outlet": "Yahoo Sports",
+    "query": "\"Ja'Marr Chase\" injury when:1d"
    }
   },
   {
@@ -9489,13 +9652,13 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOS2FfN1VjaGxILU1WMGs0SUlmN25mRlNRYzRMNHJNRVdqbWtad1JZZ1FRX05FaXJLMk1FM0FVUWptVHdoYXZBQzhPR3NpWkVZS2VnTmlDR3NOMkRmQnhXOUFZQXRKRnJicFRQcS1GeHhOaFo1Vy1USzFTX0J0dmJVRm14R2VDUFdybEFBUmptYVN4cGVRSkRSQnVTN0NOYkVSRklxRGE5eUVBbkxUdTQwaWRhMnNCeXF5eWM1ems0SVhQSU1GbjVqNWpB0gHSAUFVX3lxTE8wUU81YUUwUXRoemtKRlJaNUxDOU03VnFXbFlfQWo5b3laakRwMWlOR1lHTFNvWjd5cWRGSldTYnZxWVhGeXNxUHRFNDRoUHRZUzlRbWhTeHl1aG1sMEY1UlNHemlRWkNxSmxoYWd3V2lfRE1xeVNmcE9xZ2p5VzRQZmJSQ1JXWnptdDZaZURsWWVxX2l5OF9oQnZQVGljbmhPZ3lmMll6STh2S0xUVDAxLWFveW56bU01QlBpTjZxUlVSTUFXRUU5bTdjNGJTTFJKUQ?oc=5",
-   "author": "NBC10 Philadelphia",
-   "author_name": "NBC10 Philadelphia",
-   "author_url": "https://www.nbcphiladelphia.com",
-   "text": "Eagles keep suffering injuries against Jaguars in London - NBC10 Philadelphia",
+   "post_id": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNVHIzazd0X1RlMk90Mi1icWQwMFZ2ZWh0ZVAybGQxZXJGcDZkNlprOV9QbnZvQ3FSMXhZRHdUZkJIWVB6RXQxa01oNWF6VjRNeDYybVZLWXBOYmVLMWdMQ1NiOW1WNDd3UW1XTG9QTEI0N1VrVkIzREdkNGZsNFIzcGtKSUpsaFhYSHg1a043TmJCZFJVc0tlbU5rN0NENXhUcEFFR2FIWWdCQnh4SzExMERyM3ZaQVNaalJjbThwVHbSAcgBQVVfeXFMUHczYzFVel84QmNaV2tlX0Iyc0s0V2RCbTgyVTBDMjQzRGl0ejdESzJ3WTl4OFZTZUF6VEg5cGRSUTViYVMtaWYycXp2SkxaV0pWNk1QUWtoN2swR1N5MlRMT3QtcXgtNVVHMGUwOUwwS210NzRIZlJPNlV6TTF0dmFwOEtsWmtENEE2TTJpNzJBZVF0STh1MFBtWHJuVEpBNkQ3dE9TazdRLV9ESE9DLVN0a3czZnY1bDVrREdGUmxLOXBNU3ktRTk?oc=5",
+   "author": "NBC Sports Philadelphia",
+   "author_name": "NBC Sports Philadelphia",
+   "author_url": "https://www.nbcsportsphiladelphia.com",
+   "text": "Eagles keep suffering injuries against Jaguars in London - NBC Sports Philadelphia",
    "posted_at": "Sun, 11 Oct 2026 15:39:57 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOS2FfN1VjaGxILU1WMGs0SUlmN25mRlNRYzRMNHJNRVdqbWtad1JZZ1FRX05FaXJLMk1FM0FVUWptVHdoYXZBQzhPR3NpWkVZS2VnTmlDR3NOMkRmQnhXOUFZQXRKRnJicFRQcS1GeHhOaFo1Vy1USzFTX0J0dmJVRm14R2VDUFdybEFBUmptYVN4cGVRSkRSQnVTN0NOYkVSRklxRGE5eUVBbkxUdTQwaWRhMnNCeXF5eWM1ems0SVhQSU1GbjVqNWpB0gHSAUFVX3lxTE8wUU81YUUwUXRoemtKRlJaNUxDOU03VnFXbFlfQWo5b3laakRwMWlOR1lHTFNvWjd5cWRGSldTYnZxWVhGeXNxUHRFNDRoUHRZUzlRbWhTeHl1aG1sMEY1UlNHemlRWkNxSmxoYWd3V2lfRE1xeVNmcE9xZ2p5VzRQZmJSQ1JXWnptdDZaZURsWWVxX2l5OF9oQnZQVGljbmhPZ3lmMll6STh2S0xUVDAxLWFveW56bU01QlBpTjZxUlVSTUFXRUU5bTdjNGJTTFJKUQ?oc=5",
+   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNVHIzazd0X1RlMk90Mi1icWQwMFZ2ZWh0ZVAybGQxZXJGcDZkNlprOV9QbnZvQ3FSMXhZRHdUZkJIWVB6RXQxa01oNWF6VjRNeDYybVZLWXBOYmVLMWdMQ1NiOW1WNDd3UW1XTG9QTEI0N1VrVkIzREdkNGZsNFIzcGtKSUpsaFhYSHg1a043TmJCZFJVc0tlbU5rN0NENXhUcEFFR2FIWWdCQnh4SzExMERyM3ZaQVNaalJjbThwVHbSAcgBQVVfeXFMUHczYzFVel84QmNaV2tlX0Iyc0s0V2RCbTgyVTBDMjQzRGl0ejdESzJ3WTl4OFZTZUF6VEg5cGRSUTViYVMtaWYycXp2SkxaV0pWNk1QUWtoN2swR1N5MlRMT3QtcXgtNVVHMGUwOUwwS210NzRIZlJPNlV6TTF0dmFwOEtsWmtENEE2TTJpNzJBZVF0STh1MFBtWHJuVEpBNkQ3dE9TazdRLV9ESE9DLVN0a3czZnY1bDVrREdGUmxLOXBNU3ktRTk?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -9510,7 +9673,7 @@
    "in_game_status": "INJURY_REPORTED",
    "game_event": "injury-reported",
    "raw": {
-    "outlet": "NBC10 Philadelphia",
+    "outlet": "NBC Sports Philadelphia",
     "query": "\"Philadelphia Eagles\" injury when:1d"
    }
   },
@@ -9813,6 +9976,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNclBLeEpqSlpaczhzUVBZRFRPQlFSb2I2V2Y0TXJKaklEaHVlS1h0SEo4ZFVRejVrZU9SNGhiNjJ1Y1RhZkd1eTJjOUZPLWdVRWJETDI1eGUzUWIxVmowb2FvNDVub1ZVY0hsNk1qSEl6Y1ZxYmhUSDVpTzFHdU5vLUxRZw?oc=5",
+   "author": "Draft Sharks",
+   "author_name": "Draft Sharks",
+   "author_url": "https://www.draftsharks.com",
+   "text": "Terry McLaurin Active - Draft Sharks",
+   "posted_at": "Sun, 11 Oct 2026 15:36:24 GMT",
+   "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNclBLeEpqSlpaczhzUVBZRFRPQlFSb2I2V2Y0TXJKaklEaHVlS1h0SEo4ZFVRejVrZU9SNGhiNjJ1Y1RhZkd1eTJjOUZPLWdVRWJETDI1eGUzUWIxVmowb2FvNDVub1ZVY0hsNk1qSEl6Y1ZxYmhUSDVpTzFHdU5vLUxRZw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "ACTIVE",
+   "injury": "",
+   "signal": 0.55,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Draft Sharks",
+    "query": "\"D'Andre Swift\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPY3FhcGwxWWN2N3g1Y0pfVm9vN051Zi03aTlJaEwzSVF1aXhfV1hDV0ZRanRrZVhQS0E1dzg0RnJQSWlQc1FLc19ZbkhtUUhUYXdDZXVmeXRlNE1ETEdleFdlYlVXSklVSDV0aWxwLVVsY3pHLXo1V2dXc29tWVF0WlV6eTBBdHRpWGZrYjFn?oc=5",
    "author": "Yahoo Sports",
    "author_name": "Yahoo Sports",
@@ -9943,7 +10133,7 @@
    "game_event": "ruled-out-for-game",
    "raw": {
     "outlet": "Bear Goggles On",
-    "query": "\"Chicago Bears\" injury when:1d"
+    "query": "\"Kyle Monangai\" injury when:1d"
    }
   },
   {
@@ -10063,6 +10253,33 @@
    "text": "Carnell Tate (back) officially active for Week 5 - FantasyPros",
    "posted_at": "Sun, 11 Oct 2026 15:34:36 GMT",
    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNT0xJOXUyV2x6cXo5VHMtUnBleVZ2M1lOWU5fakowc1dSb2p5RjVVczZ2dUVueEE3bWduSFU4d2xBN3lYUkpxZ2JaM3l3OTdkM1FPUGh2akM1VFBvS05OTHpHV1pLeldNQkNNYk5FeVYxNnR5Zm96ajVtNmRYUUFaZHBTblJPaWhLS3JSS291NWVkcE15c2hORGs4dEVtMXdFMG9hVWYxMHVadWpLQzRZQ2otZ1M3NHNheXNYNW1QcWd2akszbE4tMVN3YkFIQdIBmgFBVV95cUxPU1V0RS15d3dsVXJCTE1kcG1mZldxYmExQlVQZ2d1d2ZKOVlxaGcyWXhiZWtkX3pPdG1uNVdIall4eDktdTkyN213V1VKVzZKZ0ptWFVTWGhoekY3aFVXbWg1NGFOMlFRMTh5VWlyckJnV1FMRDJsYzg3MW9SWEpxOFNSWEV3Q0c5aTQ3WlJ3Z2dJa24wdHk4RW9R?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "ACTIVE",
+   "injury": "back",
+   "signal": 1.0,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "FantasyPros",
+    "query": "\"Carnell Tate\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPU1V0RS15d3dsVXJCTE1kcG1mZldxYmExQlVQZ2d1d2ZKOVlxaGcyWXhiZWtkX3pPdG1uNVdIall4eDktdTkyN213V1VKVzZKZ0ptWFVTWGhoekY3aFVXbWg1NGFOMlFRMTh5VWlyckJnV1FMRDJsYzg3MW9SWEpxOFNSWEV3Q0c5aTQ3WlJ3Z2dJa24wdHk4RW9R0gGaAUFVX3lxTE9TVXRFLXl3d2xVckJMTWRwbWZmV3FiYTFCVVBnZ3V3Zko5WXFoZzJZeGJla2Rfek90bW41V0hqWXh4OS11OTI3bXdXVUpXNkpnSm1YVVNYaGh6RjdoVVdtaDU0YU4yUVExOHlVaXJyQmdXUUxEMmxjODcxb1JYSnE4U1JYRXdDRzlpNDdaUndnZ0lrbjB0eThFb1E?oc=5",
+   "author": "FantasyPros",
+   "author_name": "FantasyPros",
+   "author_url": "https://www.fantasypros.com",
+   "text": "Carnell Tate (back) officially active for Week 5 - FantasyPros",
+   "posted_at": "Sun, 11 Oct 2026 15:34:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPU1V0RS15d3dsVXJCTE1kcG1mZldxYmExQlVQZ2d1d2ZKOVlxaGcyWXhiZWtkX3pPdG1uNVdIall4eDktdTkyN213V1VKVzZKZ0ptWFVTWGhoekY3aFVXbWg1NGFOMlFRMTh5VWlyckJnV1FMRDJsYzg3MW9SWEpxOFNSWEV3Q0c5aTQ3WlJ3Z2dJa24wdHk4RW9R0gGaAUFVX3lxTE9TVXRFLXl3d2xVckJMTWRwbWZmV3FiYTFCVVBnZ3V3Zko5WXFoZzJZeGJla2Rfek90bW41V0hqWXh4OS11OTI3bXdXVUpXNkpnSm1YVVNYaGh6RjdoVVdtaDU0YU4yUVExOHlVaXJyQmdXUUxEMmxjODcxb1JYSnE4U1JYRXdDRzlpNDdaUndnZ0lrbjB0eThFb1E?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -10322,33 +10539,6 @@
    "raw": {
     "outlet": "roundtable.io",
     "query": "\"Jaylin Noel\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQcTQ5S2pQdERxeHFaRnQ1RmNMNWlzUmtyVVJxMlB5WGw3bVE2OGhVVHBXUW11RzBCZnFyelB4MHBJaEVtVzRKLVRfTlhKRzhZckJoM1BPYnFBaFREbG95Z3o3RVJnNk83ekVlQUI3Y2dKSEdZSDNUR18xTG1MVDV5U3VPQWZXdw?oc=5",
-   "author": "Yahoo Sports",
-   "author_name": "Yahoo Sports",
-   "author_url": "https://sports.yahoo.com",
-   "text": "Is Saints’ Alvin Kamara playing vs. Vikings in Week 5? Final injury update - Yahoo Sports",
-   "posted_at": "Sun, 11 Oct 2026 15:19:09 GMT",
-   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQcTQ5S2pQdERxeHFaRnQ1RmNMNWlzUmtyVVJxMlB5WGw3bVE2OGhVVHBXUW11RzBCZnFyelB4MHBJaEVtVzRKLVRfTlhKRzhZckJoM1BPYnFBaFREbG95Z3o3RVJnNk83ekVlQUI3Y2dKSEdZSDNUR18xTG1MVDV5U3VPQWZXdw?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "Yahoo Sports",
-    "query": "\"Alvin Kamara\" injury when:1d"
    }
   },
   {
@@ -10645,7 +10835,7 @@
    "game_event": "injury-reported",
    "raw": {
     "outlet": "ClutchPoints",
-    "query": "\"Kyler Murray\" injury when:1d"
+    "query": "\"Alvin Kamara\" injury when:1d"
    }
   },
   {
@@ -10866,13 +11056,13 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOMnNPalJ5Q1hVOTFlVWl2dEhaMjljSUt2MFRCeHdXNl9SLUlPWmx2WEllTmxZamJYRzVLUEMzc0hjM21qbUlVSVhtb3ZvZ01TNHV5alc1THA4bzRWQzNXdFg2MVlvRC1PWjZoRHVfY3I4b1RLTXEwTW5LQzBXSVNmemZ0RWxsMkpRV3BNdVpSM19IcUd5VHpWMmpjcFBTOUZoRndEaTJ4UVJ5SVBnTWRjT1VwVnlsZW5MVUxrRHVWR1JRaEpybXpQX0prVUR0TEh4QzJBbHNGUdIB1wFBVV95cUxOMnNPalJ5Q1hVOTFlVWl2dEhaMjljSUt2MFRCeHdXNl9SLUlPWmx2WEllTmxZamJYRzVLUEMzc0hjM21qbUlVSVhtb3ZvZ01TNHV5alc1THA4bzRWQzNXdFg2MVlvRC1PWjZoRHVfY3I4b1RLTXEwTW5LQzBXSVNmemZ0RWxsMkpRV3BNdVpSM19IcUd5VHpWMmpjcFBTOUZoRndEaTJ4UVJ5SVBnTWRjT1VwVnlsZW5MVUxrRHVWR1JRaEpybXpQX0prVUR0TEh4QzJBbHNGUQ?oc=5",
+   "post_id": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOX2hvWGhDcjFYblVrYzd0LXhjTTg2WXRPckRlbHJOcTlQSF9YMWlJVjk1Q0hFcG1rR2VjcTZyajltOXR1Rm1mYlJwc1BUckFDYkpnZWtBN0NvcjdKZ1plZFFvX2xPdUJBWFlrQm9rNDlXeGFMSXVkeFlZSVowdlBBcXJaVWNsVC14SkdQWGJRRkJmbmtYQ2lTeVZvLVlIMm9aaTF3VjB2bHVTbDRmT1d1WkpSUGZMcmUyLWdEdE1yaW84OFVybTNkNTh3dDRIejhxWkHSAdcBQVVfeXFMTjJzT2pSeUNYVTkxZVVpdnRIWjI5Y0lLdjBUQnh3VzZfUi1JT1psdlhJZU5sWWpiWEc1S1BDM3NIYzNtam1JVUlYbW92b2dNUzR1eWpXNUxwOG80VkMzV3RYNjFZb0QtT1o2aER1X2NyOG9US01xME1uS0MwV0lTZnpmdEVsbDJKUVdwTXVaUjNfSHFHeVR6VjJqY3BQUzlGaEZ3RGkyeFFSeUlQZ01kY09VcFZ5bGVuTFVMa0R1VkdSUWhKcm16UF9Ka1VEdExIeEMyQWxzRlE?oc=5",
    "author": "The Sunday Guardian",
    "author_name": "The Sunday Guardian",
    "author_url": "https://sundayguardianlive.com",
    "text": "Vikings vs Saints: Justin Jefferson Injury Status Revealed Ahead of Sunday’s NFL Week 5 Game - The Sunday Guardian",
-   "posted_at": "Sun, 11 Oct 2026 14:59:08 GMT",
-   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOMnNPalJ5Q1hVOTFlVWl2dEhaMjljSUt2MFRCeHdXNl9SLUlPWmx2WEllTmxZamJYRzVLUEMzc0hjM21qbUlVSVhtb3ZvZ01TNHV5alc1THA4bzRWQzNXdFg2MVlvRC1PWjZoRHVfY3I4b1RLTXEwTW5LQzBXSVNmemZ0RWxsMkpRV3BNdVpSM19IcUd5VHpWMmpjcFBTOUZoRndEaTJ4UVJ5SVBnTWRjT1VwVnlsZW5MVUxrRHVWR1JRaEpybXpQX0prVUR0TEh4QzJBbHNGUdIB1wFBVV95cUxOMnNPalJ5Q1hVOTFlVWl2dEhaMjljSUt2MFRCeHdXNl9SLUlPWmx2WEllTmxZamJYRzVLUEMzc0hjM21qbUlVSVhtb3ZvZ01TNHV5alc1THA4bzRWQzNXdFg2MVlvRC1PWjZoRHVfY3I4b1RLTXEwTW5LQzBXSVNmemZ0RWxsMkpRV3BNdVpSM19IcUd5VHpWMmpjcFBTOUZoRndEaTJ4UVJ5SVBnTWRjT1VwVnlsZW5MVUxrRHVWR1JRaEpybXpQX0prVUR0TEh4QzJBbHNGUQ?oc=5",
+   "posted_at": "Sun, 11 Oct 2026 14:59:02 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOX2hvWGhDcjFYblVrYzd0LXhjTTg2WXRPckRlbHJOcTlQSF9YMWlJVjk1Q0hFcG1rR2VjcTZyajltOXR1Rm1mYlJwc1BUckFDYkpnZWtBN0NvcjdKZ1plZFFvX2xPdUJBWFlrQm9rNDlXeGFMSXVkeFlZSVowdlBBcXJaVWNsVC14SkdQWGJRRkJmbmtYQ2lTeVZvLVlIMm9aaTF3VjB2bHVTbDRmT1d1WkpSUGZMcmUyLWdEdE1yaW84OFVybTNkNTh3dDRIejhxWkHSAdcBQVVfeXFMTjJzT2pSeUNYVTkxZVVpdnRIWjI5Y0lLdjBUQnh3VzZfUi1JT1psdlhJZU5sWWpiWEc1S1BDM3NIYzNtam1JVUlYbW92b2dNUzR1eWpXNUxwOG80VkMzV3RYNjFZb0QtT1o2aER1X2NyOG9US01xME1uS0MwV0lTZnpmdEVsbDJKUVdwTXVaUjNfSHFHeVR6VjJqY3BQUzlGaEZ3RGkyeFFSeUlQZ01kY09VcFZ5bGVuTFVMa0R1VkdSUWhKcm16UF9Ka1VEdExIeEMyQWxzRlE?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -11082,33 +11272,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOWWg0elZoNl9jTE5xMUxVck11WkR3M1VtRGtQdTZYdWlMNVlDZ2pyWE9Rc3kxdWZFM1prMWEtMEw4aC1YLTl3YUhnazVSRUhraS1FVnVxVTFJUFpZSzgwRWY5Rlo3WXZoSnkteUt3NmJpMm01NUdWUGZVLWVCdDQxQjhSVmJVZVNQUEtINlhfcDRDUDNOajVETzk1YkxSRU1X?oc=5",
-   "author": "RotoWire",
-   "author_name": "RotoWire",
-   "author_url": "https://www.rotowire.com",
-   "text": "Jordan Addison Injury: Looks poised to sit Sunday - RotoWire",
-   "posted_at": "Sun, 11 Oct 2026 14:55:37 GMT",
-   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOWWg0elZoNl9jTE5xMUxVck11WkR3M1VtRGtQdTZYdWlMNVlDZ2pyWE9Rc3kxdWZFM1prMWEtMEw4aC1YLTl3YUhnazVSRUhraS1FVnVxVTFJUFpZSzgwRWY5Rlo3WXZoSnkteUt3NmJpMm01NUdWUGZVLWVCdDQxQjhSVmJVZVNQUEtINlhfcDRDUDNOajVETzk1YkxSRU1X?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "RotoWire",
-    "query": "\"Jordan Addison\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPbEtnRmxqak9FaGlFVlhiTWpLWDZkMVpXLW9ERWVzRlE0M2ZlRVBxQWtENmdlYWFQb3M4Y0hzWTJzMW4wVjhmY1BYZXpFVWtyNXFDdUZUT3dSYkx3bTlIdm51M05td1gwQ21LQXFweVh4QzU0NFBPdjZad2doNHhmRzRwT0NKeWEwM0E?oc=5",
    "author": "Yahoo Sports",
    "author_name": "Yahoo Sports",
@@ -11185,7 +11348,7 @@
    "game_event": "injury-reported",
    "raw": {
     "outlet": "Yahoo Sports",
-    "query": "\"Cincinnati Bengals\" injury when:1d"
+    "query": "\"Jacksonville Jaguars\" injury when:1d"
    }
   },
   {
@@ -11699,6 +11862,33 @@
    "raw": {
     "outlet": "SuaraGarut.ID",
     "query": "\"Michael Carter\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOZGlFam85bXJzT05NUWxjc3RoS05rMkVQUlZ3Z2ZUWG1PZU9WWXRGdVZwYVdxTGtHNlhpSHRNMDhnUXZoS2l4T2poN1RWWkNPcGNoMEYwUEU3N1JSZkNKVXRJTlJlS210YVN4WVhCdmoybkljM0oxNFB0SVdVNC1renpQMG55bU5rRVVjVlc3TTJDczVUcC1jRg?oc=5",
+   "author": "Sports Illustrated",
+   "author_name": "Sports Illustrated",
+   "author_url": "https://www.si.com",
+   "text": "Vikings at Saints: Who Wins and Why in Week 5 - Sports Illustrated",
+   "posted_at": "Sun, 11 Oct 2026 14:35:16 GMT",
+   "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOZGlFam85bXJzT05NUWxjc3RoS05rMkVQUlZ3Z2ZUWG1PZU9WWXRGdVZwYVdxTGtHNlhpSHRNMDhnUXZoS2l4T2poN1RWWkNPcGNoMEYwUEU3N1JSZkNKVXRJTlJlS210YVN4WVhCdmoybkljM0oxNFB0SVdVNC1renpQMG55bU5rRVVjVlc3TTJDczVUcC1jRg?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Sports Illustrated",
+    "query": "\"New Orleans Saints\" injury when:1d"
    }
   },
   {
@@ -13431,33 +13621,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQNHZ0MzZNREVwd2FFNGJGWEZadXctemYtcXQ0bFIzcV9QRXVaZ2hFM3FtRXV3a3JJQnlmbnMyczlkWENqN2pnLVJKVkx0OGJzVG15b2RYQkhhU1VVbFF3eUlNU0FEeWU0X3RMaVMwLVdtZ1VmeUc5U2kyRTdjYzRwdUdCOU0yNVRnWm1PTEFtRjdLcmFEOFVjODlaQ3VmV2FIaGc?oc=5",
-   "author": "Sports Illustrated",
-   "author_name": "Sports Illustrated",
-   "author_url": "https://www.si.com",
-   "text": "Chicago Bears Week 5 Keys to Victory: Can Tyson Bagent Outduel Jordan Love? - Sports Illustrated",
-   "posted_at": "Sun, 11 Oct 2026 13:00:01 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQNHZ0MzZNREVwd2FFNGJGWEZadXctemYtcXQ0bFIzcV9QRXVaZ2hFM3FtRXV3a3JJQnlmbnMyczlkWENqN2pnLVJKVkx0OGJzVG15b2RYQkhhU1VVbFF3eUlNU0FEeWU0X3RMaVMwLVdtZ1VmeUc5U2kyRTdjYzRwdUdCOU0yNVRnWm1PTEFtRjdLcmFEOFVjODlaQ3VmV2FIaGc?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Sports Illustrated",
-    "query": "\"Jordan Love\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPS3RWVWhtdW45Qk10bEpuUVNaUk1DcENyeGN4dUhuVnAyWkwza0pqUktBTnR0YXZqZUUtdzl0b00zWUU1VFZIb1lPa0gxNkxJUGtVNmdZV2JGM2NnaGt2ZlYtRkNZUTFOczhtVExrYldENTBSaU5YYXB5ME9rYnpmbm54eWVPZ0VmaGF3NU9KbHJ6NlRhcnUzTXJMNkhwZGNYc2pCOExLbw?oc=5",
    "author": "DraftKings Network",
    "author_name": "DraftKings Network",
@@ -13481,33 +13644,6 @@
    "raw": {
     "outlet": "DraftKings Network",
     "query": "\"Rome Odunze\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPcWhldndPNS00VGxDaUhqNTlvaDlORDhpSmlSTk11bWszeDMyUlVwMEVqYmxxZV8xbkw2Y3FsdmF4NXZvN0RaRDVMMXNncGhxVnNOVXVFRExVMHRCWllJVWxOMzdLaHFuMTI5aURoOFFDME5kTlVBLUtiUEtQeEcxQTRNVHRqUllDWnAtN1huVEJKcDlVNFFZU3B1MkZ5NUViVG9MU3JfaU5Pang2?oc=5",
-   "author": "Houston Chronicle",
-   "author_name": "Houston Chronicle",
-   "author_url": "https://www.houstonchronicle.com",
-   "text": "Eagles edge rusher Jonathan Greenard won't play vs. Jaguars in London because of ankle injury - Houston Chronicle",
-   "posted_at": "Sun, 11 Oct 2026 12:57:39 GMT",
-   "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPcWhldndPNS00VGxDaUhqNTlvaDlORDhpSmlSTk11bWszeDMyUlVwMEVqYmxxZV8xbkw2Y3FsdmF4NXZvN0RaRDVMMXNncGhxVnNOVXVFRExVMHRCWllJVWxOMzdLaHFuMTI5aURoOFFDME5kTlVBLUtiUEtQeEcxQTRNVHRqUllDWnAtN1huVEJKcDlVNFFZU3B1MkZ5NUViVG9MU3JfaU5Pang2?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "ankle",
-   "signal": 0.6,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "OUT_FOR_GAME",
-   "game_event": "ruled-out-for-game",
-   "raw": {
-    "outlet": "Houston Chronicle",
-    "query": "\"C.J. Stroud\" injury when:1d"
    }
   },
   {
@@ -13944,6 +14080,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMingFBVV95cUxQci1HbGhFY3VTLVFOMzFTS2V2TWRBT081UDF3WmdlNkwyYzlidUpkUzFlZFEzUHU3empELXo1a19BOGs3NHZwWk9mWVhvUHd3MXFhMDQ3cEx6UkYwdmJlR3RqekptUi1oLVBZSGNaa1prNk96QUk5YVZqRDBMTU5tMy01U2EyUWJHOUhIQnpvOUlHcms4b1N4V01CU0xDQQ?oc=5",
+   "author": "The Big Lead",
+   "author_name": "The Big Lead",
+   "author_url": "https://www.thebiglead.com",
+   "text": "Is Rhamondre Stevenson playing today? Injury update, fantasy advice for Week 5 - The Big Lead",
+   "posted_at": "Sun, 11 Oct 2026 12:33:58 GMT",
+   "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQci1HbGhFY3VTLVFOMzFTS2V2TWRBT081UDF3WmdlNkwyYzlidUpkUzFlZFEzUHU3empELXo1a19BOGs3NHZwWk9mWVhvUHd3MXFhMDQ3cEx6UkYwdmJlR3RqekptUi1oLVBZSGNaa1prNk96QUk5YVZqRDBMTU5tMy01U2EyUWJHOUhIQnpvOUlHcms4b1N4V01CU0xDQQ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "The Big Lead",
+    "query": "\"TreVeyon Henderson\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOeXd5U0NxNjY0S28yS2EzRlpteHRMWk1CT0x4Sk12VVo0YkI1clN5Zk1CaGIwS29MSDFhMG5tckh1bHlfeG1RZ05VUmdtdFQxX2FwM2g5WDJ5MHZJc3pJNzVIT2EyNVpNZjNTQ01XYWJ5RlhKc2V1OGVZM0dkTkNPR3NkdVBHZU8xSERnTmVmdW94cDFqak5ldmU4VDlnYmhkS3dlTC1vYVp2Sk9McnN6dXBn?oc=5",
    "author": "Sports Illustrated",
    "author_name": "Sports Illustrated",
@@ -14052,38 +14215,11 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPOUVKZVhYVGFzRU1ZYzNsSlFZekFfMHEwN1FiOWNTRnp0MjRXYWhGM1pWZHI2MkhiSHhETk9iTUxhTFJXVnlzN256ZEVKNHBZVEFXeGNoVkY3UUZKVTl6VVBYekpDNjVIM1BOZWgzcjAxZXU0dDNBckZiLUtFM2VDR3RYcl9xaGRHTHlqaHlCZndlY2Y0bEdGZjRkSm1LMWF0aDZOUk42MjdwVXpyVHg3WGpLOTU4RTFVX2dYeHRfWnFkRmtfdjMwZVdZUzk0SFVLaWhJUGd2MGxuTUE?oc=5",
-   "author": "巴士的報",
-   "author_name": "巴士的報",
-   "author_url": "https://www.bastillepost.com",
-   "text": "Eagles edge rusher Jonathan Greenard won't play vs. Jaguars in London because of ankle injury - 巴士的報",
-   "posted_at": "Sun, 11 Oct 2026 12:33:18 GMT",
-   "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPOUVKZVhYVGFzRU1ZYzNsSlFZekFfMHEwN1FiOWNTRnp0MjRXYWhGM1pWZHI2MkhiSHhETk9iTUxhTFJXVnlzN256ZEVKNHBZVEFXeGNoVkY3UUZKVTl6VVBYekpDNjVIM1BOZWgzcjAxZXU0dDNBckZiLUtFM2VDR3RYcl9xaGRHTHlqaHlCZndlY2Y0bEdGZjRkSm1LMWF0aDZOUk42MjdwVXpyVHg3WGpLOTU4RTFVX2dYeHRfWnFkRmtfdjMwZVdZUzk0SFVLaWhJUGd2MGxuTUE?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "ankle",
-   "signal": 0.6,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "OUT_FOR_GAME",
-   "game_event": "ruled-out-for-game",
-   "raw": {
-    "outlet": "巴士的報",
-    "query": "\"Jaylon Jones\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMimgJBVV95cUxOVVBvalhZSnUtYi1STndLWnI4bVZYZzVNTFhQRV9oOGhpazRXQllCYzc1TlltNF9aZVNRNlRibE13cVJOUEl5RFBDY1B3bm42UHhIRHZuUWNtOGxpWTk5Z2FqRG11VWxndHh1ejRUWUxZekpSd050R29oVW95b3dhM2dFMDAxV1htUkJPZ1hBWEhPRlJEVFZoMkQxdncxVmZPdlU1RC0ybFVBTk05UVl4U0s5UGZ6YjNCTW5uMUUwUGdfMVVtdzhObmdTZUdSUE5seTRJQ0JwRGJ0SXRod1E0Ym0yeHpVMWFoVEd5clRScGxkZ1VuVzN4VTRWOE9ZcjQ2dVRZdWFzdi1HSzlLcUxha24xYWdvd3daSXc?oc=5",
-   "author": "WUSA9",
-   "author_name": "WUSA9",
+   "author": "wusa9.com",
+   "author_name": "wusa9.com",
    "author_url": "https://www.wusa9.com",
-   "text": "Eagles edge rusher Jonathan Greenard won't play vs. Jaguars in London because of ankle injury - WUSA9",
+   "text": "Eagles edge rusher Jonathan Greenard won't play vs. Jaguars in London because of ankle injury - wusa9.com",
    "posted_at": "Sun, 11 Oct 2026 12:33:00 GMT",
    "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxOVVBvalhZSnUtYi1STndLWnI4bVZYZzVNTFhQRV9oOGhpazRXQllCYzc1TlltNF9aZVNRNlRibE13cVJOUEl5RFBDY1B3bm42UHhIRHZuUWNtOGxpWTk5Z2FqRG11VWxndHh1ejRUWUxZekpSd050R29oVW95b3dhM2dFMDAxV1htUkJPZ1hBWEhPRlJEVFZoMkQxdncxVmZPdlU1RC0ybFVBTk05UVl4U0s5UGZ6YjNCTW5uMUUwUGdfMVVtdzhObmdTZUdSUE5seTRJQ0JwRGJ0SXRod1E0Ym0yeHpVMWFoVEd5clRScGxkZ1VuVzN4VTRWOE9ZcjQ2dVRZdWFzdi1HSzlLcUxha24xYWdvd3daSXc?oc=5",
    "matched_player": "",
@@ -14100,7 +14236,7 @@
    "in_game_status": "OUT_FOR_GAME",
    "game_event": "ruled-out-for-game",
    "raw": {
-    "outlet": "WUSA9",
+    "outlet": "wusa9.com",
     "query": "\"Jaylon Jones\" injury when:1d"
    }
   },
@@ -16050,33 +16186,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNOG12NEtab1RVbGRMQUdpNGxra1dGTWw2R2ZaQThWS3F4Qm9ZWEVfU05Xa1lWWnlxMEQ2WUdEOFVZMlo5WTVodjdBaFhPYkk4aTJqd2FiTEh3a0N3b1hMcFRHUEFaUFMwQ2VXcUxOLXphQk1TX0NtLUw3UWRoYUtnOVprX0N4OEJnelY0Nm5SekFEbTZEQWNJSGQ2aGtlMHRxRmUtdjg4VzctQ0R4RFhjeG9kZXp6S2JJUjhBSjdFM0RiTjJsX3Zv?oc=5",
-   "author": "EssentiallySports",
-   "author_name": "EssentiallySports",
-   "author_url": "https://www.essentiallysports.com",
-   "text": "NFL Fines DK Metcalf for Illegal Act During Week 4 Game Against the Browns - EssentiallySports",
-   "posted_at": "Sun, 11 Oct 2026 11:10:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNOG12NEtab1RVbGRMQUdpNGxra1dGTWw2R2ZaQThWS3F4Qm9ZWEVfU05Xa1lWWnlxMEQ2WUdEOFVZMlo5WTVodjdBaFhPYkk4aTJqd2FiTEh3a0N3b1hMcFRHUEFaUFMwQ2VXcUxOLXphQk1TX0NtLUw3UWRoYUtnOVprX0N4OEJnelY0Nm5SekFEbTZEQWNJSGQ2aGtlMHRxRmUtdjg4VzctQ0R4RFhjeG9kZXp6S2JJUjhBSjdFM0RiTjJsX3Zv?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.45,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "EssentiallySports",
-    "query": "\"DK Metcalf\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMibkFVX3lxTE05RjFjalktNDhXR1RENGtIak1INHZpR2pCNm05WGhXREEzTzdrYjlTRllaaU44MjJlQ1VoUURJU0xwRFk2cTdLeXVZVUR6VnJMUGdRM1lpVHQ0bkpkN3NQWlpBdkY5RU1ScldOVjFn?oc=5",
    "author": "SuaraGarut.ID",
    "author_name": "SuaraGarut.ID",
@@ -16482,33 +16591,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOMzdaa1NWUzZjaV9MWmRrSEZ0cl9rOF9EVzk2ZnRiUWFra0tnSVBVWDdKejZNLWVneXJsemxFcEZRWDhITjFKSndPN0ZYZjB5UGJZWVBrUlhETDg1RHJKa25IbFZmSTcxYURSbjJna0dzeWQ3N21DME5vVHk4OXhlc2N6SWdLY2NzMDVpM3M3ZU1udEFxM01ZUXZmV2VRS2gwMXc?oc=5",
-   "author": "stripehype.com",
-   "author_name": "stripehype.com",
-   "author_url": "https://stripehype.com",
-   "text": "Bengals vs. Dolphins Week 5: How to watch, injury news, top storylines, prediction - stripehype.com",
-   "posted_at": "Sun, 11 Oct 2026 10:30:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOMzdaa1NWUzZjaV9MWmRrSEZ0cl9rOF9EVzk2ZnRiUWFra0tnSVBVWDdKejZNLWVneXJsemxFcEZRWDhITjFKSndPN0ZYZjB5UGJZWVBrUlhETDg1RHJKa25IbFZmSTcxYURSbjJna0dzeWQ3N21DME5vVHk4OXhlc2N6SWdLY2NzMDVpM3M3ZU1udEFxM01ZUXZmV2VRS2gwMXc?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "stripehype.com",
-    "query": "\"Miami Dolphins\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQZ3FJN0xGelVXOWdnSm9zLS1ZTmhfalc0MUgtRXNLWWVxaGRQYzMyNkRhRHhadHQxQllCYXpDc09EVDMwZzJNNWdLdzJZTS1ZTFB3Z3RDYWd4OGYzSW85b2V1NW9TU0ZmOTNjTy1lYnNWYmxyeTFkUl9LRlFMMExxUVZ0WF9waVdwVlE4?oc=5",
    "author": "Yahoo Sports",
    "author_name": "Yahoo Sports",
@@ -16532,6 +16614,33 @@
    "raw": {
     "outlet": "Yahoo Sports",
     "query": "\"Jacksonville Jaguars\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOMzdaa1NWUzZjaV9MWmRrSEZ0cl9rOF9EVzk2ZnRiUWFra0tnSVBVWDdKejZNLWVneXJsemxFcEZRWDhITjFKSndPN0ZYZjB5UGJZWVBrUlhETDg1RHJKa25IbFZmSTcxYURSbjJna0dzeWQ3N21DME5vVHk4OXhlc2N6SWdLY2NzMDVpM3M3ZU1udEFxM01ZUXZmV2VRS2gwMXc?oc=5",
+   "author": "stripehype.com",
+   "author_name": "stripehype.com",
+   "author_url": "https://stripehype.com",
+   "text": "Bengals vs. Dolphins Week 5: How to watch, injury news, top storylines, prediction - stripehype.com",
+   "posted_at": "Sun, 11 Oct 2026 10:30:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOMzdaa1NWUzZjaV9MWmRrSEZ0cl9rOF9EVzk2ZnRiUWFra0tnSVBVWDdKejZNLWVneXJsemxFcEZRWDhITjFKSndPN0ZYZjB5UGJZWVBrUlhETDg1RHJKa25IbFZmSTcxYURSbjJna0dzeWQ3N21DME5vVHk4OXhlc2N6SWdLY2NzMDVpM3M3ZU1udEFxM01ZUXZmV2VRS2gwMXc?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "stripehype.com",
+    "query": "\"Miami Dolphins\" injury when:1d"
    }
   },
   {
@@ -16860,6 +16969,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMEo2QVdGbVM1YVp1Yy12aE94ZjUwWjlPWklHdVViZE8tajhHUnczOU9haXl0YVN3dHNsM1J0TGlmNGRJV2lzNFI5WUdSeElZSng0QXQycW94dC04RjBTa3FFLVlxTEVpTnhwVTdqbHZBRkhWZWJqS1BLLUoyYkZUeVdzQU4xWTRN?oc=5",
+   "author": "49ers Webzone",
+   "author_name": "49ers Webzone",
+   "author_url": "https://www.49erswebzone.com",
+   "text": "49ers place four players on PUP list; Warner, Bosa cleared for training camp; Two released - 49ers Webzone",
+   "posted_at": "Sun, 11 Oct 2026 09:30:48 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMEo2QVdGbVM1YVp1Yy12aE94ZjUwWjlPWklHdVViZE8tajhHUnczOU9haXl0YVN3dHNsM1J0TGlmNGRJV2lzNFI5WUdSeElZSng0QXQycW94dC04RjBTa3FFLVlxTEVpTnhwVTdqbHZBRkhWZWJqS1BLLUoyYkZUeVdzQU4xWTRN?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "ACTIVE",
+   "injury": "",
+   "signal": 0.4,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "49ers Webzone",
+    "query": "\"Jerry Jeudy\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTU5xYnl6Zi1paG5WQS0wQ0E0NW1WOTZWUUhCR05kUlhzZHk5eFpUZnNacFRuV1VHSlVwNUREUWJjcHV6VkdteDdTSVRxdVBhZDJjT05nYWotb3FXZnRDeHZIdTlwVEo5ZHlVZDBNUzVlajNISWFrWXUxRjRxTWRzQ2NGWVFUVnUzRVNIMmtpSQ?oc=5",
    "author": "roundtable.io",
    "author_name": "roundtable.io",
@@ -17126,33 +17262,6 @@
    "raw": {
     "outlet": "Tony's Picks",
     "query": "\"C.J. Stroud\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1ucGJQUEZxTzA5UUMyTmhWRnVLeXN2SmZDVnRBdVpBZTdjYkN6YmkyS2pndnFmU1hidnJYZ1RZWjNQc3hORFJ1VnNrcXVHNlNYZjYtaXI0VHVXR3o2WnlFUXhCS1k2V0hyenhWM09ybDFlTTc5SGlMbWNtQVk?oc=5",
-   "author": "Houston Texans",
-   "author_name": "Houston Texans",
-   "author_url": "https://www.houstontexans.com",
-   "text": "Week 5 Injury Report | Texans at Titans - Houston Texans",
-   "posted_at": "Sun, 11 Oct 2026 07:20:40 GMT",
-   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1ucGJQUEZxTzA5UUMyTmhWRnVLeXN2SmZDVnRBdVpBZTdjYkN6YmkyS2pndnFmU1hidnJYZ1RZWjNQc3hORFJ1VnNrcXVHNlNYZjYtaXI0VHVXR3o2WnlFUXhCS1k2V0hyenhWM09ybDFlTTc5SGlMbWNtQVk?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Houston Texans",
-    "query": "\"Marcus Harris\" injury when:1d"
    }
   },
   {
@@ -17935,7 +18044,7 @@
    "game_event": "",
    "raw": {
     "outlet": "RotoBaller",
-    "query": "\"Isaiah Bond\" injury when:1d"
+    "query": "\"DeMario Douglas\" injury when:1d"
    }
   },
   {
@@ -18016,7 +18125,34 @@
    "game_event": "",
    "raw": {
     "outlet": "PlayerProfiler",
-    "query": "\"Kyler Murray\" injury when:1d"
+    "query": "\"Braelon Allen\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPRHJDazdXOEZ1dHZxTi0xUjcwX0k3bUtQSTFhOXZ6enBBLW1SZUlPRFpoNHlIdXloN2JObDdhbE1FSU9mVnVEU3F5UFdtRm1NelRVLUZVeWZzZGJwQnMxMGVSZjV6aXFwLWM4QmZsN0VIVDg0RGhRM0ZZcG5XV3VmMXVBQU1FWk5oZkNPcW1odnBnbk5ieEdYampn?oc=5",
+   "author": "CBS Sports",
+   "author_name": "CBS Sports",
+   "author_url": "https://www.cbssports.com",
+   "text": "Saints' Nathan Shepherd: Won't play with illness - CBS Sports",
+   "posted_at": "Sun, 11 Oct 2026 02:01:56 GMT",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPRHJDazdXOEZ1dHZxTi0xUjcwX0k3bUtQSTFhOXZ6enBBLW1SZUlPRFpoNHlIdXloN2JObDdhbE1FSU9mVnVEU3F5UFdtRm1NelRVLUZVeWZzZGJwQnMxMGVSZjV6aXFwLWM4QmZsN0VIVDg0RGhRM0ZZcG5XV3VmMXVBQU1FWk5oZkNPcW1odnBnbk5ieEdYampn?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "illness",
+   "signal": 0.6,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "OUT_FOR_GAME",
+   "game_event": "ruled-out-for-game",
+   "raw": {
+    "outlet": "CBS Sports",
+    "query": "\"Nathan Shepherd\" injury when:1d"
    }
   },
   {
@@ -18534,13 +18670,13 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNU0pUVlFfWlVyM2NtQndUYlJvQklaU3VLNUdBVXlOZy1DbGI0N0tudjFBNDRsb1NaYnhRNzFFYUF5WmZzVkJUTFdneGNSRVcxWDg2bWQ0cmZTMTFKbEwyREpFQnpTWmpPbVVaU0xBemNCbUJxOUxGTXh1cFpILTQzMVBnOA?oc=5",
-   "author": "Yahoo Sports",
-   "author_name": "Yahoo Sports",
-   "author_url": "https://sports.yahoo.com",
-   "text": "Pats place Reggie Gilliam on IR - Yahoo Sports",
+   "post_id": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQX21UeXV5S0ZZbW5HUHF0dENVei1xaUhaU09pSjFfMkYzVFp1Z244WllPR0pZajYxWEszU3puY3IzcEpfTTh6cW9GNkZuX3YzNE9Eem1HVGpDUTNMaWNKRHBxX3c3Wld5NmtyU1ZmQzZGV0ppalFWUG1tWklqQlVpUTZxSmU1SjNzb1JhSUxPbW1PT1d0YS1EMW1raUNsY19vcjBkTlFhWDhOVk1RLTRqNndtdDBsTmpmUzg5M0NUb0tKOEVXd1hmZmpsTEZJcC1sWmcwTEZUTEU?oc=5",
+   "author": "USA Today",
+   "author_name": "USA Today",
+   "author_url": "https://www.usatoday.com",
+   "text": "Pats place Reggie Gilliam on IR - USA Today",
    "posted_at": "Sun, 11 Oct 2026 00:59:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNU0pUVlFfWlVyM2NtQndUYlJvQklaU3VLNUdBVXlOZy1DbGI0N0tudjFBNDRsb1NaYnhRNzFFYUF5WmZzVkJUTFdneGNSRVcxWDg2bWQ0cmZTMTFKbEwyREpFQnpTWmpPbVVaU0xBemNCbUJxOUxGTXh1cFpILTQzMVBnOA?oc=5",
+   "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQX21UeXV5S0ZZbW5HUHF0dENVei1xaUhaU09pSjFfMkYzVFp1Z244WllPR0pZajYxWEszU3puY3IzcEpfTTh6cW9GNkZuX3YzNE9Eem1HVGpDUTNMaWNKRHBxX3c3Wld5NmtyU1ZmQzZGV0ppalFWUG1tWklqQlVpUTZxSmU1SjNzb1JhSUxPbW1PT1d0YS1EMW1raUNsY19vcjBkTlFhWDhOVk1RLTRqNndtdDBsTmpmUzg5M0NUb0tKOEVXd1hmZmpsTEZJcC1sWmcwTEZUTEU?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -18555,34 +18691,7 @@
    "in_game_status": "NONE",
    "game_event": "",
    "raw": {
-    "outlet": "Yahoo Sports",
-    "query": "\"Reggie Gilliam\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQQWdkc0tJUElWeUVEQmw3dWhHVG5JYV9SY0ljTllLNC1TYXhQN2EyaTg0T1RlcE00d0x3R3l5YVNnUWl0ZEd2NXFpT2JEYThXbnRTT3AxX0cxbVd5Uzh2LWZYclg5Znp2RlctLWJKUHZ1STRDblAtUjNsQi1HcTdURmt3V0hjQW8ydWhZaHA2T3dOYnhjUWR2NXdJajZpcWQ4UnMwWjVldmNNRVBJYlRaSHVvbENMRmJ2T0MtS2hlTnNtdGhyZ0JIS1JkSU13c25uamVqZl8wdVAzZw?oc=5",
-   "author": "Marco Eagle",
-   "author_name": "Marco Eagle",
-   "author_url": "https://www.marconews.com",
-   "text": "Pats place Reggie Gilliam on IR - Marco Eagle",
-   "posted_at": "Sun, 11 Oct 2026 00:59:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQQWdkc0tJUElWeUVEQmw3dWhHVG5JYV9SY0ljTllLNC1TYXhQN2EyaTg0T1RlcE00d0x3R3l5YVNnUWl0ZEd2NXFpT2JEYThXbnRTT3AxX0cxbVd5Uzh2LWZYclg5Znp2RlctLWJKUHZ1STRDblAtUjNsQi1HcTdURmt3V0hjQW8ydWhZaHA2T3dOYnhjUWR2NXdJajZpcWQ4UnMwWjVldmNNRVBJYlRaSHVvbENMRmJ2T0MtS2hlTnNtdGhyZ0JIS1JkSU13c25uamVqZl8wdVAzZw?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Marco Eagle",
+    "outlet": "USA Today",
     "query": "\"Reggie Gilliam\" injury when:1d"
    }
   },
@@ -18907,7 +19016,7 @@
    "game_event": "",
    "raw": {
     "outlet": "RotoWire",
-    "query": "\"Isaiah Williams\" injury when:1d"
+    "query": "\"Garrett Wilson\" injury when:1d"
    }
   },
   {
@@ -19043,6 +19152,33 @@
    "raw": {
     "outlet": "Yahoo Sports",
     "query": "\"Atlanta Falcons\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOOVlSbVA2OWdwOEJfVGJCX210WElfY3JiYkVTdGl4c0o1el85c3NCMkJxV0FGREZ2Zk1hYnFkb3hidUVBM2FFa0RZY0tyd3pZcFVGSlFFRWM4Y3Iwa1FCZFpNdG1yVE5TeWxjV0c1VHVEWnBWbUtJYzdRMENvRVQtVEVLRnJzTFFuYzlv?oc=5",
+   "author": "The Mighty 790 KFGO",
+   "author_name": "The Mighty 790 KFGO",
+   "author_url": "https://kfgo.com",
+   "text": "Patriots place WR Mack Hollins (calf) on injured reserve - The Mighty 790 KFGO",
+   "posted_at": "Sun, 11 Oct 2026 00:05:46 GMT",
+   "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOOVlSbVA2OWdwOEJfVGJCX210WElfY3JiYkVTdGl4c0o1el85c3NCMkJxV0FGREZ2Zk1hYnFkb3hidUVBM2FFa0RZY0tyd3pZcFVGSlFFRWM4Y3Iwa1FCZFpNdG1yVE5TeWxjV0c1VHVEWnBWbUtJYzdRMENvRVQtVEVLRnJzTFFuYzlv?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "IR",
+   "injury": "calf",
+   "signal": 1.0,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "The Mighty 790 KFGO",
+    "query": "\"Efton Chism III\" injury when:1d"
    }
   },
   {
@@ -20046,6 +20182,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMi8AVBVV95cUxNdC1yVFRuZlVhTXNibHJ3blptUzBwalRCaF83NzAwYnhiM0QtV0U3dXExWnE3bExoY09tQWR6SXBZZmpRWlJrRFM0dFdOanFqZzY1TFdBSVZxNnN3Sk1pcVRuZTB6bWpJNnVHOGptdjQzMm1VRVczaFZ3ZzNhWHcxY29PWWxpTXVfQ21ZSm1ub1AxWHdDczlFWmNMZlVMdll3c3JaVUhOOXIyb2p0eVV3UU1hSFBSdjkyV2F4cXRzTmpqUjBCNHBKNHJudUFZSHUtcTJEb2hDcEVrVnVSaHM5WXJhUEJtTC1jNm5wQnpWaF9WWDUwZENIMm10cmV1NjNaVHNMdEVuSlpmVUpDOXAySDJXR2dvM1M0M3hiTll4WnV0YmVXQVBCVklyTmw4LTNxMUs4alBuYkRNX3d4Uk9fUFdXdm0xWlZDQm9PWHhxYzlKWG1xeUJ2Q2w1NDZXcXFwa3hNTVV0b2NSN1B1blV1YmJpTFhIR0d2dEhCblJ0RkQzWnhRVzFrd1lSWS1sUDR6dmh4bVJoVUdLWTRsbWtEUmdmMkVITmtnNS1odUwzQ0xMOTczSzdZc01mQlJwQ1dwR1YyM0pTMHJlZ2V2bnR5T1k5Qmw1STBCSEI4YnpHR2FuTUpPSXM1NUNVV2hOQ0xCZWlNWTNBSEZRdFZJRDV6a1QtNlVQUVlXcmMxQXBmWVlTMmItM3Z3TzRrWjRqdE5PbXh0RWZwSjIwRWJuam1waEN3MmpaYkt1T2NmTlJEV0tndEtzc05MVHJheEZieVdtbGVaUkJBVl9URzZocVFIOWtraXRadnc1ekNWaHFhdk4zT3FmZW1VQnY2U3ZfY3NoWUpDOU9VenBlTGtabmN6V0E3bmZCVGlYYWtJaDh6N2dMTjFReEtpREFuYll4NGpOM3kweFVlLVNKR3BrT2VJa2Rac1VFbG03em9mX0M1aU44WThvSVVxbU9SanM4MFVKd250N3BQT3JNdWJXT3VSWg?oc=5",
+   "author": "247Sports",
+   "author_name": "247Sports",
+   "author_url": "https://247sports.com",
+   "text": "Nico Collins Limited With Hamstring Injury - 247Sports",
+   "posted_at": "Sat, 10 Oct 2026 22:50:31 GMT",
+   "url": "https://news.google.com/rss/articles/CBMi8AVBVV95cUxNdC1yVFRuZlVhTXNibHJ3blptUzBwalRCaF83NzAwYnhiM0QtV0U3dXExWnE3bExoY09tQWR6SXBZZmpRWlJrRFM0dFdOanFqZzY1TFdBSVZxNnN3Sk1pcVRuZTB6bWpJNnVHOGptdjQzMm1VRVczaFZ3ZzNhWHcxY29PWWxpTXVfQ21ZSm1ub1AxWHdDczlFWmNMZlVMdll3c3JaVUhOOXIyb2p0eVV3UU1hSFBSdjkyV2F4cXRzTmpqUjBCNHBKNHJudUFZSHUtcTJEb2hDcEVrVnVSaHM5WXJhUEJtTC1jNm5wQnpWaF9WWDUwZENIMm10cmV1NjNaVHNMdEVuSlpmVUpDOXAySDJXR2dvM1M0M3hiTll4WnV0YmVXQVBCVklyTmw4LTNxMUs4alBuYkRNX3d4Uk9fUFdXdm0xWlZDQm9PWHhxYzlKWG1xeUJ2Q2w1NDZXcXFwa3hNTVV0b2NSN1B1blV1YmJpTFhIR0d2dEhCblJ0RkQzWnhRVzFrd1lSWS1sUDR6dmh4bVJoVUdLWTRsbWtEUmdmMkVITmtnNS1odUwzQ0xMOTczSzdZc01mQlJwQ1dwR1YyM0pTMHJlZ2V2bnR5T1k5Qmw1STBCSEI4YnpHR2FuTUpPSXM1NUNVV2hOQ0xCZWlNWTNBSEZRdFZJRDV6a1QtNlVQUVlXcmMxQXBmWVlTMmItM3Z3TzRrWjRqdE5PbXh0RWZwSjIwRWJuam1waEN3MmpaYkt1T2NmTlJEV0tndEtzc05MVHJheEZieVdtbGVaUkJBVl9URzZocVFIOWtraXRadnc1ekNWaHFhdk4zT3FmZW1VQnY2U3ZfY3NoWUpDOU9VenBlTGtabmN6V0E3bmZCVGlYYWtJaDh6N2dMTjFReEtpREFuYll4NGpOM3kweFVlLVNKR3BrT2VJa2Rac1VFbG03em9mX0M1aU44WThvSVVxbU9SanM4MFVKd250N3BQT3JNdWJXT3VSWg?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "hamstring",
+   "signal": 0.75,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "247Sports",
+    "query": "\"Nico Collins\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNLUVVd0NMREtVbjhfcVF5YlZIUlBQQzVRc2xkMm9jclBSaVpDR3pmeHoybENoN3EtMVlJM2dVMVlLeTRpUTJMWlE5eTZFZTFxNVlQMUdiYzgwYnh5WFZoeHNtY2NGcnhXMmlDakxvSkg1MkE4ZEx5WXdRRkhVZDhqUXQxbXNYZkVsTkhXa0FDWXBGZDFCa1ZXdlBnZm1WWUZj?oc=5",
    "author": "Reuters",
    "author_name": "Reuters",
@@ -20154,13 +20317,13 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9ETHhRNU1tLS1CYUFpR2Y1bmdwenNoZDNpNEFtVGdTUlZBclZPOE1tOGprTTNlaU5MMHZxQ3QyRmZ1Q1htVjVGcUlETnhOQVB3YlNGV2NvRWFLajNfU0pjejB5c2xnT09kZUE?oc=5",
-   "author": "Fresno Bee",
-   "author_name": "Fresno Bee",
-   "author_url": "https://www.fresnobee.com",
-   "text": "Patriots place WR Mack Hollins (calf) on injured reserve - Fresno Bee",
+   "post_id": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBDMjFESlQ0N0FuV0dHWFlGNWRUT25vbUxrY1JON1psUWlySHBKTFlCNEtJZmlIekc2M1U4NnNZTUpMa1lKQlR5SVlyYkVoQjRxWkUyUW42SkRBLTFSQVZaak5lcDZQQTdSUEY1UnJ5bjU?oc=5",
+   "author": "Tri-City Herald",
+   "author_name": "Tri-City Herald",
+   "author_url": "https://www.tri-cityherald.com",
+   "text": "Patriots place WR Mack Hollins (calf) on injured reserve - Tri-City Herald",
    "posted_at": "Sat, 10 Oct 2026 22:41:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9ETHhRNU1tLS1CYUFpR2Y1bmdwenNoZDNpNEFtVGdTUlZBclZPOE1tOGprTTNlaU5MMHZxQ3QyRmZ1Q1htVjVGcUlETnhOQVB3YlNGV2NvRWFLajNfU0pjejB5c2xnT09kZUE?oc=5",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBDMjFESlQ0N0FuV0dHWFlGNWRUT25vbUxrY1JON1psUWlySHBKTFlCNEtJZmlIekc2M1U4NnNZTUpMa1lKQlR5SVlyYkVoQjRxWkUyUW42SkRBLTFSQVZaak5lcDZQQTdSUEY1UnJ5bjU?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -20175,8 +20338,8 @@
    "in_game_status": "NONE",
    "game_event": "",
    "raw": {
-    "outlet": "Fresno Bee",
-    "query": "\"Efton Chism III\" injury when:1d"
+    "outlet": "Tri-City Herald",
+    "query": "\"Kyle Williams\" injury when:1d"
    }
   },
   {
@@ -21013,7 +21176,7 @@
    "game_event": "",
    "raw": {
     "outlet": "Footballguys",
-    "query": "\"Kalif Raymond\" injury when:1d"
+    "query": "\"Garrett Wilson\" injury when:1d"
    }
   },
   {
@@ -21288,6 +21451,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNZTNBOGR1X0trS0FUM19XejgzSW84Y3FBQlRKdmdpUFc1V2huUzdCVnFYWWtsUEVYOXRLVmdDSU9IeXh3Z2ZUcDZzS00zUURkcU9mWDI2eGVpQWNSeF8xNkl0eDFPQkY1RE1NQ0FxZG1KdzZxQWY0RTRmUUd3djJpcTBnTFJaeURySGdaZk5ySGs4SUIyM0ZST0RGN0FjZm9GTUQyU0E2UGVGdlJXOUhlV1RXaV9uT2lpbkhNdFZRdw?oc=5",
+   "author": "DK Pittsburgh Sports",
+   "author_name": "DK Pittsburgh Sports",
+   "author_url": "https://www.dkpittsburghsports.com",
+   "text": "The Steelers have placed Michael Pittman Jr. on injured reserve with his left foot injury. - DK Pittsburgh Sports",
+   "posted_at": "Sat, 10 Oct 2026 21:16:16 GMT",
+   "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNZTNBOGR1X0trS0FUM19XejgzSW84Y3FBQlRKdmdpUFc1V2huUzdCVnFYWWtsUEVYOXRLVmdDSU9IeXh3Z2ZUcDZzS00zUURkcU9mWDI2eGVpQWNSeF8xNkl0eDFPQkY1RE1NQ0FxZG1KdzZxQWY0RTRmUUd3djJpcTBnTFJaeURySGdaZk5ySGs4SUIyM0ZST0RGN0FjZm9GTUQyU0E2UGVGdlJXOUhlV1RXaV9uT2lpbkhNdFZRdw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "IR",
+   "injury": "foot",
+   "signal": 1.0,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "DK Pittsburgh Sports",
+    "query": "\"Michael Pittman Jr.\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNc0lDbW50c0oyUU1xWWgtTFFQal9EcXlKTGFWQTA3RWtpY192Uzd0WEFxRThyTG50em1wdDRIQTVacGtjY051bV9DaW9KcG50Q1hNeUIzR0h5bWJ2b1pjZkZRZUhsbWo1RmhuTmVHLUF0Y0NtTzByY0g4QkpfdkppZkg1eWNiU00?oc=5",
    "author": "Yahoo Sports",
    "author_name": "Yahoo Sports",
@@ -21418,7 +21608,7 @@
    "game_event": "",
    "raw": {
     "outlet": "Yahoo Sports",
-    "query": "\"Malik Nabers\" injury when:1d"
+    "query": "\"Jason Pinnock\" injury when:1d"
    }
   },
   {
@@ -22422,33 +22612,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQS3BOSTRnb19naDJaV1R6UUNHbm1XU3dTZTRZQVNXV2Rjc0xIeXNYaWJhWndsbnBXZndNdnJVUU90OWRmT2RvZE9vRzczN2lud1dUMUhiU1dYenpMRXVKNHJuT0J2VkYxT0I1b2tSY0p6VUZjU2IxTnp2aXQtNzJlVEpOZWpQdFhRWmhTMjFNUQ?oc=5",
-   "author": "Yahoo Sports",
-   "author_name": "Yahoo Sports",
-   "author_url": "https://sports.yahoo.com",
-   "text": "Lions elevate veteran safety from practice squad before Cardinals matchup - Yahoo Sports",
-   "posted_at": "Sat, 10 Oct 2026 20:26:15 GMT",
-   "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQS3BOSTRnb19naDJaV1R6UUNHbm1XU3dTZTRZQVNXV2Rjc0xIeXNYaWJhWndsbnBXZndNdnJVUU90OWRmT2RvZE9vRzczN2lud1dUMUhiU1dYenpMRXVKNHJuT0J2VkYxT0I1b2tSY0p6VUZjU2IxTnp2aXQtNzJlVEpOZWpQdFhRWmhTMjFNUQ?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Yahoo Sports",
-    "query": "\"Arizona Cardinals\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOb1dwemZXaFE0ckRxcnZHUk9ZcUhRa3NsYUkwNnRSeXJXX1lFVVhfZWdjQnBqcEpBSmNERkNoU0N6cHBkLVJieUl0cFYtMGVVU0hFUENwVFQ1RDRwYVhjQkxfcFU0QURQVE02aldrYjhFazZrZUhVb05reVhNSTdJUkhHa1ItdnZzeG9saE1jaExOTUVCWEUycWhMWkxRVjlySEtfV3BHOHBWdjdqUWc?oc=5",
    "author": "DraftKings Network",
    "author_name": "DraftKings Network",
@@ -22638,6 +22801,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbnpfWkZ0VUk2aVNLaXVyZlFYRTIyUUZaOVl1b3ZjTm44aTJRMUJ2OWVya0JZeXZaZDhyU2xGY0dUWWZZU0U3NHNrSTFGRENTSTZBOGcyQTFDOHNTYkpzMk16R1hKZXRBMjRyUlVhWXNVTE9DMi11RDZqWThHbUYtdHUwQ3ZQUkpBS1hTTw?oc=5",
+   "author": "AL.com",
+   "author_name": "AL.com",
+   "author_url": "https://www.al.com",
+   "text": "Former Auburn receiver ruled out of Sunday’s game - AL.com",
+   "posted_at": "Sat, 10 Oct 2026 20:21:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbnpfWkZ0VUk2aVNLaXVyZlFYRTIyUUZaOVl1b3ZjTm44aTJRMUJ2OWVya0JZeXZaZDhyU2xGY0dUWWZZU0U3NHNrSTFGRENTSTZBOGcyQTFDOHNTYkpzMk16R1hKZXRBMjRyUlVhWXNVTE9DMi11RDZqWThHbUYtdHUwQ3ZQUkpBS1hTTw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "OUT",
+   "injury": "",
+   "signal": 0.55,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "AL.com",
+    "query": "\"Darius Slayton\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPQS1YQmo4aUlhN3NTcW5FUmdsV1U4TUtuQlR4VHMwVXZsRWQ2R1BVcC04d3NYZ0o1Tkl3YWFjcHN1WkdjZkI5WnB0UWF3bVp1Zk52OVBDd3VjM3J2OEdlLTV0X3BvZ1FXS2dwbkhmM01RR3JtdVh4Y0YwSHJPQjFZMlhLMA?oc=5",
    "author": "Yahoo Sports",
    "author_name": "Yahoo Sports",
@@ -22715,6 +22905,33 @@
    "raw": {
     "outlet": "Yahoo Sports",
     "query": "\"Brock Bowers\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOdHFmamNQWHBwRVVDYy1Wb0djNVVqc3F2Qm9HSTBDcFVMeUVMY3lLN1Ywc3B6M0RiSzVtZjg2QVVabVQ4Y1U1V0xRM1Nrb1E3c2pxd09ENWd6Wl9UWmIxdVk5MFFGTlJtTVZudWJCNTNEbWozVXAzU2FfVG1aUDdJZTFPWDBYcWk0dzRvM2MxcUFKQXdZUjg3SHp3?oc=5",
+   "author": "Athlon Sports",
+   "author_name": "Athlon Sports",
+   "author_url": "https://athlonsports.com",
+   "text": "With Ashton Jeanty Questionable, Raiders Elevate Roman Hemby from Practice Squad - Athlon Sports",
+   "posted_at": "Sat, 10 Oct 2026 20:18:09 GMT",
+   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOdHFmamNQWHBwRVVDYy1Wb0djNVVqc3F2Qm9HSTBDcFVMeUVMY3lLN1Ywc3B6M0RiSzVtZjg2QVVabVQ4Y1U1V0xRM1Nrb1E3c2pxd09ENWd6Wl9UWmIxdVk5MFFGTlJtTVZudWJCNTNEbWozVXAzU2FfVG1aUDdJZTFPWDBYcWk0dzRvM2MxcUFKQXdZUjg3SHp3?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "QUESTIONABLE",
+   "injury": "",
+   "signal": 0.85,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Athlon Sports",
+    "query": "\"Michael Mayer\" injury when:1d"
    }
   },
   {
@@ -22822,7 +23039,7 @@
    "game_event": "injury-reported",
    "raw": {
     "outlet": "RotoBaller",
-    "query": "\"Chris Brooks\" injury when:1d"
+    "query": "\"Isaiah Bond\" injury when:1d"
    }
   },
   {
@@ -23853,33 +24070,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBjRmxLOHZqZDFvYVBHbkN4YUhGTVRIamhWVldseHhDcnRVZHZnQkk0aTB6WHZUQzJmSjktMDdfaGRxbEljcVR4U2pWREFnWUd2NU8wQ1pRV1FYVzFvanBZU182Rk5KTHZPR0F0dms5Y3p6bjZTa29HMWZvYjZFbzg?oc=5",
-   "author": "AOL.ca",
-   "author_name": "AOL.ca",
-   "author_url": "https://www.aol.ca",
-   "text": "Steelers' WR nightmare gets even worse after huge injury update - AOL.ca",
-   "posted_at": "Sat, 10 Oct 2026 19:35:27 GMT",
-   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBjRmxLOHZqZDFvYVBHbkN4YUhGTVRIamhWVldseHhDcnRVZHZnQkk0aTB6WHZUQzJmSjktMDdfaGRxbEljcVR4U2pWREFnWUd2NU8wQ1pRV1FYVzFvanBZU182Rk5KTHZPR0F0dms5Y3p6bjZTa29HMWZvYjZFbzg?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.15,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "AOL.ca",
-    "query": "\"DK Metcalf\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNTU1NeUJOUHVQbW1aYkpwMkV2akNLdFhyd0ktRmI0dWVpS0R1ZDBCOHphNzBvU1I0Nll6emMtTUZrOGlKLVlSQzZCd3k1aEViMFk0Rl8wRUt6dzRLbE1sc29xYmJrMWU3TG1DQXB3elZNa3FoMlpaT3BCYUtzSXpWMA?oc=5",
    "author": "AOL.com",
    "author_name": "AOL.com",
@@ -24069,33 +24259,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNamtINDRBS3cyckJtY1dOTHBFZGRzc0hjemtuVzBlU3IwT3Q4YWVwR0l3dVBKeWFIaVFsVUJPMXZubjhQS28ya0swOXRQVzVtSFVpZkZObTZQcTdxUkJNUmVTcEM2S19ENURDRjNFZS1CR1B3eW9qZjlla2ZUbUU5RmRPWFVoVWpBc3p4dlFEdGlCZFNEQ3RxbkZvVQ?oc=5",
-   "author": "Fantasy Footballers Podcast",
-   "author_name": "Fantasy Footballers Podcast",
-   "author_url": "https://www.thefantasyfootballers.com",
-   "text": "Michael Pittman Jr. Bound for injured reserve - Fantasy Footballers Podcast",
-   "posted_at": "Sat, 10 Oct 2026 19:26:44 GMT",
-   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNamtINDRBS3cyckJtY1dOTHBFZGRzc0hjemtuVzBlU3IwT3Q4YWVwR0l3dVBKeWFIaVFsVUJPMXZubjhQS28ya0swOXRQVzVtSFVpZkZObTZQcTdxUkJNUmVTcEM2S19ENURDRjNFZS1CR1B3eW9qZjlla2ZUbUU5RmRPWFVoVWpBc3p4dlFEdGlCZFNEQ3RxbkZvVQ?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "IR",
-   "injury": "",
-   "signal": 1.0,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Fantasy Footballers Podcast",
-    "query": "\"DK Metcalf\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQeGtsTDFsdWFLNklhMkF5c0FlYmEwemMxci1nRlFDeklfTWlEbm5KSEFHUXdaRjNfSGo4MlRiVmQ4dkZTSjBKU2tWQ3ZoRElQZ2FZZ2hvcXVtMzRlRjlpYmZEbFJkS2kyWUVmY3JiS0lHUnhZc1hCb09VbUl0c09HYXBTdHVvX1VZY2tRMGNnQVJXdTluVGtvMXc2X2thOGg3ZkZ3?oc=5",
    "author": "NFL Rumors - ProFootballRumors.com",
    "author_name": "NFL Rumors - ProFootballRumors.com",
@@ -24280,7 +24443,7 @@
    "game_event": "",
    "raw": {
     "outlet": "Yahoo Sports",
-    "query": "\"Michael Pittman Jr.\" injury when:1d"
+    "query": "\"Germie Bernard\" injury when:1d"
    }
   },
   {
@@ -24339,6 +24502,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNamtINDRBS3cyckJtY1dOTHBFZGRzc0hjemtuVzBlU3IwT3Q4YWVwR0l3dVBKeWFIaVFsVUJPMXZubjhQS28ya0swOXRQVzVtSFVpZkZObTZQcTdxUkJNUmVTcEM2S19ENURDRjNFZS1CR1B3eW9qZjlla2ZUbUU5RmRPWFVoVWpBc3p4dlFEdGlCZFNEQ3RxbkZvVQ?oc=5",
+   "author": "Fantasy Footballers Podcast",
+   "author_name": "Fantasy Footballers Podcast",
+   "author_url": "https://www.thefantasyfootballers.com",
+   "text": "Michael Pittman Jr. Bound for injured reserve - Fantasy Footballers Podcast",
+   "posted_at": "Sat, 10 Oct 2026 19:13:31 GMT",
+   "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNamtINDRBS3cyckJtY1dOTHBFZGRzc0hjemtuVzBlU3IwT3Q4YWVwR0l3dVBKeWFIaVFsVUJPMXZubjhQS28ya0swOXRQVzVtSFVpZkZObTZQcTdxUkJNUmVTcEM2S19ENURDRjNFZS1CR1B3eW9qZjlla2ZUbUU5RmRPWFVoVWpBc3p4dlFEdGlCZFNEQ3RxbkZvVQ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "IR",
+   "injury": "",
+   "signal": 1.0,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Fantasy Footballers Podcast",
+    "query": "\"DK Metcalf\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPcEk1Rk92UUJQNkxPQzR6SUY4RDEyQTVKcGpnaVQ2SzBVT1oxLVlBRk9rbjFwNUh2VVhBWXZsN2pxUkdMS0MxM2F5aVNtTk1jVXVTbXRlZEs5TjlMeW41c3JpVU90Mm1pSHktempxazJ0ZTUxUjl6Z2VxeTE2MVU3eXF6dFFBTjBRSzF5clJRUFFPbWtEa3QwWjhYQy1kR0tVd0RyYTlxRHBtU09hYktGMklYbFNIWVAxYWVpUw?oc=5",
    "author": "RotoBaller",
    "author_name": "RotoBaller",
@@ -24362,33 +24552,6 @@
    "raw": {
     "outlet": "RotoBaller",
     "query": "\"Dohnte Meyers\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBUSVdCM2NlZEtiYjdQbmVMdVVERmJib0RfbFo4X3czSUktU09VVFBhQUVtcV9kQlFIa204VHpCQS1Wbm9IczVCb3Fma0hQQzRfY2hxMUxKSmdUME1ldVZFdlliQmlnRHVkdFVIem9NaHg0OFRzTWM2WEs2S2s?oc=5",
-   "author": "Steelers Now",
-   "author_name": "Steelers Now",
-   "author_url": "https://steelersnow.com",
-   "text": "Steelers Place Wide Receiver on Injured Reserve - Steelers Now",
-   "posted_at": "Sat, 10 Oct 2026 19:07:29 GMT",
-   "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBUSVdCM2NlZEtiYjdQbmVMdVVERmJib0RfbFo4X3czSUktU09VVFBhQUVtcV9kQlFIa204VHpCQS1Wbm9IczVCb3Fma0hQQzRfY2hxMUxKSmdUME1ldVZFdlliQmlnRHVkdFVIem9NaHg0OFRzTWM2WEs2S2s?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "IR",
-   "injury": "",
-   "signal": 0.85,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Steelers Now",
-    "query": "\"DK Metcalf\" injury when:1d"
    }
   },
   {
@@ -24604,7 +24767,7 @@
    "game_event": "",
    "raw": {
     "outlet": "Yahoo Sports",
-    "query": "\"Michael Pittman Jr.\" injury when:1d"
+    "query": "\"DK Metcalf\" injury when:1d"
    }
   },
   {
@@ -24690,33 +24853,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNUnF2blcwWlZ3Qm1OejFUQVFvVWdIWmdXYVpTWlB5aGNOUlVlclJmU2NIU09EVmlfS2NYY2lheG9Ebmk3aGRoT256T2lxOWtEc2ZSUG9ienY3OTBpYzFLaGFBREFIa0d1WFpaeWh0eFBMald1YjR5aFMwa1lUVjhUUllQbE1VRUhLUXFlWnlOSU96NkhMQk93YUxCbkdkS3dRNU1zUzhqN3NPNGtFUXp2ZE1Rd3pFNHBfZEVyTjdMNjFhWW1Fa0dHc2l1VXE2OUozUHRoZWJXel9pME4yakxzTzRSQXJFX0dnakZzLXJiVjhXQQ?oc=5",
-   "author": "Winnipeg Free Press",
-   "author_name": "Winnipeg Free Press",
-   "author_url": "https://www.winnipegfreepress.com",
-   "text": "Jets activate wide receiver Tim Patrick off injured reserve ahead of Browns game - Winnipeg Free Press",
-   "posted_at": "Sat, 10 Oct 2026 18:50:04 GMT",
-   "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNUnF2blcwWlZ3Qm1OejFUQVFvVWdIWmdXYVpTWlB5aGNOUlVlclJmU2NIU09EVmlfS2NYY2lheG9Ebmk3aGRoT256T2lxOWtEc2ZSUG9ienY3OTBpYzFLaGFBREFIa0d1WFpaeWh0eFBMald1YjR5aFMwa1lUVjhUUllQbE1VRUhLUXFlWnlOSU96NkhMQk93YUxCbkdkS3dRNU1zUzhqN3NPNGtFUXp2ZE1Rd3pFNHBfZEVyTjdMNjFhWW1Fa0dHc2l1VXE2OUozUHRoZWJXel9pME4yakxzTzRSQXJFX0dnakZzLXJiVjhXQQ?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "IR",
-   "injury": "",
-   "signal": 0.85,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Winnipeg Free Press",
-    "query": "\"Tim Patrick\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMimgJBVV95cUxQbnR1c3hINmhHWWtPU2hYUm1XX3VER0ZWU0EwdXJWbG5sNC1IVXk5UDlnWURLdGxkcFZ5Q3JEeEllUnV4WXdYQmlGZWFibUp2aTJDTTZPbGhLUW12Q09zVjA0b3BkVC1McjlKOURfRjFtYmVLZHIyajZfOTc0dm5CRS02Nm1lN1BxMG14a2VwU0RHX2I3dFZvbVNtWkt2alFSVUlBMXk1b1QzS2t1SnBjZkRIOVphdkVQSU5qWXlXZGhBOEpMeHJrOTJqNF9vQ1p6NzBDa0NxYVh2cV9JcXpxWW9lUTY5cDRxMWNiY2ludWg1OVhKSkNHMU1tVlNJcXJZZW1xM0lYQ2R5b1I1TEhmR3NzOVBwUGpuTVE?oc=5",
    "author": "Bozeman Daily Chronicle",
    "author_name": "Bozeman Daily Chronicle",
@@ -24740,6 +24876,33 @@
    "raw": {
     "outlet": "Bozeman Daily Chronicle",
     "query": "\"New York Jets\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMijwJBVV95cUxQVWIzY214RXJ5TTFhSE90VWNjd0dQeXNpb3VDVjVhYTlZNVNrMVowTUEwd2xIU0NnWlRaeWN3Yl9nNS1KQ2dPMTFuNHplRTlucWpvTkZFSXlRVENLRFZfVDE0TTM3YjlydkpOOFBkOTR2UzVtd0RzNXZFMGRtclhEdG9xdnFONmc2T1o0RWJ3ZWM0c2NCVkNKY1lHZWJxbEpvcERSNmZDb29CdENqX0RJQXY2MWxnTm1RNEdDd0wwZzJiZ2NHV0ZWTGFUeVZBSnVwYUNIVnlzTFpibk9XS3lWMXBhYkEwcTd4T01pV284NjF4blpIRlZ5T3ZocUdmcnpPZXZ1bk56WFh5Nkh0dmZJ?oc=5",
+   "author": "Leader-Telegram",
+   "author_name": "Leader-Telegram",
+   "author_url": "https://www.leadertelegram.com",
+   "text": "Jets activate wide receiver Tim Patrick off injured reserve ahead of Browns game, AP source says - Leader-Telegram",
+   "posted_at": "Sat, 10 Oct 2026 18:49:35 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxQVWIzY214RXJ5TTFhSE90VWNjd0dQeXNpb3VDVjVhYTlZNVNrMVowTUEwd2xIU0NnWlRaeWN3Yl9nNS1KQ2dPMTFuNHplRTlucWpvTkZFSXlRVENLRFZfVDE0TTM3YjlydkpOOFBkOTR2UzVtd0RzNXZFMGRtclhEdG9xdnFONmc2T1o0RWJ3ZWM0c2NCVkNKY1lHZWJxbEpvcERSNmZDb29CdENqX0RJQXY2MWxnTm1RNEdDd0wwZzJiZ2NHV0ZWTGFUeVZBSnVwYUNIVnlzTFpibk9XS3lWMXBhYkEwcTd4T01pV284NjF4blpIRlZ5T3ZocUdmcnpPZXZ1bk56WFh5Nkh0dmZJ?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "IR",
+   "injury": "",
+   "signal": 0.85,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Leader-Telegram",
+    "query": "\"Tim Patrick\" injury when:1d"
    }
   },
   {
@@ -24798,6 +24961,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOenlnRUY2b3ZtVFZ5eHNuNjgzOXlYNVR1TkFMcElMeGoxdXZ4MmxzbHZTOUJXUFlGOWlSTjVaYUlKZW1CbmZHMDVOeVNyUlEtUjNDNHRrWEVydlcyU3N6ckw2NFVpOW1VR0x3RDBvMTAybVZoY1p3UE1PTzloRi1CM01aclU1ME5tcEZPWk5sejFycnlrcWlYNFpFeGZvRVpWTWZFR0p0dTYxV2ZIRHN1TzM4TWpzY18xSGY5aDhjRUJBWHZlNXNpbnNldElFRWM?oc=5",
+   "author": "FOX Sports",
+   "author_name": "FOX Sports",
+   "author_url": "https://www.foxsports.com",
+   "text": "Jets activate wide receiver Tim Patrick off injured reserve ahead of Browns game, AP source says - FOX Sports",
+   "posted_at": "Sat, 10 Oct 2026 18:49:34 GMT",
+   "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOenlnRUY2b3ZtVFZ5eHNuNjgzOXlYNVR1TkFMcElMeGoxdXZ4MmxzbHZTOUJXUFlGOWlSTjVaYUlKZW1CbmZHMDVOeVNyUlEtUjNDNHRrWEVydlcyU3N6ckw2NFVpOW1VR0x3RDBvMTAybVZoY1p3UE1PTzloRi1CM01aclU1ME5tcEZPWk5sejFycnlrcWlYNFpFeGZvRVpWTWZFR0p0dTYxV2ZIRHN1TzM4TWpzY18xSGY5aDhjRUJBWHZlNXNpbnNldElFRWM?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "IR",
+   "injury": "",
+   "signal": 0.85,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "FOX Sports",
+    "query": "\"Jaden Keller\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQQjBFQjd6YTJSdnJHYkVBNUdWN2kxa0NZRzFMRlU1aVZvMnBzdlhMM3hJZnZhbGE3alZQYVpBN2RHZWNWdFZjcGZid2VuWUNtT2N2bmhfT2pPYnZMbG5haDBVeXRaYTVyeW1WX2hTdmJ2a2xKclI4TWhmdHFjcFpwZ2VjV0txT1FMNTdOQ1JUSTZJT2QtYXVqdlFfcW42dm02Ukg1eQ?oc=5",
    "author": "Sports Illustrated",
    "author_name": "Sports Illustrated",
@@ -24848,33 +25038,6 @@
    "raw": {
     "outlet": "Bleacher Nation",
     "query": "\"Kyler Gordon\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPaURjcC05T1VsQXBJT21NMkxRaVFXM0lwRS01cjl0YTdVZVl1UnhwRWh6TWhGa3BOTUtHZlM4T05jQlVlbU0tS2hRZXpZWkhBMlNhUWxaWWlCVERFT2xSLTM3NlhXSjczU0JlY0ZYRlVBU1pLMzZvZHpiTko4RUlKaHBtMVBIOGc?oc=5",
-   "author": "On Tap Sports Net",
-   "author_name": "On Tap Sports Net",
-   "author_url": "https://ontapsportsnet.com",
-   "text": "Caleb Williams’ Hand Cast Mystery Solved - On Tap Sports Net",
-   "posted_at": "Sat, 10 Oct 2026 18:43:38 GMT",
-   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPaURjcC05T1VsQXBJT21NMkxRaVFXM0lwRS01cjl0YTdVZVl1UnhwRWh6TWhGa3BOTUtHZlM4T05jQlVlbU0tS2hRZXpZWkhBMlNhUWxaWWlCVERFT2xSLTM3NlhXSjczU0JlY0ZYRlVBU1pLMzZvZHpiTko4RUlKaHBtMVBIOGc?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "hand",
-   "signal": 0.6,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "On Tap Sports Net",
-    "query": "\"T.J. Edwards\" injury when:1d"
    }
   },
   {
@@ -25144,7 +25307,7 @@
    "game_event": "injury-reported",
    "raw": {
     "outlet": "Facebook",
-    "query": "\"Jaylen Warren\" injury when:1d"
+    "query": "\"Yahya Black\" injury when:1d"
    }
   },
   {
@@ -25446,6 +25609,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPVXI0TVhkQmkzR3prbUVvSmZCSVlEQ1lsX0h3SkxSWEdnLXpaX3Zkak1OU3RCVUVEbkg5T3ljU1FlT3JfbHpWN3g3bnBmd1JJZmFZWFZnREE0TURkcE5zaDBwc0xTM2stUnlMT0lFSEdhWFRMM3M0dVNkemtZc0E1RXJPM202YWRZaERNTTZrX1padC0xYzQ4?oc=5",
+   "author": "ESPN",
+   "author_name": "ESPN",
+   "author_url": "https://www.espn.com.au",
+   "text": "Colts place DE Arden Key on IR with hamstring injury - ESPN",
+   "posted_at": "Sat, 10 Oct 2026 17:28:14 GMT",
+   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPVXI0TVhkQmkzR3prbUVvSmZCSVlEQ1lsX0h3SkxSWEdnLXpaX3Zkak1OU3RCVUVEbkg5T3ljU1FlT3JfbHpWN3g3bnBmd1JJZmFZWFZnREE0TURkcE5zaDBwc0xTM2stUnlMT0lFSEdhWFRMM3M0dVNkemtZc0E1RXJPM202YWRZaERNTTZrX1padC0xYzQ4?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "hamstring",
+   "signal": 0.75,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "ESPN",
+    "query": "\"Jaylahn Tuimoloau\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNMFFqZS15YjhUY2VoVEYzSnhOLWtkQ0owRjJTZXRhWUpjY1VLNk5UUVJRZzVsY1R0OXZZMVNxcExyQVZrQ2NvelpSRHZHaU15RjF6WXdaZDRNeFVkZk9tNU53aU1uYTBLVmNUNkxyaXN1YUtXNGVER2NPWmMtcXh6UVZjZ2R2czQ5QXI4b0hIc2VHaDZJZzlLeUNiWlFoS0tLTmc?oc=5",
    "author": "RotoBaller",
    "author_name": "RotoBaller",
@@ -25496,87 +25686,6 @@
    "raw": {
     "outlet": "ESPN",
     "query": "\"George Gumbs Jr.\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNUk1EWEZIYUNHOUhodmowNHhmV29yUFBuM0ZxQXVmZ2Vldy1jeURXclNOYU0xWXptbEgzUVRvd244OHRmSTI5TUZlZS1tZUNNS2FoOEU3NVl2eU5vckstWkRDV0FoM3F5VTdvemRkcEN1RUVqTmtiMEtSQVJVS3Y5WmhaZTA5bFNXQ1E?oc=5",
-   "author": "Yahoo Sports",
-   "author_name": "Yahoo Sports",
-   "author_url": "https://sports.yahoo.com",
-   "text": "Back at Full Strength, Will Offensive Line Lead Raiders to Victory over Patriots? - Yahoo Sports",
-   "posted_at": "Sat, 10 Oct 2026 17:26:06 GMT",
-   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNUk1EWEZIYUNHOUhodmowNHhmV29yUFBuM0ZxQXVmZ2Vldy1jeURXclNOYU0xWXptbEgzUVRvd244OHRmSTI5TUZlZS1tZUNNS2FoOEU3NVl2eU5vckstWkRDV0FoM3F5VTdvemRkcEN1RUVqTmtiMEtSQVJVS3Y5WmhaZTA5bFNXQ1E?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "back",
-   "signal": 0.6,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Yahoo Sports",
-    "query": "\"Jackson Powers-Johnson\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQc0cwQi1TZEd2ZFphSV82WkxRTUhkODNUZGR2LVlVYWJYeDNwdjlGM3pUTExnQUJPWm4xMTZSTmM5SThOUUduVm8ydlZteUc3NkdBZmtYZG1Mb1ZMM1NWcXRBQ29LdEdtVXBYUTZ1TTlDclh4S0RfYnNib1ZLU0EwYjJabTQxM3BPMTRBdkVScWEtNzViLXFF?oc=5",
-   "author": "RotoBaller",
-   "author_name": "RotoBaller",
-   "author_url": "https://www.rotoballer.com",
-   "text": "Chig Okonkwo Week 5 Outlook for Fantasy Football (2026) - RotoBaller",
-   "posted_at": "Sat, 10 Oct 2026 17:24:25 GMT",
-   "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQc0cwQi1TZEd2ZFphSV82WkxRTUhkODNUZGR2LVlVYWJYeDNwdjlGM3pUTExnQUJPWm4xMTZSTmM5SThOUUduVm8ydlZteUc3NkdBZmtYZG1Mb1ZMM1NWcXRBQ29LdEdtVXBYUTZ1TTlDclh4S0RfYnNib1ZLU0EwYjJabTQxM3BPMTRBdkVScWEtNzViLXFF?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "RotoBaller",
-    "query": "\"Tyler Warren\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOSkl6VkRTbjdtM0FLa2RvTEVHYldlTXBiRmJOYm93elBEWWgxdjRBbEVJOFFfdmxEaWN4bkJKQ0VhYU9iblozLXhEMW1teWcydF9GbDhjTEU2MFVTUkItRVAtSFdJTTFadjY1SmhSdEVNWV9xMVV4ejJHTnd1dy1zcEp6SlhyRWxqMkROVGR0MUFTbXZNMDRZTDBPWFg2eTIza0VTMWt5T1dBZ3U3NVlMWkpfc3pMTDQ?oc=5",
-   "author": "RotoBaller",
-   "author_name": "RotoBaller",
-   "author_url": "https://www.rotoballer.com",
-   "text": "Spencer Shrader Week 5 Outlook for Fantasy Football (2026) - RotoBaller",
-   "posted_at": "Sat, 10 Oct 2026 17:23:09 GMT",
-   "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOSkl6VkRTbjdtM0FLa2RvTEVHYldlTXBiRmJOYm93elBEWWgxdjRBbEVJOFFfdmxEaWN4bkJKQ0VhYU9iblozLXhEMW1teWcydF9GbDhjTEU2MFVTUkItRVAtSFdJTTFadjY1SmhSdEVNWV9xMVV4ejJHTnd1dy1zcEp6SlhyRWxqMkROVGR0MUFTbXZNMDRZTDBPWFg2eTIza0VTMWt5T1dBZ3U3NVlMWkpfc3pMTDQ?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "RotoBaller",
-    "query": "\"Spencer Shrader\" injury when:1d"
    }
   },
   {

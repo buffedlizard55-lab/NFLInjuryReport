@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T17:21:22Z",
+ "generated_at": "2026-10-11T17:25:40Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1376,7 +1376,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "6 player(s) have no official designation but do have an ESPN status",
+   "title": "7 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1448,19 +1448,15 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "83 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Mason Graham (official: see link); Big News Network.com said ACTIVE for Ashton Jeanty (official: see link); Sun Herald said ACTIVE for Ashton Jeanty (official: see link); Fresno Bee said ACTIVE for Ashton Jeanty (official: see link); Yahoo Sports said ACTIVE for Terry McLaurin (official: see link)",
+   "title": "87 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: KMJ Now said ACTIVE for Ashton Jeanty (official: see link); Big News Network.com said ACTIVE for Ashton Jeanty (official: see link); Fresno Bee said ACTIVE for Ashton Jeanty (official: see link); Yahoo Sports said ACTIVE for Terry McLaurin (official: see link); Commanders Wire said ACTIVE for Terry McLaurin (official: see link)",
    "evidence": [
     {
-     "label": "Blitz_Burgh@sportsbots.xyz: Mason Graham ACTIVE",
-     "url": "https://www.nfl.com/players/mason-graham/"
-    },
-    {
-     "label": "Big News Network.com: Ashton Jeanty ACTIVE",
+     "label": "KMJ Now: Ashton Jeanty ACTIVE",
      "url": "https://www.nfl.com/players/ashton-jeanty/"
     },
     {
-     "label": "Sun Herald: Ashton Jeanty ACTIVE",
+     "label": "Big News Network.com: Ashton Jeanty ACTIVE",
      "url": "https://www.nfl.com/players/ashton-jeanty/"
     },
     {
@@ -1469,6 +1465,10 @@
     },
     {
      "label": "Yahoo Sports: Terry McLaurin ACTIVE",
+     "url": "https://www.nfl.com/players/terry-mclaurin/"
+    },
+    {
+     "label": "Commanders Wire: Terry McLaurin ACTIVE",
      "url": "https://www.nfl.com/players/terry-mclaurin/"
     }
    ]
