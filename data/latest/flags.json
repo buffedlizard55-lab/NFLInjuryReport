@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T20:24:33Z",
+ "generated_at": "2026-10-11T20:26:24Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1496,18 +1496,6 @@
   {
    "code": "ESPN_ROSTER_EMPTY",
    "severity": "low",
-   "title": "Game-day roster for SF @ SEA parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872992 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872992"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
    "title": "Game-day roster for BAL @ ATL parsed zero athletes",
    "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872993 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
    "evidence": [
@@ -1530,9 +1518,21 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CAR:terah-edwards (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "68 reporter claim(s) contradicted by the official report",
+   "title": "72 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: RotoBaller said ACTIVE for Charlie Kolar (official: see link); Yahoo Sports said OUT for Will Campbell (official: see link); Los Angeles Chargers said ACTIVE for Ladd McConkey (official: see link); ABC13 Houston said OUT for David Montgomery (official: see link); AOL.com said ACTIVE for Ladd McConkey (official: see link)",
    "evidence": [
     {
