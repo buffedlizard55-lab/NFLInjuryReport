@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T20:02:03Z",
+ "generated_at": "2026-10-11T20:06:10Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1516,18 +1516,6 @@
   {
    "code": "ESPN_ROSTER_EMPTY",
    "severity": "low",
-   "title": "Game-day roster for DEN @ LAC parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872989 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872989"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
    "title": "Game-day roster for DET @ ARI parsed zero athletes",
    "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872991 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
    "evidence": [
@@ -1576,28 +1564,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "90 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Cleveland Browns said QUESTIONABLE for Raheim Sanders (official: see link); Yahoo Sports said OUT for Will Campbell (official: see link); Yahoo Sports said OUT for Will Campbell (official: see link); Pride Of Detroit said ACTIVE for Tyleik Williams (official: see link); FantasyPros said OUT for Ben Skowronek (official: see link)",
+   "title": "104 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: RotoBaller said ACTIVE for Charlie Kolar (official: see link); Yahoo Sports said OUT for Will Campbell (official: see link); Los Angeles Chargers said ACTIVE for Ladd McConkey (official: see link); Yahoo Sports said OUT for Will Campbell (official: see link); AOL.com said ACTIVE for Ladd McConkey (official: see link)",
    "evidence": [
     {
-     "label": "Cleveland Browns: Raheim Sanders QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4601080/raheim-sanders"
+     "label": "RotoBaller: Charlie Kolar ACTIVE",
+     "url": "https://www.nfl.com/players/charlie-kolar/"
     },
     {
      "label": "Yahoo Sports: Will Campbell OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4685298/will-campbell"
     },
     {
+     "label": "Los Angeles Chargers: Ladd McConkey ACTIVE",
+     "url": "https://www.nfl.com/players/ladd-mcconkey/"
+    },
+    {
      "label": "Yahoo Sports: Will Campbell OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4685298/will-campbell"
     },
     {
-     "label": "Pride Of Detroit: Tyleik Williams ACTIVE",
-     "url": "https://www.nfl.com/players/tyleik-williams/"
-    },
-    {
-     "label": "FantasyPros: Ben Skowronek OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4035656/ben-skowronek"
+     "label": "AOL.com: Ladd McConkey ACTIVE",
+     "url": "https://www.nfl.com/players/ladd-mcconkey/"
     }
    ]
   },
