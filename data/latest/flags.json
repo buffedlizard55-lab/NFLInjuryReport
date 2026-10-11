@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T01:26:53Z",
+ "generated_at": "2026-10-11T04:19:19Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -774,30 +774,42 @@
    ]
   },
   {
-   "code": "CLAIMS_CONTRADICTED",
+   "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "20 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Oskaloosa Herald said IR for Tim Patrick (official: see link); ehextra.com said IR for Tim Patrick (official: see link); Bozeman Daily Chronicle said IR for Tim Patrick (official: see link); Queen City News said OUT for Patrick Queen (official: see link); On Tap Sports Net said OUT for Caleb Williams (official: see link)",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: ATL:chris-lindstrom (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
-     "label": "Oskaloosa Herald: Tim Patrick IR",
-     "url": "https://www.nfl.com/players/tim-patrick/"
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "15 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said OUT for Joey Porter Jr. (official: see link); rapsheet.bsky.social said IR for Tyler Smith (official: see link); rapsheet.bsky.social said OUT for Marlon Humphrey (official: see link); rapsheet.bsky.social said QUESTIONABLE for Lamar Jackson (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link)",
+   "evidence": [
+    {
+     "label": "rapsheet.bsky.social: Joey Porter Jr. OUT",
+     "url": "https://www.nfl.com/players/joey-porter-jr/"
     },
     {
-     "label": "ehextra.com: Tim Patrick IR",
-     "url": "https://www.nfl.com/players/tim-patrick/"
+     "label": "rapsheet.bsky.social: Tyler Smith IR",
+     "url": "https://www.nfl.com/players/tyler-smith/"
     },
     {
-     "label": "Bozeman Daily Chronicle: Tim Patrick IR",
-     "url": "https://www.nfl.com/players/tim-patrick/"
+     "label": "rapsheet.bsky.social: Marlon Humphrey OUT",
+     "url": "https://www.nfl.com/players/marlon-humphrey/"
     },
     {
-     "label": "Queen City News: Patrick Queen OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4242207/patrick-queen"
+     "label": "rapsheet.bsky.social: Lamar Jackson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
     },
     {
-     "label": "On Tap Sports Net: Caleb Williams OUT",
-     "url": "https://www.nfl.com/players/caleb-williams/"
+     "label": "tompelissero.bsky.social: Jayden Daniels OUT",
+     "url": "https://www.nfl.com/players/jayden-daniels/"
     }
    ]
   },
