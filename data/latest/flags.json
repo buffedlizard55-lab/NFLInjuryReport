@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-11T19:58:26Z",
+ "generated_at": "2026-10-11T20:02:03Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1574,22 +1574,10 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 11 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: KC:ben-vansumeren (not asserted by any source for 14.0 days); NYG:malik-harrison (not asserted by any source for 14.0 days); NE:jose-ramirez (not asserted by any source for 14.0 days); DET:eric-o-neill (not asserted by any source for 14.0 days); JAX:ezra-cleveland (not asserted by any source for 14.0 days); JAX:matt-dickerson (not asserted by any source for 14.0 days); MIA:keith-cooper (not asserted by any source for 14.0 days); NYG:ben-mann (not asserted by any source for 14.0 days); JAX:jahlani-tavai (not asserted by any source for 14.0 days); NE:jeremiah-pharms (not asserted by any source for 14.0 days); NE:tommy-devito (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "89 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Cleveland Browns said QUESTIONABLE for Raheim Sanders (official: see link); Yahoo Sports said OUT for Will Campbell (official: see link); Yahoo Sports said OUT for Will Campbell (official: see link); FantasyPros said OUT for Ben Skowronek (official: see link); Pats Pulpit said QUESTIONABLE for TreVeyon Henderson (official: see link)",
+   "title": "90 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Cleveland Browns said QUESTIONABLE for Raheim Sanders (official: see link); Yahoo Sports said OUT for Will Campbell (official: see link); Yahoo Sports said OUT for Will Campbell (official: see link); Pride Of Detroit said ACTIVE for Tyleik Williams (official: see link); FantasyPros said OUT for Ben Skowronek (official: see link)",
    "evidence": [
     {
      "label": "Cleveland Browns: Raheim Sanders QUESTIONABLE",
@@ -1604,12 +1592,12 @@
      "url": "https://www.espn.com/nfl/player/_/id/4685298/will-campbell"
     },
     {
-     "label": "FantasyPros: Ben Skowronek OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4035656/ben-skowronek"
+     "label": "Pride Of Detroit: Tyleik Williams ACTIVE",
+     "url": "https://www.nfl.com/players/tyleik-williams/"
     },
     {
-     "label": "Pats Pulpit: TreVeyon Henderson QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4432710/treveyon-henderson"
+     "label": "FantasyPros: Ben Skowronek OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/4035656/ben-skowronek"
     }
    ]
   },
