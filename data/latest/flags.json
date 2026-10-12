@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-12T03:47:25Z",
+ "generated_at": "2026-10-12T05:10:02Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1606,10 +1606,22 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 6 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: DEN:luke-wattenberg (not asserted by any source for 14.1 days); LAR:jaylen-mccollough (not asserted by any source for 14.1 days); LAR:desjuan-johnson (not asserted by any source for 14.1 days); LAR:ty-hamilton (not asserted by any source for 14.1 days); LAR:tanner-ingle (not asserted by any source for 14.1 days); LAR:joe-cardona (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "64 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Ravens Wire said QUESTIONABLE for Matt Hibner (official: see link); Yahoo Sports said QUESTIONABLE for Matt Hibner (official: see link); ABC13 Houston said OUT for David Montgomery (official: see link); FOX 8 News said OUT for KC Concepcion (official: see link); News-Times said OUT for KC Concepcion (official: see link)",
+   "title": "68 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Ravens Wire said QUESTIONABLE for Matt Hibner (official: see link); Yahoo Sports said QUESTIONABLE for Matt Hibner (official: see link); ABC13 Houston said OUT for David Montgomery (official: see link); Plainview Herald said OUT for KC Concepcion (official: see link); FOX 8 News said OUT for KC Concepcion (official: see link)",
    "evidence": [
     {
      "label": "Ravens Wire: Matt Hibner QUESTIONABLE",
@@ -1624,11 +1636,11 @@
      "url": "https://www.espn.com/nfl/player/_/id/4035538/david-montgomery"
     },
     {
-     "label": "FOX 8 News: KC Concepcion OUT",
+     "label": "Plainview Herald: KC Concepcion OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4870653/kc-concepcion"
     },
     {
-     "label": "News-Times: KC Concepcion OUT",
+     "label": "FOX 8 News: KC Concepcion OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4870653/kc-concepcion"
     }
    ]
