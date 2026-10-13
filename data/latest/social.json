@@ -1,39 +1,39 @@
 {
- "generated_at": "2026-10-13T01:37:17Z",
+ "generated_at": "2026-10-13T01:38:52Z",
  "platforms_probed": {
   "bluesky": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "reachable": false,
    "status": 403,
-   "latency_ms": 21,
+   "latency_ms": 71,
    "error": "HTTP 403 Forbidden"
   },
   "bluesky-author-feed": {
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "reachable": true,
    "status": 200,
-   "latency_ms": 22,
+   "latency_ms": 65,
    "error": ""
   },
   "mastodon": {
    "url": "https://mastodon.social/api/v1/instance",
    "reachable": true,
    "status": 200,
-   "latency_ms": 43,
+   "latency_ms": 44,
    "error": ""
   },
   "google-news": {
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "reachable": true,
    "status": 200,
-   "latency_ms": 500,
+   "latency_ms": 86,
    "error": ""
   },
   "reddit": {
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "reachable": false,
    "status": 403,
-   "latency_ms": 30,
+   "latency_ms": 85,
    "error": "HTTP 403 Blocked"
   }
  },
@@ -257,7 +257,7 @@
    "label": "news:hot-team:LAC",
    "query": "\"Los Angeles Chargers\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Los+Angeles+Chargers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 13,
+   "posts": 14,
    "error": ""
   },
   {
@@ -446,7 +446,7 @@
    "label": "news:hot-player",
    "query": "\"Skyler Bell\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Skyler+Bell%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 9,
+   "posts": 10,
    "error": ""
   },
   {
@@ -558,7 +558,7 @@
    "label": "news:hot-player",
    "query": "\"Colby Parkinson\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Colby+Parkinson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 6,
+   "posts": 7,
    "error": ""
   },
   {
@@ -656,7 +656,7 @@
    "label": "news:hot-player",
    "query": "\"Ar'maj Reed-Adams\" injury when:1d",
    "url": "https://news.google.com/rss/search?q=%22Ar%27maj+Reed-Adams%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "posts": 7,
+   "posts": 6,
    "error": ""
   },
   {
@@ -1715,6 +1715,33 @@
    }
   },
   {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQNUdhOHVYWFJJeFRBLVlVbDlpemlqMllpaG5ZMTVFWU1GY1c0TUc2Y3Btd3otZVBzQl9VRG9rRXN0djVSSXZ2UHdMdnNoY0Q2bm9CZ0lrZlFyZnlvTlN2N3lQLVU4LXpDTWN5Y3lGQW1KenBJY2tYb3lVSS1QOWNrRkZaMFAtTUJnVGZKSEp5bTZSTFQ0T2xCSXAxTnk3NFhxRFFjWEJZSzQxdU8xejBsSVFxUFBPREM0aHVVZTlB?oc=5",
+   "author": "WKBW",
+   "author_name": "WKBW",
+   "author_url": "https://www.wkbw.com",
+   "text": "Bills WR DJ Moore listed as inactive ahead of Monday night matchup against Rams - WKBW",
+   "posted_at": "Tue, 13 Oct 2026 00:04:10 GMT",
+   "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQNUdhOHVYWFJJeFRBLVlVbDlpemlqMllpaG5ZMTVFWU1GY1c0TUc2Y3Btd3otZVBzQl9VRG9rRXN0djVSSXZ2UHdMdnNoY0Q2bm9CZ0lrZlFyZnlvTlN2N3lQLVU4LXpDTWN5Y3lGQW1KenBJY2tYb3lVSS1QOWNrRkZaMFAtTUJnVGZKSEp5bTZSTFQ0T2xCSXAxTnk3NFhxRFFjWEJZSzQxdU8xejBsSVFxUFBPREM0aHVVZTlB?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.15,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "OUT_FOR_GAME",
+   "game_event": "ruled-out-for-game",
+   "raw": {
+    "outlet": "WKBW",
+    "query": "\"Buffalo Bills\" injury when:1d"
+   }
+  },
+  {
    "platform": "mastodon",
    "post_id": "117430665888947518",
    "author": "RandAlThor@lemmy.ca",
@@ -2575,33 +2602,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5HZ2RidEZQR1I2eGdkLTlldDV3dEN2ZnRpNWE0MHdoU0VNeHZTbUJmSER4NW1GNDlsOUtCLWRVWnJYTExuQTl2blVpQkFCamotVERxOUtXQ3hZRlhoTVZmMS1vNDhkQlQ0RGRMVXBWc3pFb2o5OFBzcVh5VlVRZw?oc=5",
-   "author": "Yahoo Sports",
-   "author_name": "Yahoo Sports",
-   "author_url": "https://sports.yahoo.com",
-   "text": "WR DJ Moore is out for Bills' Monday night showdown with Rams - Yahoo Sports",
-   "posted_at": "Mon, 12 Oct 2026 23:06:28 GMT",
-   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5HZ2RidEZQR1I2eGdkLTlldDV3dEN2ZnRpNWE0MHdoU0VNeHZTbUJmSER4NW1GNDlsOUtCLWRVWnJYTExuQTl2blVpQkFCamotVERxOUtXQ3hZRlhoTVZmMS1vNDhkQlQ0RGRMVXBWc3pFb2o5OFBzcVh5VlVRZw?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "Yahoo Sports",
-    "query": "\"Buffalo Bills\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMioAFBVV95cUxONlF4a0YwT294cW1IVVZWeEVBbWIwcWhmb3JpUFJYZWFUNkNqY2lIZmZkWlJNV25OYnh4TGJCSmhhNnBKZjA5UlNBN1QyVm9xd2gyMnlWbGQ5SXBQWElrdllzMlplU3ZsTW80RHpXUjRiQ0NTMG4zRmVFTEhuMzFFeUxfWW12b3FhZHFlbTdXZVRnc2xXSnZxWHRNaHdHaWx4?oc=5",
    "author": "FOX Sports",
    "author_name": "FOX Sports",
@@ -2651,6 +2651,33 @@
    "game_event": "",
    "raw": {
     "outlet": "Bozeman Daily Chronicle",
+    "query": "\"Joshua Palmer\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5HZ2RidEZQR1I2eGdkLTlldDV3dEN2ZnRpNWE0MHdoU0VNeHZTbUJmSER4NW1GNDlsOUtCLWRVWnJYTExuQTl2blVpQkFCamotVERxOUtXQ3hZRlhoTVZmMS1vNDhkQlQ0RGRMVXBWc3pFb2o5OFBzcVh5VlVRZw?oc=5",
+   "author": "Yahoo Sports",
+   "author_name": "Yahoo Sports",
+   "author_url": "https://sports.yahoo.com",
+   "text": "WR DJ Moore is out for Bills' Monday night showdown with Rams - Yahoo Sports",
+   "posted_at": "Mon, 12 Oct 2026 23:06:28 GMT",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5HZ2RidEZQR1I2eGdkLTlldDV3dEN2ZnRpNWE0MHdoU0VNeHZTbUJmSER4NW1GNDlsOUtCLWRVWnJYTExuQTl2blVpQkFCamotVERxOUtXQ3hZRlhoTVZmMS1vNDhkQlQ0RGRMVXBWc3pFb2o5OFBzcVh5VlVRZw?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "Yahoo Sports",
     "query": "\"Joshua Palmer\" injury when:1d"
    }
   },
@@ -10674,33 +10701,6 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNSHFfY1ZxN0ZLMHBmNWpZc3U5VVI4aEtHNDV2UVE1TTF0OU1KaUo5ZGtuMVg0dzNBWXdFTjh3MWtvQjdSOFpEUTRzUUd5cmxXTWhOUEtTMTE1QUJjX1VRT1J0Q2V5SHNrQVNXc2hTamwxcmVlY1M3N2lOakluby0zV2xTeGZucTliLTlyTFQxSFVVM252dDk3c2RBU1JFMGM?oc=5",
-   "author": "FantasyLife",
-   "author_name": "FantasyLife",
-   "author_url": "https://www.fantasylife.com",
-   "text": "Bills vs Rams Odds, Picks, Predictions, and Player Props for MNF Week 5 - FantasyLife",
-   "posted_at": "Mon, 12 Oct 2026 16:00:00 GMT",
-   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNSHFfY1ZxN0ZLMHBmNWpZc3U5VVI4aEtHNDV2UVE1TTF0OU1KaUo5ZGtuMVg0dzNBWXdFTjh3MWtvQjdSOFpEUTRzUUd5cmxXTWhOUEtTMTE1QUJjX1VRT1J0Q2V5SHNrQVNXc2hTamwxcmVlY1M3N2lOakluby0zV2xTeGZucTliLTlyTFQxSFVVM252dDk3c2RBU1JFMGM?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.3,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "NONE",
-   "game_event": "",
-   "raw": {
-    "outlet": "FantasyLife",
-    "query": "\"Puka Nacua\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPUGpHaVY3MnlmU2ktdXRHYTV5bEU4eV9xcUVaY0k0QnhLYlBGRFpkNUdVYkJ2NzdLUUdxcUJtMDIxR0hSS3VMQzV0TXRobUdDTk91MHQ3eDQ3TTdNbEVRRThsbDNYM3hfNlVsRGE3R3pVU0Y0NTZhNEFqVE1USG1QQWVZUmQ3NEZuZFFhdXE0Qm53VEVVOFFaNjJGTndkeEJ4dTJrTVpKb0xJQQ?oc=5",
    "author": "New York Post",
    "author_name": "New York Post",
@@ -10724,6 +10724,33 @@
    "raw": {
     "outlet": "New York Post",
     "query": "\"Puka Nacua\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNSHFfY1ZxN0ZLMHBmNWpZc3U5VVI4aEtHNDV2UVE1TTF0OU1KaUo5ZGtuMVg0dzNBWXdFTjh3MWtvQjdSOFpEUTRzUUd5cmxXTWhOUEtTMTE1QUJjX1VRT1J0Q2V5SHNrQVNXc2hTamwxcmVlY1M3N2lOakluby0zV2xTeGZucTliLTlyTFQxSFVVM252dDk3c2RBU1JFMGM?oc=5",
+   "author": "FantasyLife",
+   "author_name": "FantasyLife",
+   "author_url": "https://www.fantasylife.com",
+   "text": "Bills vs Rams Odds, Picks, Predictions, and Player Props for MNF Week 5 - FantasyLife",
+   "posted_at": "Mon, 12 Oct 2026 16:00:00 GMT",
+   "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNSHFfY1ZxN0ZLMHBmNWpZc3U5VVI4aEtHNDV2UVE1TTF0OU1KaUo5ZGtuMVg0dzNBWXdFTjh3MWtvQjdSOFpEUTRzUUd5cmxXTWhOUEtTMTE1QUJjX1VRT1J0Q2V5SHNrQVNXc2hTamwxcmVlY1M3N2lOakluby0zV2xTeGZucTliLTlyTFQxSFVVM252dDk3c2RBU1JFMGM?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.3,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "NONE",
+   "game_event": "",
+   "raw": {
+    "outlet": "FantasyLife",
+    "query": "\"Blake Corum\" injury when:1d"
    }
   },
   {
@@ -13072,7 +13099,7 @@
    "game_event": "",
    "raw": {
     "outlet": "Yahoo Sports",
-    "query": "\"Denver Broncos\" injury when:1d"
+    "query": "\"Los Angeles Chargers\" injury when:1d"
    }
   },
   {
@@ -14373,6 +14400,33 @@
   },
   {
    "platform": "google-news",
+   "post_id": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQYjI4MnpBOHI1eG1YcXZXSERtT2Vrd3licWJjdUNVOVJpdm1DM21GMHNFaVRNZGJSd3Ezblh6VUZUOWx6cmFmbDNoREJlb09tVHZKSTBaRWFFV0YtZ0xObjNzQTUtazltN0hCRXhxOVR4WmNWNTVPc2NwdEdRYnRHTjJjR3N2bHc0QUxkaFlST3c?oc=5",
+   "author": "Press Telegram",
+   "author_name": "Press Telegram",
+   "author_url": "https://www.presstelegram.com",
+   "text": "Chargers’ injury woes mount in loss to Broncos - Press Telegram",
+   "posted_at": "Mon, 12 Oct 2026 01:41:35 GMT",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQYjI4MnpBOHI1eG1YcXZXSERtT2Vrd3licWJjdUNVOVJpdm1DM21GMHNFaVRNZGJSd3Ezblh6VUZUOWx6cmFmbDNoREJlb09tVHZKSTBaRWFFV0YtZ0xObjNzQTUtazltN0hCRXhxOVR4WmNWNTVPc2NwdEdRYnRHTjJjR3N2bHc0QUxkaFlST3c?oc=5",
+   "matched_player": "",
+   "player_key": "",
+   "team": "",
+   "predicted_status": "UNKNOWN",
+   "injury": "",
+   "signal": 0.15,
+   "engagement": 0,
+   "verified": false,
+   "verification_detail": "",
+   "author_did": "",
+   "source_kind": "news",
+   "in_game_status": "INJURY_REPORTED",
+   "game_event": "injury-reported",
+   "raw": {
+    "outlet": "Press Telegram",
+    "query": "\"Denver Broncos\" injury when:1d"
+   }
+  },
+  {
+   "platform": "google-news",
    "post_id": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNV1pJemlvT25DUE5lZW5zVVB2enlINWhFRWlseUJ1S1FZOEV0bFdna0RrRzNrMXNjWXBQbHBEMEQ4STBFTF8xdlJCUW0tdUtfSVdHUWZEcm9FZ1pNMWtDMWZOWWk4TXhKVHM1cndGamp4X0ZhX0pqT2dSWnBwS0l1eGpfeThacUhBQTZKUTFsYm42eUFKaFVGSXRaQzhNdmlLWHhCOWVxQUc0T2tKWGNNMzBYZW92aHAtNmJxMzcwVnQ?oc=5",
    "author": "Cincinnati Enquirer",
    "author_name": "Cincinnati Enquirer",
@@ -14400,13 +14454,13 @@
   },
   {
    "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPWlRrdUc5cG1CTHBqeS1pQUV0UXdUa2J5MzZKdkMtSlBEZEp0OG4tZXdDdDVPeUpWU1VwVlBnUzRKak1UdXNwNXhIX3pZcGozMDNnRnRVdTFNS0hOU0xYUUQweGFqRmx3MnpNSmg0TXNidWVWalU2WjdxOU5LaWxzT1RadjlXWTl0ZWdObU5hdFdMZzk2N3hNc25n?oc=5",
-   "author": "San Diego Union-Tribune",
-   "author_name": "San Diego Union-Tribune",
-   "author_url": "https://www.sandiegouniontribune.com",
-   "text": "Chargers’ injury woes mount in loss to Broncos - San Diego Union-Tribune",
-   "posted_at": "Mon, 12 Oct 2026 01:38:41 GMT",
-   "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPWlRrdUc5cG1CTHBqeS1pQUV0UXdUa2J5MzZKdkMtSlBEZEp0OG4tZXdDdDVPeUpWU1VwVlBnUzRKak1UdXNwNXhIX3pZcGozMDNnRnRVdTFNS0hOU0xYUUQweGFqRmx3MnpNSmg0TXNidWVWalU2WjdxOU5LaWxzT1RadjlXWTl0ZWdObU5hdFdMZzk2N3hNc25n?oc=5",
+   "post_id": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNdU9mVGk5YU1VN293RXRVTWhLQW4xYXVhUmpIVWhtNXNnd1hGcURzcjhMekNDOV9kZ002Vmt3aVhDcE1aVTE1d2MxdTNGOFpGV2dpV0kzQkpJdGM3TWxXdlMzUkJPUzg1TFlKbzF3U1VpcXVLTVRoRThjMEcwWE5ZQ0RQanJGelBEdE1XXw?oc=5",
+   "author": "San Gabriel Valley Tribune",
+   "author_name": "San Gabriel Valley Tribune",
+   "author_url": "https://www.sgvtribune.com",
+   "text": "Chargers’ injury woes mount in loss to Broncos - San Gabriel Valley Tribune",
+   "posted_at": "Mon, 12 Oct 2026 01:39:54 GMT",
+   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNdU9mVGk5YU1VN293RXRVTWhLQW4xYXVhUmpIVWhtNXNnd1hGcURzcjhMekNDOV9kZ002Vmt3aVhDcE1aVTE1d2MxdTNGOFpGV2dpV0kzQkpJdGM3TWxXdlMzUkJPUzg1TFlKbzF3U1VpcXVLTVRoRThjMEcwWE5ZQ0RQanJGelBEdE1XXw?oc=5",
    "matched_player": "",
    "player_key": "",
    "team": "",
@@ -14421,35 +14475,8 @@
    "in_game_status": "INJURY_REPORTED",
    "game_event": "injury-reported",
    "raw": {
-    "outlet": "San Diego Union-Tribune",
+    "outlet": "San Gabriel Valley Tribune",
     "query": "\"Los Angeles Chargers\" injury when:1d"
-   }
-  },
-  {
-   "platform": "google-news",
-   "post_id": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPZFRBTUhGNTNKdTFxa21oSjFULW5EdmNOampXT21HUWlqZ0VLcFNnMGZGckxDTzhxWnd6NWtxTTQxV09hZ2xUbDQzWG9oU0FIbGlzUkszX2cyamxKV21NY1JDd1JVb0g3cHFHSTlzX1g1VmQ4MXZHTmZwZ0RGeEhjZVQ3ZXNkQjZaVDY4QQ?oc=5",
-   "author": "Orange County Register",
-   "author_name": "Orange County Register",
-   "author_url": "https://www.ocregister.com",
-   "text": "Chargers’ injury woes mount in loss to Broncos - Orange County Register",
-   "posted_at": "Mon, 12 Oct 2026 01:38:15 GMT",
-   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPZFRBTUhGNTNKdTFxa21oSjFULW5EdmNOampXT21HUWlqZ0VLcFNnMGZGckxDTzhxWnd6NWtxTTQxV09hZ2xUbDQzWG9oU0FIbGlzUkszX2cyamxKV21NY1JDd1JVb0g3cHFHSTlzX1g1VmQ4MXZHTmZwZ0RGeEhjZVQ3ZXNkQjZaVDY4QQ?oc=5",
-   "matched_player": "",
-   "player_key": "",
-   "team": "",
-   "predicted_status": "UNKNOWN",
-   "injury": "",
-   "signal": 0.15,
-   "engagement": 0,
-   "verified": false,
-   "verification_detail": "",
-   "author_did": "",
-   "source_kind": "news",
-   "in_game_status": "INJURY_REPORTED",
-   "game_event": "injury-reported",
-   "raw": {
-    "outlet": "Orange County Register",
-    "query": "\"Denver Broncos\" injury when:1d"
    }
   },
   {
