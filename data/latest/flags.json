@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-13T03:13:02Z",
+ "generated_at": "2026-10-13T03:15:14Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1628,8 +1628,8 @@
   {
    "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: PHI:ty-robinson (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "title": "Roster index pruned 2 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: BUF:jackson-hawes (not asserted by any source for 14.0 days); LAC:david-njoku (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
      "label": "Official NFL injury report",
@@ -1640,9 +1640,13 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "69 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: New York Post said OUT for DJ Moore (official: see link); The Sunday Guardian said OUT for DJ Moore (official: see link); Yahoo Sports said ACTIVE for Micah Parsons (official: see link); Sports Illustrated said ACTIVE for Quentin Lake (official: see link); Sportsnet.ca said OUT for DJ Moore (official: see link)",
+   "title": "70 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said OUT for DJ Moore (official: see link); New York Post said OUT for DJ Moore (official: see link); The Sunday Guardian said OUT for DJ Moore (official: see link); Yahoo Sports said ACTIVE for Micah Parsons (official: see link); Sports Illustrated said ACTIVE for Quentin Lake (official: see link)",
    "evidence": [
+    {
+     "label": "Yahoo Sports: DJ Moore OUT",
+     "url": "https://www.nfl.com/players/d-j-moore/"
+    },
     {
      "label": "New York Post: DJ Moore OUT",
      "url": "https://www.nfl.com/players/d-j-moore/"
@@ -1658,10 +1662,6 @@
     {
      "label": "Sports Illustrated: Quentin Lake ACTIVE",
      "url": "https://www.nfl.com/players/quentin-lake/"
-    },
-    {
-     "label": "Sportsnet.ca: DJ Moore OUT",
-     "url": "https://www.nfl.com/players/d-j-moore/"
     }
    ]
   },
