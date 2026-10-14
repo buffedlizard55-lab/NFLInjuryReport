@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-14T00:54:59Z",
+ "generated_at": "2026-10-14T02:59:15Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -13,22 +13,6 @@
     },
     {
      "label": "espn: TEN",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "PLAYER_TEAM_CONFLICT",
-   "severity": "high",
-   "title": "'Justin Jefferson' is listed under conflicting clubs",
-   "detail": "Sources disagree about which club 'Justin Jefferson' belongs to (CLE, MIN). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
-   "evidence": [
-    {
-     "label": "nfl.com: MIN",
-     "url": "https://www.nfl.com/injuries/"
-    },
-    {
-     "label": "espn: CLE, MIN",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -2458,21 +2442,25 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 10 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: NYG:francis-mauigoa (not asserted by any source for 14.0 days); WAS:john-bates (not asserted by any source for 14.0 days); CLE:justin-jefferson (official report lists the player under a different club); ATL:aj-terrell (not asserted by any source for 14.0 days); NYJ:troy-reeder (not asserted by any source for 14.0 days); DET:hogan-hatten (not asserted by any source for 14.0 days); SF:cj-west (not asserted by any source for 14.0 days); IND:matt-goncalves (not asserted by any source for 14.0 days); HOU:jacob-hummel (not asserted by any source for 14.0 days); TEN:cordale-flott (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "61 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Tyquan Thornton (official: see link); AOL.com said IR for Anton Harrison (official: see link); NBC Sports said IR for Anton Harrison (official: see link); Seattle Seahawks said IR for Irv Charles (official: see link); Heavy.com said QUESTIONABLE for James Conner (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: AOL.com said IR for Anton Harrison (official: see link); Seattle Seahawks said IR for Irv Charles (official: see link); Heavy.com said QUESTIONABLE for James Conner (official: see link); Sports Illustrated said ACTIVE for Spencer Brown (official: see link); Yahoo Sports said ACTIVE for Ladd McConkey (official: see link)",
    "evidence": [
     {
-     "label": "Yahoo Sports: Tyquan Thornton ACTIVE",
-     "url": "https://www.espn.com/nfl/player/_/id/4362921/tyquan-thornton"
-    },
-    {
      "label": "AOL.com: Anton Harrison IR",
-     "url": "https://www.nfl.com/players/anton-harrison/"
-    },
-    {
-     "label": "NBC Sports: Anton Harrison IR",
      "url": "https://www.nfl.com/players/anton-harrison/"
     },
     {
@@ -2482,6 +2470,14 @@
     {
      "label": "Heavy.com: James Conner QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/3045147/james-conner"
+    },
+    {
+     "label": "Sports Illustrated: Spencer Brown ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/4030899/spencer-brown"
+    },
+    {
+     "label": "Yahoo Sports: Ladd McConkey ACTIVE",
+     "url": "https://www.nfl.com/players/ladd-mcconkey/"
     }
    ]
   },
@@ -2526,6 +2522,22 @@
     {
      "label": "ESPN attribution #3",
      "url": "https://www.espn.com/nfl/player/_/id/4870653/kc-concepcion"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
+   "title": "Beat writer Cameron Wolfe is attributed across 2 clubs (BUF, NE)",
+   "detail": "ESPN printed Cameron Wolfe (NFL Network) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/4683153/skyler-bell"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/4685298/will-campbell"
     }
    ]
   },
