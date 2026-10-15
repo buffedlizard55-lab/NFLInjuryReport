@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-15T14:17:08Z",
+ "generated_at": "2026-10-15T15:10:43Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -214,27 +214,11 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 25 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: PHI:elijah-moore (not asserted by any source for 14.1 days); BUF:brock-bowers (official report lists the player under a different club); BUF:spencer-burford (official report lists the player under a different club); BUF:foley-fatukasi (official report lists the player under a different club); BUF:tonka-hemingway (official report lists the player under a different club); BUF:ashton-jeanty (official report lists the player under a different club); BUF:patrick-johnson (official report lists the player under a different club); BUF:jalen-nailor (official report lists the player under a different club); BUF:segun-olubi (official report lists the player under a different club); BUF:carter-runyon (official report lists the player under a different club); BUF:dont-e-thornton (official report lists the player under a different club); BUF:dareke-young (official report lists the player under a different club); BUF:trey-zuhn (official report lists the player under a different club); LV:alijah-clark (official report lists the player under a different club); LV:cobie-durant (official report lists the player under a different club); LV:tyler-guyton (official report lists the player under a different club); LV:james-houston (official report lists the player under a different club); LV:ceedee-lamb (official report lists the player under a different club); LV:von-miller (official report lists the player under a different club); LV:demarvion-overshown (official report lists the player under a different club) (+5 more). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "21 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: ABC13 Houston said IR for James Houston (official: see link); tompelissero.bsky.social said OUT for Justin Jefferson (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); Will McFadden said QUESTIONABLE for Divine Deablo (official: see link); Mike Kaye said QUESTIONABLE for Jaelan Phillips (official: see link)",
+   "title": "20 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: tompelissero.bsky.social said OUT for Justin Jefferson (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); Will McFadden said QUESTIONABLE for Divine Deablo (official: see link); Mike Kaye said QUESTIONABLE for Jaelan Phillips (official: see link); Sean Hammond said QUESTIONABLE for Caleb Williams (official: see link)",
    "evidence": [
-    {
-     "label": "ABC13 Houston: James Houston IR",
-     "url": "https://www.nfl.com/players/james-houston/"
-    },
     {
      "label": "tompelissero.bsky.social: Justin Jefferson OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4262921/justin-jefferson"
@@ -250,6 +234,10 @@
     {
      "label": "Mike Kaye: Jaelan Phillips QUESTIONABLE",
      "url": "https://www.nfl.com/players/jaelan-phillips/"
+    },
+    {
+     "label": "Sean Hammond: Caleb Williams QUESTIONABLE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
     }
    ]
   },
