@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T21:31:57Z",
+ "generated_at": "2026-10-16T21:44:28Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -68,7 +68,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "92 player(s) have no official designation but do have an ESPN status",
+   "title": "90 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -237,27 +237,27 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "34 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Beezloopnews said ACTIVE for Josh Jacobs (official: see link); Fort Worth Star-Telegram said QUESTIONABLE for Micah Parsons (official: see link); Los Angeles Chargers said QUESTIONABLE for Daiyan Henley (official: see link); rapsheet.bsky.social said QUESTIONABLE for A.J. Brown (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Roman Wilson (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Beezloopnews said ACTIVE for Josh Jacobs (official: see link); Los Angeles Chargers said QUESTIONABLE for Daiyan Henley (official: see link); ESPN said QUESTIONABLE for Caleb Williams (official: see link); rapsheet.bsky.social said QUESTIONABLE for A.J. Brown (official: see link); Patriots.com said QUESTIONABLE for Christian Gonzalez (official: see link)",
    "evidence": [
     {
      "label": "Beezloopnews: Josh Jacobs ACTIVE",
      "url": "https://www.espn.com/nfl/player/_/id/4047365/josh-jacobs"
     },
     {
-     "label": "Fort Worth Star-Telegram: Micah Parsons QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4361423/micah-parsons"
-    },
-    {
      "label": "Los Angeles Chargers: Daiyan Henley QUESTIONABLE",
      "url": "https://www.nfl.com/players/daiyan-henley/"
+    },
+    {
+     "label": "ESPN: Caleb Williams QUESTIONABLE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
     },
     {
      "label": "rapsheet.bsky.social: A.J. Brown QUESTIONABLE",
      "url": "https://www.nfl.com/players/a-j-brown/"
     },
     {
-     "label": "Blitz_Burgh@sportsbots.xyz: Roman Wilson ACTIVE",
-     "url": "https://www.nfl.com/players/roman-wilson/"
+     "label": "Patriots.com: Christian Gonzalez QUESTIONABLE",
+     "url": "https://www.nfl.com/players/christian-gonzalez/"
     }
    ]
   },
