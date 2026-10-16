@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T18:41:50Z",
+ "generated_at": "2026-10-16T19:47:04Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -50,9 +50,25 @@
    ]
   },
   {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Will Mallory",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/will-mallory/"
+    },
+    {
+     "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "134 player(s) have no official designation but do have an ESPN status",
+   "title": "124 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -220,28 +236,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "40 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Revenge of the Birds said OUT for Jeremiyah Love (official: see link); Yahoo Sports said OUT for Jeremiyah Love (official: see link); Yahoo Sports said OUT for Jeremiyah Love (official: see link); Yahoo Sports said OUT for Jeremiyah Love (official: see link); Arizona Cardinals said OUT for Jeremiyah Love (official: see link)",
+   "title": "36 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Roman Wilson (official: see link); nfl@sportsfeed.me said QUESTIONABLE for Caleb Williams (official: see link); Shaw Local said QUESTIONABLE for Caleb Williams (official: see link); Yahoo Sports said QUESTIONABLE for Alvin Kamara (official: see link); Yahoo Sports said QUESTIONABLE for Jaylen Waddle (official: see link)",
    "evidence": [
     {
-     "label": "Revenge of the Birds: Jeremiyah Love OUT",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
+     "label": "Blitz_Burgh@sportsbots.xyz: Roman Wilson ACTIVE",
+     "url": "https://www.nfl.com/players/roman-wilson/"
     },
     {
-     "label": "Yahoo Sports: Jeremiyah Love OUT",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
+     "label": "nfl@sportsfeed.me: Caleb Williams QUESTIONABLE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
     },
     {
-     "label": "Yahoo Sports: Jeremiyah Love OUT",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
+     "label": "Shaw Local: Caleb Williams QUESTIONABLE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
     },
     {
-     "label": "Yahoo Sports: Jeremiyah Love OUT",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
+     "label": "Yahoo Sports: Alvin Kamara QUESTIONABLE",
+     "url": "https://www.nfl.com/players/alvin-kamara/"
     },
     {
-     "label": "Arizona Cardinals: Jeremiyah Love OUT",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
+     "label": "Yahoo Sports: Jaylen Waddle QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4372016/jaylen-waddle"
     }
    ]
   },
