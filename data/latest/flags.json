@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T02:17:38Z",
+ "generated_at": "2026-10-16T02:18:59Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -218,10 +218,22 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CLE:toriano-pride (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "37 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC Sports said QUESTIONABLE for Jaylen Waddle (official: see link); Mile High Report said QUESTIONABLE for Jaylen Waddle (official: see link); Yahoo Sports said OUT for Tyler Badie (official: see link); Mile High Report said OUT for Tyler Badie (official: see link); The Washington Post said ACTIVE for Riley Moss (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC Sports said QUESTIONABLE for Jaylen Waddle (official: see link); Mile High Report said QUESTIONABLE for Jaylen Waddle (official: see link); Mile High Report said OUT for Tyler Badie (official: see link); Yahoo Sports said OUT for Tyler Badie (official: see link); The Washington Post said ACTIVE for Riley Moss (official: see link)",
    "evidence": [
     {
      "label": "NBC Sports: Jaylen Waddle QUESTIONABLE",
@@ -232,11 +244,11 @@
      "url": "https://www.espn.com/nfl/player/_/id/4372016/jaylen-waddle"
     },
     {
-     "label": "Yahoo Sports: Tyler Badie OUT",
+     "label": "Mile High Report: Tyler Badie OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4362748/tyler-badie"
     },
     {
-     "label": "Mile High Report: Tyler Badie OUT",
+     "label": "Yahoo Sports: Tyler Badie OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4362748/tyler-badie"
     },
     {
