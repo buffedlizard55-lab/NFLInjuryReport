@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T19:47:04Z",
+ "generated_at": "2026-10-16T21:24:52Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -28,7 +28,7 @@
      "url": "https://www.nfl.com/injuries/"
     },
     {
-     "label": "espn: TEN",
+     "label": "espn: PHI, TEN",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -68,7 +68,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "124 player(s) have no official designation but do have an ESPN status",
+   "title": "92 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -236,28 +236,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "36 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Roman Wilson (official: see link); nfl@sportsfeed.me said QUESTIONABLE for Caleb Williams (official: see link); Shaw Local said QUESTIONABLE for Caleb Williams (official: see link); Yahoo Sports said QUESTIONABLE for Alvin Kamara (official: see link); Yahoo Sports said QUESTIONABLE for Jaylen Waddle (official: see link)",
+   "title": "40 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: ABC7 Chicago said QUESTIONABLE for Caleb Williams (official: see link); ESPN said QUESTIONABLE for Caleb Williams (official: see link); rapsheet.bsky.social said QUESTIONABLE for A.J. Brown (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Roman Wilson (official: see link); The Atlanta Journal-Constitution said OUT for Michael Penix Jr. (official: see link)",
    "evidence": [
+    {
+     "label": "ABC7 Chicago: Caleb Williams QUESTIONABLE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
+    },
+    {
+     "label": "ESPN: Caleb Williams QUESTIONABLE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
+    },
+    {
+     "label": "rapsheet.bsky.social: A.J. Brown QUESTIONABLE",
+     "url": "https://www.nfl.com/players/a-j-brown/"
+    },
     {
      "label": "Blitz_Burgh@sportsbots.xyz: Roman Wilson ACTIVE",
      "url": "https://www.nfl.com/players/roman-wilson/"
     },
     {
-     "label": "nfl@sportsfeed.me: Caleb Williams QUESTIONABLE",
-     "url": "https://www.nfl.com/players/caleb-williams/"
-    },
-    {
-     "label": "Shaw Local: Caleb Williams QUESTIONABLE",
-     "url": "https://www.nfl.com/players/caleb-williams/"
-    },
-    {
-     "label": "Yahoo Sports: Alvin Kamara QUESTIONABLE",
-     "url": "https://www.nfl.com/players/alvin-kamara/"
-    },
-    {
-     "label": "Yahoo Sports: Jaylen Waddle QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4372016/jaylen-waddle"
+     "label": "The Atlanta Journal-Constitution: Michael Penix Jr. OUT",
+     "url": "https://www.nfl.com/players/michael-penix-jr/"
     }
    ]
   },
