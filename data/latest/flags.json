@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T01:21:07Z",
+ "generated_at": "2026-10-16T01:22:30Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -218,10 +218,22 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: HOU:jake-hummel (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "34 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: The Washington Post said ACTIVE for Riley Moss (official: see link); Yahoo Sports said ACTIVE for Riley Moss (official: see link); Daily American Republic said ACTIVE for Riley Moss (official: see link); Bozeman Daily Chronicle said ACTIVE for Riley Moss (official: see link); 巴士的報 said ACTIVE for Riley Moss (official: see link)",
+   "title": "33 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: The Washington Post said ACTIVE for Riley Moss (official: see link); Yahoo Sports said ACTIVE for Riley Moss (official: see link); Bozeman Daily Chronicle said ACTIVE for Riley Moss (official: see link); 巴士的報 said ACTIVE for Riley Moss (official: see link); AOL.com said ACTIVE for Riley Moss (official: see link)",
    "evidence": [
     {
      "label": "The Washington Post: Riley Moss ACTIVE",
@@ -232,15 +244,15 @@
      "url": "https://www.nfl.com/players/riley-moss/"
     },
     {
-     "label": "Daily American Republic: Riley Moss ACTIVE",
-     "url": "https://www.nfl.com/players/riley-moss/"
-    },
-    {
      "label": "Bozeman Daily Chronicle: Riley Moss ACTIVE",
      "url": "https://www.nfl.com/players/riley-moss/"
     },
     {
      "label": "巴士的報: Riley Moss ACTIVE",
+     "url": "https://www.nfl.com/players/riley-moss/"
+    },
+    {
+     "label": "AOL.com: Riley Moss ACTIVE",
      "url": "https://www.nfl.com/players/riley-moss/"
     }
    ]
