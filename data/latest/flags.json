@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-15T23:52:10Z",
+ "generated_at": "2026-10-16T00:40:03Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -52,24 +52,12 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "137 player(s) have no official designation but do have an ESPN status",
+   "title": "136 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
      "label": "Official NFL injury report",
      "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for SEA @ DEN parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872995 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872995"
     }
    ]
   },
@@ -230,42 +218,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: HOU:noah-whittington (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "21 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: tompelissero.bsky.social said OUT for Justin Jefferson (official: see link); tompelissero.bsky.social said OUT for Jayden Daniels (official: see link); Mike Kaye said QUESTIONABLE for Monroe Freeling (official: see link); Mike Kaye said QUESTIONABLE for Jaelan Phillips (official: see link); Sean Hammond said QUESTIONABLE for Caleb Williams (official: see link)",
+   "title": "31 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: The Washington Post said ACTIVE for Riley Moss (official: see link); Bozeman Daily Chronicle said ACTIVE for Riley Moss (official: see link); AOL.com said ACTIVE for Riley Moss (official: see link); 巴士的報 said ACTIVE for Riley Moss (official: see link); NBC Sports said ACTIVE for Riley Moss (official: see link)",
    "evidence": [
     {
-     "label": "tompelissero.bsky.social: Justin Jefferson OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4262921/justin-jefferson"
+     "label": "The Washington Post: Riley Moss ACTIVE",
+     "url": "https://www.nfl.com/players/riley-moss/"
     },
     {
-     "label": "tompelissero.bsky.social: Jayden Daniels OUT",
-     "url": "https://www.nfl.com/players/jayden-daniels/"
+     "label": "Bozeman Daily Chronicle: Riley Moss ACTIVE",
+     "url": "https://www.nfl.com/players/riley-moss/"
     },
     {
-     "label": "Mike Kaye: Monroe Freeling QUESTIONABLE",
-     "url": "https://www.nfl.com/players/monroe-freeling/"
+     "label": "AOL.com: Riley Moss ACTIVE",
+     "url": "https://www.nfl.com/players/riley-moss/"
     },
     {
-     "label": "Mike Kaye: Jaelan Phillips QUESTIONABLE",
-     "url": "https://www.nfl.com/players/jaelan-phillips/"
+     "label": "巴士的報: Riley Moss ACTIVE",
+     "url": "https://www.nfl.com/players/riley-moss/"
     },
     {
-     "label": "Sean Hammond: Caleb Williams QUESTIONABLE",
-     "url": "https://www.nfl.com/players/caleb-williams/"
+     "label": "NBC Sports: Riley Moss ACTIVE",
+     "url": "https://www.nfl.com/players/riley-moss/"
     }
    ]
   },
