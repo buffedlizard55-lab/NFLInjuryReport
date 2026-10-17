@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T21:45:36Z",
+ "generated_at": "2026-10-17T22:40:13Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -618,18 +618,34 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 4 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: SEA:anthony-bradford (not asserted by any source for 14.0 days); LAR:ronnie-rivers (not asserted by any source for 14.0 days); CAR:trevis-gipson (not asserted by any source for 14.0 days); LAC:cole-strange (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "12 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: nfl@sportsfeed.me said IR for A.J. Brown (official: see link); New York Post said QUESTIONABLE for Jalen Hurts (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link); Yahoo Sports said QUESTIONABLE for Spencer Brown (official: see link); Patriots.com said QUESTIONABLE for Christian Gonzalez (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Baltimore Beatdown said IR for Ja'Kobi Lane (official: see link); nfl@sportsfeed.me said IR for A.J. Brown (official: see link); Baltimore Ravens said IR for Ja'Kobi Lane (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link); Yahoo Sports said QUESTIONABLE for Spencer Brown (official: see link)",
    "evidence": [
+    {
+     "label": "Baltimore Beatdown: Ja'Kobi Lane IR",
+     "url": "https://www.nfl.com/players/ja-kobi-lane/"
+    },
     {
      "label": "nfl@sportsfeed.me: A.J. Brown IR",
      "url": "https://www.nfl.com/players/a-j-brown/"
     },
     {
-     "label": "New York Post: Jalen Hurts QUESTIONABLE",
-     "url": "https://www.nfl.com/players/jalen-hurts/"
+     "label": "Baltimore Ravens: Ja'Kobi Lane IR",
+     "url": "https://www.nfl.com/players/ja-kobi-lane/"
     },
     {
      "label": "rapsheet.bsky.social: A.J. Brown IR",
@@ -638,10 +654,6 @@
     {
      "label": "Yahoo Sports: Spencer Brown QUESTIONABLE",
      "url": "https://www.nfl.com/players/spencer-brown/"
-    },
-    {
-     "label": "Patriots.com: Christian Gonzalez QUESTIONABLE",
-     "url": "https://www.nfl.com/players/christian-gonzalez/"
     }
    ]
   },
