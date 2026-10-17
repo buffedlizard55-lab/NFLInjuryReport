@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-10-17T22:40:13Z",
+ "generated_at": "2026-10-17T22:57:55Z",
  "season": 2026,
  "week": 6,
- "official_fetched_at": "2026-10-17T22:40:15Z",
- "espn_source_timestamp": "2026-10-17T22:40:04Z",
+ "official_fetched_at": "2026-10-17T22:57:56Z",
+ "espn_source_timestamp": "2026-10-17T22:57:53Z",
  "counts": {
   "players": 860,
   "teams": 32,
   "out": 128,
   "questionable": 106,
   "doubtful": 5,
-  "alerts": 2,
+  "alerts": 1,
   "in_game_events": 1,
   "in_game_alerts": 1,
   "irregularities": 29
@@ -51782,38 +51782,15 @@
    ],
    "alert_id": "ingame:SEA:jadarian-price:INJURY_REPORTED",
    "event_key": "SEA:jadarian-price:INJURY_REPORTED",
-   "first_seen_at": "2026-10-17T22:40:13Z",
+   "first_seen_at": "2026-10-17T22:57:55Z",
    "reported_at": "Sat, 17 Oct 2026 15:42:09 GMT",
-   "detection_latency_seconds": 25084,
+   "detection_latency_seconds": 26146,
    "source_verified": false,
    "in_game_window": true,
    "in_game": true,
    "evidence": [
     "Seahawks Delivers Big Jadarian Price Injury Update After Broncos Loss - Heavy.com"
    ]
-  },
-  {
-   "ts": "2026-10-17T22:40:13Z",
-   "kind": "removed",
-   "severity": "low",
-   "player": "Brock Purdy",
-   "player_key": "brock-purdy",
-   "team": "SF",
-   "position": "QB",
-   "injury": "",
-   "from_status": "ACTIVE",
-   "to_status": "REMOVED_FROM_REPORT",
-   "detail": "Brock Purdy (SF) is no longer on the official injury report.",
-   "sources": [],
-   "alert_id": "81275b77ff9a3637",
-   "event_key": "",
-   "first_seen_at": "2026-10-17T22:40:13Z",
-   "reported_at": "",
-   "detection_latency_seconds": null,
-   "source_verified": false,
-   "in_game_window": false,
-   "in_game": false,
-   "evidence": []
   }
  ],
  "alert_log": [
@@ -51855,7 +51832,7 @@
    "event_key": "SEA:jadarian-price:INJURY_REPORTED",
    "first_seen_at": "2026-10-16T00:40:03Z",
    "reported_at": "Thu, 15 Oct 2026 23:25:20 GMT",
-   "detection_latency_seconds": 25084,
+   "detection_latency_seconds": 26146,
    "source_verified": false,
    "in_game_window": true,
    "in_game": true,
@@ -64966,8 +64943,8 @@
     "Seahawks Delivers Big Jadarian Price Injury Update After Broncos Loss - Heavy.com"
    ],
    "reported_at": "Sat, 17 Oct 2026 15:42:09 GMT",
-   "first_seen_at": "2026-10-17T22:40:13Z",
-   "detection_latency_seconds": 25084,
+   "first_seen_at": "2026-10-17T22:57:55Z",
+   "detection_latency_seconds": 26146,
    "sources": [
     {
      "source": "Yahoo Sports",
@@ -65966,42 +65943,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 4 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: SEA:anthony-bradford (not asserted by any source for 14.0 days); LAR:ronnie-rivers (not asserted by any source for 14.0 days); CAR:trevis-gipson (not asserted by any source for 14.0 days); LAC:cole-strange (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "12 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Baltimore Beatdown said IR for Ja'Kobi Lane (official: see link); nfl@sportsfeed.me said IR for A.J. Brown (official: see link); Baltimore Ravens said IR for Ja'Kobi Lane (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link); Yahoo Sports said QUESTIONABLE for Spencer Brown (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Cheesehead TV said IR for Savion Williams (official: see link); WLUK said IR for Savion Williams (official: see link); nfl@sportsfeed.me said IR for A.J. Brown (official: see link); Colts.com said IR for Will Mallory (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link)",
    "evidence": [
     {
-     "label": "Baltimore Beatdown: Ja'Kobi Lane IR",
-     "url": "https://www.nfl.com/players/ja-kobi-lane/"
+     "label": "Cheesehead TV: Savion Williams IR",
+     "url": "https://www.nfl.com/players/savion-williams/"
+    },
+    {
+     "label": "WLUK: Savion Williams IR",
+     "url": "https://www.nfl.com/players/savion-williams/"
     },
     {
      "label": "nfl@sportsfeed.me: A.J. Brown IR",
      "url": "https://www.nfl.com/players/a-j-brown/"
     },
     {
-     "label": "Baltimore Ravens: Ja'Kobi Lane IR",
-     "url": "https://www.nfl.com/players/ja-kobi-lane/"
+     "label": "Colts.com: Will Mallory IR",
+     "url": "https://www.nfl.com/players/will-mallory/"
     },
     {
      "label": "rapsheet.bsky.social: A.J. Brown IR",
      "url": "https://www.nfl.com/players/a-j-brown/"
-    },
-    {
-     "label": "Yahoo Sports: Spencer Brown QUESTIONABLE",
-     "url": "https://www.nfl.com/players/spencer-brown/"
     }
    ]
   },
