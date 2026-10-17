@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T17:26:28Z",
+ "generated_at": "2026-10-17T18:05:01Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -58,6 +58,22 @@
     {
      "label": "Official (OUT)",
      "url": "https://www.nfl.com/players/carter-runyon-2/"
+    },
+    {
+     "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Dayo Odeyingbo",
+   "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/dayo-odeyingbo/"
     },
     {
      "label": "ESPN (IR)",
@@ -277,14 +293,14 @@
    "code": "STATUS_CONFLICT",
    "severity": "medium",
    "title": "Designation conflict for Joshua Williams",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/joshua-williams/"
     },
     {
-     "label": "ESPN (IR)",
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -333,22 +349,6 @@
     },
     {
      "label": "ESPN (IR)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Kyler Gordon",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/kyler-gordon/"
-    },
-    {
-     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -458,54 +458,6 @@
     {
      "label": "Official (OUT)",
      "url": "https://www.nfl.com/players/tank-dell/"
-    },
-    {
-     "label": "ESPN (IR)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Taylor Moton",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/taylor-moton/"
-    },
-    {
-     "label": "ESPN (OUT)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Tershawn Wharton",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/tershawn-wharton/"
-    },
-    {
-     "label": "ESPN (OUT)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Trevor Etienne",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/trevor-etienne/"
     },
     {
      "label": "ESPN (IR)",
@@ -716,7 +668,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "18 reporter claim(s) contradicted by the official report",
+   "title": "17 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said IR for A.J. Brown (official: see link); Yahoo Sports said QUESTIONABLE for Spencer Brown (official: see link); The Atlanta Journal-Constitution said OUT for Michael Penix Jr. (official: see link); tompelissero.bsky.social said OUT for Justin Jefferson (official: see link); Jeff Legwold said ACTIVE for Talanoa Hufanga (official: see link)",
    "evidence": [
     {
