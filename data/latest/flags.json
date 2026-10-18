@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:41:15Z",
+ "generated_at": "2026-10-18T16:42:35Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1412,8 +1412,8 @@
   {
    "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "Roster index pruned 2 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: IND:jonathan-owens (not asserted by any source for 14.0 days); IND:adetomiwa-adebawore (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: BUF:jordan-hancock (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
      "label": "Official NFL injury report",
@@ -1424,7 +1424,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "35 reporter claim(s) contradicted by the official report",
+   "title": "37 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Jamel Dean (official: see link); Bozeman Daily Chronicle said ACTIVE for Caleb Williams (official: see link); Yahoo Sports said ACTIVE for Caleb Williams (official: see link); NBC Sports said ACTIVE for Caleb Williams (official: see link); NBC 5 Chicago said ACTIVE for Caleb Williams (official: see link)",
    "evidence": [
     {
