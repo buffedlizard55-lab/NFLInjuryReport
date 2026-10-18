@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T20:09:17Z",
+ "generated_at": "2026-10-18T20:14:07Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1612,8 +1612,8 @@
   {
    "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "Roster index pruned 6 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: TEN:erick-hallett (not asserted by any source for 14.0 days); BAL:chidobe-awuzie (not asserted by any source for 14.0 days); TEN:austin-schlottmann (not asserted by any source for 14.0 days); NE:jared-wilson (not asserted by any source for 14.0 days); BUF:keleki-latu (not asserted by any source for 14.0 days); NYG:jack-kelly (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "title": "Roster index pruned 5 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CIN:kris-jenkins (not asserted by any source for 14.0 days); CIN:cedric-johnson (not asserted by any source for 14.0 days); CIN:pj-jules (not asserted by any source for 14.0 days); DAL:elijah-garcia (not asserted by any source for 14.0 days); CIN:william-wagner (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
      "label": "Official NFL injury report",
@@ -1624,28 +1624,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "96 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Fantasy Footballers Podcast said QUESTIONABLE for Darnell Mooney (official: see link); RotoBaller said QUESTIONABLE for Darnell Mooney (official: see link); CBS Sports said QUESTIONABLE for Darnell Mooney (official: see link); Falcons Wire said OUT for Kendal Daniels (official: see link); Yahoo Sports said OUT for Kendal Daniels (official: see link)",
+   "title": "31 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said ACTIVE for Pat Freiermuth (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link); tompelissero.bsky.social said IR for Avieon Terrell (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link); Sarah Barshop said ACTIVE for Myles Garrett (official: see link)",
    "evidence": [
     {
-     "label": "Fantasy Footballers Podcast: Darnell Mooney QUESTIONABLE",
-     "url": "https://www.nfl.com/players/darnell-mooney/"
+     "label": "rapsheet.bsky.social: Pat Freiermuth ACTIVE",
+     "url": "https://www.nfl.com/players/pat-freiermuth/"
     },
     {
-     "label": "RotoBaller: Darnell Mooney QUESTIONABLE",
-     "url": "https://www.nfl.com/players/darnell-mooney/"
+     "label": "rapsheet.bsky.social: A.J. Brown IR",
+     "url": "https://www.nfl.com/players/a-j-brown/"
     },
     {
-     "label": "CBS Sports: Darnell Mooney QUESTIONABLE",
-     "url": "https://www.nfl.com/players/darnell-mooney/"
+     "label": "tompelissero.bsky.social: Avieon Terrell IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4870988/avieon-terrell"
     },
     {
-     "label": "Falcons Wire: Kendal Daniels OUT",
-     "url": "https://www.nfl.com/players/kendal-daniels/"
+     "label": "Sarah Barshop: Myles Garrett ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/3122132/myles-garrett"
     },
     {
-     "label": "Yahoo Sports: Kendal Daniels OUT",
-     "url": "https://www.nfl.com/players/kendal-daniels/"
+     "label": "Sarah Barshop: Myles Garrett ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/3122132/myles-garrett"
     }
    ]
   },
