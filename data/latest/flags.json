@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T22:11:41Z",
+ "generated_at": "2026-10-18T22:13:59Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1602,9 +1602,21 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: GB:laken-tomlinson (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "65 reporter claim(s) contradicted by the official report",
+   "title": "63 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: New York Post said OUT for Ladd McConkey (official: see link); FOX Sports said OUT for Ladd McConkey (official: see link); ESPN said OUT for Ladd McConkey (official: see link); ESPN said OUT for Ladd McConkey (official: see link); NBC Sports said OUT for Ladd McConkey (official: see link)",
    "evidence": [
     {
