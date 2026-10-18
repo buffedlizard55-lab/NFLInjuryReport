@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T19:47:44Z",
+ "generated_at": "2026-10-18T19:53:27Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -102,22 +102,6 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/alvin-kamara/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Andrew Thomas",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/andrew-thomas/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -1638,10 +1622,22 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: ARI:will-johnson (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "102 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Fantasy Footballers Podcast said QUESTIONABLE for Darnell Mooney (official: see link); CBS Sports said QUESTIONABLE for Darnell Mooney (official: see link); Falcons Wire said OUT for Kendal Daniels (official: see link); KSHB 41 Kansas City said ACTIVE for L'Jarius Sneed (official: see link); Yahoo Sports said OUT for Kendal Daniels (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Fantasy Footballers Podcast said QUESTIONABLE for Darnell Mooney (official: see link); CBS Sports said QUESTIONABLE for Darnell Mooney (official: see link); Falcons Wire said OUT for Kendal Daniels (official: see link); Yahoo Sports said OUT for Kendal Daniels (official: see link); Yahoo Sports said OUT for Kendal Daniels (official: see link)",
    "evidence": [
     {
      "label": "Fantasy Footballers Podcast: Darnell Mooney QUESTIONABLE",
@@ -1656,8 +1652,8 @@
      "url": "https://www.nfl.com/players/kendal-daniels/"
     },
     {
-     "label": "KSHB 41 Kansas City: L'Jarius Sneed ACTIVE",
-     "url": "https://www.nfl.com/players/l-jarius-sneed/"
+     "label": "Yahoo Sports: Kendal Daniels OUT",
+     "url": "https://www.nfl.com/players/kendal-daniels/"
     },
     {
      "label": "Yahoo Sports: Kendal Daniels OUT",
@@ -1726,6 +1722,22 @@
     {
      "label": "ESPN attribution #3",
      "url": "https://www.espn.com/nfl/player/_/id/4426817/jarvis-brownlee-jr"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
+   "title": "Beat writer Ross Jackson is attributed across 2 clubs (NO, NYG)",
+   "detail": "ESPN printed Ross Jackson (WWL Louisiana) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/4433975/kool-aid-mckinstry"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/4040655/darnell-mooney"
     }
    ]
   },
