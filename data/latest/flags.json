@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:05:24Z",
+ "generated_at": "2026-10-18T16:06:48Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -90,6 +90,22 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/alvin-kamara/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Andrew Thomas",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/andrew-thomas/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -628,6 +644,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Jermaine Eluemunor",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/jermaine-eluemunor/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Jonathan Ford",
    "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -730,22 +762,6 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/kenyon-sadiq/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Kyler Gordon",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/kyler-gordon/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -1300,9 +1316,13 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "27 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Tyrique Stevenson Sr. (official: see link); The Florida Times-Union said ACTIVE for Ameer Abdullah (official: see link); rapsheet.bsky.social said ACTIVE for Pat Freiermuth (official: see link); CBS Sports said ACTIVE for Ja'Marcus Ingram (official: see link); Jacksonville Jaguars said ACTIVE for Ross Matiscik (official: see link)",
+   "title": "31 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC 5 Chicago said ACTIVE for Caleb Williams (official: see link); Yahoo Sports said ACTIVE for Tyrique Stevenson Sr. (official: see link); The Florida Times-Union said ACTIVE for Ameer Abdullah (official: see link); rapsheet.bsky.social said ACTIVE for Pat Freiermuth (official: see link); CBS Sports said ACTIVE for Ja'Marcus Ingram (official: see link)",
    "evidence": [
+    {
+     "label": "NBC 5 Chicago: Caleb Williams ACTIVE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
+    },
     {
      "label": "Yahoo Sports: Tyrique Stevenson Sr. ACTIVE",
      "url": "https://www.nfl.com/players/tyrique-stevenson/"
@@ -1318,10 +1338,6 @@
     {
      "label": "CBS Sports: Ja'Marcus Ingram ACTIVE",
      "url": "https://www.nfl.com/players/ja-marcus-ingram/"
-    },
-    {
-     "label": "Jacksonville Jaguars: Ross Matiscik ACTIVE",
-     "url": "https://www.nfl.com/players/ross-matiscik/"
     }
    ]
   },
