@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T18:54:49Z",
+ "generated_at": "2026-10-18T18:59:02Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1402,23 +1402,15 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: NYG:josh-tupou (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "91 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC10 Philadelphia said OUT for Nolan Smith Jr. (official: see link); CBS Sports said QUESTIONABLE for Thomas Incoom (official: see link); CBS Sports said OUT for Divine Deablo (official: see link); CBS Sports said QUESTIONABLE for Morgan Moses (official: see link); CBS Sports said QUESTIONABLE for Divine Deablo (official: see link)",
+   "title": "93 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: roundtable.io said QUESTIONABLE for Rashod Bateman (official: see link); NBC10 Philadelphia said OUT for Nolan Smith Jr. (official: see link); CBS Sports said QUESTIONABLE for Thomas Incoom (official: see link); CBS Sports said OUT for Divine Deablo (official: see link); CBS Sports said QUESTIONABLE for Morgan Moses (official: see link)",
    "evidence": [
+    {
+     "label": "roundtable.io: Rashod Bateman QUESTIONABLE",
+     "url": "https://www.nfl.com/players/rashod-bateman/"
+    },
     {
      "label": "NBC10 Philadelphia: Nolan Smith Jr. OUT",
      "url": "https://www.espn.com/nfl/player/_/id/4426331/nolan-smith-jr"
@@ -1434,10 +1426,6 @@
     {
      "label": "CBS Sports: Morgan Moses QUESTIONABLE",
      "url": "https://www.nfl.com/players/morgan-moses/"
-    },
-    {
-     "label": "CBS Sports: Divine Deablo QUESTIONABLE",
-     "url": "https://www.nfl.com/players/divine-deablo/"
     }
    ]
   },
