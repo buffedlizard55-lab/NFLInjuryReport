@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:00:46Z",
+ "generated_at": "2026-10-18T16:02:19Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -932,6 +932,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Sean Tucker",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/sean-tucker/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Skyy Moore",
    "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -1252,7 +1268,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "28 reporter claim(s) contradicted by the official report",
+   "title": "30 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Tyrique Stevenson Sr. (official: see link); The Florida Times-Union said ACTIVE for Ameer Abdullah (official: see link); rapsheet.bsky.social said ACTIVE for Pat Freiermuth (official: see link); CBS Sports said ACTIVE for Ja'Marcus Ingram (official: see link); Jacksonville Jaguars said ACTIVE for Ross Matiscik (official: see link)",
    "evidence": [
     {
