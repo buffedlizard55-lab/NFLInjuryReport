@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:39:51Z",
+ "generated_at": "2026-10-18T16:41:15Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1410,30 +1410,42 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 2 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: IND:jonathan-owens (not asserted by any source for 14.0 days); IND:adetomiwa-adebawore (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "33 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Jamel Dean (official: see link); CBS Sports said OUT for Reed Blankenship (official: see link); Steelers Now said ACTIVE for Pat Freiermuth (official: see link); The Florida Times-Union said ACTIVE for Ameer Abdullah (official: see link); rapsheet.bsky.social said ACTIVE for Pat Freiermuth (official: see link)",
+   "title": "35 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Jamel Dean (official: see link); Bozeman Daily Chronicle said ACTIVE for Caleb Williams (official: see link); Yahoo Sports said ACTIVE for Caleb Williams (official: see link); NBC Sports said ACTIVE for Caleb Williams (official: see link); NBC 5 Chicago said ACTIVE for Caleb Williams (official: see link)",
    "evidence": [
     {
      "label": "Blitz_Burgh@sportsbots.xyz: Jamel Dean ACTIVE",
      "url": "https://www.nfl.com/players/jamel-dean/"
     },
     {
-     "label": "CBS Sports: Reed Blankenship OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4243956/reed-blankenship"
+     "label": "Bozeman Daily Chronicle: Caleb Williams ACTIVE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
     },
     {
-     "label": "Steelers Now: Pat Freiermuth ACTIVE",
-     "url": "https://www.nfl.com/players/pat-freiermuth/"
+     "label": "Yahoo Sports: Caleb Williams ACTIVE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
     },
     {
-     "label": "The Florida Times-Union: Ameer Abdullah ACTIVE",
-     "url": "https://www.espn.com/nfl/player/_/id/2576336/ameer-abdullah"
+     "label": "NBC Sports: Caleb Williams ACTIVE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
     },
     {
-     "label": "rapsheet.bsky.social: Pat Freiermuth ACTIVE",
-     "url": "https://www.nfl.com/players/pat-freiermuth/"
+     "label": "NBC 5 Chicago: Caleb Williams ACTIVE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
     }
    ]
   },
