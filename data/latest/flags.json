@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T11:41:48Z",
+ "generated_at": "2026-10-18T13:19:39Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -189,6 +189,38 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Henry To'oTo'o",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/henry-to-oto-o/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Ja'Marcus Ingram",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/ja-marcus-ingram/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -652,28 +684,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "10 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Ventura County Star said IR for Kitan Crawford (official: see link); ABC7 Los Angeles said QUESTIONABLE for Ashton Jeanty (official: see link); New York Post said QUESTIONABLE for Jalen Hurts (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link); tompelissero.bsky.social said OUT for Justin Jefferson (official: see link)",
+   "title": "12 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Blitz_Burgh@sportsbots.xyz said ACTIVE for Pat Freiermuth (official: see link); Steelers Depot said ACTIVE for Pat Freiermuth (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for Rico Dowdle (official: see link); San Francisco 49ers said OUT for Kyle Juszczyk (official: see link); New York Jets said IR for Omar Cooper Jr. (official: see link)",
    "evidence": [
     {
-     "label": "Ventura County Star: Kitan Crawford IR",
-     "url": "https://www.nfl.com/players/kitan-crawford/"
+     "label": "Blitz_Burgh@sportsbots.xyz: Pat Freiermuth ACTIVE",
+     "url": "https://www.nfl.com/players/pat-freiermuth/"
     },
     {
-     "label": "ABC7 Los Angeles: Ashton Jeanty QUESTIONABLE",
-     "url": "https://www.nfl.com/players/ashton-jeanty/"
+     "label": "Steelers Depot: Pat Freiermuth ACTIVE",
+     "url": "https://www.nfl.com/players/pat-freiermuth/"
     },
     {
-     "label": "New York Post: Jalen Hurts QUESTIONABLE",
-     "url": "https://www.nfl.com/players/jalen-hurts/"
+     "label": "Blitz_Burgh@sportsbots.xyz: Rico Dowdle ACTIVE",
+     "url": "https://www.nfl.com/players/rico-dowdle/"
     },
     {
-     "label": "rapsheet.bsky.social: A.J. Brown IR",
-     "url": "https://www.nfl.com/players/a-j-brown/"
+     "label": "San Francisco 49ers: Kyle Juszczyk OUT",
+     "url": "https://www.nfl.com/players/kyle-juszczyk/"
     },
     {
-     "label": "tompelissero.bsky.social: Justin Jefferson OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4262921/justin-jefferson"
+     "label": "New York Jets: Omar Cooper Jr. IR",
+     "url": "https://www.nfl.com/players/omar-cooper-jr/"
     }
    ]
   },
