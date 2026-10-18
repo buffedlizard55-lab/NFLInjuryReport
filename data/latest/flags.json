@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T20:25:25Z",
+ "generated_at": "2026-10-18T20:28:37Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1564,30 +1564,6 @@
   {
    "code": "ESPN_ROSTER_EMPTY",
    "severity": "low",
-   "title": "Game-day roster for LAC @ KC parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873006 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873006"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for BUF @ LV parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873005 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873005"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
    "title": "Game-day roster for DAL @ GB parsed zero athletes",
    "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873007 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
    "evidence": [
@@ -1610,29 +1586,41 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: PHI:byron-young (official report lists the player under a different club). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "80 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Los Angeles Chargers said ACTIVE for Daiyan Henley (official: see link); CBS Sports said OUT for Cesar Ruiz (official: see link); Fantasy Footballers Podcast said QUESTIONABLE for Darnell Mooney (official: see link); CBS Sports said QUESTIONABLE for Darnell Mooney (official: see link); Falcons Wire said OUT for Kendal Daniels (official: see link)",
+   "title": "62 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: SSBCrack said OUT for DJ Moore (official: see link); Los Angeles Chargers said ACTIVE for Daiyan Henley (official: see link); Falcons Wire said OUT for Kendal Daniels (official: see link); KSHB 41 Kansas City said ACTIVE for L'Jarius Sneed (official: see link); Yahoo Sports said OUT for Kendal Daniels (official: see link)",
    "evidence": [
+    {
+     "label": "SSBCrack: DJ Moore OUT",
+     "url": "https://www.nfl.com/players/d-j-moore/"
+    },
     {
      "label": "Los Angeles Chargers: Daiyan Henley ACTIVE",
      "url": "https://www.nfl.com/players/daiyan-henley/"
     },
     {
-     "label": "CBS Sports: Cesar Ruiz OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4258199/cesar-ruiz"
-    },
-    {
-     "label": "Fantasy Footballers Podcast: Darnell Mooney QUESTIONABLE",
-     "url": "https://www.nfl.com/players/darnell-mooney/"
-    },
-    {
-     "label": "CBS Sports: Darnell Mooney QUESTIONABLE",
-     "url": "https://www.nfl.com/players/darnell-mooney/"
-    },
-    {
      "label": "Falcons Wire: Kendal Daniels OUT",
+     "url": "https://www.nfl.com/players/kendal-daniels/"
+    },
+    {
+     "label": "KSHB 41 Kansas City: L'Jarius Sneed ACTIVE",
+     "url": "https://www.nfl.com/players/l-jarius-sneed/"
+    },
+    {
+     "label": "Yahoo Sports: Kendal Daniels OUT",
      "url": "https://www.nfl.com/players/kendal-daniels/"
     }
    ]
