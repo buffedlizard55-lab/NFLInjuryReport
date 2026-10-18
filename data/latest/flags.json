@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T18:59:02Z",
+ "generated_at": "2026-10-18T19:03:45Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -13,6 +13,18 @@
     },
     {
      "label": "espn: TEN",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Justin Jefferson' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Justin Jefferson' belongs to (CLE, MIN). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "espn: CLE, MIN",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1404,11 +1416,19 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "93 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: roundtable.io said QUESTIONABLE for Rashod Bateman (official: see link); NBC10 Philadelphia said OUT for Nolan Smith Jr. (official: see link); CBS Sports said QUESTIONABLE for Thomas Incoom (official: see link); CBS Sports said OUT for Divine Deablo (official: see link); CBS Sports said QUESTIONABLE for Morgan Moses (official: see link)",
+   "title": "91 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: RotoBaller said OUT for Rashod Bateman (official: see link); roundtable.io said QUESTIONABLE for Rashod Bateman (official: see link); Yahoo Sports said QUESTIONABLE for Rashod Bateman (official: see link); NBC10 Philadelphia said OUT for Nolan Smith Jr. (official: see link); CBS Sports said QUESTIONABLE for Thomas Incoom (official: see link)",
    "evidence": [
     {
+     "label": "RotoBaller: Rashod Bateman OUT",
+     "url": "https://www.nfl.com/players/rashod-bateman/"
+    },
+    {
      "label": "roundtable.io: Rashod Bateman QUESTIONABLE",
+     "url": "https://www.nfl.com/players/rashod-bateman/"
+    },
+    {
+     "label": "Yahoo Sports: Rashod Bateman QUESTIONABLE",
      "url": "https://www.nfl.com/players/rashod-bateman/"
     },
     {
@@ -1418,14 +1438,6 @@
     {
      "label": "CBS Sports: Thomas Incoom QUESTIONABLE",
      "url": "https://www.nfl.com/players/thomas-incoom/"
-    },
-    {
-     "label": "CBS Sports: Divine Deablo OUT",
-     "url": "https://www.nfl.com/players/divine-deablo/"
-    },
-    {
-     "label": "CBS Sports: Morgan Moses QUESTIONABLE",
-     "url": "https://www.nfl.com/players/morgan-moses/"
     }
    ]
   },
