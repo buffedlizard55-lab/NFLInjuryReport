@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T18:46:32Z",
+ "generated_at": "2026-10-18T18:50:54Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -13,6 +13,18 @@
     },
     {
      "label": "espn: TEN",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "PLAYER_TEAM_CONFLICT",
+   "severity": "high",
+   "title": "'Justin Jefferson' is listed under conflicting clubs",
+   "detail": "Sources disagree about which club 'Justin Jefferson' belongs to (CLE, MIN). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
+   "evidence": [
+    {
+     "label": "espn: CLE, MIN",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -157,6 +169,38 @@
     },
     {
      "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Blake Gillikin",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/blake-gillikin/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Budda Baker",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/budda-baker/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1250,9 +1294,25 @@
    ]
   },
   {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Zaven Collins",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/zaven-collins/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "5 player(s) have no official designation but do have an ESPN status",
+   "title": "6 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1324,7 +1384,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "89 reporter claim(s) contradicted by the official report",
+   "title": "86 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC10 Philadelphia said OUT for Nolan Smith Jr. (official: see link); CBS Sports said QUESTIONABLE for Thomas Incoom (official: see link); CBS Sports said OUT for Divine Deablo (official: see link); CBS Sports said QUESTIONABLE for Morgan Moses (official: see link); CBS Sports said QUESTIONABLE for Divine Deablo (official: see link)",
    "evidence": [
     {
