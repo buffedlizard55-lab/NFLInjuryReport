@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T17:53:28Z",
+ "generated_at": "2026-10-18T17:57:21Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -522,22 +522,6 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/ja-marcus-ingram/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Jaelan Phillips",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/jaelan-phillips/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -1268,7 +1252,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "1 player(s) have no official designation but do have an ESPN status",
+   "title": "2 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1340,8 +1324,8 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "82 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: News 5 Cleveland WEWS said OUT for Grant Delpit (official: see link); Yahoo Sports said OUT for Grant Delpit (official: see link); SSBCrack said ACTIVE for Rico Dowdle (official: see link); Fantasy Footballers Podcast said ACTIVE for Tyjae Spears (official: see link); Yahoo Sports said OUT for Tyler Warren (official: see link)",
+   "title": "81 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: News 5 Cleveland WEWS said OUT for Grant Delpit (official: see link); Yahoo Sports said OUT for Grant Delpit (official: see link); Fantasy Footballers Podcast said ACTIVE for Tyjae Spears (official: see link); Yahoo Sports said OUT for Tyler Warren (official: see link); CBS Sports said ACTIVE for Zach Wood (official: see link)",
    "evidence": [
     {
      "label": "News 5 Cleveland WEWS: Grant Delpit OUT",
@@ -1352,16 +1336,16 @@
      "url": "https://www.nfl.com/players/grant-delpit/"
     },
     {
-     "label": "SSBCrack: Rico Dowdle ACTIVE",
-     "url": "https://www.nfl.com/players/rico-dowdle/"
-    },
-    {
      "label": "Fantasy Footballers Podcast: Tyjae Spears ACTIVE",
      "url": "https://www.nfl.com/players/tyjae-spears/"
     },
     {
      "label": "Yahoo Sports: Tyler Warren OUT",
      "url": "https://www.nfl.com/players/tyler-warren/"
+    },
+    {
+     "label": "CBS Sports: Zach Wood ACTIVE",
+     "url": "https://www.nfl.com/players/zach-wood/"
     }
    ]
   },
