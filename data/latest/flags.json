@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T16:06:48Z",
+ "generated_at": "2026-10-18T16:08:21Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -772,6 +772,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Kyler Gordon",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/kyler-gordon/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Landon Dickerson",
    "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -1316,9 +1332,13 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "31 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC 5 Chicago said ACTIVE for Caleb Williams (official: see link); Yahoo Sports said ACTIVE for Tyrique Stevenson Sr. (official: see link); The Florida Times-Union said ACTIVE for Ameer Abdullah (official: see link); rapsheet.bsky.social said ACTIVE for Pat Freiermuth (official: see link); CBS Sports said ACTIVE for Ja'Marcus Ingram (official: see link)",
+   "title": "30 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Norwalk Hour said ACTIVE for Caleb Williams (official: see link); NBC 5 Chicago said ACTIVE for Caleb Williams (official: see link); Yahoo Sports said ACTIVE for Tyrique Stevenson Sr. (official: see link); The Florida Times-Union said ACTIVE for Ameer Abdullah (official: see link); rapsheet.bsky.social said ACTIVE for Pat Freiermuth (official: see link)",
    "evidence": [
+    {
+     "label": "Norwalk Hour: Caleb Williams ACTIVE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
+    },
     {
      "label": "NBC 5 Chicago: Caleb Williams ACTIVE",
      "url": "https://www.nfl.com/players/caleb-williams/"
@@ -1334,10 +1354,6 @@
     {
      "label": "rapsheet.bsky.social: Pat Freiermuth ACTIVE",
      "url": "https://www.nfl.com/players/pat-freiermuth/"
-    },
-    {
-     "label": "CBS Sports: Ja'Marcus Ingram ACTIVE",
-     "url": "https://www.nfl.com/players/ja-marcus-ingram/"
     }
    ]
   },
