@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T20:19:15Z",
+ "generated_at": "2026-10-18T20:22:35Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1610,23 +1610,15 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 2 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: PHI:markel-bell (not asserted by any source for 14.0 days); LAR:emmanuel-forbes (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "77 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Fantasy Footballers Podcast said QUESTIONABLE for Darnell Mooney (official: see link); CBS Sports said QUESTIONABLE for Darnell Mooney (official: see link); Falcons Wire said OUT for Kendal Daniels (official: see link); Yahoo Sports said OUT for Kendal Daniels (official: see link); Yahoo Sports said OUT for Kendal Daniels (official: see link)",
+   "title": "80 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: CBS Sports said OUT for Cesar Ruiz (official: see link); Fantasy Footballers Podcast said QUESTIONABLE for Darnell Mooney (official: see link); CBS Sports said QUESTIONABLE for Darnell Mooney (official: see link); Falcons Wire said OUT for Kendal Daniels (official: see link); KSHB 41 Kansas City said ACTIVE for L'Jarius Sneed (official: see link)",
    "evidence": [
+    {
+     "label": "CBS Sports: Cesar Ruiz OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/4258199/cesar-ruiz"
+    },
     {
      "label": "Fantasy Footballers Podcast: Darnell Mooney QUESTIONABLE",
      "url": "https://www.nfl.com/players/darnell-mooney/"
@@ -1640,12 +1632,8 @@
      "url": "https://www.nfl.com/players/kendal-daniels/"
     },
     {
-     "label": "Yahoo Sports: Kendal Daniels OUT",
-     "url": "https://www.nfl.com/players/kendal-daniels/"
-    },
-    {
-     "label": "Yahoo Sports: Kendal Daniels OUT",
-     "url": "https://www.nfl.com/players/kendal-daniels/"
+     "label": "KSHB 41 Kansas City: L'Jarius Sneed ACTIVE",
+     "url": "https://www.nfl.com/players/l-jarius-sneed/"
     }
    ]
   },
