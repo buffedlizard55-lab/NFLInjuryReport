@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T00:22:46Z",
+ "generated_at": "2026-10-19T00:24:49Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1708,18 +1708,6 @@
   {
    "code": "ESPN_ROSTER_EMPTY",
    "severity": "low",
-   "title": "Game-day roster for DAL @ GB parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873007 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873007"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
    "title": "Game-day roster for WSH @ SF parsed zero athletes",
    "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873008 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
    "evidence": [
@@ -1730,42 +1718,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 8 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: SF:jordan-watkins (not asserted by any source for 14.0 days); KC:jake-briningstool (not asserted by any source for 14.0 days); KC:kristian-fulton (not asserted by any source for 14.0 days); KC:cole-christiansen (not asserted by any source for 14.0 days); NYG:brian-burns (not asserted by any source for 14.0 days); SEA:rodney-thomas (not asserted by any source for 14.0 days); SEA:aj-finley (not asserted by any source for 14.0 days); SEA:dante-fowler (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "60 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: SSBCrack said ACTIVE for Brandon Cisse (official: see link); Yahoo Sports said ACTIVE for Joey Porter Jr. (official: see link); CBS Sports said ACTIVE for Jacob Monk (official: see link); CBS Sports said ACTIVE for Anthony Campbell (official: see link); Yahoo Sports said ACTIVE for Brandon Cisse (official: see link)",
+   "title": "27 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: foxsports.com@web.brid.gy said ACTIVE for Caleb Williams (official: see link); foxsports.com@web.brid.gy said OUT for Ladd McConkey (official: see link); rapsheet.bsky.social said ACTIVE for Pat Freiermuth (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link); tompelissero.bsky.social said IR for Avieon Terrell (official: see link)",
    "evidence": [
     {
-     "label": "SSBCrack: Brandon Cisse ACTIVE",
-     "url": "https://www.nfl.com/players/brandon-cisse/"
+     "label": "foxsports.com@web.brid.gy: Caleb Williams ACTIVE",
+     "url": "https://www.nfl.com/players/caleb-williams/"
     },
     {
-     "label": "Yahoo Sports: Joey Porter Jr. ACTIVE",
-     "url": "https://www.nfl.com/players/joey-porter-jr/"
+     "label": "foxsports.com@web.brid.gy: Ladd McConkey OUT",
+     "url": "https://www.nfl.com/players/ladd-mcconkey/"
     },
     {
-     "label": "CBS Sports: Jacob Monk ACTIVE",
-     "url": "https://www.nfl.com/players/jacob-monk/"
+     "label": "rapsheet.bsky.social: Pat Freiermuth ACTIVE",
+     "url": "https://www.nfl.com/players/pat-freiermuth/"
     },
     {
-     "label": "CBS Sports: Anthony Campbell ACTIVE",
-     "url": "https://www.nfl.com/players/anthony-campbell/"
+     "label": "rapsheet.bsky.social: A.J. Brown IR",
+     "url": "https://www.nfl.com/players/a-j-brown/"
     },
     {
-     "label": "Yahoo Sports: Brandon Cisse ACTIVE",
-     "url": "https://www.nfl.com/players/brandon-cisse/"
+     "label": "tompelissero.bsky.social: Avieon Terrell IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4870988/avieon-terrell"
     }
    ]
   },
