@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T02:39:47Z",
+ "generated_at": "2026-10-19T02:41:31Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1718,9 +1718,21 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: DET:avonte-maddox (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "54 reporter claim(s) contradicted by the official report",
+   "title": "58 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: شبكة تواصل الإخبارية said QUESTIONABLE for KaVontae Turpin (official: see link); Dallas Cowboys | Official Site of the Dallas Cowboys said ACTIVE for Joey Porter Jr. (official: see link); SSBCrack said ACTIVE for Brandon Cisse (official: see link); Yahoo Sports said ACTIVE for Joey Porter Jr. (official: see link); CBS Sports said ACTIVE for Jacob Monk (official: see link)",
    "evidence": [
     {
