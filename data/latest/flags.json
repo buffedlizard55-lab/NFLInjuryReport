@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T02:00:42Z",
+ "generated_at": "2026-10-20T02:02:30Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1296,6 +1296,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Mike Evans",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/mike-evans/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Monroe Freeling",
    "detail": "nfl.com (official) says DOUBTFUL; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -1884,7 +1900,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "66 reporter claim(s) contradicted by the official report",
+   "title": "67 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: foxsports.com@web.brid.gy said OUT for Terry McLaurin (official: see link); FOX Sports said OUT for Terry McLaurin (official: see link); CBS Sports said ACTIVE for Mykel Williams (official: see link); Hogs Haven said ACTIVE for Stefon Diggs (official: see link); San Francisco 49ers said OUT for Mike Evans (official: see link)",
    "evidence": [
     {
