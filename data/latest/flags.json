@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T23:54:39Z",
+ "generated_at": "2026-10-20T00:35:07Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -70,22 +70,6 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/abdul-carter/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for A.J. Brown",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/a-j-brown/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -1152,6 +1136,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Keyshaun Elliott",
+   "detail": "nfl.com (official) says OUT; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/keyshaun-elliott/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Kitan Crawford",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -1793,14 +1793,14 @@
    "code": "STATUS_CONFLICT",
    "severity": "medium",
    "title": "Designation conflict for Tyrique Stevenson",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/tyrique-stevenson/"
     },
     {
-     "label": "ESPN (OUT)",
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1898,35 +1898,23 @@
    ]
   },
   {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for WSH @ SF parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873008 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873008"
-    }
-   ]
-  },
-  {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CAR:maema-njongmeta (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "59 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Hogs Haven said ACTIVE for Stefon Diggs (official: see link); slessans.bsky.social@bsky.brid.gy said ACTIVE for Stefon Diggs (official: see link); slessans2@mysportgallery.com said ACTIVE for Stefon Diggs (official: see link); San Francisco 49ers said OUT for Mike Evans (official: see link); Niners Nation said OUT for Christian Kirk (official: see link)",
+   "title": "66 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Stefon Diggs (official: see link); NBC Sports said ACTIVE for Mike Evans (official: see link); CBS Sports said ACTIVE for Mykel Williams (official: see link); Hogs Haven said ACTIVE for Stefon Diggs (official: see link); slessans.bsky.social@bsky.brid.gy said ACTIVE for Stefon Diggs (official: see link)",
    "evidence": [
+    {
+     "label": "Yahoo Sports: Stefon Diggs ACTIVE",
+     "url": "https://www.nfl.com/players/stefon-diggs/"
+    },
+    {
+     "label": "NBC Sports: Mike Evans ACTIVE",
+     "url": "https://www.nfl.com/players/mike-evans/"
+    },
+    {
+     "label": "CBS Sports: Mykel Williams ACTIVE",
+     "url": "https://www.nfl.com/players/mykel-williams/"
+    },
     {
      "label": "Hogs Haven: Stefon Diggs ACTIVE",
      "url": "https://www.nfl.com/players/stefon-diggs/"
@@ -1934,18 +1922,6 @@
     {
      "label": "slessans.bsky.social@bsky.brid.gy: Stefon Diggs ACTIVE",
      "url": "https://www.nfl.com/players/stefon-diggs/"
-    },
-    {
-     "label": "slessans2@mysportgallery.com: Stefon Diggs ACTIVE",
-     "url": "https://www.nfl.com/players/stefon-diggs/"
-    },
-    {
-     "label": "San Francisco 49ers: Mike Evans OUT",
-     "url": "https://www.nfl.com/players/mike-evans/"
-    },
-    {
-     "label": "Niners Nation: Christian Kirk OUT",
-     "url": "https://www.nfl.com/players/christian-kirk/"
     }
    ]
   },
