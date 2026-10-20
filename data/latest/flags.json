@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T21:55:45Z",
+ "generated_at": "2026-10-20T22:22:18Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -2506,42 +2506,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: SEA:jacardia-wright (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "66 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: New York Post said OUT for Terry McLaurin (official: see link); NBC4 Washington said OUT for Terry McLaurin (official: see link); The Baltimore Banner said OUT for Terry McLaurin (official: see link); Hogs Haven said OUT for Terry McLaurin (official: see link); WUSA9 said OUT for Terry McLaurin (official: see link)",
+   "title": "59 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said OUT for Mike Evans (official: see link); CBS Sports said OUT for Mike Evans (official: see link); rapsheet.bsky.social said OUT for Mike Evans (official: see link); Hogs Haven said ACTIVE for Stefon Diggs (official: see link); San Francisco 49ers said OUT for Mike Evans (official: see link)",
    "evidence": [
     {
-     "label": "New York Post: Terry McLaurin OUT",
-     "url": "https://www.nfl.com/players/terry-mclaurin/"
+     "label": "Yahoo Sports: Mike Evans OUT",
+     "url": "https://www.nfl.com/players/mike-evans/"
     },
     {
-     "label": "NBC4 Washington: Terry McLaurin OUT",
-     "url": "https://www.nfl.com/players/terry-mclaurin/"
+     "label": "CBS Sports: Mike Evans OUT",
+     "url": "https://www.nfl.com/players/mike-evans/"
     },
     {
-     "label": "The Baltimore Banner: Terry McLaurin OUT",
-     "url": "https://www.nfl.com/players/terry-mclaurin/"
+     "label": "rapsheet.bsky.social: Mike Evans OUT",
+     "url": "https://www.nfl.com/players/mike-evans/"
     },
     {
-     "label": "Hogs Haven: Terry McLaurin OUT",
-     "url": "https://www.nfl.com/players/terry-mclaurin/"
+     "label": "Hogs Haven: Stefon Diggs ACTIVE",
+     "url": "https://www.nfl.com/players/stefon-diggs/"
     },
     {
-     "label": "WUSA9: Terry McLaurin OUT",
-     "url": "https://www.nfl.com/players/terry-mclaurin/"
+     "label": "San Francisco 49ers: Mike Evans OUT",
+     "url": "https://www.nfl.com/players/mike-evans/"
     }
    ]
   },
