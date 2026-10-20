@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T01:19:12Z",
+ "generated_at": "2026-10-20T01:20:53Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1898,35 +1898,11 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CAR:ja-seem-reed (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "69 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: The New York Times said OUT for Terry McLaurin (official: see link); Yahoo Sports said ACTIVE for Stefon Diggs (official: see link); Yahoo Sports said ACTIVE for Mike Evans (official: see link); NBC Sports said ACTIVE for Mike Evans (official: see link); CBS Sports said ACTIVE for Mykel Williams (official: see link)",
+   "title": "66 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC Sports said ACTIVE for Mike Evans (official: see link); CBS Sports said ACTIVE for Mykel Williams (official: see link); Hogs Haven said ACTIVE for Stefon Diggs (official: see link); San Francisco 49ers said OUT for Mike Evans (official: see link); OregonLive.com said ACTIVE for Mike Evans (official: see link)",
    "evidence": [
-    {
-     "label": "The New York Times: Terry McLaurin OUT",
-     "url": "https://www.nfl.com/players/terry-mclaurin/"
-    },
-    {
-     "label": "Yahoo Sports: Stefon Diggs ACTIVE",
-     "url": "https://www.nfl.com/players/stefon-diggs/"
-    },
-    {
-     "label": "Yahoo Sports: Mike Evans ACTIVE",
-     "url": "https://www.nfl.com/players/mike-evans/"
-    },
     {
      "label": "NBC Sports: Mike Evans ACTIVE",
      "url": "https://www.nfl.com/players/mike-evans/"
@@ -1934,6 +1910,18 @@
     {
      "label": "CBS Sports: Mykel Williams ACTIVE",
      "url": "https://www.nfl.com/players/mykel-williams/"
+    },
+    {
+     "label": "Hogs Haven: Stefon Diggs ACTIVE",
+     "url": "https://www.nfl.com/players/stefon-diggs/"
+    },
+    {
+     "label": "San Francisco 49ers: Mike Evans OUT",
+     "url": "https://www.nfl.com/players/mike-evans/"
+    },
+    {
+     "label": "OregonLive.com: Mike Evans ACTIVE",
+     "url": "https://www.nfl.com/players/mike-evans/"
     }
    ]
   },
