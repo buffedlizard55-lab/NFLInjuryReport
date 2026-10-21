@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T05:13:11Z",
+ "generated_at": "2026-10-21T05:22:45Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -202,18 +202,6 @@
     {
      "label": "Summary URL",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873009"
-    }
-   ]
-  },
-  {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 10 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: JAX:quinn-ewers (not asserted by any source for 14.1 days); NYG:john-michael-schmitz (not asserted by any source for 14.1 days); SF:khadarel-hodge (not asserted by any source for 14.1 days); NO:treyton-welch (not asserted by any source for 14.1 days); IND:micheal-clemons (not asserted by any source for 14.1 days); WAS:amik-robertson (not asserted by any source for 14.1 days); SEA:grey-zabel (not asserted by any source for 14.1 days); NYG:patrick-ricard (not asserted by any source for 14.1 days); MIA:joshua-uche (not asserted by any source for 14.1 days); KC:christian-roland-wallace (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
     }
    ]
   },
