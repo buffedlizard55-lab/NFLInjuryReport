@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T22:37:52Z",
+ "generated_at": "2026-10-21T22:41:50Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1602,42 +1602,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 24 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: GB:zach-bako-bewele (not asserted by any source for 14.0 days); MIN:caleb-tiernan (not asserted by any source for 14.0 days); BAL:jovaughn-gwyn (not asserted by any source for 14.0 days); BAL:ethan-pocic (not asserted by any source for 14.0 days); CLE:dillon-gabriel (official report lists the player under a different club); GB:jayden-reed (not asserted by any source for 14.0 days); HOU:british-brooks (not asserted by any source for 14.0 days); LV:jack-bech (not asserted by any source for 14.0 days); NO:travis-etienne (not asserted by any source for 14.0 days); TB:vita-vea (official report lists the player under a different club); WAS:athan-kaliakmanis (not asserted by any source for 14.0 days); NYG:thomas-fidone (official report lists the player under a different club); DET:blake-miller (not asserted by any source for 14.0 days); IND:jerry-tillery (official report lists the player under a different club); KC:chamarri-conner (official report lists the player under a different club); NE:greg-van-roten (not asserted by any source for 14.0 days); TB:riley-dixon (official report lists the player under a different club); MIA:rob-beal (official report lists the player under a different club); MIA:julius-brents (official report lists the player under a different club); LV:spencer-burford (official report lists the player under a different club) (+4 more). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "12 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said OUT for Mike Evans (official: see link); rapsheet.bsky.social said QUESTIONABLE for Caleb Williams (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link); CBS Sports said OUT for Talanoa Hufanga (official: see link); tompelissero.bsky.social said IR for Isaiah Likely (official: see link)",
+   "title": "16 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: On Tap Sports Net said DOUBTFUL for Kyle Monangai (official: see link); Yahoo Sports said QUESTIONABLE for Bo Nix (official: see link); Yahoo Sports said IR for Avieon Terrell (official: see link); Atlanta Falcons said IR for Avieon Terrell (official: see link); rapsheet.bsky.social said OUT for Mike Evans (official: see link)",
    "evidence": [
+    {
+     "label": "On Tap Sports Net: Kyle Monangai DOUBTFUL",
+     "url": "https://www.nfl.com/players/kyle-monangai/"
+    },
+    {
+     "label": "Yahoo Sports: Bo Nix QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4426338/bo-nix"
+    },
+    {
+     "label": "Yahoo Sports: Avieon Terrell IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4870988/avieon-terrell"
+    },
+    {
+     "label": "Atlanta Falcons: Avieon Terrell IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4870988/avieon-terrell"
+    },
     {
      "label": "rapsheet.bsky.social: Mike Evans OUT",
      "url": "https://www.espn.com/nfl/player/_/id/16737/mike-evans"
-    },
-    {
-     "label": "rapsheet.bsky.social: Caleb Williams QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4431611/caleb-williams"
-    },
-    {
-     "label": "rapsheet.bsky.social: A.J. Brown IR",
-     "url": "https://www.nfl.com/players/a-j-brown/"
-    },
-    {
-     "label": "CBS Sports: Talanoa Hufanga OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4360853/talanoa-hufanga"
-    },
-    {
-     "label": "tompelissero.bsky.social: Isaiah Likely IR",
-     "url": "https://www.espn.com/nfl/player/_/id/4361050/isaiah-likely"
     }
    ]
   },
