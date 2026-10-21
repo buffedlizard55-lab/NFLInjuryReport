@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T17:29:47Z",
+ "generated_at": "2026-10-21T19:30:35Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -206,26 +206,14 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: NYJ:david-onyemata (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "10 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Atlanta Falcons said IR for Avieon Terrell (official: see link); rapsheet.bsky.social said OUT for Mike Evans (official: see link); rapsheet.bsky.social said QUESTIONABLE for Caleb Williams (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link); rapsheet.bsky.social said OUT for Jeremiyah Love (official: see link)",
+   "title": "7 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Pride Of Detroit said ACTIVE for Brian Branch (official: see link); rapsheet.bsky.social said OUT for Mike Evans (official: see link); rapsheet.bsky.social said QUESTIONABLE for Caleb Williams (official: see link); rapsheet.bsky.social said IR for A.J. Brown (official: see link); CBS Sports said OUT for Talanoa Hufanga (official: see link)",
    "evidence": [
     {
-     "label": "Atlanta Falcons: Avieon Terrell IR",
-     "url": "https://www.espn.com/nfl/player/_/id/4870988/avieon-terrell"
+     "label": "Pride Of Detroit: Brian Branch ACTIVE",
+     "url": "https://www.espn.com/nfl/player/_/id/4692025/brian-branch"
     },
     {
      "label": "rapsheet.bsky.social: Mike Evans OUT",
@@ -240,8 +228,8 @@
      "url": "https://www.nfl.com/players/a-j-brown/"
     },
     {
-     "label": "rapsheet.bsky.social: Jeremiyah Love OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4870808/jeremiyah-love"
+     "label": "CBS Sports: Talanoa Hufanga OUT",
+     "url": "https://www.espn.com/nfl/player/_/id/4360853/talanoa-hufanga"
     }
    ]
   },
@@ -277,15 +265,15 @@
    "evidence": [
     {
      "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/4241250/jake-hummel"
+     "url": "https://www.espn.com/nfl/player/_/id/4035538/david-montgomery"
     },
     {
      "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4366031/tank-dell"
+     "url": "https://www.espn.com/nfl/player/_/id/4241250/jake-hummel"
     },
     {
      "label": "ESPN attribution #3",
-     "url": "https://www.espn.com/nfl/player/_/id/4036135/alaric-jackson"
+     "url": "https://www.espn.com/nfl/player/_/id/4366031/tank-dell"
     }
    ]
   },
