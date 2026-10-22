@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T05:48:04Z",
+ "generated_at": "2026-10-22T05:53:12Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -210,27 +210,11 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: NYJ:jamaal-pritchett (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "50 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: NBC Sports Boston said IR for Denzel Boston (official: see link); rapsheet.bsky.social said OUT for Mike Evans (official: see link); rapsheet.bsky.social said QUESTIONABLE for Sean Tucker (official: see link); rapsheet.bsky.social said QUESTIONABLE for Caleb Williams (official: see link); CBS Sports said OUT for Talanoa Hufanga (official: see link)",
+   "title": "49 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said OUT for Mike Evans (official: see link); rapsheet.bsky.social said QUESTIONABLE for Sean Tucker (official: see link); rapsheet.bsky.social said QUESTIONABLE for Caleb Williams (official: see link); tompelissero.bsky.social said IR for Isaiah Likely (official: see link); Raiders.com said OUT for Brock Bowers (official: see link)",
    "evidence": [
-    {
-     "label": "NBC Sports Boston: Denzel Boston IR",
-     "url": "https://www.nfl.com/players/denzel-boston/"
-    },
     {
      "label": "rapsheet.bsky.social: Mike Evans OUT",
      "url": "https://www.nfl.com/players/mike-evans/"
@@ -244,8 +228,12 @@
      "url": "https://www.espn.com/nfl/player/_/id/4431611/caleb-williams"
     },
     {
-     "label": "CBS Sports: Talanoa Hufanga OUT",
-     "url": "https://www.nfl.com/players/talanoa-hufanga/"
+     "label": "tompelissero.bsky.social: Isaiah Likely IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4361050/isaiah-likely"
+    },
+    {
+     "label": "Raiders.com: Brock Bowers OUT",
+     "url": "https://www.nfl.com/players/brock-bowers/"
     }
    ]
   },
