@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T23:22:27Z",
+ "generated_at": "2026-10-23T00:11:04Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -23,6 +23,10 @@
    "title": "'Michael Carter II' is listed under conflicting clubs",
    "detail": "Sources disagree about which club 'Michael Carter II' belongs to (PHI, TEN). This is usually an upstream data error (wrong club attached to a player record) and must be reviewed before the row is trusted. No club was assigned by guesswork.",
    "evidence": [
+    {
+     "label": "nfl.com: PHI",
+     "url": "https://www.nfl.com/injuries/"
+    },
     {
      "label": "espn: PHI, TEN",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
@@ -144,7 +148,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "90 player(s) have no official designation but do have an ESPN status",
+   "title": "118 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -324,28 +328,28 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "40 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said QUESTIONABLE for Christian Gonzalez (official: see link); OregonLive.com said ACTIVE for Nick Bosa (official: see link); Steelers Now said OUT for T.J. Watt (official: see link); Yahoo Sports said OUT for Jeremiyah Love (official: see link); rapsheet.bsky.social said OUT for Mike Evans (official: see link)",
+   "title": "39 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said QUESTIONABLE for Christian Gonzalez (official: see link); Acme Packing Company said QUESTIONABLE for Luke Musgrave (official: see link); Steelers Now said OUT for T.J. Watt (official: see link); rapsheet.bsky.social said OUT for Mike Evans (official: see link); rapsheet.bsky.social said QUESTIONABLE for Sean Tucker (official: see link)",
    "evidence": [
     {
      "label": "rapsheet.bsky.social: Christian Gonzalez QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4686772/christian-gonzalez"
     },
     {
-     "label": "OregonLive.com: Nick Bosa ACTIVE",
-     "url": "https://www.nfl.com/players/nick-bosa/"
+     "label": "Acme Packing Company: Luke Musgrave QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4428085/luke-musgrave"
     },
     {
      "label": "Steelers Now: T.J. Watt OUT",
      "url": "https://www.nfl.com/players/t-j-watt/"
     },
     {
-     "label": "Yahoo Sports: Jeremiyah Love OUT",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
-    },
-    {
      "label": "rapsheet.bsky.social: Mike Evans OUT",
      "url": "https://www.nfl.com/players/mike-evans/"
+    },
+    {
+     "label": "rapsheet.bsky.social: Sean Tucker QUESTIONABLE",
+     "url": "https://www.nfl.com/players/sean-tucker/"
     }
    ]
   },
