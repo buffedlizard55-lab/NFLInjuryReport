@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T19:28:10Z",
+ "generated_at": "2026-10-23T20:27:33Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -148,7 +148,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "108 player(s) have no official designation but do have an ESPN status",
+   "title": "97 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -314,30 +314,42 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 2 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: GB:warren-brinson (not asserted by any source for 14.0 days); PHI:andy-dalton (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "47 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Orange County Register said QUESTIONABLE for Puka Nacua (official: see link); Dawg Pound Daily said OUT for Mason Graham (official: see link); azcentral.com and The Arizona Republic said ACTIVE for Jeremiyah Love (official: see link); Sports Illustrated said QUESTIONABLE for Puka Nacua (official: see link); NBC Sports said QUESTIONABLE for Christian Gonzalez (official: see link)",
+   "title": "43 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Ventura County Star said QUESTIONABLE for Puka Nacua (official: see link); Orange County Register said QUESTIONABLE for Puka Nacua (official: see link); Los Angeles Daily News said QUESTIONABLE for Puka Nacua (official: see link); Steelers Depot said QUESTIONABLE for T.J. Watt (official: see link); Sports Illustrated said QUESTIONABLE for Puka Nacua (official: see link)",
    "evidence": [
+    {
+     "label": "Ventura County Star: Puka Nacua QUESTIONABLE",
+     "url": "https://www.nfl.com/players/puka-nacua/"
+    },
     {
      "label": "Orange County Register: Puka Nacua QUESTIONABLE",
      "url": "https://www.nfl.com/players/puka-nacua/"
     },
     {
-     "label": "Dawg Pound Daily: Mason Graham OUT",
-     "url": "https://www.nfl.com/players/mason-graham/"
+     "label": "Los Angeles Daily News: Puka Nacua QUESTIONABLE",
+     "url": "https://www.nfl.com/players/puka-nacua/"
     },
     {
-     "label": "azcentral.com and The Arizona Republic: Jeremiyah Love ACTIVE",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
+     "label": "Steelers Depot: T.J. Watt QUESTIONABLE",
+     "url": "https://www.nfl.com/players/t-j-watt/"
     },
     {
      "label": "Sports Illustrated: Puka Nacua QUESTIONABLE",
      "url": "https://www.nfl.com/players/puka-nacua/"
-    },
-    {
-     "label": "NBC Sports: Christian Gonzalez QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4686772/christian-gonzalez"
     }
    ]
   },
