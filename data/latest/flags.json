@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24T21:08:25Z",
+ "generated_at": "2026-10-24T21:14:01Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -234,22 +234,6 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/craig-woodson/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for DeShon Elliott",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/deshon-elliott/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -874,42 +858,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 5 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: MIA:brady-cook (not asserted by any source for 14.0 days); JAX:jack-kiser (not asserted by any source for 14.0 days); JAX:christian-braswell (not asserted by any source for 14.0 days); HOU:mark-gronowski (not asserted by any source for 14.0 days); HOU:bryce-oliver (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "18 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Kyle Louis (official: see link); KELO-AM said IR for DeShon Elliott (official: see link); Patriots Wire said IR for Will Campbell (official: see link); Heavy.com said ACTIVE for Rashee Rice (official: see link); rapsheet.bsky.social said QUESTIONABLE for Christian Gonzalez (official: see link)",
+   "title": "26 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Field Gulls said IR for Anthony Bradford (official: see link); Seattle Seahawks said IR for Anthony Bradford (official: see link); NBC Sports Philadelphia said OUT for Dallas Goedert (official: see link); Yahoo Sports said QUESTIONABLE for DeVonta Smith (official: see link); Yahoo Sports said OUT for Lamar Jackson (official: see link)",
    "evidence": [
     {
-     "label": "Yahoo Sports: Kyle Louis ACTIVE",
-     "url": "https://www.nfl.com/players/kyle-louis/"
+     "label": "Field Gulls: Anthony Bradford IR",
+     "url": "https://www.nfl.com/players/anthony-bradford/"
     },
     {
-     "label": "KELO-AM: DeShon Elliott IR",
-     "url": "https://www.nfl.com/players/deshon-elliott/"
+     "label": "Seattle Seahawks: Anthony Bradford IR",
+     "url": "https://www.nfl.com/players/anthony-bradford/"
     },
     {
-     "label": "Patriots Wire: Will Campbell IR",
-     "url": "https://www.nfl.com/players/will-campbell/"
+     "label": "NBC Sports Philadelphia: Dallas Goedert OUT",
+     "url": "https://www.nfl.com/players/dallas-goedert/"
     },
     {
-     "label": "Heavy.com: Rashee Rice ACTIVE",
-     "url": "https://www.nfl.com/players/rashee-rice/"
+     "label": "Yahoo Sports: DeVonta Smith QUESTIONABLE",
+     "url": "https://www.nfl.com/players/devonta-smith/"
     },
     {
-     "label": "rapsheet.bsky.social: Christian Gonzalez QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4686772/christian-gonzalez"
+     "label": "Yahoo Sports: Lamar Jackson OUT",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
     }
    ]
   },
