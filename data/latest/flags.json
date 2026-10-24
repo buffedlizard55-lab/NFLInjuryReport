@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24T21:22:33Z",
+ "generated_at": "2026-10-24T21:40:35Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -548,6 +548,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Tank Dell",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/tank-dell/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Tavius Robinson",
    "detail": "nfl.com (official) says OUT; ESPN says IR. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -860,9 +876,21 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "13 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said QUESTIONABLE for Christian Gonzalez (official: see link); tompelissero.bsky.social said IR for Isaiah Likely (official: see link); Kevin Seifert said IR for Jordan Mason (official: see link); RotoWire said IR for Christian Kirk (official: see link); RotoWire said IR for Jordan Mason (official: see link)",
+   "title": "16 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Kyle Louis (official: see link); Patriots Wire said IR for Will Campbell (official: see link); Heavy.com said ACTIVE for Rashee Rice (official: see link); rapsheet.bsky.social said QUESTIONABLE for Christian Gonzalez (official: see link); tompelissero.bsky.social said IR for Isaiah Likely (official: see link)",
    "evidence": [
+    {
+     "label": "Yahoo Sports: Kyle Louis ACTIVE",
+     "url": "https://www.nfl.com/players/kyle-louis/"
+    },
+    {
+     "label": "Patriots Wire: Will Campbell IR",
+     "url": "https://www.nfl.com/players/will-campbell/"
+    },
+    {
+     "label": "Heavy.com: Rashee Rice ACTIVE",
+     "url": "https://www.nfl.com/players/rashee-rice/"
+    },
     {
      "label": "rapsheet.bsky.social: Christian Gonzalez QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4686772/christian-gonzalez"
@@ -870,18 +898,6 @@
     {
      "label": "tompelissero.bsky.social: Isaiah Likely IR",
      "url": "https://www.espn.com/nfl/player/_/id/4361050/isaiah-likely"
-    },
-    {
-     "label": "Kevin Seifert: Jordan Mason IR",
-     "url": "https://www.nfl.com/players/jordan-mason/"
-    },
-    {
-     "label": "RotoWire: Christian Kirk IR",
-     "url": "https://www.nfl.com/players/christian-kirk/"
-    },
-    {
-     "label": "RotoWire: Jordan Mason IR",
-     "url": "https://www.nfl.com/players/jordan-mason/"
     }
    ]
   },
