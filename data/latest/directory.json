@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24T17:00:06Z",
+ "generated_at": "2026-10-24T18:34:53Z",
  "mode": "live",
  "provenance": {
   "teams": "Club websites and social handles were read off each club's official nfl.com/teams/<slug>/ page (the league-published social directory), fetched and reviewed 2026-09-10. Washington's nfl.com page listed no Snapchat. The pipeline re-parses these pages live every 7 days and overwrites this cache; failed parses degrade to probe-pending and raise a DIRECTORY_TEAM_* flag instead of guessing.",
@@ -1253,6 +1253,54 @@
    "latest_feed_at": "2026-10-24T01:25:00Z"
   },
   {
+   "name": "Mike Garafolo",
+   "role": "NFL Network national reporter",
+   "outlet_evidence": "Listed as 'NFL Network' in live ESPN injury-feed attributions collected 2026-09-10.",
+   "notes": "Bluesky search on 2026-09-10 returned only mirror bots (e.g. mikegarafolobot.mirrors.bot self-describes as a mirror).",
+   "x": {
+    "platform": "x",
+    "status": "manual",
+    "handle": "MikeGarafolo",
+    "url": "https://x.com/MikeGarafolo",
+    "detail": "oEmbed author_name=''; empty author_name",
+    "http_status": 200,
+    "attempts": [
+     {
+      "endpoint": "oembed",
+      "ok": true,
+      "author_name": ""
+     }
+    ]
+   },
+   "bluesky": {
+    "platform": "bluesky",
+    "status": "not-found",
+    "handle": "",
+    "url": "",
+    "detail": "no genuine account: every exact-name result was a mirror, bot, self-declared parody, or a different person with the same name",
+    "rejected": [
+     {
+      "handle": "handle.invalid",
+      "display_name": "Mike Garafolo (mirror)",
+      "status": "non-official",
+      "reason": "bio/name says 'mirror'"
+     }
+    ]
+   },
+   "observed_in_feed": true,
+   "feed_updates": 3,
+   "feed_teams": [
+    "NYG",
+    "CIN"
+   ],
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4401811/kyle-dugger",
+    "https://www.espn.com/nfl/player/_/id/4429148/theo-johnson",
+    "https://www.espn.com/nfl/player/_/id/4373809/jevon-holland"
+   ],
+   "latest_feed_at": "2026-10-24T17:37:00Z"
+  },
+  {
    "name": "Adam Schefter",
    "role": "Senior NFL Insider, ESPN",
    "outlet_evidence": "Listed as 'ESPN' in live ESPN injury-feed attributions collected 2026-09-10 (data/latest/claims.json).",
@@ -1418,51 +1466,6 @@
     "https://www.espn.com/nfl/player/_/id/4040715/jalen-hurts"
    ],
    "latest_feed_at": "2026-10-19T14:18:00Z"
-  },
-  {
-   "name": "Mike Garafolo",
-   "role": "NFL Network national reporter",
-   "outlet_evidence": "Listed as 'NFL Network' in live ESPN injury-feed attributions collected 2026-09-10.",
-   "notes": "Bluesky search on 2026-09-10 returned only mirror bots (e.g. mikegarafolobot.mirrors.bot self-describes as a mirror).",
-   "x": {
-    "platform": "x",
-    "status": "manual",
-    "handle": "MikeGarafolo",
-    "url": "https://x.com/MikeGarafolo",
-    "detail": "oEmbed author_name=''; empty author_name",
-    "http_status": 200,
-    "attempts": [
-     {
-      "endpoint": "oembed",
-      "ok": true,
-      "author_name": ""
-     }
-    ]
-   },
-   "bluesky": {
-    "platform": "bluesky",
-    "status": "not-found",
-    "handle": "",
-    "url": "",
-    "detail": "no genuine account: every exact-name result was a mirror, bot, self-declared parody, or a different person with the same name",
-    "rejected": [
-     {
-      "handle": "handle.invalid",
-      "display_name": "Mike Garafolo (mirror)",
-      "status": "non-official",
-      "reason": "bio/name says 'mirror'"
-     }
-    ]
-   },
-   "observed_in_feed": true,
-   "feed_updates": 1,
-   "feed_teams": [
-    "CIN"
-   ],
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4401811/kyle-dugger"
-   ],
-   "latest_feed_at": "2026-10-24T01:49:00Z"
   },
   {
    "name": "Dan Graziano",
@@ -1918,36 +1921,6 @@
    }
   },
   {
-   "key": "zac jackson",
-   "name": "Zac Jackson",
-   "outlet": "Athletic",
-   "teams": [
-    "CLE"
-   ],
-   "updates": 10,
-   "latest_at": "2026-10-24T01:42:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4038457/teven-jenkins",
-    "https://www.espn.com/nfl/player/_/id/4427238/dillon-gabriel",
-    "https://www.espn.com/nfl/player/_/id/4873232/mason-graham",
-    "https://www.espn.com/nfl/player/_/id/4242208/grant-delpit"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Zac+Jackson%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Zac+Jackson%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Zac+Jackson%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "darren urban",
    "name": "Darren Urban",
    "outlet": "Cardinals' official site",
@@ -1968,6 +1941,36 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Darren+Urban%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
+   "key": "zac jackson",
+   "name": "Zac Jackson",
+   "outlet": "Athletic",
+   "teams": [
+    "CLE"
+   ],
+   "updates": 9,
+   "latest_at": "2026-10-24T01:42:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4038457/teven-jenkins",
+    "https://www.espn.com/nfl/player/_/id/4427238/dillon-gabriel",
+    "https://www.espn.com/nfl/player/_/id/4873232/mason-graham",
+    "https://www.espn.com/nfl/player/_/id/4600415/mike-hall-jr"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Zac+Jackson%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Zac+Jackson%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Zac+Jackson%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2068,6 +2071,36 @@
    }
   },
   {
+   "key": "jim wyatt",
+   "name": "Jim Wyatt",
+   "outlet": "Titans' official site",
+   "teams": [
+    "TEN"
+   ],
+   "updates": 6,
+   "latest_at": "2026-10-24T17:53:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/3916566/kj-osborn",
+    "https://www.espn.com/nfl/player/_/id/4429121/kalel-mullings",
+    "https://www.espn.com/nfl/player/_/id/4240532/tony-adams",
+    "https://www.espn.com/nfl/player/_/id/4685617/kevin-winston-jr"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Jim+Wyatt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Jim+Wyatt%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Jim+Wyatt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
    "key": "craig peters",
    "name": "Craig Peters",
    "outlet": "Vikings' official site",
@@ -2158,36 +2191,6 @@
    }
   },
   {
-   "key": "jim wyatt",
-   "name": "Jim Wyatt",
-   "outlet": "Titans' official site",
-   "teams": [
-    "TEN"
-   ],
-   "updates": 4,
-   "latest_at": "2026-10-24T01:46:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4240532/tony-adams",
-    "https://www.espn.com/nfl/player/_/id/4685617/kevin-winston-jr",
-    "https://www.espn.com/nfl/player/_/id/4428557/tyjae-spears",
-    "https://www.espn.com/nfl/player/_/id/4573318/dorian-mausi"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Jim+Wyatt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Jim+Wyatt%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Jim+Wyatt%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "matt barrows",
    "name": "Matt Barrows",
    "outlet": "Athletic",
@@ -2207,35 +2210,6 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Matt+Barrows%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
-   "key": "rich cimini",
-   "name": "Rich Cimini",
-   "outlet": "ESPN.com",
-   "teams": [
-    "NYJ"
-   ],
-   "updates": 3,
-   "latest_at": "2026-10-24T01:31:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/4700136/kiko-mauigoa",
-    "https://www.espn.com/nfl/player/_/id/4373656/max-mitchell",
-    "https://www.espn.com/nfl/player/_/id/4362094/joseph-ossai"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Rich+Cimini%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Rich+Cimini%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Rich+Cimini%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2508,10 +2482,10 @@
     "PHI"
    ],
    "updates": 2,
-   "latest_at": "2026-10-24T16:32:00Z",
+   "latest_at": "2026-10-24T17:59:00Z",
    "evidence": [
-    "https://www.espn.com/nfl/player/_/id/3929630/saquon-barkley",
-    "https://www.espn.com/nfl/player/_/id/3121023/dallas-goedert"
+    "https://www.espn.com/nfl/player/_/id/3121023/dallas-goedert",
+    "https://www.espn.com/nfl/player/_/id/3929630/saquon-barkley"
    ],
    "x_search_url": "https://x.com/search?q=%22Dave+Zangaro%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
    "google_news_url": "https://news.google.com/rss/search?q=%22Dave+Zangaro%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
@@ -2631,6 +2605,34 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Pete+Sweeney%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
+   "key": "rich cimini",
+   "name": "Rich Cimini",
+   "outlet": "ESPN.com",
+   "teams": [
+    "NYJ"
+   ],
+   "updates": 2,
+   "latest_at": "2026-10-24T01:28:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/4373656/max-mitchell",
+    "https://www.espn.com/nfl/player/_/id/4362094/joseph-ossai"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Rich+Cimini%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Rich+Cimini%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Rich+Cimini%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2796,562 +2798,562 @@
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard",
    "status": 200,
-   "bytes": 253985,
-   "latency_ms": 40,
+   "bytes": 254026,
+   "latency_ms": 47,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:44Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873011",
    "status": 200,
-   "bytes": 119299,
-   "latency_ms": 32,
+   "bytes": 138000,
+   "latency_ms": 155,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:44Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873017",
    "status": 200,
-   "bytes": 113566,
-   "latency_ms": 42,
+   "bytes": 132221,
+   "latency_ms": 89,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:44Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873013",
    "status": 200,
-   "bytes": 111059,
-   "latency_ms": 53,
+   "bytes": 129735,
+   "latency_ms": 79,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:44Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873014",
    "status": 200,
-   "bytes": 111616,
-   "latency_ms": 51,
+   "bytes": 130271,
+   "latency_ms": 79,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:44Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873015",
    "status": 200,
-   "bytes": 105151,
-   "latency_ms": 38,
+   "bytes": 123854,
+   "latency_ms": 95,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:44Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873018",
    "status": 200,
-   "bytes": 106575,
-   "latency_ms": 55,
+   "bytes": 125230,
+   "latency_ms": 99,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:44Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873012",
    "status": 200,
-   "bytes": 116347,
-   "latency_ms": 34,
+   "bytes": 135001,
+   "latency_ms": 109,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:44Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873016",
    "status": 200,
-   "bytes": 124072,
-   "latency_ms": 40,
+   "bytes": 142632,
+   "latency_ms": 81,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:45Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873019",
    "status": 200,
-   "bytes": 111399,
-   "latency_ms": 78,
+   "bytes": 130054,
+   "latency_ms": 82,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:45Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873020",
    "status": 200,
-   "bytes": 104111,
-   "latency_ms": 46,
+   "bytes": 122766,
+   "latency_ms": 141,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:45Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873021",
    "status": 200,
-   "bytes": 111834,
-   "latency_ms": 43,
+   "bytes": 130489,
+   "latency_ms": 121,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:45Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873022",
    "status": 200,
-   "bytes": 110365,
-   "latency_ms": 48,
+   "bytes": 129041,
+   "latency_ms": 86,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:45Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873009",
    "status": 200,
-   "bytes": 114996,
-   "latency_ms": 51,
+   "bytes": 133651,
+   "latency_ms": 98,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:45Z"
   },
   {
    "source": "nfl.com",
    "url": "https://www.nfl.com/injuries/",
    "status": 200,
-   "bytes": 403945,
-   "latency_ms": 25,
+   "bytes": 404447,
+   "latency_ms": 64,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:45Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
    "status": 200,
-   "bytes": 8747451,
-   "latency_ms": 66,
+   "bytes": 8746870,
+   "latency_ms": 82,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:57Z"
+   "probed_at": "2026-10-24T18:34:45Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?limit=20",
    "status": 200,
-   "bytes": 62134,
-   "latency_ms": 41,
+   "bytes": 81426,
+   "latency_ms": 107,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:45Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=3&limit=20",
    "status": 200,
-   "bytes": 132173,
-   "latency_ms": 96,
+   "bytes": 132429,
+   "latency_ms": 87,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=17&limit=20",
    "status": 200,
-   "bytes": 163531,
-   "latency_ms": 68,
+   "bytes": 163787,
+   "latency_ms": 87,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "rotowire-news",
    "url": "https://www.rotowire.com/rss/news.php?sport=NFL",
    "status": 200,
-   "bytes": 3000,
-   "latency_ms": 73,
+   "bytes": 3044,
+   "latency_ms": 101,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 13,
+   "latency_ms": 15,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Forbidden",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "status": 200,
    "bytes": 1250,
-   "latency_ms": 20,
+   "latency_ms": 15,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/instance",
    "status": 200,
    "bytes": 23346,
-   "latency_ms": 17,
+   "latency_ms": 36,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "status": 200,
-   "bytes": 139799,
-   "latency_ms": 19,
+   "bytes": 135757,
+   "latency_ms": 57,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "reddit",
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 24,
+   "latency_ms": 45,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Blocked",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=30",
    "status": 200,
    "bytes": 48539,
-   "latency_ms": 123,
+   "latency_ms": 46,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=jglazer.bsky.social&limit=20",
    "status": 200,
    "bytes": 4710,
-   "latency_ms": 108,
+   "latency_ms": 49,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=schultzreport.bsky.social&limit=20",
    "status": 200,
    "bytes": 38452,
-   "latency_ms": 126,
+   "latency_ms": 46,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=josinaanderson.bsky.social&limit=20",
    "status": 200,
    "bytes": 11,
-   "latency_ms": 105,
+   "latency_ms": 41,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:58Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=kimberleymartin.bsky.social&limit=20",
    "status": 200,
    "bytes": 22869,
-   "latency_ms": 126,
+   "latency_ms": 52,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:59Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=tompelissero.bsky.social&limit=20",
    "status": 200,
    "bytes": 40172,
-   "latency_ms": 21,
+   "latency_ms": 51,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:59Z"
+   "probed_at": "2026-10-24T18:34:46Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/timelines/tag/nfl?limit=40",
    "status": 200,
-   "bytes": 157953,
-   "latency_ms": 106,
+   "bytes": 166476,
+   "latency_ms": 542,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:59Z"
+   "probed_at": "2026-10-24T18:34:47Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=NFL+injury+report&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 123575,
-   "latency_ms": 433,
+   "bytes": 126270,
+   "latency_ms": 507,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T16:59:59Z"
+   "probed_at": "2026-10-24T18:34:47Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Chicago+Bears%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 109632,
-   "latency_ms": 373,
+   "bytes": 65467,
+   "latency_ms": 340,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:00Z"
+   "probed_at": "2026-10-24T18:34:48Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22New+England+Patriots%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 40567,
+   "bytes": 16110,
    "latency_ms": 329,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:00Z"
+   "probed_at": "2026-10-24T18:34:48Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Christian+Barmore%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 8671,
-   "latency_ms": 248,
+   "bytes": 5030,
+   "latency_ms": 260,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:00Z"
+   "probed_at": "2026-10-24T18:34:48Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22TreVeyon+Henderson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 14544,
-   "latency_ms": 274,
+   "bytes": 11672,
+   "latency_ms": 294,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:00Z"
+   "probed_at": "2026-10-24T18:34:49Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tyson+Bagent%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 7292,
-   "latency_ms": 275,
+   "bytes": 6207,
+   "latency_ms": 221,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:01Z"
+   "probed_at": "2026-10-24T18:34:49Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Rome+Odunze%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 18584,
-   "latency_ms": 363,
+   "bytes": 14857,
+   "latency_ms": 284,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:01Z"
+   "probed_at": "2026-10-24T18:34:49Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Joe+Thuney%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 11700,
-   "latency_ms": 281,
+   "latency_ms": 225,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:01Z"
+   "probed_at": "2026-10-24T18:34:49Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Ozzy+Trapilo%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 9152,
-   "latency_ms": 249,
+   "bytes": 7822,
+   "latency_ms": 216,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:02Z"
+   "probed_at": "2026-10-24T18:34:49Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Xavier+Woods%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2259,
-   "latency_ms": 239,
+   "latency_ms": 243,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:02Z"
+   "probed_at": "2026-10-24T18:34:50Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Elijah+Hicks%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1157,
-   "latency_ms": 243,
+   "latency_ms": 208,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:02Z"
+   "probed_at": "2026-10-24T18:34:50Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Dallas+Cowboys%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22New+York+Jets%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 31972,
-   "latency_ms": 330,
+   "bytes": 48273,
+   "latency_ms": 371,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:02Z"
+   "probed_at": "2026-10-24T18:34:50Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Denver+Broncos%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22Philadelphia+Eagles%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 51439,
-   "latency_ms": 416,
+   "bytes": 60379,
+   "latency_ms": 366,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:03Z"
+   "probed_at": "2026-10-24T18:34:51Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Detroit+Lions%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22Pittsburgh+Steelers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 63441,
-   "latency_ms": 385,
+   "bytes": 54159,
+   "latency_ms": 343,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:03Z"
+   "probed_at": "2026-10-24T18:34:51Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Green+Bay+Packers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22Seattle+Seahawks%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 56663,
-   "latency_ms": 321,
+   "bytes": 64660,
+   "latency_ms": 360,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:04Z"
+   "probed_at": "2026-10-24T18:34:51Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Houston+Texans%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22San+Francisco+49ers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 60521,
-   "latency_ms": 370,
+   "bytes": 74300,
+   "latency_ms": 440,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:04Z"
+   "probed_at": "2026-10-24T18:34:52Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Indianapolis+Colts%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22Tampa+Bay+Buccaneers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 51203,
-   "latency_ms": 406,
+   "bytes": 32046,
+   "latency_ms": 292,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:04Z"
+   "probed_at": "2026-10-24T18:34:52Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Jacksonville+Jaguars%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22Tennessee+Titans%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 21275,
-   "latency_ms": 267,
+   "bytes": 31658,
+   "latency_ms": 379,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:05Z"
+   "probed_at": "2026-10-24T18:34:53Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Kansas+City+Chiefs%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22Washington+Commanders%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 64384,
-   "latency_ms": 419,
+   "bytes": 49181,
+   "latency_ms": 352,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-24T17:00:05Z"
+   "probed_at": "2026-10-24T18:34:53Z"
   }
  ]
 }
