@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24T01:54:56Z",
+ "generated_at": "2026-10-24T03:51:10Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -484,7 +484,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "16 player(s) have no official designation but do have an ESPN status",
+   "title": "17 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -650,11 +650,31 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: PHI:uar-bernard (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "22 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Seattle Seahawks said IR for Anthony Bradford (official: see link); Seattle Sports said QUESTIONABLE for Zach Charbonnet (official: see link); Dawg Pound Daily said OUT for Mason Graham (official: see link); Steelers Depot said QUESTIONABLE for T.J. Watt (official: see link); Behind the Steel Curtain said OUT for DeShon Elliott (official: see link)",
+   "title": "25 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said OUT for Baker Mayfield (official: see link); Yahoo Sports said ACTIVE for Baker Mayfield (official: see link); Seattle Seahawks said IR for Anthony Bradford (official: see link); Seattle Sports said QUESTIONABLE for Zach Charbonnet (official: see link); Dawg Pound Daily said OUT for Mason Graham (official: see link)",
    "evidence": [
+    {
+     "label": "Yahoo Sports: Baker Mayfield OUT",
+     "url": "https://www.nfl.com/players/baker-mayfield/"
+    },
+    {
+     "label": "Yahoo Sports: Baker Mayfield ACTIVE",
+     "url": "https://www.nfl.com/players/baker-mayfield/"
+    },
     {
      "label": "Seattle Seahawks: Anthony Bradford IR",
      "url": "https://www.nfl.com/players/anthony-bradford/"
@@ -666,14 +686,6 @@
     {
      "label": "Dawg Pound Daily: Mason Graham OUT",
      "url": "https://www.nfl.com/players/mason-graham/"
-    },
-    {
-     "label": "Steelers Depot: T.J. Watt QUESTIONABLE",
-     "url": "https://www.nfl.com/players/t-j-watt/"
-    },
-    {
-     "label": "Behind the Steel Curtain: DeShon Elliott OUT",
-     "url": "https://www.nfl.com/players/deshon-elliott/"
     }
    ]
   },
@@ -729,15 +741,15 @@
    "evidence": [
     {
      "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/4241223/jalen-pitre"
+     "url": "https://www.espn.com/nfl/player/_/id/4432699/blake-fisher"
     },
     {
      "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4243956/reed-blankenship"
+     "url": "https://www.espn.com/nfl/player/_/id/4241223/jalen-pitre"
     },
     {
      "label": "ESPN attribution #3",
-     "url": "https://www.espn.com/nfl/player/_/id/4362504/brevin-jordan"
+     "url": "https://www.espn.com/nfl/player/_/id/4243956/reed-blankenship"
     }
    ]
   },
