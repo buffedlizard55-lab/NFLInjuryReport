@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T20:18:49Z",
+ "generated_at": "2026-10-25T20:21:22Z",
  "mode": "live",
  "provenance": {
   "teams": "Club websites and social handles were read off each club's official nfl.com/teams/<slug>/ page (the league-published social directory), fetched and reviewed 2026-09-10. Washington's nfl.com page listed no Snapchat. The pipeline re-parses these pages live every 7 days and overwrites this cache; failed parses degrade to probe-pending and raise a DIRECTORY_TEAM_* flag instead of guessing.",
@@ -15,10 +15,10 @@
  "counts": {
   "teams": 32,
   "national": 14,
-  "beat": 29,
+  "beat": 28,
   "bluesky_verified": 1,
   "bluesky_candidates": 5,
-  "irregularities": 4
+  "irregularities": 5
  },
  "league": [
   {
@@ -1891,6 +1891,36 @@
    }
   },
   {
+   "key": "scott smith",
+   "name": "Scott Smith",
+   "outlet": "team's official website",
+   "teams": [
+    "TB",
+    "CAR"
+   ],
+   "updates": 3,
+   "latest_at": "2026-10-25T19:33:00Z",
+   "evidence": [
+    "https://www.espn.com/nfl/player/_/id/2973051/taylor-moton",
+    "https://www.espn.com/nfl/player/_/id/3909013/christian-rozeboom",
+    "https://www.espn.com/nfl/player/_/id/3871102/david-sills-v"
+   ],
+   "x_search_url": "https://x.com/search?q=%22Scott+Smith%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+   "google_news_url": "https://news.google.com/rss/search?q=%22Scott+Smith%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
+   "platforms": {
+    "x": {
+     "status": "search-only",
+     "url": "https://x.com/search?q=%22Scott+Smith%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
+     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
+    },
+    "bluesky": {
+     "status": "not-resolved",
+     "url": "",
+     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
+    }
+   }
+  },
+  {
    "key": "tori mcelhaney",
    "name": "Tori McElhaney",
    "outlet": "Falcons' official site",
@@ -2448,34 +2478,6 @@
    }
   },
   {
-   "key": "joe person",
-   "name": "Joe Person",
-   "outlet": "Athletic",
-   "teams": [
-    "CAR"
-   ],
-   "updates": 2,
-   "latest_at": "2026-10-25T20:09:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/2973051/taylor-moton",
-    "https://www.espn.com/nfl/player/_/id/4709392/anthony-tyus-iii"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Joe+Person%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Joe+Person%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Joe+Person%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
    "key": "josh kendall",
    "name": "Josh Kendall",
    "outlet": "Athletic",
@@ -2578,34 +2580,6 @@
     "x": {
      "status": "search-only",
      "url": "https://x.com/search?q=%22Sam+Warren%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-     "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
-    },
-    "bluesky": {
-     "status": "not-resolved",
-     "url": "",
-     "detail": "Auto-resolution runs only for national seed accounts to keep verification rate-limited."
-    }
-   }
-  },
-  {
-   "key": "scott smith",
-   "name": "Scott Smith",
-   "outlet": "team's official website",
-   "teams": [
-    "TB"
-   ],
-   "updates": 2,
-   "latest_at": "2026-10-23T01:43:00Z",
-   "evidence": [
-    "https://www.espn.com/nfl/player/_/id/3909013/christian-rozeboom",
-    "https://www.espn.com/nfl/player/_/id/3871102/david-sills-v"
-   ],
-   "x_search_url": "https://x.com/search?q=%22Scott+Smith%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
-   "google_news_url": "https://news.google.com/rss/search?q=%22Scott+Smith%22+NFL+injury&hl=en-US&gl=US&ceid=US%3Aen",
-   "platforms": {
-    "x": {
-     "status": "search-only",
-     "url": "https://x.com/search?q=%22Scott+Smith%22+%28injury+OR+injured+OR+ruled+out+OR+practice%29&f=live",
      "detail": "No handle asserted: this searches X by the exact name ESPN printed; confirm the profile yourself."
     },
     "bluesky": {
@@ -2736,6 +2710,26 @@
      "url": "https://www.espn.com/nfl/player/_/id/5093923/andrew-armstrong"
     }
    ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
+   "title": "Beat writer Scott Smith is attributed across 2 clubs (TB, CAR)",
+   "detail": "ESPN printed Scott Smith (team's official website) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/2973051/taylor-moton"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/3909013/christian-rozeboom"
+    },
+    {
+     "label": "ESPN attribution #3",
+     "url": "https://www.espn.com/nfl/player/_/id/3871102/david-sills-v"
+    }
+   ]
   }
  ],
  "probes": [
@@ -2743,3158 +2737,3136 @@
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard",
    "status": 200,
-   "bytes": 181964,
-   "latency_ms": 85,
+   "bytes": 177212,
+   "latency_ms": 34,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:32Z"
+   "probed_at": "2026-10-25T20:20:07Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873016",
    "status": 200,
-   "bytes": 591488,
-   "latency_ms": 116,
+   "bytes": 600345,
+   "latency_ms": 38,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:32Z"
+   "probed_at": "2026-10-25T20:20:07Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873019",
    "status": 200,
-   "bytes": 184503,
-   "latency_ms": 193,
+   "bytes": 184130,
+   "latency_ms": 39,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:32Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873020",
    "status": 200,
-   "bytes": 137307,
-   "latency_ms": 136,
+   "bytes": 137661,
+   "latency_ms": 46,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:32Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873021",
    "status": 200,
-   "bytes": 152193,
-   "latency_ms": 154,
+   "bytes": 152547,
+   "latency_ms": 51,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:33Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873022",
    "status": 200,
-   "bytes": 142523,
-   "latency_ms": 149,
+   "bytes": 142877,
+   "latency_ms": 38,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:33Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873009",
    "status": 200,
-   "bytes": 145644,
-   "latency_ms": 146,
+   "bytes": 145998,
+   "latency_ms": 87,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:33Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "nfl.com",
    "url": "https://www.nfl.com/injuries/",
    "status": 200,
-   "bytes": 397167,
-   "latency_ms": 75,
+   "bytes": 396665,
+   "latency_ms": 117,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:33Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
    "status": 200,
-   "bytes": 8736227,
-   "latency_ms": 220,
+   "bytes": 8736835,
+   "latency_ms": 109,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:33Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?limit=20",
    "status": 200,
-   "bytes": 92620,
-   "latency_ms": 222,
+   "bytes": 95914,
+   "latency_ms": 60,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:34Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=22&limit=20",
    "status": 200,
-   "bytes": 232922,
-   "latency_ms": 190,
+   "bytes": 232827,
+   "latency_ms": 107,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:34Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=1&limit=20",
    "status": 200,
-   "bytes": 215514,
-   "latency_ms": 94,
+   "bytes": 215211,
+   "latency_ms": 85,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:34Z"
+   "probed_at": "2026-10-25T20:20:08Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=33&limit=20",
    "status": 200,
-   "bytes": 161186,
-   "latency_ms": 260,
+   "bytes": 174759,
+   "latency_ms": 110,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:34Z"
+   "probed_at": "2026-10-25T20:20:09Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=29&limit=20",
    "status": 200,
-   "bytes": 226413,
-   "latency_ms": 137,
+   "bytes": 223649,
+   "latency_ms": 94,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:34Z"
+   "probed_at": "2026-10-25T20:20:09Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=3&limit=20",
    "status": 200,
    "bytes": 134448,
-   "latency_ms": 109,
+   "latency_ms": 86,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:34Z"
+   "probed_at": "2026-10-25T20:20:09Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=4&limit=20",
    "status": 200,
    "bytes": 218927,
-   "latency_ms": 156,
+   "latency_ms": 89,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:35Z"
+   "probed_at": "2026-10-25T20:20:09Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=5&limit=20",
    "status": 200,
-   "bytes": 223430,
-   "latency_ms": 167,
+   "bytes": 223450,
+   "latency_ms": 93,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:35Z"
+   "probed_at": "2026-10-25T20:20:09Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=7&limit=20",
    "status": 200,
-   "bytes": 215433,
-   "latency_ms": 173,
+   "bytes": 215338,
+   "latency_ms": 101,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:35Z"
+   "probed_at": "2026-10-25T20:20:09Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=34&limit=20",
    "status": 200,
-   "bytes": 225622,
-   "latency_ms": 197,
+   "bytes": 225362,
+   "latency_ms": 129,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:35Z"
+   "probed_at": "2026-10-25T20:20:09Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=11&limit=20",
    "status": 200,
    "bytes": 178146,
-   "latency_ms": 226,
+   "latency_ms": 164,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:35Z"
+   "probed_at": "2026-10-25T20:20:09Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=15&limit=20",
    "status": 200,
-   "bytes": 241541,
-   "latency_ms": 123,
+   "bytes": 241307,
+   "latency_ms": 106,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:35Z"
+   "probed_at": "2026-10-25T20:20:09Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=16&limit=20",
    "status": 200,
-   "bytes": 180885,
-   "latency_ms": 186,
+   "bytes": 180625,
+   "latency_ms": 99,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:36Z"
+   "probed_at": "2026-10-25T20:20:10Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=17&limit=20",
    "status": 200,
    "bytes": 176236,
-   "latency_ms": 194,
+   "latency_ms": 80,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:36Z"
+   "probed_at": "2026-10-25T20:20:10Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=18&limit=20",
    "status": 200,
-   "bytes": 179439,
-   "latency_ms": 174,
+   "bytes": 179179,
+   "latency_ms": 103,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:36Z"
+   "probed_at": "2026-10-25T20:20:10Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=19&limit=20",
    "status": 200,
    "bytes": 172626,
-   "latency_ms": 256,
+   "latency_ms": 105,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:36Z"
+   "probed_at": "2026-10-25T20:20:10Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=20&limit=20",
    "status": 200,
-   "bytes": 181243,
-   "latency_ms": 440,
+   "bytes": 180983,
+   "latency_ms": 145,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:37Z"
+   "probed_at": "2026-10-25T20:20:10Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=23&limit=20",
    "status": 200,
-   "bytes": 142172,
-   "latency_ms": 245,
+   "bytes": 141912,
+   "latency_ms": 113,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:37Z"
+   "probed_at": "2026-10-25T20:20:10Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=25&limit=20",
    "status": 200,
-   "bytes": 166213,
-   "latency_ms": 228,
+   "bytes": 166256,
+   "latency_ms": 216,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:37Z"
+   "probed_at": "2026-10-25T20:20:10Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=27&limit=20",
    "status": 200,
    "bytes": 225893,
-   "latency_ms": 341,
+   "latency_ms": 108,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:38Z"
+   "probed_at": "2026-10-25T20:20:10Z"
   },
   {
    "source": "espn",
    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?team=10&limit=20",
    "status": 200,
-   "bytes": 234761,
-   "latency_ms": 196,
+   "bytes": 234741,
+   "latency_ms": 78,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:38Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "rotowire-news",
    "url": "https://www.rotowire.com/rss/news.php?sport=NFL",
    "status": 200,
    "bytes": 2934,
-   "latency_ms": 122,
+   "latency_ms": 108,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:38Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=nfl%20injury&limit=1&sort=latest",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 172,
+   "latency_ms": 14,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Forbidden",
-   "probed_at": "2026-10-25T20:17:38Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=1",
    "status": 200,
    "bytes": 1873,
-   "latency_ms": 75,
+   "latency_ms": 18,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:38Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/instance",
    "status": 200,
    "bytes": 23346,
-   "latency_ms": 50,
+   "latency_ms": 15,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:38Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=nfl&hl=en-US&gl=US&ceid=US:en",
    "status": 200,
-   "bytes": 143213,
-   "latency_ms": 140,
+   "bytes": 143028,
+   "latency_ms": 57,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:38Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "reddit",
    "url": "https://www.reddit.com/r/NFL_Discussion/about.json?raw_json=1",
    "status": 403,
    "bytes": 0,
-   "latency_ms": 46,
+   "latency_ms": 43,
    "attempts": 0,
    "result": "error",
    "error": "HTTP 403 Blocked",
-   "probed_at": "2026-10-25T20:17:38Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=rapsheet.bsky.social&limit=30",
    "status": 200,
    "bytes": 49076,
-   "latency_ms": 193,
+   "latency_ms": 50,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:39Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=jglazer.bsky.social&limit=20",
    "status": 200,
    "bytes": 4710,
-   "latency_ms": 195,
+   "latency_ms": 55,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:39Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=schultzreport.bsky.social&limit=20",
    "status": 200,
    "bytes": 38452,
-   "latency_ms": 149,
+   "latency_ms": 59,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:39Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=josinaanderson.bsky.social&limit=20",
    "status": 200,
    "bytes": 11,
-   "latency_ms": 211,
+   "latency_ms": 39,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:39Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=kimberleymartin.bsky.social&limit=20",
    "status": 200,
    "bytes": 22869,
-   "latency_ms": 161,
+   "latency_ms": 181,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:39Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "bluesky",
    "url": "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=tompelissero.bsky.social&limit=20",
    "status": 200,
    "bytes": 40172,
-   "latency_ms": 178,
+   "latency_ms": 14,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:40Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "mastodon",
    "url": "https://mastodon.social/api/v1/timelines/tag/nfl?limit=40",
    "status": 200,
-   "bytes": 167337,
-   "latency_ms": 859,
+   "bytes": 168153,
+   "latency_ms": 159,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:40Z"
+   "probed_at": "2026-10-25T20:20:11Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=NFL+injury+report&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 124990,
-   "latency_ms": 434,
+   "bytes": 124771,
+   "latency_ms": 482,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:41Z"
+   "probed_at": "2026-10-25T20:20:12Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Houston+Texans%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 28857,
-   "latency_ms": 344,
+   "bytes": 53408,
+   "latency_ms": 391,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:41Z"
+   "probed_at": "2026-10-25T20:20:12Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22New+York+Giants%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 54009,
-   "latency_ms": 392,
+   "bytes": 54957,
+   "latency_ms": 346,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:42Z"
+   "probed_at": "2026-10-25T20:20:13Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Arizona+Cardinals%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 56304,
-   "latency_ms": 390,
+   "bytes": 57417,
+   "latency_ms": 380,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:42Z"
+   "probed_at": "2026-10-25T20:20:13Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Denver+Broncos%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 58264,
-   "latency_ms": 361,
+   "bytes": 56719,
+   "latency_ms": 328,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:42Z"
+   "probed_at": "2026-10-25T20:20:13Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22New+Orleans+Saints%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 56624,
-   "latency_ms": 381,
+   "bytes": 58416,
+   "latency_ms": 343,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:43Z"
+   "probed_at": "2026-10-25T20:20:14Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Pittsburgh+Steelers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 51914,
-   "latency_ms": 323,
+   "bytes": 50624,
+   "latency_ms": 370,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:43Z"
+   "probed_at": "2026-10-25T20:20:14Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Atlanta+Falcons%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 42690,
-   "latency_ms": 348,
+   "bytes": 44140,
+   "latency_ms": 338,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:43Z"
+   "probed_at": "2026-10-25T20:20:14Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22San+Francisco+49ers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 62638,
-   "latency_ms": 408,
+   "bytes": 66020,
+   "latency_ms": 388,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:44Z"
+   "probed_at": "2026-10-25T20:20:15Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tennessee+Titans%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 50597,
+   "bytes": 50603,
    "latency_ms": 342,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:44Z"
+   "probed_at": "2026-10-25T20:20:15Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Cleveland+Browns%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 51474,
-   "latency_ms": 378,
+   "bytes": 52609,
+   "latency_ms": 357,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:45Z"
+   "probed_at": "2026-10-25T20:20:16Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Minnesota+Vikings%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 65810,
-   "latency_ms": 419,
+   "bytes": 64401,
+   "latency_ms": 416,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:45Z"
+   "probed_at": "2026-10-25T20:20:16Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Indianapolis+Colts%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 57093,
-   "latency_ms": 357,
+   "latency_ms": 1439,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:45Z"
+   "probed_at": "2026-10-25T20:20:17Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22New+York+Jets%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 51703,
-   "latency_ms": 431,
+   "bytes": 52811,
+   "latency_ms": 367,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:46Z"
+   "probed_at": "2026-10-25T20:20:18Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Miami+Dolphins%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 50887,
-   "latency_ms": 376,
+   "bytes": 50993,
+   "latency_ms": 344,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:46Z"
+   "probed_at": "2026-10-25T20:20:18Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Carolina+Panthers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 62414,
-   "latency_ms": 409,
+   "bytes": 62429,
+   "latency_ms": 370,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:47Z"
+   "probed_at": "2026-10-25T20:20:18Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tampa+Bay+Buccaneers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 58803,
-   "latency_ms": 339,
+   "bytes": 60376,
+   "latency_ms": 417,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:47Z"
+   "probed_at": "2026-10-25T20:20:19Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Baltimore+Ravens%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 62045,
-   "latency_ms": 388,
+   "bytes": 59550,
+   "latency_ms": 410,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:47Z"
+   "probed_at": "2026-10-25T20:20:19Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Cincinnati+Bengals%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 64047,
-   "latency_ms": 353,
+   "bytes": 53349,
+   "latency_ms": 326,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:48Z"
+   "probed_at": "2026-10-25T20:20:20Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Chicago+Bears%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 61808,
-   "latency_ms": 382,
+   "bytes": 62886,
+   "latency_ms": 433,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:48Z"
+   "probed_at": "2026-10-25T20:20:20Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22New+England+Patriots%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 56857,
-   "latency_ms": 363,
+   "bytes": 59834,
+   "latency_ms": 368,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:48Z"
+   "probed_at": "2026-10-25T20:20:20Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jeremiyah+Love%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 21335,
-   "latency_ms": 301,
+   "bytes": 20097,
+   "latency_ms": 260,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:49Z"
+   "probed_at": "2026-10-25T20:20:21Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Isaiah+Adams%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2300,
-   "latency_ms": 225,
+   "latency_ms": 210,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:49Z"
+   "probed_at": "2026-10-25T20:20:21Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Blake+Gillikin%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1161,
-   "latency_ms": 212,
+   "latency_ms": 195,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:49Z"
+   "probed_at": "2026-10-25T20:20:21Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Josh+Sweat%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 11071,
-   "latency_ms": 301,
+   "latency_ms": 262,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:49Z"
+   "probed_at": "2026-10-25T20:20:21Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dadrion+Taylor-Demerson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 4900,
-   "latency_ms": 215,
+   "bytes": 3748,
+   "latency_ms": 251,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:50Z"
+   "probed_at": "2026-10-25T20:20:22Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Shelby+Harris%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1159,
-   "latency_ms": 197,
+   "latency_ms": 215,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:50Z"
+   "probed_at": "2026-10-25T20:20:22Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Theo+Johnson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 11776,
-   "latency_ms": 273,
+   "latency_ms": 283,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:50Z"
+   "probed_at": "2026-10-25T20:20:22Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Malik+Nabers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 26698,
-   "latency_ms": 434,
+   "latency_ms": 282,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:51Z"
+   "probed_at": "2026-10-25T20:20:22Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Andrew+Thomas%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 8159,
-   "latency_ms": 251,
+   "bytes": 11914,
+   "latency_ms": 247,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:51Z"
+   "probed_at": "2026-10-25T20:20:23Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Marvin+Mims+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 6563,
-   "latency_ms": 277,
+   "latency_ms": 319,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:51Z"
+   "probed_at": "2026-10-25T20:20:23Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tyler+Allgeier%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 19249,
-   "latency_ms": 304,
+   "bytes": 18090,
+   "latency_ms": 273,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:51Z"
+   "probed_at": "2026-10-25T20:20:23Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jacoby+Brissett%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 18643,
-   "latency_ms": 290,
+   "latency_ms": 283,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:52Z"
+   "probed_at": "2026-10-25T20:20:24Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Michael+Wilson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 27515,
-   "latency_ms": 311,
+   "latency_ms": 290,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:52Z"
+   "probed_at": "2026-10-25T20:20:24Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Trey+McBride%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 13903,
-   "latency_ms": 290,
+   "bytes": 12851,
+   "latency_ms": 307,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:52Z"
+   "probed_at": "2026-10-25T20:20:24Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Marvin+Harrison+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 21188,
-   "latency_ms": 311,
+   "bytes": 20774,
+   "latency_ms": 289,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:53Z"
+   "probed_at": "2026-10-25T20:20:24Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Carson+Beck%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 9684,
-   "latency_ms": 310,
+   "bytes": 11091,
+   "latency_ms": 235,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:53Z"
+   "probed_at": "2026-10-25T20:20:25Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Hunter+Long%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1155,
-   "latency_ms": 291,
+   "latency_ms": 225,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:53Z"
+   "probed_at": "2026-10-25T20:20:25Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Reggie+Virgil%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1159,
-   "latency_ms": 221,
+   "latency_ms": 219,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:53Z"
+   "probed_at": "2026-10-25T20:20:25Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jalen+Brooks%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 9006,
-   "latency_ms": 263,
+   "bytes": 6414,
+   "latency_ms": 224,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:54Z"
+   "probed_at": "2026-10-25T20:20:25Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Elijah+Higgins%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3843,
-   "latency_ms": 261,
+   "latency_ms": 247,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:54Z"
+   "probed_at": "2026-10-25T20:20:26Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Chad+Ryland%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 7044,
-   "latency_ms": 280,
+   "latency_ms": 246,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:54Z"
+   "probed_at": "2026-10-25T20:20:26Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Riley+Moss%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9003,
-   "latency_ms": 299,
+   "latency_ms": 240,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:55Z"
+   "probed_at": "2026-10-25T20:20:26Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tyler+Badie%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 8391,
-   "latency_ms": 255,
+   "latency_ms": 238,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:55Z"
+   "probed_at": "2026-10-25T20:20:26Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Courtland+Sutton%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9778,
-   "latency_ms": 241,
+   "latency_ms": 256,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:55Z"
+   "probed_at": "2026-10-25T20:20:27Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jonah+Coleman%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 30619,
-   "latency_ms": 338,
+   "latency_ms": 318,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:55Z"
+   "probed_at": "2026-10-25T20:20:27Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Pat+Bryant%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9684,
-   "latency_ms": 287,
+   "latency_ms": 222,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:56Z"
+   "probed_at": "2026-10-25T20:20:27Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jaylen+Waddle%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 31852,
-   "latency_ms": 333,
+   "latency_ms": 614,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:56Z"
+   "probed_at": "2026-10-25T20:20:28Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22RJ+Harvey%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 16935,
-   "latency_ms": 300,
+   "latency_ms": 299,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:56Z"
+   "probed_at": "2026-10-25T20:20:28Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22J.K.+Dobbins%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 30570,
-   "latency_ms": 320,
+   "bytes": 31966,
+   "latency_ms": 302,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:57Z"
+   "probed_at": "2026-10-25T20:20:28Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Troy+Franklin%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2536,
-   "latency_ms": 345,
+   "latency_ms": 290,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:57Z"
+   "probed_at": "2026-10-25T20:20:29Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Evan+Engram%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3527,
-   "latency_ms": 293,
+   "latency_ms": 238,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:57Z"
+   "probed_at": "2026-10-25T20:20:29Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Wil+Lutz%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 2691,
-   "latency_ms": 235,
+   "bytes": 4990,
+   "latency_ms": 234,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:58Z"
+   "probed_at": "2026-10-25T20:20:29Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Nik+Bonitto%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 6922,
-   "latency_ms": 238,
+   "latency_ms": 276,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:58Z"
+   "probed_at": "2026-10-25T20:20:29Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dominique+Robinson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1169,
-   "latency_ms": 271,
+   "latency_ms": 201,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:58Z"
+   "probed_at": "2026-10-25T20:20:30Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jake+Hansen%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2240,
-   "latency_ms": 252,
+   "latency_ms": 203,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:58Z"
+   "probed_at": "2026-10-25T20:20:30Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jadeveon+Clowney%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 4619,
-   "latency_ms": 243,
+   "latency_ms": 229,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:59Z"
+   "probed_at": "2026-10-25T20:20:30Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Brevin+Jordan%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3880,
-   "latency_ms": 233,
+   "latency_ms": 218,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:59Z"
+   "probed_at": "2026-10-25T20:20:30Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jaylin+Noel%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 20578,
-   "latency_ms": 329,
+   "bytes": 9556,
+   "latency_ms": 263,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:59Z"
+   "probed_at": "2026-10-25T20:20:31Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kayshon+Boutte%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 6702,
-   "latency_ms": 240,
+   "latency_ms": 252,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:17:59Z"
+   "probed_at": "2026-10-25T20:20:31Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Woody+Marks%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 16645,
-   "latency_ms": 318,
+   "bytes": 17945,
+   "latency_ms": 322,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:00Z"
+   "probed_at": "2026-10-25T20:20:31Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22David+Montgomery%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 15033,
-   "latency_ms": 284,
+   "bytes": 15051,
+   "latency_ms": 1053,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:00Z"
+   "probed_at": "2026-10-25T20:20:32Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22C.J.+Stroud%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 50146,
-   "latency_ms": 326,
+   "bytes": 50742,
+   "latency_ms": 355,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:00Z"
+   "probed_at": "2026-10-25T20:20:33Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dalton+Schultz%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 5364,
-   "latency_ms": 288,
+   "latency_ms": 233,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:01Z"
+   "probed_at": "2026-10-25T20:20:33Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Nate+Thomas%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 5482,
-   "latency_ms": 232,
+   "latency_ms": 299,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:01Z"
+   "probed_at": "2026-10-25T20:20:33Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Ka%27imi+Fairbairn%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 11400,
-   "latency_ms": 277,
+   "latency_ms": 278,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:01Z"
+   "probed_at": "2026-10-25T20:20:33Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Colton+Hood%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 8158,
-   "latency_ms": 267,
+   "latency_ms": 264,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:01Z"
+   "probed_at": "2026-10-25T20:20:34Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Greg+Newsome+II%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 10427,
-   "latency_ms": 280,
+   "bytes": 11673,
+   "latency_ms": 253,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:02Z"
+   "probed_at": "2026-10-25T20:20:34Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dru+Phillips%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3364,
-   "latency_ms": 231,
+   "latency_ms": 233,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:02Z"
+   "probed_at": "2026-10-25T20:20:34Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tyrone+Tracy+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 12543,
-   "latency_ms": 297,
+   "latency_ms": 251,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:02Z"
+   "probed_at": "2026-10-25T20:20:34Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Malachi+Fields%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 5927,
-   "latency_ms": 278,
+   "latency_ms": 243,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:02Z"
+   "probed_at": "2026-10-25T20:20:35Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jameis+Winston%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 23707,
-   "latency_ms": 375,
+   "bytes": 23856,
+   "latency_ms": 340,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:03Z"
+   "probed_at": "2026-10-25T20:20:35Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Cam+Skattebo%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 49524,
-   "latency_ms": 311,
+   "bytes": 49347,
+   "latency_ms": 523,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:03Z"
+   "probed_at": "2026-10-25T20:20:35Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Isaiah+Likely%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 18716,
-   "latency_ms": 330,
+   "latency_ms": 268,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:04Z"
+   "probed_at": "2026-10-25T20:20:36Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22CJ+Okoye%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2395,
-   "latency_ms": 230,
+   "latency_ms": 369,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:04Z"
+   "probed_at": "2026-10-25T20:20:36Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Najee+Harris%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 8267,
-   "latency_ms": 272,
+   "latency_ms": 269,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:04Z"
+   "probed_at": "2026-10-25T20:20:36Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dominic+Zvada%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 6935,
-   "latency_ms": 303,
+   "latency_ms": 397,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:04Z"
+   "probed_at": "2026-10-25T20:20:37Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Devin+Singletary%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 7911,
-   "latency_ms": 278,
+   "bytes": 9074,
+   "latency_ms": 243,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:05Z"
+   "probed_at": "2026-10-25T20:20:37Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Darnell+Mooney%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 7463,
-   "latency_ms": 280,
+   "latency_ms": 257,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:05Z"
+   "probed_at": "2026-10-25T20:20:37Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Braxton+Berrios%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1163,
-   "latency_ms": 213,
+   "latency_ms": 203,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:05Z"
+   "probed_at": "2026-10-25T20:20:37Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Collin+Wright%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2605,
-   "latency_ms": 228,
+   "latency_ms": 213,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:05Z"
+   "probed_at": "2026-10-25T20:20:38Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Febechi+Nwaiwu%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 7640,
-   "latency_ms": 238,
+   "latency_ms": 242,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:06Z"
+   "probed_at": "2026-10-25T20:20:38Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jaden+Crumedy%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1159,
-   "latency_ms": 249,
+   "latency_ms": 209,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:06Z"
+   "probed_at": "2026-10-25T20:20:38Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Andrew+Billings%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3728,
-   "latency_ms": 219,
+   "latency_ms": 265,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:06Z"
+   "probed_at": "2026-10-25T20:20:38Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jason+Pinnock%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 4694,
-   "latency_ms": 242,
+   "bytes": 5994,
+   "latency_ms": 216,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:06Z"
+   "probed_at": "2026-10-25T20:20:39Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Bobby+Jamison-Travis%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1173,
-   "latency_ms": 259,
+   "latency_ms": 254,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:07Z"
+   "probed_at": "2026-10-25T20:20:39Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22J.C.+Davis%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 2227,
-   "latency_ms": 267,
+   "bytes": 1153,
+   "latency_ms": 211,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:07Z"
+   "probed_at": "2026-10-25T20:20:39Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Adam+Prentice%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 4842,
-   "latency_ms": 281,
+   "latency_ms": 216,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:07Z"
+   "probed_at": "2026-10-25T20:20:39Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Xavier+Hutchinson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 5266,
-   "latency_ms": 266,
+   "latency_ms": 232,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:07Z"
+   "probed_at": "2026-10-25T20:20:40Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kendrick+Bourne%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 8959,
-   "latency_ms": 278,
+   "bytes": 10067,
+   "latency_ms": 261,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:08Z"
+   "probed_at": "2026-10-25T20:20:40Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Sam+Ehlinger%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 7986,
-   "latency_ms": 247,
+   "latency_ms": 262,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:08Z"
+   "probed_at": "2026-10-25T20:20:40Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tyler+Onyedim%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9632,
-   "latency_ms": 226,
+   "latency_ms": 232,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:08Z"
+   "probed_at": "2026-10-25T20:20:40Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jordan+Jackson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9344,
-   "latency_ms": 241,
+   "latency_ms": 298,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:08Z"
+   "probed_at": "2026-10-25T20:20:41Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dallen+Bentley%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9385,
-   "latency_ms": 274,
+   "latency_ms": 4414,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:09Z"
+   "probed_at": "2026-10-25T20:20:45Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kage+Casey%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 8048,
-   "latency_ms": 266,
+   "latency_ms": 237,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:09Z"
+   "probed_at": "2026-10-25T20:20:45Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Bo+Nix%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 48042,
-   "latency_ms": 324,
+   "bytes": 49066,
+   "latency_ms": 286,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:09Z"
+   "probed_at": "2026-10-25T20:20:46Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Lil%27Jordan+Humphrey%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 5900,
-   "latency_ms": 243,
+   "bytes": 6195,
+   "latency_ms": 282,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:09Z"
+   "probed_at": "2026-10-25T20:20:46Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Budda+Baker%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 10432,
-   "latency_ms": 315,
+   "bytes": 9368,
+   "latency_ms": 243,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:10Z"
+   "probed_at": "2026-10-25T20:20:46Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Talanoa+Hufanga%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 9443,
-   "latency_ms": 271,
+   "bytes": 8257,
+   "latency_ms": 259,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:10Z"
+   "probed_at": "2026-10-25T20:20:46Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Brandon+Jones%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 2488,
-   "latency_ms": 305,
+   "bytes": 3616,
+   "latency_ms": 232,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:10Z"
+   "probed_at": "2026-10-25T20:20:47Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Zach+Allen%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 8473,
-   "latency_ms": 246,
+   "bytes": 9704,
+   "latency_ms": 281,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:11Z"
+   "probed_at": "2026-10-25T20:20:47Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Alex+Singleton%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 8423,
-   "latency_ms": 263,
+   "latency_ms": 289,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:11Z"
+   "probed_at": "2026-10-25T20:20:47Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Adam+Trautman%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3575,
-   "latency_ms": 276,
+   "latency_ms": 217,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:11Z"
+   "probed_at": "2026-10-25T20:20:47Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Azeez+Al-Shaair%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 8996,
-   "latency_ms": 282,
+   "bytes": 8889,
+   "latency_ms": 242,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:11Z"
+   "probed_at": "2026-10-25T20:20:48Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tremaine+Edmunds%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 10272,
-   "latency_ms": 293,
+   "bytes": 12338,
+   "latency_ms": 262,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:12Z"
+   "probed_at": "2026-10-25T20:20:48Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jonah+Elliss%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 9999,
-   "latency_ms": 300,
+   "bytes": 11019,
+   "latency_ms": 246,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:12Z"
+   "probed_at": "2026-10-25T20:20:48Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jack+Gibbens%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1157,
-   "latency_ms": 250,
+   "latency_ms": 216,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:12Z"
+   "probed_at": "2026-10-25T20:20:48Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Roy+Lopez%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2558,
-   "latency_ms": 286,
+   "latency_ms": 208,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:13Z"
+   "probed_at": "2026-10-25T20:20:49Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Max+Melton%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9463,
-   "latency_ms": 236,
+   "latency_ms": 214,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:13Z"
+   "probed_at": "2026-10-25T20:20:49Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Isaac+Seumalo%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1159,
-   "latency_ms": 226,
+   "latency_ms": 200,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:13Z"
+   "probed_at": "2026-10-25T20:20:49Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Cody+Simon%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1153,
-   "latency_ms": 226,
+   "latency_ms": 269,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:13Z"
+   "probed_at": "2026-10-25T20:20:49Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Deonte+Banks%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 6871,
-   "latency_ms": 264,
+   "latency_ms": 293,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:14Z"
+   "probed_at": "2026-10-25T20:20:50Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Chauncey+Golston%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3473,
-   "latency_ms": 228,
+   "latency_ms": 243,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:14Z"
+   "probed_at": "2026-10-25T20:20:50Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Micah+McFadden%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 6519,
-   "latency_ms": 289,
+   "bytes": 4446,
+   "latency_ms": 235,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:14Z"
+   "probed_at": "2026-10-25T20:20:50Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Ed+Ingram%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3872,
-   "latency_ms": 215,
+   "latency_ms": 247,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:14Z"
+   "probed_at": "2026-10-25T20:20:50Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Logan+Hall%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3874,
-   "latency_ms": 262,
+   "latency_ms": 282,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:15Z"
+   "probed_at": "2026-10-25T20:20:51Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Mack+Wilson+Sr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1163,
-   "latency_ms": 232,
+   "latency_ms": 224,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:15Z"
+   "probed_at": "2026-10-25T20:20:51Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Josh+Fryar%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2560,
-   "latency_ms": 268,
+   "latency_ms": 236,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:15Z"
+   "probed_at": "2026-10-25T20:20:51Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Darius+Alexander%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1165,
-   "latency_ms": 251,
+   "latency_ms": 189,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:15Z"
+   "probed_at": "2026-10-25T20:20:51Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tyler+Nubin%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9317,
-   "latency_ms": 317,
+   "latency_ms": 228,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:16Z"
+   "probed_at": "2026-10-25T20:20:51Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22DJ+Reader%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3447,
-   "latency_ms": 244,
+   "latency_ms": 285,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:16Z"
+   "probed_at": "2026-10-25T20:20:52Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Ar%27Darius+Washington%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3513,
-   "latency_ms": 270,
+   "latency_ms": 240,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:16Z"
+   "probed_at": "2026-10-25T20:20:52Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Arvell+Reese%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 7814,
-   "latency_ms": 286,
+   "bytes": 9084,
+   "latency_ms": 268,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:16Z"
+   "probed_at": "2026-10-25T20:20:52Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jevon+Holland%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 8131,
-   "latency_ms": 231,
+   "bytes": 9251,
+   "latency_ms": 213,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:17Z"
+   "probed_at": "2026-10-25T20:20:52Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jordan+Stout%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 4712,
-   "latency_ms": 238,
+   "latency_ms": 265,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:17Z"
+   "probed_at": "2026-10-25T20:20:53Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Zaire+Barnes%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2235,
-   "latency_ms": 285,
+   "latency_ms": 215,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:17Z"
+   "probed_at": "2026-10-25T20:20:53Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Abdul+Carter%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2279,
-   "latency_ms": 295,
+   "latency_ms": 245,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:17Z"
+   "probed_at": "2026-10-25T20:20:53Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Foster+Moreau%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 1159,
-   "latency_ms": 244,
+   "bytes": 2233,
+   "latency_ms": 202,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:18Z"
+   "probed_at": "2026-10-25T20:20:53Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jermaine+Eluemunor%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 6157,
-   "latency_ms": 377,
+   "bytes": 9645,
+   "latency_ms": 278,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:18Z"
+   "probed_at": "2026-10-25T20:20:54Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Reed+Blankenship%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 10163,
-   "latency_ms": 252,
+   "latency_ms": 248,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:18Z"
+   "probed_at": "2026-10-25T20:20:54Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Starling+Thomas+V%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3478,
-   "latency_ms": 234,
+   "latency_ms": 208,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:19Z"
+   "probed_at": "2026-10-25T20:20:54Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jake+Haener%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 7828,
-   "latency_ms": 235,
+   "latency_ms": 262,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:19Z"
+   "probed_at": "2026-10-25T20:20:54Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kamari+Lassiter%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2278,
-   "latency_ms": 252,
+   "latency_ms": 227,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:19Z"
+   "probed_at": "2026-10-25T20:20:55Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Danielle+Hunter%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 4309,
-   "latency_ms": 256,
+   "latency_ms": 253,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:19Z"
+   "probed_at": "2026-10-25T20:20:55Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Sheldon+Rankins%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2705,
-   "latency_ms": 268,
+   "latency_ms": 231,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:20Z"
+   "probed_at": "2026-10-25T20:20:55Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jalen+Pitre%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 10113,
-   "latency_ms": 281,
+   "latency_ms": 228,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:20Z"
+   "probed_at": "2026-10-25T20:20:55Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tommy+Togiai%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1157,
-   "latency_ms": 236,
+   "latency_ms": 217,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:20Z"
+   "probed_at": "2026-10-25T20:20:56Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kai+Kroeger%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1155,
-   "latency_ms": 209,
+   "latency_ms": 202,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:20Z"
+   "probed_at": "2026-10-25T20:20:56Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Derek+Stingley+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3847,
-   "latency_ms": 276,
+   "latency_ms": 238,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:21Z"
+   "probed_at": "2026-10-25T20:20:56Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Calen+Bullock%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1159,
-   "latency_ms": 252,
+   "latency_ms": 277,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:21Z"
+   "probed_at": "2026-10-25T20:20:56Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Sabastian+Harsh%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1163,
-   "latency_ms": 231,
+   "latency_ms": 230,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:21Z"
+   "probed_at": "2026-10-25T20:20:56Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tremon+Smith%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1157,
-   "latency_ms": 242,
+   "latency_ms": 194,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:21Z"
+   "probed_at": "2026-10-25T20:20:57Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kamari+Ramsey%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1159,
-   "latency_ms": 225,
+   "latency_ms": 205,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:22Z"
+   "probed_at": "2026-10-25T20:20:57Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Nikko+Reed%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 7650,
-   "latency_ms": 268,
+   "latency_ms": 226,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:22Z"
+   "probed_at": "2026-10-25T20:20:57Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kayvon+Thibodeaux%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 4722,
-   "latency_ms": 261,
+   "latency_ms": 227,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:22Z"
+   "probed_at": "2026-10-25T20:20:57Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Devin+Duvernay%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1161,
-   "latency_ms": 206,
+   "latency_ms": 199,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:22Z"
+   "probed_at": "2026-10-25T20:20:58Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Andrew+Wingard%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 6206,
-   "latency_ms": 247,
+   "bytes": 8771,
+   "latency_ms": 261,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:23Z"
+   "probed_at": "2026-10-25T20:20:58Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Darius+Robinson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 8020,
-   "latency_ms": 268,
+   "bytes": 9179,
+   "latency_ms": 263,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:23Z"
+   "probed_at": "2026-10-25T20:20:58Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Baron+Browning%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 3307,
-   "latency_ms": 269,
+   "bytes": 1161,
+   "latency_ms": 202,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:23Z"
+   "probed_at": "2026-10-25T20:20:58Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Eku+Leota%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2199,
-   "latency_ms": 263,
+   "latency_ms": 237,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:23Z"
+   "probed_at": "2026-10-25T20:20:59Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Zaven+Collins%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 1159,
-   "latency_ms": 248,
+   "bytes": 2317,
+   "latency_ms": 291,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:24Z"
+   "probed_at": "2026-10-25T20:20:59Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Walter+Nolen+III%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 9432,
-   "latency_ms": 254,
+   "bytes": 9528,
+   "latency_ms": 244,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:24Z"
+   "probed_at": "2026-10-25T20:20:59Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Denzel+Burke%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2564,
-   "latency_ms": 228,
+   "latency_ms": 202,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:24Z"
+   "probed_at": "2026-10-25T20:20:59Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kalen+King%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2251,
-   "latency_ms": 224,
+   "latency_ms": 200,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:24Z"
+   "probed_at": "2026-10-25T20:20:59Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Karson+Sharar%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1159,
-   "latency_ms": 332,
+   "latency_ms": 221,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:25Z"
+   "probed_at": "2026-10-25T20:21:00Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Simi+Fehoko%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1155,
-   "latency_ms": 225,
+   "latency_ms": 208,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:25Z"
+   "probed_at": "2026-10-25T20:21:00Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Wydett+Williams+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 5063,
-   "latency_ms": 243,
+   "bytes": 3740,
+   "latency_ms": 204,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:25Z"
+   "probed_at": "2026-10-25T20:21:00Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dante+Stills%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2564,
-   "latency_ms": 217,
+   "latency_ms": 236,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:25Z"
+   "probed_at": "2026-10-25T20:21:00Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Sai%27vion+Jones%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 4931,
-   "latency_ms": 248,
+   "latency_ms": 258,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:26Z"
+   "probed_at": "2026-10-25T20:21:01Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Pat+Surtain+II%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 18816,
-   "latency_ms": 323,
+   "latency_ms": 317,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:26Z"
+   "probed_at": "2026-10-25T20:21:01Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Justin+Strnad%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2488,
-   "latency_ms": 311,
+   "latency_ms": 196,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:26Z"
+   "probed_at": "2026-10-25T20:21:01Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Que+Robinson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 7423,
-   "latency_ms": 237,
+   "latency_ms": 223,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:26Z"
+   "probed_at": "2026-10-25T20:21:01Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Malcolm+Roach%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2246,
-   "latency_ms": 264,
+   "latency_ms": 210,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:27Z"
+   "probed_at": "2026-10-25T20:21:02Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dondrea+Tillman%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3771,
-   "latency_ms": 235,
+   "latency_ms": 212,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:27Z"
+   "probed_at": "2026-10-25T20:21:02Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jeremy+Crawshaw%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1163,
-   "latency_ms": 218,
+   "latency_ms": 204,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:27Z"
+   "probed_at": "2026-10-25T20:21:02Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22JL+Skinner%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1153,
-   "latency_ms": 253,
+   "latency_ms": 196,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:27Z"
+   "probed_at": "2026-10-25T20:21:02Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22D.J.+Jones%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3569,
-   "latency_ms": 253,
+   "latency_ms": 211,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:28Z"
+   "probed_at": "2026-10-25T20:21:02Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jahdae+Barron%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9177,
-   "latency_ms": 273,
+   "latency_ms": 228,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:28Z"
+   "probed_at": "2026-10-25T20:21:03Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kris+Abrams-Draine%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 7001,
-   "latency_ms": 250,
+   "bytes": 8211,
+   "latency_ms": 240,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:28Z"
+   "probed_at": "2026-10-25T20:21:03Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Devon+Key%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 3803,
-   "latency_ms": 250,
+   "bytes": 4857,
+   "latency_ms": 290,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:28Z"
+   "probed_at": "2026-10-25T20:21:03Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Eyioma+Uwazurike%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2252,
-   "latency_ms": 226,
+   "latency_ms": 214,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:29Z"
+   "probed_at": "2026-10-25T20:21:03Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22J.J.+McCarthy%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 50558,
-   "latency_ms": 376,
+   "bytes": 51654,
+   "latency_ms": 385,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:29Z"
+   "probed_at": "2026-10-25T20:21:04Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Charlie+Jones%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 8568,
-   "latency_ms": 269,
+   "latency_ms": 222,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:29Z"
+   "probed_at": "2026-10-25T20:21:04Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dare+Ogunbowale%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 6582,
-   "latency_ms": 254,
+   "bytes": 5518,
+   "latency_ms": 244,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:30Z"
+   "probed_at": "2026-10-25T20:21:04Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Elijah+Campbell%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1163,
-   "latency_ms": 244,
+   "latency_ms": 198,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:30Z"
+   "probed_at": "2026-10-25T20:21:04Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Nic+Jones%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1151,
-   "latency_ms": 242,
+   "latency_ms": 217,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:30Z"
+   "probed_at": "2026-10-25T20:21:05Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Chris+Braswell%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1161,
-   "latency_ms": 204,
+   "latency_ms": 194,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:30Z"
+   "probed_at": "2026-10-25T20:21:05Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jihad+Ward%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 3313,
-   "latency_ms": 241,
+   "bytes": 2247,
+   "latency_ms": 426,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:31Z"
+   "probed_at": "2026-10-25T20:21:05Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Cameron+Robertson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1167,
-   "latency_ms": 201,
+   "latency_ms": 202,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:31Z"
+   "probed_at": "2026-10-25T20:21:05Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Marlin+Klein%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 8896,
-   "latency_ms": 265,
+   "latency_ms": 260,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:31Z"
+   "probed_at": "2026-10-25T20:21:06Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kei%27Trel+Clark%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 4959,
-   "latency_ms": 228,
+   "latency_ms": 220,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:31Z"
+   "probed_at": "2026-10-25T20:21:06Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Trace+Ford%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2479,
-   "latency_ms": 260,
+   "latency_ms": 221,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:32Z"
+   "probed_at": "2026-10-25T20:21:06Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kenneth+Murray+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1169,
-   "latency_ms": 230,
+   "latency_ms": 211,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:32Z"
+   "probed_at": "2026-10-25T20:21:06Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Cade+Stover%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1155,
-   "latency_ms": 346,
+   "latency_ms": 261,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:32Z"
+   "probed_at": "2026-10-25T20:21:07Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22L.J.+Collier%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2564,
-   "latency_ms": 253,
+   "latency_ms": 277,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:32Z"
+   "probed_at": "2026-10-25T20:21:07Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jordan+Burch%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1157,
-   "latency_ms": 248,
+   "latency_ms": 236,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:33Z"
+   "probed_at": "2026-10-25T20:21:07Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Paris+Johnson+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 5979,
-   "latency_ms": 290,
+   "latency_ms": 231,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:33Z"
+   "probed_at": "2026-10-25T20:21:07Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Ja%27Quan+McMillian%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 6227,
-   "latency_ms": 250,
+   "bytes": 6020,
+   "latency_ms": 233,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:33Z"
+   "probed_at": "2026-10-25T20:21:08Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Karene+Reid%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1155,
-   "latency_ms": 267,
+   "latency_ms": 216,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:33Z"
+   "probed_at": "2026-10-25T20:21:08Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Tank+Dell%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 23297,
-   "latency_ms": 349,
+   "bytes": 22133,
+   "latency_ms": 306,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:34Z"
+   "probed_at": "2026-10-25T20:21:08Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Teagan+Quitoriano%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3365,
-   "latency_ms": 227,
+   "latency_ms": 228,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:34Z"
+   "probed_at": "2026-10-25T20:21:08Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kayden+McDonald%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3262,
-   "latency_ms": 244,
+   "latency_ms": 243,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:34Z"
+   "probed_at": "2026-10-25T20:21:09Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jamal+Hill%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 5260,
-   "latency_ms": 239,
+   "bytes": 6558,
+   "latency_ms": 220,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:34Z"
+   "probed_at": "2026-10-25T20:21:09Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Will+Anderson+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 8926,
-   "latency_ms": 255,
+   "bytes": 9964,
+   "latency_ms": 422,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:35Z"
+   "probed_at": "2026-10-25T20:21:09Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Chris+Manhertz%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 5003,
-   "latency_ms": 207,
+   "latency_ms": 226,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:35Z"
+   "probed_at": "2026-10-25T20:21:09Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jedrick+Wills+Jr.%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 1167,
-   "latency_ms": 245,
+   "bytes": 2353,
+   "latency_ms": 241,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:35Z"
+   "probed_at": "2026-10-25T20:21:10Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Braden+Smith%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9710,
-   "latency_ms": 280,
+   "latency_ms": 282,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:35Z"
+   "probed_at": "2026-10-25T20:21:10Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Trent+Brown%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2408,
-   "latency_ms": 276,
+   "latency_ms": 214,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:36Z"
+   "probed_at": "2026-10-25T20:21:10Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Nico+Collins%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 24818,
-   "latency_ms": 412,
+   "bytes": 23579,
+   "latency_ms": 275,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:36Z"
+   "probed_at": "2026-10-25T20:21:10Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22M.J.+Stewart%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 5086,
-   "latency_ms": 255,
+   "latency_ms": 263,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:36Z"
+   "probed_at": "2026-10-25T20:21:11Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Nathan+Thomas%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3311,
-   "latency_ms": 282,
+   "latency_ms": 252,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:37Z"
+   "probed_at": "2026-10-25T20:21:11Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Wade+Woodaz%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1155,
-   "latency_ms": 226,
+   "latency_ms": 484,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:37Z"
+   "probed_at": "2026-10-25T20:21:12Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Bryan+Hudson%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1157,
-   "latency_ms": 266,
+   "latency_ms": 204,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:37Z"
+   "probed_at": "2026-10-25T20:21:12Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Aireontae+Ersery%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1165,
-   "latency_ms": 230,
+   "latency_ms": 232,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:37Z"
+   "probed_at": "2026-10-25T20:21:12Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Blake+Fisher%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 10025,
-   "latency_ms": 263,
+   "latency_ms": 233,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:38Z"
+   "probed_at": "2026-10-25T20:21:12Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Dalen+Cambre%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1157,
-   "latency_ms": 198,
+   "latency_ms": 206,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:38Z"
+   "probed_at": "2026-10-25T20:21:12Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Aiden+Fisher%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1157,
-   "latency_ms": 338,
+   "latency_ms": 191,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:38Z"
+   "probed_at": "2026-10-25T20:21:13Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Bryce+Hall%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 5678,
-   "latency_ms": 236,
+   "latency_ms": 269,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:38Z"
+   "probed_at": "2026-10-25T20:21:13Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Gardner+Minshew+II%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2322,
-   "latency_ms": 269,
+   "latency_ms": 242,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:39Z"
+   "probed_at": "2026-10-25T20:21:13Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Sean+Fresch%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 10312,
-   "latency_ms": 312,
+   "bytes": 9228,
+   "latency_ms": 261,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:39Z"
+   "probed_at": "2026-10-25T20:21:13Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Art+Green%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1151,
-   "latency_ms": 216,
+   "latency_ms": 212,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:39Z"
+   "probed_at": "2026-10-25T20:21:14Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Mike+McGlinchey%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3579,
-   "latency_ms": 224,
+   "latency_ms": 256,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:39Z"
+   "probed_at": "2026-10-25T20:21:14Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22James+Conner%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 7076,
-   "latency_ms": 277,
+   "latency_ms": 265,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:40Z"
+   "probed_at": "2026-10-25T20:21:14Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Malik+Harrison%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2225,
-   "latency_ms": 235,
+   "latency_ms": 232,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:40Z"
+   "probed_at": "2026-10-25T20:21:14Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Ben+Powers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3569,
-   "latency_ms": 240,
+   "latency_ms": 225,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:40Z"
+   "probed_at": "2026-10-25T20:21:15Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Ja%27Marcus+Ingram%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3347,
-   "latency_ms": 265,
+   "latency_ms": 248,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:40Z"
+   "probed_at": "2026-10-25T20:21:15Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Henry+To%27oTo%27o%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 9719,
-   "latency_ms": 239,
+   "bytes": 10597,
+   "latency_ms": 241,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:41Z"
+   "probed_at": "2026-10-25T20:21:15Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Shawn+Bowman%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1157,
-   "latency_ms": 247,
+   "latency_ms": 208,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:41Z"
+   "probed_at": "2026-10-25T20:21:15Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Kitan+Crawford%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 4878,
-   "latency_ms": 237,
+   "bytes": 3726,
+   "latency_ms": 207,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:41Z"
+   "probed_at": "2026-10-25T20:21:15Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Taylor+Rapp%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 10878,
-   "latency_ms": 272,
+   "bytes": 10567,
+   "latency_ms": 244,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:41Z"
+   "probed_at": "2026-10-25T20:21:16Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Luke+Wattenberg%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 3579,
-   "latency_ms": 274,
+   "latency_ms": 219,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:42Z"
+   "probed_at": "2026-10-25T20:21:16Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jonathon+Cooper%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 13635,
-   "latency_ms": 294,
+   "latency_ms": 268,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:42Z"
+   "probed_at": "2026-10-25T20:21:16Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Bam+Knight%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 26329,
-   "latency_ms": 330,
+   "bytes": 26308,
+   "latency_ms": 299,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:42Z"
+   "probed_at": "2026-10-25T20:21:16Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jawhar+Jordan%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 11081,
-   "latency_ms": 288,
+   "latency_ms": 241,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:43Z"
+   "probed_at": "2026-10-25T20:21:17Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Evan+Hull%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 8268,
-   "latency_ms": 306,
+   "bytes": 9556,
+   "latency_ms": 259,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:43Z"
+   "probed_at": "2026-10-25T20:21:17Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jerrick+Reed+II%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1163,
-   "latency_ms": 246,
+   "latency_ms": 197,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:43Z"
+   "probed_at": "2026-10-25T20:21:17Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jack+Kelly%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 4864,
-   "latency_ms": 269,
+   "latency_ms": 224,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:44Z"
+   "probed_at": "2026-10-25T20:21:17Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Garrett+Williams%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 2380,
-   "latency_ms": 270,
+   "latency_ms": 254,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:44Z"
+   "probed_at": "2026-10-25T20:21:18Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Casey+Kreiter%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1159,
-   "latency_ms": 290,
+   "latency_ms": 205,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:44Z"
+   "probed_at": "2026-10-25T20:21:18Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jake+Hummel%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1155,
-   "latency_ms": 264,
+   "latency_ms": 204,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:44Z"
+   "probed_at": "2026-10-25T20:21:18Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Marcus+Mbow%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 9300,
-   "latency_ms": 256,
+   "latency_ms": 271,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:45Z"
+   "probed_at": "2026-10-25T20:21:18Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Paulson+Adebo%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 10792,
-   "latency_ms": 242,
+   "latency_ms": 250,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:45Z"
+   "probed_at": "2026-10-25T20:21:19Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Thomas+Fidone+II%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 11676,
-   "latency_ms": 225,
+   "bytes": 13042,
+   "latency_ms": 247,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:45Z"
+   "probed_at": "2026-10-25T20:21:19Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jon+Gaines+II%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 7160,
-   "latency_ms": 245,
+   "bytes": 9487,
+   "latency_ms": 251,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:45Z"
+   "probed_at": "2026-10-25T20:21:19Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Jalin+Hyatt%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 10341,
-   "latency_ms": 272,
+   "latency_ms": 268,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:46Z"
+   "probed_at": "2026-10-25T20:21:19Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Josh+Sills%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 7865,
-   "latency_ms": 256,
+   "bytes": 6791,
+   "latency_ms": 259,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:46Z"
+   "probed_at": "2026-10-25T20:21:20Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Raheem+Layne%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 10642,
-   "latency_ms": 257,
+   "latency_ms": 264,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:46Z"
+   "probed_at": "2026-10-25T20:21:20Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Albert+Reese+IV%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1163,
-   "latency_ms": 233,
+   "latency_ms": 220,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:46Z"
+   "probed_at": "2026-10-25T20:21:20Z"
   },
   {
    "source": "google-news",
    "url": "https://news.google.com/rss/search?q=%22Ben+Mann%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
    "bytes": 1149,
-   "latency_ms": 198,
+   "latency_ms": 188,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:47Z"
+   "probed_at": "2026-10-25T20:21:20Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Dallas+Cowboys%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22Los+Angeles+Chargers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 62933,
-   "latency_ms": 387,
+   "bytes": 60745,
+   "latency_ms": 473,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:47Z"
+   "probed_at": "2026-10-25T20:21:21Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Detroit+Lions%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22Los+Angeles+Rams%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 28231,
-   "latency_ms": 291,
+   "bytes": 56066,
+   "latency_ms": 404,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:47Z"
+   "probed_at": "2026-10-25T20:21:21Z"
   },
   {
    "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Green+Bay+Packers%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+   "url": "https://news.google.com/rss/search?q=%22Las+Vegas+Raiders%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
    "status": 200,
-   "bytes": 63046,
-   "latency_ms": 367,
+   "bytes": 54611,
+   "latency_ms": 360,
    "attempts": 1,
    "result": "ok",
    "error": "",
-   "probed_at": "2026-10-25T20:18:48Z"
-  },
-  {
-   "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Jacksonville+Jaguars%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "status": 200,
-   "bytes": 47882,
-   "latency_ms": 434,
-   "attempts": 1,
-   "result": "ok",
-   "error": "",
-   "probed_at": "2026-10-25T20:18:48Z"
-  },
-  {
-   "source": "google-news",
-   "url": "https://news.google.com/rss/search?q=%22Kansas+City+Chiefs%22+injury+when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
-   "status": 200,
-   "bytes": 93098,
-   "latency_ms": 397,
-   "attempts": 1,
-   "result": "ok",
-   "error": "",
-   "probed_at": "2026-10-25T20:18:48Z"
+   "probed_at": "2026-10-25T20:21:22Z"
   }
  ]
 }
