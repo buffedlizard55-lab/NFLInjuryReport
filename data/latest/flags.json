@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T19:41:17Z",
+ "generated_at": "2026-10-25T20:00:25Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1434,11 +1434,27 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 3 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: MIN:bo-richter (not asserted by any source for 14.0 days); MIN:tai-felton (not asserted by any source for 14.0 days); MIN:chaz-chambliss (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "78 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: nfl@sportsfeed.me said ACTIVE for Puka Nacua (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link); Fantasy Guru said QUESTIONABLE for Kaelon Black (official: see link); SNY said OUT for T'Vondre Sweat (official: see link); Yahoo Sports said OUT for T'Vondre Sweat (official: see link)",
+   "title": "69 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: AOL.com said QUESTIONABLE for Woody Marks (official: see link); nfl@sportsfeed.me said ACTIVE for Puka Nacua (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link); Fantasy Guru said QUESTIONABLE for Kaelon Black (official: see link); Dallas Cowboys | Official Site of the Dallas Cowboys said OUT for Marist Liufau (official: see link)",
    "evidence": [
+    {
+     "label": "AOL.com: Woody Marks QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4429059/woody-marks"
+    },
     {
      "label": "nfl@sportsfeed.me: Puka Nacua ACTIVE",
      "url": "https://www.nfl.com/players/puka-nacua/"
@@ -1452,12 +1468,8 @@
      "url": "https://www.espn.com/nfl/player/_/id/4696044/kaelon-black"
     },
     {
-     "label": "SNY: T'Vondre Sweat OUT",
-     "url": "https://www.nfl.com/players/t-vondre-sweat/"
-    },
-    {
-     "label": "Yahoo Sports: T'Vondre Sweat OUT",
-     "url": "https://www.nfl.com/players/t-vondre-sweat/"
+     "label": "Dallas Cowboys | Official Site of the Dallas Cowboys: Marist Liufau OUT",
+     "url": "https://www.nfl.com/players/marist-liufau/"
     }
    ]
   },
@@ -1529,7 +1541,7 @@
    "code": "DIRECTORY_CROSS_TEAM_BEAT",
    "severity": "low",
    "title": "Beat writer Scott Smith is attributed across 2 clubs (TB, CAR)",
-   "detail": "ESPN printed Scott Smith (Buccaneers' official site) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "detail": "ESPN printed Scott Smith (team's official website) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
    "evidence": [
     {
      "label": "ESPN attribution #1",
@@ -1537,11 +1549,11 @@
     },
     {
      "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4371733/kenny-gainwell"
+     "url": "https://www.espn.com/nfl/player/_/id/3909013/christian-rozeboom"
     },
     {
      "label": "ESPN attribution #3",
-     "url": "https://www.espn.com/nfl/player/_/id/3909013/christian-rozeboom"
+     "url": "https://www.espn.com/nfl/player/_/id/3871102/david-sills-v"
     }
    ]
   },
