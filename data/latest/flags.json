@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T20:06:40Z",
+ "generated_at": "2026-10-25T20:10:04Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1364,7 +1364,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "11 player(s) have no official designation but do have an ESPN status",
+   "title": "12 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1424,8 +1424,8 @@
   {
    "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "Roster index pruned 10 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CHI:xavier-woods (not asserted by any source for 14.0 days); LV:malik-benson (not asserted by any source for 14.0 days); LV:connor-heyward (not asserted by any source for 14.0 days); NE:namdi-obiazor (not asserted by any source for 14.0 days); HOU:jaylin-smith (not asserted by any source for 14.0 days); NE:elliott-davison (not asserted by any source for 14.0 days); LV:alex-ward (not asserted by any source for 14.0 days); NE:kj-britt (not asserted by any source for 14.0 days); LV:jermod-mccoy (not asserted by any source for 14.0 days); GB:kitan-oladapo (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: TEN:michael-carter (official report lists the player under a different club). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
      "label": "Official NFL injury report",
@@ -1436,12 +1436,16 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "71 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: AOL.com said QUESTIONABLE for Woody Marks (official: see link); nfl@sportsfeed.me said ACTIVE for Puka Nacua (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link); Fantasy Guru said QUESTIONABLE for Kaelon Black (official: see link); Yahoo Sports said OUT for Pat Surtain II (official: see link)",
+   "title": "64 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: AOL.com said QUESTIONABLE for Woody Marks (official: see link); Dallas News said QUESTIONABLE for DeeJay Dallas (official: see link); nfl@sportsfeed.me said ACTIVE for Puka Nacua (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link); Yahoo Sports said OUT for Pat Surtain II (official: see link)",
    "evidence": [
     {
      "label": "AOL.com: Woody Marks QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4429059/woody-marks"
+    },
+    {
+     "label": "Dallas News: DeeJay Dallas QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4240631/deejay-dallas"
     },
     {
      "label": "nfl@sportsfeed.me: Puka Nacua ACTIVE",
@@ -1450,10 +1454,6 @@
     {
      "label": "rapsheet.bsky.social: Roquan Smith QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/3915189/roquan-smith"
-    },
-    {
-     "label": "Fantasy Guru: Kaelon Black QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4696044/kaelon-black"
     },
     {
      "label": "Yahoo Sports: Pat Surtain II OUT",
