@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T12:04:03Z",
+ "generated_at": "2026-10-25T12:22:38Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -157,6 +157,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Cesar Ruiz",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/cesar-ruiz/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -461,6 +477,22 @@
     },
     {
      "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Nathan Shepherd",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/nathan-shepherd/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -813,11 +845,15 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "16 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Jeremiyah Love (official: see link); Field Gulls said IR for Anthony Bradford (official: see link); Seattle Seahawks said IR for Anthony Bradford (official: see link); FOX 8 News said IR for Dylan Sampson (official: see link); Patriots Wire said IR for Will Campbell (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Rams Wire said ACTIVE for Puka Nacua (official: see link); Canal Street Chronicles said OUT for Cesar Ruiz (official: see link); Field Gulls said IR for Anthony Bradford (official: see link); Seattle Seahawks said IR for Anthony Bradford (official: see link); Yahoo Sports said ACTIVE for Kyle Louis (official: see link)",
    "evidence": [
     {
-     "label": "Yahoo Sports: Jeremiyah Love ACTIVE",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
+     "label": "Rams Wire: Puka Nacua ACTIVE",
+     "url": "https://www.nfl.com/players/puka-nacua/"
+    },
+    {
+     "label": "Canal Street Chronicles: Cesar Ruiz OUT",
+     "url": "https://www.nfl.com/players/cesar-ruiz/"
     },
     {
      "label": "Field Gulls: Anthony Bradford IR",
@@ -828,12 +864,8 @@
      "url": "https://www.nfl.com/players/anthony-bradford/"
     },
     {
-     "label": "FOX 8 News: Dylan Sampson IR",
-     "url": "https://www.nfl.com/players/dylan-sampson/"
-    },
-    {
-     "label": "Patriots Wire: Will Campbell IR",
-     "url": "https://www.nfl.com/players/will-campbell/"
+     "label": "Yahoo Sports: Kyle Louis ACTIVE",
+     "url": "https://www.nfl.com/players/kyle-louis/"
     }
    ]
   },
