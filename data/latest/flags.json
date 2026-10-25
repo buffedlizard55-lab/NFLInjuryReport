@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T23:25:07Z",
+ "generated_at": "2026-10-25T23:28:08Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1494,9 +1494,21 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 9 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: DET:malcolm-rodriguez (not asserted by any source for 14.0 days); DET:tay-martin (not asserted by any source for 14.0 days); DET:tate-ratledge (not asserted by any source for 14.0 days); DET:brock-wright (not asserted by any source for 14.0 days); DET:skyler-gill-howard (not asserted by any source for 14.0 days); ARI:eku-leota (not asserted by any source for 14.0 days); DET:jalen-mills (not asserted by any source for 14.0 days); ARI:art-green (not asserted by any source for 14.0 days); DET:juice-scruggs (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "70 reporter claim(s) contradicted by the official report",
+   "title": "66 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said QUESTIONABLE for Cairo Santos (official: see link); PackersNews.com said QUESTIONABLE for Devonte Wyatt (official: see link); Baltimore Ravens said OUT for Olaivavega Ioane (official: see link); USA Today said ACTIVE for Puka Nacua (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link)",
    "evidence": [
     {
