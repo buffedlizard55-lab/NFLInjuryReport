@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T15:51:39Z",
+ "generated_at": "2026-10-25T15:53:25Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -45,6 +45,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Avieon Terrell",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/avieon-terrell/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1090,6 +1106,22 @@
    ]
   },
   {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Za'Darius Smith",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/za-darius-smith/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
    "title": "6 player(s) have no official designation but do have an ESPN status",
@@ -1248,7 +1280,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "32 reporter claim(s) contradicted by the official report",
+   "title": "35 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said QUESTIONABLE for Tyler Shough (official: see link); Yahoo Sports said ACTIVE for Rico Dowdle (official: see link); Canal Street Chronicles said OUT for Cesar Ruiz (official: see link); FantasyPros said ACTIVE for Rico Dowdle (official: see link); Yahoo Sports said OUT for Trevor Etienne (official: see link)",
    "evidence": [
     {
