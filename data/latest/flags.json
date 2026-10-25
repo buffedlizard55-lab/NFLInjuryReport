@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T20:14:57Z",
+ "generated_at": "2026-10-25T20:17:32Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1422,21 +1422,9 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 9 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CLE:isaiah-bond (not asserted by any source for 14.0 days); CIN:oren-burks (not asserted by any source for 14.0 days); CIN:tacario-davis (not asserted by any source for 14.0 days); CIN:joe-giles-harris (not asserted by any source for 14.0 days); MIA:aaron-brewer (not asserted by any source for 14.0 days); MIA:jaylin-simpson (not asserted by any source for 14.0 days); MIA:shaka-heyward (not asserted by any source for 14.0 days); NYJ:joe-tippmann (not asserted by any source for 14.0 days); NYJ:armand-membou (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "64 reporter claim(s) contradicted by the official report",
+   "title": "62 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: AOL.com said QUESTIONABLE for Woody Marks (official: see link); Dallas News said QUESTIONABLE for DeeJay Dallas (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link); Yahoo Sports said OUT for Pat Surtain II (official: see link); AOL.com said OUT for Pat Surtain II (official: see link)",
    "evidence": [
     {
@@ -1522,26 +1510,6 @@
     {
      "label": "ESPN attribution #3",
      "url": "https://www.espn.com/nfl/player/_/id/5093923/andrew-armstrong"
-    }
-   ]
-  },
-  {
-   "code": "DIRECTORY_CROSS_TEAM_BEAT",
-   "severity": "low",
-   "title": "Beat writer Scott Smith is attributed across 2 clubs (TB, CAR)",
-   "detail": "ESPN printed Scott Smith (team's official website) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
-   "evidence": [
-    {
-     "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/2973051/taylor-moton"
-    },
-    {
-     "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/3909013/christian-rozeboom"
-    },
-    {
-     "label": "ESPN attribution #3",
-     "url": "https://www.espn.com/nfl/player/_/id/3871102/david-sills-v"
     }
    ]
   },
