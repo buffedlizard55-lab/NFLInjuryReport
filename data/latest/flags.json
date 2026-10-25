@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T22:58:44Z",
+ "generated_at": "2026-10-25T23:01:50Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -420,6 +420,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Connor O'Toole",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/connor-o-toole/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Cooper McDonald",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -458,6 +474,22 @@
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/darius-robinson-2/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for DeMarcus Lawrence",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/demarcus-lawrence/"
     },
     {
      "label": "ESPN (ACTIVE)",
@@ -541,6 +573,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Drew Lock",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/drew-lock/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1380,7 +1428,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "12 player(s) have no official designation but do have an ESPN status",
+   "title": "13 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1417,14 +1465,10 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "70 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: PackersNews.com said QUESTIONABLE for Devonte Wyatt (official: see link); AOL.com said QUESTIONABLE for Devonte Wyatt (official: see link); Baltimore Ravens said OUT for Olaivavega Ioane (official: see link); USA Today said ACTIVE for Puka Nacua (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: PackersNews.com said QUESTIONABLE for Devonte Wyatt (official: see link); Baltimore Ravens said OUT for Olaivavega Ioane (official: see link); USA Today said ACTIVE for Puka Nacua (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link); Yahoo Sports said OUT for Pat Surtain II (official: see link)",
    "evidence": [
     {
      "label": "PackersNews.com: Devonte Wyatt QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4361791/devonte-wyatt"
-    },
-    {
-     "label": "AOL.com: Devonte Wyatt QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4361791/devonte-wyatt"
     },
     {
@@ -1438,6 +1482,10 @@
     {
      "label": "rapsheet.bsky.social: Roquan Smith QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/3915189/roquan-smith"
+    },
+    {
+     "label": "Yahoo Sports: Pat Surtain II OUT",
+     "url": "https://www.nfl.com/players/patrick-surtain-ii/"
     }
    ]
   },
