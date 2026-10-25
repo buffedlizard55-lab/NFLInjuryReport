@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T01:18:57Z",
+ "generated_at": "2026-10-25T01:26:08Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -810,42 +810,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 2 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: MIA:de-von-achane (not asserted by any source for 14.1 days); TEN:garrett-dellinger (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "21 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: WTAJ said IR for DeShon Elliott (official: see link); Field Gulls said IR for Anthony Bradford (official: see link); Seattle Seahawks said IR for Anthony Bradford (official: see link); Yahoo Sports said QUESTIONABLE for DeVonta Smith (official: see link); FOX 8 News said IR for Dylan Sampson (official: see link)",
+   "title": "16 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Jeremiyah Love (official: see link); Field Gulls said IR for Anthony Bradford (official: see link); FOX 8 News said IR for Dylan Sampson (official: see link); Patriots Wire said IR for Will Campbell (official: see link); Athlon Sports said QUESTIONABLE for Tavius Robinson (official: see link)",
    "evidence": [
     {
-     "label": "WTAJ: DeShon Elliott IR",
-     "url": "https://www.nfl.com/players/deshon-elliott/"
+     "label": "Yahoo Sports: Jeremiyah Love ACTIVE",
+     "url": "https://www.nfl.com/players/jeremiyah-love/"
     },
     {
      "label": "Field Gulls: Anthony Bradford IR",
      "url": "https://www.nfl.com/players/anthony-bradford/"
     },
     {
-     "label": "Seattle Seahawks: Anthony Bradford IR",
-     "url": "https://www.nfl.com/players/anthony-bradford/"
-    },
-    {
-     "label": "Yahoo Sports: DeVonta Smith QUESTIONABLE",
-     "url": "https://www.nfl.com/players/devonta-smith/"
-    },
-    {
      "label": "FOX 8 News: Dylan Sampson IR",
      "url": "https://www.nfl.com/players/dylan-sampson/"
+    },
+    {
+     "label": "Patriots Wire: Will Campbell IR",
+     "url": "https://www.nfl.com/players/will-campbell/"
+    },
+    {
+     "label": "Athlon Sports: Tavius Robinson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/tavius-robinson/"
     }
    ]
   },

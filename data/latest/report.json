@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-10-25T01:18:57Z",
+ "generated_at": "2026-10-25T01:26:08Z",
  "season": 2026,
  "week": 7,
- "official_fetched_at": "2026-10-25T01:19:00Z",
- "espn_source_timestamp": "2026-10-25T01:18:50Z",
+ "official_fetched_at": "2026-10-25T01:26:10Z",
+ "espn_source_timestamp": "2026-10-25T01:26:08Z",
  "counts": {
   "players": 859,
   "teams": 32,
   "out": 113,
   "questionable": 94,
   "doubtful": 6,
-  "alerts": 1,
+  "alerts": 0,
   "in_game_events": 1,
   "in_game_alerts": 0,
   "irregularities": 41
@@ -51517,31 +51517,7 @@
    "discrepancies": []
   }
  ],
- "alerts": [
-  {
-   "ts": "2026-10-25T01:18:57Z",
-   "kind": "removed",
-   "severity": "low",
-   "player": "Tutu Atwell",
-   "player_key": "tutu-atwell",
-   "team": "LAR",
-   "position": "WR",
-   "injury": "coach's decision",
-   "from_status": "ACTIVE",
-   "to_status": "REMOVED_FROM_REPORT",
-   "detail": "Tutu Atwell (LAR) is no longer on the official injury report.",
-   "sources": [],
-   "alert_id": "fca704e00562b274",
-   "event_key": "",
-   "first_seen_at": "2026-10-25T01:18:57Z",
-   "reported_at": "",
-   "detection_latency_seconds": null,
-   "source_verified": false,
-   "in_game_window": false,
-   "in_game": false,
-   "evidence": []
-  }
- ],
+ "alerts": [],
  "alert_log": [
   {
    "ts": "Thu, 22 Oct 2026 23:31:34 GMT",
@@ -64642,15 +64618,15 @@
    "position": "TE",
    "in_game_status": "INJURY_REPORTED",
    "event": "injury-reported",
-   "injury": "",
+   "injury": "knee",
    "severity": "medium",
    "availability_class": "UNKNOWN",
    "evidence": [
-    "3 tight ends Bears could trade for after Cole Kmet's season-ending injury - Bear Goggles On"
+    "Bears’ Cole Kmet Out for Season After Knee Injury vs."
    ],
-   "reported_at": "Sat, 24 Oct 2026 11:00:00 GMT",
-   "first_seen_at": "2026-10-25T01:18:57Z",
-   "detection_latency_seconds": 51537,
+   "reported_at": "Sat, 24 Oct 2026 11:58:58 GMT",
+   "first_seen_at": "2026-10-25T01:26:08Z",
+   "detection_latency_seconds": 48430,
    "sources": [
     {
      "source": "Bear Goggles On",
@@ -64658,6 +64634,17 @@
      "author": "Bear Goggles On",
      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNTVFFdjA5bnp2c25WdnZPXzF1ZDd0SFAycmVSYWw1SHpRTG5OZ09iVFk0cGVDQVZkYWlfY09KTi1yMnNJWXBFQW5VbXRvUGN0SVV5bnRIa2FXYWRHcTRwVGZDTDZqbFd4MXA0bXlNUld5VmpZckRhRmx4MGVnN3owSXkyTklZbEVfbFBvTUlTTVM2akoyellTNzlXbHRMdjFo?oc=5",
      "posted_at": "Sat, 24 Oct 2026 11:00:00 GMT",
+     "verified": false,
+     "verification_detail": "",
+     "stated_status": "INJURY_REPORTED",
+     "source_kind": "news"
+    },
+    {
+     "source": "BVM Sports",
+     "platform": "google-news",
+     "author": "BVM Sports",
+     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPWVpYblVFdC0yWnAycktVRWhUVDRZRkVjOUZHUXBmeTFOWk1EcWoxbWRmSHdNLUduLTB3M0VHWVpkV0VlZWFFSXFsY09MUkZ2Mk5rSGx2Vk9uWVdIcEtaZWVSWnZrekl0TUNzejU4U3Q5bVJKZWVsemlaWV80eU1Cc244LTl5WHR5YUFOVExmVXcwWkFIc0NLdC13?oc=5",
+     "posted_at": "Sat, 24 Oct 2026 11:58:58 GMT",
      "verified": false,
      "verification_detail": "",
      "stated_status": "INJURY_REPORTED",
@@ -65830,42 +65817,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 2 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: MIA:de-von-achane (not asserted by any source for 14.1 days); TEN:garrett-dellinger (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "21 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: WTAJ said IR for DeShon Elliott (official: see link); Field Gulls said IR for Anthony Bradford (official: see link); Seattle Seahawks said IR for Anthony Bradford (official: see link); Yahoo Sports said QUESTIONABLE for DeVonta Smith (official: see link); FOX 8 News said IR for Dylan Sampson (official: see link)",
+   "title": "16 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said ACTIVE for Jeremiyah Love (official: see link); Field Gulls said IR for Anthony Bradford (official: see link); FOX 8 News said IR for Dylan Sampson (official: see link); Patriots Wire said IR for Will Campbell (official: see link); Athlon Sports said QUESTIONABLE for Tavius Robinson (official: see link)",
    "evidence": [
     {
-     "label": "WTAJ: DeShon Elliott IR",
-     "url": "https://www.nfl.com/players/deshon-elliott/"
+     "label": "Yahoo Sports: Jeremiyah Love ACTIVE",
+     "url": "https://www.nfl.com/players/jeremiyah-love/"
     },
     {
      "label": "Field Gulls: Anthony Bradford IR",
      "url": "https://www.nfl.com/players/anthony-bradford/"
     },
     {
-     "label": "Seattle Seahawks: Anthony Bradford IR",
-     "url": "https://www.nfl.com/players/anthony-bradford/"
-    },
-    {
-     "label": "Yahoo Sports: DeVonta Smith QUESTIONABLE",
-     "url": "https://www.nfl.com/players/devonta-smith/"
-    },
-    {
      "label": "FOX 8 News: Dylan Sampson IR",
      "url": "https://www.nfl.com/players/dylan-sampson/"
+    },
+    {
+     "label": "Patriots Wire: Will Campbell IR",
+     "url": "https://www.nfl.com/players/will-campbell/"
+    },
+    {
+     "label": "Athlon Sports: Tavius Robinson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/tavius-robinson/"
     }
    ]
   },
