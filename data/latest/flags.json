@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T18:53:38Z",
+ "generated_at": "2026-10-25T19:10:49Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -628,6 +628,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Jordon Riley",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/jordon-riley/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Justin Walley",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -925,6 +941,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Puka Nacua",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/puka-nacua/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1252,7 +1284,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "8 player(s) have no official designation but do have an ESPN status",
+   "title": "9 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1324,9 +1356,17 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "65 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Baltimore Ravens said OUT for Olaivavega Ioane (official: see link); roundtable.io said QUESTIONABLE for Olaivavega Ioane (official: see link); SSBCrack said OUT for Breece Hall (official: see link); Yahoo Sports said QUESTIONABLE for Olaivavega Ioane (official: see link); CBS Sports said QUESTIONABLE for Olaivavega Ioane (official: see link)",
+   "title": "75 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: theScore said OUT for Puka Nacua (official: see link); Dallas Cowboys | Official Site of the Dallas Cowboys said OUT for Marist Liufau (official: see link); Baltimore Ravens said OUT for Olaivavega Ioane (official: see link); roundtable.io said QUESTIONABLE for Olaivavega Ioane (official: see link); CBS Sports said QUESTIONABLE for Christian McCaffrey (official: see link)",
    "evidence": [
+    {
+     "label": "theScore: Puka Nacua OUT",
+     "url": "https://www.nfl.com/players/puka-nacua/"
+    },
+    {
+     "label": "Dallas Cowboys | Official Site of the Dallas Cowboys: Marist Liufau OUT",
+     "url": "https://www.nfl.com/players/marist-liufau/"
+    },
     {
      "label": "Baltimore Ravens: Olaivavega Ioane OUT",
      "url": "https://www.nfl.com/players/olaivavega-ioane/"
@@ -1336,16 +1376,8 @@
      "url": "https://www.nfl.com/players/olaivavega-ioane/"
     },
     {
-     "label": "SSBCrack: Breece Hall OUT",
-     "url": "https://www.nfl.com/players/breece-hall/"
-    },
-    {
-     "label": "Yahoo Sports: Olaivavega Ioane QUESTIONABLE",
-     "url": "https://www.nfl.com/players/olaivavega-ioane/"
-    },
-    {
-     "label": "CBS Sports: Olaivavega Ioane QUESTIONABLE",
-     "url": "https://www.nfl.com/players/olaivavega-ioane/"
+     "label": "CBS Sports: Christian McCaffrey QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/3117251/christian-mccaffrey"
     }
    ]
   },
