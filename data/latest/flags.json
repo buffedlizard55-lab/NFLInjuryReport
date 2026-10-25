@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T16:42:39Z",
+ "generated_at": "2026-10-25T18:33:51Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1156,96 +1156,12 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "6 player(s) have no official designation but do have an ESPN status",
+   "title": "7 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
      "label": "Official NFL injury report",
      "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for SF @ ATL parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873017 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873017"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for CLE @ TEN parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873013 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873013"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for IND @ MIN parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873014 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873014"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for MIA @ NYJ parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873015 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873015"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for TB @ CAR parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873018 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873018"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for CIN @ BAL parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873012 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873012"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
-   "title": "Game-day roster for NYG @ HOU parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873016 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873016"
     }
    ]
   },
@@ -1310,30 +1226,42 @@
    ]
   },
   {
-   "code": "CLAIMS_CONTRADICTED",
+   "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "31 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: San Francisco 49ers said ACTIVE for Christian Kirk (official: see link); Canal Street Chronicles said OUT for Cesar Ruiz (official: see link); Yahoo Sports said ACTIVE for Jeremiyah Love (official: see link); Field Gulls said IR for Anthony Bradford (official: see link); Seattle Seahawks said IR for Anthony Bradford (official: see link)",
+   "title": "Roster index pruned 5 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: PHI:jonathan-jones (not asserted by any source for 14.1 days); JAX:robert-hainsey (not asserted by any source for 14.1 days); JAX:danny-striggow (not asserted by any source for 14.1 days); JAX:quintin-morris (not asserted by any source for 14.1 days); MIA:andre-jones (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
-     "label": "San Francisco 49ers: Christian Kirk ACTIVE",
-     "url": "https://www.nfl.com/players/christian-kirk/"
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "62 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: roundtable.io said QUESTIONABLE for Olaivavega Ioane (official: see link); SSBCrack said OUT for Breece Hall (official: see link); Yahoo Sports said QUESTIONABLE for Olaivavega Ioane (official: see link); CBS Sports said QUESTIONABLE for Olaivavega Ioane (official: see link); Yardbarker said OUT for Breece Hall (official: see link)",
+   "evidence": [
+    {
+     "label": "roundtable.io: Olaivavega Ioane QUESTIONABLE",
+     "url": "https://www.nfl.com/players/olaivavega-ioane/"
     },
     {
-     "label": "Canal Street Chronicles: Cesar Ruiz OUT",
-     "url": "https://www.nfl.com/players/cesar-ruiz/"
+     "label": "SSBCrack: Breece Hall OUT",
+     "url": "https://www.nfl.com/players/breece-hall/"
     },
     {
-     "label": "Yahoo Sports: Jeremiyah Love ACTIVE",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
+     "label": "Yahoo Sports: Olaivavega Ioane QUESTIONABLE",
+     "url": "https://www.nfl.com/players/olaivavega-ioane/"
     },
     {
-     "label": "Field Gulls: Anthony Bradford IR",
-     "url": "https://www.nfl.com/players/anthony-bradford/"
+     "label": "CBS Sports: Olaivavega Ioane QUESTIONABLE",
+     "url": "https://www.nfl.com/players/olaivavega-ioane/"
     },
     {
-     "label": "Seattle Seahawks: Anthony Bradford IR",
-     "url": "https://www.nfl.com/players/anthony-bradford/"
+     "label": "Yardbarker: Breece Hall OUT",
+     "url": "https://www.nfl.com/players/breece-hall/"
     }
    ]
   },
