@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T23:37:03Z",
+ "generated_at": "2026-10-25T23:51:45Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1460,7 +1460,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "14 player(s) have no official designation but do have an ESPN status",
+   "title": "15 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1496,8 +1496,8 @@
   {
    "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: NYG:jihad-ward (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "title": "Roster index pruned 4 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: SF:brayden-willis (not asserted by any source for 14.0 days); SEA:jarran-reed (not asserted by any source for 14.0 days); SEA:charles-cross (not asserted by any source for 14.0 days); SF:connor-colby (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
      "label": "Official NFL injury report",
