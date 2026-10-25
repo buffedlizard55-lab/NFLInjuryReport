@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T18:33:51Z",
+ "generated_at": "2026-10-25T18:39:22Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1226,21 +1226,9 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 5 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: PHI:jonathan-jones (not asserted by any source for 14.1 days); JAX:robert-hainsey (not asserted by any source for 14.1 days); JAX:danny-striggow (not asserted by any source for 14.1 days); JAX:quintin-morris (not asserted by any source for 14.1 days); MIA:andre-jones (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "62 reporter claim(s) contradicted by the official report",
+   "title": "61 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: roundtable.io said QUESTIONABLE for Olaivavega Ioane (official: see link); SSBCrack said OUT for Breece Hall (official: see link); Yahoo Sports said QUESTIONABLE for Olaivavega Ioane (official: see link); CBS Sports said QUESTIONABLE for Olaivavega Ioane (official: see link); Yardbarker said OUT for Breece Hall (official: see link)",
    "evidence": [
     {
