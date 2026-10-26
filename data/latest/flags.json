@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T21:31:15Z",
+ "generated_at": "2026-10-26T23:00:50Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -13,22 +13,6 @@
     },
     {
      "label": "espn: CLE, MIN",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Aaron Banks",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (QUESTIONABLE)",
-     "url": "https://www.nfl.com/players/aaron-banks/"
-    },
-    {
-     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -133,14 +117,14 @@
    "code": "STATUS_CONFLICT",
    "severity": "medium",
    "title": "Designation conflict for Benjamin St-Juste",
-   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
     {
      "label": "Official (QUESTIONABLE)",
      "url": "https://www.nfl.com/players/benjamin-st-juste/"
     },
     {
-     "label": "ESPN (OUT)",
+     "label": "ESPN (ACTIVE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -1156,6 +1140,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Saquon Barkley",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/saquon-barkley/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Siran Neal",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -1460,7 +1460,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "11 player(s) have no official designation but do have an ESPN status",
+   "title": "13 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1482,11 +1482,35 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: LV:tyler-scott (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "63 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said IR for Taylor Moton (official: see link); Sports Illustrated said ACTIVE for Saquon Barkley (official: see link); Panthers.com said IR for Taylor Moton (official: see link); Yahoo Sports said ACTIVE for Jacob Monk (official: see link); Blitz_Burgh@sportsbots.xyz said ACTIVE for DeShon Elliott (official: see link)",
+   "title": "67 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: FOX Carolina News said IR for Taylor Moton (official: see link); roundtable.io said IR for Taylor Moton (official: see link); Yahoo Sports said IR for Taylor Moton (official: see link); Yahoo Sports said IR for Taylor Moton (official: see link); Sports Illustrated said ACTIVE for Saquon Barkley (official: see link)",
    "evidence": [
+    {
+     "label": "FOX Carolina News: Taylor Moton IR",
+     "url": "https://www.nfl.com/players/taylor-moton/"
+    },
+    {
+     "label": "roundtable.io: Taylor Moton IR",
+     "url": "https://www.nfl.com/players/taylor-moton/"
+    },
+    {
+     "label": "Yahoo Sports: Taylor Moton IR",
+     "url": "https://www.nfl.com/players/taylor-moton/"
+    },
     {
      "label": "Yahoo Sports: Taylor Moton IR",
      "url": "https://www.nfl.com/players/taylor-moton/"
@@ -1494,18 +1518,6 @@
     {
      "label": "Sports Illustrated: Saquon Barkley ACTIVE",
      "url": "https://www.nfl.com/players/saquon-barkley/"
-    },
-    {
-     "label": "Panthers.com: Taylor Moton IR",
-     "url": "https://www.nfl.com/players/taylor-moton/"
-    },
-    {
-     "label": "Yahoo Sports: Jacob Monk ACTIVE",
-     "url": "https://www.espn.com/nfl/player/_/id/4428037/jacob-monk"
-    },
-    {
-     "label": "Blitz_Burgh@sportsbots.xyz: DeShon Elliott ACTIVE",
-     "url": "https://www.nfl.com/players/deshon-elliott/"
     }
    ]
   },
