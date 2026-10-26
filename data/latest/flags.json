@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T13:56:25Z",
+ "generated_at": "2026-10-26T16:10:43Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1460,7 +1460,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "16 player(s) have no official designation but do have an ESPN status",
+   "title": "15 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -1482,26 +1482,22 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: JAX:caleb-ransaw (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "49 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Dallas Cowboys | Official Site of the Dallas Cowboys said OUT for Marist Liufau (official: see link); NBC Sports said QUESTIONABLE for Rashid Shaheed (official: see link); WBFF said OUT for Olaivavega Ioane (official: see link); RotoWire said QUESTIONABLE for Rashid Shaheed (official: see link); Yahoo Sports said QUESTIONABLE for Rashid Shaheed (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said IR for Bryce Baringer (official: see link); Boston Herald said IR for Denzel Boston (official: see link); rapsheet.bsky.social said IR for Bryce Baringer (official: see link); NBC Sports said QUESTIONABLE for Rashid Shaheed (official: see link); WBFF said OUT for Olaivavega Ioane (official: see link)",
    "evidence": [
     {
-     "label": "Dallas Cowboys | Official Site of the Dallas Cowboys: Marist Liufau OUT",
-     "url": "https://www.nfl.com/players/marist-liufau/"
+     "label": "Yahoo Sports: Bryce Baringer IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4240545/bryce-baringer"
+    },
+    {
+     "label": "Boston Herald: Denzel Boston IR",
+     "url": "https://www.nfl.com/players/denzel-boston/"
+    },
+    {
+     "label": "rapsheet.bsky.social: Bryce Baringer IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4240545/bryce-baringer"
     },
     {
      "label": "NBC Sports: Rashid Shaheed QUESTIONABLE",
@@ -1510,14 +1506,6 @@
     {
      "label": "WBFF: Olaivavega Ioane OUT",
      "url": "https://www.nfl.com/players/olaivavega-ioane/"
-    },
-    {
-     "label": "RotoWire: Rashid Shaheed QUESTIONABLE",
-     "url": "https://www.nfl.com/players/rashid-shaheed/"
-    },
-    {
-     "label": "Yahoo Sports: Rashid Shaheed QUESTIONABLE",
-     "url": "https://www.nfl.com/players/rashid-shaheed/"
     }
    ]
   },
