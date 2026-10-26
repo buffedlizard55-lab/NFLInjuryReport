@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T23:58:34Z",
+ "generated_at": "2026-10-26T01:10:05Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1472,18 +1472,6 @@
   {
    "code": "ESPN_ROSTER_EMPTY",
    "severity": "low",
-   "title": "Game-day roster for KC @ SEA parsed zero athletes",
-   "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873022 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
-   "evidence": [
-    {
-     "label": "Summary URL",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873022"
-    }
-   ]
-  },
-  {
-   "code": "ESPN_ROSTER_EMPTY",
-   "severity": "low",
    "title": "Game-day roster for DAL @ PHI parsed zero athletes",
    "detail": "ESPN answered from https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873009 but the payload contained no boxscore.teams[].athletes the parser recognises. The roster is skipped rather than guessed; if this persists the parser and the ledger probe need a look.",
    "evidence": [
@@ -1494,11 +1482,31 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 4 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: DAL:jalen-thompson (not asserted by any source for 14.0 days); PHI:tank-bigsby (not asserted by any source for 14.0 days); LAC:alex-harkey (not asserted by any source for 14.0 days); TB:rakeem-nunez-roches (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "55 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Baltimore Ravens said OUT for Olaivavega Ioane (official: see link); Dallas News said QUESTIONABLE for DeeJay Dallas (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link); Yahoo Sports said OUT for Pat Surtain II (official: see link); Dallas Cowboys | Official Site of the Dallas Cowboys said OUT for Marist Liufau (official: see link)",
+   "title": "49 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: KSHB 41 Kansas City said ACTIVE for L'Jarius Sneed (official: see link); PackersNews.com said QUESTIONABLE for Devonte Wyatt (official: see link); Baltimore Ravens said OUT for Olaivavega Ioane (official: see link); Dallas News said QUESTIONABLE for DeeJay Dallas (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link)",
    "evidence": [
+    {
+     "label": "KSHB 41 Kansas City: L'Jarius Sneed ACTIVE",
+     "url": "https://www.nfl.com/players/l-jarius-sneed/"
+    },
+    {
+     "label": "PackersNews.com: Devonte Wyatt QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4361791/devonte-wyatt"
+    },
     {
      "label": "Baltimore Ravens: Olaivavega Ioane OUT",
      "url": "https://www.nfl.com/players/olaivavega-ioane/"
@@ -1510,14 +1518,6 @@
     {
      "label": "rapsheet.bsky.social: Roquan Smith QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/3915189/roquan-smith"
-    },
-    {
-     "label": "Yahoo Sports: Pat Surtain II OUT",
-     "url": "https://www.nfl.com/players/patrick-surtain-ii/"
-    },
-    {
-     "label": "Dallas Cowboys | Official Site of the Dallas Cowboys: Marist Liufau OUT",
-     "url": "https://www.nfl.com/players/marist-liufau/"
     }
    ]
   },
