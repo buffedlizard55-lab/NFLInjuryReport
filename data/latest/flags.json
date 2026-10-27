@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-27T05:24:34Z",
+ "generated_at": "2026-10-27T05:43:22Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1438,26 +1438,18 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 7 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: MIN:jeshaun-jones (not asserted by any source for 14.1 days); LAR:dean-connors (not asserted by any source for 14.1 days); MIN:odell-beckham (not asserted by any source for 14.1 days); NYG:dalen-cambre (not asserted by any source for 14.1 days); SF:jack-stoll (not asserted by any source for 14.1 days); BUF:anthony-kendall (not asserted by any source for 14.1 days); BUF:o-cyrus-torrence (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "66 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Bleeding Green Nation said OUT for Britain Covey (official: see link); NFL.com said ACTIVE for Saquon Barkley (official: see link); FOX Carolina News said IR for Taylor Moton (official: see link); roundtable.io said IR for Taylor Moton (official: see link); Yahoo Sports said IR for Taylor Moton (official: see link)",
+   "title": "68 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Bleeding Green Nation said OUT for Britain Covey (official: see link); Yahoo Sports said ACTIVE for Saquon Barkley (official: see link); NFL.com said ACTIVE for Saquon Barkley (official: see link); FOX Carolina News said IR for Taylor Moton (official: see link); roundtable.io said IR for Taylor Moton (official: see link)",
    "evidence": [
     {
      "label": "Bleeding Green Nation: Britain Covey OUT",
      "url": "https://www.nfl.com/players/britain-covey/"
+    },
+    {
+     "label": "Yahoo Sports: Saquon Barkley ACTIVE",
+     "url": "https://www.nfl.com/players/saquon-barkley/"
     },
     {
      "label": "NFL.com: Saquon Barkley ACTIVE",
@@ -1469,10 +1461,6 @@
     },
     {
      "label": "roundtable.io: Taylor Moton IR",
-     "url": "https://www.nfl.com/players/taylor-moton/"
-    },
-    {
-     "label": "Yahoo Sports: Taylor Moton IR",
      "url": "https://www.nfl.com/players/taylor-moton/"
     }
    ]
