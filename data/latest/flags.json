@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T05:24:54Z",
+ "generated_at": "2026-10-28T06:07:46Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -190,18 +190,6 @@
     {
      "label": "Summary URL",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401873036"
-    }
-   ]
-  },
-  {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 8 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: NE:mack-hollins (not asserted by any source for 14.1 days); BAL:chris-moore (not asserted by any source for 14.1 days); NE:reggie-gilliam (not asserted by any source for 14.1 days); NO:jayden-price (not asserted by any source for 14.1 days); NO:michael-reid (not asserted by any source for 14.1 days); HOU:jamal-hill (not asserted by any source for 14.1 days); HOU:nathan-thomas (not asserted by any source for 14.1 days); NYG:bryan-hudson (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
     }
    ]
   },
