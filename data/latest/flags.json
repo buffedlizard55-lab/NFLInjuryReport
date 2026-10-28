@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T01:43:51Z",
+ "generated_at": "2026-10-28T02:25:34Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -1998,22 +1998,10 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 3 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: WAS:rasul-douglas (not asserted by any source for 14.1 days); BUF:trent-sherfield (not asserted by any source for 14.0 days); NO:brock-rechsteiner (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "58 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: A to Z Sports said ACTIVE for Josh Simmons (official: see link); Yahoo Sports said ACTIVE for Lamar Jackson (official: see link); Bucs Report said QUESTIONABLE for Emeka Egbuka (official: see link); Panthers.com said IR for Taylor Moton (official: see link); Yahoo Sports said QUESTIONABLE for Jahmyr Gibbs (official: see link)",
+   "title": "57 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: A to Z Sports said ACTIVE for Josh Simmons (official: see link); Yahoo Sports said ACTIVE for Lamar Jackson (official: see link); Panthers.com said IR for Taylor Moton (official: see link); Yahoo Sports said QUESTIONABLE for Jahmyr Gibbs (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link)",
    "evidence": [
     {
      "label": "A to Z Sports: Josh Simmons ACTIVE",
@@ -2024,16 +2012,16 @@
      "url": "https://www.nfl.com/players/lamar-jackson/"
     },
     {
-     "label": "Bucs Report: Emeka Egbuka QUESTIONABLE",
-     "url": "https://www.nfl.com/players/emeka-egbuka/"
-    },
-    {
      "label": "Panthers.com: Taylor Moton IR",
      "url": "https://www.nfl.com/players/taylor-moton/"
     },
     {
      "label": "Yahoo Sports: Jahmyr Gibbs QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4429795/jahmyr-gibbs"
+    },
+    {
+     "label": "rapsheet.bsky.social: Roquan Smith QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/3915189/roquan-smith"
     }
    ]
   },
