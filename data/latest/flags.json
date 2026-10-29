@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T16:07:03Z",
+ "generated_at": "2026-10-29T19:12:17Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -210,11 +210,27 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: CAR:xavier-legette (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "27 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: rapsheet.bsky.social said QUESTIONABLE for Tyrone Tracy Jr. (official: see link); tompelissero.bsky.social said IR for Isaiah Likely (official: see link); Darren Urban said QUESTIONABLE for Andrew Wingard (official: see link); Darren Urban said QUESTIONABLE for Michael Wilson (official: see link); Bo Brack said QUESTIONABLE for Jeremiyah Love (official: see link)",
+   "title": "31 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Boston Herald said IR for Denzel Boston (official: see link); rapsheet.bsky.social said QUESTIONABLE for Tyrone Tracy Jr. (official: see link); tompelissero.bsky.social said IR for Isaiah Likely (official: see link); Darren Urban said QUESTIONABLE for Andrew Wingard (official: see link); Darren Urban said QUESTIONABLE for Michael Wilson (official: see link)",
    "evidence": [
+    {
+     "label": "Boston Herald: Denzel Boston IR",
+     "url": "https://www.espn.com/nfl/player/_/id/4832800/denzel-boston"
+    },
     {
      "label": "rapsheet.bsky.social: Tyrone Tracy Jr. QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4360516/tyrone-tracy-jr"
@@ -230,10 +246,6 @@
     {
      "label": "Darren Urban: Michael Wilson QUESTIONABLE",
      "url": "https://www.nfl.com/players/michael-wilson/"
-    },
-    {
-     "label": "Bo Brack: Jeremiyah Love QUESTIONABLE",
-     "url": "https://www.nfl.com/players/jeremiyah-love/"
     }
    ]
   },
