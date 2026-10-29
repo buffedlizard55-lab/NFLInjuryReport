@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-29T21:07:32Z",
+ "generated_at": "2026-10-29T23:21:22Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -30,9 +30,89 @@
    ]
   },
   {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Anthony Campbell",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/anthony-campbell/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Bobby Brown III",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/bobby-brown-iii/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Brenton Cox Jr.",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/brenton-cox/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Devonte Wyatt",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/devonte-wyatt/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Matthew Golden",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/matthew-golden/"
+    },
+    {
+     "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "88 player(s) have no official designation but do have an ESPN status",
+   "title": "108 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -210,18 +290,30 @@
    ]
   },
   {
-   "code": "CLAIMS_CONTRADICTED",
+   "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "27 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said IR for Derwin James Jr. (official: see link); Boston Herald said IR for Denzel Boston (official: see link); rapsheet.bsky.social said QUESTIONABLE for Tyrone Tracy Jr. (official: see link); tompelissero.bsky.social said IR for Isaiah Likely (official: see link); Bo Brack said QUESTIONABLE for Michael Wilson (official: see link)",
+   "title": "Roster index pruned 4 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: WAS:ben-sinnott (not asserted by any source for 14.0 days); SF:ephesians-prysock (not asserted by any source for 14.0 days); WAS:frankie-luvu (not asserted by any source for 14.0 days); WAS:sam-cosmi (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
-     "label": "Yahoo Sports: Derwin James Jr. IR",
-     "url": "https://www.nfl.com/players/derwin-james/"
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "34 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Yahoo Sports said QUESTIONABLE for Keisean Nixon (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link); rapsheet.bsky.social said QUESTIONABLE for Tyrone Tracy Jr. (official: see link); tompelissero.bsky.social said IR for Isaiah Likely (official: see link); RotoWire said ACTIVE for Matthew Golden (official: see link)",
+   "evidence": [
+    {
+     "label": "Yahoo Sports: Keisean Nixon QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4259493/keisean-nixon"
     },
     {
-     "label": "Boston Herald: Denzel Boston IR",
-     "url": "https://www.espn.com/nfl/player/_/id/4832800/denzel-boston"
+     "label": "rapsheet.bsky.social: Roquan Smith QUESTIONABLE",
+     "url": "https://www.nfl.com/players/roquan-smith/"
     },
     {
      "label": "rapsheet.bsky.social: Tyrone Tracy Jr. QUESTIONABLE",
@@ -232,8 +324,8 @@
      "url": "https://www.espn.com/nfl/player/_/id/4361050/isaiah-likely"
     },
     {
-     "label": "Bo Brack: Michael Wilson QUESTIONABLE",
-     "url": "https://www.nfl.com/players/michael-wilson/"
+     "label": "RotoWire: Matthew Golden ACTIVE",
+     "url": "https://www.nfl.com/players/matthew-golden/"
     }
    ]
   },
@@ -264,20 +356,20 @@
   {
    "code": "DIRECTORY_CROSS_TEAM_BEAT",
    "severity": "low",
-   "title": "Beat writer David Furones is attributed across 2 clubs (NE, MIA)",
+   "title": "Beat writer David Furones is attributed across 2 clubs (MIA, NE)",
    "detail": "ESPN printed David Furones (South Florida Sun Sentinel) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
    "evidence": [
     {
      "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/4569603/malik-washington"
+     "url": "https://www.espn.com/nfl/player/_/id/4367209/greg-dulcich"
     },
     {
      "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4432710/treveyon-henderson"
+     "url": "https://www.espn.com/nfl/player/_/id/4569603/malik-washington"
     },
     {
      "label": "ESPN attribution #3",
-     "url": "https://www.espn.com/nfl/player/_/id/4047646/aj-brown"
+     "url": "https://www.espn.com/nfl/player/_/id/4432710/treveyon-henderson"
     }
    ]
   },
