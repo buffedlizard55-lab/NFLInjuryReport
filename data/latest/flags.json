@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T19:05:23Z",
+ "generated_at": "2026-10-30T20:36:27Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -41,22 +41,6 @@
     },
     {
      "label": "ESPN (ACTIVE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
-   "title": "Designation conflict for Anthony Gould",
-   "detail": "nfl.com (official) says OUT; ESPN says QUESTIONABLE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (OUT)",
-     "url": "https://www.nfl.com/players/anthony-gould/"
-    },
-    {
-     "label": "ESPN (QUESTIONABLE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -112,22 +96,6 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
-   "title": "Designation conflict for Justin Walley",
-   "detail": "nfl.com (official) says OUT; ESPN says QUESTIONABLE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
-   "evidence": [
-    {
-     "label": "Official (OUT)",
-     "url": "https://www.nfl.com/players/justin-walley/"
-    },
-    {
-     "label": "ESPN (QUESTIONABLE)",
-     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
-    }
-   ]
-  },
-  {
-   "code": "STATUS_CONFLICT",
-   "severity": "medium",
    "title": "Designation conflict for Matthew Golden",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -144,7 +112,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "107 player(s) have no official designation but do have an ESPN status",
+   "title": "69 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -310,30 +278,42 @@
    ]
   },
   {
-   "code": "CLAIMS_CONTRADICTED",
+   "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "40 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: CBS Sports said ACTIVE for Devonte Wyatt (official: see link); Yahoo Sports said ACTIVE for Matthew Golden (official: see link); FOX Sports said ACTIVE for Matthew Golden (official: see link); Packers Wire said QUESTIONABLE for Keisean Nixon (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link)",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: GB:chris-brooks (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
-     "label": "CBS Sports: Devonte Wyatt ACTIVE",
-     "url": "https://www.nfl.com/players/devonte-wyatt/"
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "39 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Behind the Steel Curtain said QUESTIONABLE for Ben Skowronek (official: see link); rapsheet.bsky.social said OUT for Emeka Egbuka (official: see link); Audacy said QUESTIONABLE for Alex Highsmith (official: see link); Tampa Bay Buccaneers said OUT for Emeka Egbuka (official: see link); Yahoo Sports said DOUBTFUL for Carnell Tate (official: see link)",
+   "evidence": [
+    {
+     "label": "Behind the Steel Curtain: Ben Skowronek QUESTIONABLE",
+     "url": "https://www.nfl.com/players/ben-skowronek/"
     },
     {
-     "label": "Yahoo Sports: Matthew Golden ACTIVE",
-     "url": "https://www.nfl.com/players/matthew-golden/"
+     "label": "rapsheet.bsky.social: Emeka Egbuka OUT",
+     "url": "https://www.nfl.com/players/emeka-egbuka/"
     },
     {
-     "label": "FOX Sports: Matthew Golden ACTIVE",
-     "url": "https://www.nfl.com/players/matthew-golden/"
+     "label": "Audacy: Alex Highsmith QUESTIONABLE",
+     "url": "https://www.nfl.com/players/alex-highsmith/"
     },
     {
-     "label": "Packers Wire: Keisean Nixon QUESTIONABLE",
-     "url": "https://www.espn.com/nfl/player/_/id/4259493/keisean-nixon"
+     "label": "Tampa Bay Buccaneers: Emeka Egbuka OUT",
+     "url": "https://www.nfl.com/players/emeka-egbuka/"
     },
     {
-     "label": "rapsheet.bsky.social: Roquan Smith QUESTIONABLE",
-     "url": "https://www.nfl.com/players/roquan-smith/"
+     "label": "Yahoo Sports: Carnell Tate DOUBTFUL",
+     "url": "https://www.nfl.com/players/carnell-tate/"
     }
    ]
   },
