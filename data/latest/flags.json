@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T20:36:27Z",
+ "generated_at": "2026-10-30T20:50:26Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -278,42 +278,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: GB:chris-brooks (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "39 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Behind the Steel Curtain said QUESTIONABLE for Ben Skowronek (official: see link); rapsheet.bsky.social said OUT for Emeka Egbuka (official: see link); Audacy said QUESTIONABLE for Alex Highsmith (official: see link); Tampa Bay Buccaneers said OUT for Emeka Egbuka (official: see link); Yahoo Sports said DOUBTFUL for Carnell Tate (official: see link)",
+   "title": "40 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Denver Broncos said QUESTIONABLE for Pat Surtain II (official: see link); Lions Wire said QUESTIONABLE for Kerby Joseph (official: see link); Yahoo Sports said QUESTIONABLE for Jakobi Meyers (official: see link); Yahoo Sports said QUESTIONABLE for Jakobi Meyers (official: see link); KMBC said QUESTIONABLE for Rashee Rice (official: see link)",
    "evidence": [
     {
-     "label": "Behind the Steel Curtain: Ben Skowronek QUESTIONABLE",
-     "url": "https://www.nfl.com/players/ben-skowronek/"
+     "label": "Denver Broncos: Pat Surtain II QUESTIONABLE",
+     "url": "https://www.nfl.com/players/patrick-surtain-ii/"
     },
     {
-     "label": "rapsheet.bsky.social: Emeka Egbuka OUT",
-     "url": "https://www.nfl.com/players/emeka-egbuka/"
+     "label": "Lions Wire: Kerby Joseph QUESTIONABLE",
+     "url": "https://www.nfl.com/players/kerby-joseph/"
     },
     {
-     "label": "Audacy: Alex Highsmith QUESTIONABLE",
-     "url": "https://www.nfl.com/players/alex-highsmith/"
+     "label": "Yahoo Sports: Jakobi Meyers QUESTIONABLE",
+     "url": "https://www.nfl.com/players/jakobi-meyers/"
     },
     {
-     "label": "Tampa Bay Buccaneers: Emeka Egbuka OUT",
-     "url": "https://www.nfl.com/players/emeka-egbuka/"
+     "label": "Yahoo Sports: Jakobi Meyers QUESTIONABLE",
+     "url": "https://www.nfl.com/players/jakobi-meyers/"
     },
     {
-     "label": "Yahoo Sports: Carnell Tate DOUBTFUL",
-     "url": "https://www.nfl.com/players/carnell-tate/"
+     "label": "KMBC: Rashee Rice QUESTIONABLE",
+     "url": "https://www.nfl.com/players/rashee-rice/"
     }
    ]
   },
