@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T22:45:44Z",
+ "generated_at": "2026-10-30T23:00:34Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -278,42 +278,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 2 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: ARI:isaiah-adams (not asserted by any source for 14.1 days); DAL:caelen-carson (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "40 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: BuffaLowDown said QUESTIONABLE for Ed Oliver (official: see link); Sports Illustrated said QUESTIONABLE for George Pickens (official: see link); The Pewter Plank said OUT for Emeka Egbuka (official: see link); Yahoo Sports said OUT for Tytus Howard (official: see link); Dawgs By Nature said OUT for Tytus Howard (official: see link)",
+   "title": "37 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Lions Wire said QUESTIONABLE for Kerby Joseph (official: see link); Yahoo Sports said OUT for Tytus Howard (official: see link); Los Angeles Chargers said QUESTIONABLE for Rodney Shelley (official: see link); Pride Of Detroit said QUESTIONABLE for Kerby Joseph (official: see link); rapsheet.bsky.social said OUT for Emeka Egbuka (official: see link)",
    "evidence": [
     {
-     "label": "BuffaLowDown: Ed Oliver QUESTIONABLE",
-     "url": "https://www.nfl.com/players/ed-oliver/"
-    },
-    {
-     "label": "Sports Illustrated: George Pickens QUESTIONABLE",
-     "url": "https://www.nfl.com/players/george-pickens/"
-    },
-    {
-     "label": "The Pewter Plank: Emeka Egbuka OUT",
-     "url": "https://www.nfl.com/players/emeka-egbuka/"
+     "label": "Lions Wire: Kerby Joseph QUESTIONABLE",
+     "url": "https://www.nfl.com/players/kerby-joseph/"
     },
     {
      "label": "Yahoo Sports: Tytus Howard OUT",
      "url": "https://www.nfl.com/players/tytus-howard-x1979/"
     },
     {
-     "label": "Dawgs By Nature: Tytus Howard OUT",
-     "url": "https://www.nfl.com/players/tytus-howard-x1979/"
+     "label": "Los Angeles Chargers: Rodney Shelley QUESTIONABLE",
+     "url": "https://www.nfl.com/players/rodney-shelley/"
+    },
+    {
+     "label": "Pride Of Detroit: Kerby Joseph QUESTIONABLE",
+     "url": "https://www.nfl.com/players/kerby-joseph/"
+    },
+    {
+     "label": "rapsheet.bsky.social: Emeka Egbuka OUT",
+     "url": "https://www.nfl.com/players/emeka-egbuka/"
     }
    ]
   },
