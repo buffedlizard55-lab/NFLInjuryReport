@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T13:56:50Z",
+ "generated_at": "2026-10-30T15:55:12Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -112,7 +112,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "109 player(s) have no official designation but do have an ESPN status",
+   "title": "119 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -278,15 +278,23 @@
    ]
   },
   {
-   "code": "CLAIMS_CONTRADICTED",
+   "code": "ROSTER_INDEX_PRUNED",
    "severity": "low",
-   "title": "40 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: BVM Sports said OUT for Rashid Shaheed (official: see link); CBS Sports said ACTIVE for Devonte Wyatt (official: see link); Yahoo Sports said ACTIVE for Matthew Golden (official: see link); FOX Sports said ACTIVE for Matthew Golden (official: see link); Packers Wire said QUESTIONABLE for Keisean Nixon (official: see link)",
+   "title": "Roster index pruned 1 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: IND:quenton-nelson (official report lists the player under a different club). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
    "evidence": [
     {
-     "label": "BVM Sports: Rashid Shaheed OUT",
-     "url": "https://www.espn.com/nfl/player/_/id/4032473/rashid-shaheed"
-    },
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
+   "code": "CLAIMS_CONTRADICTED",
+   "severity": "low",
+   "title": "44 reporter claim(s) contradicted by the official report",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: CBS Sports said ACTIVE for Devonte Wyatt (official: see link); Yahoo Sports said ACTIVE for Matthew Golden (official: see link); FOX Sports said ACTIVE for Matthew Golden (official: see link); Packers Wire said QUESTIONABLE for Keisean Nixon (official: see link); Yahoo Sports said QUESTIONABLE for Keisean Nixon (official: see link)",
+   "evidence": [
     {
      "label": "CBS Sports: Devonte Wyatt ACTIVE",
      "url": "https://www.nfl.com/players/devonte-wyatt/"
@@ -301,6 +309,10 @@
     },
     {
      "label": "Packers Wire: Keisean Nixon QUESTIONABLE",
+     "url": "https://www.espn.com/nfl/player/_/id/4259493/keisean-nixon"
+    },
+    {
+     "label": "Yahoo Sports: Keisean Nixon QUESTIONABLE",
      "url": "https://www.espn.com/nfl/player/_/id/4259493/keisean-nixon"
     }
    ]
