@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T20:50:26Z",
+ "generated_at": "2026-10-30T22:45:44Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -112,7 +112,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "69 player(s) have no official designation but do have an ESPN status",
+   "title": "62 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -278,30 +278,42 @@
    ]
   },
   {
+   "code": "ROSTER_INDEX_PRUNED",
+   "severity": "low",
+   "title": "Roster index pruned 2 record(s) no current source supports",
+   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: ARI:isaiah-adams (not asserted by any source for 14.1 days); DAL:caelen-carson (not asserted by any source for 14.1 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
+   "evidence": [
+    {
+     "label": "Official NFL injury report",
+     "url": "https://www.nfl.com/injuries/"
+    }
+   ]
+  },
+  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "40 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Denver Broncos said QUESTIONABLE for Pat Surtain II (official: see link); Lions Wire said QUESTIONABLE for Kerby Joseph (official: see link); Yahoo Sports said QUESTIONABLE for Jakobi Meyers (official: see link); Yahoo Sports said QUESTIONABLE for Jakobi Meyers (official: see link); KMBC said QUESTIONABLE for Rashee Rice (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: BuffaLowDown said QUESTIONABLE for Ed Oliver (official: see link); Sports Illustrated said QUESTIONABLE for George Pickens (official: see link); The Pewter Plank said OUT for Emeka Egbuka (official: see link); Yahoo Sports said OUT for Tytus Howard (official: see link); Dawgs By Nature said OUT for Tytus Howard (official: see link)",
    "evidence": [
     {
-     "label": "Denver Broncos: Pat Surtain II QUESTIONABLE",
-     "url": "https://www.nfl.com/players/patrick-surtain-ii/"
+     "label": "BuffaLowDown: Ed Oliver QUESTIONABLE",
+     "url": "https://www.nfl.com/players/ed-oliver/"
     },
     {
-     "label": "Lions Wire: Kerby Joseph QUESTIONABLE",
-     "url": "https://www.nfl.com/players/kerby-joseph/"
+     "label": "Sports Illustrated: George Pickens QUESTIONABLE",
+     "url": "https://www.nfl.com/players/george-pickens/"
     },
     {
-     "label": "Yahoo Sports: Jakobi Meyers QUESTIONABLE",
-     "url": "https://www.nfl.com/players/jakobi-meyers/"
+     "label": "The Pewter Plank: Emeka Egbuka OUT",
+     "url": "https://www.nfl.com/players/emeka-egbuka/"
     },
     {
-     "label": "Yahoo Sports: Jakobi Meyers QUESTIONABLE",
-     "url": "https://www.nfl.com/players/jakobi-meyers/"
+     "label": "Yahoo Sports: Tytus Howard OUT",
+     "url": "https://www.nfl.com/players/tytus-howard-x1979/"
     },
     {
-     "label": "KMBC: Rashee Rice QUESTIONABLE",
-     "url": "https://www.nfl.com/players/rashee-rice/"
+     "label": "Dawgs By Nature: Tytus Howard OUT",
+     "url": "https://www.nfl.com/players/tytus-howard-x1979/"
     }
    ]
   },
@@ -332,6 +344,26 @@
   {
    "code": "DIRECTORY_CROSS_TEAM_BEAT",
    "severity": "low",
+   "title": "Beat writer Adam Caplan is attributed across 3 clubs (DAL, HOU, LAR)",
+   "detail": "ESPN printed Adam Caplan (SiriusXM NFL Radio) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
+   "evidence": [
+    {
+     "label": "ESPN attribution #1",
+     "url": "https://www.espn.com/nfl/player/_/id/4384549/cobie-durant"
+    },
+    {
+     "label": "ESPN attribution #2",
+     "url": "https://www.espn.com/nfl/player/_/id/4362504/brevin-jordan"
+    },
+    {
+     "label": "ESPN attribution #3",
+     "url": "https://www.espn.com/nfl/player/_/id/4426405/trent-mcduffie"
+    }
+   ]
+  },
+  {
+   "code": "DIRECTORY_CROSS_TEAM_BEAT",
+   "severity": "low",
    "title": "Beat writer Aaron Wilson is attributed across 2 clubs (CIN, CLE)",
    "detail": "ESPN printed Aaron Wilson (KPRC 2 Houston) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
    "evidence": [
@@ -342,22 +374,6 @@
     {
      "label": "ESPN attribution #2",
      "url": "https://www.espn.com/nfl/player/_/id/4243541/kalia-davis"
-    }
-   ]
-  },
-  {
-   "code": "DIRECTORY_CROSS_TEAM_BEAT",
-   "severity": "low",
-   "title": "Beat writer Adam Caplan is attributed across 2 clubs (DAL, HOU)",
-   "detail": "ESPN printed Adam Caplan (SiriusXM NFL Radio) as the attribution on updates for multiple clubs. Local beat writers normally cover one club, so this is usually a shared-wire/aggregator attribution; it is kept as observed and flagged for manual review rather than reassigned by guesswork.",
-   "evidence": [
-    {
-     "label": "ESPN attribution #1",
-     "url": "https://www.espn.com/nfl/player/_/id/4384549/cobie-durant"
-    },
-    {
-     "label": "ESPN attribution #2",
-     "url": "https://www.espn.com/nfl/player/_/id/4362504/brevin-jordan"
     }
    ]
   },
