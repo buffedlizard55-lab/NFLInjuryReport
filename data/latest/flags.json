@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T18:52:55Z",
+ "generated_at": "2026-10-30T19:05:23Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -41,6 +41,22 @@
     },
     {
      "label": "ESPN (ACTIVE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for Anthony Gould",
+   "detail": "nfl.com (official) says OUT; ESPN says QUESTIONABLE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/anthony-gould/"
+    },
+    {
+     "label": "ESPN (QUESTIONABLE)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -96,6 +112,22 @@
   {
    "code": "STATUS_CONFLICT",
    "severity": "medium",
+   "title": "Designation conflict for Justin Walley",
+   "detail": "nfl.com (official) says OUT; ESPN says QUESTIONABLE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (OUT)",
+     "url": "https://www.nfl.com/players/justin-walley/"
+    },
+    {
+     "label": "ESPN (QUESTIONABLE)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
    "title": "Designation conflict for Matthew Golden",
    "detail": "nfl.com (official) says QUESTIONABLE; ESPN says ACTIVE. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
    "evidence": [
@@ -112,7 +144,7 @@
   {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
-   "title": "108 player(s) have no official designation but do have an ESPN status",
+   "title": "107 player(s) have no official designation but do have an ESPN status",
    "detail": "nfl.com printed a blank Game Status for these players (they practised without a designation), so this site renders them as ACTIVE and marks the designation as inferred. ESPN separately carries a news-derived status. This is a semantic difference between the two sources, NOT a data error, so it is reported once in aggregate rather than once per player.",
    "evidence": [
     {
@@ -280,7 +312,7 @@
   {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
-   "title": "39 reporter claim(s) contradicted by the official report",
+   "title": "40 reporter claim(s) contradicted by the official report",
    "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: CBS Sports said ACTIVE for Devonte Wyatt (official: see link); Yahoo Sports said ACTIVE for Matthew Golden (official: see link); FOX Sports said ACTIVE for Matthew Golden (official: see link); Packers Wire said QUESTIONABLE for Keisean Nixon (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link)",
    "evidence": [
     {
