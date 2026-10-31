@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31T05:33:04Z",
+ "generated_at": "2026-10-31T06:08:10Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -438,42 +438,30 @@
    ]
   },
   {
-   "code": "ROSTER_INDEX_PRUNED",
-   "severity": "low",
-   "title": "Roster index pruned 1 record(s) no current source supports",
-   "detail": "The player index is pruned each run: a (club, player) record is dropped when the official report names the player under a different club and no current source still asserts it, or when no source has asserted it for 14 days. Dropped this run: SEA:nick-kallerup (not asserted by any source for 14.0 days). This is the guard against stale records mis-attributing in-game events (see the 2026-09-16 HOU/GB misattribution in the README verification log).",
-   "evidence": [
-    {
-     "label": "Official NFL injury report",
-     "url": "https://www.nfl.com/injuries/"
-    }
-   ]
-  },
-  {
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "20 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Lions Wire said QUESTIONABLE for Kerby Joseph (official: see link); Yahoo Sports said OUT for Tytus Howard (official: see link); Denver Broncos said QUESTIONABLE for Pat Surtain II (official: see link); KMBC said QUESTIONABLE for Rashee Rice (official: see link); Pride Of Detroit said QUESTIONABLE for Kerby Joseph (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Dawgs By Nature said OUT for Tytus Howard (official: see link); Yahoo Sports said OUT for Tytus Howard (official: see link); Yahoo Sports said QUESTIONABLE for Lamar Jackson (official: see link); Buffalo Rumblings said QUESTIONABLE for Lamar Jackson (official: see link); The Atlanta Journal-Constitution said QUESTIONABLE for Brian Robinson Jr. (official: see link)",
    "evidence": [
     {
-     "label": "Lions Wire: Kerby Joseph QUESTIONABLE",
-     "url": "https://www.nfl.com/players/kerby-joseph/"
+     "label": "Dawgs By Nature: Tytus Howard OUT",
+     "url": "https://www.nfl.com/players/tytus-howard-x1979/"
     },
     {
      "label": "Yahoo Sports: Tytus Howard OUT",
      "url": "https://www.nfl.com/players/tytus-howard-x1979/"
     },
     {
-     "label": "Denver Broncos: Pat Surtain II QUESTIONABLE",
-     "url": "https://www.nfl.com/players/patrick-surtain-ii/"
+     "label": "Yahoo Sports: Lamar Jackson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
     },
     {
-     "label": "KMBC: Rashee Rice QUESTIONABLE",
-     "url": "https://www.nfl.com/players/rashee-rice/"
+     "label": "Buffalo Rumblings: Lamar Jackson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
     },
     {
-     "label": "Pride Of Detroit: Kerby Joseph QUESTIONABLE",
-     "url": "https://www.nfl.com/players/kerby-joseph/"
+     "label": "The Atlanta Journal-Constitution: Brian Robinson Jr. QUESTIONABLE",
+     "url": "https://www.nfl.com/players/brian-robinson/"
     }
    ]
   },
