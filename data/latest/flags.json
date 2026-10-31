@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31T16:10:32Z",
+ "generated_at": "2026-10-31T17:21:08Z",
  "irregularities": [
   {
    "code": "PLAYER_TEAM_CONFLICT",
@@ -25,6 +25,22 @@
     },
     {
      "label": "ESPN (IR)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for A.J. Brown",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/a-j-brown/"
+    },
+    {
+     "label": "ESPN (OUT)",
      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
     }
    ]
@@ -270,6 +286,22 @@
    ]
   },
   {
+   "code": "STATUS_CONFLICT",
+   "severity": "medium",
+   "title": "Designation conflict for TreVeyon Henderson",
+   "detail": "nfl.com (official) says QUESTIONABLE; ESPN says OUT. The OFFICIAL nfl.com designation is the one published on this site, because only the league's Game Status Report is binding. The ESPN value is retained on the record for review.",
+   "evidence": [
+    {
+     "label": "Official (QUESTIONABLE)",
+     "url": "https://www.nfl.com/players/treveyon-henderson/"
+    },
+    {
+     "label": "ESPN (OUT)",
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
+    }
+   ]
+  },
+  {
    "code": "INFERRED_VS_REPORTED",
    "severity": "low",
    "title": "9 player(s) have no official designation but do have an ESPN status",
@@ -441,27 +473,27 @@
    "code": "CLAIMS_CONTRADICTED",
    "severity": "low",
    "title": "17 reporter claim(s) contradicted by the official report",
-   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: ESPN said QUESTIONABLE for Ja'Marr Chase (official: see link); Lions Wire said QUESTIONABLE for Kerby Joseph (official: see link); Denver Broncos said QUESTIONABLE for Pat Surtain II (official: see link); KMBC said QUESTIONABLE for Rashee Rice (official: see link); Pride Of Detroit said QUESTIONABLE for Kerby Joseph (official: see link)",
+   "detail": "These claims are retained (not deleted) because a contradicted claim is the evidence that drives a reporter's score down. Examples: Dawgs By Nature said OUT for Tytus Howard (official: see link); Yahoo Sports said QUESTIONABLE for Lamar Jackson (official: see link); Buffalo Rumblings said QUESTIONABLE for Lamar Jackson (official: see link); The Atlanta Journal-Constitution said QUESTIONABLE for Brian Robinson Jr. (official: see link); rapsheet.bsky.social said QUESTIONABLE for Roquan Smith (official: see link)",
    "evidence": [
     {
-     "label": "ESPN: Ja'Marr Chase QUESTIONABLE",
-     "url": "https://www.nfl.com/players/ja-marr-chase/"
+     "label": "Dawgs By Nature: Tytus Howard OUT",
+     "url": "https://www.nfl.com/players/tytus-howard-x1979/"
     },
     {
-     "label": "Lions Wire: Kerby Joseph QUESTIONABLE",
-     "url": "https://www.nfl.com/players/kerby-joseph/"
+     "label": "Yahoo Sports: Lamar Jackson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
     },
     {
-     "label": "Denver Broncos: Pat Surtain II QUESTIONABLE",
-     "url": "https://www.nfl.com/players/patrick-surtain-ii/"
+     "label": "Buffalo Rumblings: Lamar Jackson QUESTIONABLE",
+     "url": "https://www.nfl.com/players/lamar-jackson/"
     },
     {
-     "label": "KMBC: Rashee Rice QUESTIONABLE",
-     "url": "https://www.nfl.com/players/rashee-rice/"
+     "label": "The Atlanta Journal-Constitution: Brian Robinson Jr. QUESTIONABLE",
+     "url": "https://www.nfl.com/players/brian-robinson/"
     },
     {
-     "label": "Pride Of Detroit: Kerby Joseph QUESTIONABLE",
-     "url": "https://www.nfl.com/players/kerby-joseph/"
+     "label": "rapsheet.bsky.social: Roquan Smith QUESTIONABLE",
+     "url": "https://www.nfl.com/players/roquan-smith/"
     }
    ]
   },
